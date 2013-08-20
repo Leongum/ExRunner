@@ -1941,8 +1941,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="unS-tc-ggO">
-                                        <rect key="frame" x="119" y="367" width="73" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="110" y="413" width="73" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="分享">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1952,7 +1952,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="shareHistory:" destination="59h-pf-nvn" eventType="touchUpInside" id="4YW-zg-hmE"/>
+                                            <segue destination="Icp-26-afP" kind="push" id="O5c-Ui-rhu"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2198,7 +2198,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="KRa-J5-Al0">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="147"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="454"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <prototypes>
@@ -2273,6 +2273,61 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Trr-H0-R47" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1875" y="1427"/>
+        </scene>
+        <!--Custom Share View Controller-->
+        <scene sceneID="9ml-7f-fX2">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iWG-G7-WhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="RORCustomShareViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Icp-26-afP" customClass="RORCustomShareViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gjw-lj-Ig6">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" id="I9G-6m-Kvo">
+                                <rect key="frame" x="0.0" y="37" width="320" height="119"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" id="wda-Yg-v9z" customClass="RORCustomShareViewToolbar">
+                                <rect key="frame" x="0.0" y="164" width="251" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="czy-zW-u3U">
+                                <rect key="frame" x="259" y="164" width="54" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="对于这次运动说点啥吧？" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yaW-Tz-ZLp">
+                                <rect key="frame" x="5" y="0.0" width="308" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PfA-P1-4hK">
+                        <barButtonItem key="rightBarButtonItem" title="分享" id="T0n-5M-4GB">
+                            <connections>
+                                <action selector="shareContentAction:" destination="Icp-26-afP" id="DjE-NJ-eyC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="lblContentCount" destination="czy-zW-u3U" id="JHz-WK-svG"/>
+                        <outlet property="shareBar" destination="wda-Yg-v9z" id="veS-9z-mc7"/>
+                        <outlet property="txtShareContent" destination="I9G-6m-Kvo" id="U9q-jr-Rf8"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2420" y="1322"/>
         </scene>
         <!--City Picker View Controller - 设置城市-->
         <scene sceneID="65Y-X7-tfb">
@@ -2478,6 +2533,18 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="cityPickerView" candidateClass="UIPickerView"/>
             </relationships>
         </class>
+        <class className="RORCustomShareViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORCustomShareViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="shareContentAction:"/>
+                <relationship kind="outlet" name="lblContentCount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="shareBar" candidateClass="RORCustomShareViewToolbar"/>
+                <relationship kind="outlet" name="txtShareContent" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="RORCustomShareViewToolbar" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORCustomShareViewToolbar.h"/>
+        </class>
         <class className="RORDatetimeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RORDatetimeViewController.h"/>
             <relationships>
@@ -2504,7 +2571,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RORHistoryDetailViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backAction:"/>
-                <relationship kind="action" name="shareHistory:"/>
                 <relationship kind="outlet" name="backButtonItem" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="bonusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>

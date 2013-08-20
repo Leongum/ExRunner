@@ -11,10 +11,14 @@
 @implementation RORShareService
 
 + (void)authLoginFromSNS:(ShareType) type{
+    RORAppDelegate *appDelegate = (RORAppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    //RORShareViewDelegate *shareViewDelegate = [[RORShareViewDelegate alloc] init];
+    
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
                                                          allowCallback:YES
                                                          authViewStyle:SSAuthViewStyleFullScreenPopup
-                                                          viewDelegate:nil
+                                                          viewDelegate:appDelegate.viewDelegate
                                                authManagerViewDelegate:nil];
     
     [authOptions setPowerByHidden:true];

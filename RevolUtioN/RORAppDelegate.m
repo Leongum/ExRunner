@@ -13,6 +13,17 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+@synthesize viewDelegate = _viewDelegate;
+
+- (id)init
+{
+    if(self = [super init])
+    {
+        _viewDelegate = [[RORShareViewDelegate alloc] init];
+    }
+    return self;
+}
+
 - (void)saveContext{
     NSError *error = nil;
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;

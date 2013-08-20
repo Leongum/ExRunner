@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "User_Running_History.h"
 
 @interface RORHistoryDetailViewController : UIViewController<CLLocationManagerDelegate> {
     BOOL wasFound;
     CLLocationManager* locationManager;
 }
-
 @property (weak, nonatomic) UIViewController *delegate;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButtonItem;
 
@@ -29,7 +29,6 @@
 @property (strong, nonatomic) User_Running_History *record;
 
 - (IBAction)backAction:(id)sender;
-- (IBAction)shareHistory:(id)sender;
 
 //@property (strong, nonatomic) NSNumber *distance;
 //@property (strong, nonatomic) NSNumber *speed;

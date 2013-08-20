@@ -14,8 +14,12 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <RennSDK/RennSDK.h>
 #import <ShareSDK/ShareSDK.h>
+#import "RORShareViewDelegate.h"
 
 @interface RORAppDelegate : UIResponder <UIApplicationDelegate>
+{
+    RORShareViewDelegate *_viewDelegate;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -23,6 +27,7 @@
 @property (readonly,strong,nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly,strong,nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonatomic) NSDictionary *userInfo;
+@property (nonatomic,readonly) RORShareViewDelegate *viewDelegate;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

@@ -10,6 +10,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import "User_Base.h"
 #import "RORUserServices.h"
+#import "RORShareViewDelegate.h"
 
 @interface RORShareService : NSObject
 

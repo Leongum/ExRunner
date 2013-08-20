@@ -44,6 +44,10 @@
 		0F8501E017C1C68E0005993E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8501DF17C1C68E0005993E /* libsqlite3.dylib */; };
 		0F8501E217C1C8DF0005993E /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8501E117C1C8DF0005993E /* AGCommon.framework */; };
 		0F8501E317C1C9510005993E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8501D517C1C6160005993E /* CoreTelephony.framework */; };
+		0F8501E817C1F32C0005993E /* RORShareViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8501E717C1F32C0005993E /* RORShareViewDelegate.m */; };
+		0F8501FC17C20E260005993E /* RORCustomShareViewToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8501FB17C20E260005993E /* RORCustomShareViewToolbar.m */; };
+		0F8501FF17C2104D0005993E /* RORCustomShareItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8501FE17C2104C0005993E /* RORCustomShareItemView.m */; };
+		0F85020517C217060005993E /* RORCustomShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85020417C217060005993E /* RORCustomShareViewController.m */; };
 		0F857708178959DC00173A92 /* RORUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F857707178959DC00173A92 /* RORUtils.m */; };
 		0F857712178C4EF100173A92 /* RORHttpClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F857711178C4EF100173A92 /* RORHttpClientHandler.m */; };
 		0F87D877179D642A007E0412 /* RORMissionClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F87D876179D6429007E0412 /* RORMissionClientHandler.m */; };
@@ -305,6 +309,14 @@
 		0F8501DD17C1C63E0005993E /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		0F8501DF17C1C68E0005993E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		0F8501E117C1C8DF0005993E /* AGCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGCommon.framework; sourceTree = "<group>"; };
+		0F8501E617C1F32C0005993E /* RORShareViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORShareViewDelegate.h; sourceTree = "<group>"; };
+		0F8501E717C1F32C0005993E /* RORShareViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORShareViewDelegate.m; sourceTree = "<group>"; };
+		0F8501FA17C20E260005993E /* RORCustomShareViewToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORCustomShareViewToolbar.h; sourceTree = "<group>"; };
+		0F8501FB17C20E260005993E /* RORCustomShareViewToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORCustomShareViewToolbar.m; sourceTree = "<group>"; };
+		0F8501FD17C2104C0005993E /* RORCustomShareItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORCustomShareItemView.h; sourceTree = "<group>"; };
+		0F8501FE17C2104C0005993E /* RORCustomShareItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORCustomShareItemView.m; sourceTree = "<group>"; };
+		0F85020317C217060005993E /* RORCustomShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORCustomShareViewController.h; sourceTree = "<group>"; };
+		0F85020417C217060005993E /* RORCustomShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORCustomShareViewController.m; sourceTree = "<group>"; };
 		0F857706178959DC00173A92 /* RORUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORUtils.h; sourceTree = "<group>"; };
 		0F857707178959DC00173A92 /* RORUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORUtils.m; sourceTree = "<group>"; };
 		0F857710178C4EF100173A92 /* RORHttpClientHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHttpClientHandler.h; sourceTree = "<group>"; };
@@ -672,6 +684,7 @@
 		0F7F39841792DEB600B1C720 /* RORServices */ = {
 			isa = PBXGroup;
 			children = (
+				0F8501F217C20DD60005993E /* CustomShareDetail */,
 				0F7F398C1792DF1000B1C720 /* RORUserServices.h */,
 				0F7F398D1792DF1000B1C720 /* RORUserServices.m */,
 				0F7F3992179BD08000B1C720 /* RORMissionServices.h */,
@@ -689,6 +702,19 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		0F8501F217C20DD60005993E /* CustomShareDetail */ = {
+			isa = PBXGroup;
+			children = (
+				0F8501FA17C20E260005993E /* RORCustomShareViewToolbar.h */,
+				0F8501FB17C20E260005993E /* RORCustomShareViewToolbar.m */,
+				0F8501FD17C2104C0005993E /* RORCustomShareItemView.h */,
+				0F8501FE17C2104C0005993E /* RORCustomShareItemView.m */,
+				0F85020317C217060005993E /* RORCustomShareViewController.h */,
+				0F85020417C217060005993E /* RORCustomShareViewController.m */,
+			);
+			name = CustomShareDetail;
+			sourceTree = "<group>";
+		};
 		0F87D885179D7313007E0412 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -701,6 +727,8 @@
 				30BB0BAE176AB2BE0009A847 /* RORConstant.m */,
 				0F857706178959DC00173A92 /* RORUtils.h */,
 				0F857707178959DC00173A92 /* RORUtils.m */,
+				0F8501E617C1F32C0005993E /* RORShareViewDelegate.h */,
+				0F8501E717C1F32C0005993E /* RORShareViewDelegate.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1481,6 +1509,10 @@
 				30F4548117BCB564006CB66C /* INStepCounting.m in Sources */,
 				30F4549317C1296C006CB66C /* Animations.m in Sources */,
 				0F59A16B17BC700A000DEFEF /* RORShareService.m in Sources */,
+				0F8501E817C1F32C0005993E /* RORShareViewDelegate.m in Sources */,
+				0F8501FC17C20E260005993E /* RORCustomShareViewToolbar.m in Sources */,
+				0F8501FF17C2104D0005993E /* RORCustomShareItemView.m in Sources */,
+				0F85020517C217060005993E /* RORCustomShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

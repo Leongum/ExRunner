@@ -10,6 +10,7 @@
 #import "RORRunningViewController.h"
 #import "RORDBCommon.h"
 #import "RORUtils.h"
+#import "RORShareService.h"
 
 @interface RORHistoryDetailViewController ()
 
@@ -69,6 +70,21 @@
     [super viewDidUnload];
 }
 
+- (UIImage *) captureScreen {
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    CGRect rect = [keyWindow bounds];
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [keyWindow.layer renderInContext:context];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    CGRect contentRectToCrop = CGRectMake(0, 70, image.size.width, image.size.height - 70);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], contentRectToCrop);
+    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+    return croppedImage;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     UIViewController *destination = segue.destinationViewController;
     if ([destination respondsToSelector:@selector(setDelegate:)]){
@@ -76,6 +92,9 @@
     }
     if ([destination respondsToSelector:@selector(setRoutePoints:)]){
         [destination setValue:[RORDBCommon getRoutePointsFromString:record.missionRoute] forKey:@"routePoints"];
+    }
+    if ([destination respondsToSelector:@selector(setShareImage:)]){
+        [destination setValue:[self captureScreen] forKey:@"shareImage"];
     }
 }
 
@@ -86,6 +105,4 @@
         [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)shareHistory:(id)sender {
-}
 @end
