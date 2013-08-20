@@ -156,6 +156,8 @@
 		30D21E8B173BF8BF006B24A8 /* main_countdown_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D21E8A173BF8BF006B24A8 /* main_countdown_bg.png */; };
 		30D21E91173CE617006B24A8 /* RORRelationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D21E90173CE617006B24A8 /* RORRelationsCell.m */; };
 		30D21E9A173D4D02006B24A8 /* RORRelationsOnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D21E99173D4D02006B24A8 /* RORRelationsOnlineCell.m */; };
+		30D95E6E17C35EB70056E7C0 /* RORStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */; };
+		30D95E6F17C35EB70056E7C0 /* RORHistoryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D95E6D17C35EB70056E7C0 /* RORHistoryPageViewController.m */; };
 		30F44B501778267200876915 /* RORDBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F44B4F1778267200876915 /* RORDBCommon.m */; };
 		30F4547017BCB519006CB66C /* INConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546217BCB519006CB66C /* INConstant.m */; };
 		30F4547117BCB519006CB66C /* INDeviceStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546417BCB519006CB66C /* INDeviceStatus.m */; };
@@ -485,6 +487,10 @@
 		30D21E90173CE617006B24A8 /* RORRelationsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORRelationsCell.m; path = Cells/RORRelationsCell.m; sourceTree = "<group>"; };
 		30D21E98173D4D02006B24A8 /* RORRelationsOnlineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORRelationsOnlineCell.h; path = Cells/RORRelationsOnlineCell.h; sourceTree = "<group>"; };
 		30D21E99173D4D02006B24A8 /* RORRelationsOnlineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORRelationsOnlineCell.m; path = Cells/RORRelationsOnlineCell.m; sourceTree = "<group>"; };
+		30D95E6A17C35EB70056E7C0 /* RORStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORStatisticsViewController.h; sourceTree = "<group>"; };
+		30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORStatisticsViewController.m; sourceTree = "<group>"; };
+		30D95E6C17C35EB70056E7C0 /* RORHistoryPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHistoryPageViewController.h; sourceTree = "<group>"; };
+		30D95E6D17C35EB70056E7C0 /* RORHistoryPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORHistoryPageViewController.m; sourceTree = "<group>"; };
 		30F44B4E1778267200876915 /* RORDBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORDBCommon.h; sourceTree = "<group>"; };
 		30F44B4F1778267200876915 /* RORDBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORDBCommon.m; sourceTree = "<group>"; };
 		30F4546117BCB519006CB66C /* INConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INConstant.h; sourceTree = "<group>"; };
@@ -1071,6 +1077,10 @@
 		30BB0AFA1761C5AF0009A847 /* RORHistoryPage */ = {
 			isa = PBXGroup;
 			children = (
+				30D95E6A17C35EB70056E7C0 /* RORStatisticsViewController.h */,
+				30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */,
+				30D95E6C17C35EB70056E7C0 /* RORHistoryPageViewController.h */,
+				30D95E6D17C35EB70056E7C0 /* RORHistoryPageViewController.m */,
 				30BB0AFB1761C5C50009A847 /* RORHistoryViewController.h */,
 				30BB0AFC1761C5C50009A847 /* RORHistoryViewController.m */,
 				30BB0AFE1761C5DB0009A847 /* RORHistoryDetailViewController.h */,
@@ -1513,6 +1523,8 @@
 				0F8501FC17C20E260005993E /* RORCustomShareViewToolbar.m in Sources */,
 				0F8501FF17C2104D0005993E /* RORCustomShareItemView.m in Sources */,
 				0F85020517C217060005993E /* RORCustomShareViewController.m in Sources */,
+				30D95E6E17C35EB70056E7C0 /* RORStatisticsViewController.m in Sources */,
+				30D95E6F17C35EB70056E7C0 /* RORHistoryPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
