@@ -1173,7 +1173,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="shareHistory:" destination="59h-pf-nvn" eventType="touchUpInside" id="4YW-zg-hmE"/>
                                             <segue destination="pBz-bQ-wR8" kind="push" id="36K-ss-RK2"/>
                                         </connections>
                                     </button>
