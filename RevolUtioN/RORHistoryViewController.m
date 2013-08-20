@@ -23,12 +23,13 @@
     [self setRunHistoryList:nil];
     [self setDateList:nil];
     [self setSortedDateList:nil];
+    [self setTableView:nil];
     [super viewDidUnload];
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }

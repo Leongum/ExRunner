@@ -21,10 +21,8 @@
 @property (strong,nonatomic)NSManagedObjectContext *context;
 @property (copy, nonatomic) NSString *userName;
 @property (nonatomic) NSNumber *userId;
-@property (weak, nonatomic) IBOutlet UIView *userInfoSubView;
-@property (weak, nonatomic) IBOutlet UIView *userInfoView;
 @property (weak, nonatomic) IBOutlet UIView *weatherSubView;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *weatherInfoButtonView;
+@property (weak, nonatomic) IBOutlet UIButton *weatherInfoButtonView;
 @property (weak, nonatomic) IBOutlet UIButton *userButton;
 
 

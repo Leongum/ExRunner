@@ -158,6 +158,7 @@
 		30D21E9A173D4D02006B24A8 /* RORRelationsOnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D21E99173D4D02006B24A8 /* RORRelationsOnlineCell.m */; };
 		30D95E6E17C35EB70056E7C0 /* RORStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */; };
 		30D95E6F17C35EB70056E7C0 /* RORHistoryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D95E6D17C35EB70056E7C0 /* RORHistoryPageViewController.m */; };
+		30D95E7A17C364CF0056E7C0 /* main_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D95E7917C364CE0056E7C0 /* main_bg.png */; };
 		30F44B501778267200876915 /* RORDBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F44B4F1778267200876915 /* RORDBCommon.m */; };
 		30F4547017BCB519006CB66C /* INConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546217BCB519006CB66C /* INConstant.m */; };
 		30F4547117BCB519006CB66C /* INDeviceStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546417BCB519006CB66C /* INDeviceStatus.m */; };
@@ -491,6 +492,7 @@
 		30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORStatisticsViewController.m; sourceTree = "<group>"; };
 		30D95E6C17C35EB70056E7C0 /* RORHistoryPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHistoryPageViewController.h; sourceTree = "<group>"; };
 		30D95E6D17C35EB70056E7C0 /* RORHistoryPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORHistoryPageViewController.m; sourceTree = "<group>"; };
+		30D95E7917C364CE0056E7C0 /* main_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_bg.png; sourceTree = "<group>"; };
 		30F44B4E1778267200876915 /* RORDBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORDBCommon.h; sourceTree = "<group>"; };
 		30F44B4F1778267200876915 /* RORDBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORDBCommon.m; sourceTree = "<group>"; };
 		30F4546117BCB519006CB66C /* INConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INConstant.h; sourceTree = "<group>"; };
@@ -853,6 +855,7 @@
 		301C1F6D1737B5B80068B43B /* bg */ = {
 			isa = PBXGroup;
 			children = (
+				30D95E7917C364CE0056E7C0 /* main_bg.png */,
 				30FC2914176072F700DEC042 /* redbutton_bg.png */,
 				30FC291217603C1500DEC042 /* graybutton_bg.png */,
 				30FC29101760240500DEC042 /* redroundrec.png */,
@@ -1409,6 +1412,7 @@
 				0F59A15717BA2171000DEFEF /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				0F59A15917BA2171000DEFEF /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				30F4548717C0C2DC006CB66C /* Default-568h@2x.png in Resources */,
+				30D95E7A17C364CF0056E7C0 /* main_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

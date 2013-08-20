@@ -8,12 +8,13 @@
 
 #import "RORFirstViewController.h"
 
+#define WEATHER_WINDOW_INITIAL_FRAME CGRectMake(-100, 70, 100, 120)
+
 @interface RORFirstViewController ()
 
 @end
 
 @implementation RORFirstViewController
-@synthesize userInfoView;
 @synthesize weatherSubView;
 @synthesize weatherInfoButtonView;
 @synthesize userButton;
@@ -29,9 +30,7 @@ NSInteger centerLoc =-10000;
     RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
     context = delegate.managedObjectContext;
 
-    userInfoView.frame = CGRectMake(0, -200, 320, 200);
-    weatherSubView.frame = CGRectMake(2, -120, 100, 120);
-    self.navigationItem.leftBarButtonItem = weatherInfoButtonView;
+    weatherSubView.frame = WEATHER_WINDOW_INITIAL_FRAME;
     //init topbar's gesture listeners
     UITapGestureRecognizer *t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     [weatherSubView addGestureRecognizer:t];
@@ -174,8 +173,6 @@ NSInteger centerLoc =-10000;
 
 - (void)viewDidUnload {
 
-    [self setUserInfoView:nil];
-    [self setUserInfoSubView:nil];
     [self setWeatherSubView:nil];
     [self setWeatherInfoButtonView:nil];
     [self setUserButton:nil];
@@ -193,7 +190,7 @@ NSInteger centerLoc =-10000;
     [UIView beginAnimations:nil context:gccontext];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     [UIView setAnimationDuration:0.3];
-    weatherSubView.frame = CGRectMake(2, -120, 100, 120);
+    weatherSubView.frame = WEATHER_WINDOW_INITIAL_FRAME;
     weatherInfoButtonView.tintColor = nil;
     expanded = 0;
 
@@ -221,7 +218,7 @@ NSInteger centerLoc =-10000;
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     [UIView setAnimationDuration:0.3];
 
-    weatherSubView.frame = CGRectMake(2, 0, 100, 140);
+    weatherSubView.frame = CGRectMake(2, 0, 100, 120);
     weatherInfoButtonView.tintColor = [UIColor colorWithRed:0.25 green:0.4 blue:0.72 alpha:0.0];
     expanded = 1;
 
@@ -245,11 +242,10 @@ NSInteger centerLoc =-10000;
 }
 
 - (IBAction)weatherInfoAction:(id)sender {
-    if (weatherSubView.frame.origin.y < 0){
+    if (weatherSubView.frame.origin.x < -10){
 //        [self weatherInView];
-        [Animations moveDown:weatherSubView andAnimationDuration:0.2 andWait:YES andLength:130];
-        [Animations moveUp:weatherSubView andAnimationDuration:0.1 andWait:YES andLength:10];
-        
+        [Animations moveRight:weatherSubView andAnimationDuration:0.2 andWait:YES andLength:100];
+        [Animations moveLeft:weatherSubView andAnimationDuration:0.1 andWait:YES andLength:10];
     } else {
         [self weatherPopView];
     }
@@ -260,20 +256,4 @@ NSInteger centerLoc =-10000;
 
 - (IBAction)challengeRunAction:(id)sender {
 }
-
-- (IBAction)userInfoMenu:(id)sender{
-    CGContextRef gccontext = UIGraphicsGetCurrentContext();
-    [UIView beginAnimations:nil context:gccontext];
-    [UIView setAnimationDuration:0.3];
-    [UIView setAnimationDelegate:self];
-
-    if (userInfoView.frame.origin.y<-100)
-        userInfoView.frame = CGRectMake(0, -100, 320, 200);
-    else
-        userInfoView.frame = CGRectMake(0, -200, 320, 200);
-
-    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
-    [UIView commitAnimations];
-}
-
 @end
