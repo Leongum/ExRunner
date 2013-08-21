@@ -13,12 +13,17 @@
 #import "RORShareService.h"
 
 @interface RORHistoryDetailViewController ()
-
+    
 @end
 
-@implementation RORHistoryDetailViewController
+@implementation RORHistoryDetailViewController{
+
+    UIImage *img;
+}
+
 @synthesize distanceLabel, speedLabel, durationLabel, energyLabel, weatherLabel, scoreLabel, experienceLabel, bonusLabel;
 @synthesize record;
+@synthesize coverView;
 @synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -67,6 +72,7 @@
     [self setRecord:nil];
     [self setDelegate:nil];
     [self setBackButtonItem:nil];
+    [self setCoverView:nil];
     [super viewDidUnload];
 }
 
@@ -94,7 +100,7 @@
         [destination setValue:[RORDBCommon getRoutePointsFromString:record.missionRoute] forKey:@"routePoints"];
     }
     if ([destination respondsToSelector:@selector(setShareImage:)]){
-        [destination setValue:[self captureScreen] forKey:@"shareImage"];
+        [destination setValue:img forKey:@"shareImage"];
     }
 }
 
@@ -103,6 +109,59 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
     else
         [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)shareToWeixin:(id)sender {
+    //发送内容给微信
+    id<ISSContent> content = [ShareSDK content:nil
+                                defaultContent:nil
+                                         image:[ShareSDK jpegImageWithImage:img quality:1]
+                                         title:nil
+                                           url:nil
+                                   description:nil
+                                     mediaType:SSPublishContentMediaTypeImage];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:nil];
+    
+    
+    [ShareSDK shareContent:content
+                      type:ShareTypeWeixiTimeline
+               authOptions:authOptions
+             statusBarTips:YES
+                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        if (state == SSPublishContentStateSuccess)
+                        {
+                            NSLog(@"success");
+                        }
+                        else if (state == SSPublishContentStateFail)
+                        {
+                            if ([error errorCode] == -22003)
+                            {
+                                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                    message:[error errorDescription]
+                                                                                   delegate:nil
+                                                                          cancelButtonTitle:@"知道了"
+                                                                          otherButtonTitles:nil];
+                                [alertView show];
+                            }
+                        }
+                    }];
+
+}
+
+- (IBAction)shareAction:(id)sender {
+    img = [self captureScreen];
+    [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
+    [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:YES];
+}
+
+- (IBAction)hideCover:(id)sender {
+    [Animations fadeOut:coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
+    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:YES];
 }
 
 @end

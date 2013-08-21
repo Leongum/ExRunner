@@ -82,7 +82,7 @@
     
     id<ISSContent> publishContent = [ShareSDK content:shareContent
                                        defaultContent:nil
-                                                image:[ShareSDK jpegImageWithImage:shareImage quality:1]//[ShareSDK jpegImageWithImage:_picImageView.image quality:1]
+                                                image:[ShareSDK jpegImageWithImage:shareImage quality:1]
                                                 title:@"赛跑乐快乐分享"
                                                   url:@"http://www.cyberace.cc"
                                           description:@"来自赛跑乐的晒跑了"
@@ -95,44 +95,6 @@
                                                authManagerViewDelegate:nil];
     
     [authOptions setPowerByHidden:true];
-    
-    for(NSDictionary *item in selectedClients)
-    {
-        if([[item objectForKey:@"type"] integerValue] == ShareTypeWeixiTimeline){
-            //发送内容给微信
-            id<ISSContent> weixinContent = [ShareSDK content:nil
-                                        defaultContent:nil
-                                                 image:[ShareSDK jpegImageWithImage:shareImage quality:1]
-                                                 title:nil
-                                                   url:nil
-                                           description:nil
-                                             mediaType:SSPublishContentMediaTypeImage];
-            
-            [ShareSDK shareContent:weixinContent
-                              type:ShareTypeWeixiTimeline
-                       authOptions:authOptions
-                     statusBarTips:YES
-                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                if (state == SSPublishContentStateSuccess)
-                                {
-                                    NSLog(@"success");
-                                }
-                                else if (state == SSPublishContentStateFail)
-                                {
-                                    if ([error errorCode] == -22003)
-                                    {
-                                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                            message:[error errorDescription]
-                                                                                           delegate:nil
-                                                                                  cancelButtonTitle:@"知道了"
-                                                                                  otherButtonTitles:nil];
-                                        [alertView show];
-                                    }
-                                }
-                            }];
-
-        }
-    }
     
     //分享内容
     [ShareSDK oneKeyShareContent:publishContent
@@ -148,5 +110,9 @@
     [self setLblContentCount:nil];
     [self setShareBar:nil];
     [super viewDidUnload];
+}
+
+- (IBAction)popBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end
