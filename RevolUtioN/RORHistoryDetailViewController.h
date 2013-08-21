@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *bonusLabel;
 @property (strong, nonatomic) User_Running_History *record;
 
+@property (strong, nonatomic) IBOutlet UIControl *coverView;
+
 - (IBAction)backAction:(id)sender;
 
 //@property (strong, nonatomic) NSNumber *distance;

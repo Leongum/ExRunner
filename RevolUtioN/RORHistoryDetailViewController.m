@@ -19,6 +19,7 @@
 @implementation RORHistoryDetailViewController
 @synthesize distanceLabel, speedLabel, durationLabel, energyLabel, weatherLabel, scoreLabel, experienceLabel, bonusLabel;
 @synthesize record;
+@synthesize coverView;
 @synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -67,6 +68,7 @@
     [self setRecord:nil];
     [self setDelegate:nil];
     [self setBackButtonItem:nil];
+    [self setCoverView:nil];
     [super viewDidUnload];
 }
 
@@ -103,6 +105,16 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
     else
         [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)shareAction:(id)sender {
+    [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
+    [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:YES];
+}
+
+- (IBAction)hideCover:(id)sender {
+    [Animations fadeOut:coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
+    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:YES];
 }
 
 @end

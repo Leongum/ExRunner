@@ -149,4 +149,8 @@
     [self setShareBar:nil];
     [super viewDidUnload];
 }
+
+- (IBAction)popBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end
