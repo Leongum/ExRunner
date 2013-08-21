@@ -64,6 +64,12 @@
                                   [NSNumber numberWithBool:NO],
                                   @"selected",
                                   nil],
+                                 [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  SHARE_TYPE_NUMBER(ShareTypeWeixiTimeline),
+                                  @"type",
+                                  [NSNumber numberWithBool:NO],
+                                  @"selected",
+                                  nil],
                                  nil];
         
         
@@ -113,40 +119,48 @@
                                                                   {
                                                                       NSMutableDictionary *item = [_oneKeyShareListArray objectAtIndex:indexPath.row];
                                                                       ShareType shareType = [[item objectForKey:@"type"] integerValue];
-                                                                      
-                                                                      if ([ShareSDK hasAuthorizedWithType:shareType])
-                                                                      {
+                                                                      //for weixin
+                                                                      if(shareType == ShareTypeWeixiTimeline){
                                                                           BOOL selected = ! [[item objectForKey:@"selected"] boolValue];
                                                                           [item setObject:[NSNumber numberWithBool:selected] forKey:@"selected"];
                                                                           [_tableView reloadData];
                                                                       }
                                                                       else
                                                                       {
-                                                                          id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
-                                                                                                                               allowCallback:YES
-                                                                                                                               authViewStyle:SSAuthViewStyleFullScreenPopup
-                                                                                                                                viewDelegate:_appDelegate.viewDelegate
-                                                                                                                     authManagerViewDelegate:nil];
-                                                                          
-                                                                          [authOptions setPowerByHidden:true];
-                                                                          
-                                                                          [ShareSDK getUserInfoWithType:shareType
-                                                                                            authOptions:authOptions
-                                                                                                 result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
-                                                                                                     if (result)
-                                                                                                     {
-                                                                                                         [item setObject:[NSNumber numberWithBool:YES] forKey:@"selected"];
-                                                                                                         [_tableView reloadData];
-                                                                                                     }
-                                                                                                     else
-                                                                                                     {
-                                                                                                         if ([error errorCode] != -103)
+                                                                          if ([ShareSDK hasAuthorizedWithType:shareType])
+                                                                          {
+                                                                              BOOL selected = ! [[item objectForKey:@"selected"] boolValue];
+                                                                              [item setObject:[NSNumber numberWithBool:selected] forKey:@"selected"];
+                                                                              [_tableView reloadData];
+                                                                          }
+                                                                          else
+                                                                          {
+                                                                              id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                                                                                                   allowCallback:YES
+                                                                                                                                   authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                                                                                                    viewDelegate:_appDelegate.viewDelegate
+                                                                                                                         authManagerViewDelegate:nil];
+                                                                              
+                                                                              [authOptions setPowerByHidden:true];
+                                                                              
+                                                                              [ShareSDK getUserInfoWithType:shareType
+                                                                                                authOptions:authOptions
+                                                                                                     result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                                                                                                         if (result)
                                                                                                          {
-                                                                                                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"绑定失败!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-                                                                                                             [alertView show];
+                                                                                                             [item setObject:[NSNumber numberWithBool:YES] forKey:@"selected"];
+                                                                                                             [_tableView reloadData];
                                                                                                          }
-                                                                                                     }
-                                                                                                 }];
+                                                                                                         else
+                                                                                                         {
+                                                                                                             if ([error errorCode] != -103)
+                                                                                                             {
+                                                                                                                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"绑定失败!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+                                                                                                                 [alertView show];
+                                                                                                             }
+                                                                                                         }
+                                                                                                     }];
+                                                                          }
                                                                       }
                                                                   }
                                                               }];

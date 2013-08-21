@@ -96,52 +96,52 @@
     
     [authOptions setPowerByHidden:true];
     
-    BOOL needAuth = NO;
-    if ([selectedClients count] == 1)
+    for(NSDictionary *item in selectedClients)
     {
-        ShareType shareType = [[selectedClients objectAtIndex:0] integerValue];
-        if (![ShareSDK hasAuthorizedWithType:shareType])
-        {
-            needAuth = YES;
-            [ShareSDK getUserInfoWithType:shareType
-                              authOptions:authOptions
-                                   result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
-                                       if (result)
-                                       {
-                                           //分享内容
-                                           [ShareSDK oneKeyShareContent:publishContent
-                                                              shareList:selectedClients
-                                                            authOptions:authOptions
-                                                          statusBarTips:YES
-                                                                 result:nil];
-                                           
-                                           [self.navigationController popViewControllerAnimated:YES];
-                                       }
-                                       else
-                                       {
-                                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                               message:[NSString stringWithFormat:@"发送失败!%@", [error errorDescription]]
-                                                                                              delegate:nil
-                                                                                     cancelButtonTitle:@"知道了"
-                                                                                     otherButtonTitles:nil];
-                                           [alertView show];
-                                       }
-                                   }];
+        if([[item objectForKey:@"type"] integerValue] == ShareTypeWeixiTimeline){
+            //发送内容给微信
+            id<ISSContent> weixinContent = [ShareSDK content:nil
+                                        defaultContent:nil
+                                                 image:[ShareSDK jpegImageWithImage:shareImage quality:1]
+                                                 title:nil
+                                                   url:nil
+                                           description:nil
+                                             mediaType:SSPublishContentMediaTypeImage];
+            
+            [ShareSDK shareContent:weixinContent
+                              type:ShareTypeWeixiTimeline
+                       authOptions:authOptions
+                     statusBarTips:YES
+                            result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                if (state == SSPublishContentStateSuccess)
+                                {
+                                    NSLog(@"success");
+                                }
+                                else if (state == SSPublishContentStateFail)
+                                {
+                                    if ([error errorCode] == -22003)
+                                    {
+                                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                            message:[error errorDescription]
+                                                                                           delegate:nil
+                                                                                  cancelButtonTitle:@"知道了"
+                                                                                  otherButtonTitles:nil];
+                                        [alertView show];
+                                    }
+                                }
+                            }];
+
         }
     }
     
-    if (!needAuth)
-    {
-        //分享内容
-        [ShareSDK oneKeyShareContent:publishContent
-                           shareList:selectedClients
-                         authOptions:authOptions
-                       statusBarTips:YES
-                              result:nil];
-        
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+    //分享内容
+    [ShareSDK oneKeyShareContent:publishContent
+                       shareList:selectedClients
+                     authOptions:authOptions
+                   statusBarTips:YES
+                          result:nil];
     
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)viewDidUnload {
     [self setTxtShareContent:nil];
