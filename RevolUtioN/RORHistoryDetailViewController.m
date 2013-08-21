@@ -111,6 +111,7 @@
         [self.navigationController popViewControllerAnimated:YES];
 }
 
+<<<<<<< HEAD
 - (IBAction)shareToWeixin:(id)sender {
     //发送内容给微信
     id<ISSContent> content = [ShareSDK content:nil
