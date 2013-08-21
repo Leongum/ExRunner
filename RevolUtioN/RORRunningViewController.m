@@ -490,9 +490,9 @@
     
     [self saveRunInfo];
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];    // 通过storyboard id拿到目标控制器的对象
-    UIViewController *viewController =  [storyboard instantiateViewControllerWithIdentifier:@"RORRunningHistoryViewController"];
-    [viewController viewDidLoad];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];    // 通过storyboard id拿到目标控制器的对象
+//    UIViewController *viewController =  [storyboard instantiateViewControllerWithIdentifier:@"RORRunningHistoryViewController"];
+//    [viewController viewDidLoad];
     
     [self performSegueWithIdentifier:@"ResultSegue" sender:self];
 }
