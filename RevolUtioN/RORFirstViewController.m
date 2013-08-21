@@ -9,6 +9,11 @@
 #import "RORFirstViewController.h"
 
 #define WEATHER_WINDOW_INITIAL_FRAME CGRectMake(-100, 70, 100, 120)
+#define RUN_BUTTON_FRAME_NORMAL CGRectMake(92, 100, 136, 60)
+#define RUN_BUTTON_FRAME_RATINA CGRectMake(92, 130, 136, 60)
+#define CHALLENGE_BUTTON_FRAME_NORMAL CGRectMake(0, 170, 320, 94)
+#define CHALLENGE_BUTTON_FRAME_RATINA CGRectMake(0, 237, 320, 94)
+
 
 @interface RORFirstViewController ()
 
@@ -38,8 +43,6 @@ NSInteger centerLoc =-10000;
     UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
     [weatherSubView addGestureRecognizer:panGes];
     
-    
-    
     //应用初始设置
     NSString *userSettingDocPath = [RORUtils getUserSettingsPList];
     NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:userSettingDocPath];
@@ -53,6 +56,20 @@ NSInteger centerLoc =-10000;
     
     //=============加载天气信息=============
     //todo: remove common after debug [self loadWeatherInfo];
+    
+    //初始化按钮位置
+    [self initControlsLayout];
+}
+
+-(void)initControlsLayout{
+    CGRect rx = [ UIScreen mainScreen ].applicationFrame;
+    if (rx.size.height == 460){
+        self.runButton.frame = RUN_BUTTON_FRAME_NORMAL;
+        self.challenge.frame = CHALLENGE_BUTTON_FRAME_NORMAL;
+    } else {
+        self.runButton.frame = RUN_BUTTON_FRAME_RATINA;
+        self.challenge.frame = CHALLENGE_BUTTON_FRAME_RATINA;
+    }
 }
 
 - (void)initPageData{
@@ -182,6 +199,8 @@ NSInteger centerLoc =-10000;
     
     [self setLbTemperature:nil];
     [self setLbWind:nil];
+    [self setRunButton:nil];
+    [self setChallenge:nil];
     [super viewDidUnload];
 }
 
@@ -254,6 +273,6 @@ NSInteger centerLoc =-10000;
 - (IBAction)normalRunAction:(id)sender {
 }
 
-- (IBAction)challengeRunAction:(id)sender {
+- (IBAction)challengeRunAction:(id)sender{
 }
 @end

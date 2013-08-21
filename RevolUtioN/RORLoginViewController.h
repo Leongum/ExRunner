@@ -13,9 +13,10 @@
 #import "RORPages.h"
 #import "RORHttpResponse.h"
 #import "RORUserServices.h"
+#import "RORViewController.h"
 
 
-@interface RORLoginViewController : UIViewController
+@interface RORLoginViewController : RORViewController
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *switchButton;

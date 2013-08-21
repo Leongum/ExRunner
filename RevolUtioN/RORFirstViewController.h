@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIView *weatherSubView;
 @property (weak, nonatomic) IBOutlet UIButton *weatherInfoButtonView;
 @property (weak, nonatomic) IBOutlet UIButton *userButton;
+@property (strong, nonatomic) IBOutlet UIButton *runButton;
+@property (strong, nonatomic) IBOutlet UIScrollView *challenge;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *lbTemperature;

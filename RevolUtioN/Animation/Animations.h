@@ -15,8 +15,8 @@
 + (void)zoomIn: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait;
 + (void)buttonPressAnimate: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait;
 
-+ (void)fadeIn: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait;
-+ (void)fadeOut: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait;
++ (void)fadeIn: (UIView *)view andAnimationDuration: (float) duration toAlpha:(double)newAlpha andWait:(BOOL) wait;
++ (void)fadeOut: (UIView *)view andAnimationDuration: (float) duration fromAlpha:(double)oldAlpha andWait:(BOOL) wait;
 
 + (void) moveLeft: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait andLength:(float) length;
 + (void) moveRight: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait andLength:(float) length;

@@ -68,11 +68,11 @@
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
 }
 
-+ (void)fadeIn: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait{
++ (void)fadeIn: (UIView *)view andAnimationDuration: (float) duration toAlpha:(double)newAlpha andWait:(BOOL) wait{
     __block BOOL done = wait; //wait =  YES wait to finish animation
     [view setAlpha:0.0];
     [UIView animateWithDuration:duration animations:^{
-        [view setAlpha:1.0];
+        [view setAlpha:newAlpha];
     } completion:^(BOOL finished) {
         done = NO;
     }];
@@ -80,9 +80,9 @@
     while (done == YES)
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
 }
-+ (void)fadeOut: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait{
++ (void)fadeOut: (UIView *)view andAnimationDuration: (float) duration fromAlpha:(double)oldAlpha andWait:(BOOL) wait{
     __block BOOL done = wait; //wait =  YES wait to finish animation
-    [view setAlpha:1.0];
+    [view setAlpha:oldAlpha];
     [UIView animateWithDuration:duration animations:^{
         [view setAlpha:0.0];
     } completion:^(BOOL finished) {

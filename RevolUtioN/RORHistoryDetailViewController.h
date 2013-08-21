@@ -10,8 +10,9 @@
 #import <MapKit/MapKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "User_Running_History.h"
+#import "RORViewController.h"
 
-@interface RORHistoryDetailViewController : UIViewController<CLLocationManagerDelegate> {
+@interface RORHistoryDetailViewController : RORViewController<CLLocationManagerDelegate> {
     BOOL wasFound;
     CLLocationManager* locationManager;
 }

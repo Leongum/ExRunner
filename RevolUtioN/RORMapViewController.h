@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "RORViewController.h"
 
-@interface RORMapViewController : UIViewController<CLLocationManagerDelegate,   MKMapViewDelegate>{
+@interface RORMapViewController : RORViewController<CLLocationManagerDelegate,   MKMapViewDelegate>{
 //    BOOL wasFound;
 //    CLLocationManager* locationManager;
 }

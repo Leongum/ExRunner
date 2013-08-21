@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <ShareSDK/ShareSDK.h>
 #import "RORShareService.h"
+#import "RORViewController.h"
 
-@interface RORLoginCheckViewController : UIViewController
+@interface RORLoginCheckViewController : RORViewController
 
 - (IBAction)sinaWeiboLogin:(id)sender;
 - (IBAction)tencentWeiboLogin:(id)sender;

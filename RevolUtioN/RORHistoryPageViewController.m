@@ -159,7 +159,4 @@
 - (IBAction)changePage:(id)sender {
     [self gotoPage:YES];    // YES = animate
 }
-- (IBAction)popBackAction:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 @end

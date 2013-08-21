@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RORViewController.h"
 
-@interface RORMoreViewController : UIViewController
+
+@interface RORMoreViewController : RORViewController
 - (IBAction)logoutAction:(id)sender;
 - (void)saveAll;
 

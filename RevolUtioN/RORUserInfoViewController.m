@@ -28,13 +28,11 @@
 	// Do any additional setup after loading the view.
 
     NSMutableArray *controllers = [[NSMutableArray alloc] init];
-    for (NSUInteger i = 0; i <3; i++)
+    for (NSUInteger i = 0; i <1; i++)
     {
 		[controllers addObject:[NSNull null]];
     }
     self.contentViews = controllers;
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];    // 通过storyboard id拿到目标控制器的对象
-    self.historyInStoryboard =  [storyboard instantiateViewControllerWithIdentifier:@"RORRunningHistoryViewController"];
 
     userInfoBasicView = [[RORUserInfoBasicViewController alloc]initWithPageNumber:0];
     userInfoBasicView.userName = self.userName;
@@ -42,10 +40,8 @@
     [contentViews replaceObjectAtIndex:0 withObject:userInfoBasicView];
 //    userInfoRunHistoryView = [[RORUserRunHistoryViewController alloc]initWithPageNumber:1];
 //    [contentViews replaceObjectAtIndex:1 withObject:userInfoRunHistoryView];
-//    self.historyInStoryboard = [[RORUserRunHistoryViewController alloc]initWithPageNumber:1];
-    [contentViews replaceObjectAtIndex:1 withObject:self.historyInStoryboard];
-    userInfoDoneMissionsView = [[RORUserDoneMissionsViewController alloc]initWithPageNumber:2];
-    [contentViews replaceObjectAtIndex:2 withObject:userInfoDoneMissionsView];
+//    userInfoDoneMissionsView = [[RORUserDoneMissionsViewController alloc]initWithPageNumber:2];
+//    [contentViews replaceObjectAtIndex:2 withObject:userInfoDoneMissionsView];
     
     NSInteger numberPages = contentViews.count;
     // a page is the width of the scroll view
@@ -60,9 +56,13 @@
     [self updateNaviTitleForPage:0];
     
     [self loadUserInfoBasicPage:0];
-    [self loadUserInfoRunHistoryPage:1];
-    [self loadUserInfoDoneMissionsPage:2];
+//    [self loadUserInfoRunHistoryPage:1];
+//    [self loadUserInfoDoneMissionsPage:2];
     
+    if (contentViews.count<2)
+        pageControl.alpha = 0;
+    else
+        pageControl.alpha = 1;
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,20 +101,10 @@
     frame.origin.x = CGRectGetWidth(frame) * page;
     frame.origin.y = 0;
     
-//    userInfoRunHistoryView.view.frame = frame;
-//    [self addChildViewController:userInfoRunHistoryView];
-//    [self.scrollView addSubview:userInfoRunHistoryView.view];
-//    [userInfoRunHistoryView didMoveToParentViewController:self];
-    self.historyInStoryboard.view.frame = frame;
-    if ([self.historyInStoryboard.view isKindOfClass:[UITableView class]]){
-        UITableView *tableView = (UITableView *)self.historyInStoryboard.view;
-        tableView.dataSource = self.historyInStoryboard;
-        tableView.delegate = self.historyInStoryboard;
-    }
-    [self addChildViewController:self.historyInStoryboard];
-    [self.scrollView addSubview:self.historyInStoryboard.view];
-    [self.historyInStoryboard didMoveToParentViewController:self];
-    
+    userInfoRunHistoryView.view.frame = frame;
+    [self addChildViewController:userInfoRunHistoryView];
+    [self.scrollView addSubview:userInfoRunHistoryView.view];
+    [userInfoRunHistoryView didMoveToParentViewController:self];
     //    }
 }
 
@@ -139,9 +129,9 @@
     [self updateNaviTitleForPage:page];
     
     // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
-    [self loadUserInfoBasicPage:0];
-    [self loadUserInfoRunHistoryPage:1];
-    [self loadUserInfoDoneMissionsPage:2];
+//    [self loadUserInfoBasicPage:0];
+//    [self loadUserInfoRunHistoryPage:1];
+//    [self loadUserInfoDoneMissionsPage:2];
 
     // a possible optimization would be to unload the views+controllers which are no longer visible
 }
@@ -152,12 +142,12 @@
         case 0:
             pageContentTitle = @"-个人属性";
             break;
-        case 1:
-            pageContentTitle = @"-跑步历史";
-            break;
-        case 2:
-            pageContentTitle = @"-任务历史";
-            break;
+//        case 1:
+//            pageContentTitle = @"-跑步历史";
+//            break;
+//        case 2:
+//            pageContentTitle = @"-任务历史";
+//            break;
         default:
             break;
     }
@@ -169,9 +159,9 @@
     NSInteger page = self.pageControl.currentPage;
     [self updateNaviTitleForPage:page];
     // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
-    [self loadUserInfoBasicPage:0];
-    [self loadUserInfoRunHistoryPage:1];
-    [self loadUserInfoDoneMissionsPage:2];
+//    [self loadUserInfoBasicPage:0];
+//    [self loadUserInfoRunHistoryPage:1];
+//    [self loadUserInfoDoneMissionsPage:2];
     
 	// update the scroll view to the appropriate page
     CGRect bounds = self.scrollView.bounds;

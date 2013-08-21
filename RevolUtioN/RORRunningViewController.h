@@ -13,10 +13,11 @@
 #import "INTimeWindow.h"
 #import "INKalmanFilter.h"
 #import "INStepCounting.h"
+#import "RORViewController.h"
 
 #define TIMER_INTERVAL delta_T
 
-@interface RORRunningViewController : UIViewController<CLLocationManagerDelegate,MKMapViewDelegate> {
+@interface RORRunningViewController : RORViewController<CLLocationManagerDelegate,MKMapViewDelegate> {
     BOOL wasFound;
 }
 @property (nonatomic, retain) CLLocationManager *locationManager;

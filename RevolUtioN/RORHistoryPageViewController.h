@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "RORHistoryViewController.h"
 #import "RORStatisticsViewController.h"
+#import "RORViewController.h"
 
-@interface RORHistoryPageViewController : UIViewController<UIScrollViewDelegate>
+@interface RORHistoryPageViewController : RORViewController<UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
