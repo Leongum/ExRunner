@@ -1120,6 +1120,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="shareToWeixin:" destination="59h-pf-nvn" eventType="touchUpInside" id="e9D-EJ-4JN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1554,6 +1557,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RORHistoryDetailViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backAction:"/>
+                <relationship kind="action" name="shareToWeixin:"/>
                 <relationship kind="outlet" name="backButtonItem" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="bonusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="coverView" candidateClass="UIControl"/>
