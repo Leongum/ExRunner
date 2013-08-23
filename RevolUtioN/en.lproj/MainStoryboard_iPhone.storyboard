@@ -1106,6 +1106,7 @@
                                             </attributedString>
                                         </state>
                                         <connections>
+                                            <action selector="hideCover:" destination="59h-pf-nvn" eventType="touchUpInside" id="5Nn-Ay-PaP"/>
                                             <segue destination="pBz-bQ-wR8" kind="push" id="vQN-Mh-B2a"/>
                                         </connections>
                                     </button>

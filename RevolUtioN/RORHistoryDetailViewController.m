@@ -111,8 +111,9 @@
         [self.navigationController popViewControllerAnimated:YES];
 }
 
-<<<<<<< HEAD
 - (IBAction)shareToWeixin:(id)sender {
+    [self hideCover:self];
+    
     //发送内容给微信
     id<ISSContent> content = [ShareSDK content:nil
                                 defaultContent:nil
@@ -157,12 +158,12 @@
 - (IBAction)shareAction:(id)sender {
     img = [self captureScreen];
     [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
-    [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:YES];
+    [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
 }
 
 - (IBAction)hideCover:(id)sender {
     [Animations fadeOut:coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
-    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:YES];
+    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:NO];
 }
 
 @end
