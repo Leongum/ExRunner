@@ -42,7 +42,16 @@
     }
     //sync missions
     [RORMissionServices syncMissions];
-    [self performSegueWithIdentifier:@"loadingfinished" sender:self];
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+//    [self performSegueWithIdentifier:@"loadingfinished" sender:self];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
+    UINavigationController *navigationController =  [storyboard instantiateViewControllerWithIdentifier:@"RORNavigationController"];
+    sleep(2);
+    [self presentViewController:navigationController animated:YES completion:NULL];
+
 }
 
 - (void)didReceiveMemoryWarning

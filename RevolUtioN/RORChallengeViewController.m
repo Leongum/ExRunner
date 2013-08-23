@@ -8,6 +8,7 @@
 
 #import "RORChallengeViewController.h"
 #import "Animations.h"
+#import "FTAnimation.h"
 
 #define CELL_TITLE_TAG 1
 #define CELL_LEVEL_TAG 2
@@ -37,11 +38,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.coverView.alpha =0;
+
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    self.coverView.alpha =0;
     [self loadContentList];
     [tableView reloadData];
 }
@@ -79,7 +81,10 @@
 }
 
 -(void)showCoverView{
-    [Animations fadeIn:self.coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
+    self.coverView.alpha = 1;
+    [self.coverView popIn:0.4 delegate:nil];
+
+//    [Animations fadeIn:self.coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
     [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:YES];
 }
 

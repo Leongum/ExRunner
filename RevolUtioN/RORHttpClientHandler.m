@@ -91,10 +91,18 @@
 + (RORHttpResponse *) excuteRequest: (NSMutableURLRequest *)request{
     NSError *error = nil;
     NSHTTPURLResponse *urlResponse = nil;
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:nil];
-    NSLog(@"Response from request: %@",[NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error]);
-    NSInteger statCode = [urlResponse statusCode];
     RORHttpResponse *httpResponse = [[RORHttpResponse alloc] init];
+    
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:nil];
+    
+    if (response == nil) {
+        [httpResponse setErrorCode:@"222"];
+        [httpResponse setErrorMessage:@"Network connection's not available"];
+        NSLog(@"Network connection's not available. Please check the system configuration");
+        return httpResponse;
+    }
+    
+    NSInteger statCode = [urlResponse statusCode];
     [httpResponse setResponseStatus:statCode];
     [httpResponse setResponseData:response];
     if(statCode ==204){
@@ -110,6 +118,8 @@
         [httpResponse setErrorCode:@"500"];
         [httpResponse setErrorMessage:@"UNKNOW_ERROR"];
     }
+    NSLog(@"Response from request: %@",[NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error]);
+    
     return httpResponse;
 }
 

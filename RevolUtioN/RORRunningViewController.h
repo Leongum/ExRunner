@@ -19,6 +19,7 @@
 
 @interface RORRunningViewController : RORViewController<CLLocationManagerDelegate,MKMapViewDelegate> {
     BOOL wasFound;
+    BOOL isNetworkOK;
 }
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (strong, nonatomic) CMMotionManager *motionManager;

@@ -128,6 +128,14 @@
 		3061F3B4174CB7B7006093FC /* UserDoneMissionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3061F3B3174CB7B7006093FC /* UserDoneMissionsView.xib */; };
 		3061F3B6174CDB96006093FC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3061F3B5174CDB96006093FC /* CoreData.framework */; };
 		3061F3B9174CDBEB006093FC /* RORCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3061F3B7174CDBEB006093FC /* RORCoreData.xcdatamodeld */; };
+		308FAC6617C64C290025B807 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308FAC6517C64C290025B807 /* icon.png */; };
+		308FAC6817C64C300025B807 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 308FAC6717C64C300025B807 /* icon@2x.png */; };
+		308FAC6B17C65B060025B807 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 308FAC6A17C65B060025B807 /* Reachability.m */; };
+		30A6D9AA17C6821500D1116E /* FTAnimation+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */; };
+		30A6D9AB17C6821500D1116E /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A417C6821500D1116E /* FTAnimationManager.m */; };
+		30A6D9AC17C6821500D1116E /* FTUtils+NSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A617C6821500D1116E /* FTUtils+NSObject.m */; };
+		30A6D9AD17C6821500D1116E /* FTUtils+UIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A817C6821500D1116E /* FTUtils+UIGestureRecognizer.m */; };
+		30A6D9BB17C7342400D1116E /* RORNormalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9BA17C7342400D1116E /* RORNormalButton.m */; };
 		30BB0AF51761AE610009A847 /* RORMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0AF41761AE610009A847 /* RORMallViewController.m */; };
 		30BB0AF81761BEA10009A847 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = 30BB0AF61761BEA10009A847 /* history.png */; };
 		30BB0AF91761BEA10009A847 /* history@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30BB0AF71761BEA10009A847 /* history@2x.png */; };
@@ -150,6 +158,8 @@
 		30D21E9A173D4D02006B24A8 /* RORRelationsOnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D21E99173D4D02006B24A8 /* RORRelationsOnlineCell.m */; };
 		30D95E6E17C35EB70056E7C0 /* RORStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */; };
 		30D95E6F17C35EB70056E7C0 /* RORHistoryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D95E6D17C35EB70056E7C0 /* RORHistoryPageViewController.m */; };
+		30DFE7DF17C6748F00678780 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DFE7DD17C6748F00678780 /* submit.png */; };
+		30DFE7E017C6748F00678780 /* submit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DFE7DE17C6748F00678780 /* submit@2x.png */; };
 		30F44B501778267200876915 /* RORDBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F44B4F1778267200876915 /* RORDBCommon.m */; };
 		30F4547017BCB519006CB66C /* INConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546217BCB519006CB66C /* INConstant.m */; };
 		30F4547117BCB519006CB66C /* INDeviceStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546417BCB519006CB66C /* INDeviceStatus.m */; };
@@ -162,7 +172,6 @@
 		30F4548317BD10C5006CB66C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F4548217BD10C5006CB66C /* CoreMotion.framework */; };
 		30F4549317C1296C006CB66C /* Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4549217C1296C006CB66C /* Animations.m */; };
 		30F8BEBF17C4A72700DB137D /* RORBottomPopSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F8BEBE17C4A72700DB137D /* RORBottomPopSubview.m */; };
-		30F8BEC717C4BE4D00DB137D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F4548617C0C2DC006CB66C /* Default-568h@2x.png */; };
 		30FC2901175E2E3500DEC042 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30FC28FF175E2E3500DEC042 /* MainStoryboard_iPhone.storyboard */; };
 		30FC2903175EC34200DEC042 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FC2902175EC34200DEC042 /* MapKit.framework */; };
 		30FC2906175EF6F300DEC042 /* RORMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FC2905175EF6F300DEC042 /* RORMapViewController.m */; };
@@ -437,6 +446,22 @@
 		3061F3B3174CB7B7006093FC /* UserDoneMissionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDoneMissionsView.xib; sourceTree = "<group>"; };
 		3061F3B5174CDB96006093FC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3061F3B8174CDBEB006093FC /* RORCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RORCoreData.xcdatamodel; sourceTree = "<group>"; };
+		308FAC6517C64C290025B807 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		308FAC6717C64C300025B807 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		308FAC6917C65B060025B807 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		308FAC6A17C65B060025B807 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		30A6D9A017C6821500D1116E /* FTAnimation+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FTAnimation+UIView.h"; sourceTree = "<group>"; };
+		30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTAnimation+UIView.m"; sourceTree = "<group>"; };
+		30A6D9A217C6821500D1116E /* FTAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimation.h; sourceTree = "<group>"; };
+		30A6D9A317C6821500D1116E /* FTAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimationManager.h; sourceTree = "<group>"; };
+		30A6D9A417C6821500D1116E /* FTAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAnimationManager.m; sourceTree = "<group>"; };
+		30A6D9A517C6821500D1116E /* FTUtils+NSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FTUtils+NSObject.h"; sourceTree = "<group>"; };
+		30A6D9A617C6821500D1116E /* FTUtils+NSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTUtils+NSObject.m"; sourceTree = "<group>"; };
+		30A6D9A717C6821500D1116E /* FTUtils+UIGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FTUtils+UIGestureRecognizer.h"; sourceTree = "<group>"; };
+		30A6D9A817C6821500D1116E /* FTUtils+UIGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTUtils+UIGestureRecognizer.m"; sourceTree = "<group>"; };
+		30A6D9A917C6821500D1116E /* FTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTUtils.h; sourceTree = "<group>"; };
+		30A6D9B917C7342400D1116E /* RORNormalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORNormalButton.h; sourceTree = "<group>"; };
+		30A6D9BA17C7342400D1116E /* RORNormalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORNormalButton.m; sourceTree = "<group>"; };
 		30BB0AF31761AE610009A847 /* RORMallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMallViewController.h; sourceTree = "<group>"; };
 		30BB0AF41761AE610009A847 /* RORMallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMallViewController.m; sourceTree = "<group>"; };
 		30BB0AF61761BEA10009A847 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
@@ -476,6 +501,8 @@
 		30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORStatisticsViewController.m; sourceTree = "<group>"; };
 		30D95E6C17C35EB70056E7C0 /* RORHistoryPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHistoryPageViewController.h; sourceTree = "<group>"; };
 		30D95E6D17C35EB70056E7C0 /* RORHistoryPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORHistoryPageViewController.m; sourceTree = "<group>"; };
+		30DFE7DD17C6748F00678780 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
+		30DFE7DE17C6748F00678780 /* submit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submit@2x.png"; sourceTree = "<group>"; };
 		30F44B4E1778267200876915 /* RORDBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORDBCommon.h; sourceTree = "<group>"; };
 		30F44B4F1778267200876915 /* RORDBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORDBCommon.m; sourceTree = "<group>"; };
 		30F4546117BCB519006CB66C /* INConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INConstant.h; sourceTree = "<group>"; };
@@ -495,7 +522,6 @@
 		30F4547F17BCB564006CB66C /* INStepCounting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INStepCounting.h; sourceTree = "<group>"; };
 		30F4548017BCB564006CB66C /* INStepCounting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INStepCounting.m; sourceTree = "<group>"; };
 		30F4548217BD10C5006CB66C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		30F4548617C0C2DC006CB66C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		30F4549117C1296C006CB66C /* Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animations.h; sourceTree = "<group>"; };
 		30F4549217C1296C006CB66C /* Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animations.m; sourceTree = "<group>"; };
 		30F8BEBD17C4A72700DB137D /* RORBottomPopSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORBottomPopSubview.h; sourceTree = "<group>"; };
@@ -709,6 +735,8 @@
 		0F87D885179D7313007E0412 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				308FAC6917C65B060025B807 /* Reachability.h */,
+				308FAC6A17C65B060025B807 /* Reachability.m */,
 				0F857710178C4EF100173A92 /* RORHttpClientHandler.h */,
 				0F857711178C4EF100173A92 /* RORHttpClientHandler.m */,
 				0F972BD0179255F300A27EF2 /* RORHttpResponse.h */,
@@ -873,10 +901,11 @@
 		302FCFF81727D870004DA005 = {
 			isa = PBXGroup;
 			children = (
+				308FAC6717C64C300025B807 /* icon@2x.png */,
+				308FAC6517C64C290025B807 /* icon.png */,
 				0F8501DF17C1C68E0005993E /* libsqlite3.dylib */,
 				0F8501DD17C1C63E0005993E /* libstdc++.dylib */,
 				30F4549017C1296C006CB66C /* Animation */,
-				30F4548617C0C2DC006CB66C /* Default-568h@2x.png */,
 				30F4546017BCB519006CB66C /* InertiaNavigation */,
 				0F59A0FD17BA2170000DEFEF /* ShareSDK_v2.3.1 */,
 				0F9A9D3B17894A320025E49B /* iPhone.xcodeproj */,
@@ -923,8 +952,7 @@
 		302FD00A1727D870004DA005 /* RevolUtioN */ = {
 			isa = PBXGroup;
 			children = (
-				30166AA417C3C6720035C722 /* RORViewController.h */,
-				30166AA517C3C6730035C722 /* RORViewController.m */,
+				30A6D9B817C733F700D1116E /* ReusableControl */,
 				30FC28FF175E2E3500DEC042 /* MainStoryboard_iPhone.storyboard */,
 				0F87D885179D7313007E0412 /* Common */,
 				3061F3C7174DC6CC006093FC /* CoreData */,
@@ -1047,6 +1075,34 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		30A6D99F17C6821500D1116E /* FTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				30A6D9A017C6821500D1116E /* FTAnimation+UIView.h */,
+				30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */,
+				30A6D9A217C6821500D1116E /* FTAnimation.h */,
+				30A6D9A317C6821500D1116E /* FTAnimationManager.h */,
+				30A6D9A417C6821500D1116E /* FTAnimationManager.m */,
+				30A6D9A517C6821500D1116E /* FTUtils+NSObject.h */,
+				30A6D9A617C6821500D1116E /* FTUtils+NSObject.m */,
+				30A6D9A717C6821500D1116E /* FTUtils+UIGestureRecognizer.h */,
+				30A6D9A817C6821500D1116E /* FTUtils+UIGestureRecognizer.m */,
+				30A6D9A917C6821500D1116E /* FTUtils.h */,
+			);
+			path = FTUtils;
+			sourceTree = "<group>";
+		};
+		30A6D9B817C733F700D1116E /* ReusableControl */ = {
+			isa = PBXGroup;
+			children = (
+				30166AA417C3C6720035C722 /* RORViewController.h */,
+				30166AA517C3C6730035C722 /* RORViewController.m */,
+				30A6D9B917C7342400D1116E /* RORNormalButton.h */,
+				30A6D9BA17C7342400D1116E /* RORNormalButton.m */,
+			);
+			name = ReusableControl;
+			sourceTree = "<group>";
+		};
 		30BB0AF21761AE420009A847 /* RORMallPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1149,6 +1205,7 @@
 		30F4549017C1296C006CB66C /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				30A6D99F17C6821500D1116E /* FTUtils */,
 				30F4549117C1296C006CB66C /* Animations.h */,
 				30F4549217C1296C006CB66C /* Animations.m */,
 			);
@@ -1159,6 +1216,8 @@
 		30FC291A17607F6D00DEC042 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				30DFE7DD17C6748F00678780 /* submit.png */,
+				30DFE7DE17C6748F00678780 /* submit@2x.png */,
 				301250FE17814F470082A09A /* inprocess_icon@2x.png */,
 				301250FF17814F470082A09A /* collapse.png */,
 				3012510017814F470082A09A /* collapse@2x.png */,
@@ -1384,7 +1443,10 @@
 				30166A9F17C3C14B0035C722 /* main_bg@2x.png in Resources */,
 				30166AA217C3C6260035C722 /* back_bg@2x.png in Resources */,
 				30166AA317C3C6260035C722 /* back_bg.png in Resources */,
-				30F8BEC717C4BE4D00DB137D /* Default-568h@2x.png in Resources */,
+				308FAC6617C64C290025B807 /* icon.png in Resources */,
+				308FAC6817C64C300025B807 /* icon@2x.png in Resources */,
+				30DFE7DF17C6748F00678780 /* submit.png in Resources */,
+				30DFE7E017C6748F00678780 /* submit@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1504,6 +1566,12 @@
 				30166AA617C3C6730035C722 /* RORViewController.m in Sources */,
 				30C58AC317C4840F0065FC90 /* RORChallengeViewController.m in Sources */,
 				30F8BEBF17C4A72700DB137D /* RORBottomPopSubview.m in Sources */,
+				308FAC6B17C65B060025B807 /* Reachability.m in Sources */,
+				30A6D9AA17C6821500D1116E /* FTAnimation+UIView.m in Sources */,
+				30A6D9AB17C6821500D1116E /* FTAnimationManager.m in Sources */,
+				30A6D9AC17C6821500D1116E /* FTUtils+NSObject.m in Sources */,
+				30A6D9AD17C6821500D1116E /* FTUtils+UIGestureRecognizer.m in Sources */,
+				30A6D9BB17C7342400D1116E /* RORNormalButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

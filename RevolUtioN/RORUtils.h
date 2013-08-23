@@ -10,6 +10,7 @@
 #import "zlib.h" 
 #import <SBJson/SBJson.h>
 #import "RORAppDelegate.h"
+#import "Reachability.h"
 
 @interface RORUtils : NSObject
 
@@ -54,5 +55,7 @@
 + (void)clearTableData:(NSArray *) tableArray;
 
 + (NSString*)getCityCodeJSon;
+
++(BOOL) isConnectionAvailable;
 
 @end

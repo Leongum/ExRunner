@@ -45,74 +45,107 @@
      //push new point into window
     gWindow[tail] = gAcc;
     lWindow[tail] = lAcc;
-    tail = (tail+1)%SC_WINDOW_SIZE;
+    tail = [self pointerMoveRight:tail];
     if (head == tail)
-        head = (head+1)%SC_WINDOW_SIZE;
+        head = [self pointerMoveRight:tail];
     totalPoints++;
     //dequeue one step if exist
-    [self checkStep:v];
-    
+    if (totalPoints>4)
+        [self checkStep:v];
+}
+
+-(int)pointerMoveLeft:(int)pointer for:(int)num{
+    return (pointer - (num%SC_WINDOW_SIZE) + SC_WINDOW_SIZE) % SC_WINDOW_SIZE;
+}
+
+-(int)pointerMoveLeft:(int)pointer{
+    return [self pointerMoveLeft:pointer for:1];
+}
+
+-(int)pointerMoveRight:(int)pointer for:(int)num{
+    return (pointer + num) % SC_WINDOW_SIZE;
+}
+
+-(int)pointerMoveRight:(int)pointer{
+    return [self pointerMoveRight:pointer for:1];
 }
 
 -(void)checkStep:(double)v{
-    [self updateGAccPeak];
-    [self updateLAccPeak];
+    if (totalPoints - lastGPeak < MIN_STEP_TIME / delta_T)
+        return;
 
-    if (gHasPeak){
-        if (lHasPeak){
-            if (abs(gPeak-lPeak)<=2 && (duration <0 || duration > 5)){
-                [self oneStepFound];
-            }
-        } else {
-            if (tail - gPeak > 2){
-                gHasPeak = NO;
-                gPeak = -1;
-            }
-        }
-    }
-    if (duration>=0){
-        duration++;
-        if (duration>SC_WINDOW_SIZE * 0.6)
-            duration = -1;
-    }
+    [self updateGAccPeak];
+//    [self updateLAccPeak];
+//
+//    if (gHasPeak){
+//        if (lHasPeak){
+//            if (abs(gPeak-lPeak)<=2 && (duration <0 || duration > 5)){
+//                [self oneStepFound];
+//            }
+//        } else {
+//            if (tail - gPeak > 2){
+//                gHasPeak = NO;
+//                gPeak = -1;
+//            }
+//        }
+//    }
+//    if (duration>=0){
+//        duration++;
+//        if (duration>SC_WINDOW_SIZE * 0.6)
+//            duration = -1;
+//    }
 }
 
 -(void)oneStepFound{
     counter++;
-    if (duration>=0)
-        dSum += duration;
-    head = (tail -1 + SC_WINDOW_SIZE)%SC_WINDOW_SIZE;
-    duration = (tail-gPeak-1 + SC_WINDOW_SIZE)%SC_WINDOW_SIZE;
-    gHasPeak = NO;
-    lHasPeak = NO;
-    gPeak = -1;
-    lPeak = -1;
+//    head = tail-1;
+    lastGPeak = totalPoints -1;
+//    if (duration>=0)
+//        dSum += duration;
+//    head = (tail -1 + SC_WINDOW_SIZE)%SC_WINDOW_SIZE;
+//    duration = (tail-gPeak-1 + SC_WINDOW_SIZE)%SC_WINDOW_SIZE;
+//    gHasPeak = NO;
+//    lHasPeak = NO;
+//    gPeak = -1;
+//    lPeak = -1;
 }
 
 -(void)updateGAccPeak{
-    double current = gWindow[(tail-1+SC_WINDOW_SIZE)%SC_WINDOW_SIZE];
-    double former = gWindow[(tail-2+SC_WINDOW_SIZE)%SC_WINDOW_SIZE];
-    if (!gHasPeak){
-        if (gAccTrend<0 && current-former>0 && round(former)<-15){
-            gHasPeak = YES;
-            gPeak = (tail-2+SC_WINDOW_SIZE)%SC_WINDOW_SIZE;
+    int now = gWindow[[self pointerMoveLeft:tail for:3]];
+    int pre = gWindow[[self pointerMoveLeft:tail for:4]];
+    int before = gWindow[[self pointerMoveLeft:tail for:5]];
+    int next = gWindow[[self pointerMoveLeft:tail for:2]];
+    int far = gWindow[[self pointerMoveLeft:tail for:1]];
+    
+    if (now<pre && now<before && now<next && now<far && now<THRESHOLD_GACC){
+        if (pre<before || next<far){
+            [self oneStepFound];
         }
     }
-    if (fabs(current-former)>=0.001)
-        gAccTrend = current - former;
+    
+//    double current = gWindow[(tail-1+SC_WINDOW_SIZE)%SC_WINDOW_SIZE];
+//    double former = gWindow[(tail-2+SC_WINDOW_SIZE)%SC_WINDOW_SIZE];
+//    if (!gHasPeak){
+//        if (gAccTrend<0 && current-former>0 && round(former)<-10){
+//            gHasPeak = YES;
+//            gPeak = (tail-2+SC_WINDOW_SIZE)%SC_WINDOW_SIZE;
+//        }
+//    }
+//    if (fabs(current-former)>=0.001)
+//        gAccTrend = current - former;
 }
 
 -(void)updateLAccPeak{
-    double current = lWindow[(tail-1+SC_WINDOW_SIZE)%SC_WINDOW_SIZE];
-    double former = lWindow[(tail-2+SC_WINDOW_SIZE)%SC_WINDOW_SIZE];
-//    if (!lHasPeak){
-        if (lAccTrend>0 && current-former<0 && round(former)>15){
-            lHasPeak = YES;
-            lPeak = (tail-2+SC_WINDOW_SIZE)%SC_WINDOW_SIZE;
-        }
-//    }
-    if (fabs(current-former)>=0.001)
-        lAccTrend = current - former;
+//    double current = lWindow[(tail-1+SC_WINDOW_SIZE)%SC_WINDOW_SIZE];
+//    double former = lWindow[(tail-2+SC_WINDOW_SIZE)%SC_WINDOW_SIZE];
+////    if (!lHasPeak){
+//        if (lAccTrend>0 && current-former<0 && round(former)>10){
+//            lHasPeak = YES;
+//            lPeak = (tail-2+SC_WINDOW_SIZE)%SC_WINDOW_SIZE;
+//        }
+////    }
+//    if (fabs(current-former)>=0.001)
+//        lAccTrend = current - former;
 }
 
 @end

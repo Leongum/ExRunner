@@ -78,7 +78,7 @@
     }
     passwordTextField.text = @"";
     nicknameTextField.text = @"";
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (BOOL) isLegalInput {

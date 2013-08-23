@@ -58,7 +58,7 @@
     //Usually Changes the position
     __block BOOL done = wait; //wait =  YES wait to finish animation
     [UIView animateWithDuration:duration animations:^{
-        view.transform = CGAffineTransformMakeScale(1.05, 1.05);
+        view.transform = CGAffineTransformMakeScale(1.2, 1.1);
         view.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         done = NO;

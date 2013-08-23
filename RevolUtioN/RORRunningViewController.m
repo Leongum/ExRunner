@@ -45,17 +45,32 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    isNetworkOK = YES;
 }
 
 //initial all when view appears
 - (void)viewDidAppear:(BOOL)animated{
+    if (![RORUtils isConnectionAvailable]){
+        isNetworkOK = NO;
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"网络连接错误" message:@"定位精度将受到严重影响，本次跑步将不能获得相应奖励，请检查相关系统设置。\n\n（小声的：启动数据网络可以大大提高定位精度与速度，同时只会产生极小的流量。）" delegate:self cancelButtonTitle:@"知道呢！" otherButtonTitles:nil];
+        [alertView show];
+        alertView = nil;
+    }
+
     [self controllerInit];
     [self navigationInit];
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+//        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 -(void)controllerInit{
     self.mapView.delegate = self;
-    [startButton setTitle:@"开始" forState:UIControlStateNormal];
+    [startButton setTitle:@"走你" forState:UIControlStateNormal];
     UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
     [startButton setBackgroundImage:image forState:UIControlStateNormal];
     [endButton setEnabled:NO];
@@ -148,6 +163,7 @@
 }
 
 - (void)startDeviceLocation{
+    locationManager = [[CLLocationManager alloc]init];
     locationManager.delegate = self;
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
     locationManager.distanceFilter = 1;
@@ -219,7 +235,7 @@
 }
 
 ////center the route line
-//- (void)center_map{
+- (IBAction)center_map:(id)sender{
 //    MKCoordinateRegion region;
 //    CLLocationDegrees maxLat = -90;
 //    CLLocationDegrees maxLon = -180;
@@ -243,7 +259,15 @@
 //    region.span.longitudeDelta = maxLon - minLon;
 //
 //    [mapView setRegion:region animated:YES];
-//}
+    float zoomLevel = 0.005;
+    MKCoordinateRegion region = MKCoordinateRegionMake(self.latestUserLocation.coordinate, MKCoordinateSpanMake(zoomLevel, zoomLevel));
+    //    region.center.latitude = oldLocation.coordinate.latitude;
+    //    region.center.longitude = oldLocation.coordinate.longitude;
+    //    region.span.latitudeDelta = maxLat - minLat ;
+    //    region.span.longitudeDelta = maxLon - minLon;
+    [mapView setRegion:[mapView regionThatFits:region] animated:NO];
+
+}
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
@@ -359,14 +383,14 @@
         self.repeatingTimer = timer;
         UIImage *image = [UIImage imageNamed:@"redbutton_bg.png"];
         [startButton setBackgroundImage:image forState:UIControlStateNormal];
-        [startButton setTitle:@"暂停" forState:UIControlStateNormal];
+        [startButton setTitle:@"歇会儿" forState:UIControlStateNormal];
         [endButton setEnabled:YES];
     } else {
         [repeatingTimer invalidate];
         self.repeatingTimer = nil;
         isStarted = NO;
         
-        [startButton setTitle:@"继续" forState:UIControlStateNormal];
+        [startButton setTitle:@"再走你" forState:UIControlStateNormal];
     }
     //    [[NSRunLoop  currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
 }
@@ -441,8 +465,8 @@
     //step counting
     [stepCounting pushNewLAcc:[INMatrix modOfVec_3:newDeviceStatus.an] GAcc:newDeviceStatus.an.v3 speed:[INMatrix modOfVec_3:gpsSpeed]];
     self.stepLabel.text = [NSString stringWithFormat:@"%d", stepCounting.counter];
-    self.avgTimePerStep.text = [NSString stringWithFormat:@"%.2f", ((double)timerCount*TIMER_INTERVAL)/((double)stepCounting.counter)];
-    self.avgDisPerStep.text = [NSString stringWithFormat:@"%.2f", distance/((double)stepCounting.counter)];
+    self.avgTimePerStep.text = [NSString stringWithFormat:@"%.2f s", ((double)timerCount*TIMER_INTERVAL)/((double)stepCounting.counter)];
+    self.avgDisPerStep.text = [NSString stringWithFormat:@"%.2f m", distance/((double)stepCounting.counter)];
 }
 
 - (void)timerDot{

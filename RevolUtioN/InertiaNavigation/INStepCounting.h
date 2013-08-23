@@ -15,7 +15,7 @@
     int p;
     BOOL gHasPeak, lHasPeak;
     double gWindow[SC_WINDOW_SIZE], lWindow[SC_WINDOW_SIZE];
-    int head, tail, gPeak, lPeak, totalPoints;
+    int head, tail, lastGPeak, lPeak, totalPoints;
     double gPeakSum, lPeakSum;
     int duration;
 }

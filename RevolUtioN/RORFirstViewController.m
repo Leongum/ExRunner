@@ -40,8 +40,8 @@ NSInteger centerLoc =-10000;
     UITapGestureRecognizer *t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     [weatherSubView addGestureRecognizer:t];
     
-    UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
-    [weatherSubView addGestureRecognizer:panGes];
+//    UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
+//    [weatherSubView addGestureRecognizer:panGes];
     
     //应用初始设置
     NSString *userSettingDocPath = [RORUtils getUserSettingsPList];
@@ -92,6 +92,7 @@ NSInteger centerLoc =-10000;
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self initPageData];
+    NSLog(@"%f",userButton.frame.origin.x);
 }
 
 - (void)segueToLogin{
@@ -167,15 +168,16 @@ NSInteger centerLoc =-10000;
 }
 
 -(void) singleTap:(UITapGestureRecognizer*) tap {
-    
-    if (expanded) {
-        [self weatherPopView];
-        expanded = 0;
-    }
-    else {
-        [self weatherInView];
-        expanded = 1;
-    }
+    [self weatherPopView];
+
+//    if (expanded) {
+//        [self weatherPopView];
+//        expanded = 0;
+//    }
+//    else {
+//        [self weatherInView];
+//        expanded = 1;
+//    }
 
 //    NSLog(@"single tap: %f %f", p.x, p.y );
 }
@@ -201,6 +203,7 @@ NSInteger centerLoc =-10000;
     [self setLbWind:nil];
     [self setRunButton:nil];
     [self setChallenge:nil];
+    [self setTestView:nil];
     [super viewDidUnload];
 }
 
@@ -263,14 +266,31 @@ NSInteger centerLoc =-10000;
 - (IBAction)weatherInfoAction:(id)sender {
     if (weatherSubView.frame.origin.x < -10){
 //        [self weatherInView];
-        [Animations moveRight:weatherSubView andAnimationDuration:0.2 andWait:YES andLength:100];
-        [Animations moveLeft:weatherSubView andAnimationDuration:0.1 andWait:YES andLength:10];
+        [UIView beginAnimations:@"animation" context:nil];
+        [UIView setAnimationDuration:1];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.testView cache:YES];
+        UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
+        [self.testView setImage:image];
+        [UIView commitAnimations];
+        
+        [Animations moveRight:weatherSubView andAnimationDuration:0.1 andWait:YES andLength:100];
+        [Animations moveLeft:weatherSubView andAnimationDuration:0.1 andWait:NO andLength:10];
+        
     } else {
         [self weatherPopView];
+        [UIView beginAnimations:@"animation" context:nil];
+        [UIView setAnimationDuration:1];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.testView cache:YES];
+        UIImage *image = [UIImage imageNamed:@"redbutton_bg.png"];
+        [self.testView setImage:image];
+        [UIView commitAnimations];
     }
 }
 
 - (IBAction)normalRunAction:(id)sender {
+    UIView *view = (UIView *)sender;
 }
 
 - (IBAction)challengeRunAction:(id)sender{

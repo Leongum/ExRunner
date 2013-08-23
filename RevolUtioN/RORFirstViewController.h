@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *userButton;
 @property (strong, nonatomic) IBOutlet UIButton *runButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *challenge;
+@property (strong, nonatomic) IBOutlet UIImageView *testView;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *lbTemperature;
