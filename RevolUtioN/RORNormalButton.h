@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RORNormalButton : UIButton
+@interface RORNormalButton : UIButton{
+    CGRect originFrame;
+    UIImage *normal_bg;
+}
+
 
 @end

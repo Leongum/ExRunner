@@ -136,6 +136,8 @@
 		30A6D9AC17C6821500D1116E /* FTUtils+NSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A617C6821500D1116E /* FTUtils+NSObject.m */; };
 		30A6D9AD17C6821500D1116E /* FTUtils+UIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A817C6821500D1116E /* FTUtils+UIGestureRecognizer.m */; };
 		30A6D9BB17C7342400D1116E /* RORNormalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9BA17C7342400D1116E /* RORNormalButton.m */; };
+		30A6D9C217C7781200D1116E /* btn_scared.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9C017C7781200D1116E /* btn_scared.png */; };
+		30A6D9C317C7781200D1116E /* btn_scared@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9C117C7781200D1116E /* btn_scared@2x.png */; };
 		30BB0AF51761AE610009A847 /* RORMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0AF41761AE610009A847 /* RORMallViewController.m */; };
 		30BB0AF81761BEA10009A847 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = 30BB0AF61761BEA10009A847 /* history.png */; };
 		30BB0AF91761BEA10009A847 /* history@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30BB0AF71761BEA10009A847 /* history@2x.png */; };
@@ -462,6 +464,8 @@
 		30A6D9A917C6821500D1116E /* FTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTUtils.h; sourceTree = "<group>"; };
 		30A6D9B917C7342400D1116E /* RORNormalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORNormalButton.h; sourceTree = "<group>"; };
 		30A6D9BA17C7342400D1116E /* RORNormalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORNormalButton.m; sourceTree = "<group>"; };
+		30A6D9C017C7781200D1116E /* btn_scared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_scared.png; path = bg/btn_scared.png; sourceTree = "<group>"; };
+		30A6D9C117C7781200D1116E /* btn_scared@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_scared@2x.png"; path = "bg/btn_scared@2x.png"; sourceTree = "<group>"; };
 		30BB0AF31761AE610009A847 /* RORMallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMallViewController.h; sourceTree = "<group>"; };
 		30BB0AF41761AE610009A847 /* RORMallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMallViewController.m; sourceTree = "<group>"; };
 		30BB0AF61761BEA10009A847 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
@@ -886,6 +890,8 @@
 		301C1F6D1737B5B80068B43B /* bg */ = {
 			isa = PBXGroup;
 			children = (
+				30A6D9C017C7781200D1116E /* btn_scared.png */,
+				30A6D9C117C7781200D1116E /* btn_scared@2x.png */,
 				30166AA017C3C6260035C722 /* back_bg@2x.png */,
 				30166AA117C3C6260035C722 /* back_bg.png */,
 				30166A8717C3B84C0035C722 /* main */,
@@ -1447,6 +1453,8 @@
 				308FAC6817C64C300025B807 /* icon@2x.png in Resources */,
 				30DFE7DF17C6748F00678780 /* submit.png in Resources */,
 				30DFE7E017C6748F00678780 /* submit@2x.png in Resources */,
+				30A6D9C217C7781200D1116E /* btn_scared.png in Resources */,
+				30A6D9C317C7781200D1116E /* btn_scared@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

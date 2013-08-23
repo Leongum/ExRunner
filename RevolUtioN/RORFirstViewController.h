@@ -15,6 +15,7 @@
 #import "RORUtils.h"
 #import "Animations.h"
 #import "User_Base.h"
+#import "RORNormalButton.h"
 
 @interface RORFirstViewController : UIViewController
 

@@ -1630,6 +1630,11 @@
         </class>
         <class className="RORNormalButton" superclassName="UIButton">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RORNormalButton.h"/>
+            <relationships>
+                <relationship kind="action" name="pressOn:"/>
+                <relationship kind="action" name="touchDrag:"/>
+                <relationship kind="action" name="touchUp:"/>
+            </relationships>
         </class>
         <class className="RORRunningViewController" superclassName="RORViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RORRunningViewController.h"/>
