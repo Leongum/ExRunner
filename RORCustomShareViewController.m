@@ -11,6 +11,7 @@
 #import <AGCommon/UIDevice+Common.h>
 #import <AGCommon/UINavigationBar+Common.h>
 #import <AGCommon/UIColor+Common.h>
+#import <RenRenConnection/RenRenConnection.h>
 
 #define CONTENT @"这里就是传说中的固定内容"
 #define SHARE_MAX_CONTENT 70
@@ -97,14 +98,106 @@
     [authOptions setPowerByHidden:true];
     
     //分享内容
-    [ShareSDK oneKeyShareContent:publishContent
-                       shareList:selectedClients
-                     authOptions:authOptions
-                   statusBarTips:YES
-                          result:nil];
+    for(int index=0; index<[selectedClients count]; index++){
+        ShareType shareType = [[selectedClients objectAtIndex:index] integerValue];
+        if(shareType != ShareTypeRenren){
+            [ShareSDK shareContent:publishContent
+                              type:shareType
+                       authOptions:authOptions
+                     statusBarTips:YES
+                            result:nil];
+        }
+        else{
+            [self sendRenRenShare:shareContent];
+        }
+    
+    }
+    
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                         message:@"分享已提交"
+                                                        delegate:nil
+                                               cancelButtonTitle:@"知道了"
+                                               otherButtonTitles: nil];
+    [alertView show];
+    
+  
+//    [ShareSDK oneKeyShareContent:publishContent
+//                       shareList:selectedClients
+//                     authOptions:authOptions
+//                   statusBarTips:YES
+//                          result:nil];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+-(void)sendRenRenShare:(NSString *) shareContent{
+    
+    RORAppDelegate *appDelegate = (RORAppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:appDelegate.viewDelegate
+                                               authManagerViewDelegate:nil];
+    
+    [authOptions setPowerByHidden:true];
+    
+    [ShareSDK getUserInfoWithType:ShareTypeRenren
+                      authOptions:authOptions
+                           result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                               if (result)
+                               {
+                                   //调用上传照片至用户相册。此接口需要采用multipart/form-data的编码方式。：http://wiki.dev.renren.com/wiki/V2/photo/upload
+                                   //先获取相关平台的App对象
+                                   id<ISSRenRenApp> app = (id<ISSRenRenApp>)[ShareSDK getClientWithType:ShareTypeRenren];
+                                   id<ISSCAttachment> imgAtt =[ShareSDK jpegImageWithImage:shareImage quality:1];
+                                   //构造参数
+                                   id<ISSCParameters> params = [ShareSDKCoreService parameters];
+                                   [params addParameter:@"description" value:shareContent];
+                                   [params addParameter:@"file" fileName:[imgAtt fileName] data:[imgAtt data] mimeType:[imgAtt mimeType] transferEncoding:nil];
+                                   //调用接口
+                                   [app api:@"https://api.renren.com/v2/photo/upload"
+                                     method:SSRenRenRequestMethodPost
+                                     params:params
+                                       user:nil
+                                     result:^(id responder) {
+                                         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                             message:[NSString stringWithFormat:
+                                                                                                      @"%@",
+                                                                                                      responder]
+                                                                                            delegate:nil
+                                                                                   cancelButtonTitle:@"知道了"
+                                                                                   otherButtonTitles:nil];
+                                         [alertView show];
+                                      }
+                                      fault:^(SSRenRenErrorInfo *error) {
+                                          NSLog(@"%d ====  %@", [error errorCode],[error errorDescription]);
+                                          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                              message:[NSString stringWithFormat:
+                                                                                                       @"调用失败：%d:%@",
+                                                                                                       [error errorCode],
+                                                                                                       [error errorDescription]]
+                                                                                             delegate:nil
+                                                                                    cancelButtonTitle:@"知道了"
+                                                                                    otherButtonTitles:nil];
+                                          [alertView show];
+                                      }];
+
+                               }
+                               else
+                               {
+                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                       message:error.errorDescription
+                                                                                      delegate:nil
+                                                                             cancelButtonTitle:@"知道了"
+                                                                             otherButtonTitles: nil];
+                                   [alertView show];
+                               }
+                           }];
+}
+
+
 - (void)viewDidUnload {
     [self setTxtShareContent:nil];
     [self setLblContentCount:nil];
