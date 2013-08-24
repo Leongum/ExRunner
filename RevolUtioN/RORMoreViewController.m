@@ -54,6 +54,9 @@
     if ([destination respondsToSelector:@selector(setDelegate:)]){
         [destination setValue:self forKey:@"delegate"];
     }
+    if ([destination respondsToSelector:@selector(setSubLocalityName:)]){
+        [destination setValue:cityName forKey:@"subLocalityName"];
+    }
 }
 
 - (void)viewDidUnload {
@@ -104,10 +107,10 @@
         }
         case 1:
         {
-            identifier = @"cityCell";
+            identifier = @"syncCell";
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             UILabel *label = (UILabel*)[cell viewWithTag:1];
-            label.text = cityName;
+            label.text = @"即时同步";
             break;
         }
     }

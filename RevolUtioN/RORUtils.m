@@ -430,4 +430,24 @@ static NSDate *systemTime = nil;
     
     return isExistenceNetwork;
 }
+
++(NSString *)getCitycodeByCityname:(NSString *)cityName{
+    NSError *error;
+    NSData *CityCodeJson = [NSData dataWithContentsOfFile:[RORUtils getCityCodeJSon]];
+    NSDictionary *citycodeDic = [NSJSONSerialization JSONObjectWithData:CityCodeJson options:NSJSONReadingMutableLeaves error:&error];
+    //    weatherDic字典中存放的数据也是字典型，从它里面通过键值取值
+    NSArray *citycodeList = [citycodeDic objectForKey:@"城市代码"];
+    
+    for (int i=0; i<citycodeList.count; i++){
+        NSDictionary *prov = [citycodeList objectAtIndex:i];
+        NSArray *cityList = [prov objectForKey:@"市"];
+        for (int j=0; j<cityList.count; j++){
+            NSDictionary *city = [cityList objectAtIndex:j];
+            NSString *name = [city valueForKey:@"市名"];
+            if ([cityName rangeOfString:name].location != NSNotFound){
+                return [city valueForKey:@"编码"];
+            }
+        }
+    }
+}
 @end

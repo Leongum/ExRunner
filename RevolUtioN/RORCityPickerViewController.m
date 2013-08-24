@@ -9,6 +9,7 @@
 #import "RORCityPickerViewController.h"
 #import "RORMoreViewController.h"
 #import "RORUtils.h"
+#import "RORSettings.h"
 
 #define PROVINCECOMPONENT 0
 #define CITYCOMPONENT 1
@@ -21,6 +22,7 @@
 @synthesize citycodeList;
 @synthesize delegate;
 @synthesize cityPickerView;
+@synthesize subLocalityName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,16 +39,31 @@
 	// Do any additional setup after loading the view.
     NSError *error;
     NSData *CityCodeJson = [NSData dataWithContentsOfFile:[RORUtils getCityCodeJSon]];
-//    NSString *path = [RORPlistPaths getCityCodeJSon];
-//    NSInputStream *jsoninput = [NSInputStream inputStreamWithFileAtPath:path];
-//    NSDictionary *citycodeDic = [NSJSONSerialization JSONObjectWithStream:jsoninput options:NSJSONReadingMutableLeaves error:&error];
     NSDictionary *citycodeDic = [NSJSONSerialization JSONObjectWithData:CityCodeJson options:NSJSONReadingMutableLeaves error:&error];
     //    weatherDic字典中存放的数据也是字典型，从它里面通过键值取值
     citycodeList = [citycodeDic objectForKey:@"城市代码"];
     NSString *jsonString = [[NSString alloc] initWithData:CityCodeJson encoding:NSUTF8StringEncoding];
 //    NSLog(@"%@", jsonString);
-    
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+//    [cityPickerView selectRow:3 inComponent:1 animated:NO];
+//    for (int i=0; i<citycodeList.count; i++){
+//        NSDictionary *prov = [citycodeList objectAtIndex:i];
+//        NSArray *cityList = [prov objectForKey:@"市"];
+//        for (int j=0; j<cityList.count; j++){
+//            NSDictionary *city = [cityList objectAtIndex:j];
+//            NSString *cityName = [city valueForKey:@"市名"];
+//            if ([cityName isEqualToString:subLocalityName]){
+//                [cityPickerView selectRow:i inComponent:0 animated:NO];
+//                [cityPickerView selectRow:j inComponent:1 animated:NO];
+//                return;
+//            }
+//        }
+//    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -105,7 +122,7 @@
         NSDictionary *prov = [citycodeList objectAtIndex:pNum];
         NSArray *cityList = [prov objectForKey:@"市"];
         NSDictionary *city = [cityList objectAtIndex:row];
-        return [city valueForKey:@"市名"];
+        return [city valueForKey:@"市名"];;
     }
 }
 

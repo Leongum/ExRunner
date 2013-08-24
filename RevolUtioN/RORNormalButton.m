@@ -42,7 +42,7 @@
 */
 
 -(IBAction)pressOn:(id)sender{
-    self.transform = CGAffineTransformMakeScale(1.1, 1.05);
+    self.transform = CGAffineTransformMakeScale(0.9, 0.85);
 }
 
 -(IBAction)touchUp:(id)sender{

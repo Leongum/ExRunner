@@ -11,6 +11,7 @@
 #import <SBJson/SBJson.h>
 #import "RORAppDelegate.h"
 #import "Reachability.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface RORUtils : NSObject
 
@@ -58,4 +59,5 @@
 
 +(BOOL) isConnectionAvailable;
 
++(NSString *)getCitycodeByCityname:(NSString *)cityName;
 @end

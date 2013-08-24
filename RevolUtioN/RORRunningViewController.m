@@ -371,12 +371,7 @@
             [routePoints addObject:self.latestUserLocation];
             [self drawLineWithLocationArray:routePoints];
             
-            CLGeocoder *geocoder = [[CLGeocoder alloc]init];
-            [geocoder reverseGeocodeLocation:self.latestUserLocation completionHandler:^(NSArray *placemarks, NSError *error){
-                CLPlacemark *placemark = (CLPlacemark *)[placemarks objectAtIndex:0];
-                NSLog(@"%@, %@, %@, %@, %@, %@", placemark.country, placemark.administrativeArea, placemark.subLocality, placemark.thoroughfare, placemark.subThoroughfare, placemark.name);
-            }];
-            //            [self pushPoint];
+                        //            [self pushPoint];
         }
         
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(timerDot) userInfo:nil repeats:YES];

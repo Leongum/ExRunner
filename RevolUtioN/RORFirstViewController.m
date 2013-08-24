@@ -8,7 +8,7 @@
 
 #import "RORFirstViewController.h"
 
-#define WEATHER_WINDOW_INITIAL_FRAME CGRectMake(-100, 70, 100, 120)
+#define WEATHER_WINDOW_INITIAL_FRAME CGRectMake(-100, 70, 100, 140)
 #define RUN_BUTTON_FRAME_NORMAL CGRectMake(92, 100, 136, 60)
 #define RUN_BUTTON_FRAME_RATINA CGRectMake(92, 130, 136, 60)
 #define CHALLENGE_BUTTON_FRAME_NORMAL CGRectMake(0, 170, 320, 94)
@@ -24,6 +24,7 @@
 @synthesize weatherInfoButtonView;
 @synthesize userButton;
 @synthesize context;
+@synthesize locationManager;
 
 NSInteger expanded = 0;
 BOOL isWeatherButtonClicked = false;
@@ -55,13 +56,39 @@ NSInteger centerLoc =-10000;
     [[RORSettings getInstance] addObserver:self forKeyPath:@"location" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     
     //=============加载天气信息=============
-    //todo: remove common after debug [self loadWeatherInfo];
+    //todo: remove common after debug
+//    [self loadWeatherInfo];
     
     //初始化按钮位置
     [self initControlsLayout];
+    [self initLocationServcie];
 }
 
--(void)initControlsLayout{
+- (void)initLocationServcie{
+    userLocation = nil;
+    wasFound = NO;
+    locationManager = [[CLLocationManager alloc]init];
+    locationManager.delegate = self;
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    // start the compass
+    [locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    userLocation = newLocation;
+    NSLog(@"ToLocation:%f, %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    wasFound = YES; 
+    if (wasFound){
+        [locationManager stopUpdatingLocation];
+        [self loadWeatherInfo];
+    }
+//    NSLog(@"Device did %f meters move.", [self.latestUserLocation getDistanceFrom:newLocation]);
+//    self.latestUserLocation = [self transToRealLocation:newLocation];
+    
+}
+
+- (void)initControlsLayout{
     CGRect rx = [ UIScreen mainScreen ].applicationFrame;
     if (rx.size.height == 460){
         self.runButton.frame = RUN_BUTTON_FRAME_NORMAL;
@@ -103,21 +130,36 @@ NSInteger centerLoc =-10000;
     [self performSegueWithIdentifier:@"userInfoSegue"sender:self];
 }
 
-- (void)loadWeatherInfo{
-    NSString *settingPath = [RORUtils getUserSettingsPList];
-    if (settingPath != nil){ 
-        NSMutableDictionary *settings = [RORSettings getInstance];
-        NSMutableDictionary *location = [settings objectForKey:@"location"];
-        NSString *citycode = [location valueForKey:@"code"];
-
-        NSDictionary *weatherInfo = [RORThirdPartyService syncWeatherInfo:citycode];
-
+-(void)getCitynameByLocation:(CLLocation *) loc {
+    CLGeocoder *geocoder = [[CLGeocoder alloc]init];
+    [geocoder reverseGeocodeLocation:loc completionHandler:^(NSArray *placemarks, NSError *error){
+        CLPlacemark *placemark = (CLPlacemark *)[placemarks objectAtIndex:0];
+        NSLog(@"%@, %@, %@, %@, %@, %@", placemark.country, placemark.administrativeArea, placemark.subLocality, placemark.thoroughfare, placemark.subThoroughfare, placemark.name);
+        cityName = placemark.subLocality;
+        NSDictionary *weatherInfo = [RORThirdPartyService syncWeatherInfo:[RORUtils getCitycodeByCityname:cityName]];
+        
         if (weatherInfo != nil){
             self.lbTemperature.text = [weatherInfo objectForKey:@"temp1"];
             self.lbWind.text = [weatherInfo objectForKey:@"wind1"];
+            self.lbUV.text = [NSString stringWithFormat:@"紫外线：%@",[weatherInfo objectForKey:@"index_uv"]];
+            self.lbLocation.text = cityName;
         }
-        //空气质量API=========================
-    }
+    }];
+}
+
+- (void)loadWeatherInfo{
+//    while(userLocation == nil){
+//    }
+    [self getCitynameByLocation:userLocation];
+   
+//    NSString *settingPath = [RORUtils getUserSettingsPList];
+//    if (settingPath != nil){ 
+//        NSMutableDictionary *settings = [RORSettings getInstance];
+//        NSMutableDictionary *location = [settings objectForKey:@"location"];
+//        NSString *citycode = [location valueForKey:@"code"];
+//
+//        //空气质量API=========================
+//    }
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -204,6 +246,10 @@ NSInteger centerLoc =-10000;
     [self setRunButton:nil];
     [self setChallenge:nil];
     [self setTestView:nil];
+    [self setLbUV:nil];
+    [self setLbPM:nil];
+    [self setLbLocation:nil];
+    [self setLbTotal:nil];
     [super viewDidUnload];
 }
 
