@@ -29,7 +29,8 @@
     RORHttpResponse *httpResponse = [RORThirdPartyClientHandler getPM25Info:city withToken:@"5j1znBVAsnSf5xQyNQyq"];
     
     if ([httpResponse responseStatus] == 200){
-        pm25Info = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
+        NSArray *pm25InfoList = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingAllowFragments error:&error];
+        pm25Info = [pm25InfoList objectAtIndex:0];
     }
     return pm25Info;
 }

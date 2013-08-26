@@ -60,4 +60,6 @@
 +(BOOL) isConnectionAvailable;
 
 +(NSString *)getCitycodeByCityname:(NSString *)cityName;
+
++(NSString *)getPM25CityByCityAndProvince:(NSString *)cityName andProvince:(NSString *)province;
 @end

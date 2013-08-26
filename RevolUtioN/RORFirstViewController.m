@@ -136,13 +136,17 @@ NSInteger centerLoc =-10000;
         CLPlacemark *placemark = (CLPlacemark *)[placemarks objectAtIndex:0];
         NSLog(@"%@, %@, %@, %@, %@, %@", placemark.country, placemark.administrativeArea, placemark.subLocality, placemark.thoroughfare, placemark.subThoroughfare, placemark.name);
         cityName = placemark.subLocality;
+        NSString * provinceName = placemark.administrativeArea;
         NSDictionary *weatherInfo = [RORThirdPartyService syncWeatherInfo:[RORUtils getCitycodeByCityname:cityName]];
-        
+        NSDictionary *pm25info =[RORThirdPartyService syncPM25Info:[RORUtils getPM25CityByCityAndProvince:cityName andProvince:provinceName]];
         if (weatherInfo != nil){
             self.lbTemperature.text = [weatherInfo objectForKey:@"temp1"];
             self.lbWind.text = [weatherInfo objectForKey:@"wind1"];
             self.lbUV.text = [NSString stringWithFormat:@"紫外线：%@",[weatherInfo objectForKey:@"index_uv"]];
             self.lbLocation.text = cityName;
+        }
+        if(pm25info != nil){
+            self.lbPM.text = [NSString stringWithFormat:@"PM2.5：%@ %@",[pm25info objectForKey:@"pm2_5"],[pm25info objectForKey:@"quality"]];
         }
     }];
 }
