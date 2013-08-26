@@ -11,6 +11,7 @@
 @implementation RORThirdPartyService
 
 +(NSDictionary *)syncWeatherInfo:(NSString *)cityCode{
+    if(cityCode == nil) return nil;
     NSError *error = nil;
     NSDictionary *weatherInfo = nil;
     RORHttpResponse *httpResponse = [RORThirdPartyClientHandler getWeatherInfo:cityCode];
@@ -24,6 +25,7 @@
 }
 
 +(NSDictionary *)syncPM25Info:(NSString *)city{
+     if(city == nil) return nil;
     NSError *error = nil;
     NSDictionary *pm25Info = nil;
     RORHttpResponse *httpResponse = [RORThirdPartyClientHandler getPM25Info:city withToken:@"5j1znBVAsnSf5xQyNQyq"];

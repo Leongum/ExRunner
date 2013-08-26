@@ -104,7 +104,7 @@
             [ShareSDK shareContent:publishContent
                               type:shareType
                        authOptions:authOptions
-                     statusBarTips:YES
+                     statusBarTips:NO
                             result:nil];
         }
         else{
@@ -120,13 +120,6 @@
                                                cancelButtonTitle:@"知道了"
                                                otherButtonTitles: nil];
     [alertView show];
-    
-  
-//    [ShareSDK oneKeyShareContent:publishContent
-//                       shareList:selectedClients
-//                     authOptions:authOptions
-//                   statusBarTips:YES
-//                          result:nil];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -158,41 +151,16 @@
                                    [params addParameter:@"file" fileName:[imgAtt fileName] data:[imgAtt data] mimeType:[imgAtt mimeType] transferEncoding:nil];
                                    //调用接口
                                    [app api:@"https://api.renren.com/v2/photo/upload"
-                                     method:SSRenRenRequestMethodPost
+                                     method:SSRenRenRequestMethodMultipartPost
                                      params:params
                                        user:nil
                                      result:^(id responder) {
-                                         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                             message:[NSString stringWithFormat:
-                                                                                                      @"%@",
-                                                                                                      responder]
-                                                                                            delegate:nil
-                                                                                   cancelButtonTitle:@"知道了"
-                                                                                   otherButtonTitles:nil];
-                                         [alertView show];
+                                        //do nothing
                                       }
                                       fault:^(SSRenRenErrorInfo *error) {
-                                          NSLog(@"%d ====  %@", [error errorCode],[error errorDescription]);
-                                          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                              message:[NSString stringWithFormat:
-                                                                                                       @"调用失败：%d:%@",
-                                                                                                       [error errorCode],
-                                                                                                       [error errorDescription]]
-                                                                                             delegate:nil
-                                                                                    cancelButtonTitle:@"知道了"
-                                                                                    otherButtonTitles:nil];
-                                          [alertView show];
+                                         //do nothing
                                       }];
 
-                               }
-                               else
-                               {
-                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                       message:error.errorDescription
-                                                                                      delegate:nil
-                                                                             cancelButtonTitle:@"知道了"
-                                                                             otherButtonTitles: nil];
-                                   [alertView show];
                                }
                            }];
 }
