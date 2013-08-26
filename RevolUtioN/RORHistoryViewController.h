@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef enum {DISTANCE = 1, DURATION = 2, MISSIONTYPE = 3} controlInHistoryTableCell;
 
-@interface RORHistoryViewController : UIViewController
+@interface RORHistoryViewController : UIViewController{
+}
 
 @property (weak, nonatomic) IBOutlet UIButton *syncButtonItem;
 @property (strong, nonatomic) NSMutableDictionary *runHistoryList;

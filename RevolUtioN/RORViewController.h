@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Animations.h"
+#import "RORConstant.h"
+#import "RORUtils.h"
+#import "RORPublicMethods.h"
 
 @interface RORViewController : UIViewController
 //-(void)addBackButton;

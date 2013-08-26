@@ -11,12 +11,15 @@
 #import "RORStatisticsViewController.h"
 #import "RORViewController.h"
 
-@interface RORHistoryPageViewController : RORViewController<UIScrollViewDelegate>
+@interface RORHistoryPageViewController : RORViewController<UIScrollViewDelegate>{
+    BOOL isChecked[2];
+}
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) NSMutableArray *contentViews;
 @property (strong, nonatomic) RORStatisticsViewController *statisticsViewController;
 @property (strong, nonatomic) RORHistoryViewController *listViewController;
+@property (strong, nonatomic) IBOutlet UITableView *filterTableView;
 
 @end

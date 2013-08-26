@@ -25,9 +25,9 @@
 #define PM25_URL @"http://www.pm25.in/api/querys/pm2_5.json?city=%@&token=%@"
 #endif
 
-typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3} MissionTypeEnum;
+typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3, NormalRun = 4} MissionTypeEnum;
 
-NSString *const MissionTypeEnum_toString[4];
+NSString *const MissionTypeEnum_toString[5];
 
 @interface RORConstant : NSObject
 

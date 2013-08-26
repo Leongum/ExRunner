@@ -60,4 +60,6 @@
 +(BOOL) isConnectionAvailable;
 
 +(NSString *)getCitycodeByCityname:(NSString *)cityName;
+
++(NSString*)outputDistance:(NSNumber*)distance;
 @end

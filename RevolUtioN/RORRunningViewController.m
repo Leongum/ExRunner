@@ -31,6 +31,7 @@
 @synthesize doCollect;
 @synthesize kalmanFilter, OldVn, stepCounting, inDistance;
 @synthesize avgDisPerStep, avgTimePerStep;
+@synthesize missionType;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -532,6 +533,7 @@
     runHistory.missionEndTime = self.endTime;
     runHistory.missionStartTime = self.startTime;
     runHistory.userId = nil;
+    runHistory.missionTypeId = missionType;
     record = runHistory;
     if (![context save:&error]) {
         NSLog(@"%@",[error localizedDescription]);

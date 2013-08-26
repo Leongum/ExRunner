@@ -132,6 +132,7 @@ NSInteger centerLoc =-10000;
 
 -(void)getCitynameByLocation:(CLLocation *) loc {
     CLGeocoder *geocoder = [[CLGeocoder alloc]init];
+//    CLLocation *tmp = [[CLLocation alloc]initWithLatitude:35.185949 longitude:110.406076];
     [geocoder reverseGeocodeLocation:loc completionHandler:^(NSArray *placemarks, NSError *error){
         CLPlacemark *placemark = (CLPlacemark *)[placemarks objectAtIndex:0];
         NSLog(@"%@, %@, %@, %@, %@, %@", placemark.country, placemark.administrativeArea, placemark.subLocality, placemark.thoroughfare, placemark.subThoroughfare, placemark.name);
@@ -176,6 +177,9 @@ NSInteger centerLoc =-10000;
     if ([destination respondsToSelector:@selector(setSelection:)]){
         [destination setValue:self.userName forKey:@"userName"];
         [destination setValue:self.userId forKey:@"userId"];
+    }
+    if ([destination respondsToSelector:@selector(setMissionType:)]){
+        [destination setValue:[NSNumber numberWithInteger:NormalRun] forKey:@"missionType"];
     }
 }
 

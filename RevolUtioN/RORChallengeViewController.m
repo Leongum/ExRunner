@@ -7,6 +7,7 @@
 //
 
 #import "RORChallengeViewController.h"
+
 #import "Animations.h"
 #import "FTAnimation.h"
 
@@ -86,6 +87,16 @@
 
 //    [Animations fadeIn:self.coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
     [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    UIViewController *destination = segue.destinationViewController;
+    if ([destination respondsToSelector:@selector(setDelegate:)]){
+        [destination setValue:self forKey:@"delegate"];
+    }
+    if ([destination respondsToSelector:@selector(setMissionType:)]){
+        [destination setValue:[NSNumber numberWithInteger:Challenge] forKey:@"missionType"];
+    }
 }
 
 #pragma mark - Table view data source
