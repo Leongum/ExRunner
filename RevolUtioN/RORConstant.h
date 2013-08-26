@@ -22,12 +22,12 @@
 #define VERSION_URL @"http://121.199.56.231:8080/usavich/service/api/version/%@"
 
 #define WEATHER_URL @"http://m.weather.com.cn/data/%@.html"
-#define PM25_URL @"http://www.pm25.in/api/querys/pm2_5.json?city=%@&token=%@&stations=no"
+#define PM25_URL @"http://121.199.56.231:8080/usavich/service/api/weather/pm25?cityName=%@&provinceName=%@"
 #endif
 
-typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3} MissionTypeEnum;
+typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3, NormalRun = 4} MissionTypeEnum;
 
-NSString *const MissionTypeEnum_toString[4];
+NSString *const MissionTypeEnum_toString[5];
 
 @interface RORConstant : NSObject
 

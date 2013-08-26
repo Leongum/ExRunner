@@ -24,15 +24,14 @@
     return weatherInfo;
 }
 
-+(NSDictionary *)syncPM25Info:(NSString *)city{
-     if(city == nil) return nil;
++(NSDictionary *)syncPM25Info:(NSString *)city withProvince:(NSString *)province{
+     if(city == nil || province == nil) return nil;
     NSError *error = nil;
     NSDictionary *pm25Info = nil;
-    RORHttpResponse *httpResponse = [RORThirdPartyClientHandler getPM25Info:city withToken:@"5j1znBVAsnSf5xQyNQyq"];
+    RORHttpResponse *httpResponse = [RORThirdPartyClientHandler getPM25Info:city withProvince:province];
     
     if ([httpResponse responseStatus] == 200){
-        NSArray *pm25InfoList = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingAllowFragments error:&error];
-        pm25Info = [pm25InfoList objectAtIndex:0];
+        pm25Info = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingAllowFragments error:&error];
     }
     return pm25Info;
 }

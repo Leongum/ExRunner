@@ -20,10 +20,10 @@
 
 + (User_Running *)fetchUserRunningByRunId:(NSString *) runId;
 
-+ (void)uploadRunningHistories;
++ (Boolean)uploadRunningHistories;
 
-+ (void)syncRunningHistories;
++ (Boolean)syncRunningHistories;
 
-+ (void)syncUserRunning;
++ (Boolean)syncUserRunning;
 
 @end

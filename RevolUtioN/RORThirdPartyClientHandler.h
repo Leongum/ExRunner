@@ -16,6 +16,6 @@
 
 +(RORHttpResponse *)getWeatherInfo:(NSString *)citycode;
 
-+(RORHttpResponse *)getPM25Info:(NSString *)city withToken:(NSString *) token;
++(RORHttpResponse *)getPM25Info:(NSString *)city withProvince:(NSString *) province;
 
 @end

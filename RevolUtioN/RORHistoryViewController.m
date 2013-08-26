@@ -69,6 +69,7 @@
     NSArray *fetchObject = [context executeFetchRequest:fetchRequest error:&error];
     for (NSManagedObject *info in fetchObject) {
         User_Running_History *historyObj = (User_Running_History *) info;
+        
         NSDate *date = [historyObj valueForKey:@"missionDate"];
         
         NSDateFormatter *formate = [[NSDateFormatter alloc] init];
@@ -143,14 +144,16 @@
 {
     static NSString *CellIdentifier = @"plainCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
     NSString *date_str = [sortedDateList objectAtIndex:indexPath.section];
     NSArray *records4DateList = [runHistoryList objectForKey:date_str];
     User_Running_History *record4Date = [records4DateList objectAtIndex:indexPath.row];
-    UILabel *distanceLabel = (UILabel *)[tableView viewWithTag:1];
-    distanceLabel.text = [NSString stringWithFormat:@"%@",record4Date.distance];
-    UILabel *durationLabel = (UILabel *)[tableView viewWithTag:2];
+    UILabel *distanceLabel = (UILabel *)[tableView viewWithTag:DISTANCE];
+    distanceLabel.text = [NSString stringWithFormat:@"%@",[RORUtils outputDistance:record4Date.distance]];
+    UILabel *durationLabel = (UILabel *)[tableView viewWithTag:DURATION];
     durationLabel.text = [RORUtils transSecondToStandardFormat:[record4Date.duration integerValue]];
-    // Configure the cell...
+    UILabel *missionTypeLabel = (UILabel *)[tableView viewWithTag:MISSIONTYPE];
+    missionTypeLabel.text = [NSString stringWithFormat:@"%@",record4Date.missionTypeId];
     
     return cell;
 }

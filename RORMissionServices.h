@@ -20,6 +20,6 @@
 
 +(NSArray *)fetchMissionList:(MissionTypeEnum *) missionType;
 
-+ (void)syncMissions;
++ (Boolean)syncMissions;
 
 @end

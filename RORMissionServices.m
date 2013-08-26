@@ -138,7 +138,7 @@
     [RORUtils deleteFromDelegate:table withParams:params withPredicate:query];
 }
 
-+ (void)syncMissions{
++ (Boolean)syncMissions{
     NSError *error = nil;
     RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
@@ -187,7 +187,9 @@
         [RORUtils saveLastUpdateTime:@"MissionUpdateTime"];
     } else {
         NSLog(@"sync with host error: can't get mission list. Status Code: %d", [httpResponse responseStatus]);
+        return NO;
     }
+    return YES;
 }
 
 @end

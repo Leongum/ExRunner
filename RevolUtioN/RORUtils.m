@@ -473,4 +473,12 @@ static NSDate *systemTime = nil;
     }
     return nil;
 }
+
++(NSString*)outputDistance:(NSNumber*)distance{
+    if (distance.doubleValue<1000){
+        return [NSString stringWithFormat:@"%@ m", distance];
+    }
+    return [NSString stringWithFormat:@"%f km", distance.doubleValue/1000];
+}
+
 @end

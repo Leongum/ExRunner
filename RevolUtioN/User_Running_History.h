@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-
 @interface User_Running_History : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * userId;

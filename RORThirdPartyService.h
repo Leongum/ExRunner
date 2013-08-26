@@ -14,6 +14,6 @@
 
 +(NSDictionary *)syncWeatherInfo:(NSString *)cityCode;
 
-+(NSDictionary *)syncPM25Info:(NSString *)city;
++(NSDictionary *)syncPM25Info:(NSString *)city withProvince:(NSString *)province;
 
 @end

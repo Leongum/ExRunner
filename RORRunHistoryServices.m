@@ -128,7 +128,7 @@
     
 }
 
-+ (void)uploadRunningHistories{
++ (Boolean)uploadRunningHistories{
     NSNumber *userId = [RORUtils getUserId];
     NSMutableArray *dataList = [self fetchUnsyncedRunHistories];
     RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createRunHistories:userId withRunHistories:dataList];
@@ -139,10 +139,12 @@
     } else {
         //todo: add existing check
         NSLog(@"error: statCode = %@", [httpResponse errorMessage]);
+        return NO;
     }
+    return YES;
 }
 
-+ (void)syncRunningHistories{
++ (Boolean)syncRunningHistories{
     NSError *error = nil;
     NSNumber *userId = [RORUtils getUserId];
     RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -166,7 +168,9 @@
         [RORUtils saveLastUpdateTime:@"RunningHistoryUpdateTime"];
     } else {
         NSLog(@"sync with host error: can't get mission list. Status Code: %d", [httpResponse responseStatus]);
+        return NO;
     }
+    return YES;
 }
 
 + (void) saveRunInfoToDB:(User_Running_History *)runningHistory{
@@ -198,7 +202,7 @@
 }
 
 
-+ (void)syncUserRunning{
++ (Boolean)syncUserRunning{
     NSError *error = nil;
     NSNumber *userId = [RORUtils getUserId];
     RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -222,7 +226,9 @@
         [RORUtils saveLastUpdateTime:@"UserRunningUpdateTime"];
     } else {
         NSLog(@"sync with host error: can't get mission list. Status Code: %d", [httpResponse responseStatus]);
+        return NO;
     }
+    return YES;
 }
 
 @end

@@ -14,7 +14,8 @@ NSString * const MissionTypeEnum_toString[] = {
     @"Challenge",
     @"Recommand",
     @"Cycle",
-    @"SubCycle"
+    @"SubCycle",
+    @"Normal"
 };
 
 @end

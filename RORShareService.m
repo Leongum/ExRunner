@@ -60,7 +60,7 @@
     else{
         user.sex = @"未知";
     }
-    user.password = @"thirdpartypassword";
+    user.password = [RORUtils md5:user.userEmail];
 
     
     User_Base *loginUser = [RORUserServices syncUserInfoByLogin:user.userEmail withUserPasswordL:[RORUtils md5:user.password]];

@@ -7,6 +7,8 @@
 //
 
 #import "RORHistoryPageViewController.h"
+#define FILTER_TABLECELL_TITLE 1
+#define FILTER_TABLECELL_IMAGE 2
 
 @interface RORHistoryPageViewController ()
 
@@ -27,6 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self loadChecked];
+    
 	// Do any additional setup after loading the view.
     NSMutableArray *controllers = [[NSMutableArray alloc] init];
     for (NSUInteger i = 0; i <2; i++)
@@ -60,6 +65,12 @@
 
 }
 
+-(void)loadChecked{
+    self.filterTableView.alpha = 0;
+    isChecked[0] = YES;
+    isChecked[1] = NO;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -69,6 +80,7 @@
 - (void)viewDidUnload {
     [self setScrollView:nil];
     [self setPageControl:nil];
+    [self setFilterTableView:nil];
     [super viewDidUnload];
 }
 
@@ -82,31 +94,6 @@
     [self.scrollView addSubview:viewController.view];
     [viewController didMoveToParentViewController:self];
 }
-
-//- (void)loadStatisticsPage:(NSInteger)page{
-//    // add the controller's view to the scroll view
-//
-//    CGRect frame = self.scrollView.frame;
-//    frame.origin.x = CGRectGetWidth(frame) * page;
-//    frame.origin.y = 0;
-//    statisticsViewController.view.frame = frame;
-//    
-//    [self addChildViewController:statisticsViewController];
-//    [self.scrollView addSubview:statisticsViewController.view];
-//    [statisticsViewController didMoveToParentViewController:self];
-//}
-//
-//- (void)loadListPage:(NSInteger)page{
-//    // add the controller's view to the scroll view
-//
-//    CGRect frame = self.scrollView.frame;
-//    frame.origin.x = CGRectGetWidth(frame) * page;
-//    frame.origin.y = 0;
-//    self.historyInStoryboard.view.frame = frame;
-//    [self addChildViewController:self.historyInStoryboard];
-//    [self.scrollView addSubview:self.historyInStoryboard.view];
-//    [self.historyInStoryboard didMoveToParentViewController:self];
-//}
 
 // at the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -158,5 +145,57 @@
 
 - (IBAction)changePage:(id)sender {
     [self gotoPage:YES];    // YES = animate
+}
+
+- (IBAction)showFilter:(id)sender {
+    self.filterTableView.alpha = 1 - self.filterTableView.alpha;
+}
+
+
+#pragma mark - Table view data source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"plainCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UILabel *title = (UILabel*)[cell viewWithTag:FILTER_TABLECELL_TITLE];
+    UIImageView *check = (UIImageView*)[cell viewWithTag:FILTER_TABLECELL_IMAGE];
+    check.alpha = 0;
+    if (isChecked[indexPath.row]){
+        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+        check.alpha = 1;
+    }
+    switch (indexPath.row) {
+        case 0:
+            title.text = @"随便跑跑";
+            break;
+        case 1:
+            title.text = @"专项挑战";
+            break;
+        default:
+            break;
+    }
+    
+    return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    isChecked[indexPath.row] = YES;
+    [cell viewWithTag:FILTER_TABLECELL_IMAGE].alpha = 1;
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    isChecked[indexPath.row] = NO;
+    [cell viewWithTag:FILTER_TABLECELL_IMAGE].alpha = 0;
 }
 @end

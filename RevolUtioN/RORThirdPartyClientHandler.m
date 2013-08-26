@@ -16,8 +16,8 @@
     return httpResponse;
 }
 
-+(RORHttpResponse *)getPM25Info:(NSString *)city withToken:(NSString *) token{
-    NSString *url = [NSString stringWithFormat:PM25_URL, city, token];
++(RORHttpResponse *)getPM25Info:(NSString *)city withProvince:(NSString *) province{
+    NSString *url = [NSString stringWithFormat:PM25_URL, city, province];
     RORHttpResponse *httpResponse = [RORHttpClientHandler getRequest:url];
     return httpResponse;
 }

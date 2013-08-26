@@ -58,11 +58,13 @@
 }
 
 +(User_Base *)syncUserInfoById:(NSNumber *)userId{
+    if(userId <= 0) return nil;
     RORHttpResponse *httpResponse =[RORUserClientHandler getUserInfoById:userId];
     return [self syncUserFromResponse:httpResponse];
 }
 
 +(User_Base *)syncUserInfoByLogin:(NSString *)userName withUserPasswordL:(NSString *) password{
+    if(userName == nil || password == nil) return nil;
     RORHttpResponse *httpResponse = [RORUserClientHandler getUserInfoByUserNameAndPassword:userName withPassword:password];
     return [self syncUserFromResponse:httpResponse];
 }
@@ -111,30 +113,33 @@
 }
 
 + (void)syncFriends:(NSNumber *) userId {
-    NSError *error = nil;
-    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSString *lastUpdateTime = [RORUtils getLastUpdateTime:@"FriendUpdateTime"];
-    RORHttpResponse *httpResponse =[RORUserClientHandler getUserFriends:userId withLastUpdateTime:lastUpdateTime];
-    
-    if ([httpResponse responseStatus] == 200){
-        NSArray *friendList = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
-        for (NSDictionary *friendDict in friendList){
-            NSNumber *userIdNum = [friendDict valueForKey:@"userId"];
-            NSNumber *friendIdNum = [friendDict valueForKey:@"friendId"];
-            Friend *friendEntity = [self fetchUserFriend:userIdNum withFriendId:friendIdNum];
-            if(friendEntity == nil)
-                friendEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:context];
-            [friendEntity initWithDictionary:friendDict];
-        }
+    if(userId > 0)
+    {
+        NSError *error = nil;
+        RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = delegate.managedObjectContext;
+        NSString *lastUpdateTime = [RORUtils getLastUpdateTime:@"FriendUpdateTime"];
+        RORHttpResponse *httpResponse =[RORUserClientHandler getUserFriends:userId withLastUpdateTime:lastUpdateTime];
         
-        if (![context save:&error]) {
-            NSLog(@"%@",[error localizedDescription]);
+        if ([httpResponse responseStatus] == 200){
+            NSArray *friendList = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
+            for (NSDictionary *friendDict in friendList){
+                NSNumber *userIdNum = [friendDict valueForKey:@"userId"];
+                NSNumber *friendIdNum = [friendDict valueForKey:@"friendId"];
+                Friend *friendEntity = [self fetchUserFriend:userIdNum withFriendId:friendIdNum];
+                if(friendEntity == nil)
+                    friendEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:context];
+                [friendEntity initWithDictionary:friendDict];
+            }
+            
+            if (![context save:&error]) {
+                NSLog(@"%@",[error localizedDescription]);
+            }
+            
+            [RORUtils saveLastUpdateTime:@"FriendUpdateTime"];
+        } else {
+            NSLog(@"sync with host error: can't get user's friends list. Status Code: %d", [httpResponse responseStatus]);
         }
-        
-        [RORUtils saveLastUpdateTime:@"FriendUpdateTime"];
-    } else {
-        NSLog(@"sync with host error: can't get user's friends list. Status Code: %d", [httpResponse responseStatus]);
     }
 }
 

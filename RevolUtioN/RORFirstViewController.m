@@ -132,13 +132,14 @@ NSInteger centerLoc =-10000;
 
 -(void)getCitynameByLocation:(CLLocation *) loc {
     CLGeocoder *geocoder = [[CLGeocoder alloc]init];
+//    CLLocation *tmp = [[CLLocation alloc]initWithLatitude:35.185949 longitude:110.406076];
     [geocoder reverseGeocodeLocation:loc completionHandler:^(NSArray *placemarks, NSError *error){
         CLPlacemark *placemark = (CLPlacemark *)[placemarks objectAtIndex:0];
         NSLog(@"%@, %@, %@, %@, %@, %@", placemark.country, placemark.administrativeArea, placemark.subLocality, placemark.thoroughfare, placemark.subThoroughfare, placemark.name);
         cityName = placemark.subLocality;
         NSString * provinceName = placemark.administrativeArea;
         NSDictionary *weatherInfo = [RORThirdPartyService syncWeatherInfo:[RORUtils getCitycodeByCityname:cityName]];
-        NSDictionary *pm25info =[RORThirdPartyService syncPM25Info:[RORUtils getPM25CityByCityAndProvince:cityName andProvince:provinceName]];
+        NSDictionary *pm25info =[RORThirdPartyService syncPM25Info:cityName withProvince:provinceName];
         if (weatherInfo != nil){
             self.lbTemperature.text = [weatherInfo objectForKey:@"temp1"];
             self.lbWind.text = [weatherInfo objectForKey:@"wind1"];
@@ -180,6 +181,9 @@ NSInteger centerLoc =-10000;
     if ([destination respondsToSelector:@selector(setSelection:)]){
         [destination setValue:self.userName forKey:@"userName"];
         [destination setValue:self.userId forKey:@"userId"];
+    }
+    if ([destination respondsToSelector:@selector(setMissionType:)]){
+        [destination setValue:[NSNumber numberWithInteger:NormalRun] forKey:@"missionType"];
     }
 }
 

@@ -60,6 +60,8 @@
 
 @property (nonatomic) BOOL doCollect;
 
+@property (strong, nonatomic) NSNumber *missionType;
+
 - (IBAction)expandAction:(id)sender;
 - (IBAction)collapseAction:(id)sender;
 - (IBAction)startButtonAction:(id)sender;
