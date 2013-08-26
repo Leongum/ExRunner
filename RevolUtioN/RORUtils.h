@@ -62,4 +62,6 @@
 +(NSString *)getCitycodeByCityname:(NSString *)cityName;
 
 +(NSString*)outputDistance:(NSNumber*)distance;
+
++(NSString *)getPM25CityByCityAndProvince:(NSString *)cityName andProvince:(NSString *)province;
 @end

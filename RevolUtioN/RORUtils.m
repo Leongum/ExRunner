@@ -85,6 +85,11 @@ static NSDate *systemTime = nil;
     return path;
 }
 
++ (NSString*)getPM25CityJSon{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"PM25City" ofType:@"geojson"];
+    return path;
+}
+
 + (NSString*)getUserSettingsPList{
     NSArray *doc = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docPath = [ doc objectAtIndex:0 ];
@@ -432,8 +437,7 @@ static NSDate *systemTime = nil;
 }
 
 +(NSString *)getCitycodeByCityname:(NSString *)cityName{
-    if (cityName == nil)
-        return nil;
+    if(cityName == nil)return nil;
     NSError *error;
     NSData *CityCodeJson = [NSData dataWithContentsOfFile:[RORUtils getCityCodeJSon]];
     NSDictionary *citycodeDic = [NSJSONSerialization JSONObjectWithData:CityCodeJson options:NSJSONReadingMutableLeaves error:&error];
@@ -449,6 +453,22 @@ static NSDate *systemTime = nil;
             if ([cityName rangeOfString:name].location != NSNotFound){
                 return [city valueForKey:@"编码"];
             }
+        }
+    }
+    return nil;
+}
+
++(NSString *)getPM25CityByCityAndProvince:(NSString *)cityName andProvince:(NSString *)province{
+    if(cityName == nil && province == nil)return nil;
+    NSError *error;
+    NSData *PM25CityJson = [NSData dataWithContentsOfFile:[RORUtils getPM25CityJSon]];
+    NSDictionary *PM25CityDic = [NSJSONSerialization JSONObjectWithData:PM25CityJson options:NSJSONReadingMutableLeaves error:&error];
+    NSArray *cityList = [PM25CityDic objectForKey:@"cities"];
+    
+    for (int i=0; i<cityList.count; i++){
+        NSString *city = [cityList objectAtIndex:i];
+        if ([cityName rangeOfString:city].location != NSNotFound || [province rangeOfString:city].location != NSNotFound){
+            return city;
         }
     }
     return nil;
