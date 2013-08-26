@@ -10,6 +10,7 @@
 #import "RORAppDelegate.h"
 #import "User_Running_History.h"
 #import "RORUtils.h"
+#import "RORHistoryPageViewController.h"
 
 @interface RORHistoryViewController ()
 
@@ -55,6 +56,12 @@
     [super viewDidLoad];
     
     //syncButtonItem.enabled = ([RORUtils hasLoggedIn]!=nil);
+    [self initTableData];
+        
+}
+
+-(void)initTableData{
+    NSArray *filter = ((RORHistoryPageViewController*)[self parentViewController]).filter;
     
     runHistoryList = [[NSMutableDictionary alloc] init];
     dateList = [[NSMutableArray alloc] init];
@@ -67,15 +74,19 @@
     [fetchRequest setEntity:historyEntity];
     NSError *error = nil;
     NSArray *fetchObject = [context executeFetchRequest:fetchRequest error:&error];
+    
     for (NSManagedObject *info in fetchObject) {
         User_Running_History *historyObj = (User_Running_History *) info;
+        NSNumber *missionType = (NSNumber *)[historyObj valueForKey:@"missionTypeId"];
         
+        if (![filter containsObject:missionType]) {
+            continue;
+        }
         NSDate *date = [historyObj valueForKey:@"missionDate"];
-        
         NSDateFormatter *formate = [[NSDateFormatter alloc] init];
         //    formate.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
         [formate setDateFormat:@"yyyy-MM-dd"];
-//        [formate setTimeStyle:NSDateFormatterNoStyle];
+        //        [formate setTimeStyle:NSDateFormatterNoStyle];
         NSString *formatDateString = [formate stringFromDate:date];
         if (![dateList containsObject:formatDateString])
             [dateList addObject:formatDateString];
@@ -86,27 +97,32 @@
         [runHistoryList setObject:record4Date forKey:formatDateString];
     }
     
-//    NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"string"
-//																   ascending:NO
-//																	selector:@selector(localizedCaseInsensitiveCompare:)] ;
+    //    NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"string"
+    //																   ascending:NO
+    //																	selector:@selector(localizedCaseInsensitiveCompare:)] ;
 	
-//	NSArray *descriptors = [NSArray arrayWithObject:dateDescriptor];
-//    [dateList sortUsingDescriptors:descriptors];
+    //	NSArray *descriptors = [NSArray arrayWithObject:dateDescriptor];
+    //    [dateList sortUsingDescriptors:descriptors];
     sortedDateList = [dateList sortedArrayUsingComparator:^(NSString *str1, NSString *str2){
         return [str2 compare:str1];
     }];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-        
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self viewDidLoad];
+//    [self refreshTable];
+}
+
+-(void)refreshTable{
+    
+    [self initTableData];
+    
     [self.tableView reloadData];
 }
 
@@ -142,20 +158,31 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"%d",indexPath.row   );
     static NSString *CellIdentifier = @"plainCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+//    if (cell == nil)
+//    {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
     
     NSString *date_str = [sortedDateList objectAtIndex:indexPath.section];
     NSArray *records4DateList = [runHistoryList objectForKey:date_str];
     User_Running_History *record4Date = [records4DateList objectAtIndex:indexPath.row];
     UILabel *distanceLabel = (UILabel *)[tableView viewWithTag:DISTANCE];
     distanceLabel.text = [NSString stringWithFormat:@"%@",[RORUtils outputDistance:record4Date.distance]];
+    NSLog(@"%@", distanceLabel.text);
     UILabel *durationLabel = (UILabel *)[tableView viewWithTag:DURATION];
     durationLabel.text = [RORUtils transSecondToStandardFormat:[record4Date.duration integerValue]];
     UILabel *missionTypeLabel = (UILabel *)[tableView viewWithTag:MISSIONTYPE];
     missionTypeLabel.text = [NSString stringWithFormat:@"%@",record4Date.missionTypeId];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%d", indexPath.row);
 }
 
 /*

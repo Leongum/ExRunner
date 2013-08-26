@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface RORStatisticsViewController : UIViewController
+@property (strong, nonatomic) NSMutableArray *filter;
 
 @end

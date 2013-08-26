@@ -21,5 +21,7 @@
 @property (strong, nonatomic) RORStatisticsViewController *statisticsViewController;
 @property (strong, nonatomic) RORHistoryViewController *listViewController;
 @property (strong, nonatomic) IBOutlet UITableView *filterTableView;
+@property (strong, nonatomic) IBOutlet UIView *coverView;
+@property (strong, nonatomic) NSMutableArray *filter;
 
 @end

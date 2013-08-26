@@ -253,7 +253,6 @@ NSInteger centerLoc =-10000;
     [self setLbWind:nil];
     [self setRunButton:nil];
     [self setChallenge:nil];
-    [self setTestView:nil];
     [self setLbUV:nil];
     [self setLbPM:nil];
     [self setLbLocation:nil];
@@ -320,31 +319,30 @@ NSInteger centerLoc =-10000;
 - (IBAction)weatherInfoAction:(id)sender {
     if (weatherSubView.frame.origin.x < -10){
 //        [self weatherInView];
-        [UIView beginAnimations:@"animation" context:nil];
-        [UIView setAnimationDuration:1];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.testView cache:YES];
-        UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
-        [self.testView setImage:image];
-        [UIView commitAnimations];
+//        [UIView beginAnimations:@"animation" context:nil];
+//        [UIView setAnimationDuration:1];
+//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.testView cache:YES];
+//        UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
+//        [self.testView setImage:image];
+//        [UIView commitAnimations];
         
         [Animations moveRight:weatherSubView andAnimationDuration:0.1 andWait:YES andLength:100];
         [Animations moveLeft:weatherSubView andAnimationDuration:0.1 andWait:NO andLength:10];
         
     } else {
         [self weatherPopView];
-        [UIView beginAnimations:@"animation" context:nil];
-        [UIView setAnimationDuration:1];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.testView cache:YES];
-        UIImage *image = [UIImage imageNamed:@"redbutton_bg.png"];
-        [self.testView setImage:image];
-        [UIView commitAnimations];
+//        [UIView beginAnimations:@"animation" context:nil];
+//        [UIView setAnimationDuration:1];
+//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.testView cache:YES];
+//        UIImage *image = [UIImage imageNamed:@"redbutton_bg.png"];
+//        [self.testView setImage:image];
+//        [UIView commitAnimations];
     }
 }
 
 - (IBAction)normalRunAction:(id)sender {
-    UIView *view = (UIView *)sender;
 }
 
 - (IBAction)challengeRunAction:(id)sender{

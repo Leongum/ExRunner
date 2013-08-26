@@ -15,7 +15,7 @@
 @end
 
 @implementation RORHistoryPageViewController
-@synthesize contentViews, statisticsViewController, listViewController;
+@synthesize contentViews, statisticsViewController, listViewController, filter;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -66,9 +66,11 @@
 }
 
 -(void)loadChecked{
-    self.filterTableView.alpha = 0;
+    self.coverView.alpha = 0;
     isChecked[0] = YES;
     isChecked[1] = NO;
+    [self updateFilter];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,18 +83,23 @@
     [self setScrollView:nil];
     [self setPageControl:nil];
     [self setFilterTableView:nil];
+    [self setCoverView:nil];
     [super viewDidUnload];
 }
 
 -(void)loadPage:(NSInteger)page{
+
     UIViewController *viewController = (UIViewController *)[contentViews objectAtIndex:page];
     CGRect frame = self.scrollView.frame;
     frame.origin.x = CGRectGetWidth(frame) * page;
     frame.origin.y = 0;
     viewController.view.frame = frame;
+    
     [self addChildViewController:viewController];
     [self.scrollView addSubview:viewController.view];
     [viewController didMoveToParentViewController:self];
+    
+    [listViewController refreshTable];
 }
 
 // at the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
@@ -147,8 +154,20 @@
     [self gotoPage:YES];    // YES = animate
 }
 
+-(void)updateFilter{
+    filter = [[NSMutableArray alloc]init];
+    if (isChecked[0])
+        [filter addObject:[NSNumber numberWithInteger:NormalRun]];
+    if (isChecked[1])
+        [filter addObject:[NSNumber numberWithInteger:Challenge]];
+}
+
 - (IBAction)showFilter:(id)sender {
-    self.filterTableView.alpha = 1 - self.filterTableView.alpha;
+    self.coverView.alpha = 1 - self.coverView.alpha;
+    if (self.coverView.alpha ==0){
+        [self updateFilter];
+        [listViewController refreshTable];
+    }
 }
 
 

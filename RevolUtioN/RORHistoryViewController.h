@@ -19,5 +19,5 @@ typedef enum {DISTANCE = 1, DURATION = 2, MISSIONTYPE = 3} controlInHistoryTable
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)syncAction:(id)sender;
-
+- (void)refreshTable;
 @end

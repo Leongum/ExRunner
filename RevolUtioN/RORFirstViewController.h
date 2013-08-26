@@ -33,7 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *userButton;
 @property (strong, nonatomic) IBOutlet UIButton *runButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *challenge;
-@property (strong, nonatomic) IBOutlet UIImageView *testView;
+//@property (strong, nonatomic) IBOutlet UIImageView *testView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
 @property (strong, nonatomic) IBOutlet UILabel *lbLocation;

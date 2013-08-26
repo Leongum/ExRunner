@@ -11,8 +11,9 @@
 #import "RORConstant.h"
 #import "RORUtils.h"
 #import "RORPublicMethods.h"
+#import "RORNormalButton.h"
 
 @interface RORViewController : UIViewController
 //-(void)addBackButton;
-@property (strong, nonatomic) UIButton *backButton;
+@property (strong, nonatomic) RORNormalButton *backButton;
 @end

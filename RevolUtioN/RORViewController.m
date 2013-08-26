@@ -33,7 +33,7 @@
 }
 
 -(void)addBackButton{
-    backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    backButton = [RORNormalButton buttonWithType:UIButtonTypeRoundedRect];
     backButton.frame = BACKBUTTON_FRAME;
     UIImage *image = [UIImage imageNamed:@"back_bg.png"];
     [backButton setBackgroundImage:image forState:UIControlStateNormal];
