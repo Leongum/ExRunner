@@ -16,12 +16,14 @@
 @synthesize missionId;
 @synthesize missionTypeId;
 @synthesize missionRoute;
+@synthesize waveForm;
 @synthesize missionStartTime;
 @synthesize missionEndTime;
 @synthesize missionDate;
 @synthesize spendCarlorie;
 @synthesize duration;
 @synthesize avgSpeed;
+@synthesize steps;
 @synthesize distance;
 @synthesize offerUsers;
 @synthesize missionGrade;
@@ -41,12 +43,14 @@
     [tempoDict setValue:runUuid forKey:@"runUuid"];
     [tempoDict setValue:missionTypeId forKey:@"missionTypeId"];
     [tempoDict setValue:missionRoute forKey:@"missionRoute"];
+    [tempoDict setValue:waveForm forKey:@"waveForm"];
     [tempoDict setValue:[RORDBCommon getStringFromId:missionStartTime] forKey:@"missionStartTime"];
     [tempoDict setValue:[RORDBCommon getStringFromId:missionEndTime] forKey:@"missionEndTime"];
     [tempoDict setValue:[RORDBCommon getStringFromId:missionDate] forKey:@"missionDate"];
     [tempoDict setValue:spendCarlorie forKey:@"spendCarlorie"];
     [tempoDict setValue:duration forKey:@"duration"];
     [tempoDict setValue:offerUsers forKey:@"offerUsers"];
+    [tempoDict setValue:steps forKey:@"steps"];
     [tempoDict setValue:missionGrade forKey:@"missionGrade"];
     [tempoDict setValue:scores forKey:@"scores"];
     [tempoDict setValue:experience forKey:@"experience"];
@@ -65,6 +69,7 @@
     self.runUuid= [dict valueForKey:@"runUuid"];
     self.missionTypeId = [dict valueForKey:@"missionTypeId"];
     self.missionRoute = [dict valueForKey:@"missionRoute"];
+    self.waveForm = [dict valueForKey:@"waveForm"];
     self.missionStartTime = [RORDBCommon getDateFromId:[dict valueForKey:@"missionStartTime"]];
     self.missionEndTime = [RORDBCommon getDateFromId:[dict valueForKey:@"missionEndTime"]];
     self.missionDate = [RORDBCommon getDateFromId:[dict valueForKey:@"missionDate"]];
@@ -76,6 +81,7 @@
     self.experience = [dict valueForKey:@"experience"];
     self.missionId = [dict valueForKey:@"missionId"];
     self.uuid = [dict valueForKey:@"uuid"];
+    self.steps = [dict valueForKey:@"steps"];
     self.commitTime = [RORDBCommon getDateFromId:[dict valueForKey:@"commitTime"]];
     self.grade = [dict valueForKey:@"grade"];
 }
@@ -86,6 +92,10 @@
 
 -(void)setRunUuid:(id)obj{
     runUuid = [RORDBCommon getStringFromId:obj];
+}
+
+-(void)setWaveForm:(id)obj{
+    waveForm = [RORDBCommon getStringFromId:obj];
 }
 
 -(void)setMissionId:(id)obj{
@@ -124,6 +134,10 @@
     avgSpeed = [RORDBCommon getNumberFromId:obj];
 }
 
+-(void)setSteps:(id)obj{
+    steps = [RORDBCommon getNumberFromId:obj];
+}
+
 -(void)setDistance:(id)obj{
     distance = [RORDBCommon getNumberFromId:obj];
 }
@@ -159,4 +173,5 @@
 -(void)setGrade:(id)obj{
     grade = [RORDBCommon getStringFromId:obj];
 }
+
 @end

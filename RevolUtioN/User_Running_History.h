@@ -16,12 +16,14 @@
 @property (nonatomic, retain) NSNumber * missionId;
 @property (nonatomic, retain) NSNumber * missionTypeId;
 @property (nonatomic, retain) NSString * missionRoute;
+@property (nonatomic, retain) NSString * waveForm;
 @property (nonatomic, retain) NSDate * missionStartTime;
 @property (nonatomic, retain) NSDate * missionEndTime;
 @property (nonatomic, retain) NSDate * missionDate;
 @property (nonatomic, retain) NSNumber * spendCarlorie;
 @property (nonatomic, retain) NSNumber * duration;
 @property (nonatomic, retain) NSNumber * avgSpeed;
+@property (nonatomic, retain) NSNumber * steps;
 @property (nonatomic, retain) NSNumber * distance;
 @property (nonatomic, retain) NSNumber * offerUsers;
 @property (nonatomic, retain) NSNumber * missionGrade;

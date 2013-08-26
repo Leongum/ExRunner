@@ -11,6 +11,7 @@
 		0F0D589217B0E4680046515C /* RORLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589117B0E4680046515C /* RORLoadingViewController.m */; };
 		0F0D589817B23F490046515C /* RORThirdPartyClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589717B23F490046515C /* RORThirdPartyClientHandler.m */; };
 		0F0D589B17B249230046515C /* RORThirdPartyService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589A17B249230046515C /* RORThirdPartyService.m */; };
+		0F16EF5317CA6C330055DEE6 /* PM25City.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 0F16EF5217CA61890055DEE6 /* PM25City.geojson */; };
 		0F274A6B17B6058C00F0E927 /* RORSystemService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F274A6A17B6058B00F0E927 /* RORSystemService.m */; };
 		0F274A7517B6061F00F0E927 /* RORSystemClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F274A7417B6061F00F0E927 /* RORSystemClientHandler.m */; };
 		0F59A13B17BA2170000DEFEF /* QQConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F59A10817BA2170000DEFEF /* QQConnection.framework */; };
@@ -273,6 +274,7 @@
 		0F0D589717B23F490046515C /* RORThirdPartyClientHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORThirdPartyClientHandler.m; sourceTree = "<group>"; };
 		0F0D589917B249230046515C /* RORThirdPartyService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORThirdPartyService.h; sourceTree = "<group>"; };
 		0F0D589A17B249230046515C /* RORThirdPartyService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORThirdPartyService.m; sourceTree = "<group>"; };
+		0F16EF5217CA61890055DEE6 /* PM25City.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; name = PM25City.geojson; path = ../PM25City.geojson; sourceTree = "<group>"; };
 		0F274A6917B6058B00F0E927 /* RORSystemService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORSystemService.h; sourceTree = "<group>"; };
 		0F274A6A17B6058B00F0E927 /* RORSystemService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORSystemService.m; sourceTree = "<group>"; };
 		0F274A7317B6061F00F0E927 /* RORSystemClientHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORSystemClientHandler.h; sourceTree = "<group>"; };
@@ -751,6 +753,7 @@
 				0F857711178C4EF100173A92 /* RORHttpClientHandler.m */,
 				0F972BD0179255F300A27EF2 /* RORHttpResponse.h */,
 				0F972BD1179255F300A27EF2 /* RORHttpResponse.m */,
+				0F16EF5217CA61890055DEE6 /* PM25City.geojson */,
 				30C658931755E0460076AFA3 /* CityCode.geojson */,
 				30BB0BAD176AB2BE0009A847 /* RORConstant.h */,
 				30BB0BAE176AB2BE0009A847 /* RORConstant.m */,
@@ -1399,6 +1402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F16EF5317CA6C330055DEE6 /* PM25City.geojson in Resources */,
 				302FD0171727D870004DA005 /* Default.png in Resources */,
 				302FD0191727D870004DA005 /* Default@2x.png in Resources */,
 				302FD01B1727D870004DA005 /* Default-568h@2x.png in Resources */,
