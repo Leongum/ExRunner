@@ -11,6 +11,7 @@
 #import "User_Running_History.h"
 #import "RORUtils.h"
 #import "RORHistoryPageViewController.h"
+#import "RORRunHistoryServices.h"
 
 @interface RORHistoryViewController ()
 
@@ -56,27 +57,26 @@
     [super viewDidLoad];
     
     //syncButtonItem.enabled = ([RORUtils hasLoggedIn]!=nil);
-    [self initTableData];
-        
+//    [self initTableData];
+    
 }
 
 -(void)initTableData{
-    NSArray *filter = ((RORHistoryPageViewController*)[self parentViewController]).filter;
+    NSMutableArray *filter = ((RORHistoryPageViewController*)[self parentViewController]).filter;
     
     runHistoryList = [[NSMutableDictionary alloc] init];
     dateList = [[NSMutableArray alloc] init];
     
-    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSEntityDescription *historyEntity = [NSEntityDescription entityForName:@"User_Running_History" inManagedObjectContext:context];
+//    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
+//    NSManagedObjectContext *context = delegate.managedObjectContext;
+//    NSEntityDescription *historyEntity = [NSEntityDescription entityForName:@"User_Running_History" inManagedObjectContext:context];
+//    
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+//    [fetchRequest setEntity:historyEntity];
+//    NSError *error = nil;
+    NSArray *fetchObject = [RORRunHistoryServices fetchRunHistory];
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-    [fetchRequest setEntity:historyEntity];
-    NSError *error = nil;
-    NSArray *fetchObject = [context executeFetchRequest:fetchRequest error:&error];
-    
-    for (NSManagedObject *info in fetchObject) {
-        User_Running_History *historyObj = (User_Running_History *) info;
+    for (User_Running_History *historyObj in fetchObject) {
         NSNumber *missionType = (NSNumber *)[historyObj valueForKey:@"missionTypeId"];
         
         if (![filter containsObject:missionType]) {
@@ -116,7 +116,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [self refreshTable];
+    [self refreshTable];
 }
 
 -(void)refreshTable{
@@ -158,31 +158,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%d",indexPath.row   );
     static NSString *CellIdentifier = @"plainCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    if (cell == nil)
-//    {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//    }
-    
+
     NSString *date_str = [sortedDateList objectAtIndex:indexPath.section];
     NSArray *records4DateList = [runHistoryList objectForKey:date_str];
     User_Running_History *record4Date = [records4DateList objectAtIndex:indexPath.row];
-    UILabel *distanceLabel = (UILabel *)[tableView viewWithTag:DISTANCE];
+    UILabel *distanceLabel = (UILabel *)[cell viewWithTag:DISTANCE];
     distanceLabel.text = [NSString stringWithFormat:@"%@",[RORUtils outputDistance:record4Date.distance]];
-    NSLog(@"%@", distanceLabel.text);
-    UILabel *durationLabel = (UILabel *)[tableView viewWithTag:DURATION];
+    UILabel *durationLabel = (UILabel *)[cell viewWithTag:DURATION];
     durationLabel.text = [RORUtils transSecondToStandardFormat:[record4Date.duration integerValue]];
-    UILabel *missionTypeLabel = (UILabel *)[tableView viewWithTag:MISSIONTYPE];
+    UILabel *missionTypeLabel = (UILabel *)[cell viewWithTag:MISSIONTYPE];
     missionTypeLabel.text = [NSString stringWithFormat:@"%@",record4Date.missionTypeId];
     
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"%d", indexPath.row);
 }
 
 /*

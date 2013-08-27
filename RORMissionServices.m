@@ -109,8 +109,8 @@
 
 +(NSArray *)fetchMissionList:(MissionTypeEnum *) missionType{
     NSString *table=@"Mission";
-    NSString *query = @"%@ missionTypeId = %@";
-    NSArray *params = [NSArray arrayWithObjects:@"",(int)missionType, nil];
+    NSString *query = @"missionTypeId = %@";
+    NSArray *params = [NSArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)missionType], nil];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"missionId" ascending:YES];
     NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
     NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
@@ -118,7 +118,11 @@
         return nil;
     }
     NSMutableArray *missionDetails = [NSMutableArray arrayWithCapacity:10];
+
     for (Mission *mission in fetchObject) {
+        if ([mission isFault]){
+            NSLog(@"isFault");
+        }
         [missionDetails addObject: [self fetchMissionDetails:mission]];
     }
     return [(NSArray*)missionDetails mutableCopy];;

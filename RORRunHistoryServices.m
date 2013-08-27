@@ -10,6 +10,23 @@
 
 @implementation RORRunHistoryServices
 
++(NSArray*)fetchRunHistoryByUserId:(NSNumber*)userId{
+    NSString *table=@"User_Running_History";
+    NSString *query = @"userId = %@";
+    NSArray *params = [NSArray arrayWithObjects:userId, nil];
+    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    if (fetchObject == nil || [fetchObject count] == 0) {
+        return nil;
+    }
+    return fetchObject;
+}
+
++(NSArray*)fetchRunHistory{
+    NSNumber *userId = [RORUtils getUserId];
+    NSArray *fetchObject = [self fetchRunHistoryByUserId:userId];
+    return fetchObject;
+}
+
 +(NSMutableArray *)fetchUnsyncedRunHistories{
     
     NSNumber *userId = [RORUtils getUserId];

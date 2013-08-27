@@ -26,8 +26,10 @@
 #endif
 
 typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3, NormalRun = 4} MissionTypeEnum;
+typedef enum {GRADE_S = 0, GRADE_A = 1, GRADE_B = 2, GRADE_C = 3, GRADE_D = 4, GRADE_E = 5, GRADE_F = 6} MissionGradeEnum;
 
 NSString *const MissionTypeEnum_toString[5];
+NSString *const MissionGradeEnum_toString[7];
 
 @interface RORConstant : NSObject
 

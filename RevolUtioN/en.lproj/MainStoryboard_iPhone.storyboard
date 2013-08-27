@@ -639,11 +639,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="77" sectionHeaderHeight="22" sectionFooterHeight="22" id="sJs-sg-2Gh">
-                                <rect key="frame" x="0.0" y="80" width="320" height="300"/>
+                                <rect key="frame" x="0.0" y="80" width="320" height="380"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="plainCell" rowHeight="77" id="4xL-aU-1Sz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="plainCell" rowHeight="77" id="4xL-aU-1Sz">
                                         <rect key="frame" x="0.0" y="22" width="320" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1622,6 +1622,7 @@
         <class className="RORRunningViewController" superclassName="RORViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RORRunningViewController.h"/>
             <relationships>
+                <relationship kind="action" name="center_map:"/>
                 <relationship kind="action" name="collapseAction:"/>
                 <relationship kind="action" name="endButtonAction:"/>
                 <relationship kind="action" name="expandAction:"/>
@@ -1661,6 +1662,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Rxd-eV-2oK"/>
-        <segue reference="wyF-zp-Z04"/>
+        <segue reference="tZI-uj-hCk"/>
     </inferredMetricsTieBreakers>
 </document>

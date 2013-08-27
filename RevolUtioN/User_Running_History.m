@@ -147,7 +147,7 @@
 }
 
 -(void)setMissionGrade:(id)obj{
-    missionGrade = [RORDBCommon getNumberFromId:obj];
+    missionGrade = [RORDBCommon getStringFromId:obj];
 }
 
 -(void)setScores:(id)obj{
@@ -171,7 +171,7 @@
 }
 
 -(void)setGrade:(id)obj{
-    grade = [RORDBCommon getStringFromId:obj];
+    grade = [RORDBCommon getNumberFromId:obj];
 }
 
 @end

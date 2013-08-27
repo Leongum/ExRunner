@@ -14,6 +14,7 @@
 #import "RORUtils.h"
 #import "RORDBCommon.h"
 #import "RORMacro.h"
+#import "RORMissionServices.h"
 
 #define SCALE_SMALL CGRectMake(0,0,320,155)
 
@@ -31,7 +32,7 @@
 @synthesize doCollect;
 @synthesize kalmanFilter, OldVn, stepCounting, inDistance;
 @synthesize avgDisPerStep, avgTimePerStep;
-@synthesize missionType;
+@synthesize runMission;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -461,7 +462,7 @@
     //step counting
     [stepCounting pushNewLAcc:[INMatrix modOfVec_3:newDeviceStatus.an] GAcc:newDeviceStatus.an.v3 speed:[INMatrix modOfVec_3:gpsSpeed]];
     self.stepLabel.text = [NSString stringWithFormat:@"%d", stepCounting.counter];
-    self.avgTimePerStep.text = [NSString stringWithFormat:@"%.2f s", ((double)timerCount*TIMER_INTERVAL)/((double)stepCounting.counter)];
+    self.avgTimePerStep.text = [NSString stringWithFormat:@"%.2f s", duration/((double)stepCounting.counter)];
     self.avgDisPerStep.text = [NSString stringWithFormat:@"%.2f m", distance/((double)stepCounting.counter)];
 }
 
@@ -469,21 +470,20 @@
     doCollect = YES;
     
     timerCount++;
-    
+    duration = timerCount * TIMER_INTERVAL;
     // currently, only do running status judgement here.
     [self inertiaNavi];
     
-    double time = timerCount * TIMER_INTERVAL;
     NSInteger intTime = (NSInteger)time;
-    if (time - intTime < 0.001){ //1 second
+    if (duration - intTime < 0.001){ //1 second
         //    if (time % 3 == 0){
         [self pushPoint];
         distanceLabel.text = [NSString stringWithFormat:@"%.0lf m", distance];
-        speedLabel.text = [NSString stringWithFormat:@"%.2f m/s", (float)distance/time*3.6];
+        speedLabel.text = [NSString stringWithFormat:@"%.2f m/s", (float)distance/duration*3.6];
         //    }
     }
 
-    timeLabel.text = [RORUtils transSecondToStandardFormat:time];
+    timeLabel.text = [RORUtils transSecondToStandardFormat:duration];
 }
 
 - (void)pushPoint{
@@ -521,19 +521,93 @@
     [self centerMap];
 }
 
+
+
+-(NSNumber *)calculateCalorie{
+    double weight = 60; //tempory value
+    double K = (9*distance)/(2*duration);
+    return [NSNumber numberWithDouble:(duration * weight * K / 3600)];
+}
+
+-(NSNumber *)calculateGrade{
+    return [self calculateCalorie];
+}
+
+-(NSString *)calculateMissionGrade{
+    Mission *mission = [RORMissionServices fetchMission:runMission.missionId];
+    NSArray *gradeList = mission.challengeList;
+    for (int i=0; i<gradeList.count; i++){
+        NSInteger thisGrade = ((NSNumber *)[[gradeList objectAtIndex:i] valueForKey:@"time"]).integerValue;
+        if (duration<thisGrade)
+            return MissionGradeEnum_toString[i];
+    }
+    return MissionGradeEnum_toString[GRADE_F];
+}
+
+-(NSNumber *)calculateAward:(NSString *)missionGrade baseValue:(double) base{
+    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_S]]){
+        return [NSNumber numberWithDouble:GRADE_S*base];
+    }
+    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_A]]){
+        return [NSNumber numberWithDouble:(1.0 + (double)GRADE_A/10)*base];
+    }
+    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_B]]){
+        return [NSNumber numberWithDouble:(1.0 + (double)GRADE_B/10)*base];
+    }
+    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_C]]){
+        return [NSNumber numberWithDouble:(1.0 + (double)GRADE_C/10)*base];
+    }
+    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_D]]){
+        return [NSNumber numberWithDouble:(1.0 + (double)GRADE_D/10)*base];
+    }
+    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_E]]){
+        return [NSNumber numberWithDouble:GRADE_E*base];
+    }
+    return [NSNumber numberWithDouble:GRADE_F*base];
+}
+
+-(NSNumber *)calculateExperience:(NSString *)missionGrade{
+    return [self calculateAward:(NSString *)missionGrade baseValue:runMission.experience.doubleValue];
+}
+
+-(NSNumber *)calculateScore:(NSString *)missionGrade{
+    return [self calculateAward:(NSString *)missionGrade baseValue:runMission.scores.doubleValue];
+}
+
 - (void)saveRunInfo{
     NSError *error = nil;
     RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
     User_Running_History *runHistory = [NSEntityDescription insertNewObjectForEntityForName:@"User_Running_History" inManagedObjectContext:context];
-    runHistory.distance = [[NSNumber alloc] initWithInteger:distance];
-    runHistory.duration = [[NSNumber alloc] initWithInteger:timerCount];
+    runHistory.distance = [NSNumber numberWithDouble:distance];
+    runHistory.duration = [NSNumber numberWithDouble:duration];
     runHistory.missionRoute = [RORDBCommon getStringFromRoutePoints:routePoints];
     runHistory.missionDate = [NSDate date];
     runHistory.missionEndTime = self.endTime;
     runHistory.missionStartTime = self.startTime;
-    runHistory.userId = nil;
-    runHistory.missionTypeId = missionType;
+    runHistory.userId = [RORUtils getUserId];
+    if (runMission!=nil){
+        runHistory.missionTypeId = runMission.missionTypeId;
+        switch (runMission.missionTypeId.integerValue) {
+            case Challenge:
+                runHistory.missionId = runMission.missionId;
+                runHistory.missionGrade = [self calculateMissionGrade];
+                runHistory.experience = [self calculateExperience:runHistory.missionGrade];
+                runHistory.scores = [self calculateScore:runHistory.missionGrade];
+                break;
+            default:
+                break;
+        }
+    } else {
+        runHistory.missionTypeId = [NSNumber numberWithInteger:NormalRun];
+        runHistory.grade = [self calculateGrade];
+    }
+    runHistory.spendCarlorie = [self calculateCalorie];
+    runHistory.runUuid = [RORUtils uuidString];
+    runHistory.uuid = [RORUtils getUserUuid];
+    runHistory.steps = [NSNumber numberWithInteger:stepCounting.counter];
+    
+    NSLog(@"%@", runHistory);
     record = runHistory;
     if (![context save:&error]) {
         NSLog(@"%@",[error localizedDescription]);

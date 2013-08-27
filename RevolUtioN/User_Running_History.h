@@ -26,13 +26,13 @@
 @property (nonatomic, retain) NSNumber * steps;
 @property (nonatomic, retain) NSNumber * distance;
 @property (nonatomic, retain) NSNumber * offerUsers;
-@property (nonatomic, retain) NSNumber * missionGrade;
+@property (nonatomic, retain) NSString * missionGrade;
 @property (nonatomic, retain) NSNumber * scores;
 @property (nonatomic, retain) NSNumber * experience;
 @property (nonatomic, retain) NSString * comment;
 @property (nonatomic, retain) NSDate * commitTime;
 @property (nonatomic, retain) NSString * uuid;
-@property (nonatomic, retain) NSString * grade;
+@property (nonatomic, retain) NSNumber * grade;
 
 -(NSMutableDictionary *)transToDictionary;
 

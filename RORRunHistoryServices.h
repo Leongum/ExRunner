@@ -26,4 +26,10 @@
 
 + (Boolean)syncUserRunning;
 
++(NSArray*)fetchRunHistoryByUserId:(NSNumber*)userId;
+
++(NSArray*)fetchRunHistory;
+
++(BOOL)addRunHistory:(User_Running_History*)runHistory;
+
 @end

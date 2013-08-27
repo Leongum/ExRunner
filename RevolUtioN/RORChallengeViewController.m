@@ -7,7 +7,7 @@
 //
 
 #import "RORChallengeViewController.h"
-
+#import "RORMissionServices.h"
 #import "Animations.h"
 #import "FTAnimation.h"
 
@@ -24,7 +24,7 @@
 @end
 
 @implementation RORChallengeViewController
-@synthesize tableView, contentList;
+@synthesize contentList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,14 +46,15 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self loadContentList];
-    [tableView reloadData];
+    [self.tableView reloadData];
 }
 
 -(void)loadContentList{
-    contentList = [[NSMutableArray alloc]init];
-    [contentList addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"1 km", @"title", @"B", @"level", nil]];
-    [contentList addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"2 km", @"title", @"A", @"level", nil]];
-    [contentList addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"3 km", @"title", @"S", @"level", nil]];
+    contentList = [RORMissionServices fetchMissionList:Challenge];
+//    contentList = [[NSMutableArray alloc]init];
+//    [contentList addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"1 km", @"title", @"B", @"level", nil]];
+//    [contentList addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"2 km", @"title", @"A", @"level", nil]];
+//    [contentList addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"3 km", @"title", @"S", @"level", nil]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,6 +98,9 @@
     if ([destination respondsToSelector:@selector(setMissionType:)]){
         [destination setValue:[NSNumber numberWithInteger:Challenge] forKey:@"missionType"];
     }
+    if ([destination respondsToSelector:@selector(setRunMission:)]){
+        [destination setValue:selectedChallenge forKey:@"runMission"];
+    }
 }
 
 #pragma mark - Table view data source
@@ -119,12 +123,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSDictionary *content = (NSDictionary *)[contentList objectAtIndex:indexPath.row];
+    Mission *challenge = (Mission *)[contentList objectAtIndex:indexPath.row];
     
     UILabel *titleLabel = (UILabel*)[cell viewWithTag:CELL_TITLE_TAG];
-    titleLabel.text = [content valueForKey:@"title"];
-    UILabel *levelLabel = (UILabel *)[cell viewWithTag:CELL_LEVEL_TAG];
-    levelLabel.text = [content valueForKey:@"level"];
+    titleLabel.text = challenge.missionName;
+//    UILabel *levelLabel = (UILabel *)[cell viewWithTag:CELL_LEVEL_TAG];
+//    levelLabel.text = [content valueForKey:@"level"];
     
     return cell;
 }
@@ -179,10 +183,11 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    NSDictionary *content = (NSDictionary *)[contentList objectAtIndex:indexPath.row];
-
+    selectedChallenge = (Mission *)[contentList objectAtIndex:indexPath.row];
+    
     UILabel *titleLabel = (UILabel*)[self.coverView viewWithTag:COVERVIEW_LABEL_TAG];
-    titleLabel.text = [content valueForKey:@"title"];
+    titleLabel.text = selectedChallenge.missionName;
+    
     [self showCoverView];
     
 }

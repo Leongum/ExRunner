@@ -25,6 +25,7 @@
 @synthesize spirit;
 @synthesize rapidly;
 @synthesize recoverSpeed;
+@synthesize age, weight, hight;
 
 -(void)initWithDictionary:(NSDictionary *)dict{
     userId = [dict valueForKey:@"userId"];
@@ -41,6 +42,21 @@
     spirit = [dict valueForKey:@"spirit"];
     rapidly = [dict valueForKey:@"rapidly"];
     recoverSpeed = [dict valueForKey:@"recoverSpeed"];
+    age = [dict valueForKey:@"age"];
+    weight = [dict valueForKey:@"weight"];
+    hight = [dict valueForKey:@"hight"];
+}
+
+-(void)setAge:(id)obj{
+    age = [RORDBCommon getNumberFromId:obj];
+}
+
+-(void)setHight:(id)obj{
+    hight = [RORDBCommon getNumberFromId:obj];
+}
+
+-(void)setWeight:(id)obj{
+    weight = [RORDBCommon getNumberFromId:obj];
 }
 
 -(void)setBaseAcc:(id)obj{

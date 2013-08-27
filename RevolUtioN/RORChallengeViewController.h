@@ -8,11 +8,14 @@
 
 #import "RORViewController.h"
 #import "RORBottomPopSubview.h"
+#import "Mission.h"
 
-@interface RORChallengeViewController : RORViewController
+@interface RORChallengeViewController : RORViewController{
+    Mission *selectedChallenge;
+}
 
 @property (strong, nonatomic) IBOutlet RORBottomPopSubview *coverView;
-@property (strong, nonatomic) NSMutableArray *contentList;
+@property (strong, nonatomic) NSArray *contentList;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

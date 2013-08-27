@@ -182,6 +182,8 @@ static NSDate *systemTime = nil;
     NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:context];
     
     [fetchRequest setEntity:entity];
+    [fetchRequest setReturnsObjectsAsFaults:NO];
+
     NSPredicate *predicate = [NSPredicate predicateWithFormat:query argumentArray:params];
     [fetchRequest setPredicate:predicate];
     NSArray *fetchObject = [context executeFetchRequest:fetchRequest error:&error];
@@ -200,6 +202,7 @@ static NSDate *systemTime = nil;
     NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:context];
     
     [fetchRequest setEntity:entity];
+    [fetchRequest setReturnsObjectsAsFaults:NO];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:query argumentArray:params];
     [fetchRequest setPredicate:predicate];
     [fetchRequest setSortDescriptors:sortParams];

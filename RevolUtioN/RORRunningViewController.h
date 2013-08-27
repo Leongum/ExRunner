@@ -14,12 +14,14 @@
 #import "INKalmanFilter.h"
 #import "INStepCounting.h"
 #import "RORViewController.h"
+#import "Mission.h"
 
 #define TIMER_INTERVAL delta_T
 
 @interface RORRunningViewController : RORViewController<CLLocationManagerDelegate,MKMapViewDelegate> {
     BOOL wasFound;
     BOOL isNetworkOK;
+    double duration;
 }
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (strong, nonatomic) CMMotionManager *motionManager;
@@ -60,12 +62,11 @@
 
 @property (nonatomic) BOOL doCollect;
 
-@property (strong, nonatomic) NSNumber *missionType;
+@property (strong, nonatomic) Mission *runMission;
 
 - (IBAction)expandAction:(id)sender;
 - (IBAction)collapseAction:(id)sender;
 - (IBAction)startButtonAction:(id)sender;
 - (IBAction)endButtonAction:(id)sender;
 - (IBAction)setUserCentered:(id)sender;
--(void)backToMain;
 @end

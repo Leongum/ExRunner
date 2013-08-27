@@ -18,4 +18,14 @@ NSString * const MissionTypeEnum_toString[] = {
     @"Normal"
 };
 
+NSString * const MissionGradeEnum_toString[] = {
+    @"S",
+    @"A",
+    @"B",
+    @"C",
+    @"D",
+    @"E",
+    @"F"
+};
+
 @end
