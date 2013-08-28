@@ -2,7 +2,7 @@
 //  Mission_Type.m
 //  RevolUtioN
 //
-//  Created by Beyond on 13-5-25.
+//  Created by leon on 13-8-28.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
@@ -11,15 +11,7 @@
 
 @implementation Mission_Type
 
-@synthesize missionTypeId;
-@synthesize missionName;
-
--(void)setMissionTypeId:(id)obj{
-    missionTypeId = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setMissionName:(id)obj{
-    missionName = [RORDBCommon getStringFromId:obj];
-}
+@dynamic missionName;
+@dynamic missionTypeId;
 
 @end

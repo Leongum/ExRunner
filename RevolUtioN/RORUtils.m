@@ -11,10 +11,6 @@
 
 @implementation RORUtils
 
-static NSNumber *userId = nil;
-
-static NSDate *systemTime = nil;
-
 + (NSString *)md5:(NSString *)str {
     const char *cStr = [str UTF8String];
     unsigned char result[16];
@@ -52,58 +48,9 @@ static NSDate *systemTime = nil;
     return regStr;
 }
 
-+ (NSNumber *)getUserId{
-    if (userId == nil || userId < 0){
-        NSMutableDictionary *userDict = [self getUserInfoPList];
-        userId = [userDict valueForKey:@"userId"];
-    }
-    if(userId == nil){
-        userId = [NSNumber numberWithInteger:-1];
-    }
-    return userId;
-}
-
-+ (NSString *)getUserUuid{
-    NSMutableDictionary *userDict = [self getUserInfoPList];
-    NSString *uuid = (NSString *)[userDict objectForKey:@"uuid"];
-    return uuid;
-}
-
-+(NSDate *)getSystemTime{
-    if (systemTime == nil){
-        NSMutableDictionary *userDict = [self getUserInfoPList];
-        systemTime = [userDict valueForKey:@"systemTime"];    }
-    return systemTime;
-}
-
-+ (void)resetUserId{
-    userId = [[NSNumber alloc] initWithInt:-1];
-}
-
 + (NSString*)getCityCodeJSon{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"CityCode" ofType:@"geojson"];
     return path;
-}
-
-+ (NSString*)getPM25CityJSon{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"PM25City" ofType:@"geojson"];
-    return path;
-}
-
-+ (NSString*)getUserSettingsPList{
-    NSArray *doc = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docPath = [ doc objectAtIndex:0 ];
-    return [docPath stringByAppendingPathComponent:@"userSettings.plist"];
-}
-
-+ (NSString *)hasLoggedIn{
-    NSMutableDictionary *userDict = [self getUserInfoPList];
-    NSString *name = [userDict valueForKey:@"nickName"];
-    
-    if (!([name isEqual:@""] || name == nil))
-        return name;
-    else
-        return nil;
 }
 
 +(NSString *)getCurrentTime{
@@ -125,129 +72,6 @@ static NSDate *systemTime = nil;
     [formate setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *formatDateString = [formate stringFromDate:date];
     return formatDateString;
-}
-
-+ (NSMutableDictionary *)getUserInfoPList{
-    NSArray *doc = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docPath = [ doc objectAtIndex:0 ];
-    NSString *path = [docPath stringByAppendingPathComponent:@"userInfo.plist"];
-    NSMutableDictionary *userDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
-    if (userDict == nil)
-        userDict = [[NSMutableDictionary alloc] init];
-    
-    return userDict;
-}
-
-+ (void)writeToUserInfoPList:(NSDictionary *) userDict{
-    NSArray *doc = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docPath = [ doc objectAtIndex:0 ];
-    NSString *path = [docPath stringByAppendingPathComponent:@"userInfo.plist"];
-    NSMutableDictionary *pInfo = [self getUserInfoPList];
-    [pInfo addEntriesFromDictionary:userDict];
-    [pInfo writeToFile:path atomically:YES];
-}
-
-+ (void)logout{
-    NSArray *doc = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docPath = [ doc objectAtIndex:0 ];
-    NSString *path = [docPath stringByAppendingPathComponent:@"userInfo.plist"];
-    NSMutableDictionary *logoutDict = [[NSMutableDictionary alloc] init];
-    [logoutDict setValue:[self getLastUpdateTime:@"MissionUpdateTime"] forKey:@"MissionUpdateTime"];
-    [logoutDict writeToFile:path atomically:YES];
-}
-
-+ (void)saveLastUpdateTime: (NSString *) key{
-    NSMutableDictionary *userDict = [self getUserInfoPList];
-    NSString *systemTime = (NSString *)[userDict objectForKey:@"systemTime"];
-    [userDict setValue:systemTime forKey:key];
-    [self writeToUserInfoPList:userDict];
-}
-
-+ (NSString *)getLastUpdateTime: (NSString *) key{
-    NSMutableDictionary *userDict = [self getUserInfoPList];
-    NSString *lastUpdateTime = (NSString *)[userDict objectForKey:key];
-    if(lastUpdateTime == nil){
-        lastUpdateTime = @"2000-01-01 00:00:00";
-    }
-    lastUpdateTime = [self getStringFromDate:[self getDateFromString:lastUpdateTime]];
-    return lastUpdateTime;
-}
-
-+(NSArray *)fetchFromDelegate:(NSString *) tableName withParams:(NSArray *) params withPredicate:(NSString *) query{
-    NSError *error;
-    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:context];
-    
-    [fetchRequest setEntity:entity];
-    [fetchRequest setReturnsObjectsAsFaults:NO];
-
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:query argumentArray:params];
-    [fetchRequest setPredicate:predicate];
-    NSArray *fetchObject = [context executeFetchRequest:fetchRequest error:&error];
-    if (fetchObject == nil || [fetchObject count] == 0) {
-        return nil;
-    }
-    return fetchObject;
-}
-
-+(NSArray *)fetchFromDelegate:(NSString *) tableName withParams:(NSArray *) params withPredicate:(NSString *) query withOrderBy:(NSArray *) sortParams{
-    NSError *error;
-    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:context];
-    
-    [fetchRequest setEntity:entity];
-    [fetchRequest setReturnsObjectsAsFaults:NO];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:query argumentArray:params];
-    [fetchRequest setPredicate:predicate];
-    [fetchRequest setSortDescriptors:sortParams];
-    NSArray *fetchObject = [context executeFetchRequest:fetchRequest error:&error];
-    if (fetchObject == nil || [fetchObject count] == 0) {
-        return nil;
-    }
-    return fetchObject;
-}
-
-+(void)deleteFromDelegate:(NSString *) tableName withParams:(NSArray *) params withPredicate:(NSString *) query{
-    NSError *error;
-    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:context];
-    
-    [fetchRequest setEntity:entity];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:query argumentArray:params];
-    [fetchRequest setPredicate:predicate];
-    NSArray *fetchObject = [context executeFetchRequest:fetchRequest error:&error];
-    for (NSManagedObject *info in fetchObject) {
-        [context deleteObject:info];
-    }
-    //保存修改
-    [context save:&error];
-}
-
-+ (void)clearTableData:(NSArray *) tableArray{
-    NSError *error;
-    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-    
-    for(NSString *table in tableArray){
-        NSEntityDescription *entity = [NSEntityDescription entityForName:table inManagedObjectContext:context];
-        [fetchRequest setEntity:entity];
-        NSError *error = nil;
-        NSArray *fetchObject = [context executeFetchRequest:fetchRequest error:&error];
-        for (NSManagedObject *info in fetchObject) {
-            [context deleteObject:info];
-        }
-    }
-    //保存修改
-    [context save:&error];
 }
 
 + (NSData*) gzipCompressData:(NSData*)pUncompressedData
@@ -455,22 +279,6 @@ static NSDate *systemTime = nil;
             if ([cityName rangeOfString:name].location != NSNotFound){
                 return [city valueForKey:@"编码"];
             }
-        }
-    }
-    return nil;
-}
-
-+(NSString *)getPM25CityByCityAndProvince:(NSString *)cityName andProvince:(NSString *)province{
-    if(cityName == nil && province == nil)return nil;
-    NSError *error;
-    NSData *PM25CityJson = [NSData dataWithContentsOfFile:[RORUtils getPM25CityJSon]];
-    NSDictionary *PM25CityDic = [NSJSONSerialization JSONObjectWithData:PM25CityJson options:NSJSONReadingMutableLeaves error:&error];
-    NSArray *cityList = [PM25CityDic objectForKey:@"cities"];
-    
-    for (int i=0; i<cityList.count; i++){
-        NSString *city = [cityList objectAtIndex:i];
-        if ([cityName rangeOfString:city].location != NSNotFound || [province rangeOfString:city].location != NSNotFound){
-            return city;
         }
     }
     return nil;

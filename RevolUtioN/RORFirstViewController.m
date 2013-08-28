@@ -42,7 +42,7 @@ NSInteger centerLoc =-10000;
 //    [weatherSubView addGestureRecognizer:panGes];
     
     //应用初始设置
-    NSString *userSettingDocPath = [RORUtils getUserSettingsPList];
+    NSString *userSettingDocPath = [RORUserUtils getUserSettingsPList];
     NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:userSettingDocPath];
     if (data == nil) {
         NSString *userSettingPath = [[NSBundle mainBundle] pathForResource:@"DefaultSettings" ofType:@"plist"];
@@ -96,7 +96,7 @@ NSInteger centerLoc =-10000;
 - (void)initPageData{
         
     //初始化用户名
-    NSMutableDictionary *userDict = [RORUtils getUserInfoPList];
+    NSMutableDictionary *userDict = [RORUserUtils getUserInfoPList];
     
     if ([userDict valueForKey:@"userId"] == nil){
         [userButton setTitle:@"请登录" forState:UIControlStateNormal];
@@ -113,7 +113,6 @@ NSInteger centerLoc =-10000;
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self initPageData];
-    NSLog(@"%f",userButton.frame.origin.x);
 }
 
 - (void)segueToLogin{

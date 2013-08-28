@@ -2,34 +2,34 @@
 //  Products.m
 //  RevolUtioN
 //
-//  Created by Beyond on 13-5-25.
+//  Created by leon on 13-8-28.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
 #import "Products.h"
-
+#import "RORDBCommon.h"
 
 @implementation Products
 
+@dynamic baseAcc;
+@dynamic crit;
+@dynamic details;
+@dynamic discount;
+@dynamic endTime;
+@dynamic endurance;
+@dynamic image;
+@dynamic inertiaAcc;
+@dynamic levelLimit;
+@dynamic luck;
+@dynamic money;
+@dynamic productDesc;
 @dynamic productId;
 @dynamic productName;
-@dynamic productDesc;
-@dynamic scores;
-@dynamic money;
-@dynamic triggerType;
-@dynamic levelLimit;
-@dynamic startTime;
-@dynamic endTime;
-@dynamic status;
-@dynamic discount;
-@dynamic image;
-@dynamic details;
-@dynamic baseAcc;
-@dynamic inertiaAcc;
-@dynamic crit;
-@dynamic luck;
-@dynamic endurance;
-@dynamic spirit;
 @dynamic rapidly;
+@dynamic scores;
+@dynamic spirit;
+@dynamic startTime;
+@dynamic status;
+@dynamic triggerType;
 
 @end

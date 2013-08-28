@@ -11,43 +11,56 @@
 @implementation RORUserServices
 
 + (User_Base *)fetchUserById:(NSNumber *) userId{
-    
+    return  [self fetchUserById:userId withContext:NO];
+}
+
++ (User_Base *)fetchUserById:(NSNumber *) userId withContext:(BOOL) needContext{
     NSString *table=@"User_Base";
     NSString *query = @"userId = %@";
     NSArray *params = [NSArray arrayWithObjects:userId, nil];
-    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
+    }
+    if (!needContext) {
+        return [User_Base removeAssociateForEntity:(User_Base *) [fetchObject objectAtIndex:0]];
     }
     return  (User_Base *) [fetchObject objectAtIndex:0];
 }
 
 +(User_Attributes *)fetchUserAttrsByUserId:(NSNumber *) userId{
+    return [self fetchUserAttrsByUserId:userId withContext:NO];
+}
+
++(User_Attributes *)fetchUserAttrsByUserId:(NSNumber *) userId withContext:(BOOL) needContext{
     NSString *table=@"User_Attributes";
     NSString *query = @"userId = %@";
     NSArray *params = [NSArray arrayWithObjects:userId, nil];
-    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
-    User_Attributes *result = (User_Attributes *) [fetchObject objectAtIndex:0];
-   return result;
-}
 
-+(void)test{
-    User_Attributes *attr = [self fetchUserAttrsByUserId:[RORUtils getUserId]];
-    attr.weight = [NSNumber numberWithDouble:23];
-    
+    if (!needContext) {
+        return[User_Attributes removeAssociateForEntity:(User_Attributes *) [fetchObject objectAtIndex:0]];
+    }
+    return   (User_Attributes *) [fetchObject objectAtIndex:0];
 }
-
 
 +(Friend *)fetchUserFriend:(NSNumber *) userId withFriendId:(NSNumber *) friendId{
+    return [self fetchUserFriend:userId withFriendId:friendId withContext:NO];
+}
+
++(Friend *)fetchUserFriend:(NSNumber *) userId withFriendId:(NSNumber *) friendId withContext:(BOOL) needContext{
     NSString *table=@"Friend";
     NSString *query = @"userId = %@ and friendId = %@";
     NSArray *params = [NSArray arrayWithObjects:userId,friendId, nil];
-    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
+    }
+    if (!needContext) {
+        return[Friend removeAssociateForEntity:(Friend *) [fetchObject objectAtIndex:0]];
     }
     return (Friend *) [fetchObject objectAtIndex:0];
 }
@@ -65,6 +78,11 @@
     return [self syncUserFromResponse:httpResponse];
 }
 
++(User_Base *)updateUserInfo:(NSDictionary *)updateDic{
+    RORHttpResponse *httpResponse = [RORUserClientHandler updateUserBaseInfo:updateDic];
+    return [self syncUserFromResponse:httpResponse];
+}
+
 +(User_Base *)syncUserInfoById:(NSNumber *)userId{
     if(userId <= 0) return nil;
     RORHttpResponse *httpResponse =[RORUserClientHandler getUserInfoById:userId];
@@ -79,39 +97,34 @@
 
 
 + (void) saveUserInfoToList:(User_Base *)user{
-    NSMutableDictionary *userDict = [RORUtils getUserInfoPList];
+    NSMutableDictionary *userDict = [RORUserUtils getUserInfoPList];
     [userDict setValue:user.userId forKey:@"userId"];
     [userDict setValue:user.nickName forKey:@"nickName"];
     [userDict setValue:user.uuid forKey:@"uuid"];
-    [RORUtils writeToUserInfoPList:userDict];
+    [RORUserUtils writeToUserInfoPList:userDict];
 }
     
 +(User_Base *)syncUserFromResponse:(RORHttpResponse *)httpResponse{
     NSError *error;
     User_Base *user = nil;
-    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
     
     if ([httpResponse responseStatus] == 200){
         NSDictionary *userInfoDic = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
         
         NSNumber *userId = [userInfoDic valueForKey:@"userId"];
         
-        user = [self fetchUserById:userId];
-        User_Attributes *userAttr = [self fetchUserAttrsByUserId:userId];
-        
+        user = [self fetchUserById:userId withContext:YES];
+        User_Attributes *userAttr = [self fetchUserAttrsByUserId:userId withContext:YES];
         
         if(user == nil)
-            user = [NSEntityDescription insertNewObjectForEntityForName:@"User_Base" inManagedObjectContext:context];
+            user = [NSEntityDescription insertNewObjectForEntityForName:@"User_Base" inManagedObjectContext:[RORContextUtils getShareContext]];
         [user initWithDictionary:userInfoDic];
         
         if(userAttr == nil)
-            userAttr = [NSEntityDescription insertNewObjectForEntityForName:@"User_Attributes" inManagedObjectContext:context];
+            userAttr = [NSEntityDescription insertNewObjectForEntityForName:@"User_Attributes" inManagedObjectContext:[RORContextUtils getShareContext]];
         [userAttr initWithDictionary:userInfoDic];
-        
-        if (![context save:&error]) {
-            NSLog(@"%@",[error localizedDescription]);
-        }
+
+        [RORContextUtils saveContext];
         user.attributes = userAttr;
         [self saveUserInfoToList:user];
     }else {
@@ -124,9 +137,8 @@
     if(userId > 0)
     {
         NSError *error = nil;
-        RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *context = delegate.managedObjectContext;
-        NSString *lastUpdateTime = [RORUtils getLastUpdateTime:@"FriendUpdateTime"];
+        NSManagedObjectContext *context = [RORContextUtils getShareContext];
+        NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"FriendUpdateTime"];
         RORHttpResponse *httpResponse =[RORUserClientHandler getUserFriends:userId withLastUpdateTime:lastUpdateTime];
         
         if ([httpResponse responseStatus] == 200){
@@ -134,17 +146,14 @@
             for (NSDictionary *friendDict in friendList){
                 NSNumber *userIdNum = [friendDict valueForKey:@"userId"];
                 NSNumber *friendIdNum = [friendDict valueForKey:@"friendId"];
-                Friend *friendEntity = [self fetchUserFriend:userIdNum withFriendId:friendIdNum];
+                Friend *friendEntity = [self fetchUserFriend:userIdNum withFriendId:friendIdNum withContext:YES];
                 if(friendEntity == nil)
                     friendEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:context];
                 [friendEntity initWithDictionary:friendDict];
             }
             
-            if (![context save:&error]) {
-                NSLog(@"%@",[error localizedDescription]);
-            }
-            
-            [RORUtils saveLastUpdateTime:@"FriendUpdateTime"];
+            [RORContextUtils saveContext];
+            [RORUserUtils saveLastUpdateTime:@"FriendUpdateTime"];
         } else {
             NSLog(@"sync with host error: can't get user's friends list. Status Code: %d", [httpResponse responseStatus]);
         }
@@ -153,7 +162,7 @@
 
 +(void)clearUserData{
     NSArray *tables = [NSArray arrayWithObjects:@"User",@"User_Attributes",@"Friend",@"User_Last_Location",@"User_Running_History",@"User_Running", nil];
-    [RORUtils clearTableData:tables];
+    [RORContextUtils clearTableData:tables];
 }
 
 @end

@@ -2,7 +2,7 @@
 //  User_Running.m
 //  RevolUtioN
 //
-//  Created by Beyond on 13-5-25.
+//  Created by leon on 13828.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
@@ -11,70 +11,46 @@
 
 @implementation User_Running
 
-@synthesize userId;
-@synthesize runUuid;
-@synthesize missionId;
-@synthesize missionTypeId;
-@synthesize missionStatus;
-@synthesize startTime;
-@synthesize endTime;
-@synthesize commitTime;
+@dynamic commitTime;
+@dynamic endTime;
+@dynamic missionId;
+@dynamic missionStatus;
+@dynamic missionTypeId;
+@dynamic runUuid;
+@dynamic startTime;
+@dynamic userId;
+
++(User_Running *) removeAssociateForEntity:(User_Running *)associatedEntity{
+    NSManagedObjectContext *context = [RORContextUtils getShareContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User_Running" inManagedObjectContext:context];
+    User_Running *unassociatedEntity = [[User_Running alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    for (NSString *attr in [[entity attributesByName] allKeys]) {
+        [unassociatedEntity setValue:[associatedEntity valueForKey:attr] forKey:attr];
+    }
+    return unassociatedEntity;
+}
 
 -(NSMutableDictionary *)transToDictionary{
     NSMutableDictionary *tempoDict = [[NSMutableDictionary alloc] init];
-    [tempoDict setValue:userId forKey:@"userId"];
-    [tempoDict setValue:userId forKey:@"runUuid"];
-    [tempoDict setValue:missionId forKey:@"missionId"];
-    [tempoDict setValue:missionTypeId forKey:@"missionTypeId"];
-    [tempoDict setValue:missionStatus forKey:@"missionStatus"];
-    [tempoDict setValue:[RORDBCommon getStringFromId:startTime] forKey:@"startTime"];
-    [tempoDict setValue:[RORDBCommon getStringFromId:startTime] forKey:@"endTime"];
-    [tempoDict setValue:[RORDBCommon getStringFromId:commitTime] forKey:@"commitTime"];
+    [tempoDict setValue:self.userId forKey:@"userId"];
+    [tempoDict setValue:self.runUuid forKey:@"runUuid"];
+    [tempoDict setValue:self.missionId forKey:@"missionId"];
+    [tempoDict setValue:self.missionTypeId forKey:@"missionTypeId"];
+    [tempoDict setValue:self.missionStatus forKey:@"missionStatus"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.startTime] forKey:@"startTime"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.startTime] forKey:@"endTime"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.commitTime] forKey:@"commitTime"];
     return tempoDict;
 }
 
 -(void)initWithDictionary:(NSDictionary *)dict{
-    self.userId = [dict valueForKey:@"userId"];
-    self.runUuid = [dict valueForKey:@"runUuid"];
-    self.missionId = [dict valueForKey:@"missionId"];
-    self.missionTypeId = [dict valueForKey:@"missionTypeId"];
-    self.missionStatus = [dict valueForKey:@"missionStatus"];
+    self.userId = [RORDBCommon getNumberFromId:[dict valueForKey:@"userId"]];
+    self.runUuid = [RORDBCommon getStringFromId:[dict valueForKey:@"runUuid"]];
+    self.missionId = [RORDBCommon getNumberFromId:[dict valueForKey:@"missionId"]];
+    self.missionTypeId = [RORDBCommon getNumberFromId:[dict valueForKey:@"missionTypeId"]];
+    self.missionStatus = [RORDBCommon getNumberFromId:[dict valueForKey:@"missionStatus"]];
     self.startTime = [RORDBCommon getDateFromId:[dict valueForKey:@"startTime"]];
     self.endTime = [RORDBCommon getDateFromId:[dict valueForKey:@"endTime"]];
     self.commitTime = [RORDBCommon getDateFromId:[dict valueForKey:@"commitTime"]];
 }
-
-
--(void)setUserId:(id)obj{
-    userId = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setRunUuid:(id)obj{
-    runUuid = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setMissionId:(id)obj{
-    missionId = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setMissionTypeId:(id)obj{
-    missionTypeId = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setMissionStatus:(id)obj{
-    missionStatus = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setStartTime:(id)obj{
-    startTime = [RORDBCommon getDateFromId:obj];
-}
-
--(void)setEndTime:(id)obj{
-    endTime = [RORDBCommon getDateFromId:obj];
-}
-
--(void)setCommitTime:(id)obj{
-    commitTime = [RORDBCommon getDateFromId:obj];
-}
-
 @end

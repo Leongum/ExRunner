@@ -8,7 +8,7 @@
 
 #import "RORPeriodicPickerViewController.h"
 #import "RORAppDelegate.h"
-#import "RORUtils.h"
+#import "RORUserUtils.h"
 #import "Mission.h"
 #import "RORConstant.h"
 
@@ -68,9 +68,9 @@
 }
 
 - (IBAction)okAction:(id)sender {
-    NSMutableDictionary *userDict = [RORUtils getUserInfoPList];
+    NSMutableDictionary *userDict = [RORUserUtils getUserInfoPList];
     [userDict setValue:self.startingMissionId forKey:@"periodic"];
-    [RORUtils writeToUserInfoPList:userDict];
+    [RORUserUtils writeToUserInfoPList:userDict];
 //    [delegate viewDidLoad];
     
     [self.navigationController popViewControllerAnimated:YES];

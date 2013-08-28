@@ -49,7 +49,7 @@
 -(void)loadData{
     NSError *error;
 
-    content = [RORUserServices fetchUser:[RORUtils getUserId]];
+    content = [RORUserServices fetchUser:[RORUserUtils getUserId]];
     
 }
 

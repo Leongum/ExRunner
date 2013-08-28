@@ -11,6 +11,7 @@
 #import "RORHttpResponse.h"
 #import "RORSystemClientHandler.h"
 #import "Version_Control.h"
+#import "RORContextUtils.h"
 
 @interface RORSystemService : NSObject
 

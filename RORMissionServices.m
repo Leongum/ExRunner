@@ -11,18 +11,22 @@
 
 @implementation RORMissionServices
 
-
 +(Mission *)fetchPackageMission:(NSNumber *) packageMissionId{
+    return [self fetchPackageMission:packageMissionId withContext:NO];
+}
+
++(Mission *)fetchPackageMission:(NSNumber *) packageMissionId withContext:(BOOL) needContext{
     
     NSString *table=@"Mission";
     MissionTypeEnum cycle = Cycle;
     NSString *query = @"missionId = %@ and missionTypeId = %@";
     NSArray *params = [NSArray arrayWithObjects:packageMissionId, (int)cycle, nil];
     
-    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
+
     Mission *packageMission = (Mission *) [fetchObject objectAtIndex:0];
     
     query = @"missionPackageId = %@ and missionTypeId = %@";
@@ -30,20 +34,25 @@
     params = [NSArray arrayWithObjects:packageMissionId, (int)subCycle, nil];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:YES];
     NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
-    fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
-    packageMission.subMissionPackageList = [(NSArray*)fetchObject mutableCopy];
+    packageMission.subMissionPackageList = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
+    if(!needContext){
+        return [Mission removeAssociateForEntity:packageMission];
+    }
     return packageMission;
-    
 }
 
 +(Mission *)fetchRecommandMission:(NSNumber *) recommandMissionId{
+    return [self fetchRecommandMission:recommandMissionId withContext:NO];
+}
+
++(Mission *)fetchRecommandMission:(NSNumber *) recommandMissionId withContext:(BOOL) needContext{
     
     NSString *table=@"Mission";
     MissionTypeEnum recommand = Recommand;
     NSString *query = @"missionId = %@ and missionTypeId = %@";
     NSArray *params = [NSArray arrayWithObjects:recommandMissionId, (int)recommand, nil];
     
-    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
@@ -55,11 +64,13 @@
         params = [NSArray arrayWithObjects:recommandMission.missionPlacePackageId, nil];
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:YES];
         NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
-        fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
+        fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
         recommandMission.missionPlacePackageList = [(NSArray*)fetchObject mutableCopy];
     }
+    if(!needContext){
+        return [Mission removeAssociateForEntity:recommandMission];
+    }
     return recommandMission;
-    
 }
 
 +(Mission *)fetchMissionDetails:(Mission *) mission{
@@ -67,10 +78,11 @@
     if([mission.missionTypeId intValue] == (int)Cycle){
         NSString *table=@"Mission";
         NSString *query = @"missionPackageId = %@ and missionTypeId = %@";
-        NSArray *params = [NSArray arrayWithObjects:mission.missionId, (int)SubCycle, nil];
+        NSLog(@"%@",mission.missionId);
+        NSArray *params = [NSArray arrayWithObjects:mission.missionId, [NSNumber numberWithInt:(int)SubCycle], nil];
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:NO];
         NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
-        NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
+        NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
         mission.subMissionPackageList = [(NSArray*)fetchObject mutableCopy];
     }
     if([mission.missionTypeId intValue] == (int)Recommand && mission.missionPlacePackageId != nil){
@@ -79,7 +91,7 @@
         NSArray *params = [NSArray arrayWithObjects:mission.missionPlacePackageId, nil];
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:NO];
         NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
-        NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
+        NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
         mission.missionPlacePackageList = [(NSArray*)fetchObject mutableCopy];
     }
     if(mission.challengeId != nil){
@@ -88,7 +100,7 @@
         NSArray *params = [NSArray arrayWithObjects:mission.challengeId, nil];
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:NO];
         NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
-        NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
+        NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
         mission.challengeList = [(NSArray*)fetchObject mutableCopy];
     }
     return mission;
@@ -96,34 +108,49 @@
 }
 
 +(Mission *)fetchMission:(NSNumber *) missionId{
+    return [self fetchMission:missionId withContext:NO];
+}
+
++(Mission *)fetchMission:(NSNumber *) missionId withContext:(BOOL) needContext{
     NSString *table=@"Mission";
     NSString *query = @"missionId = %@";
     NSArray *params = [NSArray arrayWithObjects:missionId, nil];
-    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
     Mission *mission = (Mission *) [fetchObject objectAtIndex:0];
-    return [self fetchMissionDetails:mission];
+    mission = [self fetchMissionDetails:mission];
+    if(!needContext){
+        return [Mission removeAssociateForEntity:mission];
+    }
+    return mission;
 }
 
 +(NSArray *)fetchMissionList:(MissionTypeEnum *) missionType{
+    return [self fetchMissionList:missionType withContext:NO];
+}
+
++(NSArray *)fetchMissionList:(MissionTypeEnum *) missionType withContext:(BOOL) needContext{
     NSString *table=@"Mission";
     NSString *query = @"missionTypeId = %@";
     NSArray *params = [NSArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)missionType], nil];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"missionId" ascending:YES];
     NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
-    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
     NSMutableArray *missionDetails = [NSMutableArray arrayWithCapacity:10];
-
     for (Mission *mission in fetchObject) {
-        if ([mission isFault]){
-            NSLog(@"isFault");
+        Mission *detailMission = [self fetchMissionDetails:mission];
+        if(!needContext){
+            [missionDetails addObject:[Mission removeAssociateForEntity:detailMission]];
         }
-        [missionDetails addObject: [self fetchMissionDetails:mission]];
+        else
+        {
+            [missionDetails addObject: detailMission];
+        }
     }
     return [(NSArray*)missionDetails mutableCopy];;
 }
@@ -132,21 +159,20 @@
     NSString *table=@"Place_Package";
     NSString *query = @"packageId = %@";
     NSArray *params = [NSArray arrayWithObjects:placePackageId, nil];
-    [RORUtils deleteFromDelegate:table withParams:params withPredicate:query];
+    [RORContextUtils deleteFromDelegate:table withParams:params withPredicate:query];
 }
 
 +(void) deleteChallenges:(NSNumber *) challengeId{
     NSString *table=@"Mission_Challenge";
     NSString *query = @"challengeId = %@";
     NSArray *params = [NSArray arrayWithObjects:challengeId, nil];
-    [RORUtils deleteFromDelegate:table withParams:params withPredicate:query];
+    [RORContextUtils deleteFromDelegate:table withParams:params withPredicate:query];
 }
 
 + (Boolean)syncMissions{
     NSError *error = nil;
-    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSString *lastUpdateTime = [RORUtils getLastUpdateTime:@"MissionUpdateTime"];
+    NSManagedObjectContext *context = [RORContextUtils getShareContext];
+    NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"MissionUpdateTime"];
     
     /* 
     //only need sync challenge
@@ -161,7 +187,7 @@
         NSArray *missionList = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
         for (NSDictionary *missionDict in missionList){
             NSNumber *missionId = [missionDict valueForKey:@"missionId"];
-            Mission *missionEntity = [self fetchMission:missionId];
+            Mission *missionEntity = [self fetchMission:missionId withContext:YES];
             if(missionEntity == nil)
                 missionEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Mission" inManagedObjectContext:context];
             [missionEntity initWithDictionary:missionDict];
@@ -184,11 +210,9 @@
                 }
             }
         }
-        if (![context save:&error]) {
-            NSLog(@"%@",[error localizedDescription]);
-        }
         
-        [RORUtils saveLastUpdateTime:@"MissionUpdateTime"];
+        [RORContextUtils saveContext];
+        [RORUserUtils saveLastUpdateTime:@"MissionUpdateTime"];
     } else {
         NSLog(@"sync with host error: can't get mission list. Status Code: %d", [httpResponse responseStatus]);
         return NO;

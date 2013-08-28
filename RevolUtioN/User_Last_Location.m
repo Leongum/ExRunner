@@ -2,18 +2,18 @@
 //  User_Last_Location.m
 //  RevolUtioN
 //
-//  Created by Beyond on 13-5-25.
+//  Created by leon on 13-8-28.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
 #import "User_Last_Location.h"
-
+#import "RORDBCommon.h"
 
 @implementation User_Last_Location
 
-@dynamic userId;
+@dynamic lastActiveTime;
 @dynamic lastLocationContent;
 @dynamic lastLocationPoint;
-@dynamic lastActiveTime;
+@dynamic userId;
 
 @end

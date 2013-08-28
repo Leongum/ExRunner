@@ -1,8 +1,8 @@
 //
-//  User.h
+//  User_Base.h
 //  RevolUtioN
 //
-//  Created by leon on 13-7-23.
+//  Created by leon on 13-8-28.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
@@ -19,12 +19,13 @@
 @property (nonatomic, retain) NSString * userEmail;
 @property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) NSString * uuid;
+
 @property (nonatomic, retain) User_Attributes * attributes;
 
-//init user_base
-+(User_Base *)init;
++(User_Base *) intiUnassociateEntity;
 
--(NSMutableDictionary *)transToDictionary;
++(User_Base *) removeAssociateForEntity:(User_Base *)associatedEntity;
+
 -(void)initWithDictionary:(NSDictionary *)dict;
 
 @end
