@@ -33,8 +33,9 @@
     return httpResponse;
 }
 
-+(RORHttpResponse *)updateUserBaseInfo:(NSDictionary *) userInfo{
-    RORHttpResponse *httpResponse = [RORHttpClientHandler putRequest:USER_ADDITIONAL_UPDATE withRequstBody:[RORUtils toJsonFormObject:userInfo]];
++(RORHttpResponse *)updateUserBaseInfo:(NSNumber *)userId withUserInfo:(NSDictionary *) userInfo{
+    NSString *url = [NSString stringWithFormat:USER_ADDITIONAL_UPDATE ,userId];
+    RORHttpResponse *httpResponse = [RORHttpClientHandler putRequest:url withRequstBody:[RORUtils toJsonFormObject:userInfo]];
     return httpResponse;
 }
 

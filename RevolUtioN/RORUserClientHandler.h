@@ -22,6 +22,6 @@
 
 +(RORHttpResponse *)getUserInfoById:(NSNumber *) userId;
 
-+(RORHttpResponse *)updateUserBaseInfo:(NSDictionary *) userInfo;
++(RORHttpResponse *)updateUserBaseInfo:(NSNumber *)userId withUserInfo:(NSDictionary *) userInfo;
 
 @end

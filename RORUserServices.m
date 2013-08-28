@@ -79,7 +79,7 @@
 }
 
 +(User_Base *)updateUserInfo:(NSDictionary *)updateDic{
-    RORHttpResponse *httpResponse = [RORUserClientHandler updateUserBaseInfo:updateDic];
+    RORHttpResponse *httpResponse = [RORUserClientHandler updateUserBaseInfo:[RORUserUtils getUserId] withUserInfo:updateDic];
     return [self syncUserFromResponse:httpResponse];
 }
 
