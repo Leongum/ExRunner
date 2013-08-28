@@ -43,7 +43,7 @@
     NSNumber *userId = [RORUserUtils getUserId];
     
     NSString *table=@"User_Running_History";
-    NSString *query = @"(userId = %@ or userId = -1) and commitDate.length <= 0";
+    NSString *query = @"(userId = %@ or userId = -1) and commitTime = nil";
     NSArray *params = [NSArray arrayWithObjects:userId, nil];
     NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
@@ -54,6 +54,7 @@
         for (User_Running_History *histroy in fetchObject) {
             User_Running_History *newHistory = [User_Running_History removeAssociateForEntity:histroy];
             newHistory.userId = userId;
+            newHistory.commitTime = [RORUserUtils getSystemTime];
             [historyList addObject:newHistory];
         }
         return [historyList copy];
@@ -66,7 +67,7 @@
     NSNumber *userId = [RORUserUtils getUserId];
     
     NSString *table=@"User_Running";
-    NSString *query = @"(userId = %@ or userId = -1) and commitDate.length <= 0";
+    NSString *query = @"(userId = %@ or userId = -1) and commitTime = nil";
     NSArray *params = [NSArray arrayWithObjects:userId, nil];
     NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
@@ -77,6 +78,7 @@
         for (User_Running *histroy in fetchObject) {
             User_Running *newHistory = [User_Running removeAssociateForEntity:histroy];
             newHistory.userId = userId;
+            newHistory.commitTime = [RORUserUtils getSystemTime];
             [historyList addObject:newHistory];
         }
         return [historyList copy];
@@ -131,6 +133,8 @@
     
 }
 
+
+
 +(User_Running *)fetchUserRunningByRunId:(NSString *) runId{
     return [self fetchUserRunningByRunId:runId withContext:NO];
 }
@@ -152,7 +156,11 @@
 + (Boolean)uploadRunningHistories{
     NSNumber *userId = [RORUserUtils getUserId];
     NSArray *dataList = [self fetchUnsyncedRunHistories:NO];
-    RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createRunHistories:userId withRunHistories:dataList];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (User_Running_History *history in dataList) {
+        [array addObject:history.transToDictionary];
+    }
+    RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createRunHistories:userId withRunHistories:array];
     
     if ([httpResponse responseStatus] == 200){
         [self updateUnsyncedRunHistories];
@@ -204,12 +212,18 @@
         }
         [RORContextUtils saveContext];
     }
+    [self syncRunningHistories];
+    [self updateUnsyncedRunHistories];
 }
 
 + (void)uploadUserRunning{
     NSNumber *userId = [RORUserUtils getUserId];
     NSArray *dataList = [self fetchUnsyncedUserRunning:NO];
-    RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createUserRunning:userId withUserRun:dataList];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (User_Running *history in dataList) {
+        [array addObject:history.transToDictionary];
+    }
+    RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createUserRunning:userId withUserRun:array];
     
     if ([httpResponse responseStatus] == 200){
         [self updateUnsyncedUserRunning];

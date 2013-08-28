@@ -42,11 +42,14 @@
     if ([httpResponse responseStatus] == 200){
         NSDictionary *versionInfo = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
         Version_Control *versionEntity = [self fetchVersionInfo:platform withContext:YES];
+        NSLog(@"%@",versionEntity.systemTime);
+        NSLog(@"%@",versionEntity.version);
         if(versionEntity == nil)
             versionEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Version_Control" inManagedObjectContext:[RORContextUtils getShareContext]];
         [versionEntity initWithDictionary:versionInfo];
         
         [RORContextUtils saveContext];
+        NSLog(@"%@",versionEntity.systemTime);
         [self saveSystimeTime:[RORUtils getStringFromDate:versionEntity.systemTime]];
     } else {
         NSLog(@"sync with host error: can't get version info. Status Code: %d", [httpResponse responseStatus]);

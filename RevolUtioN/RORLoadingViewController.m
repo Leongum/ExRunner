@@ -38,7 +38,8 @@
     if([userId intValue] > 0){
         [RORUserServices syncUserInfoById:userId];
         //sync runningHistory
-        //[RORRunHistoryServices syncRunningHistories];
+        [RORRunHistoryServices syncRunningHistories];
+        [RORRunHistoryServices uploadRunningHistories];
     }
     //sync missions
     [RORMissionServices syncMissions];

@@ -10,7 +10,7 @@
 
 @implementation RORRunHistoryClientHandler
 
-+(RORHttpResponse *)createRunHistories:(NSNumber *) userId withRunHistories:(NSArray *) runHistories{
++(RORHttpResponse *)createRunHistories:(NSNumber *) userId withRunHistories:(NSMutableArray *) runHistories{
     NSString *requestUrl = [NSString stringWithFormat:POST_RUNNING_HISTORY_URL, userId];
     RORHttpResponse *httpResponse = [RORHttpClientHandler postRequest:requestUrl withRequstBody:[RORUtils toJsonFormObject:runHistories]];
     return httpResponse;
@@ -22,7 +22,7 @@
     return httpResponse;
 }
 
-+(RORHttpResponse *)createUserRunning:(NSNumber *) userId withUserRun:(NSArray *) userRunning{
++(RORHttpResponse *)createUserRunning:(NSNumber *) userId withUserRun:(NSMutableArray *) userRunning{
     NSString *requestUrl = [NSString stringWithFormat:POST_USER_RUNNING_URL, userId];
     RORHttpResponse *httpResponse = [RORHttpClientHandler postRequest:requestUrl withRequstBody:[RORUtils toJsonFormObject:userRunning]];
     return httpResponse;

@@ -23,7 +23,7 @@
     if ([obj isKindOfClass:[NSString class]]){
         NSString *str = (NSString *)obj;
         NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-        [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         NSDate *date = [formatter dateFromString:str];
         return date;
     } else if([obj isKindOfClass:[NSDate class]]){

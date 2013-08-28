@@ -14,11 +14,11 @@
 
 @interface RORRunHistoryClientHandler : NSObject
 
-+(RORHttpResponse *)createRunHistories:(NSNumber *) userId withRunHistories:(NSArray *) runHistories;
++(RORHttpResponse *)createRunHistories:(NSNumber *) userId withRunHistories:(NSMutableArray *) runHistories;
 
 +(RORHttpResponse *)getRunHistories:(NSNumber *)userId withLastUpdateTime:(NSString *) lastUpdateTime;
 
-+(RORHttpResponse *)createUserRunning:(NSNumber *) userId withUserRun:(NSArray *) userRunning;
++(RORHttpResponse *)createUserRunning:(NSNumber *) userId withUserRun:(NSMutableArray *) userRunning;
 
 +(RORHttpResponse *)getUserRunning:(NSNumber *)userId withLastUpdateTime:(NSString *) lastUpdateTime;
 

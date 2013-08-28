@@ -44,7 +44,9 @@
 
 + (NSString *)toJsonFormObject:(NSObject *)object{
     SBJsonWriter *writer = [[SBJsonWriter alloc] init];
+    writer.humanReadable = YES;
     NSString *regStr = [writer stringWithObject:object];
+    NSLog(@"%@",regStr);
     return regStr;
 }
 
