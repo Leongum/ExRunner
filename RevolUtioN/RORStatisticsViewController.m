@@ -7,6 +7,7 @@
 //
 
 #import "RORStatisticsViewController.h"
+#import "RORHistoryPageViewController.h"
 
 @interface RORStatisticsViewController ()
 
@@ -26,6 +27,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [RORUtils setFontFamily:@"FZKaTong-M19S" forView:self.view andSubViews:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,4 +36,40 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [self initTableData];
+}
+
+-(void)initTableData{
+    totalCalorie = 0;
+    totalDistance = 0;
+    avgSpeed = 0;
+    
+    NSMutableArray *filter = ((RORHistoryPageViewController*)[self parentViewController]).filter;
+    
+    NSArray *fetchObject = [RORRunHistoryServices fetchRunHistory];
+    
+    for (User_Running_History *historyObj in fetchObject) {
+        NSNumber *missionType = (NSNumber *)[historyObj valueForKey:@"missionTypeId"];
+        
+        if (![filter containsObject:missionType]) {
+            continue;
+        }
+        totalDistance += historyObj.distance.doubleValue;
+        totalCalorie += historyObj.spendCarlorie.doubleValue;
+        avgSpeed += historyObj.avgSpeed.doubleValue;
+    }
+    avgSpeed/=fetchObject.count;
+    
+    self.totalDistanceLabel.text = [RORUtils outputDistance:[NSNumber numberWithDouble:totalDistance]];
+    self.totalSpeedLabel.text = [NSString stringWithFormat:@"%.2f km/s", avgSpeed];
+    self.totalCalorieLabel.text = [NSString stringWithFormat:@"%.2f kca", totalCalorie];
+}
+
+- (void)viewDidUnload {
+    [self setTotalDistanceLabel:nil];
+    [self setTotalSpeedLabel:nil];
+    [self setTotalCalorieLabel:nil];
+    [super viewDidUnload];
+}
 @end
