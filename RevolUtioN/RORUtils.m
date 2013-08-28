@@ -177,7 +177,6 @@ static NSDate *systemTime = nil;
     NSError *error;
     RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
-    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:context];
     
@@ -217,7 +216,7 @@ static NSDate *systemTime = nil;
     NSError *error;
     RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
-    
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:context];
     

@@ -30,8 +30,16 @@
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
-    return   (User_Attributes *) [fetchObject objectAtIndex:0];
+    User_Attributes *result = (User_Attributes *) [fetchObject objectAtIndex:0];
+   return result;
 }
+
++(void)test{
+    User_Attributes *attr = [self fetchUserAttrsByUserId:[RORUtils getUserId]];
+    attr.weight = [NSNumber numberWithDouble:23];
+    
+}
+
 
 +(Friend *)fetchUserFriend:(NSNumber *) userId withFriendId:(NSNumber *) friendId{
     NSString *table=@"Friend";

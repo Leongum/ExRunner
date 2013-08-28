@@ -81,8 +81,6 @@
 		30166A9717C3B84C0035C722 /* main_challenge_btn_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166A8C17C3B84C0035C722 /* main_challenge_btn_bg@2x.png */; };
 		30166A9817C3B84C0035C722 /* main_run_btn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166A8D17C3B84C0035C722 /* main_run_btn_bg.png */; };
 		30166A9917C3B84C0035C722 /* main_run_btn_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166A8E17C3B84C0035C722 /* main_run_btn_bg@2x.png */; };
-		30166A9A17C3B84C0035C722 /* main_trafficlight_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166A8F17C3B84C0035C722 /* main_trafficlight_bg.png */; };
-		30166A9B17C3B84C0035C722 /* main_trafficlight_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166A9017C3B84C0035C722 /* main_trafficlight_bg@2x.png */; };
 		30166A9C17C3B84C0035C722 /* main_username_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166A9117C3B84C0035C722 /* main_username_bg.png */; };
 		30166A9D17C3B84C0035C722 /* main_username_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166A9217C3B84C0035C722 /* main_username_bg@2x.png */; };
 		30166A9F17C3C14B0035C722 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166A9E17C3C14B0035C722 /* main_bg@2x.png */; };
@@ -143,6 +141,14 @@
 		30A6D9CE17CA641100D1116E /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9CC17CA641100D1116E /* map@2x.png */; };
 		30A6D9D017CA65F100D1116E /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9CF17CA65F100D1116E /* check.png */; };
 		30A6D9D517CB2C8900D1116E /* RORFunnyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9D417CB2C8900D1116E /* RORFunnyButton.m */; };
+		30A6D9E117CC93AE00D1116E /* RORBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9E017CC93AE00D1116E /* RORBodyViewController.m */; };
+		30A6D9EF17CDD58700D1116E /* main_trafficlight_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9E917CDD58600D1116E /* main_trafficlight_green.png */; };
+		30A6D9F017CDD58700D1116E /* main_trafficlight_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9EA17CDD58600D1116E /* main_trafficlight_green@2x.png */; };
+		30A6D9F117CDD58700D1116E /* main_trafficlight_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9EB17CDD58600D1116E /* main_trafficlight_red.png */; };
+		30A6D9F217CDD58700D1116E /* main_trafficlight_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9EC17CDD58600D1116E /* main_trafficlight_red@2x.png */; };
+		30A6D9F317CDD58700D1116E /* main_trafficlight_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9ED17CDD58700D1116E /* main_trafficlight_yellow.png */; };
+		30A6D9F417CDD58700D1116E /* main_trafficlight_yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9EE17CDD58700D1116E /* main_trafficlight_yellow@2x.png */; };
+		30A6D9F617CDD8CA00D1116E /* FZKATJW.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9F517CDD8CA00D1116E /* FZKATJW.TTF */; };
 		30BB0AF51761AE610009A847 /* RORMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0AF41761AE610009A847 /* RORMallViewController.m */; };
 		30BB0AF81761BEA10009A847 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = 30BB0AF61761BEA10009A847 /* history.png */; };
 		30BB0AF91761BEA10009A847 /* history@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30BB0AF71761BEA10009A847 /* history@2x.png */; };
@@ -380,8 +386,6 @@
 		30166A8C17C3B84C0035C722 /* main_challenge_btn_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_challenge_btn_bg@2x.png"; sourceTree = "<group>"; };
 		30166A8D17C3B84C0035C722 /* main_run_btn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_run_btn_bg.png; sourceTree = "<group>"; };
 		30166A8E17C3B84C0035C722 /* main_run_btn_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_run_btn_bg@2x.png"; sourceTree = "<group>"; };
-		30166A8F17C3B84C0035C722 /* main_trafficlight_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_trafficlight_bg.png; sourceTree = "<group>"; };
-		30166A9017C3B84C0035C722 /* main_trafficlight_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_trafficlight_bg@2x.png"; sourceTree = "<group>"; };
 		30166A9117C3B84C0035C722 /* main_username_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_username_bg.png; sourceTree = "<group>"; };
 		30166A9217C3B84C0035C722 /* main_username_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_username_bg@2x.png"; sourceTree = "<group>"; };
 		30166A9E17C3C14B0035C722 /* main_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@2x.png"; sourceTree = "<group>"; };
@@ -477,6 +481,15 @@
 		30A6D9CF17CA65F100D1116E /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		30A6D9D317CB2C8800D1116E /* RORFunnyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORFunnyButton.h; sourceTree = "<group>"; };
 		30A6D9D417CB2C8900D1116E /* RORFunnyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORFunnyButton.m; sourceTree = "<group>"; };
+		30A6D9DF17CC93AE00D1116E /* RORBodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORBodyViewController.h; sourceTree = "<group>"; };
+		30A6D9E017CC93AE00D1116E /* RORBodyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORBodyViewController.m; sourceTree = "<group>"; };
+		30A6D9E917CDD58600D1116E /* main_trafficlight_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_trafficlight_green.png; sourceTree = "<group>"; };
+		30A6D9EA17CDD58600D1116E /* main_trafficlight_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_trafficlight_green@2x.png"; sourceTree = "<group>"; };
+		30A6D9EB17CDD58600D1116E /* main_trafficlight_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_trafficlight_red.png; sourceTree = "<group>"; };
+		30A6D9EC17CDD58600D1116E /* main_trafficlight_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_trafficlight_red@2x.png"; sourceTree = "<group>"; };
+		30A6D9ED17CDD58700D1116E /* main_trafficlight_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_trafficlight_yellow.png; sourceTree = "<group>"; };
+		30A6D9EE17CDD58700D1116E /* main_trafficlight_yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_trafficlight_yellow@2x.png"; sourceTree = "<group>"; };
+		30A6D9F517CDD8CA00D1116E /* FZKATJW.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = FZKATJW.TTF; path = Resources/FZKATJW.TTF; sourceTree = "<group>"; };
 		30BB0AF31761AE610009A847 /* RORMallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMallViewController.h; sourceTree = "<group>"; };
 		30BB0AF41761AE610009A847 /* RORMallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMallViewController.m; sourceTree = "<group>"; };
 		30BB0AF61761BEA10009A847 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
@@ -815,6 +828,8 @@
 				30C658911755DF630076AFA3 /* RORCityPickerViewController.m */,
 				301250EE177B21A60082A09A /* RORAccountViewController.h */,
 				301250EF177B21A60082A09A /* RORAccountViewController.m */,
+				30A6D9DF17CC93AE00D1116E /* RORBodyViewController.h */,
+				30A6D9E017CC93AE00D1116E /* RORBodyViewController.m */,
 			);
 			name = RORMorePage;
 			sourceTree = "<group>";
@@ -873,6 +888,12 @@
 		30166A8717C3B84C0035C722 /* main */ = {
 			isa = PBXGroup;
 			children = (
+				30A6D9E917CDD58600D1116E /* main_trafficlight_green.png */,
+				30A6D9EA17CDD58600D1116E /* main_trafficlight_green@2x.png */,
+				30A6D9EB17CDD58600D1116E /* main_trafficlight_red.png */,
+				30A6D9EC17CDD58600D1116E /* main_trafficlight_red@2x.png */,
+				30A6D9ED17CDD58700D1116E /* main_trafficlight_yellow.png */,
+				30A6D9EE17CDD58700D1116E /* main_trafficlight_yellow@2x.png */,
 				30166A9E17C3C14B0035C722 /* main_bg@2x.png */,
 				30166A8817C3B84C0035C722 /* main_bg.png */,
 				30166A8917C3B84C0035C722 /* main_btn_bg.png */,
@@ -881,8 +902,6 @@
 				30166A8C17C3B84C0035C722 /* main_challenge_btn_bg@2x.png */,
 				30166A8D17C3B84C0035C722 /* main_run_btn_bg.png */,
 				30166A8E17C3B84C0035C722 /* main_run_btn_bg@2x.png */,
-				30166A8F17C3B84C0035C722 /* main_trafficlight_bg.png */,
-				30166A9017C3B84C0035C722 /* main_trafficlight_bg@2x.png */,
 				30166A9117C3B84C0035C722 /* main_username_bg.png */,
 				30166A9217C3B84C0035C722 /* main_username_bg@2x.png */,
 			);
@@ -893,6 +912,7 @@
 		301C1F6817378AF30068B43B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				30A6D9F517CDD8CA00D1116E /* FZKATJW.TTF */,
 				30FC291A17607F6D00DEC042 /* icons */,
 				301C1F6D1737B5B80068B43B /* bg */,
 			);
@@ -1113,6 +1133,8 @@
 		30A6D9B817C733F700D1116E /* ReusableControl */ = {
 			isa = PBXGroup;
 			children = (
+				30F8BEBD17C4A72700DB137D /* RORBottomPopSubview.h */,
+				30F8BEBE17C4A72700DB137D /* RORBottomPopSubview.m */,
 				30166AA417C3C6720035C722 /* RORViewController.h */,
 				30166AA517C3C6730035C722 /* RORViewController.m */,
 				30A6D9B917C7342400D1116E /* RORNormalButton.h */,
@@ -1179,8 +1201,6 @@
 				0F0D589117B0E4680046515C /* RORLoadingViewController.m */,
 				30C58AC117C4840F0065FC90 /* RORChallengeViewController.h */,
 				30C58AC217C4840F0065FC90 /* RORChallengeViewController.m */,
-				30F8BEBD17C4A72700DB137D /* RORBottomPopSubview.h */,
-				30F8BEBE17C4A72700DB137D /* RORBottomPopSubview.m */,
 			);
 			name = MainPage;
 			sourceTree = "<group>";
@@ -1460,8 +1480,6 @@
 				30166A9717C3B84C0035C722 /* main_challenge_btn_bg@2x.png in Resources */,
 				30166A9817C3B84C0035C722 /* main_run_btn_bg.png in Resources */,
 				30166A9917C3B84C0035C722 /* main_run_btn_bg@2x.png in Resources */,
-				30166A9A17C3B84C0035C722 /* main_trafficlight_bg.png in Resources */,
-				30166A9B17C3B84C0035C722 /* main_trafficlight_bg@2x.png in Resources */,
 				30166A9C17C3B84C0035C722 /* main_username_bg.png in Resources */,
 				30166A9D17C3B84C0035C722 /* main_username_bg@2x.png in Resources */,
 				30166A9F17C3C14B0035C722 /* main_bg@2x.png in Resources */,
@@ -1476,6 +1494,13 @@
 				30A6D9CD17CA641100D1116E /* map.png in Resources */,
 				30A6D9CE17CA641100D1116E /* map@2x.png in Resources */,
 				30A6D9D017CA65F100D1116E /* check.png in Resources */,
+				30A6D9EF17CDD58700D1116E /* main_trafficlight_green.png in Resources */,
+				30A6D9F017CDD58700D1116E /* main_trafficlight_green@2x.png in Resources */,
+				30A6D9F117CDD58700D1116E /* main_trafficlight_red.png in Resources */,
+				30A6D9F217CDD58700D1116E /* main_trafficlight_red@2x.png in Resources */,
+				30A6D9F317CDD58700D1116E /* main_trafficlight_yellow.png in Resources */,
+				30A6D9F417CDD58700D1116E /* main_trafficlight_yellow@2x.png in Resources */,
+				30A6D9F617CDD8CA00D1116E /* FZKATJW.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1602,6 +1627,7 @@
 				30A6D9AD17C6821500D1116E /* FTUtils+UIGestureRecognizer.m in Sources */,
 				30A6D9BB17C7342400D1116E /* RORNormalButton.m in Sources */,
 				30A6D9D517CB2C8900D1116E /* RORFunnyButton.m in Sources */,
+				30A6D9E117CC93AE00D1116E /* RORBodyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

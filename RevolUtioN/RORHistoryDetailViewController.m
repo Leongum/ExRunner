@@ -40,7 +40,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    distanceLabel.text = [NSString stringWithFormat:@"%.2f", [record.distance floatValue]];
+    distanceLabel.text = [NSString stringWithFormat:@"%.1f", [record.distance floatValue]];
     speedLabel.text = [NSString stringWithFormat:@"%.1f", [record.avgSpeed floatValue]];
     durationLabel.text = [RORUtils transSecondToStandardFormat:[record.duration integerValue]];
     energyLabel.text = [NSString stringWithFormat:@"%d", [record.spendCarlorie integerValue]];

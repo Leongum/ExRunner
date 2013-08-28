@@ -23,7 +23,6 @@
 @synthesize weatherSubView;
 @synthesize weatherInfoButtonView;
 @synthesize userButton;
-@synthesize context;
 @synthesize locationManager;
 
 NSInteger expanded = 0;
@@ -33,8 +32,6 @@ NSInteger centerLoc =-10000;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-    context = delegate.managedObjectContext;
 
     weatherSubView.frame = WEATHER_WINDOW_INITIAL_FRAME;
     //init topbar's gesture listeners
@@ -52,16 +49,13 @@ NSInteger centerLoc =-10000;
         data = [[NSDictionary alloc] initWithContentsOfFile:userSettingPath];
         [data writeToFile:userSettingDocPath atomically:YES];
     }
-    //订阅
-    [[RORSettings getInstance] addObserver:self forKeyPath:@"location" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     
-    //=============加载天气信息=============
-    //todo: remove common after debug
-//    [self loadWeatherInfo];
+    [self.userButton.titleLabel setFont: [UIFont fontWithName:@"FZKaTong-M19S" size:15.0]];
     
     //初始化按钮位置
     [self initControlsLayout];
     [self initLocationServcie];
+    
 }
 
 - (void)initLocationServcie{
@@ -167,12 +161,6 @@ NSInteger centerLoc =-10000;
 //    }
 }
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if([keyPath isEqualToString:@"location"]){
-        [self loadWeatherInfo];
-    }
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     UIViewController *destination = segue.destinationViewController;
     if ([destination respondsToSelector:@selector(setDelegate:)]){
@@ -245,7 +233,6 @@ NSInteger centerLoc =-10000;
     [self setWeatherSubView:nil];
     [self setWeatherInfoButtonView:nil];
     [self setUserButton:nil];
-    [self setContext:nil];
     [self setUserName:nil];
     [self setUserId:nil];
     

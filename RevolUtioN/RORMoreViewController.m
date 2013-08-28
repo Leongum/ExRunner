@@ -89,7 +89,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -106,6 +106,14 @@
             break;
         }
         case 1:
+        {
+            identifier = @"bodyCell";
+            cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            UILabel *label = (UILabel*)[cell viewWithTag:1];
+            label.text = @"身体参数";
+            break;
+        }
+        case 2:
         {
             identifier = @"syncCell";
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];

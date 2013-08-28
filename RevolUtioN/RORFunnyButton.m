@@ -54,10 +54,10 @@
     }
     double deltaX = 0, deltaY = 0;
     if (translation.x < 0)
-        deltaX = translation.x;
+        deltaX = translation.x/2;
     if (translation.y < 0)
-        deltaY = translation.y;
-    self.frame = CGRectMake(originFrame.origin.x + deltaX, originFrame.origin.y + deltaY, fabs(translation.x)+originFrame.size.width, fabs(translation.y)+originFrame.size.height);
+        deltaY = translation.y/2;
+    self.frame = CGRectMake(originFrame.origin.x + deltaX, originFrame.origin.y + deltaY, fabs(translation.x/2)+originFrame.size.width, fabs(translation.y/2)+originFrame.size.height);
     CGContextRef gccontext = UIGraphicsGetCurrentContext();
     [UIView beginAnimations:nil context:gccontext];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];

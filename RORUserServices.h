@@ -18,6 +18,8 @@
 
 + (User_Base *)fetchUser:(NSNumber *) userId;
 
++(User_Attributes *)fetchUserAttrsByUserId:(NSNumber *) userId;
+
 +(User_Base *)registerUser:(NSDictionary *)registerDic;
 
 +(User_Base *)syncUserInfoById:(NSNumber *)userId;

@@ -581,6 +581,7 @@
     User_Running_History *runHistory = [NSEntityDescription insertNewObjectForEntityForName:@"User_Running_History" inManagedObjectContext:context];
     runHistory.distance = [NSNumber numberWithDouble:distance];
     runHistory.duration = [NSNumber numberWithDouble:duration];
+    runHistory.avgSpeed = [NSNumber numberWithDouble:(double)distance/duration*3.6];
     runHistory.missionRoute = [RORDBCommon getStringFromRoutePoints:routePoints];
     runHistory.missionDate = [NSDate date];
     runHistory.missionEndTime = self.endTime;

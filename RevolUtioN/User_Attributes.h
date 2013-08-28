@@ -29,7 +29,7 @@ User_Attributes : NSManagedObject
 @property (nonatomic, retain) NSNumber * recoverSpeed;
 @property (nonatomic, retain) NSNumber * age;
 @property (nonatomic, retain) NSNumber * weight;
-@property (nonatomic, retain) NSNumber * hight;
+@property (nonatomic, retain) NSNumber * height;
 
 -(void)initWithDictionary:(NSDictionary *)dict;
 @end

@@ -97,7 +97,7 @@
         <attribute name="crit" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="endurance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="experience" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="hight" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="inertiaAcc" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="luck" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>

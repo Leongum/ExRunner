@@ -25,7 +25,7 @@
     NSString *cityName;
 }
 
-@property (strong,nonatomic)NSManagedObjectContext *context;
+//@property (strong,nonatomic)NSManagedObjectContext *context;
 @property (copy, nonatomic) NSString *userName;
 @property (nonatomic) NSNumber *userId;
 @property (weak, nonatomic) IBOutlet UIView *weatherSubView;
