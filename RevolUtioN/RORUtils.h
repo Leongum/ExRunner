@@ -36,4 +36,7 @@
 + (NSString *)getCitycodeByCityname:(NSString *)cityName;
 
 + (NSString*)outputDistance:(NSNumber*)distance;
+
++(void)setFontFamily:(NSString*)fontFamily forView:(UIView*)view andSubViews:(BOOL)isSubViews;
+
 @end
