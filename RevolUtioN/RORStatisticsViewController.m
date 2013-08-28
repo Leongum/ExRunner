@@ -61,9 +61,9 @@
     }
     avgSpeed/=fetchObject.count;
     
-    self.totalDistanceLabel = [NSString stringWithFormat:@"%.2f", totalDistance];
-    self.totalSpeedLabel = [NSString stringWithFormat:@"%.2f", avgSpeed];
-    self.totalCalorieLabel = [NSString stringWithFormat:@"%.2f", totalCalorie];
+    self.totalDistanceLabel.text = [RORUtils outputDistance:[NSNumber numberWithDouble:totalDistance]];
+    self.totalSpeedLabel.text = [NSString stringWithFormat:@"%.2f km/s", avgSpeed];
+    self.totalCalorieLabel.text = [NSString stringWithFormat:@"%.2f kca", totalCalorie];
 }
 
 - (void)viewDidUnload {

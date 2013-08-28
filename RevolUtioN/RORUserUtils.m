@@ -15,7 +15,7 @@ static NSNumber *userId = nil;
 static NSDate *systemTime = nil;
 
 + (NSNumber *)getUserId{
-    if (userId == nil || userId < 0){
+    if (userId == nil || userId.integerValue < 0){
         NSMutableDictionary *userDict = [self getUserInfoPList];
         userId = [userDict valueForKey:@"userId"];
     }

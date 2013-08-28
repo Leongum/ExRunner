@@ -480,7 +480,7 @@
         //    if (time % 3 == 0){
         [self pushPoint];
         distanceLabel.text = [NSString stringWithFormat:@"%.0lf m", distance];
-        speedLabel.text = [NSString stringWithFormat:@"%.2f m/s", (float)distance/duration*3.6];
+        speedLabel.text = [NSString stringWithFormat:@"%.2f km/h", (float)distance/duration*3.6];
         //    }
     }
 
