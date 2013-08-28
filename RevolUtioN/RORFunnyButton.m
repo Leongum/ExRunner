@@ -47,7 +47,7 @@
     CGPoint translation = [recognizer translationInView:self];
     
     UIImage *scared = [UIImage imageNamed:@"btn_scared.png"];
-    if (fabs(translation.x) >50 || fabs(translation.y) > 50){
+    if (fabs(translation.x) >75 || fabs(translation.y) > 150){
         [self setBackgroundImage:scared forState:UIControlStateNormal];
     } else {
         [self setBackgroundImage:normal_bg forState:UIControlStateNormal];

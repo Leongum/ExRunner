@@ -8,7 +8,7 @@
 
 #import "RORFirstViewController.h"
 
-#define WEATHER_WINDOW_INITIAL_FRAME CGRectMake(-100, 70, 100, 140)
+#define WEATHER_WINDOW_INITIAL_FRAME CGRectMake(-100, 80, 100, 140)
 #define RUN_BUTTON_FRAME_NORMAL CGRectMake(92, 100, 136, 60)
 #define RUN_BUTTON_FRAME_RATINA CGRectMake(92, 130, 136, 60)
 #define CHALLENGE_BUTTON_FRAME_NORMAL CGRectMake(0, 170, 320, 94)
@@ -22,7 +22,6 @@
 @implementation RORFirstViewController
 @synthesize weatherSubView;
 @synthesize weatherInfoButtonView;
-@synthesize userButton;
 @synthesize locationManager;
 
 NSInteger expanded = 0;
@@ -49,9 +48,7 @@ NSInteger centerLoc =-10000;
         data = [[NSDictionary alloc] initWithContentsOfFile:userSettingPath];
         [data writeToFile:userSettingDocPath atomically:YES];
     }
-    
-    [self.userButton.titleLabel setFont: [UIFont fontWithName:@"FZKaTong-M19S" size:15.0]];
-    
+        
     //初始化按钮位置
     [self initControlsLayout];
     [self initLocationServcie];
@@ -94,20 +91,23 @@ NSInteger centerLoc =-10000;
 }
 
 - (void)initPageData{
-        
+    [self.loginButton.titleLabel setFont: [UIFont fontWithName:@"FZKaTong-M19S" size:20]];
+    [self.levelLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
+    [self.scoreLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
+    [self.usernameLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:20]];
+
     //初始化用户名
-    NSMutableDictionary *userDict = [RORUserUtils getUserInfoPList];
-    
-    if ([userDict valueForKey:@"userId"] == nil){
-        [userButton setTitle:@"请登录" forState:UIControlStateNormal];
-        [userButton removeTarget:self action:@selector(segueToInfo) forControlEvents:UIControlEventTouchUpInside];
-        [userButton addTarget:self action:@selector(segueToLogin) forControlEvents:UIControlEventTouchUpInside];
+    if ([RORUserUtils getUserId].integerValue>=0){
+        self.loginButton.alpha = 0;
+        self.userInfoView.alpha = 1;
+        
+        User_Base *userInfo = [RORUserServices fetchUser:[RORUserUtils getUserId]];
+        self.usernameLabel.text = userInfo.nickName;
+        self.levelLabel.text = [NSString stringWithFormat:@"等级：%@", userInfo.attributes.level];
+        self.scoreLabel.text = [NSString stringWithFormat:@"积分：%@", userInfo.attributes.scores];
     } else {
-        self.userName = [userDict valueForKey:@"nickName"];
-        self.userId = [userDict valueForKey:@"userId"];
-        [userButton setTitle:self.userName forState:UIControlStateNormal];
-        [userButton removeTarget:self action:@selector(segueToLogin) forControlEvents:UIControlEventTouchUpInside];
-        [userButton addTarget:self action:@selector(segueToInfo) forControlEvents:UIControlEventTouchUpInside];
+        self.userInfoView.alpha = 0;
+        self.loginButton.alpha = 1;
     }
 }
 -(void) viewDidAppear:(BOOL)animated{
@@ -115,7 +115,7 @@ NSInteger centerLoc =-10000;
     [self initPageData];
 }
 
-- (void)segueToLogin{
+- (IBAction)segueToLogin:(id)sender{
     [self performSegueWithIdentifier:@"loginSegue" sender:self];
 }
 
@@ -231,7 +231,6 @@ NSInteger centerLoc =-10000;
 
     [self setWeatherSubView:nil];
     [self setWeatherInfoButtonView:nil];
-    [self setUserButton:nil];
     [self setUserName:nil];
     [self setUserId:nil];
     
@@ -243,6 +242,11 @@ NSInteger centerLoc =-10000;
     [self setLbPM:nil];
     [self setLbLocation:nil];
     [self setLbTotal:nil];
+    [self setUsernameLabel:nil];
+    [self setLevelLabel:nil];
+    [self setScoreLabel:nil];
+    [self setUserInfoView:nil];
+    [self setLoginButton:nil];
     [super viewDidUnload];
 }
 
