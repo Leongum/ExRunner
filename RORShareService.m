@@ -34,6 +34,7 @@
                                if (result)
                                {
                                    [self loginFromSNS:userInfo withSNSType: type];
+                                   [RORUserUtils userInfoUpdateHandler:userInfo withSNSType: type];
                                }
                                else
                                {
@@ -70,4 +71,5 @@
         [RORUserServices registerUser:regDict];
     }
 }
+
 @end

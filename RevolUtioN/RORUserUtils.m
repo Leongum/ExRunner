@@ -104,4 +104,58 @@ static NSDate *systemTime = nil;
     return lastUpdateTime;
 }
 
++ (void)userInfoUpdateHandler:(id<ISSUserInfo>)userInfo withSNSType:(ShareType) shareType
+{
+    NSMutableArray *authList = [NSMutableArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
+    if (authList == nil)
+    {
+        authList = [NSMutableArray array];
+    }
+    
+    NSString *platName = nil;
+    switch (shareType)
+    {
+        case ShareTypeSinaWeibo:
+            platName = @"新浪微博";
+            break;
+        case ShareTypeQQSpace:
+            platName = @"QQ空间";
+            break;
+        case ShareTypeRenren:
+            platName = @"人人网";
+            break;
+        case ShareTypeTencentWeibo:
+            platName = @"腾讯微博";
+            break;
+        default:
+            platName = @"未知";
+    }
+    BOOL hasExists = NO;
+    for (int i = 0; i < [authList count]; i++)
+    {
+        NSMutableDictionary *item = [authList objectAtIndex:i];
+        ShareType type = [[item objectForKey:@"type"] integerValue];
+        if (type == shareType)
+        {
+            [item setObject:[userInfo nickname] forKey:@"username"];
+            hasExists = YES;
+            break;
+        }
+    }
+    
+    if (!hasExists)
+    {
+        NSDictionary *newItem = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 platName,
+                                 @"title",
+                                 [NSNumber numberWithInteger:shareType],
+                                 @"type",
+                                 [userInfo nickname],
+                                 @"username",
+                                 nil];
+        [authList addObject:newItem];
+    }
+    
+    [authList writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
+}
 @end

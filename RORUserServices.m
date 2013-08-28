@@ -130,7 +130,7 @@
     }else {
         NSLog(@"sync with host error: can't get user's info. Status Code: %d", [httpResponse responseStatus]);
     }
-    return user;
+    return [User_Base removeAssociateForEntity:user];
 }
 
 + (void)syncFriends:(NSNumber *) userId {
