@@ -48,7 +48,7 @@
 }
 
 + (void)loginFromSNS:(id<ISSUserInfo>)userInfo withSNSType:(ShareType) type{
-    User_Base *user = [User_Base init];
+    User_Base *user = [User_Base intiUnassociateEntity];
     user.userEmail = [userInfo uid];
     user.nickName = [userInfo nickname];
     if([userInfo gender] == 1){

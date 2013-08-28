@@ -2,25 +2,25 @@
 //  Running_Invite.m
 //  RevolUtioN
 //
-//  Created by Beyond on 13-5-25.
+//  Created by leon on 13-8-28.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
 #import "Running_Invite.h"
-
+#import "RORDBCommon.h"
 
 @implementation Running_Invite
 
-@dynamic inviteId;
-@dynamic inviteType;
-@dynamic runningTime;
-@dynamic missionId;
-@dynamic missionType;
-@dynamic inviteTitle;
-@dynamic inviteContent;
-@dynamic inviteUserId;
 @dynamic friendUserId;
+@dynamic inviteContent;
+@dynamic inviteId;
 @dynamic inviteStatus;
 @dynamic inviteTime;
+@dynamic inviteTitle;
+@dynamic inviteType;
+@dynamic inviteUserId;
+@dynamic missionId;
+@dynamic missionType;
+@dynamic runningTime;
 
 @end

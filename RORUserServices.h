@@ -11,6 +11,7 @@
 #import "Friend.h"
 #import "User_Attributes.h"
 #import "RORAppDelegate.h"
+#import "RORContextUtils.h"
 #import "RORHttpResponse.h"
 #import "RORUserClientHandler.h"
 

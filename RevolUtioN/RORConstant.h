@@ -12,6 +12,7 @@
 #define SERVICE_URL @"http://121.199.56.231:8080/usavich/service/api"
 #define LOGIN_URL @"http://121.199.56.231:8080/usavich/service/api/account/%@/%@"
 #define REGISTER_URL @"http://121.199.56.231:8080/usavich/service/api/account"
+#define USER_ADDITIONAL_UPDATE @"http://121.199.56.231:8080/usavich/service/api/account/additional/%@"
 #define USER_INFO @"http://121.199.56.231:8080/usavich/service/api/account/%@?checkUuid=true"
 #define POST_RUNNING_HISTORY_URL @"http://121.199.56.231:8080/usavich/service/api/running/history/%@"
 #define RUNNING_HISTORY_URL @"http://121.199.56.231:8080/usavich/service/api/running/history/%@?lastUpdateTime=%@"

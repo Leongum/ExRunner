@@ -7,7 +7,7 @@
 //
 
 #import "RORHttpClientHandler.h"
-#import "RORUtils.h"
+#import "RORUserUtils.h"
 
 @implementation RORHttpClientHandler
 
@@ -20,7 +20,7 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"gzip" forHTTPHeaderField:@"Content-Encoding" ];
     [request setTimeoutInterval:10000];
-    NSString *key = [NSString stringWithFormat:@"%@#%@",[RORUtils getUserUuid],[RORUtils getUserId]];
+    NSString *key = [NSString stringWithFormat:@"%@#%@",[RORUserUtils getUserUuid],[RORUserUtils getUserId]];
     [request addValue:key forHTTPHeaderField:@"X-CLIENT-KEY"];
     
     //set http request data
@@ -41,7 +41,7 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"gzip" forHTTPHeaderField:@"Content-Encoding" ];
     [request setTimeoutInterval:10000];
-    NSString *key = [NSString stringWithFormat:@"%@#%@",[RORUtils getUserUuid],[RORUtils getUserId]];
+    NSString *key = [NSString stringWithFormat:@"%@#%@",[RORUserUtils getUserUuid],[RORUserUtils getUserId]];
     [request addValue:key forHTTPHeaderField:@"X-CLIENT-KEY"];
     
     //set http request data
@@ -62,7 +62,7 @@
     //set http headers
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setTimeoutInterval:10000];
-    NSString *key = [NSString stringWithFormat:@"%@#%@",[RORUtils getUserUuid],[RORUtils getUserId]];
+    NSString *key = [NSString stringWithFormat:@"%@#%@",[RORUserUtils getUserUuid],[RORUserUtils getUserId]];
     [request addValue:key forHTTPHeaderField:@"X-CLIENT-KEY"];
     
     RORHttpResponse *httpResponse = [self excuteRequest:request];
@@ -81,7 +81,7 @@
         [request addValue:[headers objectForKey:headerField] forHTTPHeaderField:headerField];
     }
     [request setTimeoutInterval:10000];
-    NSString *key = [NSString stringWithFormat:@"%@#%@",[RORUtils getUserUuid],[RORUtils getUserId]];
+    NSString *key = [NSString stringWithFormat:@"%@#%@",[RORUserUtils getUserUuid],[RORUserUtils getUserId]];
     [request addValue:key forHTTPHeaderField:@"X-CLIENT-KEY"];
     
     RORHttpResponse *httpResponse = [self excuteRequest:request];

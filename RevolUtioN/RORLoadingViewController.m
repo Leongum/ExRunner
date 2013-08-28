@@ -34,7 +34,7 @@
     //sync version
     [RORSystemService syncVersion:@"ios"];
     //sync user
-    NSNumber *userId = [RORUtils getUserId];
+    NSNumber *userId = [RORUserUtils getUserId];
     if([userId intValue] > 0){
         [RORUserServices syncUserInfoById:userId];
         //sync runningHistory

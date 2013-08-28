@@ -11,10 +11,11 @@
 #import "User_Running_History.h"
 #import "RORAppDelegate.h"
 #import "RORMapAnnotation.h"
-#import "RORUtils.h"
+#import "RORUserUtils.h"
 #import "RORDBCommon.h"
 #import "RORMacro.h"
 #import "RORMissionServices.h"
+#import "RORRunHistoryServices.h"
 
 #define SCALE_SMALL CGRectMake(0,0,320,155)
 
@@ -575,17 +576,18 @@
 }
 
 - (void)saveRunInfo{
-    NSError *error = nil;
-    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    User_Running_History *runHistory = [NSEntityDescription insertNewObjectForEntityForName:@"User_Running_History" inManagedObjectContext:context];
+//    NSError *error = nil;
+//    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
+//    NSManagedObjectContext *context = delegate.managedObjectContext;
+//    User_Running_History *runHistory = [NSEntityDescription insertNewObjectForEntityForName:@"User_Running_History" inManagedObjectContext:context];
+    User_Running_History *runHistory = [[User_Running_History alloc] init];
     runHistory.distance = [NSNumber numberWithDouble:distance];
     runHistory.duration = [NSNumber numberWithDouble:duration];
     runHistory.missionRoute = [RORDBCommon getStringFromRoutePoints:routePoints];
     runHistory.missionDate = [NSDate date];
     runHistory.missionEndTime = self.endTime;
     runHistory.missionStartTime = self.startTime;
-    runHistory.userId = [RORUtils getUserId];
+    runHistory.userId = [RORUserUtils getUserId];
     if (runMission!=nil){
         runHistory.missionTypeId = runMission.missionTypeId;
         switch (runMission.missionTypeId.integerValue) {
@@ -604,14 +606,15 @@
     }
     runHistory.spendCarlorie = [self calculateCalorie];
     runHistory.runUuid = [RORUtils uuidString];
-    runHistory.uuid = [RORUtils getUserUuid];
+    runHistory.uuid = [RORUserUtils getUserUuid];
     runHistory.steps = [NSNumber numberWithInteger:stepCounting.counter];
     
     NSLog(@"%@", runHistory);
     record = runHistory;
-    if (![context save:&error]) {
-        NSLog(@"%@",[error localizedDescription]);
-    }
+    [RORRunHistoryServices saveRunInfoToDB:runHistory];
+//    if (![context save:&error]) {
+//        NSLog(@"%@",[error localizedDescription]);
+//    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

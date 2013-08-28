@@ -14,7 +14,7 @@
     NSString *table=@"User_Running_History";
     NSString *query = @"userId = %@";
     NSArray *params = [NSArray arrayWithObjects:userId, nil];
-    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
@@ -22,19 +22,19 @@
 }
 
 +(NSArray*)fetchRunHistory{
-    NSNumber *userId = [RORUtils getUserId];
+    NSNumber *userId = [RORUserUtils getUserId];
     NSArray *fetchObject = [self fetchRunHistoryByUserId:userId];
     return fetchObject;
 }
 
 +(NSMutableArray *)fetchUnsyncedRunHistories{
     
-    NSNumber *userId = [RORUtils getUserId];
+    NSNumber *userId = [RORUserUtils getUserId];
     
     NSString *table=@"User_Running_History";
     NSString *query = @"(userId = %@ or userId = -1) and commitDate.length <= 0";
     NSArray *params = [NSArray arrayWithObjects:userId, nil];
-    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
@@ -49,12 +49,12 @@
 
 +(NSMutableArray *)fetchUnsyncedUserRunning{
     
-    NSNumber *userId = [RORUtils getUserId];
+    NSNumber *userId = [RORUserUtils getUserId];
     
     NSString *table=@"User_Running";
     NSString *query = @"(userId = %@ or userId = -1) and commitDate.length <= 0";
     NSArray *params = [NSArray arrayWithObjects:userId, nil];
-    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
@@ -69,7 +69,7 @@
 
 +(void)updateUnsyncedRunHistories{
     NSError *error;
-    NSNumber *userId = [RORUtils getUserId];
+    NSNumber *userId = [RORUserUtils getUserId];
     RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
     
@@ -86,7 +86,7 @@
     }
     for (User_Running_History *info in fetchObject) {
         info.userId = userId;
-        info.commitTime = [RORUtils getSystemTime];
+        info.commitTime = [RORUserUtils getSystemTime];
     }
     if (![context save:&error]) {
         NSLog(@"%@",[error localizedDescription]);
@@ -95,7 +95,7 @@
 
 +(void)updateUnsyncedUserRunning{
     NSError *error;
-    NSNumber *userId = [RORUtils getUserId];
+    NSNumber *userId = [RORUserUtils getUserId];
     RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
     
@@ -112,7 +112,7 @@
     }
     for (User_Running *info in fetchObject) {
         info.userId = userId;
-        info.commitTime = [RORUtils getSystemTime];
+        info.commitTime = [RORUserUtils getSystemTime];
     }
     if (![context save:&error]) {
         NSLog(@"%@",[error localizedDescription]);
@@ -124,7 +124,7 @@
     NSString *table=@"User_Running_History";
     NSString *query = @"runUuid = %@";
     NSArray *params = [NSArray arrayWithObjects:runId, nil];
-    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
@@ -136,7 +136,7 @@
     NSString *table=@"User_Running";
     NSString *query = @"runUuid = %@";
     NSArray *params = [NSArray arrayWithObjects:runId, nil];
-    NSArray *fetchObject = [RORUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
@@ -146,7 +146,7 @@
 }
 
 + (Boolean)uploadRunningHistories{
-    NSNumber *userId = [RORUtils getUserId];
+    NSNumber *userId = [RORUserUtils getUserId];
     NSMutableArray *dataList = [self fetchUnsyncedRunHistories];
     RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createRunHistories:userId withRunHistories:dataList];
     
@@ -163,10 +163,10 @@
 
 + (Boolean)syncRunningHistories{
     NSError *error = nil;
-    NSNumber *userId = [RORUtils getUserId];
+    NSNumber *userId = [RORUserUtils getUserId];
     RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSString *lastUpdateTime = [RORUtils getLastUpdateTime:@"RunningHistoryUpdateTime"];
+    NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"RunningHistoryUpdateTime"];
     
     RORHttpResponse *httpResponse =[RORRunHistoryClientHandler getRunHistories:userId withLastUpdateTime:lastUpdateTime];
     
@@ -182,7 +182,7 @@
         if (![context save:&error]) {
             NSLog(@"%@",[error localizedDescription]);
         }
-        [RORUtils saveLastUpdateTime:@"RunningHistoryUpdateTime"];
+        [RORUserUtils saveLastUpdateTime:@"RunningHistoryUpdateTime"];
     } else {
         NSLog(@"sync with host error: can't get mission list. Status Code: %d", [httpResponse responseStatus]);
         return NO;
@@ -197,15 +197,27 @@
         RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = delegate.managedObjectContext;
         User_Running_History *runHistory = [NSEntityDescription insertNewObjectForEntityForName:@"User_Running_History" inManagedObjectContext:context];
-        runHistory = runningHistory;
+        //loop through all attributes and assign then to the clone
+        NSDictionary *attributes = [[NSEntityDescription
+                                     entityForName:@"User_Running_History"
+                                     inManagedObjectContext:context] attributesByName];
+        
+        for (NSString *attr in [attributes allKeys]) {
+            [runHistory setValue:[runningHistory valueForKey:attr] forKey:attr];
+        }
+        @try{
         if (![context save:&error]) {
             NSLog(@"%@",[error localizedDescription]);
+        }
+        }
+        @catch(NSException *ex){
+            NSLog(@"%@",[ex reason]);
         }
     }
 }
 
 + (void)uploadUserRunning{
-    NSNumber *userId = [RORUtils getUserId];
+    NSNumber *userId = [RORUserUtils getUserId];
     NSMutableArray *dataList = [self fetchUnsyncedUserRunning];
     RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createUserRunning:userId withUserRun:dataList];
     
@@ -221,10 +233,10 @@
 
 + (Boolean)syncUserRunning{
     NSError *error = nil;
-    NSNumber *userId = [RORUtils getUserId];
+    NSNumber *userId = [RORUserUtils getUserId];
     RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSString *lastUpdateTime = [RORUtils getLastUpdateTime:@"UserRunningUpdateTime"];
+    NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"UserRunningUpdateTime"];
     
     RORHttpResponse *httpResponse =[RORRunHistoryClientHandler getUserRunning:userId withLastUpdateTime:lastUpdateTime];
     
@@ -240,7 +252,7 @@
         if (![context save:&error]) {
             NSLog(@"%@",[error localizedDescription]);
         }
-        [RORUtils saveLastUpdateTime:@"UserRunningUpdateTime"];
+        [RORUserUtils saveLastUpdateTime:@"UserRunningUpdateTime"];
     } else {
         NSLog(@"sync with host error: can't get mission list. Status Code: %d", [httpResponse responseStatus]);
         return NO;

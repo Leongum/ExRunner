@@ -13,6 +13,7 @@
 #import "User_Running.h"
 #import "User_Running_History.h"
 #import "RORRunHistoryClientHandler.h"
+#import "RORContextUtils.h"
 
 @interface RORRunHistoryServices : NSObject
 
@@ -30,6 +31,6 @@
 
 +(NSArray*)fetchRunHistory;
 
-+(BOOL)addRunHistory:(User_Running_History*)runHistory;
++(void)saveRunInfoToDB:(User_Running_History*)runHistory;
 
 @end

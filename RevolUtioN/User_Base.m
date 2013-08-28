@@ -1,72 +1,49 @@
 //
-//  User.m
+//  User_Base.m
 //  RevolUtioN
 //
-//  Created by Beyond on 13-6-14.
+//  Created by leon on 13-8-28.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
 #import "User_Base.h"
 #import "RORDBCommon.h"
-#import "RORAppDelegate.h"
+
 
 @implementation User_Base
 
-@synthesize nickName;
-@synthesize password;
-@synthesize userEmail;
-@synthesize userId;
-@synthesize sex;
-@synthesize uuid;
+@dynamic nickName;
+@dynamic password;
+@dynamic sex;
+@dynamic userEmail;
+@dynamic userId;
+@dynamic uuid;
+
 @synthesize attributes;
 
-+ (User_Base *)init{
-    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    User_Base *user = [NSEntityDescription insertNewObjectForEntityForName:@"User_Base" inManagedObjectContext:context];
-    return user;
++(User_Base *) intiUnassociateEntity{
+    NSManagedObjectContext *context = [RORContextUtils getShareContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User_Base" inManagedObjectContext:context];
+    User_Base *unassociatedEntity = [[User_Base alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    return unassociatedEntity;
 }
 
--(NSMutableDictionary *)transToDictionary{
-    NSMutableDictionary *tempoDict = [[NSMutableDictionary alloc] init];
-    [tempoDict setValue:userId forKey:@"userId"];
-    [tempoDict setValue:nickName forKey:@"nickName"];
-    [tempoDict setValue:password forKey:@"password"];
-    [tempoDict setValue:userEmail forKey:@"userEmail"];
-    [tempoDict setValue:sex forKey:@"sex"];
-    [tempoDict setValue:uuid forKey:@"uuid"];
-    return tempoDict;
++(User_Base *) removeAssociateForEntity:(User_Base *)associatedEntity{
+    NSManagedObjectContext *context = [RORContextUtils getShareContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User_Base" inManagedObjectContext:context];
+    User_Base *unassociatedEntity = [[User_Base alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    for (NSString *attr in [[entity attributesByName] allKeys]) {
+        [unassociatedEntity setValue:[associatedEntity valueForKey:attr] forKey:attr];
+    }
+    unassociatedEntity.attributes=[User_Attributes removeAssociateForEntity:associatedEntity.attributes];
+    return unassociatedEntity;
 }
 
 -(void)initWithDictionary:(NSDictionary *)dict{
-    userId = [dict valueForKey:@"userId"];
-    nickName = [dict valueForKey:@"nickName"];
-    userEmail = [dict valueForKey:@"userEmail"];
-    sex = [dict valueForKey:@"sex"];
-    uuid =[dict valueForKey:@"uuid"];
-}
-
--(void)setNickName:(id)obj{
-    nickName = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setPassword:(id)obj{
-    password = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setUserEmail:(id)obj{
-    userEmail = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setUserId:(id)obj{
-    userId = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setSex:(id)obj{
-    sex = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setUuid:(id)obj{
-    uuid = [RORDBCommon getStringFromId:obj];
+    self.userId = [RORDBCommon getNumberFromId:[dict valueForKey:@"userId"]];
+    self.nickName = [RORDBCommon getStringFromId:[dict valueForKey:@"nickName"]];
+    self.userEmail = [RORDBCommon getStringFromId:[dict valueForKey:@"userEmail"]];
+    self.sex = [RORDBCommon getStringFromId:[dict valueForKey:@"sex"]];
+    self.uuid = [RORDBCommon getStringFromId:[dict valueForKey:@"uuid"]];
 }
 @end

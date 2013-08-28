@@ -2,7 +2,7 @@
 //  Friend.m
 //  RevolUtioN
 //
-//  Created by Beyond on 13-5-25.
+//  Created by leon on 13-8-28.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
@@ -11,38 +11,27 @@
 
 @implementation Friend
 
-@synthesize userId;
-@synthesize friendId;
-@synthesize friendStatus;
-@synthesize addTime;
-@synthesize updateTime;
+@dynamic addTime;
+@dynamic friendId;
+@dynamic friendStatus;
+@dynamic updateTime;
+@dynamic userId;
+
++(Friend *) removeAssociateForEntity:(Friend *)associatedEntity{
+    NSManagedObjectContext *context = [RORContextUtils getShareContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Friend" inManagedObjectContext:context];
+    Friend *unassociatedEntity = [[Friend alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    for (NSString *attr in [[entity attributesByName] allKeys]) {
+        [unassociatedEntity setValue:[associatedEntity valueForKey:attr] forKey:attr];
+    }
+    return unassociatedEntity;
+}
 
 -(void)initWithDictionary:(NSDictionary *)dict{
-    userId = [dict valueForKey:@"userId"];
-    friendId = [dict valueForKey:@"friendId"];
-    friendStatus = [dict valueForKey:@"friendStatus"];
-    addTime = [dict valueForKey:@"addTime"];
-    updateTime = [dict valueForKey:@"updateTime"];
+    self.userId = [RORDBCommon getNumberFromId:[dict valueForKey:@"userId"]];
+    self.friendId = [RORDBCommon getNumberFromId:[dict valueForKey:@"friendId"] ];
+    self.friendStatus = [RORDBCommon getNumberFromId:[dict valueForKey:@"friendStatus"] ];
+    self.addTime = [RORDBCommon getDateFromId:[dict valueForKey:@"addTime"] ];
+    self.updateTime = [RORDBCommon getDateFromId:[dict valueForKey:@"updateTime"] ];
 }
-
--(void)setUserId:(id)obj{
-    userId = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setFriendId:(id)obj{
-    friendId = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setFriendStatus:(id)obj{
-    friendStatus = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setAddTime:(id)obj{
-    addTime = [RORDBCommon getDateFromId:obj];
-}
-
--(void)setUpdateTime:(id)obj{
-    updateTime = [RORDBCommon getDateFromId:obj];
-}
-
 @end

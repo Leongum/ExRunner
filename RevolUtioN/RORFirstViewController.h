@@ -12,7 +12,7 @@
 #import "RORThirdPartyService.h"
 #import "RORAppDelegate.h"
 #import "RORPages.h"
-#import "RORUtils.h"
+#import "RORUserUtils.h"
 #import "Animations.h"
 #import "User_Base.h"
 #import "RORNormalButton.h"

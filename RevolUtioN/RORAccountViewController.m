@@ -8,7 +8,7 @@
 
 #import "RORAccountViewController.h"
 #import "RORPages.h"
-#import "RORUtils.h"
+#import "RORUserUtils.h"
 #import <AGCommon/UIImage+Common.h>
 
 @interface RORAccountViewController ()
@@ -104,7 +104,7 @@
     if (buttonIndex == 0) {
         return;
     }else if(buttonIndex == 1){
-        [RORUtils logout];
+        [RORUserUtils logout];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

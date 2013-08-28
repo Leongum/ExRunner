@@ -2,176 +2,100 @@
 //  User_Running_History.m
 //  RevolUtioN
 //
-//  Created by Beyond on 13-5-25.
+//  Created by leon on 13828.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
 #import "User_Running_History.h"
 #import "RORDBCommon.h"
 
+
 @implementation User_Running_History
 
-@synthesize userId;
-@synthesize runUuid;
-@synthesize missionId;
-@synthesize missionTypeId;
-@synthesize missionRoute;
-@synthesize waveForm;
-@synthesize missionStartTime;
-@synthesize missionEndTime;
-@synthesize missionDate;
-@synthesize spendCarlorie;
-@synthesize duration;
-@synthesize avgSpeed;
-@synthesize steps;
-@synthesize distance;
-@synthesize offerUsers;
-@synthesize missionGrade;
-@synthesize scores;
-@synthesize experience;
-@synthesize comment;
-@synthesize commitTime;
-@synthesize uuid;
-@synthesize grade;
+@dynamic avgSpeed;
+@dynamic comment;
+@dynamic commitTime;
+@dynamic distance;
+@dynamic duration;
+@dynamic experience;
+@dynamic grade;
+@dynamic missionDate;
+@dynamic missionEndTime;
+@dynamic missionGrade;
+@dynamic missionId;
+@dynamic missionRoute;
+@dynamic missionStartTime;
+@dynamic missionTypeId;
+@dynamic offerUsers;
+@dynamic runUuid;
+@dynamic scores;
+@dynamic spendCarlorie;
+@dynamic steps;
+@dynamic userId;
+@dynamic uuid;
+@dynamic waveForm;
 
--(NSMutableDictionary *)transToDictionary{
-    NSMutableDictionary *tempoDict = [[NSMutableDictionary alloc] init];
-    [tempoDict setValue:avgSpeed forKey:@"avgSpeed"];
-    [tempoDict setValue:comment forKey:@"comment"];
-    [tempoDict setValue:distance forKey:@"distance"];
-    [tempoDict setValue:userId forKey:@"userId"];
-    [tempoDict setValue:runUuid forKey:@"runUuid"];
-    [tempoDict setValue:missionTypeId forKey:@"missionTypeId"];
-    [tempoDict setValue:missionRoute forKey:@"missionRoute"];
-    [tempoDict setValue:waveForm forKey:@"waveForm"];
-    [tempoDict setValue:[RORDBCommon getStringFromId:missionStartTime] forKey:@"missionStartTime"];
-    [tempoDict setValue:[RORDBCommon getStringFromId:missionEndTime] forKey:@"missionEndTime"];
-    [tempoDict setValue:[RORDBCommon getStringFromId:missionDate] forKey:@"missionDate"];
-    [tempoDict setValue:spendCarlorie forKey:@"spendCarlorie"];
-    [tempoDict setValue:duration forKey:@"duration"];
-    [tempoDict setValue:offerUsers forKey:@"offerUsers"];
-    [tempoDict setValue:steps forKey:@"steps"];
-    [tempoDict setValue:missionGrade forKey:@"missionGrade"];
-    [tempoDict setValue:scores forKey:@"scores"];
-    [tempoDict setValue:experience forKey:@"experience"];
-    [tempoDict setValue:missionId forKey:@"missionId"];
-    [tempoDict setValue:uuid forKey:@"uuid"];
-    [tempoDict setValue:[RORDBCommon getStringFromId:commitTime] forKey:@"commitTime"];
-    [tempoDict setValue:grade forKey:@"grade"];
-    return tempoDict;
++(User_Running_History *) removeAssociateForEntity:(User_Running_History *)associatedEntity{
+    NSManagedObjectContext *context = [RORContextUtils getShareContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User_Running_History" inManagedObjectContext:context];
+    User_Running_History *unassociatedEntity = [[User_Running_History alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    for (NSString *attr in [[entity attributesByName] allKeys]) {
+        [unassociatedEntity setValue:[associatedEntity valueForKey:attr] forKey:attr];
+    }
+    return unassociatedEntity;
 }
 
 -(void)initWithDictionary:(NSDictionary *)dict{
-    self.avgSpeed = [dict valueForKey:@"avgSpeed"];
-    self.comment = [dict valueForKey:@"comment"];
-    self.distance = [dict valueForKey:@"distance"];
-    self.userId = [dict valueForKey:@"userId"];
-    self.runUuid= [dict valueForKey:@"runUuid"];
-    self.missionTypeId = [dict valueForKey:@"missionTypeId"];
-    self.missionRoute = [dict valueForKey:@"missionRoute"];
-    self.waveForm = [dict valueForKey:@"waveForm"];
+    self.avgSpeed = [RORDBCommon getNumberFromId:[dict valueForKey:@"avgSpeed"]];
+    self.comment = [RORDBCommon getStringFromId:[dict valueForKey:@"comment"]];
+    self.distance = [RORDBCommon getNumberFromId:[dict valueForKey:@"distance"]];
+    self.userId = [RORDBCommon getNumberFromId:[dict valueForKey:@"userId"]];
+    self.runUuid= [RORDBCommon getStringFromId:[dict valueForKey:@"runUuid"]];
+    self.missionTypeId = [RORDBCommon getNumberFromId:[dict valueForKey:@"missionTypeId"]];
+    self.missionRoute = [RORDBCommon getStringFromId:[dict valueForKey:@"missionRoute"]];
+    self.waveForm = [RORDBCommon getStringFromId:[dict valueForKey:@"waveForm"]];
     self.missionStartTime = [RORDBCommon getDateFromId:[dict valueForKey:@"missionStartTime"]];
     self.missionEndTime = [RORDBCommon getDateFromId:[dict valueForKey:@"missionEndTime"]];
     self.missionDate = [RORDBCommon getDateFromId:[dict valueForKey:@"missionDate"]];
-    self.spendCarlorie = [dict valueForKey:@"spendCarlorie"];
-    self.duration = [dict valueForKey:@"duration"];
-    self.offerUsers = [dict valueForKey:@"offerUsers"];
-    self.missionGrade = [dict valueForKey:@"missionGrade"];
-    self.scores = [dict valueForKey:@"scores"];
-    self.experience = [dict valueForKey:@"experience"];
-    self.missionId = [dict valueForKey:@"missionId"];
-    self.uuid = [dict valueForKey:@"uuid"];
-    self.steps = [dict valueForKey:@"steps"];
+    self.spendCarlorie = [RORDBCommon getNumberFromId:[dict valueForKey:@"spendCarlorie"]];
+    self.duration = [RORDBCommon getNumberFromId:[dict valueForKey:@"duration"]];
+    self.offerUsers = [RORDBCommon getStringFromId:[dict valueForKey:@"offerUsers"]];
+    self.missionGrade = [RORDBCommon getStringFromId:[dict valueForKey:@"missionGrade"]];
+    self.scores = [RORDBCommon getNumberFromId:[dict valueForKey:@"scores"]];
+    self.experience = [RORDBCommon getNumberFromId:[dict valueForKey:@"experience"]];
+    self.missionId = [RORDBCommon getNumberFromId:[dict valueForKey:@"missionId"]];
+    self.uuid = [RORDBCommon getStringFromId:[dict valueForKey:@"uuid"]];
+    self.steps = [RORDBCommon getNumberFromId:[dict valueForKey:@"steps"]];
     self.commitTime = [RORDBCommon getDateFromId:[dict valueForKey:@"commitTime"]];
-    self.grade = [dict valueForKey:@"grade"];
+    self.grade = [RORDBCommon getNumberFromId:[dict valueForKey:@"grade"]];
 }
 
--(void)setUserId:(id)obj{
-    userId = [RORDBCommon getNumberFromId:obj];
+-(NSMutableDictionary *)transToDictionary{
+    NSMutableDictionary *tempoDict = [[NSMutableDictionary alloc] init];
+    [tempoDict setValue:self.avgSpeed forKey:@"avgSpeed"];
+    [tempoDict setValue:self.comment forKey:@"comment"];
+    [tempoDict setValue:self.distance forKey:@"distance"];
+    [tempoDict setValue:self.userId forKey:@"userId"];
+    [tempoDict setValue:self.runUuid forKey:@"runUuid"];
+    [tempoDict setValue:self.missionTypeId forKey:@"missionTypeId"];
+    [tempoDict setValue:self.missionRoute forKey:@"missionRoute"];
+    [tempoDict setValue:self.waveForm forKey:@"waveForm"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.missionStartTime] forKey:@"missionStartTime"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.missionEndTime] forKey:@"missionEndTime"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.missionDate] forKey:@"missionDate"];
+    [tempoDict setValue:self.spendCarlorie forKey:@"spendCarlorie"];
+    [tempoDict setValue:self.duration forKey:@"duration"];
+    [tempoDict setValue:self.offerUsers forKey:@"offerUsers"];
+    [tempoDict setValue:self.steps forKey:@"steps"];
+    [tempoDict setValue:self.missionGrade forKey:@"missionGrade"];
+    [tempoDict setValue:self.scores forKey:@"scores"];
+    [tempoDict setValue:self.experience forKey:@"experience"];
+    [tempoDict setValue:self.missionId forKey:@"missionId"];
+    [tempoDict setValue:self.uuid forKey:@"uuid"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.commitTime] forKey:@"commitTime"];
+    [tempoDict setValue:self.grade forKey:@"grade"];
+    return tempoDict;
 }
 
--(void)setRunUuid:(id)obj{
-    runUuid = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setWaveForm:(id)obj{
-    waveForm = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setMissionId:(id)obj{
-    missionId = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setMissionTypeId:(id)obj{
-    missionTypeId = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setMissionRoute:(id)obj{
-    missionRoute = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setMissionStartTime:(id)obj{
-    missionStartTime = [RORDBCommon getDateFromId:obj];
-}
-
--(void)setMissionEndTime:(id)obj{
-    missionEndTime = [RORDBCommon getDateFromId:obj];
-}
-
--(void)setMissionDate:(id)obj{
-    missionDate = [RORDBCommon getDateFromId:obj];
-}
-
--(void)setSpendCarlorie:(id)obj{
-    spendCarlorie = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setDuration:(id)obj{
-    duration = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setAvgSpeed:(id)obj{
-    avgSpeed = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setSteps:(id)obj{
-    steps = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setDistance:(id)obj{
-    distance = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setOfferUsers:(id)obj{
-    offerUsers = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setMissionGrade:(id)obj{
-    missionGrade = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setScores:(id)obj{
-    scores = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setExperience:(id)obj{
-    experience = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setComment:(id)obj{
-    comment = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setCommitTime:(id)obj{
-    commitTime = [RORDBCommon getDateFromId:obj];
-}
-
--(void)setUuid:(id)obj{
-    uuid = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setGrade:(id)obj{
-    grade = [RORDBCommon getNumberFromId:obj];
-}
 
 @end

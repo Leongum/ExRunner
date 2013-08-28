@@ -2,7 +2,7 @@
 //  Place_Package.m
 //  RevolUtioN
 //
-//  Created by Beyond on 13-6-22.
+//  Created by leon on 13-8-28.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
@@ -11,37 +11,27 @@
 
 @implementation Place_Package
 
-@synthesize packageId;
-@synthesize placeDesc;
-@synthesize placeName;
-@synthesize placePoint;
-@synthesize sequence;
+@dynamic packageId;
+@dynamic placeDesc;
+@dynamic placeName;
+@dynamic placePoint;
+@dynamic sequence;
+
++(Place_Package *) removeAssociateForEntity:(Place_Package *)associatedEntity{
+    NSManagedObjectContext *context = [RORContextUtils getShareContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Place_Package" inManagedObjectContext:context];
+    Place_Package *unassociatedEntity = [[Place_Package alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    for (NSString *attr in [[entity attributesByName] allKeys]) {
+        [unassociatedEntity setValue:[associatedEntity valueForKey:attr] forKey:attr];
+    }
+    return unassociatedEntity;
+}
 
 -(void)initWithDictionary:(NSDictionary *)dict{
-    self.packageId = [dict valueForKey:@"packageId"];
-    self.placeName = [dict valueForKey:@"placeName"];
-    self.placePoint = [dict valueForKey:@"placePoint"];
-    self.sequence = [dict valueForKey:@"sequence"];
-}
-
--(void)setPackageId:(id)obj{
-    packageId = [RORDBCommon getNumberFromId:obj];
-}
-
--(void)setPlaceDesc:(id)obj{
-    placeDesc = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setPlaceName:(id)obj{
-    placeName = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setPlacePoint:(id)obj{
-    placePoint = [RORDBCommon getStringFromId:obj];
-}
-
--(void)setSequence:(id)obj{
-    sequence = [RORDBCommon getNumberFromId:obj];
+    self.packageId = [RORDBCommon getNumberFromId:[dict valueForKey:@"packageId"]];
+    self.placeName = [RORDBCommon getStringFromId:[dict valueForKey:@"placeName"]];
+    self.placePoint = [RORDBCommon getStringFromId:[dict valueForKey:@"placePoint"]];
+    self.sequence = [RORDBCommon getNumberFromId:[dict valueForKey:@"sequence"]];
 }
 
 @end

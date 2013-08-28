@@ -8,7 +8,7 @@
 
 #import "RORSecondViewController.h"
 #import "RORAppDelegate.h"
-#import "RORUtils.h"
+#import "RORUserUtils.h"
 #import "RORPages.h"
 
 @interface RORSecondViewController ()
@@ -45,7 +45,7 @@
 
 - (void)loadFriendsFromDatabase{
     NSError *error = nil;
-    NSMutableDictionary *userDict = [RORUtils getUserInfoPList];
+    NSMutableDictionary *userDict = [RORUserUtils getUserInfoPList];
     self.userName = [userDict valueForKey:@"nickName"];
     self.userId = [userDict valueForKey:@"userId"];
     RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
