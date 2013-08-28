@@ -146,18 +146,7 @@ NSInteger centerLoc =-10000;
 }
 
 - (void)loadWeatherInfo{
-//    while(userLocation == nil){
-//    }
     [self getCitynameByLocation:userLocation];
-   
-//    NSString *settingPath = [RORUtils getUserSettingsPList];
-//    if (settingPath != nil){ 
-//        NSMutableDictionary *settings = [RORSettings getInstance];
-//        NSMutableDictionary *location = [settings objectForKey:@"location"];
-//        NSString *citycode = [location valueForKey:@"code"];
-//
-//        //空气质量API=========================
-//    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

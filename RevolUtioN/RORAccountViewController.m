@@ -27,36 +27,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-    //监听用户信息变更
-    [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
-                               target:self
-                               action:@selector(userInfoUpdateHandler:)];
-    
-    shareTypeArray = [[NSMutableArray alloc] initWithObjects:
-                      [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"新浪微博",
-                       @"title",
-                       [NSNumber numberWithInteger:ShareTypeSinaWeibo],
-                       @"type",
-                       nil],
-                      [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"腾讯微博",
-                       @"title",
-                       [NSNumber numberWithInteger:ShareTypeTencentWeibo],
-                       @"type",
-                       nil],
-                      [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"人人网",
-                       @"title",
-                       [NSNumber numberWithInteger:ShareTypeRenren],
-                       @"type",
-                       nil],
-                      nil];
+- (void)initDataFromPlist{
     
     NSArray *authList = [NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
     if (authList == nil)
@@ -78,7 +49,34 @@
             }
         }
     }
+}
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    shareTypeArray = [[NSMutableArray alloc] initWithObjects:
+                      [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"新浪微博",
+                       @"title",
+                       [NSNumber numberWithInteger:ShareTypeSinaWeibo],
+                       @"type",
+                       nil],
+                      [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"腾讯微博",
+                       @"title",
+                       [NSNumber numberWithInteger:ShareTypeTencentWeibo],
+                       @"type",
+                       nil],
+                      [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"人人网",
+                       @"title",
+                       [NSNumber numberWithInteger:ShareTypeRenren],
+                       @"type",
+                       nil],
+                      nil];
+    [self initDataFromPlist];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -152,8 +150,8 @@
                                    result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
                                        if (result)
                                        {
-                                           [item setObject:[userInfo nickname] forKey:@"username"];
-                                           [shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
+                                           [RORUserUtils userInfoUpdateHandler:userInfo withSNSType:type];
+                                           [self initDataFromPlist];
                                        }
                                        NSLog(@"%d:%@",[error errorCode], [error errorDescription]);
                                        [_tblAutoView reloadData];

@@ -94,72 +94,8 @@
     
     [self initializePlat];
     
-    //监听用户信息变更
-    [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
-                               target:self
-                               action:@selector(userInfoUpdateHandler:)];
-    
     // Override point for customization after application launch.
     return YES;
-}
-
-- (void)userInfoUpdateHandler:(NSNotification *)notif
-{
-    NSMutableArray *authList = [NSMutableArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
-    if (authList == nil)
-    {
-        authList = [NSMutableArray array];
-    }
-    
-    NSString *platName = nil;
-    NSInteger plat = [[[notif userInfo] objectForKey:SSK_PLAT] integerValue];
-    switch (plat)
-    {
-        case ShareTypeSinaWeibo:
-            platName = @"新浪微博";
-            break;
-        case ShareTypeQQSpace:
-            platName = @"QQ空间";
-            break;
-        case ShareTypeRenren:
-            platName = @"人人网";
-            break;
-        case ShareTypeTencentWeibo:
-            platName = @"腾讯微博";
-            break;
-        default:
-            platName = @"未知";
-    }
-    id<ISSUserInfo> userInfo = [[notif userInfo] objectForKey:SSK_USER_INFO];
-    
-    BOOL hasExists = NO;
-    for (int i = 0; i < [authList count]; i++)
-    {
-        NSMutableDictionary *item = [authList objectAtIndex:i];
-        ShareType type = [[item objectForKey:@"type"] integerValue];
-        if (type == plat)
-        {
-            [item setObject:[userInfo nickname] forKey:@"username"];
-            hasExists = YES;
-            break;
-        }
-    }
-    
-    if (!hasExists)
-    {
-        NSDictionary *newItem = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                 platName,
-                                 @"title",
-                                 [NSNumber numberWithInteger:plat],
-                                 @"type",
-                                 [userInfo nickname],
-                                 @"username",
-                                 nil];
-        [authList addObject:newItem];
-    }
-    
-    [authList writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
-    NSLog(@"end");
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{

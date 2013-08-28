@@ -576,11 +576,7 @@
 }
 
 - (void)saveRunInfo{
-//    NSError *error = nil;
-//    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-//    NSManagedObjectContext *context = delegate.managedObjectContext;
-//    User_Running_History *runHistory = [NSEntityDescription insertNewObjectForEntityForName:@"User_Running_History" inManagedObjectContext:context];
-    User_Running_History *runHistory = [[User_Running_History alloc] init];
+    User_Running_History *runHistory = [User_Running_History intiUnassociateEntity];
     runHistory.distance = [NSNumber numberWithDouble:distance];
     runHistory.duration = [NSNumber numberWithDouble:duration];
     runHistory.avgSpeed = [NSNumber numberWithDouble:(double)distance/duration*3.6];
@@ -613,9 +609,6 @@
     NSLog(@"%@", runHistory);
     record = runHistory;
     [RORRunHistoryServices saveRunInfoToDB:runHistory];
-//    if (![context save:&error]) {
-//        NSLog(@"%@",[error localizedDescription]);
-//    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

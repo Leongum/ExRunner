@@ -34,6 +34,8 @@
 @property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) NSString * waveForm;
 
++(User_Running_History *) intiUnassociateEntity;
+
 +(User_Running_History *) removeAssociateForEntity:(User_Running_History *)associatedEntity;
 
 -(void)initWithDictionary:(NSDictionary *)dict;

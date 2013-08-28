@@ -37,22 +37,22 @@
 
 - (IBAction)sinaWeiboLogin:(id)sender {
     [RORShareService authLoginFromSNS:ShareTypeSinaWeibo];
-    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)tencentWeiboLogin:(id)sender {
     [RORShareService authLoginFromSNS:ShareTypeTencentWeibo];
-    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)qqAccountLogin:(id)sender {
     [RORShareService authLoginFromSNS:ShareTypeQQSpace];
-    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)renrenAccountLogin:(id)sender {
     [RORShareService authLoginFromSNS:ShareTypeRenren];
-    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload {

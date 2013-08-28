@@ -29,4 +29,6 @@
 
 + (NSString *)getLastUpdateTime: (NSString *) key;
 
++ (void)userInfoUpdateHandler:(id<ISSUserInfo>)userInfo withSNSType:(ShareType) shareType;
+
 @end
