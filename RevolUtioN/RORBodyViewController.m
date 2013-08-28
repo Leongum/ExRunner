@@ -47,32 +47,31 @@
 }
 
 -(void)loadData{
-    NSError *error;
-
     content = [RORUserServices fetchUser:[RORUserUtils getUserId]];
-    
 }
 
 - (IBAction)saveAction:(id)sender {
-    
+    NSDictionary *saveDict = [NSDictionary dictionaryWithObjectsAndKeys:content.attributes.height, @"height",
+                             content.attributes.weight, @"weight",
+                             content.sex, @"sex", nil];
+    [RORUserServices updateUserInfo:saveDict];
 }
 
 - (IBAction)selectSexAction:(id)sender {
     UISegmentedControl *seg = (UISegmentedControl *)sender;
     switch (seg.selectedSegmentIndex) {
         case 0:
-            newSex = @"男";
+            content.sex = @"男";
             break;
         case 1:
-            newSex = @"未知";
+            content.sex = @"未知";
             break;      
         case 2:
-            newSex = @"女";
+            content.sex = @"女";
             break;
         default:
             break;
     };
-    content.sex = newSex;
 }
 
 -(void)hideCoverView{

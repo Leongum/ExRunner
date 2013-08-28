@@ -31,4 +31,6 @@
 
 +(void)clearUserData;
 
++(User_Base *)updateUserInfo:(NSDictionary *)updateDic;
+
 @end

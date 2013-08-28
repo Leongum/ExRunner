@@ -30,11 +30,15 @@
 @property (nonatomic) NSNumber *userId;
 @property (weak, nonatomic) IBOutlet UIView *weatherSubView;
 @property (weak, nonatomic) IBOutlet UIButton *weatherInfoButtonView;
-@property (weak, nonatomic) IBOutlet UIButton *userButton;
 @property (strong, nonatomic) IBOutlet UIButton *runButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *challenge;
 //@property (strong, nonatomic) IBOutlet UIImageView *testView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *levelLabel;
+@property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (strong, nonatomic) IBOutlet UIView *userInfoView;
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
 
 @property (strong, nonatomic) IBOutlet UILabel *lbLocation;
 @property (weak, nonatomic) IBOutlet UILabel *lbTemperature;
