@@ -156,18 +156,20 @@
 + (Boolean)uploadRunningHistories{
     NSNumber *userId = [RORUserUtils getUserId];
     NSArray *dataList = [self fetchUnsyncedRunHistories:NO];
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (User_Running_History *history in dataList) {
-        [array addObject:history.transToDictionary];
-    }
-    RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createRunHistories:userId withRunHistories:array];
-    
-    if ([httpResponse responseStatus] == 200){
-        [self updateUnsyncedRunHistories];
+    if([dataList count] > 0){
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        for (User_Running_History *history in dataList) {
+            [array addObject:history.transToDictionary];
+        }
+        RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createRunHistories:userId withRunHistories:array];
         
-    } else {
-        NSLog(@"error: statCode = %@", [httpResponse errorMessage]);
-        return NO;
+        if ([httpResponse responseStatus] == 200){
+            [self updateUnsyncedRunHistories];
+            
+        } else {
+            NSLog(@"error: statCode = %@", [httpResponse errorMessage]);
+            return NO;
+        }
     }
     return YES;
 }
@@ -212,25 +214,26 @@
         }
         [RORContextUtils saveContext];
     }
-    [self syncRunningHistories];
-    [self updateUnsyncedRunHistories];
+    [self uploadRunningHistories];
 }
 
 + (void)uploadUserRunning{
     NSNumber *userId = [RORUserUtils getUserId];
     NSArray *dataList = [self fetchUnsyncedUserRunning:NO];
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (User_Running *history in dataList) {
-        [array addObject:history.transToDictionary];
-    }
-    RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createUserRunning:userId withUserRun:array];
-    
-    if ([httpResponse responseStatus] == 200){
-        [self updateUnsyncedUserRunning];
-        
-    } else {
-        //todo: add existing check
-        NSLog(@"error: statCode = %@", [httpResponse errorMessage]);
+    if([dataList count] > 0){
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        for (User_Running *history in dataList) {
+            [array addObject:history.transToDictionary];
+        }
+        RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createUserRunning:userId withUserRun:array];
+
+        if ([httpResponse responseStatus] == 200){
+            [self updateUnsyncedUserRunning];
+            
+        } else {
+            //todo: add existing check
+            NSLog(@"error: statCode = %@", [httpResponse errorMessage]);
+        }
     }
 }
 

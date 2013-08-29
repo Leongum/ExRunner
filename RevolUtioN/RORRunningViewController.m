@@ -16,6 +16,7 @@
 #import "RORMacro.h"
 #import "RORMissionServices.h"
 #import "RORRunHistoryServices.h"
+#import "RORUserServices.h"
 
 #define SCALE_SMALL CGRectMake(0,0,320,155)
 
@@ -609,6 +610,9 @@
     NSLog(@"%@", runHistory);
     record = runHistory;
     [RORRunHistoryServices saveRunInfoToDB:runHistory];
+    if([RORUserUtils getUserId].integerValue > 0){
+        [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

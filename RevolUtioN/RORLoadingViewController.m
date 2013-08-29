@@ -36,10 +36,11 @@
     //sync user
     NSNumber *userId = [RORUserUtils getUserId];
     if([userId intValue] > 0){
-        [RORUserServices syncUserInfoById:userId];
         //sync runningHistory
         [RORRunHistoryServices syncRunningHistories];
         [RORRunHistoryServices uploadRunningHistories];
+        //sync userInfo.
+        [RORUserServices syncUserInfoById:userId];
     }
     //sync missions
     [RORMissionServices syncMissions];
