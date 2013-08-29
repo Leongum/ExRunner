@@ -21,9 +21,13 @@
 #define FRIEND_URL @"http://121.199.56.231:8080/usavich/service/api/account/friends/%@?lastUpdateTime=%@"
 #define MISSION_URL @"http://121.199.56.231:8080/usavich/service/api/missions/mission?lastUpdateTime=%@"
 #define VERSION_URL @"http://121.199.56.231:8080/usavich/service/api/version/%@"
+#define PM25_URL @"http://121.199.56.231:8080/usavich/service/api/weather/pm25?cityName=%@&provinceName=%@"
+
 
 #define WEATHER_URL @"http://m.weather.com.cn/data/%@.html"
-#define PM25_URL @"http://121.199.56.231:8080/usavich/service/api/weather/pm25?cityName=%@&provinceName=%@"
+
+#define NET_WORK_MODE @"All_Mode"
+
 #endif
 
 typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3, NormalRun = 4} MissionTypeEnum;

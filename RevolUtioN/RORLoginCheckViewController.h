@@ -17,5 +17,6 @@
 - (IBAction)tencentWeiboLogin:(id)sender;
 - (IBAction)qqAccountLogin:(id)sender;
 - (IBAction)renrenAccountLogin:(id)sender;
+- (IBAction)selfAccountLogin:(id)sender;
 
 @end

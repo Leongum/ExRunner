@@ -8,11 +8,11 @@
 
 #import "RORUserUtils.h"
 
-@implementation RORUserUtils
-
 static NSNumber *userId = nil;
 
 static NSDate *systemTime = nil;
+
+@implementation RORUserUtils
 
 + (NSNumber *)getUserId{
     if (userId == nil || userId.integerValue < 0){
@@ -43,10 +43,12 @@ static NSDate *systemTime = nil;
     userId = [[NSNumber alloc] initWithInt:-1];
 }
 
-+ (NSString*)getUserSettingsPList{
++ (NSMutableDictionary *)getUserSettingsPList{
     NSArray *doc = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docPath = [ doc objectAtIndex:0 ];
-    return [docPath stringByAppendingPathComponent:@"userSettings.plist"];
+    NSString *path = [docPath stringByAppendingPathComponent:@"userSettings.plist"];
+    NSMutableDictionary *settingDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    return settingDict;
 }
 
 + (NSString *)hasLoggedIn{

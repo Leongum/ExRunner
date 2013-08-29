@@ -7,6 +7,7 @@
 //
 
 #import "RORUserServices.h"
+#import "RORNetWorkUtils.h"
 
 @implementation RORUserServices
 
@@ -129,11 +130,12 @@
         [self saveUserInfoToList:user];
     }else {
         NSLog(@"sync with host error: can't get user's info. Status Code: %d", [httpResponse responseStatus]);
+        return user;
     }
     return [User_Base removeAssociateForEntity:user];
 }
 
-+ (void)syncFriends:(NSNumber *) userId {
++ (BOOL)syncFriends:(NSNumber *) userId {
     if(userId > 0)
     {
         NSError *error = nil;
@@ -154,10 +156,12 @@
             
             [RORContextUtils saveContext];
             [RORUserUtils saveLastUpdateTime:@"FriendUpdateTime"];
+            return YES;
         } else {
             NSLog(@"sync with host error: can't get user's friends list. Status Code: %d", [httpResponse responseStatus]);
         }
     }
+    return NO;
 }
 
 +(void)clearUserData{

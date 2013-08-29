@@ -23,14 +23,15 @@ static NSMutableDictionary *configList = nil;
 
 +(NSMutableDictionary*)getInstance{
     if (configList == nil) {
-        NSString *path = [RORUserUtils getUserSettingsPList];
-        configList = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+        configList = [RORUserUtils getUserSettingsPList];
     }
     return configList;
 }
 
 + (void)setValue:(id)value forKey:(NSString *)key{
-    NSString *path = [RORUserUtils getUserSettingsPList];
+    NSArray *doc = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docPath = [ doc objectAtIndex:0 ];
+    NSString *path = [docPath stringByAppendingPathComponent:@"userSettings.plist"];
     [configList setValue:value forKey:key];
     [configList writeToFile:path atomically:YES];
 }

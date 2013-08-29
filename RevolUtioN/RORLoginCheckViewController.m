@@ -7,6 +7,7 @@
 //
 
 #import "RORLoginCheckViewController.h"
+#import "RORNetWorkUtils.h"
 
 @interface RORLoginCheckViewController ()
 
@@ -53,6 +54,16 @@
 - (IBAction)renrenAccountLogin:(id)sender {
     [RORShareService authLoginFromSNS:ShareTypeRenren];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)selfAccountLogin:(id)sender {
+    if(![RORNetWorkUtils getIsConnetioned]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"设备尚未连接网络！" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [self.navigationController performSegueWithIdentifier:@"selflogin" sender:self];
+    }
 }
 
 - (void)viewDidUnload {

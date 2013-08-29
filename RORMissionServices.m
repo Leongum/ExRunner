@@ -7,7 +7,7 @@
 //
 
 #import "RORMissionServices.h"
-
+#import "RORNetWorkUtils.h"
 
 @implementation RORMissionServices
 
@@ -169,7 +169,8 @@
     [RORContextUtils deleteFromDelegate:table withParams:params withPredicate:query];
 }
 
-+ (Boolean)syncMissions{
++ (BOOL)syncMissions{
+    if(![RORNetWorkUtils getDoUploadable])return YES;
     NSError *error = nil;
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
     NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"MissionUpdateTime"];

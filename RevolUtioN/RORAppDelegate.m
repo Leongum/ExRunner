@@ -7,6 +7,8 @@
 //
 
 #import "RORAppDelegate.h"
+#import "Reachability.h"
+#import "RORNetWorkUtils.h"
 
 @implementation RORAppDelegate
 @synthesize managedObjectContext =_managedObjectContext;
@@ -237,6 +239,24 @@
     
 }
 
+//Called by Reachability whenever status changes.
+- (void) reachabilityChanged: (NSNotification* )note
+{
+	Reachability* curReach = [note object];
+	NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+    [RORNetWorkUtils updateNetWorkStatus:[curReach currentReachabilityStatus]];
+}
+
+- (void) applicationDidFinishLaunching: (UIApplication* )application
+{
+    NSLog(@"step 1");
+    // Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the
+    // method "reachabilityChanged" will be called.
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+    
+	hostReach = [Reachability reachabilityWithHostName: @"www.apple.com"];
+	[hostReach startNotifier];
+}
 
 
 #pragma mark - Application's Documents directory

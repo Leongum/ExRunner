@@ -7,6 +7,7 @@
 //
 
 #import "RORRunHistoryServices.h"
+#import "RORNetWorkUtils.h"
 
 @implementation RORRunHistoryServices
 
@@ -153,7 +154,8 @@
     return (User_Running *) [fetchObject objectAtIndex:0];
 }
 
-+ (Boolean)uploadRunningHistories{
++ (BOOL)uploadRunningHistories{
+    if(![RORNetWorkUtils getDoUploadable])return YES;
     NSNumber *userId = [RORUserUtils getUserId];
     NSArray *dataList = [self fetchUnsyncedRunHistories:NO];
     if([dataList count] > 0){
@@ -174,7 +176,8 @@
     return YES;
 }
 
-+ (Boolean)syncRunningHistories{
++ (BOOL)syncRunningHistories{
+    if(![RORNetWorkUtils getDoUploadable])return YES;
     NSError *error = nil;
     NSNumber *userId = [RORUserUtils getUserId];
     NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"RunningHistoryUpdateTime"];
@@ -217,7 +220,8 @@
     [self uploadRunningHistories];
 }
 
-+ (void)uploadUserRunning{
++ (BOOL)uploadUserRunning{
+    if(![RORNetWorkUtils getDoUploadable])return YES;
     NSNumber *userId = [RORUserUtils getUserId];
     NSArray *dataList = [self fetchUnsyncedUserRunning:NO];
     if([dataList count] > 0){
@@ -233,12 +237,15 @@
         } else {
             //todo: add existing check
             NSLog(@"error: statCode = %@", [httpResponse errorMessage]);
+            return NO;
         }
     }
+    return YES;
 }
 
 
-+ (Boolean)syncUserRunning{
++ (BOOL)syncUserRunning{
+    if(![RORNetWorkUtils getDoUploadable])return YES;
     NSError *error = nil;
     NSNumber *userId = [RORUserUtils getUserId];
     NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"UserRunningUpdateTime"];

@@ -21,7 +21,7 @@
 
 + (NSMutableDictionary *)getUserInfoPList;
 
-+ (NSString*)getUserSettingsPList;
++ (NSMutableDictionary *)getUserSettingsPList;
 
 + (void)writeToUserInfoPList:(NSDictionary *) userDict;
 

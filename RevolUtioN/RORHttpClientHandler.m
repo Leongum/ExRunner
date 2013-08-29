@@ -8,6 +8,7 @@
 
 #import "RORHttpClientHandler.h"
 #import "RORUserUtils.h"
+#import "RORNetWorkUtils.h"
 
 @implementation RORHttpClientHandler
 
@@ -92,34 +93,40 @@
     NSError *error = nil;
     NSHTTPURLResponse *urlResponse = nil;
     RORHttpResponse *httpResponse = [[RORHttpResponse alloc] init];
-    
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:nil];
-    
-    if (response == nil) {
-        [httpResponse setErrorCode:@"222"];
-        [httpResponse setErrorMessage:@"Network connection's not available"];
-        NSLog(@"Network connection's not available. Please check the system configuration");
-        return httpResponse;
+    if([RORNetWorkUtils getIsConnetioned]){
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:nil];
+        
+        if (response == nil) {
+            [httpResponse setErrorCode:@"222"];
+            [httpResponse setErrorMessage:@"Network connection's not available"];
+            NSLog(@"Network connection's not available. Please check the system configuration");
+            return httpResponse;
+        }
+        
+        NSInteger statCode = [urlResponse statusCode];
+        [httpResponse setResponseStatus:statCode];
+        [httpResponse setResponseData:response];
+        if(statCode ==204){
+            //change 204 status into 200.
+            [httpResponse setResponseStatus:200];
+        }
+        else if(statCode == 409){
+            NSDictionary *errorInfoDic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+            [httpResponse setErrorCode:[errorInfoDic valueForKey:@"errorcode"]];
+            [httpResponse setErrorMessage:[errorInfoDic valueForKey:@"errormessage"]];
+        }
+        else if(statCode == 500){
+            [httpResponse setErrorCode:@"500"];
+            [httpResponse setErrorMessage:@"UNKNOW_ERROR"];
+        }
+         NSLog(@"Response from request: %@",[NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error]);
     }
-    
-    NSInteger statCode = [urlResponse statusCode];
-    [httpResponse setResponseStatus:statCode];
-    [httpResponse setResponseData:response];
-    if(statCode ==204){
-        //change 204 status into 200.
-        [httpResponse setResponseStatus:200];
+    else{
+        [httpResponse setErrorCode:@"9999"];
+        [httpResponse setErrorMessage:@"CONNECTION_ERROR"];
+        
     }
-    else if(statCode == 409){
-        NSDictionary *errorInfoDic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-        [httpResponse setErrorCode:[errorInfoDic valueForKey:@"errorcode"]];
-        [httpResponse setErrorMessage:[errorInfoDic valueForKey:@"errormessage"]];
-    }
-    else if(statCode == 500){
-        [httpResponse setErrorCode:@"500"];
-        [httpResponse setErrorMessage:@"UNKNOW_ERROR"];
-    }
-    NSLog(@"Response from request: %@",[NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error]);
-    
+   
     return httpResponse;
 }
 

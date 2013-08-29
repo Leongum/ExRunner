@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "zlib.h" 
 #import <SBJson/SBJson.h>
-#import "Reachability.h"
 #import "RORAppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
 
@@ -30,8 +29,6 @@
 + (NSString *)toJsonFormObject:(NSObject *)object;
 
 + (NSString*)getCityCodeJSon;
-
-+ (BOOL) isConnectionAvailable;
 
 + (NSString *)getCitycodeByCityname:(NSString *)cityName;
 

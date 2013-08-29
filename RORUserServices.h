@@ -27,7 +27,7 @@
 
 +(User_Base *)syncUserInfoByLogin:(NSString *)userName withUserPasswordL:(NSString *) password;
 
-+(void)syncFriends:(NSNumber *) userId;
++(BOOL)syncFriends:(NSNumber *) userId;
 
 +(void)clearUserData;
 
