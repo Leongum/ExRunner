@@ -236,6 +236,7 @@
     
     BOOL isExistenceNetwork = YES;
     Reachability *reach = [Reachability reachabilityWithHostName:@"www.apple.com"];
+
     switch ([reach currentReachabilityStatus]) {
         case NotReachable:
             isExistenceNetwork = NO;
