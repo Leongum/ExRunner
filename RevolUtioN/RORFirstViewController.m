@@ -31,6 +31,8 @@ NSInteger centerLoc =-10000;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [RORUtils setFontFamily:@"FZKaTong-M19S" forView:self.view andSubViews:YES];
 
     weatherSubView.frame = WEATHER_WINDOW_INITIAL_FRAME;
     //init topbar's gesture listeners
@@ -91,10 +93,10 @@ NSInteger centerLoc =-10000;
 }
 
 - (void)initPageData{
-    [self.loginButton.titleLabel setFont: [UIFont fontWithName:@"FZKaTong-M19S" size:20]];
-    [self.levelLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
-    [self.scoreLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
-    [self.usernameLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:20]];
+//    [self.loginButton.titleLabel setFont: [UIFont fontWithName:@"FZKaTong-M19S" size:20]];
+//    [self.levelLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
+//    [self.scoreLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
+//    [self.usernameLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:20]];
 
     //初始化用户名
     if ([RORUserUtils getUserId].integerValue>=0){
@@ -110,6 +112,7 @@ NSInteger centerLoc =-10000;
         self.loginButton.alpha = 1;
     }
 }
+
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self initPageData];

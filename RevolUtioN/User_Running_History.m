@@ -34,6 +34,7 @@
 @dynamic userId;
 @dynamic uuid;
 @dynamic waveForm;
+@dynamic valid;
 
 +(User_Running_History *) intiUnassociateEntity{
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
@@ -75,6 +76,7 @@
     self.steps = [RORDBCommon getNumberFromId:[dict valueForKey:@"steps"]];
     self.commitTime = [RORDBCommon getDateFromId:[dict valueForKey:@"commitTime"]];
     self.grade = [RORDBCommon getNumberFromId:[dict valueForKey:@"grade"]];
+    self.valid = [RORDBCommon getNumberFromId:[dict valueForKey:@"valid"]];
 }
 
 -(NSMutableDictionary *)transToDictionary{
@@ -101,6 +103,7 @@
     [tempoDict setValue:self.uuid forKey:@"uuid"];
     [tempoDict setValue:[RORDBCommon getStringFromId:self.commitTime] forKey:@"commitTime"];
     [tempoDict setValue:self.grade forKey:@"grade"];
+    [tempoDict setValue:self.valid forKey:@"valid"];
     return tempoDict;
 }
 

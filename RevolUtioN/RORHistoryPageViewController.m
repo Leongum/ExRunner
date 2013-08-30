@@ -68,7 +68,7 @@
 -(void)loadChecked{
     self.coverView.alpha = 0;
     isChecked[0] = YES;
-    isChecked[1] = NO;
+    isChecked[1] = YES;
     [self updateFilter];
 
 }

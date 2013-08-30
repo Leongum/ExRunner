@@ -208,10 +208,7 @@
     switch (component) {
         case 0:
         {
-            if(selection == HEIGHT_PICKER)
-                return 1;
-            else
-                return 2;
+            return 2;
         }
         case 1:
         case 2:
@@ -230,7 +227,7 @@
         case 0:
         {
             if(selection == HEIGHT_PICKER)
-                return @"1";
+                return [NSString stringWithFormat:@"%d",row+1];
             else
                 return [NSString stringWithFormat:@"%d",row];
         }

@@ -10,6 +10,7 @@
 #import "RORMissionServices.h"
 #import "Animations.h"
 #import "FTAnimation.h"
+#import "RORChallengeLevelView.h"
 
 #define CELL_TITLE_TAG 1
 #define CELL_LEVEL_TAG 2
@@ -18,6 +19,8 @@
 #define COVERVIEW_BOARD_TAG 2
 #define COVERVIEW_BUTTON_TAG 3
 #define COVERVIEW_BG_TAG 4
+
+#define LEVELTABLE_FRAME CGRectMake(25, 180, 270, 90)
 
 @interface RORChallengeViewController ()
 
@@ -40,7 +43,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.coverView.alpha =0;
-
+    
+    RORChallengeLevelView *levelTable = [[RORChallengeLevelView alloc]initWithFrame:LEVELTABLE_FRAME andNumberOfColumns:6];
+    [levelTable setBackgroundColor:[UIColor colorWithRed:231 green:8 blue:53 alpha:1]];
+    [self.coverView addSubview:levelTable];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -66,6 +72,7 @@
 - (void)viewDidUnload {
     [self setCoverView:nil];
     [self setTableView:nil];
+    [self setLevelRequirementTable:nil];
     [super viewDidUnload];
 }
 

@@ -123,6 +123,7 @@
 		30507C09174A57F000EC7F12 /* RORUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30507C08174A57F000EC7F12 /* RORUserInfoViewController.m */; };
 		30507C0F174B300800EC7F12 /* RORUserInfoBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30507C0E174B300800EC7F12 /* RORUserInfoBasicViewController.m */; };
 		30507C11174B36E500EC7F12 /* UserInfoBasicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30507C10174B36E500EC7F12 /* UserInfoBasicView.xib */; };
+		305428CB17CF85DA00A9E6E9 /* RORChallengeLevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 305428CA17CF85DA00A9E6E9 /* RORChallengeLevelView.m */; };
 		305A1878174F1EFB003A8CD7 /* RORLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 305A1877174F1EFB003A8CD7 /* RORLoginViewController.m */; };
 		3061F3A5174C70F0006093FC /* userInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3061F3A4174C70F0006093FC /* userInfo.plist */; };
 		3061F3A8174C9E32006093FC /* RORUserRunHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061F3A7174C9E32006093FC /* RORUserRunHistoryViewController.m */; };
@@ -459,6 +460,8 @@
 		30507C0D174B300800EC7F12 /* RORUserInfoBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORUserInfoBasicViewController.h; sourceTree = "<group>"; };
 		30507C0E174B300800EC7F12 /* RORUserInfoBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORUserInfoBasicViewController.m; sourceTree = "<group>"; };
 		30507C10174B36E500EC7F12 /* UserInfoBasicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoBasicView.xib; sourceTree = "<group>"; };
+		305428C917CF85DA00A9E6E9 /* RORChallengeLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORChallengeLevelView.h; sourceTree = "<group>"; };
+		305428CA17CF85DA00A9E6E9 /* RORChallengeLevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORChallengeLevelView.m; sourceTree = "<group>"; };
 		305A1876174F1EFA003A8CD7 /* RORLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORLoginViewController.h; sourceTree = "<group>"; };
 		305A1877174F1EFB003A8CD7 /* RORLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORLoginViewController.m; sourceTree = "<group>"; };
 		3061F3A4174C70F0006093FC /* userInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userInfo.plist; sourceTree = "<group>"; };
@@ -1154,6 +1157,8 @@
 				30A6D9BA17C7342400D1116E /* RORNormalButton.m */,
 				30A6D9D317CB2C8800D1116E /* RORFunnyButton.h */,
 				30A6D9D417CB2C8900D1116E /* RORFunnyButton.m */,
+				305428C917CF85DA00A9E6E9 /* RORChallengeLevelView.h */,
+				305428CA17CF85DA00A9E6E9 /* RORChallengeLevelView.m */,
 			);
 			name = ReusableControl;
 			sourceTree = "<group>";
@@ -1644,6 +1649,7 @@
 				0F16EF8E17CD9F390055DEE6 /* Products.m in Sources */,
 				0F16EF9417CDBA940055DEE6 /* RORUserUtils.m in Sources */,
 				0F16EF9717CDBAC20055DEE6 /* RORContextUtils.m in Sources */,
+				305428CB17CF85DA00A9E6E9 /* RORChallengeLevelView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

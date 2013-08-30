@@ -49,6 +49,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [RORUtils setFontFamily:@"FZKaTong-M19S" forView:self.view andSubViews:YES];
+
     isNetworkOK = YES;
 }
 

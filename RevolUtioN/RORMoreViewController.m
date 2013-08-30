@@ -37,6 +37,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+
     [self loadAll];
 //    cityName = cityName;
 }
@@ -122,9 +123,14 @@
             break;
         }
     }
+    [RORUtils setFontFamily:@"FZKaTong-M19S" forView:cell andSubViews:YES];
+
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 //    switch (section) {
 //        case 0:

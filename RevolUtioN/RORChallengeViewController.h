@@ -18,4 +18,5 @@
 @property (strong, nonatomic) NSArray *contentList;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) IBOutlet UIControl *levelRequirementTable;
 @end

@@ -33,6 +33,7 @@
 @property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) NSString * waveForm;
+@property (nonatomic, retain) NSNumber * valid;
 
 +(User_Running_History *) intiUnassociateEntity;
 
