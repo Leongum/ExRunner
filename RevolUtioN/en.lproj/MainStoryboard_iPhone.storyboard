@@ -281,7 +281,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ZbL-oL-5D5" kind="push" identifier="selflgoin" id="YwV-1K-gbi"/>
+                                    <action selector="selfAccountLogin:" destination="9Jk-xy-NJo" eventType="touchUpInside" id="NS7-LV-UtH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YWf-Y1-cKF">
@@ -333,6 +333,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="hLa-Zw-mfc"/>
+                    <connections>
+                        <segue destination="ZbL-oL-5D5" kind="push" identifier="selflogin" id="cjd-mf-f4y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ps-t5-eYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1736,8 +1739,6 @@
         <class className="RORChallengeViewController" superclassName="RORViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RORChallengeViewController.h"/>
             <relationships>
-                <relationship kind="action" name="coverViewBgTap:"/>
-                <relationship kind="action" name="levelTableTap:"/>
                 <relationship kind="outlet" name="coverView" candidateClass="RORBottomPopSubview"/>
                 <relationship kind="outlet" name="levelRequirementTable" candidateClass="UIControl"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
@@ -1823,6 +1824,7 @@
             <relationships>
                 <relationship kind="action" name="qqAccountLogin:"/>
                 <relationship kind="action" name="renrenAccountLogin:"/>
+                <relationship kind="action" name="selfAccountLogin:"/>
                 <relationship kind="action" name="sinaWeiboLogin:"/>
                 <relationship kind="action" name="tencentWeiboLogin:"/>
             </relationships>

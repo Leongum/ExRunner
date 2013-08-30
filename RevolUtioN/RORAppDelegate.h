@@ -15,10 +15,12 @@
 #import <RennSDK/RennSDK.h>
 #import <ShareSDK/ShareSDK.h>
 #import "RORShareViewDelegate.h"
+#import "Reachability.h"
 
 @interface RORAppDelegate : UIResponder <UIApplicationDelegate>
 {
     RORShareViewDelegate *_viewDelegate;
+    Reachability* hostReach;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -27,6 +29,7 @@
 @property (readonly,strong,nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly,strong,nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonatomic) NSDictionary *userInfo;
+@property (readonly) NetworkStatus networkStatus;
 @property (nonatomic,readonly) RORShareViewDelegate *viewDelegate;
 
 - (void)saveContext;

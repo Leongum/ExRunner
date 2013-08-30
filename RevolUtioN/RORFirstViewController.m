@@ -41,15 +41,6 @@ NSInteger centerLoc =-10000;
     
 //    UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
 //    [weatherSubView addGestureRecognizer:panGes];
-    
-    //应用初始设置
-    NSString *userSettingDocPath = [RORUserUtils getUserSettingsPList];
-    NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:userSettingDocPath];
-    if (data == nil) {
-        NSString *userSettingPath = [[NSBundle mainBundle] pathForResource:@"DefaultSettings" ofType:@"plist"];
-        data = [[NSDictionary alloc] initWithContentsOfFile:userSettingPath];
-        [data writeToFile:userSettingDocPath atomically:YES];
-    }
         
     //初始化按钮位置
     [self initControlsLayout];

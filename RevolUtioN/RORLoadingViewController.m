@@ -11,6 +11,7 @@
 #import "RORUserServices.h"
 #import "RORRunHistoryServices.h"
 #import "RORSystemService.h"
+#import "RORNetWorkUtils.h"
 
 @interface RORLoadingViewController ()
 
@@ -30,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [RORNetWorkUtils initCheckNetWork];
 	// Do any additional setup after loading the view.
     //sync version
     [RORSystemService syncVersion:@"ios"];

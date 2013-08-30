@@ -21,11 +21,11 @@
 
 + (User_Running *)fetchUserRunningByRunId:(NSString *) runId;
 
-+ (Boolean)uploadRunningHistories;
++ (BOOL)uploadRunningHistories;
 
-+ (Boolean)syncRunningHistories;
++ (BOOL)syncRunningHistories;
 
-+ (Boolean)syncUserRunning;
++ (BOOL)syncUserRunning;
 
 +(NSArray*)fetchRunHistoryByUserId:(NSNumber*)userId;
 
