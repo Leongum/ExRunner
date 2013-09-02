@@ -247,27 +247,6 @@
 			remoteGlobalIDString = BCC2627313920FC7003D9994;
 			remoteInfo = "sbjson-iosTests";
 		};
-		0F9A9D4117894A330025E49B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F9A9D3B17894A320025E49B /* iPhone.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1D6058910D05DD3D006BFB54;
-			remoteInfo = iPhone;
-		};
-		0F9A9D4317894A330025E49B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F9A9D3B17894A320025E49B /* iPhone.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B55B60C70F765BB00064029C;
-			remoteInfo = Tests;
-		};
-		0F9A9D4517894A330025E49B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F9A9D3B17894A320025E49B /* iPhone.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B576D72311C7F34D0059B815;
-			remoteInfo = iPad;
-		};
 		302FD03A1727D870004DA005 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 302FCFF91727D870004DA005 /* Project object */;
@@ -384,7 +363,6 @@
 		0F972BD0179255F300A27EF2 /* RORHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHttpResponse.h; sourceTree = "<group>"; };
 		0F972BD1179255F300A27EF2 /* RORHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORHttpResponse.m; sourceTree = "<group>"; };
 		0F9A9D2C17894A1B0025E49B /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBJson.xcodeproj; path = "json-framework-master/SBJson.xcodeproj"; sourceTree = "<group>"; };
-		0F9A9D3B17894A320025E49B /* iPhone.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iPhone.xcodeproj; path = "pokeb-asi-http-request-3ed0b3c/iPhone.xcodeproj"; sourceTree = "<group>"; };
 		3001498E1750F444005DAF1D /* RORMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMoreViewController.h; sourceTree = "<group>"; };
 		3001498F1750F444005DAF1D /* RORMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMoreViewController.m; sourceTree = "<group>"; };
 		3008CC53175756F60032F5C7 /* DefaultSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultSettings.plist; sourceTree = "<group>"; };
@@ -828,16 +806,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0F9A9D3C17894A320025E49B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0F9A9D4217894A330025E49B /* ASIHTTPRequest iPhone.app */,
-				0F9A9D4417894A330025E49B /* Tests.app */,
-				0F9A9D4617894A330025E49B /* ASIHTTPRequest iPad.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		3001498D1750F428005DAF1D /* RORMorePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -967,7 +935,6 @@
 				30F4549017C1296C006CB66C /* Animation */,
 				30F4546017BCB519006CB66C /* InertiaNavigation */,
 				0F59A0FD17BA2170000DEFEF /* ShareSDK_v2.3.1 */,
-				0F9A9D3B17894A320025E49B /* iPhone.xcodeproj */,
 				0F9A9D2C17894A1B0025E49B /* SBJson.xcodeproj */,
 				30BB0BAB176A04A10009A847 /* libz.1.2.5.dylib */,
 				30BB0BA9176A04910009A847 /* libicucore.dylib */,
@@ -1377,10 +1344,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 0F9A9D3C17894A320025E49B /* Products */;
-					ProjectRef = 0F9A9D3B17894A320025E49B /* iPhone.xcodeproj */;
-				},
-				{
 					ProductGroup = 0F9A9D2D17894A1B0025E49B /* Products */;
 					ProjectRef = 0F9A9D2C17894A1B0025E49B /* SBJson.xcodeproj */;
 				},
@@ -1420,27 +1383,6 @@
 			fileType = wrapper.cfbundle;
 			path = "sbjson-iosTests.octest";
 			remoteRef = 0F9A9D3917894A1B0025E49B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0F9A9D4217894A330025E49B /* ASIHTTPRequest iPhone.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "ASIHTTPRequest iPhone.app";
-			remoteRef = 0F9A9D4117894A330025E49B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0F9A9D4417894A330025E49B /* Tests.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Tests.app;
-			remoteRef = 0F9A9D4317894A330025E49B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0F9A9D4617894A330025E49B /* ASIHTTPRequest iPad.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "ASIHTTPRequest iPad.app";
-			remoteRef = 0F9A9D4517894A330025E49B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

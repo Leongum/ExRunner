@@ -62,7 +62,7 @@
         [alert show];
         [self.navigationController popViewControllerAnimated:YES];
     }else{
-        [self.navigationController performSegueWithIdentifier:@"selflogin" sender:self];
+        [self performSegueWithIdentifier:@"selflogin" sender:self];
     }
 }
 
