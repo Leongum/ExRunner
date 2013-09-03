@@ -182,7 +182,6 @@
 		30F4547117BCB519006CB66C /* INDeviceStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546417BCB519006CB66C /* INDeviceStatus.m */; };
 		30F4547217BCB519006CB66C /* INKalmanFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546617BCB519006CB66C /* INKalmanFilter.m */; };
 		30F4547317BCB519006CB66C /* INMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546817BCB519006CB66C /* INMatrix.m */; };
-		30F4547417BCB519006CB66C /* INNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546A17BCB519006CB66C /* INNavigationController.m */; };
 		30F4547517BCB519006CB66C /* INTimeWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546C17BCB519006CB66C /* INTimeWindow.m */; };
 		30F4547617BCB519006CB66C /* INVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546E17BCB519006CB66C /* INVector.m */; };
 		30F4548117BCB564006CB66C /* INStepCounting.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4548017BCB564006CB66C /* INStepCounting.m */; };
@@ -530,8 +529,6 @@
 		30F4546617BCB519006CB66C /* INKalmanFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INKalmanFilter.m; sourceTree = "<group>"; };
 		30F4546717BCB519006CB66C /* INMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INMatrix.h; sourceTree = "<group>"; };
 		30F4546817BCB519006CB66C /* INMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INMatrix.m; sourceTree = "<group>"; };
-		30F4546917BCB519006CB66C /* INNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INNavigationController.h; sourceTree = "<group>"; };
-		30F4546A17BCB519006CB66C /* INNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INNavigationController.m; sourceTree = "<group>"; };
 		30F4546B17BCB519006CB66C /* INTimeWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTimeWindow.h; sourceTree = "<group>"; };
 		30F4546C17BCB519006CB66C /* INTimeWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTimeWindow.m; sourceTree = "<group>"; };
 		30F4546D17BCB519006CB66C /* INVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INVector.h; sourceTree = "<group>"; };
@@ -1216,8 +1213,6 @@
 				30F4546617BCB519006CB66C /* INKalmanFilter.m */,
 				30F4546717BCB519006CB66C /* INMatrix.h */,
 				30F4546817BCB519006CB66C /* INMatrix.m */,
-				30F4546917BCB519006CB66C /* INNavigationController.h */,
-				30F4546A17BCB519006CB66C /* INNavigationController.m */,
 				30F4546B17BCB519006CB66C /* INTimeWindow.h */,
 				30F4546C17BCB519006CB66C /* INTimeWindow.m */,
 				30F4546D17BCB519006CB66C /* INVector.h */,
@@ -1550,7 +1545,6 @@
 				30F4547117BCB519006CB66C /* INDeviceStatus.m in Sources */,
 				30F4547217BCB519006CB66C /* INKalmanFilter.m in Sources */,
 				30F4547317BCB519006CB66C /* INMatrix.m in Sources */,
-				30F4547417BCB519006CB66C /* INNavigationController.m in Sources */,
 				30F4547517BCB519006CB66C /* INTimeWindow.m in Sources */,
 				30F4547617BCB519006CB66C /* INVector.m in Sources */,
 				30F4548117BCB564006CB66C /* INStepCounting.m in Sources */,

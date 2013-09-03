@@ -44,36 +44,18 @@
 }
 
 -(void)checkStep:(double)v{
-    double frequency = MIN_STEP_TIME / delta_T;
-    if (v < 10/3.6)
-//        frequency =
-    if (v > 10/3.6 && v < 20/3.6)
-        frequency = 1/(3 * delta_T);
-    if (v > 20/3.6)
-        frequency = MIN_STEP_TIME / delta_T;
-    if (totalPoints - lastGPeak < frequency)
-        return;
-
+    double maxFrequency = MIN_STEP_TIME / delta_T;
+    double slowrunFrequency = 1/(3*delta_T);
+    
+    if (v < 20/3.6){ // 20km/h, as slow running or walk
+        if (totalPoints - lastGPeak < slowrunFrequency)
+            return;
+    } else {
+        if (totalPoints - lastGPeak < maxFrequency)
+            return;
+    }
+    
     [self updateGAccPeak];
-//    [self updateLAccPeak];
-//
-//    if (gHasPeak){
-//        if (lHasPeak){
-//            if (abs(gPeak-lPeak)<=2 && (duration <0 || duration > 5)){
-//                [self oneStepFound];
-//            }
-//        } else {
-//            if (tail - gPeak > 2){
-//                gHasPeak = NO;
-//                gPeak = -1;
-//            }
-//        }
-//    }
-//    if (duration>=0){
-//        duration++;
-//        if (duration>SC_WINDOW_SIZE * 0.6)
-//            duration = -1;
-//    }
 }
 
 -(void)oneStepFound{
