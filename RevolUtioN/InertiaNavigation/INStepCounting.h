@@ -25,6 +25,8 @@
 @property (nonatomic) NSInteger counter;
 @property (nonatomic) NSInteger dSum;
 @property (nonatomic) double maxZAcc;
+@property (nonatomic) double rtStepFrequency;
+
 
 -(void)pushNewLAcc:(double)lAcc GAcc:(double)gAcc speed:(double)v;
 @end

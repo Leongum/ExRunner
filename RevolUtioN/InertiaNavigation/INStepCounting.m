@@ -7,9 +7,12 @@
 //
 
 #import "INStepCounting.h"
+#define MAX_SLOWRUN_SPEED 16/3.6
+#define MAX_WALK_SPEED 6/3.6
+
 
 @implementation INStepCounting
-@synthesize gAccList, levelAccList, counter, dSum;
+@synthesize gAccList, levelAccList, counter, dSum, rtStepFrequency;
 
 -(id)init{
     self = [super init];
@@ -19,7 +22,7 @@
     p=0;
     gAccList = [[NSMutableArray alloc]init];
     levelAccList = [[NSMutableArray alloc]init];
-    
+
     totalPoints = 0;
     head = 0;
     tail = 0;
@@ -45,22 +48,23 @@
 
 -(void)checkStep:(double)v{
     double maxFrequency = MIN_STEP_TIME / delta_T;
-    double slowrunFrequency = 1/(3*delta_T);
+    double slowrunFrequency = 0.3 / delta_T;
     
-    if (v < 20/3.6){ // 20km/h, as slow running or walk
-        if (totalPoints - lastGPeak < slowrunFrequency)
-            return;
-    } else {
+//    if (v < 16/3.6){ // 16km/h, as slow running or walk
+//        if (totalPoints - lastGPeak < slowrunFrequency)
+//            return;
+//    } else {
         if (totalPoints - lastGPeak < maxFrequency)
             return;
-    }
+//    }
     
-    [self updateGAccPeak];
+    [self updateGAccPeak:v];
 }
 
 -(void)oneStepFound{
     counter++;
 //    head = tail-1;
+    
     lastGPeak = totalPoints -1;
 //    if (duration>=0)
 //        dSum += duration;
@@ -72,16 +76,30 @@
 //    lPeak = -1;
 }
 
--(void)updateGAccPeak{
+-(void)updateGAccPeak:(double)v{
     int now = gWindow[[self pointerMoveLeft:tail for:3]];
     int pre = gWindow[[self pointerMoveLeft:tail for:4]];
     int before = gWindow[[self pointerMoveLeft:tail for:5]];
     int next = gWindow[[self pointerMoveLeft:tail for:2]];
     int far = gWindow[[self pointerMoveLeft:tail for:1]];
     
-    if (now<pre && now<before && now<next && now<far && now<THRESHOLD_GACC){
+    if (now<pre && now<before && now<next && now<far){
         if (pre<before || next<far){
-            [self oneStepFound];
+            double stepTime = (totalPoints -1 - lastGPeak) * delta_T;
+            rtStepFrequency = 60/stepTime;
+            double minGAcc = THRESHOLD_GACC;
+            if (v<=6/3.6 ){//|| rtStepFrequency <= 100){
+                minGAcc = THRESHOLD_GACC;
+            }
+            else if ((v>MAX_WALK_SPEED && v <= MAX_SLOWRUN_SPEED) ){// || (rtStepFrequency >100 && rtStepFrequency <= 200)){
+                minGAcc = -10;
+            }
+            else if (v>16/3.6){// || rtStepFrequency > 200){
+                minGAcc = -30;
+            }
+            
+            if (now < minGAcc)
+                [self oneStepFound];
         }
     }
     

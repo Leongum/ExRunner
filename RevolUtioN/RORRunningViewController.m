@@ -523,6 +523,14 @@
     return [self calculateAward:(NSString *)missionGrade baseValue:runMission.scores.doubleValue];
 }
 
+-(NSNumber *)isValidRun:(NSInteger)steps {
+    double avgStepDistance = distance / steps;
+    double avgStepFrequency = steps * 60 / duration ;
+    if (avgStepFrequency < 70 || avgStepFrequency > 240 || avgStepDistance < 0.5 || avgStepDistance > 2.5)
+        return [NSNumber numberWithInteger:-1];
+    return [NSNumber numberWithInteger:1];
+}
+
 - (void)saveRunInfo{
     User_Running_History *runHistory = [User_Running_History intiUnassociateEntity];
     runHistory.distance = [NSNumber numberWithDouble:distance];
@@ -553,6 +561,7 @@
     runHistory.runUuid = [RORUtils uuidString];
     runHistory.uuid = [RORUserUtils getUserUuid];
     runHistory.steps = [NSNumber numberWithInteger:stepCounting.counter];
+    runHistory.valid = [self isValidRun:stepCounting.counter];
     
     NSLog(@"%@", runHistory);
     record = runHistory;
