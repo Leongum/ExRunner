@@ -14,6 +14,7 @@
 
 @interface RORShareService : NSObject
 
-+ (void)authLoginFromSNS:(ShareType) type;
+//login return YES, register return NO.
++ (BOOL)loginFromSNS:(id<ISSUserInfo>)userInfo withSNSType:(ShareType) type;
 
 @end

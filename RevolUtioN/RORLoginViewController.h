@@ -35,4 +35,17 @@
 - (IBAction)visibilityOfPW:(id)sender;
 - (IBAction)cancelAction:(id)sender;
 
+
+@property (weak, nonatomic) IBOutlet UIButton *btnSinaLogin;
+@property (weak, nonatomic) IBOutlet UIButton *btnTencentLogin;
+@property (weak, nonatomic) IBOutlet UIButton *btnQQLogin;
+@property (weak, nonatomic) IBOutlet UIButton *btnRenRenLogin;
+
+
+- (IBAction)sinaWeiboLogin:(id)sender;
+- (IBAction)tencentWeiboLogin:(id)sender;
+- (IBAction)qqAccountLogin:(id)sender;
+- (IBAction)renrenAccountLogin:(id)sender;
+
+
 @end

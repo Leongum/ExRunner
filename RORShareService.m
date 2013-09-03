@@ -10,45 +10,8 @@
 
 @implementation RORShareService
 
-+ (void)authLoginFromSNS:(ShareType) type{
-    RORAppDelegate *appDelegate = (RORAppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    //RORShareViewDelegate *shareViewDelegate = [[RORShareViewDelegate alloc] init];
-    
-    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
-                                                         allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
-                                                          viewDelegate:appDelegate.viewDelegate
-                                               authManagerViewDelegate:nil];
-    
-    [authOptions setPowerByHidden:true];
-    
-    //在授权页面中添加关注官方微博
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"Cyberace_赛跑乐"],
-                                    SHARE_TYPE_NUMBER(type),nil]];
-
-    [ShareSDK getUserInfoWithType:type
-                      authOptions:authOptions
-                           result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
-                               if (result)
-                               {
-                                   [self loginFromSNS:userInfo withSNSType: type];
-                                   [RORUserUtils userInfoUpdateHandler:userInfo withSNSType: type];
-                               }
-                               else
-                               {
-                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                       message:error.errorDescription
-                                                                                      delegate:nil
-                                                                             cancelButtonTitle:@"知道了"
-                                                                             otherButtonTitles: nil];
-                                   [alertView show];
-                               }
-                           }];
-}
-
-+ (void)loginFromSNS:(id<ISSUserInfo>)userInfo withSNSType:(ShareType) type{
+//login return YES, register return NO.
++ (BOOL)loginFromSNS:(id<ISSUserInfo>)userInfo withSNSType:(ShareType) type{
     User_Base *user = [User_Base intiUnassociateEntity];
     user.userEmail = [userInfo uid];
     user.nickName = [userInfo nickname];
@@ -69,7 +32,9 @@
     if (loginUser == nil){
         NSDictionary *regDict = [[NSDictionary alloc]initWithObjectsAndKeys:user.userEmail, @"userEmail",[RORUtils md5:user.password], @"password", user.nickName, @"nickName", user.sex, @"sex", nil];
         [RORUserServices registerUser:regDict];
+        return NO;
     }
+    return YES;
 }
 
 @end

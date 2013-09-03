@@ -51,7 +51,6 @@
 		0F59A15817BA2171000DEFEF /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F59A12F17BA2170000DEFEF /* ShareSDKiPhoneDefaultShareViewUI.framework */; };
 		0F59A15917BA2171000DEFEF /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F59A13017BA2170000DEFEF /* ShareSDKiPhoneSimpleShareViewUI.bundle */; };
 		0F59A15A17BA2171000DEFEF /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F59A13117BA2170000DEFEF /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
-		0F59A16817BB235C000DEFEF /* RORLoginCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F59A16717BB235C000DEFEF /* RORLoginCheckViewController.m */; };
 		0F59A16B17BC700A000DEFEF /* RORShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F59A16A17BC700A000DEFEF /* RORShareService.m */; };
 		0F59A17217BCA4BD000DEFEF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BB0B071769A2E70009A847 /* SystemConfiguration.framework */; };
 		0F7F398E1792DF1000B1C720 /* RORUserServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7F398D1792DF1000B1C720 /* RORUserServices.m */; };
@@ -328,8 +327,6 @@
 		0F59A12F17BA2170000DEFEF /* ShareSDKiPhoneDefaultShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneDefaultShareViewUI.framework; sourceTree = "<group>"; };
 		0F59A13017BA2170000DEFEF /* ShareSDKiPhoneSimpleShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKiPhoneSimpleShareViewUI.bundle; sourceTree = "<group>"; };
 		0F59A13117BA2170000DEFEF /* ShareSDKiPhoneSimpleShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneSimpleShareViewUI.framework; sourceTree = "<group>"; };
-		0F59A16617BB235C000DEFEF /* RORLoginCheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORLoginCheckViewController.h; sourceTree = "<group>"; };
-		0F59A16717BB235C000DEFEF /* RORLoginCheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORLoginCheckViewController.m; sourceTree = "<group>"; };
 		0F59A16917BC700A000DEFEF /* RORShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORShareService.h; sourceTree = "<group>"; };
 		0F59A16A17BC700A000DEFEF /* RORShareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORShareService.m; sourceTree = "<group>"; };
 		0F7F398C1792DF1000B1C720 /* RORUserServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORUserServices.h; sourceTree = "<group>"; };
@@ -1181,8 +1178,6 @@
 				302FD0231727D870004DA005 /* RORFirstViewController.m */,
 				305A1876174F1EFA003A8CD7 /* RORLoginViewController.h */,
 				305A1877174F1EFB003A8CD7 /* RORLoginViewController.m */,
-				0F59A16617BB235C000DEFEF /* RORLoginCheckViewController.h */,
-				0F59A16717BB235C000DEFEF /* RORLoginCheckViewController.m */,
 				30BB0BC8177484210009A847 /* RORPeriodicPickerViewController.h */,
 				30BB0BC9177484210009A847 /* RORPeriodicPickerViewController.m */,
 				30507C01174A164300EC7F12 /* RORRouteDetailViewController.h */,
@@ -1551,7 +1546,6 @@
 				0F0D589B17B249230046515C /* RORThirdPartyService.m in Sources */,
 				0F274A6B17B6058C00F0E927 /* RORSystemService.m in Sources */,
 				0F274A7517B6061F00F0E927 /* RORSystemClientHandler.m in Sources */,
-				0F59A16817BB235C000DEFEF /* RORLoginCheckViewController.m in Sources */,
 				30F4547017BCB519006CB66C /* INConstant.m in Sources */,
 				30F4547117BCB519006CB66C /* INDeviceStatus.m in Sources */,
 				30F4547217BCB519006CB66C /* INKalmanFilter.m in Sources */,
