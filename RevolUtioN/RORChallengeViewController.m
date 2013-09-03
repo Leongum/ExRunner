@@ -10,7 +10,7 @@
 #import "RORMissionServices.h"
 #import "Animations.h"
 #import "FTAnimation.h"
-#import "RORChallengeLevelView.h"
+#import "RORMissionServices.h"
 
 #define CELL_TITLE_TAG 1
 #define CELL_LEVEL_TAG 2
@@ -20,7 +20,7 @@
 #define COVERVIEW_BUTTON_TAG 3
 #define COVERVIEW_BG_TAG 4
 
-#define LEVELTABLE_FRAME CGRectMake(25, 180, 270, 90)
+#define LEVELTABLE_FRAME CGRectMake(17.5, 105, 285, 270)
 
 @interface RORChallengeViewController ()
 
@@ -38,19 +38,30 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+-(void)viewDidLoad{
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self initUIControls];
+}
+
+-(void)initUIControls{
     self.coverView.alpha =0;
-    
-    RORChallengeLevelView *levelTable = [[RORChallengeLevelView alloc]initWithFrame:LEVELTABLE_FRAME andNumberOfColumns:6];
-    [levelTable setBackgroundColor:[UIColor colorWithRed:231 green:8 blue:53 alpha:1]];
+    self.backButton.alpha = 1;
+    levelTable = [[RORChallengeLevelView alloc]initWithFrame:LEVELTABLE_FRAME andNumberOfColumns:6];
+//    levelTable.backgroundColor=[UIColor whiteColor];//[UIColor colorWithRed:231/255 green:8/255 blue:53/255 alpha:1];
     [self.coverView addSubview:levelTable];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+-(void)loadChallengeTable{
+    NSArray *gradeList = selectedChallenge.challengeList;
+    for (int i=0; i<gradeList.count; i++){
+        NSInteger thisGrade = ((NSNumber *)[[gradeList objectAtIndex:i] valueForKey:@"time"]).integerValue;
+        UILabel *label = (UILabel*)[levelTable viewWithTag:i+1];
+        label.text = [RORUtils transSecondToStandardFormat:thisGrade];;
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self loadContentList];
     [self.tableView reloadData];
 }
@@ -194,7 +205,8 @@
     
     UILabel *titleLabel = (UILabel*)[self.coverView viewWithTag:COVERVIEW_LABEL_TAG];
     titleLabel.text = selectedChallenge.missionName;
-    
+
+    [self loadChallengeTable];
     [self showCoverView];
     
 }

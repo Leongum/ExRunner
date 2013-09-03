@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RORConstant.h"
 
 @interface RORChallengeLevelView : UIControl{
     int columns;

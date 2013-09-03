@@ -118,11 +118,11 @@
     return deltaDistance;
 }
 
-+ (vec_3) getSpeedVectorBetweenLocation1:(CLLocation *)loc1 andLocation2:(CLLocation *)loc2{
++ (vec_3) getSpeedVectorBetweenLocation1:(CLLocation *)loc1 andLocation2:(CLLocation *)loc2 deltaTime:(double)t{
     vec_3 deltaSpeed;
     vec_3 deltaDistance = [self getDistanceVectorBetweenLocation1:loc1 andLocation2:loc2];
-    deltaSpeed.v1 = deltaDistance.v1 / delta_T;
-    deltaSpeed.v2 = deltaDistance.v2 / delta_T;
+    deltaSpeed.v1 = deltaDistance.v1 / t;
+    deltaSpeed.v2 = deltaDistance.v2 / t;
     return deltaSpeed;
 }
 

@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSMutableArray *gAccList;
 @property (nonatomic) NSInteger counter;
 @property (nonatomic) NSInteger dSum;
+@property (nonatomic) double maxZAcc;
 
 -(void)pushNewLAcc:(double)lAcc GAcc:(double)gAcc speed:(double)v;
 @end

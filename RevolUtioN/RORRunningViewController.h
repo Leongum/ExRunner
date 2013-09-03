@@ -22,6 +22,8 @@
     BOOL wasFound;
     BOOL isNetworkOK;
     double duration;
+    double timeFromLastLocation;
+    vec_3 currentSpeed;
 }
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (strong, nonatomic) CMMotionManager *motionManager;

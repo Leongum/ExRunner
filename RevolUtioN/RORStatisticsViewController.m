@@ -36,19 +36,20 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self initTableData];
 }
 
 -(void)initTableData{
     totalCalorie = 0;
-    totalDistance = 0;
+    totalDistance = 0;  
     avgSpeed = 0;
     
     NSMutableArray *filter = ((RORHistoryPageViewController*)[self parentViewController]).filter;
     
     NSArray *fetchObject = [RORRunHistoryServices fetchRunHistory];
-    
+
     for (User_Running_History *historyObj in fetchObject) {
         NSNumber *missionType = (NSNumber *)[historyObj valueForKey:@"missionTypeId"];
         

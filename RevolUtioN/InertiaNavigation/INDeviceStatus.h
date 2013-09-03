@@ -31,6 +31,5 @@
 -(BOOL)checkIsStill;//:(double)a_variance;
 -(void)updateWithVn:(vec_3)oldVn;
 + (vec_3) getDistanceVectorBetweenLocation1:(CLLocation *)loc1 andLocation2:(CLLocation *)loc2;
-+ (vec_3) getSpeedVectorBetweenLocation1:(CLLocation *)loc1 andLocation2:(CLLocation *)loc2;
-
++ (vec_3) getSpeedVectorBetweenLocation1:(CLLocation *)loc1 andLocation2:(CLLocation *)loc2 deltaTime:(double)t;
 @end

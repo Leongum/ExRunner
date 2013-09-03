@@ -228,18 +228,6 @@
     return absoluteLocation;
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    NSLog(@"ToLocation:%f, %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
-    NSLog(@"Device did %f meters move.", [self.latestUserLocation getDistanceFrom:newLocation]);
-    self.latestUserLocation = [self transToRealLocation:newLocation];
-    
-}
-
--(void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
- 
-}
 
 ////center the route line
 - (IBAction)center_map:(id)sender{
@@ -274,11 +262,6 @@
     //    region.span.longitudeDelta = maxLon - minLon;
     [mapView setRegion:[mapView regionThatFits:region] animated:NO];
 
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    
 }
 
 -(void)createAnnotationWithCoords:(CLLocationCoordinate2D) coords withTitle:(NSString *)title andSubTitle:(NSString *) subTitle {
@@ -405,8 +388,10 @@
     [mapView removeOverlays:[mapView overlays]];
     //    [routePoints addObject:initialLocation];
     //init kalman filter
-    kalmanFilter = [[INKalmanFilter alloc]initWithCoordinate:[locationManager location].coordinate];
+//    kalmanFilter = [[INKalmanFilter alloc]initWithCoordinate:[locationManager location].coordinate];
+    
     stepCounting = [[INStepCounting alloc]init];
+    
     //    [self drawLineWithLocationArray:routePoints];
     //    [self center_map];
 }
@@ -416,56 +401,15 @@
     INDeviceStatus *newDeviceStatus = [[INDeviceStatus alloc]initWithDeviceMotion:deviceMotion];
     //    newDeviceStatus.timeTag = timeCounter;
     newDeviceStatus.timeTag = timerCount;
-//    [timeWindow setTimeCounter:timerCount * delta_T];
-    
-//    [newDeviceStatus checkIsStill];//:a_variance];
-//    [newDeviceStatus updateWithVn:OldVn];
-//
-//    latestINLocation = [newDeviceStatus getNewLocation:latestINLocation];
-//    
-//    OldVn = newDeviceStatus.Vn;
+
     CLLocation *currentLocation = [locationManager location];
-    vec_3 gpsSpeed = [INDeviceStatus getSpeedVectorBetweenLocation1:formerLocation andLocation2:currentLocation];
-//    formerLocation = currentLocation;
-//    vec_3 deltaSpeed;
-//    deltaSpeed.v1 = OldVn.v1 - gpsSpeed.v1;
-//    deltaSpeed.v2 = OldVn.v2 - gpsSpeed.v2;
-//
-//    if (!newDeviceStatus.isStill) {
-//        [kalmanFilter calculateKwithF:newDeviceStatus.an deltaCoor:deltaSpeed andVe:OldVn.v1];
-//        
-//        //        NSLog(@"V:%f, %f, %f\nDist:%f, %f", [kalmanFilter.X_k getMatrixValueAtRow:0 andColumn:0],
-//        //              [kalmanFilter.X_k getMatrixValueAtRow:1 andColumn:0],
-//        //              [kalmanFilter.X_k getMatrixValueAtRow:2 andColumn:0],
-//        //              [kalmanFilter.X_k getMatrixValueAtRow:6 andColumn:0],
-//        //              [kalmanFilter.X_k getMatrixValueAtRow:7 andColumn:0]);
-//        OldVn.v1 -= [kalmanFilter.X_k getMatrixValueAtRow:0 andColumn:0];
-//        OldVn.v2 -= [kalmanFilter.X_k getMatrixValueAtRow:2 andColumn:0];
-//        //        oldLocation.latitude += [kalmanFilter.X_k getMatrixValueAtRow:6 andColumn:0];
-//        //        oldLocation.longitude += [kalmanFilter.X_k getMatrixValueAtRow:7 andColumn:0];
-//        
-////        //draw route onto the mapview
-////        if (((NSInteger)(timerCount * delta_T)) % 3 == 0){
-////            [self addNewLocationAndDraw];
-////            if (routePoints.count>1){
-////                CLLocation *loc1 = [routePoints objectAtIndex:routePoints.count-2];
-////                CLLocation *loc2 = [routePoints objectAtIndex:routePoints.count-1];
-////                self.move += [loc1 getDistanceFrom:loc2];
-////            }
-////        }
-//    }
-//    
-//    //update labels
-//    //        timeCounter ++;
-//    //        [timeWindow setTimeCounter:timeCounter * delta_T];
-//    //        xLabel.text = [NSString stringWithFormat:@"t: %.0f s", timeCounter*delta_T];
-//    
-//    inDistance.v1 += newDeviceStatus.Dist.v1;// + [kalmanFilter.X_k getMatrixValueAtRow:6 andColumn:0];
-//    inDistance.v2 += newDeviceStatus.Dist.v2;// + [kalmanFilter.X_k getMatrixValueAtRow:7 andColumn:0];
-//    inDistance.v3 += newDeviceStatus.Dist.v3;
-//    
+    timeFromLastLocation += delta_T;
+    if ([currentLocation distanceFromLocation:formerLocation]>0){
+        currentSpeed = [INDeviceStatus getSpeedVectorBetweenLocation1:formerLocation andLocation2:currentLocation deltaTime:timeFromLastLocation];
+        timeFromLastLocation = 0;
+    }
     //step counting
-    [stepCounting pushNewLAcc:[INMatrix modOfVec_3:newDeviceStatus.an] GAcc:newDeviceStatus.an.v3 speed:[INMatrix modOfVec_3:gpsSpeed]];
+    [stepCounting pushNewLAcc:[INMatrix modOfVec_3:newDeviceStatus.an] GAcc:newDeviceStatus.an.v3 speed:[INMatrix modOfVec_3:currentSpeed]];
     self.stepLabel.text = [NSString stringWithFormat:@"%d", stepCounting.counter];
     self.avgTimePerStep.text = [NSString stringWithFormat:@"%.2f s", duration/((double)stepCounting.counter)];
     self.avgDisPerStep.text = [NSString stringWithFormat:@"%.2f m", distance/((double)stepCounting.counter)];
@@ -673,7 +617,28 @@
     //    [self drawLineWithLocationArray:array];
 }
 
+#pragma mark - CLLocationDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"ToLocation:%f, %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    NSLog(@"Device did %f meters move.", [self.latestUserLocation getDistanceFrom:newLocation]);
+    self.latestUserLocation = [self transToRealLocation:newLocation];
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    
+}
+
 #pragma mark - MKMapViewDelegate
+
+
+-(void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    
+}
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
     MKOverlayView* overlayView = nil;

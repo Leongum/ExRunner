@@ -965,13 +965,14 @@
 				0F8501DF17C1C68E0005993E /* libsqlite3.dylib */,
 				0F8501DD17C1C63E0005993E /* libstdc++.dylib */,
 				30F4549017C1296C006CB66C /* Animation */,
-				30F4546017BCB519006CB66C /* InertiaNavigation */,
 				0F59A0FD17BA2170000DEFEF /* ShareSDK_v2.3.1 */,
 				0F9A9D3B17894A320025E49B /* iPhone.xcodeproj */,
 				0F9A9D2C17894A1B0025E49B /* SBJson.xcodeproj */,
 				30BB0BAB176A04A10009A847 /* libz.1.2.5.dylib */,
 				30BB0BA9176A04910009A847 /* libicucore.dylib */,
 				301C1F6817378AF30068B43B /* Resources */,
+				30FC28FF175E2E3500DEC042 /* MainStoryboard_iPhone.storyboard */,
+				30F4546017BCB519006CB66C /* InertiaNavigation */,
 				302FD00A1727D870004DA005 /* RevolUtioN */,
 				302FD03C1727D870004DA005 /* RevolUtioNTests */,
 				302FD0031727D870004DA005 /* Frameworks */,
@@ -1012,7 +1013,6 @@
 			isa = PBXGroup;
 			children = (
 				30A6D9B817C733F700D1116E /* ReusableControl */,
-				30FC28FF175E2E3500DEC042 /* MainStoryboard_iPhone.storyboard */,
 				0F87D885179D7313007E0412 /* Common */,
 				3061F3C7174DC6CC006093FC /* CoreData */,
 				0F972BC81792557A00A27EF2 /* HttpClient */,
@@ -1684,6 +1684,7 @@
 				30FC2900175E2E3500DEC042 /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
+			path = RevolUtioN;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

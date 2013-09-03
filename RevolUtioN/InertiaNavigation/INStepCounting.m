@@ -30,17 +30,6 @@
 }
 
 -(void)pushNewLAcc:(double)lAcc GAcc:(double)gAcc speed:(double)v{
-//    p++;
-//    [gAccList addObject:[[NSNumber alloc]initWithDouble:gAcc]];
-//    [levelAccList addObject:[[NSNumber alloc]initWithDouble:lAcc]];
-//    if (gAccList.count >2){
-//        if ([self checkStep:v]){
-////            NSLog(@"%d",p);
-//            
-//            return YES;
-//        };
-//    };
-//    return NO;
     
      //push new point into window
     gWindow[tail] = gAcc;
@@ -54,24 +43,15 @@
         [self checkStep:v];
 }
 
--(int)pointerMoveLeft:(int)pointer for:(int)num{
-    return (pointer - (num%SC_WINDOW_SIZE) + SC_WINDOW_SIZE) % SC_WINDOW_SIZE;
-}
-
--(int)pointerMoveLeft:(int)pointer{
-    return [self pointerMoveLeft:pointer for:1];
-}
-
--(int)pointerMoveRight:(int)pointer for:(int)num{
-    return (pointer + num) % SC_WINDOW_SIZE;
-}
-
--(int)pointerMoveRight:(int)pointer{
-    return [self pointerMoveRight:pointer for:1];
-}
-
 -(void)checkStep:(double)v{
-    if (totalPoints - lastGPeak < MIN_STEP_TIME / delta_T)
+    double frequency = MIN_STEP_TIME / delta_T;
+    if (v < 10/3.6)
+//        frequency =
+    if (v > 10/3.6 && v < 20/3.6)
+        frequency = 1/(3 * delta_T);
+    if (v > 20/3.6)
+        frequency = MIN_STEP_TIME / delta_T;
+    if (totalPoints - lastGPeak < frequency)
         return;
 
     [self updateGAccPeak];
@@ -147,6 +127,24 @@
 //    if (fabs(current-former)>=0.001)
 //        lAccTrend = current - former;
 }
+
+-(int)pointerMoveLeft:(int)pointer for:(int)num{
+    return (pointer - (num%SC_WINDOW_SIZE) + SC_WINDOW_SIZE) % SC_WINDOW_SIZE;
+}
+
+-(int)pointerMoveLeft:(int)pointer{
+    return [self pointerMoveLeft:pointer for:1];
+}
+
+-(int)pointerMoveRight:(int)pointer for:(int)num{
+    return (pointer + num) % SC_WINDOW_SIZE;
+}
+
+-(int)pointerMoveRight:(int)pointer{
+    return [self pointerMoveRight:pointer for:1];
+}
+
+
 
 @end
 

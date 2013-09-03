@@ -9,9 +9,11 @@
 #import "RORViewController.h"
 #import "RORBottomPopSubview.h"
 #import "Mission.h"
+#import "RORChallengeLevelView.h"
 
 @interface RORChallengeViewController : RORViewController{
     Mission *selectedChallenge;
+    RORChallengeLevelView *levelTable;
 }
 
 @property (strong, nonatomic) IBOutlet RORBottomPopSubview *coverView;

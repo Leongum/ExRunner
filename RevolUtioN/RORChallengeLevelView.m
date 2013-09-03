@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor redColor];//[UIColor colorWithRed:231 green:8 blue:53 alpha:1];
+        self.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:231 green:8 blue:53 alpha:1];
         columns = number;
         [self initTable];
     }
@@ -24,21 +24,40 @@
 
 
 - (void)initTable{
-    int cellWidth = self.frame.size.width/columns;
-    int halfHeight = self.frame.size.height/2;
+    int cellHeight = self.frame.size.width/(columns+2);
+    int cellWidth = cellHeight * 3;
+
     for (int i=0; i<columns; i++){
-        CGRect thisFrame = CGRectMake(i*cellWidth, halfHeight, cellWidth, halfHeight);
-        UILabel *contentLabel = [[UILabel alloc]initWithFrame:thisFrame];
-        [contentLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:12]];
+        int labelWidth = cellWidth-cellHeight;
+        
+        CGRect labelFrame = CGRectMake(self.frame.size.width - labelWidth - (i+1)*cellHeight, cellHeight * i+round(cellHeight/2), labelWidth, cellHeight/2);
+        CGRect imageFrame = CGRectMake(self.frame.size.width - (i+1)*cellHeight, cellHeight * i, cellHeight, cellHeight);
+
+        UILabel *contentLabel = [[UILabel alloc]initWithFrame:labelFrame];
+        [contentLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
         [contentLabel setLineBreakMode:NSLineBreakByCharWrapping];
-        [contentLabel setTag:i];
-        [contentLabel setBackgroundColor:[UIColor clearColor]];
-        [contentLabel setTextColor:[UIColor blackColor]];
+        [contentLabel setTag:i+1];
+        [contentLabel setBackgroundColor:[UIColor colorWithRed:231.0/255 green:8.0/255 blue:53.0/255 alpha:1]];
+        [contentLabel setTextColor:[UIColor whiteColor]];
         contentLabel.textAlignment = UITextAlignmentCenter;
         contentLabel.text = [NSString stringWithFormat:@"%d", i];
         [self addSubview:contentLabel];
-//        [self.tableCell addObject:contentLabel];
+        
+//        UIImageView *contentImage = [[UIImageView alloc]initWithFrame:imageFrame];
+        UILabel *contentImage = [[UILabel alloc]initWithFrame:imageFrame];
+        [contentImage setTag:i+columns+1];
+        [contentImage setBackgroundColor:[UIColor grayColor]];
+        [contentImage setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:24]];
+        contentImage.textAlignment = UITextAlignmentCenter;
+        [contentImage setTextColor:[UIColor blackColor]];
+        [contentImage setText:MissionGradeEnum_toString[i]];
+        [self addSubview:contentImage];
+
+//        [contentImage setImage:[UIImage imageNamed:MissionGradeImageEnum_toString[i]]];
+
+        //        [self.tableCell addObject:contentLabel];
     }
+    
 }
 
 /*

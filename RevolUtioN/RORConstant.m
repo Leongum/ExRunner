@@ -28,4 +28,14 @@ NSString * const MissionGradeEnum_toString[] = {
     @"F"
 };
 
+NSString * const MissionGradeImageEnum_toString[] = {
+    @"S.png",
+    @"A.png",
+    @"B.png",
+    @"C.png",
+    @"D.png",
+    @"E.png",
+    @"F.png"
+};
+
 @end
