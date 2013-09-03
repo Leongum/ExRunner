@@ -24,7 +24,7 @@
 #define PM25_URL @"http://121.199.56.231:8080/usavich/service/api/weather/pm25?cityName=%@&provinceName=%@"
 
 
-#define WEATHER_URL @"http://m.weather.com.cn/data/%@.html"
+#define WEATHER_URL @"http://www.weather.com.cn/data/sk/%@.html"
 
 #define NET_WORK_MODE @"All_Mode"
 

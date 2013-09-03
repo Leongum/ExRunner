@@ -127,15 +127,23 @@ NSInteger centerLoc =-10000;
         NSString * provinceName = placemark.administrativeArea;
         NSDictionary *weatherInfo = [RORThirdPartyService syncWeatherInfo:[RORUtils getCitycodeByCityname:cityName]];
         NSDictionary *pm25info =[RORThirdPartyService syncPM25Info:cityName withProvince:provinceName];
+        int temp = INT16_MAX;
+        int pm25 = INT16_MAX;
         if (weatherInfo != nil){
-            self.lbTemperature.text = [weatherInfo objectForKey:@"temp1"];
-            self.lbWind.text = [weatherInfo objectForKey:@"wind1"];
-            self.lbUV.text = [NSString stringWithFormat:@"紫外线：%@",[weatherInfo objectForKey:@"index_uv"]];
+            temp = [[weatherInfo objectForKey:@"temp"] integerValue];
+            self.lbTemperature.text = [NSString stringWithFormat:@"%d℃",temp];
+            self.lbWind.text = [NSString stringWithFormat:@"%@%@",[weatherInfo objectForKey:@"WD"],[weatherInfo objectForKey:@"WS"]];
             self.lbLocation.text = cityName;
         }
         if(pm25info != nil){
-            self.lbPM.text = [NSString stringWithFormat:@"PM2.5：%@ %@",[pm25info objectForKey:@"pm2_5"],[pm25info objectForKey:@"quality"]];
+            pm25 = [[pm25info objectForKey:@"pm2_5"] integerValue];
+            self.lbPM.text = [NSString stringWithFormat:@"PM2.5：%d%@",pm25,[pm25info objectForKey:@"quality"]];
         }
+        int index = 60;
+        if(temp < 38 && pm25 < 300){
+            index = (100-pm25/3)*0.6 +(100-fabs(temp - 22)*5)*0.4;
+        }
+        self.lbTotal.text = [NSString stringWithFormat:@"%d",index];
     }];
 }
 

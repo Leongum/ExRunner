@@ -7,6 +7,10 @@
 //
 
 #import "RORLoginViewController.h"
+#import "RORRunHistoryServices.h"
+#import "RORShareService.h"
+#import "RORNetWorkUtils.h"
+#import <AGCommon/UIImage+Common.h>
 
 @interface RORLoginViewController ()
 
@@ -30,10 +34,39 @@
     return self;
 }
 
+UIAlertView * registerAlert;
+
+- (void) performDismiss
+{
+    [registerAlert dismissWithClickedButtonIndex:0 animated:YES];
+    [self performSegueWithIdentifier:@"bodySetting" sender:self];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
+                                        @"Icon/sns_icon_%d.png",
+                                        ShareTypeRenren]
+                            bundleName:@"Resource"];
+    [self.btnRenRenLogin setBackgroundImage:img forState:UIControlStateNormal];
+    img = [UIImage imageNamed:[NSString stringWithFormat:
+                                        @"Icon/sns_icon_%d.png",
+                                        ShareTypeSinaWeibo]
+                            bundleName:@"Resource"];
+    [self.btnSinaLogin setBackgroundImage:img forState:UIControlStateNormal];
+    img = [UIImage imageNamed:[NSString stringWithFormat:
+                                        @"Icon/sns_icon_%d.png",
+                                        ShareTypeQQ]
+                            bundleName:@"Resource"];
+    [self.btnQQLogin setBackgroundImage:img forState:UIControlStateNormal];
+    img = [UIImage imageNamed:[NSString stringWithFormat:
+                                        @"Icon/sns_icon_%d.png",
+                                        ShareTypeTencentWeibo]
+                            bundleName:@"Resource"];
+    [self.btnTencentLogin setBackgroundImage:img forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +84,10 @@
 
 //提交用户名密码之后的操作
 - (IBAction)loginAction:(id)sender {
+    if(![RORNetWorkUtils getIsConnetioned]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"设备尚未连接网络！" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+    }
     if (![self isLegalInput]) return;
     if (switchButton.selectedSegmentIndex == 0){ //登录
         NSLog(@"userName: %@ password:%@",usernameTextField.text,passwordTextField.text);
@@ -63,13 +100,19 @@
             [alert show];
             return;
         }
+        [RORRunHistoryServices syncRunningHistories];
     } else { //注册
         NSDictionary *regDict = [[NSDictionary alloc]initWithObjectsAndKeys:usernameTextField.text, @"userEmail",[RORUtils md5:passwordTextField.text], @"password", nicknameTextField.text, @"nickName", [sexButton selectedSegmentIndex]==0?@"男":@"女", @"sex", nil];
         User_Base *user = [RORUserServices registerUser:regDict];
         
         if (user != nil){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注册成功" message:@"恭喜你，注册成功！" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alert show];
+            registerAlert = [[UIAlertView alloc] initWithTitle:@"注册成功" message:@"恭喜你，注册成功！" delegate:self cancelButtonTitle:nil otherButtonTitles: nil];
+            [registerAlert show];
+            // Create and add the activity indicator
+            UIActivityIndicatorView *aiv = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+            [aiv startAnimating];
+            [self performSelector:@selector(performDismiss) withObject:nil afterDelay:1.5f];
+            return;
         } else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注册失败" message:@"用户名已存在" delegate:self cancelButtonTitle:@"取消" otherButtonTitles: nil];
             [alert show];
@@ -137,7 +180,28 @@
     [self dismissModalViewControllerAnimated:YES]; // for IOS 5+
 }
 
+- (IBAction)sinaWeiboLogin:(id)sender {
+    [self authLoginFromSNS:ShareTypeSinaWeibo];
+}
+
+- (IBAction)tencentWeiboLogin:(id)sender {
+    [self authLoginFromSNS:ShareTypeTencentWeibo];
+}
+
+- (IBAction)qqAccountLogin:(id)sender {
+    [self authLoginFromSNS:ShareTypeQQSpace];
+}
+
+- (IBAction)renrenAccountLogin:(id)sender {
+    [self authLoginFromSNS:ShareTypeRenren];
+}
+
 - (void)viewDidUnload {
+    
+    [self setBtnRenRenLogin:nil];
+    [self setBtnQQLogin:nil];
+    [self setBtnTencentLogin:nil];
+    [self setBtnSinaLogin:nil];
     [self setUsernameTextField:nil];
     [self setPasswordTextField:nil];
     [self setSwitchButton:nil];
@@ -145,5 +209,51 @@
     [self setSexButton:nil];
     //[super viewDidUnload];
 }
+
+- (void)authLoginFromSNS:(ShareType) type{
+    RORAppDelegate *appDelegate = (RORAppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    //RORShareViewDelegate *shareViewDelegate = [[RORShareViewDelegate alloc] init];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:appDelegate.viewDelegate
+                                               authManagerViewDelegate:nil];
+    
+    [authOptions setPowerByHidden:true];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"Cyberace_赛跑乐"],
+                                    SHARE_TYPE_NUMBER(type),nil]];
+    
+    [ShareSDK getUserInfoWithType:type
+                      authOptions:authOptions
+                           result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                               if (result)
+                               {
+                                   BOOL islogin = [RORShareService loginFromSNS:userInfo withSNSType: type];
+                                   [RORUserUtils userInfoUpdateHandler:userInfo withSNSType: type];
+                                   if(islogin){
+                                       [RORRunHistoryServices syncRunningHistories];
+                                       [self.navigationController popViewControllerAnimated:YES];
+                                   }
+                                   else{
+                                       [self performSegueWithIdentifier:@"bodySetting" sender:self];
+                                   }
+                               }
+                               else
+                               {
+                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                       message:error.errorDescription
+                                                                                      delegate:nil
+                                                                             cancelButtonTitle:@"知道了"
+                                                                             otherButtonTitles: nil];
+                                   [alertView show];
+                               }
+                           }];
+}
+
 
 @end

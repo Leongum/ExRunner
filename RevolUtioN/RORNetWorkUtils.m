@@ -7,6 +7,7 @@
 //
 
 #import "RORNetWorkUtils.h"
+#import "RORRunHistoryServices.h"
 
 static NetworkStatus networkStatus = NotReachable;
 
@@ -36,6 +37,7 @@ static BOOL isConnectioned = NO;
             isExistenceNetwork = NO;
             break;
         case ReachableViaWiFi:
+            [RORRunHistoryServices uploadRunningHistories];
             isExistenceNetwork = YES;
             break;
         case ReachableViaWWAN:

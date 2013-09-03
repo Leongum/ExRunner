@@ -88,6 +88,7 @@ static NSDate *systemTime = nil;
     NSMutableDictionary *logoutDict = [[NSMutableDictionary alloc] init];
     [logoutDict setValue:[self getLastUpdateTime:@"MissionUpdateTime"] forKey:@"MissionUpdateTime"];
     [logoutDict writeToFile:path atomically:YES];
+    userId = [NSNumber numberWithInteger:-1];
 }
 
 + (void)saveLastUpdateTime: (NSString *) key{
