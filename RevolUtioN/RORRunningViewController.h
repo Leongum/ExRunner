@@ -21,7 +21,7 @@
 @interface RORRunningViewController : RORViewController<CLLocationManagerDelegate,MKMapViewDelegate> {
     BOOL wasFound;
     BOOL isNetworkOK;
-    double duration;
+    double duration; // seconds
     double timeFromLastLocation;
     vec_3 currentSpeed;
 }
@@ -54,7 +54,7 @@
 @property (nonatomic) NSInteger timerCount;
 @property (assign) NSTimer *repeatingTimer;
 @property (nonatomic) BOOL isStarted;
-@property (nonatomic) double distance;
+@property (nonatomic) double distance; // meters
 @property (retain, nonatomic) NSMutableArray *routePoints;
 @property (retain, nonatomic) MKPolyline *routeLine;
 @property (retain, nonatomic) MKPolylineView *routeLineView;

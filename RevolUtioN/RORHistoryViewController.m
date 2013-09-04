@@ -169,7 +169,7 @@
     UILabel *durationLabel = (UILabel *)[cell viewWithTag:DURATION];
     durationLabel.text = [RORUtils transSecondToStandardFormat:[record4Date.duration integerValue]];
     UILabel *missionTypeLabel = (UILabel *)[cell viewWithTag:MISSIONTYPE];
-    missionTypeLabel.text = [NSString stringWithFormat:@"%@",record4Date.missionTypeId];
+    missionTypeLabel.text = [NSString stringWithFormat:@"%@",record4Date.valid];
     
     return cell;
 }
