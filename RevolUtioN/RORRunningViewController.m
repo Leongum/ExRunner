@@ -36,6 +36,7 @@
 @synthesize kalmanFilter, OldVn, stepCounting, inDistance;
 @synthesize avgDisPerStep, avgTimePerStep;
 @synthesize runMission;
+@synthesize coverView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,7 +52,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [RORUtils setFontFamily:@"FZKaTong-M19S" forView:self.view andSubViews:YES];
-
+    coverView.alpha =0;
     isNetworkOK = YES;
 }
 
@@ -302,6 +303,7 @@
     [self setStepLabel:nil];
     [self setAvgDisPerStep:nil];
     [self setAvgTimePerStep:nil];
+    [self setCoverView:nil];
     [super viewDidUnload];
 }
 
@@ -446,6 +448,26 @@
 }
 
 - (IBAction)endButtonAction:(id)sender {
+    [repeatingTimer invalidate];
+    self.repeatingTimer = nil;
+    isStarted = NO;
+    
+    [startButton setTitle:@"再走你" forState:UIControlStateNormal];
+    
+    [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
+    [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
+}
+
+- (IBAction)setUserCentered:(id)sender {
+    [self centerMap];
+}
+
+- (IBAction)btnCoverInside:(id)sender {
+    [Animations fadeOut:coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
+    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:NO];
+}
+
+- (IBAction)btnSaveRun:(id)sender {
     [self stopUpdates];
     
     if (self.endTime == nil)
@@ -456,18 +478,11 @@
     [repeatingTimer invalidate];
     [startButton setEnabled:NO];
     self.repeatingTimer = nil;
-    
     [self saveRunInfo];
-    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];    // 通过storyboard id拿到目标控制器的对象
-//    UIViewController *viewController =  [storyboard instantiateViewControllerWithIdentifier:@"RORRunningHistoryViewController"];
-//    [viewController viewDidLoad];
-    
-    [self performSegueWithIdentifier:@"ResultSegue" sender:self];
 }
 
-- (IBAction)setUserCentered:(id)sender {
-    [self centerMap];
+- (IBAction)btnDeleteRunHistory:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -560,6 +575,7 @@
     if([RORUserUtils getUserId].integerValue > 0){
         [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
     }
+    [self performSegueWithIdentifier:@"ResultSegue" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

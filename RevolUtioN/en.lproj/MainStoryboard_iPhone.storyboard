@@ -582,6 +582,51 @@
                                     <action selector="center_map:" destination="PbC-RF-pa6" eventType="touchUpInside" id="fkn-bA-KQZ"/>
                                 </connections>
                             </button>
+                            <view alpha="0.99999999999999989" contentMode="scaleToFill" id="jG1-qd-bC8" customClass="UIControl">
+                                <rect key="frame" x="-1" y="0.0" width="321" height="460"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view alpha="0.20000000000000001" contentMode="scaleToFill" id="Cg1-Z5-Yfu" userLabel="bg" customClass="UIControl">
+                                        <rect key="frame" x="0.0" y="0.0" width="321" height="454"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="btnCoverInside:" destination="PbC-RF-pa6" eventType="touchUpInside" id="QbV-tQ-uV6"/>
+                                        </connections>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qER-8T-7Iy">
+                                        <rect key="frame" x="64" y="176" width="181" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="好的，这条纪录我要了">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnSaveRun:" destination="PbC-RF-pa6" eventType="touchUpInside" id="24O-Uq-cwJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jS2-8x-M4I">
+                                        <rect key="frame" x="64" y="249" width="181" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="这是个废纪录">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnDeleteRunHistory:" destination="PbC-RF-pa6" eventType="touchUpInside" id="nHL-IJ-PeE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -593,6 +638,7 @@
                         <outlet property="avgDisPerStep" destination="eb7-mJ-sEc" id="RGl-Ef-MSB"/>
                         <outlet property="avgTimePerStep" destination="EOa-y3-934" id="ac3-AF-R5o"/>
                         <outlet property="collapseButton" destination="OqI-SR-CVV" id="fmi-9C-431"/>
+                        <outlet property="coverView" destination="jG1-qd-bC8" id="zep-Fp-tcg"/>
                         <outlet property="distanceLabel" destination="BuL-4o-B7w" id="S0H-Jq-bD3"/>
                         <outlet property="endButton" destination="qoe-ah-y3F" id="grz-eW-chY"/>
                         <outlet property="expandButton" destination="0IU-xl-ISR" id="YiF-er-8At"/>
@@ -1824,6 +1870,9 @@
         <class className="RORRunningViewController" superclassName="RORViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RORRunningViewController.h"/>
             <relationships>
+                <relationship kind="action" name="btnCoverInside:"/>
+                <relationship kind="action" name="btnDeleteRunHistory:"/>
+                <relationship kind="action" name="btnSaveRun:"/>
                 <relationship kind="action" name="collapseAction:"/>
                 <relationship kind="action" name="endButtonAction:"/>
                 <relationship kind="action" name="expandAction:"/>
@@ -1832,6 +1881,7 @@
                 <relationship kind="outlet" name="avgDisPerStep" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="avgTimePerStep" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="collapseButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="coverView" candidateClass="UIControl"/>
                 <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="endButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="expandButton" candidateClass="UIButton"/>
@@ -1870,8 +1920,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="tZI-uj-hCk"/>
         <segue reference="Rxd-eV-2oK"/>
         <segue reference="IrS-Dp-vq2"/>
+        <segue reference="wyF-zp-Z04"/>
     </inferredMetricsTieBreakers>
 </document>

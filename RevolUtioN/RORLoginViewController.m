@@ -90,7 +90,6 @@ UIAlertView * registerAlert;
     }
     if (![self isLegalInput]) return;
     if (switchButton.selectedSegmentIndex == 0){ //登录
-        NSLog(@"userName: %@ password:%@",usernameTextField.text,passwordTextField.text);
         NSString *userName = usernameTextField.text;
         NSString *password = [RORUtils md5:passwordTextField.text];
         User_Base *user = [RORUserServices syncUserInfoByLogin:userName withUserPasswordL:password];

@@ -110,7 +110,7 @@
             //change 204 status into 200.
             [httpResponse setResponseStatus:200];
         }
-        else if(statCode == 409){
+        else if(statCode == 406){
             NSDictionary *errorInfoDic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
             [httpResponse setErrorCode:[errorInfoDic valueForKey:@"errorcode"]];
             [httpResponse setErrorMessage:[errorInfoDic valueForKey:@"errormessage"]];

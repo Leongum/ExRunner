@@ -71,4 +71,12 @@
 - (IBAction)startButtonAction:(id)sender;
 - (IBAction)endButtonAction:(id)sender;
 - (IBAction)setUserCentered:(id)sender;
+
+
+- (IBAction)btnCoverInside:(id)sender;
+@property (weak, nonatomic) IBOutlet UIControl *coverView;
+- (IBAction)btnSaveRun:(id)sender;
+- (IBAction)btnDeleteRunHistory:(id)sender;
+
+
 @end

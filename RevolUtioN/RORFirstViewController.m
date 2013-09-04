@@ -45,8 +45,8 @@ NSInteger centerLoc =-10000;
     //初始化按钮位置
     [self initControlsLayout];
     [self initLocationServcie];
-    
 }
+
 
 - (void)initLocationServcie{
     userLocation = nil;
@@ -65,7 +65,7 @@ NSInteger centerLoc =-10000;
     wasFound = YES; 
     if (wasFound){
         [locationManager stopUpdatingLocation];
-        [self loadWeatherInfo];
+        [self getCitynameByLocation];
     }
 //    NSLog(@"Device did %f meters move.", [self.latestUserLocation getDistanceFrom:newLocation]);
 //    self.latestUserLocation = [self transToRealLocation:newLocation];
@@ -117,38 +117,37 @@ NSInteger centerLoc =-10000;
     [self performSegueWithIdentifier:@"userInfoSegue"sender:self];
 }
 
--(void)getCitynameByLocation:(CLLocation *) loc {
+-(void)getCitynameByLocation {
     CLGeocoder *geocoder = [[CLGeocoder alloc]init];
-//    CLLocation *tmp = [[CLLocation alloc]initWithLatitude:35.185949 longitude:110.406076];
-    [geocoder reverseGeocodeLocation:loc completionHandler:^(NSArray *placemarks, NSError *error){
+    [geocoder reverseGeocodeLocation:userLocation completionHandler:^(NSArray *placemarks, NSError *error){
         CLPlacemark *placemark = (CLPlacemark *)[placemarks objectAtIndex:0];
         NSLog(@"%@, %@, %@, %@, %@, %@", placemark.country, placemark.administrativeArea, placemark.subLocality, placemark.thoroughfare, placemark.subThoroughfare, placemark.name);
         cityName = placemark.subLocality;
         NSString * provinceName = placemark.administrativeArea;
-        NSDictionary *weatherInfo = [RORThirdPartyService syncWeatherInfo:[RORUtils getCitycodeByCityname:cityName]];
-        NSDictionary *pm25info =[RORThirdPartyService syncPM25Info:cityName withProvince:provinceName];
-        int temp = INT16_MAX;
-        int pm25 = INT16_MAX;
-        if (weatherInfo != nil){
-            temp = [[weatherInfo objectForKey:@"temp"] integerValue];
-            self.lbTemperature.text = [NSString stringWithFormat:@"%d℃",temp];
-            self.lbWind.text = [NSString stringWithFormat:@"%@%@",[weatherInfo objectForKey:@"WD"],[weatherInfo objectForKey:@"WS"]];
-            self.lbLocation.text = cityName;
-        }
-        if(pm25info != nil){
-            pm25 = [[pm25info objectForKey:@"pm2_5"] integerValue];
-            self.lbPM.text = [NSString stringWithFormat:@"PM2.5：%d%@",pm25,[pm25info objectForKey:@"quality"]];
-        }
-        int index = 60;
-        if(temp < 38 && pm25 < 300){
-            index = (100-pm25/3)*0.6 +(100-fabs(temp - 22)*5)*0.4;
-        }
-        self.lbTotal.text = [NSString stringWithFormat:@"%d",index];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSDictionary *weatherInfo = [RORThirdPartyService syncWeatherInfo:[RORUtils getCitycodeByCityname:cityName]];
+            NSDictionary *pm25info =[RORThirdPartyService syncPM25Info:cityName withProvince:provinceName];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                int temp = INT16_MAX;
+                int pm25 = INT16_MAX;
+                if (weatherInfo != nil){
+                    temp = [[weatherInfo objectForKey:@"temp"] integerValue];
+                    self.lbTemperature.text = [NSString stringWithFormat:@"%d℃",temp];
+                    self.lbWind.text = [NSString stringWithFormat:@"%@%@",[weatherInfo objectForKey:@"WD"],[weatherInfo objectForKey:@"WS"]];
+                    self.lbLocation.text = cityName;
+                }
+                if(pm25info != nil){
+                    pm25 = [[pm25info objectForKey:@"pm2_5"] integerValue];
+                    self.lbPM.text = [NSString stringWithFormat:@"PM2.5：%d%@",pm25,[pm25info objectForKey:@"quality"]];
+                }
+                int index = 60;
+                if(temp < 38 && pm25 < 300){
+                    index = (100-pm25/3)*0.6 +(100-fabs(temp - 22)*5)*0.4;
+                }
+                self.lbTotal.text = [NSString stringWithFormat:@"%d",index];
+            });
+        });
     }];
-}
-
-- (void)loadWeatherInfo{
-    [self getCitynameByLocation:userLocation];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

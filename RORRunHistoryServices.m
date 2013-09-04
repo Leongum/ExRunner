@@ -202,7 +202,7 @@
     return YES;
 }
 
-+ (void) saveRunInfoToDB:(User_Running_History *)runningHistory{
++ (BOOL) saveRunInfoToDB:(User_Running_History *)runningHistory{
     //check uuid
     if(runningHistory.runUuid != nil){
         NSManagedObjectContext *context = [RORContextUtils getShareContext];
@@ -218,8 +218,9 @@
         [RORContextUtils saveContext];
     }
     if([RORUserUtils getUserId].integerValue > 0){
-        [self uploadRunningHistories];
+       return [self uploadRunningHistories];
     }
+    return NO;
 }
 
 + (BOOL)uploadUserRunning{

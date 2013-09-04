@@ -128,6 +128,9 @@
         [RORContextUtils saveContext];
         user.attributes = userAttr;
         [self saveUserInfoToList:user];
+    }
+    else if([httpResponse responseStatus] == 406 && [[httpResponse errorMessage] isEqualToString:@"LOGIN_CHECK_FAIL"]){
+        [RORUserUtils logout];
     }else {
         NSLog(@"sync with host error: can't get user's info. Status Code: %d", [httpResponse responseStatus]);
         return user;

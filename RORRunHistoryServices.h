@@ -31,6 +31,6 @@
 
 +(NSArray*)fetchRunHistory;
 
-+(void)saveRunInfoToDB:(User_Running_History*)runHistory;
++(BOOL)saveRunInfoToDB:(User_Running_History*)runHistory;
 
 @end
