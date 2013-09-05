@@ -58,6 +58,9 @@
 @property (retain, nonatomic) NSMutableArray *routePoints;
 @property (retain, nonatomic) MKPolyline *routeLine;
 @property (retain, nonatomic) MKPolylineView *routeLineView;
+@property (retain, nonatomic) MKPolylineView *routeLineShadowView;
+@property (strong, nonatomic) MKPolyline *routeLineShadow;
+
 @property (strong, nonatomic) NSDate *startTime;
 @property (strong, nonatomic) NSDate *endTime;
 @property (strong, nonatomic) User_Running_History* record;

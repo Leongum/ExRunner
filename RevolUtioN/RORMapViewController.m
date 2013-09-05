@@ -30,10 +30,35 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    int couter = 4;
+    while (couter-- > 0) {
+        improvedRoute = [[NSMutableArray alloc]init];
+        [improvedRoute addObject:[routePoints objectAtIndex:0]];
+        for (int i=0; i<routePoints.count-1; i++){
+            CLLocation *locnext = [routePoints objectAtIndex:i+1];
+            CLLocation *locpre = [routePoints objectAtIndex:i];
+            
+            CLLocationCoordinate2D Q,R;
+            Q.latitude = 0.75 * locpre.coordinate.latitude + 0.25 * locnext.coordinate.latitude;
+            Q.longitude = 0.75 * locpre.coordinate.longitude + 0.25 * locnext.coordinate.longitude;
+            R.latitude = 0.25 * locpre.coordinate.latitude + 0.75 * locnext.coordinate.latitude;
+            R.longitude = 0.25 * locpre.coordinate.longitude + 0.75 * locnext.coordinate.longitude;
+            
+            [improvedRoute addObject:[[CLLocation alloc]initWithLatitude:Q.latitude longitude:Q.longitude]];
+            [improvedRoute addObject:[[CLLocation alloc]initWithLatitude:R.latitude longitude:R.longitude]];
+        }
+        [improvedRoute addObject:[routePoints objectAtIndex:routePoints.count-1]];
+        routePoints = improvedRoute;
+    }
+    improvedRoute = [[NSMutableArray alloc]init];
+    for (int i=0; i<routePoints.count; i++){
+        CLLocation *loc = [routePoints objectAtIndex:i];
+        [improvedRoute addObject:[[CLLocation alloc]initWithLatitude:loc.coordinate.latitude - 0.00002 longitude:loc.coordinate.longitude]];
+    }
+    [self drawLineWithLocationArray:improvedRoute];
     [self drawLineWithLocationArray:routePoints];
-    NSLog(@"%@", [routePoints description]);
-    [self center_map];
+//    NSLog(@"%@", [routePoints description]);
+//    [self center_map];
     
 //    [mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading animated:YES];
 }
@@ -89,12 +114,23 @@
     for (int i = 0; i < pointCount; ++i) {
         CLLocation *location = [locationArray objectAtIndex:i];
         coordinateArray[i] = [location coordinate];
+        
+        
     }
     
-    routeLine = [MKPolyline polylineWithCoordinates:coordinateArray count:pointCount];
-    [mapView setVisibleMapRect:[routeLine boundingMapRect]];
-    [mapView addOverlay:routeLine];
+    if (locationArray == routePoints)
+        routeLine = [MKPolyline polylineWithCoordinates:coordinateArray count:pointCount];
+    else
+        self.routeLineShadow = [MKPolyline polylineWithCoordinates:coordinateArray count:pointCount];
     
+    MKMapRect rect = [routeLine boundingMapRect];
+    [mapView setVisibleMapRect:MKMapRectMake(rect.origin.x-1000, rect.origin.y-1000, rect.size.width+2000, rect.size.height+2000)];
+    
+    if (locationArray == routePoints)
+        [mapView addOverlay:routeLine];
+    else
+        [mapView addOverlay:self.routeLineShadow];
+
     free(coordinateArray);
     coordinateArray = NULL;
 }
@@ -141,13 +177,20 @@
         //        if(nil == self.routeLineView)
         //        {
         self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
-        self.routeLineView.fillColor = [UIColor redColor];
-        self.routeLineView.strokeColor = [UIColor redColor];
-        self.routeLineView.lineWidth = 5;
+//        self.routeLineView.fillColor = [UIColor colorWithRed:223 green:8 blue:50 alpha:1];
+        self.routeLineView.strokeColor = [UIColor colorWithRed:(46.0/255.0) green:(170.0/255.0) blue:(218.0/255.0) alpha:1];
+        self.routeLineView.lineWidth = 10;
         //        }
-        
         overlayView = self.routeLineView;
-        
+
+    } else if (overlay == self.routeLineShadow){
+        self.routeLineShadowView = [[MKPolylineView alloc] initWithPolyline:self.routeLineShadow];
+        //        self.routeLineView.fillColor = [UIColor colorWithRed:223 green:8 blue:50 alpha:1];
+        self.routeLineShadowView.strokeColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
+        self.routeLineShadowView.lineWidth = 11;
+        //        }
+
+        overlayView = self.routeLineShadowView;
     }
     
     return overlayView;

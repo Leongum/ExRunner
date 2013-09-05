@@ -45,7 +45,8 @@
     }
     if ([destination respondsToSelector:@selector(setRecord:)]){
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        NSString *date_str = [dateList objectAtIndex:indexPath.section];
+        NSLog(@"%d->%d", indexPath.section, indexPath.row);
+        NSString *date_str = [sortedDateList objectAtIndex:indexPath.section];
         NSArray *records4DateList = [runHistoryList objectForKey:date_str];
         User_Running_History *record4Date = [records4DateList objectAtIndex:indexPath.row];
         [destination setValue:record4Date forKey:@"record"];

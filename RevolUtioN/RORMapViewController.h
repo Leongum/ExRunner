@@ -14,10 +14,14 @@
 @interface RORMapViewController : RORViewController<CLLocationManagerDelegate,   MKMapViewDelegate>{
 //    BOOL wasFound;
 //    CLLocationManager* locationManager;
+    NSMutableArray *improvedRoute;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) MKPolyline *routeLine;
+@property (strong, nonatomic) MKPolyline *routeLineShadow;
 @property (retain, nonatomic) NSMutableArray *routePoints;
 @property (retain, nonatomic) MKPolylineView *routeLineView;
+@property (retain, nonatomic) MKPolylineView *routeLineShadowView;
+
 
 @end
