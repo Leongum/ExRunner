@@ -20,7 +20,7 @@
     NSString *table=@"Mission";
     MissionTypeEnum cycle = Cycle;
     NSString *query = @"missionId = %@ and missionTypeId = %@";
-    NSArray *params = [NSArray arrayWithObjects:packageMissionId, (int)cycle, nil];
+    NSArray *params = [NSArray arrayWithObjects:packageMissionId, [NSNumber numberWithInt:(int)cycle], nil];
     
     NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
@@ -31,7 +31,7 @@
     
     query = @"missionPackageId = %@ and missionTypeId = %@";
     MissionTypeEnum subCycle = SubCycle;
-    params = [NSArray arrayWithObjects:packageMissionId, (int)subCycle, nil];
+    params = [NSArray arrayWithObjects:packageMissionId, [NSNumber numberWithInt:(int)subCycle], nil];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:YES];
     NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
     packageMission.subMissionPackageList = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
@@ -50,7 +50,7 @@
     NSString *table=@"Mission";
     MissionTypeEnum recommand = Recommand;
     NSString *query = @"missionId = %@ and missionTypeId = %@";
-    NSArray *params = [NSArray arrayWithObjects:recommandMissionId, (int)recommand, nil];
+    NSArray *params = [NSArray arrayWithObjects:recommandMissionId, [NSNumber numberWithInt:(int)recommand], nil];
     
     NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {

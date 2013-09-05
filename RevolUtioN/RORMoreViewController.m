@@ -102,7 +102,7 @@
         {
             identifier = @"accountCell";
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-            UILabel *label = (UILabel*)[cell viewWithTag:1];
+            //UILabel *label = (UILabel*)[cell viewWithTag:1];
             //label.text = [RORUtils hasLoggedIn];
             break;
         }

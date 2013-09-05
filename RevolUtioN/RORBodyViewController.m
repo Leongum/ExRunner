@@ -169,8 +169,8 @@
     selection = indexPath.row;
     [self.picker reloadAllComponents];
     
-    double doubleValue;
-    int intValue;
+    double doubleValue = 0.0;
+    int intValue = 0;
     switch (indexPath.row) {
         case HEIGHT_PICKER:
         {
