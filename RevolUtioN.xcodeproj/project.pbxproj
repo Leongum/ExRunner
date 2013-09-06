@@ -167,7 +167,6 @@
 		30BB0BBD176F004D0009A847 /* RORMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0BBC176F004D0009A847 /* RORMapPoint.m */; };
 		30BB0BCA177484220009A847 /* RORPeriodicPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0BC9177484210009A847 /* RORPeriodicPickerViewController.m */; };
 		30C58AC317C4840F0065FC90 /* RORChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C58AC217C4840F0065FC90 /* RORChallengeViewController.m */; };
-		30C658921755DF630076AFA3 /* RORCityPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C658911755DF630076AFA3 /* RORCityPickerViewController.m */; };
 		30C658941755F78C0076AFA3 /* CityCode.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 30C658931755E0460076AFA3 /* CityCode.geojson */; };
 		30D21E91173CE617006B24A8 /* RORRelationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D21E90173CE617006B24A8 /* RORRelationsCell.m */; };
 		30D21E9A173D4D02006B24A8 /* RORRelationsOnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D21E99173D4D02006B24A8 /* RORRelationsOnlineCell.m */; };
@@ -507,8 +506,6 @@
 		30BB0BC9177484210009A847 /* RORPeriodicPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORPeriodicPickerViewController.m; sourceTree = "<group>"; };
 		30C58AC117C4840F0065FC90 /* RORChallengeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORChallengeViewController.h; sourceTree = "<group>"; };
 		30C58AC217C4840F0065FC90 /* RORChallengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORChallengeViewController.m; sourceTree = "<group>"; };
-		30C658901755DF630076AFA3 /* RORCityPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORCityPickerViewController.h; sourceTree = "<group>"; };
-		30C658911755DF630076AFA3 /* RORCityPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORCityPickerViewController.m; sourceTree = "<group>"; };
 		30C658931755E0460076AFA3 /* CityCode.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = CityCode.geojson; sourceTree = "<group>"; };
 		30D21E8F173CE617006B24A8 /* RORRelationsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORRelationsCell.h; path = Cells/RORRelationsCell.h; sourceTree = "<group>"; };
 		30D21E90173CE617006B24A8 /* RORRelationsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORRelationsCell.m; path = Cells/RORRelationsCell.m; sourceTree = "<group>"; };
@@ -811,8 +808,6 @@
 			children = (
 				3001498E1750F444005DAF1D /* RORMoreViewController.h */,
 				3001498F1750F444005DAF1D /* RORMoreViewController.m */,
-				30C658901755DF630076AFA3 /* RORCityPickerViewController.h */,
-				30C658911755DF630076AFA3 /* RORCityPickerViewController.m */,
 				301250EE177B21A60082A09A /* RORAccountViewController.h */,
 				301250EF177B21A60082A09A /* RORAccountViewController.m */,
 				30A6D9DF17CC93AE00D1116E /* RORBodyViewController.h */,
@@ -1521,7 +1516,6 @@
 				3061F3B9174CDBEB006093FC /* RORCoreData.xcdatamodeld in Sources */,
 				305A1878174F1EFB003A8CD7 /* RORLoginViewController.m in Sources */,
 				300149901750F444005DAF1D /* RORMoreViewController.m in Sources */,
-				30C658921755DF630076AFA3 /* RORCityPickerViewController.m in Sources */,
 				304D36B91757159200AE8A44 /* RORAppearenceViewController.m in Sources */,
 				3008CC571758997E0032F5C7 /* RORSettings.m in Sources */,
 				3008CC5C175DCA830032F5C7 /* RORPlanViewController.m in Sources */,

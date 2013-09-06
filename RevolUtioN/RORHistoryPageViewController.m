@@ -120,17 +120,17 @@
 }
 
 - (void)updateNaviTitleForPage:(NSInteger)page {
-    NSString *pageContentTitle=nil;
-    switch (page) {
-        case 0:
-            pageContentTitle = @"-个人属性";
-            break;
-        case 1:
-            pageContentTitle = @"-跑步历史";
-            break;
-        default:
-            break;
-    }
+//    NSString *pageContentTitle=nil;
+//    switch (page) {
+//        case 0:
+//            pageContentTitle = @"-个人属性";
+//            break;
+//        case 1:
+//            pageContentTitle = @"-跑步历史";
+//            break;
+//        default:
+//            break;
+//    }
 //    self.navigationItem.title = [NSString stringWithFormat:@"%@%@", self.userName, pageContentTitle];
 }
 

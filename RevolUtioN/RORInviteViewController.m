@@ -67,13 +67,13 @@
     if ([destination respondsToSelector:@selector(setDelegate:)]){
         [destination setValue:self forKey:@"delegate"];
     }
-    if ([destination respondsToSelector:@selector(setSelection:)]){
-        NSIndexPath *indexPath = [tableView indexPathForCell:sender];
-//        id object = [people objectAtIndex:indexPath.row];
-//        NSDictionary *selection = [NSDictionary dictionaryWithObjectsAndKeys: indexPath, @"indexPath",object, @"object", nil];
-//        [destination setValue:selection forKey:@"selection"];
-//        NSString *name = [[self.people objectAtIndex:indexPath.row] objectForKey:@"name"];
-//        [destination setValue:name forKey:@"name"];
-    }
+//    if ([destination respondsToSelector:@selector(setSelection:)]){
+//        NSIndexPath *indexPath = [tableView indexPathForCell:sender];
+////        id object = [people objectAtIndex:indexPath.row];
+////        NSDictionary *selection = [NSDictionary dictionaryWithObjectsAndKeys: indexPath, @"indexPath",object, @"object", nil];
+////        [destination setValue:selection forKey:@"selection"];
+////        NSString *name = [[self.people objectAtIndex:indexPath.row] objectForKey:@"name"];
+////        [destination setValue:name forKey:@"name"];
+//    }
 }
 @end

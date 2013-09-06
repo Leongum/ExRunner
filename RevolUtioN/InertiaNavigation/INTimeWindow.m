@@ -12,7 +12,7 @@
 @synthesize content, count, head, timeCounter;
 
 -(id)init{
-    content = [[NSMutableArray alloc]init];
+    //content = [[NSMutableArray alloc]init];
     count = 0;
     head = 0;
     sum_a = 0;
@@ -42,7 +42,7 @@
         double delta_a = dList[i].ab_mod - avg_a;
         a_variance += delta_a * delta_a;
     }
-    a_variance /= SIZE_OF_TIMEWINDOW;
+    //a_variance /= SIZE_OF_TIMEWINDOW;
     INDeviceStatus *returnStatus = dList[(head+(SIZE_OF_TIMEWINDOW/2))%SIZE_OF_TIMEWINDOW];
 //    if (timeCounter % 10 == 0)
 //        [returnStatus setIsStill:YES];

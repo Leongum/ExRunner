@@ -88,6 +88,7 @@
     CGRect contentRectToCrop = CGRectMake(0, 70, image.size.width, image.size.height - 70);
     CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], contentRectToCrop);
     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
     return croppedImage;
 }
 

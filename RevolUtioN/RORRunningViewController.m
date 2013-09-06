@@ -66,7 +66,6 @@
     }
 
     [self controllerInit];
-    [self navigationInit];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -222,6 +221,7 @@
 }
 
 -(void)awakeFromNib {
+    [self navigationInit];
     [self startDeviceLocation];
 }
 
@@ -447,7 +447,7 @@
 - (void)pushPoint{
     CLLocation *currentLocation = self.latestUserLocation;
     if (formerLocation != currentLocation){
-        distance += [self.formerLocation getDistanceFrom:currentLocation];
+        distance += [self.formerLocation distanceFromLocation:currentLocation];
         self.formerLocation = currentLocation;
         [routePoints addObject:currentLocation];
         [self drawLineWithLocationArray:routePoints];
@@ -632,7 +632,7 @@
 
 - (void) centerMap{
     [mapView setCenterCoordinate:self.latestUserLocation.coordinate animated:YES];
-    CLLocation *cl = [mapView userLocation].location;
+    //CLLocation *cl = [mapView userLocation].location;
     //    [self drawTestLine];
 }
 
@@ -657,7 +657,7 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     NSLog(@"ToLocation:%f, %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
-    NSLog(@"Device did %f meters move.", [self.latestUserLocation getDistanceFrom:newLocation]);
+    NSLog(@"Device did %f meters move.", [self.latestUserLocation distanceFromLocation:newLocation]);
     self.latestUserLocation = [self transToRealLocation:newLocation];
     
 }
