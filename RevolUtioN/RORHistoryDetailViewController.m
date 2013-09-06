@@ -144,12 +144,7 @@
                         {
                             if ([error errorCode] == -22003)
                             {
-                                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                    message:[error errorDescription]
-                                                                                   delegate:nil
-                                                                          cancelButtonTitle:@"知道了"
-                                                                          otherButtonTitles:nil];
-                                [alertView show];
+                                [self sendNotification:[error errorDescription]];
                             }
                         }
                     }];

@@ -70,12 +70,7 @@
     NSArray *selectedClients = [_shareBar selectedClients];
     if ([selectedClients count] == 0)
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                            message:@"请选择要发布的平台!"
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"知道了"
-                                                  otherButtonTitles: nil];
-        [alertView show];
+        [self sendNotification:@"请选择要发布的平台!"];
         return;
     }
     
@@ -112,15 +107,7 @@
         }
     
     }
-    
-    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                         message:@"分享已提交"
-                                                        delegate:nil
-                                               cancelButtonTitle:@"知道了"
-                                               otherButtonTitles: nil];
-    [alertView show];
-    
+    [self sendNotification:@"分享已提交"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

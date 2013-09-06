@@ -10,8 +10,9 @@
 #import <AGCommon/CMImageView.h>
 #import <ShareSDK/ShareSDK.h>
 #import "RORCustomShareViewToolbar.h"
+#import "RORViewController.h"
 
-@interface RORCustomShareViewController : UIViewController<UITextViewDelegate>
+@interface RORCustomShareViewController : RORViewController<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *txtShareContent;
 @property (weak, nonatomic) IBOutlet UILabel *lblContentCount;
 @property (weak, nonatomic) IBOutlet RORCustomShareViewToolbar *shareBar;

@@ -141,6 +141,7 @@
                                                                                              {
                                                                                                  if ([error errorCode] != -103)
                                                                                                  {
+                                                                                                     
                                                                                                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"绑定失败!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil];
                                                                                                      [alertView show];
                                                                                                  }
