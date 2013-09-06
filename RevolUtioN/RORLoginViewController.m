@@ -34,15 +34,6 @@
     return self;
 }
 
-UIAlertView * registerAlert;
-
-- (void) performDismiss
-{
-    [registerAlert dismissWithClickedButtonIndex:0 animated:YES];
-    [self performSegueWithIdentifier:@"bodySetting" sender:self];
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -85,8 +76,8 @@ UIAlertView * registerAlert;
 //提交用户名密码之后的操作
 - (IBAction)loginAction:(id)sender {
     if(![RORNetWorkUtils getIsConnetioned]){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"设备尚未连接网络！" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
-        [alert show];
+        [self sendNotification:@"设备尚未连接网络！"];
+        return;
     }
     if (![self isLegalInput]) return;
     if (switchButton.selectedSegmentIndex == 0){ //登录
@@ -95,8 +86,7 @@ UIAlertView * registerAlert;
         User_Base *user = [RORUserServices syncUserInfoByLogin:userName withUserPasswordL:password];
         
         if (user == nil){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"登录失败" message:@"用户名或密码错误" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alert show];
+            [self sendNotification:@"登录失败,用户名或密码错误！"];
             return;
         }
         [RORRunHistoryServices syncRunningHistories];
@@ -105,16 +95,11 @@ UIAlertView * registerAlert;
         User_Base *user = [RORUserServices registerUser:regDict];
         
         if (user != nil){
-            registerAlert = [[UIAlertView alloc] initWithTitle:@"注册成功" message:@"恭喜你，注册成功！" delegate:self cancelButtonTitle:nil otherButtonTitles: nil];
-            [registerAlert show];
-            // Create and add the activity indicator
-            UIActivityIndicatorView *aiv = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-            [aiv startAnimating];
+            [self sendNotification:@"恭喜你，注册成功！请继续完善个人信息！"];
             [self performSelector:@selector(performDismiss) withObject:nil afterDelay:1.5f];
             return;
         } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注册失败" message:@"用户名已存在" delegate:self cancelButtonTitle:@"取消" otherButtonTitles: nil];
-            [alert show];
+            [self sendNotification:@"注册失败，注用户名已存在！"];
             return;
         }
     }
@@ -127,16 +112,14 @@ UIAlertView * registerAlert;
     if (switchButton.selectedSegmentIndex == 0){
         if ([usernameTextField.text isEqualToString:@""] ||
             [passwordTextField.text isEqualToString:@""]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"输入错误" message:@"用户名或密码不能为空" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alert show];
+            [self sendNotification:@"用户名或密码不能为空！"];
             return NO;
         }
     } else {
         if ([usernameTextField.text isEqualToString:@""] ||
             [passwordTextField.text isEqualToString:@""] ||
             [nicknameTextField.text isEqualToString:@""]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"输入错误" message:@"用户名,密码或昵称不能为空" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alert show];
+            [self sendNotification:@"用户名,密码或昵称不能为空"];
             return NO;
         }
     }
@@ -222,11 +205,6 @@ UIAlertView * registerAlert;
     
     [authOptions setPowerByHidden:true];
     
-    //在授权页面中添加关注官方微博
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"Cyberace_赛跑乐"],
-                                    SHARE_TYPE_NUMBER(type),nil]];
-    
     [ShareSDK getUserInfoWithType:type
                       authOptions:authOptions
                            result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
@@ -244,12 +222,7 @@ UIAlertView * registerAlert;
                                }
                                else
                                {
-                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                                       message:error.errorDescription
-                                                                                      delegate:nil
-                                                                             cancelButtonTitle:@"知道了"
-                                                                             otherButtonTitles: nil];
-                                   [alertView show];
+                                   [self sendNotification:error.errorDescription];
                                }
                            }];
 }

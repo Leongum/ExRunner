@@ -55,7 +55,7 @@
 -(void)initPhi;
 -(void)initP0;
 
--(void)updatePhiwithF:(vec_3)f;
+-(void)updatePhiwithF:(vec_3)f andVe:(double)Ve;
 -(BOOL)calculateKwithF:(vec_3)f deltaCoor:(vec_3) deltaV andVe:(double)Ve;
 -(BOOL)pushYk:(INMatrix *)newYk;
 

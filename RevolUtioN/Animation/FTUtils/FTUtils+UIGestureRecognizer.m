@@ -29,8 +29,6 @@
 
 @interface UIGestureRecognizer()
 
-- (void)handleAction:(UIGestureRecognizer *)recognizer;
-
 @end
 
 static char * kFTGestureActionKey   = "ft_gestureAction";

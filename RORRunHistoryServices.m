@@ -44,7 +44,7 @@
     NSNumber *userId = [RORUserUtils getUserId];
     
     NSString *table=@"User_Running_History";
-    NSString *query = @"(userId = %@ or userId = -1) and commitTime = nil";
+    NSString *query = @"userId = %@ and commitTime = nil";
     NSArray *params = [NSArray arrayWithObjects:userId, nil];
     NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
@@ -68,7 +68,7 @@
     NSNumber *userId = [RORUserUtils getUserId];
     
     NSString *table=@"User_Running";
-    NSString *query = @"(userId = %@ or userId = -1) and commitTime = nil";
+    NSString *query = @"userId = %@ and commitTime = nil";
     NSArray *params = [NSArray arrayWithObjects:userId, nil];
     NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {

@@ -48,7 +48,7 @@
 
 -(void)checkStep:(double)v{
     double maxFrequency = MIN_STEP_TIME / delta_T;
-    double slowrunFrequency = 0.3 / delta_T;
+    //double slowrunFrequency = 0.3 / delta_T;
     
 //    if (v < 16/3.6){ // 16km/h, as slow running or walk
 //        if (totalPoints - lastGPeak < slowrunFrequency)

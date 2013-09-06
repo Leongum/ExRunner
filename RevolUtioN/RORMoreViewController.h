@@ -11,7 +11,6 @@
 
 
 @interface RORMoreViewController : RORViewController
-- (IBAction)logoutAction:(id)sender;
 - (void)saveAll;
 
 @property (strong, nonatomic) NSString *cityName;
