@@ -175,6 +175,26 @@
     return cell;
 }
 
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *result = nil;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 22)];
+    label.text = (NSString *)[sortedDateList objectAtIndex:section];
+    label.font = [UIFont systemFontOfSize:15];
+    label.textAlignment = UITextAlignmentRight;
+    label.textColor = [UIColor darkGrayColor];
+    label.backgroundColor = [UIColor clearColor];
+    
+//    //将UILabel向右移动10个点，沿y轴向下移动5个点
+//    label.frame = CGRectMake(label.frame.origin.x + 10.0f,5.0f,label.frame.size.width, label.frame.size.height);
+    //container的宽度比UILabel多出是个像素这些像素用于缩进
+//    CGRect resultFrame = CGRectMake(0.0f, 0.0f,
+//                                    label.frame.size.height,
+//                                    label.frame.size.width + 10.0f);
+    result = [[UIView alloc] initWithFrame:label.frame];
+    [result addSubview:label];
+    return result; 
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

@@ -256,7 +256,7 @@
 
 +(NSString*)outputDistance:(NSNumber*)distance{
     if (distance.doubleValue<1000){
-        return [NSString stringWithFormat:@"%.2f m", distance.doubleValue];
+        return [NSString stringWithFormat:@"%.0f m", round(distance.doubleValue)];
     }
     return [NSString stringWithFormat:@"%.2f km", distance.doubleValue/1000];
 }

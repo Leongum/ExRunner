@@ -7,9 +7,8 @@
 //
 
 #import "RORMoreViewController.h"
-#import "User_Base.h"
+#import "RORUserServices.h"
 #import "RORAppDelegate.h"
-#import "RORUtils.h"
 #import "RORSettings.h"
 
 @interface RORMoreViewController ()
@@ -102,8 +101,9 @@
         {
             identifier = @"accountCell";
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-            //UILabel *label = (UILabel*)[cell viewWithTag:1];
-            //label.text = [RORUtils hasLoggedIn];
+            UILabel *label = (UILabel*)[cell viewWithTag:1];
+            User_Base *userInfo = [RORUserServices fetchUser:[RORUserUtils getUserId]];
+            label.text =  userInfo.nickName;
             break;
         }
         case 1:
