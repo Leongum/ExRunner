@@ -17,19 +17,19 @@
 #import "User_Base.h"
 #import "RORNormalButton.h"
 #import <MapKit/MapKit.h>
+#import "RORViewController.h"
 
-
-@interface RORFirstViewController : UIViewController<CLLocationManagerDelegate>{
+@interface RORFirstViewController : RORViewController<CLLocationManagerDelegate>{
     BOOL wasFound;
     CLLocation *userLocation;
     NSString *cityName;
+    NSString *weatherInformation;
+    BOOL hasAnimated;
 }
 
 //@property (strong,nonatomic)NSManagedObjectContext *context;
 @property (copy, nonatomic) NSString *userName;
 @property (nonatomic) NSNumber *userId;
-@property (weak, nonatomic) IBOutlet UIView *weatherSubView;
-@property (weak, nonatomic) IBOutlet UIButton *weatherInfoButtonView;
 @property (strong, nonatomic) IBOutlet UIButton *runButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *challenge;
 //@property (strong, nonatomic) IBOutlet UIImageView *testView;
@@ -38,16 +38,14 @@
 @property (strong, nonatomic) IBOutlet UILabel *levelLabel;
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) IBOutlet UIView *userInfoView;
+
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) IBOutlet UIButton *weatherInfoButtonView;
+@property (strong, nonatomic) IBOutlet UIImageView *chactorView;
+@property (strong, nonatomic) IBOutlet UIImageView *charactorWindView;
+@property (strong, nonatomic) IBOutlet RORNormalButton *historyButton;
+@property (strong, nonatomic) IBOutlet RORNormalButton *settingButton;
 
-@property (strong, nonatomic) IBOutlet UILabel *lbLocation;
-@property (weak, nonatomic) IBOutlet UILabel *lbTemperature;
-@property (weak, nonatomic) IBOutlet UILabel *lbWind;
-@property (strong, nonatomic) IBOutlet UILabel *lbUV;
-@property (strong, nonatomic) IBOutlet UILabel *lbPM;
-@property (strong, nonatomic) IBOutlet UILabel *lbTotal;
-
-- (IBAction)weatherInfoAction:(id)sender;
 - (IBAction)normalRunAction:(id)sender;
 - (IBAction)challengeRunAction:(id)sender;
 

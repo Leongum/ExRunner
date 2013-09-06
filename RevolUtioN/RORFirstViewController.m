@@ -7,12 +7,18 @@
 //
 
 #import "RORFirstViewController.h"
+#import "FTAnimation.h"
 
-#define WEATHER_WINDOW_INITIAL_FRAME CGRectMake(-100, 80, 100, 140)
-#define RUN_BUTTON_FRAME_NORMAL CGRectMake(92, 100, 136, 60)
-#define RUN_BUTTON_FRAME_RATINA CGRectMake(92, 130, 136, 60)
-#define CHALLENGE_BUTTON_FRAME_NORMAL CGRectMake(0, 170, 320, 94)
-#define CHALLENGE_BUTTON_FRAME_RATINA CGRectMake(0, 237, 320, 94)
+//#define CHARACTOR_FRAME_NORMAL CGRectMake(10,300,280,183)
+//#define CHARACTOR_FRAME_RATINA CGRectMake(10,300,280,183)
+
+#define WEATHER_BUTTON_INITIAL_FRAME CGRectMake(-100, 27, 100, 40)
+#define LOGIN_BUTTON_INITIAL_FRAME CGRectMake(320, 14, 210, 69)
+
+#define RUN_BUTTON_FRAME_NORMAL CGRectMake(92, 120, 136, 60)
+#define RUN_BUTTON_FRAME_RATINA CGRectMake(92, 160, 136, 60)
+#define CHALLENGE_BUTTON_FRAME_NORMAL CGRectMake(0, 190, 320, 94)
+#define CHALLENGE_BUTTON_FRAME_RATINA CGRectMake(0, 250, 320, 94)
 
 
 @interface RORFirstViewController ()
@@ -20,7 +26,6 @@
 @end
 
 @implementation RORFirstViewController
-@synthesize weatherSubView;
 @synthesize weatherInfoButtonView;
 @synthesize locationManager;
 
@@ -33,20 +38,28 @@ NSInteger centerLoc =-10000;
     [super viewDidLoad];
     
     [RORUtils setFontFamily:@"FZKaTong-M19S" forView:self.view andSubViews:YES];
-
-    weatherSubView.frame = WEATHER_WINDOW_INITIAL_FRAME;
-    //init topbar's gesture listeners
-    UITapGestureRecognizer *t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
-    [weatherSubView addGestureRecognizer:t];
     
-//    UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
-//    [weatherSubView addGestureRecognizer:panGes];
-        
+    [self prepareControlsForAnimation];
+    
     //初始化按钮位置
     [self initControlsLayout];
     [self initLocationServcie];
 }
 
+-(void)prepareControlsForAnimation{
+    hasAnimated = NO;
+//    self.chactorView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
+//    self.chactorView.frame = CHARACTOR_FRAME_NORMAL;
+    self.chactorView.alpha = 0;
+    self.charactorWindView.alpha = 0;
+    self.weatherInfoButtonView.frame = WEATHER_BUTTON_INITIAL_FRAME;
+    self.userInfoView.frame = LOGIN_BUTTON_INITIAL_FRAME;
+    
+    self.runButton.alpha = 0;
+    self.challenge.alpha = 0;
+    self.historyButton.alpha = 0;
+    self.settingButton.alpha = 0;
+}
 
 - (void)initLocationServcie{
     userLocation = nil;
@@ -73,6 +86,8 @@ NSInteger centerLoc =-10000;
 }
 
 - (void)initControlsLayout{
+    [self.backButton setAlpha:0];
+    
     CGRect rx = [ UIScreen mainScreen ].applicationFrame;
     if (rx.size.height == 460){
         self.runButton.frame = RUN_BUTTON_FRAME_NORMAL;
@@ -81,6 +96,8 @@ NSInteger centerLoc =-10000;
         self.runButton.frame = RUN_BUTTON_FRAME_RATINA;
         self.challenge.frame = CHALLENGE_BUTTON_FRAME_RATINA;
     }
+    
+    
 }
 
 - (void)initPageData{
@@ -92,14 +109,12 @@ NSInteger centerLoc =-10000;
     //初始化用户名
     if ([RORUserUtils getUserId].integerValue>=0){
         self.loginButton.alpha = 0;
-        self.userInfoView.alpha = 1;
         
         User_Base *userInfo = [RORUserServices fetchUser:[RORUserUtils getUserId]];
         self.usernameLabel.text = userInfo.nickName;
         self.levelLabel.text = [NSString stringWithFormat:@"等级：%@", userInfo.attributes.level];
         self.scoreLabel.text = [NSString stringWithFormat:@"积分：%@", userInfo.attributes.scores];
     } else {
-        self.userInfoView.alpha = 0;
         self.loginButton.alpha = 1;
     }
 }
@@ -107,14 +122,17 @@ NSInteger centerLoc =-10000;
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self initPageData];
+    if (!hasAnimated){
+        hasAnimated = YES;
+        [self charactorAnimation];
+        [self controlsInAction];
+    }
+//    [Animations zoomIn:self.chactorView andAnimationDuration:2 andWait:YES];
+    
 }
 
 - (IBAction)segueToLogin:(id)sender{
     [self performSegueWithIdentifier:@"loginSegue" sender:self];
-}
-
--(void)segueToInfo{
-    [self performSegueWithIdentifier:@"userInfoSegue"sender:self];
 }
 
 -(void)getCitynameByLocation {
@@ -128,23 +146,23 @@ NSInteger centerLoc =-10000;
             NSDictionary *weatherInfo = [RORThirdPartyService syncWeatherInfo:[RORUtils getCitycodeByCityname:cityName]];
             NSDictionary *pm25info =[RORThirdPartyService syncPM25Info:cityName withProvince:provinceName];
             dispatch_async(dispatch_get_main_queue(), ^{
+                weatherInformation = @"";
                 int temp = INT16_MAX;
                 int pm25 = INT16_MAX;
                 if (weatherInfo != nil){
                     temp = [[weatherInfo objectForKey:@"temp"] integerValue];
-                    self.lbTemperature.text = [NSString stringWithFormat:@"%d℃",temp];
-                    self.lbWind.text = [NSString stringWithFormat:@"%@%@",[weatherInfo objectForKey:@"WD"],[weatherInfo objectForKey:@"WS"]];
-                    self.lbLocation.text = cityName;
+                    weatherInformation = [NSString stringWithFormat:@"%@%@  %d℃  %@%@  ", weatherInformation, cityName, temp, [weatherInfo objectForKey:@"WD"],[weatherInfo objectForKey:@"WS"]
+                                          ];
                 }
                 if(pm25info != nil){
                     pm25 = [[pm25info objectForKey:@"pm2_5"] integerValue];
-                    self.lbPM.text = [NSString stringWithFormat:@"PM2.5：%d%@",pm25,[pm25info objectForKey:@"quality"]];
+                    weatherInformation = [NSString stringWithFormat:@"%@  PM2.5:%d%@  ", weatherInformation,  pm25,[pm25info objectForKey:@"quality"]];
                 }
                 int index = 60;
                 if(temp < 38 && pm25 < 300){
                     index = (100-pm25/3)*0.6 +(100-fabs(temp - 22)*5)*0.4;
                 }
-                self.lbTotal.text = [NSString stringWithFormat:@"%d",index];
+                weatherInformation = [NSString stringWithFormat:@"%@总:%d", weatherInformation, index];
             });
         });
     }];
@@ -164,53 +182,6 @@ NSInteger centerLoc =-10000;
     }
 }
 
--(void) panAction:(UIPanGestureRecognizer*) recognizer{
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
-        centerLoc = weatherSubView.center.y;
-    }
-    CGPoint translation = [recognizer translationInView:weatherSubView];
-    [self weatherDragView:translation.y];
-
-    CGContextRef gccontext = UIGraphicsGetCurrentContext();
-    [UIView beginAnimations:nil context:gccontext];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    [UIView setAnimationDuration:0.6];
-    [self.view exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
-    
-    if (recognizer.state == UIGestureRecognizerStateEnded) {
-        int trans = weatherSubView.center.y - centerLoc;
-        if (trans>0 && expanded == 0 ){
-            [self weatherInView];
-            expanded = 1;
-        } else if (trans<0 && expanded == 1 ){
-            [self weatherPopView];
-            expanded = 0;
-        }
-    }
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
-    [UIView commitAnimations];
-
-    [recognizer setTranslation:CGPointZero inView:weatherSubView];
-}
-
--(void) singleTap:(UITapGestureRecognizer*) tap {
-    [self weatherPopView];
-
-//    if (expanded) {
-//        [self weatherPopView];
-//        expanded = 0;
-//    }
-//    else {
-//        [self weatherInView];
-//        expanded = 1;
-//    }
-
-//    NSLog(@"single tap: %f %f", p.x, p.y );
-}
-
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -218,108 +189,49 @@ NSInteger centerLoc =-10000;
 }
 
 - (void)viewDidUnload {
-
-    [self setWeatherSubView:nil];
     [self setWeatherInfoButtonView:nil];
     [self setUserName:nil];
     [self setUserId:nil];
     
-    [self setLbTemperature:nil];
-    [self setLbWind:nil];
     [self setRunButton:nil];
     [self setChallenge:nil];
-    [self setLbUV:nil];
-    [self setLbPM:nil];
-    [self setLbLocation:nil];
-    [self setLbTotal:nil];
     [self setUsernameLabel:nil];
     [self setLevelLabel:nil];
     [self setScoreLabel:nil];
     [self setUserInfoView:nil];
     [self setLoginButton:nil];
+    [self setChactorView:nil];
+    [self setHistoryButton:nil];
+    [self setSettingButton:nil];
+    [self setCharactorWindView:nil];
     [super viewDidUnload];
 }
 
-- (void)weatherPopView{
-    CGContextRef gccontext = UIGraphicsGetCurrentContext();
-    [UIView beginAnimations:nil context:gccontext];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    [UIView setAnimationDuration:0.3];
-    weatherSubView.frame = WEATHER_WINDOW_INITIAL_FRAME;
-    weatherInfoButtonView.tintColor = nil;
-    expanded = 0;
-
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
-    [UIView commitAnimations];
+-(void)charactorAnimation{
+    [Animations zoomIn:self.chactorView andAnimationDuration:2 andWait:NO];
+    self.chactorView.alpha = 1;
+    [Animations moveUp:self.chactorView andAnimationDuration:1 andWait:YES andLength:20];
+    [Animations fadeIn:self.charactorWindView andAnimationDuration:1 toAlpha:1 andWait:YES];
+//    [Animations moveDown:self.chactorView andAnimationDuration:1 andWait:YES andLength:20];
 }
 
-- (void)weatherDragView : (int)transition{
-    UIView* localView = weatherSubView;
-    static int TOP = -123;
-    static int BOTTOM = 0;
+-(void)controlsInAction{
+//    self.weatherInfoButtonView
+    [Animations fadeIn:self.historyButton andAnimationDuration:1 toAlpha:1 andWait:NO];
+    [Animations fadeIn:self.settingButton andAnimationDuration:1 toAlpha:1 andWait:NO];
+    [Animations fadeIn:self.runButton andAnimationDuration:1 toAlpha:1 andWait:NO];
+    [Animations fadeIn:self.challenge andAnimationDuration:1 toAlpha:1 andWait:YES];
     
-    if (localView.frame.origin.y + transition>BOTTOM)
-        localView.center = CGPointMake(localView.center.x,(localView.frame.size.height)/2); //61.5
-    else if (localView.frame.origin.y + transition<TOP)
-        localView.center = CGPointMake(localView.center.x,(localView.frame.size.height)/2+TOP);//25.5
-    else localView.center = CGPointMake(localView.center.x,
-                                           localView.center.y + transition);
+    [Animations moveRight:self.weatherInfoButtonView andAnimationDuration:0.3 andWait:YES andLength:110];
+    [Animations moveLeft:self.weatherInfoButtonView andAnimationDuration:0.1 andWait:YES andLength:10];
+
+    [Animations moveLeft:self.userInfoView andAnimationDuration:0.3 andWait:YES andLength:220];
+    [Animations moveRight:self.userInfoView andAnimationDuration:0.1 andWait:YES andLength:10];
 }
 
-- (void)weatherInView{
-    CGContextRef gccontext = UIGraphicsGetCurrentContext();
-    [UIView beginAnimations:nil context:gccontext];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    [UIView setAnimationDuration:0.3];
-
-    weatherSubView.frame = CGRectMake(2, 0, 100, 120);
-    weatherInfoButtonView.tintColor = [UIColor colorWithRed:0.25 green:0.4 blue:0.72 alpha:0.0];
-    expanded = 1;
-
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
-    [UIView commitAnimations];
-}
-- (void)weatherInView1{
-    CGContextRef gccontext = UIGraphicsGetCurrentContext();
-    [UIView beginAnimations:nil context:gccontext];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    [UIView setAnimationDuration:0.3];
-    
-    weatherSubView.frame = CGRectMake(2, 0, 100, 120);
-//    weatherInfoButtonView.tintColor = [UIColor colorWithRed:0.25 green:0.4 blue:0.72 alpha:0.0];
-    expanded = 1;
-    
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
-    [UIView commitAnimations];
-}
-
-- (IBAction)weatherInfoAction:(id)sender {
-    if (weatherSubView.frame.origin.x < -10){
-//        [self weatherInView];
-//        [UIView beginAnimations:@"animation" context:nil];
-//        [UIView setAnimationDuration:1];
-//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-//        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.testView cache:YES];
-//        UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
-//        [self.testView setImage:image];
-//        [UIView commitAnimations];
-        
-        [Animations moveRight:weatherSubView andAnimationDuration:0.1 andWait:YES andLength:100];
-        [Animations moveLeft:weatherSubView andAnimationDuration:0.1 andWait:NO andLength:10];
-        
-    } else {
-        [self weatherPopView];
-//        [UIView beginAnimations:@"animation" context:nil];
-//        [UIView setAnimationDuration:1];
-//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-//        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.testView cache:YES];
-//        UIImage *image = [UIImage imageNamed:@"redbutton_bg.png"];
-//        [self.testView setImage:image];
-//        [UIView commitAnimations];
-    }
+- (IBAction)weatherPopAction:(id)sender{
+    [self sendNotification:weatherInformation];
+//    [self charactorAnimation];
 }
 
 - (IBAction)normalRunAction:(id)sender {

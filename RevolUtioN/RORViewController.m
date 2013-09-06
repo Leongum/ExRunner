@@ -7,6 +7,8 @@
 //
 
 #import "RORViewController.h"
+#import "FTAnimation.h"
+
 #define BACKBUTTON_FRAME CGRectMake(10, 10, 44, 44)
 
 @interface RORViewController ()
@@ -50,6 +52,22 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)sendNotification:(NSString *)message{
+    if (notificationView == nil){
+        notificationView = [[RORNotificationView alloc]init];
+        [self.view addSubview:notificationView];
+    }
+    [notificationView popNotification:self Message:message];
+}
+
+-(void)sendAlart:(NSString *)message{
+    if (notificationView == nil){
+        notificationView = [[RORNotificationView alloc]init];
+        [self.view addSubview:notificationView];
+    }
+    [notificationView popNotification:self Message:message andType:RORNOTIFICATION_TYPE_IMPORTANT];
 }
 
 @end

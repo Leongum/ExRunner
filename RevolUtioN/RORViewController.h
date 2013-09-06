@@ -12,8 +12,14 @@
 #import "RORUtils.h"
 #import "RORPublicMethods.h"
 #import "RORNormalButton.h"
-
-@interface RORViewController : UIViewController
+#import "RORNotificationView.h"
+@interface RORViewController : UIViewController{
+    RORNotificationView *notificationView;
+}
 //-(void)addBackButton;
 @property (strong, nonatomic) RORNormalButton *backButton;
+
+-(void)sendNotification:(NSString *)message;
+-(void)sendAlart:(NSString *)message;
+
 @end

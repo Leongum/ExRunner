@@ -16,6 +16,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="charactor.png" id="jsj-Sc-ZqN">
+                                <rect key="frame" x="10" y="300" width="280" height="183"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="running_wind.png" id="cQ0-DD-Xrz">
+                                <rect key="frame" x="-3" y="427" width="330" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="okw-Sl-nSY" userLabel="history_Button" customClass="RORNormalButton">
                                 <rect key="frame" x="20" y="385" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -60,6 +68,21 @@
                                         <color key="textColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="Skg-pO-Aov" userLabel="login- Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="69"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="请登录" backgroundImage="main_login_bg.png">
+                                            <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="segueToLogin:" destination="2" eventType="touchUpInside" id="BzQ-Ay-BUg"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -79,7 +102,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="HRn-AF-9Ns" userLabel="weatherlevel_Button">
-                                <rect key="frame" x="0.0" y="27" width="100" height="41"/>
+                                <rect key="frame" x="0.0" y="27" width="100" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="main_trafficlight_green.png">
@@ -90,7 +113,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="weatherInfoAction:" destination="2" eventType="touchUpInside" id="vR0-Re-6ck"/>
+                                    <action selector="weatherPopAction:" destination="2" eventType="touchUpInside" id="2gj-4w-4wP"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="aUD-5p-Umm">
@@ -117,82 +140,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" id="Kec-6v-Wue" userLabel="weatherSubView">
-                                <rect key="frame" x="15" y="67" width="80" height="140"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="left" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2rM-Ct-sMl">
-                                        <rect key="frame" x="49" y="114" width="24" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="气温: -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y6P-Pq-4XQ">
-                                        <rect key="frame" x="8" y="29" width="65" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="风力: -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FzS-zY-P9K">
-                                        <rect key="frame" x="8" y="55" width="65" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="PM2.5: -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Qo-v3-lyZ">
-                                        <rect key="frame" x="11" y="84" width="65" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="left" text="未知地区" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xl3-cg-TeV">
-                                        <rect key="frame" x="8" y="7" width="65" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="总：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S6q-qu-Ymr">
-                                        <rect key="frame" x="31" y="113" width="21" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="Skg-pO-Aov" userLabel="login- Button">
-                                <rect key="frame" x="110" y="14" width="210" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="请登录" backgroundImage="main_login_bg.png">
-                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="segueToLogin:" destination="2" eventType="touchUpInside" id="BzQ-Ay-BUg"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="OFm-LO-YNj" userLabel="run_Button" customClass="RORFunnyButton">
                                 <rect key="frame" x="92" y="100" width="136" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -214,21 +161,18 @@
                     <navigationItem key="navigationItem" title="首页" id="Jw4-nE-S56"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="chactorView" destination="jsj-Sc-ZqN" id="Mzg-0J-bGs"/>
                         <outlet property="challenge" destination="aUD-5p-Umm" id="6gB-rZ-ozM"/>
-                        <outlet property="lbLocation" destination="xl3-cg-TeV" id="sjr-WQ-LiF"/>
-                        <outlet property="lbPM" destination="9Qo-v3-lyZ" id="NK8-SY-RId"/>
-                        <outlet property="lbTemperature" destination="Y6P-Pq-4XQ" id="HLt-tS-QdD"/>
-                        <outlet property="lbTotal" destination="2rM-Ct-sMl" id="bq9-Xr-qya"/>
-                        <outlet property="lbWind" destination="FzS-zY-P9K" id="RLU-Cv-C4X"/>
+                        <outlet property="charactorWindView" destination="cQ0-DD-Xrz" id="Pms-dp-WkK"/>
+                        <outlet property="historyButton" destination="okw-Sl-nSY" id="WWt-41-tkh"/>
                         <outlet property="levelLabel" destination="rd5-mB-BlH" id="siu-N9-8Qa"/>
                         <outlet property="loginButton" destination="Skg-pO-Aov" id="mZb-O6-Vtz"/>
                         <outlet property="runButton" destination="OFm-LO-YNj" id="gbq-YN-dEc"/>
                         <outlet property="scoreLabel" destination="1iz-eT-U1q" id="AL7-dI-5tQ"/>
+                        <outlet property="settingButton" destination="OYL-wh-XmF" id="XK6-0T-mem"/>
                         <outlet property="userInfoView" destination="qK2-c0-60j" id="xfo-Qy-GNl"/>
                         <outlet property="usernameLabel" destination="e95-Il-dJ7" id="fJH-oN-cGc"/>
                         <outlet property="weatherInfoButtonView" destination="HRn-AF-9Ns" id="7gl-0G-C6X"/>
-                        <outlet property="weatherSubView" destination="Kec-6v-Wue" id="5xs-oo-DBn"/>
-                        <segue destination="y9P-Sa-8pW" kind="push" identifier="userInfoSegue" id="a02-dk-zhF"/>
                         <segue destination="ZbL-oL-5D5" kind="push" identifier="loginSegue" id="ioQ-Xg-8dn"/>
                     </connections>
                 </viewController>
@@ -472,45 +416,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="AMS-cC-he0">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="PbC-RF-pa6" id="p1u-KF-U3J"/>
-                                </connections>
-                            </mapView>
-                            <button opaque="NO" alpha="0.70000000000000007" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0IU-xl-ISR" customClass="RORNormalButton">
-                                <rect key="frame" x="277" y="96" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" backgroundImage="expand.png">
-                                    <color key="titleColor" red="0.50196081399917603" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="expandAction:" destination="PbC-RF-pa6" eventType="touchUpInside" id="nhD-Cl-yz5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OqI-SR-CVV" customClass="RORNormalButton">
-                                <rect key="frame" x="277" y="399" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" backgroundImage="collapse.png">
-                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="collapseAction:" destination="PbC-RF-pa6" eventType="touchUpInside" id="KSD-eE-xBd"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kmi-x1-XMS">
                                 <rect key="frame" x="139" y="275" width="41" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -567,7 +472,46 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="e26-S5-ngM">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="AMS-cC-he0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="PbC-RF-pa6" id="p1u-KF-U3J"/>
+                                </connections>
+                            </mapView>
+                            <button opaque="NO" alpha="0.70000000000000007" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0IU-xl-ISR" userLabel="expand Button" customClass="RORNormalButton">
+                                <rect key="frame" x="277" y="96" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" backgroundImage="expand.png">
+                                    <color key="titleColor" red="0.50196081399917603" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="expandAction:" destination="PbC-RF-pa6" eventType="touchUpInside" id="nhD-Cl-yz5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OqI-SR-CVV" userLabel="collapse Button" customClass="RORNormalButton">
+                                <rect key="frame" x="277" y="399" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" backgroundImage="collapse.png">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="collapseAction:" destination="PbC-RF-pa6" eventType="touchUpInside" id="KSD-eE-xBd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="e26-S5-ngM" userLabel="center mapButton">
                                 <rect key="frame" x="277" y="13" width="29" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -586,7 +530,7 @@
                                 <rect key="frame" x="-1" y="0.0" width="321" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view alpha="0.20000000000000001" contentMode="scaleToFill" id="Cg1-Z5-Yfu" userLabel="bg" customClass="UIControl">
+                                    <view alpha="0.5" contentMode="scaleToFill" id="Cg1-Z5-Yfu" userLabel="bg" customClass="UIControl">
                                         <rect key="frame" x="0.0" y="0.0" width="321" height="454"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1703,12 +1647,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="charactor.png" width="585" height="457"/>
         <image name="check.png" width="256" height="256"/>
         <image name="collapse.png" width="40" height="40"/>
         <image name="expand.png" width="40" height="40"/>
         <image name="graybutton_bg.png" width="150" height="60"/>
         <image name="history.png" width="55" height="55"/>
-        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="640" height="1136"/>
         <image name="main_btn_bg.png" width="136" height="60"/>
         <image name="main_challenge_btn_bg.png" width="136" height="60"/>
         <image name="main_login_bg.png" width="210" height="68"/>
@@ -1716,205 +1661,10 @@
         <image name="main_trafficlight_green.png" width="100" height="40"/>
         <image name="main_username_bg.png" width="210" height="68"/>
         <image name="map.png" width="55" height="55"/>
+        <image name="running_wind.png" width="609" height="99"/>
         <image name="settings.png" width="55" height="55"/>
         <image name="submit.png" width="55" height="55"/>
     </resources>
-    <classes>
-        <class className="RORAccountViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORAccountViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backAction:"/>
-                <relationship kind="action" name="logoutAction:"/>
-                <relationship kind="outlet" name="tblAutoView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="RORBodyViewController" superclassName="RORViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORBodyViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="content" candidateClass="User_Base"/>
-                <relationship kind="outlet" name="coverView" candidateClass="RORBottomPopSubview"/>
-                <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="RORBottomPopSubview" superclassName="UIControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORBottomPopSubview.h"/>
-            <relationships>
-                <relationship kind="action" name="hideView:"/>
-                <relationship kind="action" name="popView:"/>
-            </relationships>
-        </class>
-        <class className="RORChallengeViewController" superclassName="RORViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORChallengeViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="coverView" candidateClass="RORBottomPopSubview"/>
-                <relationship kind="outlet" name="levelRequirementTable" candidateClass="UIControl"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="RORCustomShareViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORCustomShareViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="shareContentAction:"/>
-                <relationship kind="outlet" name="lblContentCount" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="shareBar" candidateClass="RORCustomShareViewToolbar"/>
-                <relationship kind="outlet" name="txtShareContent" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="RORCustomShareViewToolbar" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORCustomShareViewToolbar.h"/>
-        </class>
-        <class className="RORFirstViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORFirstViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="challengeRunAction:"/>
-                <relationship kind="action" name="normalRunAction:"/>
-                <relationship kind="action" name="weatherInfoAction:"/>
-                <relationship kind="outlet" name="challenge" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="lbLocation" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lbPM" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lbTemperature" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lbTotal" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lbUV" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lbWind" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="levelLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="runButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="userInfoView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="usernameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="weatherInfoButtonView" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="weatherSubView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="RORFunnyButton" superclassName="RORNormalButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORFunnyButton.h"/>
-        </class>
-        <class className="RORHistoryDetailViewController" superclassName="RORViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORHistoryDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backAction:"/>
-                <relationship kind="action" name="shareToWeixin:"/>
-                <relationship kind="outlet" name="backButtonItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="bonusLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="coverView" candidateClass="UIControl"/>
-                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="durationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="energyLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="experienceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="speedLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="weatherLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="RORHistoryPageViewController" superclassName="RORViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORHistoryPageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="coverView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="filterTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="RORHistoryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORHistoryViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="syncAction:"/>
-                <relationship kind="outlet" name="syncButtonItem" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="RORLoadingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORLoadingViewController.h"/>
-        </class>
-        <class className="RORLoginViewController" superclassName="RORViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORLoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backgroundTap:"/>
-                <relationship kind="action" name="cancelAction:"/>
-                <relationship kind="action" name="loginAction:"/>
-                <relationship kind="action" name="passwordDone:"/>
-                <relationship kind="action" name="qqAccountLogin:"/>
-                <relationship kind="action" name="renrenAccountLogin:"/>
-                <relationship kind="action" name="sinaWeiboLogin:"/>
-                <relationship kind="action" name="switchAction:"/>
-                <relationship kind="action" name="tencentWeiboLogin:"/>
-                <relationship kind="action" name="usernameDone:"/>
-                <relationship kind="action" name="visibilityOfPW:"/>
-                <relationship kind="outlet" name="btnQQLogin" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnRenRenLogin" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnSinaLogin" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnTencentLogin" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="nicknameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="sexButton" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="switchButton" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="usernameTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="RORMapViewController" superclassName="RORViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORMapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="RORMoreViewController" superclassName="RORViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORMoreViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logoutAction:"/>
-                <relationship kind="outlet" name="moreTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="RORNormalButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORNormalButton.h"/>
-        </class>
-        <class className="RORRunningViewController" superclassName="RORViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORRunningViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnCoverInside:"/>
-                <relationship kind="action" name="btnDeleteRunHistory:"/>
-                <relationship kind="action" name="btnSaveRun:"/>
-                <relationship kind="action" name="collapseAction:"/>
-                <relationship kind="action" name="endButtonAction:"/>
-                <relationship kind="action" name="expandAction:"/>
-                <relationship kind="action" name="setUserCentered:"/>
-                <relationship kind="action" name="startButtonAction:"/>
-                <relationship kind="outlet" name="avgDisPerStep" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="avgTimePerStep" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="collapseButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="coverView" candidateClass="UIControl"/>
-                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="endButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="expandButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="speedLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="stepLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="RORStatisticsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORStatisticsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="totalCalorieLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="totalDistanceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="totalSpeedLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="RORUserInfoViewController" superclassName="RORViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORUserInfoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="RORViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORViewController.h"/>
-        </class>
-        <class className="User_Base" superclassName="NSManagedObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/User_Base.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

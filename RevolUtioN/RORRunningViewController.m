@@ -104,7 +104,8 @@
     //    [mapView setUserTrackingMode:MKUserTrackingModeFollow];
     [mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading animated:YES];
     [mapView removeOverlays:[mapView overlays]];
-    motionManager = [[CMMotionManager alloc] init];
+    motionManager = [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] sharedManager];
+
     wasFound = NO;
     count = 0;
     timerCount = 0;
@@ -258,8 +259,10 @@
 //    region.span.longitudeDelta = maxLon - minLon;
 //
 //    [mapView setRegion:region animated:YES];
+    CLLocation *loc = [mapView userLocation].location;
+    
     float zoomLevel = 0.005;
-    MKCoordinateRegion region = MKCoordinateRegionMake(self.latestUserLocation.coordinate, MKCoordinateSpanMake(zoomLevel, zoomLevel));
+    MKCoordinateRegion region = MKCoordinateRegionMake(loc.coordinate, MKCoordinateSpanMake(zoomLevel, zoomLevel));
     //    region.center.latitude = oldLocation.coordinate.latitude;
     //    region.center.longitude = oldLocation.coordinate.longitude;
     //    region.span.latitudeDelta = maxLat - minLat ;
@@ -353,7 +356,8 @@
         if (self.startTime == nil){
             self.startTime = [NSDate date];
             [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
-            
+            [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
+
             //init inertia navigation
             [self initNavi];
             

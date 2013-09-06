@@ -16,11 +16,13 @@
 #import <ShareSDK/ShareSDK.h>
 #import "RORShareViewDelegate.h"
 #import "Reachability.h"
+#import <CoreMotion/CoreMotion.h>
 
 @interface RORAppDelegate : UIResponder <UIApplicationDelegate>
 {
     RORShareViewDelegate *_viewDelegate;
     Reachability* hostReach;
+    CMMotionManager *motionmanager;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -31,7 +33,10 @@
 @property (strong, nonatomic) NSDictionary *userInfo;
 @property (readonly) NetworkStatus networkStatus;
 @property (nonatomic,readonly) RORShareViewDelegate *viewDelegate;
+@property (strong, nonatomic, readonly) CMMotionManager *sharedManager;
+
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
 @end

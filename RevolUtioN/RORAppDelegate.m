@@ -37,6 +37,15 @@
     }
 }
 
+- (CMMotionManager *)sharedManager
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        motionmanager = [[CMMotionManager alloc] init];
+    });
+    return motionmanager;
+}
+
 - (void)initializePlat
 {
     /**
