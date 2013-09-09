@@ -197,6 +197,12 @@
 		30FECBCB17D98453002C3C90 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBCA17D98453002C3C90 /* main_bg@2x.png */; };
 		30FECBD217D9845A002C3C90 /* paper_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBD017D98459002C3C90 /* paper_bg.png */; };
 		30FECBD317D9845A002C3C90 /* paper_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBD117D98459002C3C90 /* paper_bg@2x.png */; };
+		30FECBDA17DD94A6002C3C90 /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBD617DD94A6002C3C90 /* paper.png */; };
+		30FECBDB17DD94A6002C3C90 /* paper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBD717DD94A6002C3C90 /* paper@2x.png */; };
+		30FECBDC17DD94A6002C3C90 /* paper_hand_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBD817DD94A6002C3C90 /* paper_hand_bg@2x.png */; };
+		30FECBDD17DD94A6002C3C90 /* paper_hand_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBD917DD94A6002C3C90 /* paper_hand_bg.png */; };
+		30FECBE417DD96B1002C3C90 /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBE217DD96B1002C3C90 /* hand.png */; };
+		30FECBE517DD96B1002C3C90 /* hand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBE317DD96B1002C3C90 /* hand@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -517,6 +523,12 @@
 		30FECBCA17D98453002C3C90 /* main_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@2x.png"; sourceTree = "<group>"; };
 		30FECBD017D98459002C3C90 /* paper_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper_bg.png; path = Resources/bg/paper_bg.png; sourceTree = SOURCE_ROOT; };
 		30FECBD117D98459002C3C90 /* paper_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paper_bg@2x.png"; path = "Resources/bg/paper_bg@2x.png"; sourceTree = SOURCE_ROOT; };
+		30FECBD617DD94A6002C3C90 /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper.png; path = bg/paper.png; sourceTree = "<group>"; };
+		30FECBD717DD94A6002C3C90 /* paper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paper@2x.png"; path = "bg/paper@2x.png"; sourceTree = "<group>"; };
+		30FECBD817DD94A6002C3C90 /* paper_hand_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paper_hand_bg@2x.png"; path = "bg/paper_hand_bg@2x.png"; sourceTree = "<group>"; };
+		30FECBD917DD94A6002C3C90 /* paper_hand_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper_hand_bg.png; path = bg/paper_hand_bg.png; sourceTree = "<group>"; };
+		30FECBE217DD96B1002C3C90 /* hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hand.png; path = bg/hand.png; sourceTree = "<group>"; };
+		30FECBE317DD96B1002C3C90 /* hand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hand@2x.png"; path = "bg/hand@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -818,6 +830,12 @@
 		301C1F6D1737B5B80068B43B /* bg */ = {
 			isa = PBXGroup;
 			children = (
+				30FECBE217DD96B1002C3C90 /* hand.png */,
+				30FECBE317DD96B1002C3C90 /* hand@2x.png */,
+				30FECBD617DD94A6002C3C90 /* paper.png */,
+				30FECBD717DD94A6002C3C90 /* paper@2x.png */,
+				30FECBD817DD94A6002C3C90 /* paper_hand_bg@2x.png */,
+				30FECBD917DD94A6002C3C90 /* paper_hand_bg.png */,
 				30A6D9C017C7781200D1116E /* btn_scared.png */,
 				30A6D9C117C7781200D1116E /* btn_scared@2x.png */,
 				30166AA017C3C6260035C722 /* back_bg@2x.png */,
@@ -1317,6 +1335,12 @@
 				30FECBCB17D98453002C3C90 /* main_bg@2x.png in Resources */,
 				30FECBD217D9845A002C3C90 /* paper_bg.png in Resources */,
 				30FECBD317D9845A002C3C90 /* paper_bg@2x.png in Resources */,
+				30FECBDA17DD94A6002C3C90 /* paper.png in Resources */,
+				30FECBDB17DD94A6002C3C90 /* paper@2x.png in Resources */,
+				30FECBDC17DD94A6002C3C90 /* paper_hand_bg@2x.png in Resources */,
+				30FECBDD17DD94A6002C3C90 /* paper_hand_bg.png in Resources */,
+				30FECBE417DD96B1002C3C90 /* hand.png in Resources */,
+				30FECBE517DD96B1002C3C90 /* hand@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

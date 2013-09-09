@@ -53,7 +53,7 @@
 //    [self performSegueWithIdentifier:@"loadingfinished" sender:self];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
     UINavigationController *navigationController =  [storyboard instantiateViewControllerWithIdentifier:@"RORNavigationController"];
-    sleep(2);
+    sleep(1);
     [self presentViewController:navigationController animated:NO completion:NULL];
 
 }

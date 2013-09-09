@@ -36,6 +36,8 @@
     _txtShareContent.delegate = self;
     [_txtShareContent becomeFirstResponder];
     _lblContentCount.text = [NSString stringWithFormat:@"%d/%d", SHARE_MAX_CONTENT, SHARE_MAX_CONTENT];
+    
+    self.backButton.frame = BACKBUTTON_FRAME_TOP;
 }
 
 - (void)updateWordCount
@@ -158,9 +160,5 @@
     [self setLblContentCount:nil];
     [self setShareBar:nil];
     [super viewDidUnload];
-}
-
-- (IBAction)popBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

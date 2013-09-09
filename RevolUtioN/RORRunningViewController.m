@@ -52,12 +52,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [RORUtils setFontFamily:@"FZKaTong-M19S" forView:self.view andSubViews:YES];
+    self.backButton.alpha = 0;
     coverView.alpha =0;
     isNetworkOK = YES;
 }
 
 //initial all when view appears
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
     if (![RORNetWorkUtils getIsConnetioned]){
         isNetworkOK = NO;
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"网络连接错误" message:@"定位精度将受到严重影响，本次跑步将不能获得相应奖励，请检查相关系统设置。\n\n（小声的：启动数据网络可以大大提高定位精度与速度，同时只会产生极小的流量。）" delegate:self cancelButtonTitle:@"知道呢！" otherButtonTitles:nil];
@@ -80,13 +81,9 @@
     [startButton setTitle:@"走你" forState:UIControlStateNormal];
     UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
     [startButton setBackgroundImage:image forState:UIControlStateNormal];
-    [endButton setEnabled:NO];
-    routePoints = [[NSMutableArray alloc]init];
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
-    backItem.title = @"返回首页";
-    backItem.action = @selector(backToMain:);
-    self.navigationItem.backBarButtonItem = backItem;
+    [endButton setTitle:@"取消" forState:UIControlStateNormal];
+    [endButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     
     collapseButton.alpha = 0;
     
@@ -97,6 +94,8 @@
     mapView.frame = SCALE_SMALL;
     
     doCollect = NO;
+    
+    routePoints = [[NSMutableArray alloc]init];
 }
 
 -(void)navigationInit{
@@ -356,8 +355,11 @@
         if (self.startTime == nil){
             self.startTime = [NSDate date];
             [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
-            [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
 
+            [endButton setTitle:@"完成" forState:UIControlStateNormal];
+            [endButton removeTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+            [endButton addTarget:self action:@selector(endButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+            
             //init inertia navigation
             [self initNavi];
             
@@ -462,7 +464,6 @@
     [startButton setTitle:@"再走你" forState:UIControlStateNormal];
     
     [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
-    [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
 }
 
 - (IBAction)setUserCentered:(id)sender {
@@ -471,7 +472,6 @@
 
 - (IBAction)btnCoverInside:(id)sender {
     [Animations fadeOut:coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
-    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:NO];
 }
 
 - (IBAction)btnSaveRun:(id)sender {

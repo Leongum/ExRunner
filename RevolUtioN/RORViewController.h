@@ -13,11 +13,17 @@
 #import "RORPublicMethods.h"
 #import "RORNormalButton.h"
 #import "RORNotificationView.h"
+
+#define BACKBUTTON_FRAME_NORMAL CGRectMake(25, 375, 44, 44)
+#define BACKBUTTON_FRAME_RETINA CGRectMake(25, 460, 44, 44)
+#define BACKBUTTON_FRAME_TOP CGRectMake(0, 15, 44, 44)
+
 @interface RORViewController : UIViewController{
     RORNotificationView *notificationView;
 }
 //-(void)addBackButton;
 @property (strong, nonatomic) RORNormalButton *backButton;
+- (IBAction)backAction:(id)sender;
 
 -(void)sendNotification:(NSString *)message;
 -(void)sendAlart:(NSString *)message;

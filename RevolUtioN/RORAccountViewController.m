@@ -195,7 +195,7 @@
         
         ((UISwitch *)cell.accessoryView).on = [ShareSDK hasAuthorizedWithType:[[item objectForKey:@"type"] integerValue]];
         ((UISwitch *)cell.accessoryView).tag = 100 + indexPath.row;
-        
+        cell.textLabel.font = [UIFont systemFontOfSize:13];
         if (((UISwitch *)cell.accessoryView).on)
         {
             cell.textLabel.text = [item objectForKey:@"username"];

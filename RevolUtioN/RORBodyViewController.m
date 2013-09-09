@@ -50,7 +50,7 @@
     content = [RORUserServices fetchUser:[RORUserUtils getUserId]];
 }
 
-- (IBAction)saveAction:(id)sender {
+- (void)saveAction {
     NSDictionary *saveDict = [NSDictionary dictionaryWithObjectsAndKeys:content.attributes.height, @"height",
                              content.attributes.weight, @"weight",
                              content.sex, @"sex", nil];
@@ -110,6 +110,12 @@
     [self.table reloadData];
     [self hideCoverView];
 }
+
+-(IBAction)backAction:(id)sender{
+    [self saveAction];
+    [super backAction:sender];
+}
+
 
 #pragma mark - Table view data source
 

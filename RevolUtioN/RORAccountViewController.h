@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RORViewController.h"
 
-@interface RORAccountViewController : UIViewController{
+@interface RORAccountViewController : RORViewController{
 
     NSMutableArray *shareTypeArray;
 }

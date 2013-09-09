@@ -9,8 +9,6 @@
 #import "RORViewController.h"
 #import "FTAnimation.h"
 
-#define BACKBUTTON_FRAME CGRectMake(10, 10, 44, 44)
-
 @interface RORViewController ()
 
 @end
@@ -29,15 +27,22 @@
 
 - (void)viewDidLoad
 {
+    [self.view setAutoresizesSubviews:YES];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
     [self addBackButton];
 }
 
 -(void)addBackButton{
     backButton = [RORNormalButton buttonWithType:UIButtonTypeRoundedRect];
-    backButton.frame = BACKBUTTON_FRAME;
+    backButton.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
+    CGRect rx = [ UIScreen mainScreen ].applicationFrame;
+    backButton.frame = BACKBUTTON_FRAME_TOP;
+//    if (rx.size.height == 460){
+//        backButton.frame = BACKBUTTON_FRAME_NORMAL;
+//    } else {
+//        backButton.frame = BACKBUTTON_FRAME_RETINA;
+//    }
     UIImage *image = [UIImage imageNamed:@"back_bg.png"];
     [backButton setBackgroundImage:image forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];

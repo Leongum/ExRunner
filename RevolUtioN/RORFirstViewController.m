@@ -217,15 +217,23 @@ NSInteger centerLoc =-10000;
 
 -(void)controlsInAction{
 //    self.weatherInfoButtonView
-    [Animations fadeIn:self.historyButton andAnimationDuration:1 toAlpha:1 andWait:NO];
-    [Animations fadeIn:self.settingButton andAnimationDuration:1 toAlpha:1 andWait:NO];
-    [Animations fadeIn:self.runButton andAnimationDuration:1 toAlpha:1 andWait:NO];
-    [Animations fadeIn:self.challenge andAnimationDuration:1 toAlpha:1 andWait:YES];
     
-    [Animations moveRight:self.weatherInfoButtonView andAnimationDuration:0.3 andWait:YES andLength:110];
-    [Animations moveLeft:self.weatherInfoButtonView andAnimationDuration:0.1 andWait:YES andLength:10];
+    [self.runButton fallIn:0.5 delegate:self];
+    [self.challenge fallIn:0.5 delegate:self];
+    self.runButton.alpha = 1;
+    self.challenge.alpha = 1;
+//    [Animations fadeIn:self.runButton andAnimationDuration:1 toAlpha:1 andWait:NO];
+//    [Animations fadeIn:self.challenge andAnimationDuration:1 toAlpha:1 andWait:YES];
+    self.historyButton.alpha =1;
+    self.settingButton.alpha = 1;
+    [self.historyButton slideInFrom:kFTAnimationRight duration:0.5 delegate:self];
+    [self.settingButton slideInFrom:kFTAnimationLeft duration:0.5 delegate:self];
+//    [Animations fadeIn:self.settingButton andAnimationDuration:1.5 toAlpha:1 andWait:YES];
+    
+    [Animations moveRight:self.weatherInfoButtonView andAnimationDuration:0.4 andWait:NO andLength:110];
+    [Animations moveLeft:self.userInfoView andAnimationDuration:0.4 andWait:YES andLength:220];
 
-    [Animations moveLeft:self.userInfoView andAnimationDuration:0.3 andWait:YES andLength:220];
+    [Animations moveLeft:self.weatherInfoButtonView andAnimationDuration:0.1 andWait:NO andLength:10];
     [Animations moveRight:self.userInfoView andAnimationDuration:0.1 andWait:YES andLength:10];
 }
 
