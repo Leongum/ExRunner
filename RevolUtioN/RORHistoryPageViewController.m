@@ -7,6 +7,8 @@
 //
 
 #import "RORHistoryPageViewController.h"
+#import "RORPageViewController.h"
+
 #define FILTER_TABLECELL_TITLE 1
 #define FILTER_TABLECELL_IMAGE 2
 
@@ -58,11 +60,23 @@
     
     self.pageControl.numberOfPages = numberPages;
     self.pageControl.currentPage = 0;
-    [self updateNaviTitleForPage:0];
+
+    self.formerPageButton.frame = [self nextPagePointLeftFrame];
+    self.nextPageButton.frame = [self nextPagePointRigheFrame];
+    self.formerPageButton.alpha = 0;
     
     [self loadPage:0];
     [self loadPage:1];
+}
 
+-(CGRect)nextPagePointLeftFrame{
+    CGRect rx = [ UIScreen mainScreen ].applicationFrame;
+    return CGRectMake(0, rx.size.height/2-NEXT_PAGE_POINTER_SIZE/2, NEXT_PAGE_POINTER_SIZE, NEXT_PAGE_POINTER_SIZE);
+}
+
+-(CGRect)nextPagePointRigheFrame{
+    CGRect rx = [ UIScreen mainScreen ].applicationFrame;
+    return CGRectMake(rx.size.width-NEXT_PAGE_POINTER_SIZE, rx.size.height/2-NEXT_PAGE_POINTER_SIZE/2, NEXT_PAGE_POINTER_SIZE, NEXT_PAGE_POINTER_SIZE);
 }
 
 -(void)loadChecked{
@@ -84,16 +98,34 @@
     [self setPageControl:nil];
     [self setFilterTableView:nil];
     [self setCoverView:nil];
+    [self setFormerPageButton:nil];
+    [self setNextPageButton:nil];
+    [self setNextPageButton:nil];
     [super viewDidUnload];
 }
 
 -(void)loadPage:(NSInteger)page{
 
-    UIViewController *viewController = (UIViewController *)[contentViews objectAtIndex:page];
+    RORPageViewController *viewController = (RORPageViewController *)[contentViews objectAtIndex:page];
     CGRect frame = self.scrollView.frame;
     frame.origin.x = CGRectGetWidth(frame) * page;
     frame.origin.y = 0;
     viewController.view.frame = frame;
+    
+    //let the page controller know which page switch button it should have
+    if (page ==0){
+        viewController.page = PAGE_POINTER_RIGHT;
+    } else if (page == contentViews.count-1){
+        viewController.page = PAGE_POINTER_LEFT;
+    } else{
+        viewController.page = PAGE_POINTER_LEFT + PAGE_POINTER_RIGHT;
+    }
+    
+    //add button action
+    if (viewController.formerButton != nil)
+        [viewController.formerButton addTarget:self action:@selector(gotoFormerPage) forControlEvents:UIControlEventTouchUpInside];
+    if (viewController.nextButton != nil)
+        [viewController.nextButton addTarget:self action:@selector(gotoNextPage) forControlEvents:UIControlEventTouchUpInside];
     
     [self addChildViewController:viewController];
     [self.scrollView addSubview:viewController.view];
@@ -102,14 +134,40 @@
     [listViewController refreshTable];
 }
 
+-(IBAction)gotoFormerPage:(id)sender{
+    self.pageControl.currentPage--;
+    [self gotoPage:YES];
+}
+
+-(IBAction)gotoNextPage:(id)sender{
+    self.pageControl.currentPage++;
+    [self gotoPage:YES];
+}
+
+#pragma mark UIScrollViewDelegate
+
 // at the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
+    if (self.pageControl.currentPage <=1)
+        self.formerPageButton.alpha = scrollView.contentOffset.x/pageWidth;
+    if (self.pageControl.currentPage >=contentViews.count-2)
+        self.nextPageButton.alpha = (pageWidth * (contentViews.count-1) - scrollView.contentOffset.x)/pageWidth;
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     // switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
+    NSLog(@"%f",self.scrollView.contentOffset.x);
     NSUInteger page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    
+//    CGRect arrowFrame = self.nextPagePointer.frame;
+//    if (arrowFrame.origin.x<0)
+//        self.nextPagePointer.frame = CGRectMake(0, arrowFrame.origin.y, arrowFrame.size.width, arrowFrame.size.height);
+    
     self.pageControl.currentPage = page;
-    [self updateNaviTitleForPage:page];
     
     // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
 //    [self loadPage:0];
@@ -119,35 +177,25 @@
     // a possible optimization would be to unload the views+controllers which are no longer visible
 }
 
-- (void)updateNaviTitleForPage:(NSInteger)page {
-//    NSString *pageContentTitle=nil;
-//    switch (page) {
-//        case 0:
-//            pageContentTitle = @"-个人属性";
-//            break;
-//        case 1:
-//            pageContentTitle = @"-跑步历史";
-//            break;
-//        default:
-//            break;
-//    }
-//    self.navigationItem.title = [NSString stringWithFormat:@"%@%@", self.userName, pageContentTitle];
-}
-
 - (void)gotoPage:(BOOL)animated
 {
     NSInteger page = self.pageControl.currentPage;
-    [self updateNaviTitleForPage:page];
     // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
 //    [self loadUserInfoBasicPage:0];
 //    [self loadUserInfoRunHistoryPage:1];
 //    [self loadUserInfoDoneMissionsPage:2];
+    [self loadPage:0];
+    [self loadPage:1];
     
 	// update the scroll view to the appropriate page
     CGRect bounds = self.scrollView.bounds;
-    bounds.origin.x = CGRectGetWidth(bounds) * page;
-    bounds.origin.y = 0;
-    [self.scrollView scrollRectToVisible:bounds animated:animated];
+    CGPoint offset;
+    offset.x = CGRectGetWidth(bounds) * page;
+    offset.y = 0;
+    [self.scrollView setContentOffset:offset animated:YES];
+//    bounds.origin.x = CGRectGetWidth(bounds) * page;
+//    bounds.origin.y = 0;
+//    [self.scrollView scrollRectToVisible:bounds animated:animated];
 }
 
 - (IBAction)changePage:(id)sender {

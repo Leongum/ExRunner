@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RORRunHistoryServices.h"
+#import "RORPageViewController.h"
 
-@interface RORStatisticsViewController : UIViewController{
+@interface RORStatisticsViewController : RORPageViewController{
     double totalDistance, avgSpeed, totalCalorie;
 }
 @property (strong, nonatomic) NSMutableArray *filter;

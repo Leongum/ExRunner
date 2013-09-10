@@ -24,4 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIView *coverView;
 @property (strong, nonatomic) NSMutableArray *filter;
 
+@property (strong, nonatomic) IBOutlet UIButton *formerPageButton;
+@property (strong, nonatomic) IBOutlet UIButton *nextPageButton;
+
 @end
