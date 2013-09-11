@@ -217,10 +217,7 @@
         }
         [RORContextUtils saveContext];
     }
-    if([RORUserUtils getUserId].integerValue > 0){
-       return [self uploadRunningHistories];
-    }
-    return NO;
+    return YES;
 }
 
 + (BOOL)uploadUserRunning{

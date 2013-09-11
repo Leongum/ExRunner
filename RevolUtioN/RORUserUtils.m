@@ -48,7 +48,32 @@ static NSDate *systemTime = nil;
     NSString *docPath = [ doc objectAtIndex:0 ];
     NSString *path = [docPath stringByAppendingPathComponent:@"userSettings.plist"];
     NSMutableDictionary *settingDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    if(settingDict == nil){
+        settingDict = [self defaultSettingsPList];
+    }
     return settingDict;
+}
+
++ (NSMutableDictionary *)defaultSettingsPList{
+    NSArray *doc = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docPath = [ doc objectAtIndex:0 ];
+    NSString *path = [docPath stringByAppendingPathComponent:@"userSettings.plist"];
+    NSMutableDictionary *settingDict = [[NSMutableDictionary alloc] init];
+    [settingDict setValue:DEFAULT_NET_WORK_MODE forKey:@"uploadMode"];
+    [settingDict setValue:DEFAULT_WEIGHT forKey:@"weight"];
+    [settingDict setValue:DEFAULT_HEIGHT forKey:@"height"];
+    [settingDict setValue:DEFAULT_SEX forKey:@"sex"];
+    [settingDict writeToFile:path atomically:YES];
+    return settingDict;
+}
+
++ (void)writeToUserSettingsPList:(NSDictionary *) settingDict{
+    NSArray *doc = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docPath = [ doc objectAtIndex:0 ];
+    NSString *path = [docPath stringByAppendingPathComponent:@"userSettings.plist"];
+    NSMutableDictionary *pInfo = [self getUserSettingsPList];
+    [pInfo addEntriesFromDictionary:settingDict];
+    [pInfo writeToFile:path atomically:YES];
 }
 
 + (NSString *)hasLoggedIn{

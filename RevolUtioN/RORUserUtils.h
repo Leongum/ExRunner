@@ -23,6 +23,8 @@
 
 + (NSMutableDictionary *)getUserSettingsPList;
 
++ (void)writeToUserSettingsPList:(NSDictionary *) settingDict;
+
 + (void)writeToUserInfoPList:(NSDictionary *) userDict;
 
 + (void)saveLastUpdateTime: (NSString *) key;

@@ -91,7 +91,7 @@
 - (IBAction)logoutAction:(id)sender {
     //delete core data
     
-    UIAlertView *confirmView = [[UIAlertView alloc] initWithTitle:@"注销" message:@"确定要注销吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    UIAlertView *confirmView = [[UIAlertView alloc] initWithTitle:LOGOUT_ALERT_TITLE message:LOGOUT_ALERT_CONTENT delegate:self cancelButtonTitle:CANCEL_BUTTON_CANCEL otherButtonTitles:OK_BUTTON_OK, nil];
     [confirmView show];
     confirmView = nil;
 }
@@ -152,7 +152,6 @@
                                            [RORUserUtils userInfoUpdateHandler:userInfo withSNSType:type];
                                            [self initDataFromPlist];
                                        }
-                                       NSLog(@"%d:%@",[error errorCode], [error errorDescription]);
                                        [_tblAutoView reloadData];
                                    }];
         }

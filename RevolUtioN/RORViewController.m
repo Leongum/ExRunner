@@ -36,7 +36,7 @@
 -(void)addBackButton{
     backButton = [RORNormalButton buttonWithType:UIButtonTypeRoundedRect];
     backButton.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
-    CGRect rx = [ UIScreen mainScreen ].applicationFrame;
+    //CGRect rx = [ UIScreen mainScreen ].applicationFrame;
     backButton.frame = BACKBUTTON_FRAME_TOP;
 //    if (rx.size.height == 460){
 //        backButton.frame = BACKBUTTON_FRAME_NORMAL;

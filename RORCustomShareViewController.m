@@ -13,7 +13,6 @@
 #import <AGCommon/UIColor+Common.h>
 #import <RenRenConnection/RenRenConnection.h>
 
-#define CONTENT @"这里就是传说中的固定内容"
 #define SHARE_MAX_CONTENT 70
 
 @implementation RORCustomShareViewController
@@ -72,18 +71,18 @@
     NSArray *selectedClients = [_shareBar selectedClients];
     if ([selectedClients count] == 0)
     {
-        [self sendNotification:@"请选择要发布的平台!"];
+        [self sendNotification:SELECT_SHARE_PLATFORM_ERROR];
         return;
     }
     
-    NSString *shareContent = [NSString stringWithFormat:@"%@ %@",_txtShareContent.text,CONTENT];
+    NSString *shareContent = [NSString stringWithFormat:@"%@ %@",_txtShareContent.text,SHARE_DEFAULT_CONTENT];
     
     id<ISSContent> publishContent = [ShareSDK content:shareContent
                                        defaultContent:nil
                                                 image:[ShareSDK jpegImageWithImage:shareImage quality:1]
-                                                title:@"赛跑乐快乐分享"
-                                                  url:@"http://www.cyberace.cc"
-                                          description:@"来自赛跑乐的晒跑了"
+                                                title:SHARE_DEFAULT_TITLE
+                                                  url:SHARE_DEFAULT_URL
+                                          description:SHARE_DEFAULT_DESCRIPTION
                                             mediaType:SSPublishContentMediaTypeText];
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -109,7 +108,7 @@
         }
     
     }
-    [self sendNotification:@"分享已提交"];
+    [self sendNotification:SHARE_SUBMITTED];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

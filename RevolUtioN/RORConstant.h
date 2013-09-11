@@ -26,12 +26,21 @@
 
 #define WEATHER_URL @"http://www.weather.com.cn/data/sk/%@.html"
 
-#define NET_WORK_MODE @"All_Mode"
+#define DEFAULT_NET_WORK_MODE @"All_Mode"
+
+#define NET_WORK_MODE_WIFI @"Only_Wifi"
+
+#define DEFAULT_SEX @"男"
+
+#define DEFAULT_WEIGHT [NSNumber numberWithDouble:60]
+
+#define DEFAULT_HEIGHT [NSNumber numberWithDouble:175]
 
 #endif
 
 typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3, NormalRun = 4} MissionTypeEnum;
 typedef enum {GRADE_S = 0, GRADE_A = 1, GRADE_B = 2, GRADE_C = 3, GRADE_D = 4, GRADE_E = 5, GRADE_F = 6} MissionGradeEnum;
+
 
 NSString *const MissionTypeEnum_toString[5];
 NSString *const MissionGradeEnum_toString[7];

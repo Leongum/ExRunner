@@ -28,7 +28,7 @@
         _textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _textLabel.backgroundColor = [UIColor clearColor];
         _textLabel.textColor = [UIColor colorWithRGB:0xd2d2d2];
-        _textLabel.text = @"分享到:";
+        _textLabel.text = SHARE_TO_PLATFORM_LIST;
         _textLabel.font = [UIFont boldSystemFontOfSize:12];
         [_textLabel sizeToFit];
         
@@ -142,7 +142,7 @@
                                                                                                  if ([error errorCode] != -103)
                                                                                                  {
                                                                                                      
-                                                                                                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"绑定失败!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+                                                                                                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_VIEW_TITEL message:SNS_BIND_ERROR delegate:nil cancelButtonTitle:CANCEL_BUTTON otherButtonTitles:nil];
                                                                                                      [alertView show];
                                                                                                  }
                                                                                              }

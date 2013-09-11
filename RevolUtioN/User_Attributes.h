@@ -30,6 +30,8 @@
 @property (nonatomic, retain) NSNumber * weight;
 @property (nonatomic, retain) NSNumber * height;
 
++(User_Attributes *) intiUnassociateEntity;
+
 +(User_Attributes *) removeAssociateForEntity:(User_Attributes *)associatedEntity;
 
 -(void)initWithDictionary:(NSDictionary *)dict;

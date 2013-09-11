@@ -57,6 +57,14 @@
 //initial all when view appears
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+
+    if (![RORNetWorkUtils getIsConnetioned]){
+        isNetworkOK = NO;
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:CONNECTION_ERROR message:CONNECTION_ERROR_CONTECT delegate:self cancelButtonTitle:CANCEL_BUTTON otherButtonTitles:nil];
+        [alertView show];
+        alertView = nil;
+    }
+
     [self controllerInit];
 }
 
@@ -72,11 +80,11 @@
     self.backButton.alpha = 0;
 
     self.mapView.delegate = self;
-    [startButton setTitle:@"走你" forState:UIControlStateNormal];
+    [startButton setTitle:START_RUNNING_BUTTON forState:UIControlStateNormal];
     UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
     [startButton setBackgroundImage:image forState:UIControlStateNormal];
     
-    [endButton setTitle:@"取消" forState:UIControlStateNormal];
+    [endButton setTitle:CANCEL_RUNNING_BUTTON forState:UIControlStateNormal];
     [endButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     
     collapseButton.alpha = 0;
@@ -234,7 +242,7 @@
             self.startTime = [NSDate date];
             [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
 
-            [endButton setTitle:@"完成" forState:UIControlStateNormal];
+            [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
             [endButton removeTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
             [endButton addTarget:self action:@selector(endButtonAction:) forControlEvents:UIControlEventTouchUpInside];
             
@@ -258,14 +266,14 @@
         
         UIImage *image = [UIImage imageNamed:@"redbutton_bg.png"];
         [startButton setBackgroundImage:image forState:UIControlStateNormal];
-        [startButton setTitle:@"歇会儿" forState:UIControlStateNormal];
+        [startButton setTitle:PAUSSE_RUNNING_BUTTON forState:UIControlStateNormal];
         [endButton setEnabled:YES];
     } else {
         [repeatingTimer invalidate];
         self.repeatingTimer = nil;
         isStarted = NO;
         
-        [startButton setTitle:@"再走你" forState:UIControlStateNormal];
+        [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     }
     //    [[NSRunLoop  currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
 }
@@ -318,7 +326,7 @@
     self.repeatingTimer = nil;
     isStarted = NO;
     
-    [startButton setTitle:@"再走你" forState:UIControlStateNormal];
+    [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     
     [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
 }
@@ -433,7 +441,14 @@
     record = runHistory;
     [RORRunHistoryServices saveRunInfoToDB:runHistory];
     if([RORUserUtils getUserId].integerValue > 0){
+        BOOL updated = [RORRunHistoryServices uploadRunningHistories];
         [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
+        if(updated){
+            [self sendNotification:SYNC_DATA_SUCCESS];
+        }
+        else{
+            [self sendNotification:SYNC_DATA_FAIL];
+        }
     }
     [self performSegueWithIdentifier:@"ResultSegue" sender:self];
 }
