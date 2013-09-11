@@ -1751,10 +1751,6 @@
         <class className="RORHistoryPageViewController" superclassName="RORViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RORHistoryPageViewController.h"/>
             <relationships>
-                <relationship kind="action" name="changePage:"/>
-                <relationship kind="action" name="gotoFormerPage:"/>
-                <relationship kind="action" name="gotoNextPage:"/>
-                <relationship kind="action" name="showFilter:"/>
                 <relationship kind="outlet" name="coverView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="filterTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="formerPageButton" candidateClass="UIButton"/>
@@ -1866,8 +1862,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Rxd-eV-2oK"/>
-        <segue reference="nhm-2v-kry"/>
         <segue reference="IrS-Dp-vq2"/>
         <segue reference="lPW-bl-L9M"/>
         <segue reference="tZI-uj-hCk"/>
