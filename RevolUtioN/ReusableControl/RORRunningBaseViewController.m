@@ -1,0 +1,179 @@
+//
+//  RORRunningBaseViewController.m
+//  RevolUtioN
+//
+//  Created by Bjorn on 13-9-11.
+//  Copyright (c) 2013年 Beyond. All rights reserved.
+//
+
+#import "RORRunningBaseViewController.h"
+
+@interface RORRunningBaseViewController ()
+
+@end
+
+@implementation RORRunningBaseViewController
+@synthesize locationManager, motionManager, stepCounting;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    [self initThings];
+}
+
+-(void)initThings{
+    isNetworkOK = YES;
+    wasFound = NO;
+    offset.latitude = 0;
+    offset.longitude = 0;
+}
+
+-(void)viewDidUnload{
+    [self stopUpdates];
+    [super viewDidUnload];
+}
+
+- (void)awakeFromNib{
+    [self startDeviceLocation];
+}
+
+//initial all when view appears
+- (void)viewWillAppear:(BOOL)animated{
+    if (![RORNetWorkUtils getIsConnetioned]){
+        isNetworkOK = NO;
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"网络连接错误" message:@"定位精度将受到严重影响，本次跑步将不能获得相应奖励，请检查相关系统设置。\n\n（小声的：启动数据网络可以大大提高定位精度与速度，同时只会产生极小的流量。）" delegate:self cancelButtonTitle:@"知道呢！" otherButtonTitles:nil];
+        [alertView show];
+        alertView = nil;
+    }
+}
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)startDeviceLocation{
+    locationManager = [[CLLocationManager alloc]init];
+    locationManager.delegate = self;
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
+    locationManager.distanceFilter = 1;
+    // start the compass
+    [locationManager startUpdatingLocation];
+    
+	if ([CLLocationManager headingAvailable] == NO) {
+		// No compass is available. This application cannot function without a compass,
+        // so a dialog will be displayed and no magnetic data will be measured.
+        NSLog(@"Magnet is not available.");
+	} else {
+        // heading service configuration
+        locationManager.headingFilter = kCLHeadingFilterNone;
+        
+        [locationManager startUpdatingHeading];
+    }
+}
+
+- (void)initOffset:(MKUserLocation *)userLocation{
+    CLLocation *cl = [locationManager location];
+    offset.latitude = userLocation.coordinate.latitude - cl.coordinate.latitude;
+    offset.longitude = userLocation.coordinate.longitude - cl.coordinate.longitude;
+}
+
+- (CLLocation *)transToRealLocation:(CLLocation *)orginalLocation{
+    CLLocation *absoluteLocation = [[CLLocation alloc] initWithLatitude:orginalLocation.coordinate.latitude + offset.latitude longitude:orginalLocation.coordinate.longitude + offset.longitude];
+    return absoluteLocation;
+}
+
+-(CLLocation *)getNewRealLocation{
+    return [self transToRealLocation:[locationManager location]];
+}
+
+-(NSNumber *)calculateCalorie
+{
+    double weight = 60; //tempory value
+    double K = (9*distance)/(2*duration);
+    return [NSNumber numberWithDouble:(duration * weight * K / 3600)];
+}
+
+- (void)stopUpdates
+{
+    if ([motionManager isDeviceMotionActive] == YES) {
+        [motionManager stopDeviceMotionUpdates];
+    }
+    [locationManager stopUpdatingLocation];
+    [locationManager stopUpdatingHeading];
+}
+
+- (void)initNavi{
+    OldVn.v1 = 0;
+    OldVn.v2 = 0;
+    OldVn.v3 = 0;
+        
+    //    init kalman filter
+    //    kalmanFilter = [[INKalmanFilter alloc]initWithCoordinate:[locationManager location].coordinate];
+    
+    stepCounting = [[INStepCounting alloc]init];
+}
+
+- (void)inertiaNavi{
+    CMDeviceMotion *deviceMotion = motionManager.deviceMotion;
+    INDeviceStatus *newDeviceStatus = [[INDeviceStatus alloc]initWithDeviceMotion:deviceMotion];
+    //    newDeviceStatus.timeTag = timeCounter;
+//    newDeviceStatus.timeTag = timerCount;
+    
+    CLLocation *currentLocation = [self getNewRealLocation];
+    timeFromLastLocation += delta_T;
+    if ([currentLocation distanceFromLocation:formerLocation]>0){
+        currentSpeed = [INDeviceStatus getSpeedVectorBetweenLocation1:formerLocation andLocation2:currentLocation deltaTime:timeFromLastLocation];
+        timeFromLastLocation = 0;
+    }
+    //step counting
+    [stepCounting pushNewLAcc:[INMatrix modOfVec_3:newDeviceStatus.an] GAcc:newDeviceStatus.an.v3 speed:[INMatrix modOfVec_3:currentSpeed]];
+}
+
+- (void)startDeviceMotion
+{
+    //	motionManager = [[CMMotionManager alloc] init];
+	// Tell CoreMotion to show the compass calibration HUD when required to provide true north-referenced attitude
+	motionManager.showsDeviceMovementDisplay = YES;
+    
+	motionManager.deviceMotionUpdateInterval = delta_T;
+    motionManager.accelerometerUpdateInterval = delta_T;
+	
+	// New in iOS 5.0: Attitude that is referenced to true north
+    if (motionManager.isMagnetometerAvailable){
+        [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical];
+        //        [motionManager startAccelerometerUpdates];
+        NSLog(@"start updating device motion using X true north Z vertical reference frame.");
+    } else {
+        [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXArbitraryZVertical];
+        //        [motionManager startAccelerometerUpdates];
+        NSLog(@"start updating device motion using Z vertical reference frame.");
+    }
+}
+
+#pragma CLLocationManager Delegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    if (!wasFound){
+        wasFound = YES;
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    
+}
+
+
+@end

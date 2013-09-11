@@ -24,20 +24,20 @@
 
 
 - (void)initTable{
-    int cellHeight = self.frame.size.width/(columns+2);
+    int cellHeight = self.frame.size.height/columns;
     int cellWidth = cellHeight * 3;
 
     for (int i=0; i<columns; i++){
         int labelWidth = cellWidth-cellHeight;
         
-        CGRect labelFrame = CGRectMake(self.frame.size.width - labelWidth - (i+1)*cellHeight, cellHeight * i+round(cellHeight/2), labelWidth, cellHeight/2);
-        CGRect imageFrame = CGRectMake(self.frame.size.width - (i+1)*cellHeight, cellHeight * i, cellHeight, cellHeight);
+        CGRect labelFrame = CGRectMake(self.frame.size.width/2 - cellWidth/6, cellHeight*i, labelWidth, cellHeight);
+        CGRect imageFrame = CGRectMake(self.frame.size.width/2 - cellWidth/2, cellHeight*i, cellHeight, cellHeight);
 
         UILabel *contentLabel = [[UILabel alloc]initWithFrame:labelFrame];
         [contentLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
         [contentLabel setLineBreakMode:NSLineBreakByCharWrapping];
         [contentLabel setTag:i+1];
-        [contentLabel setBackgroundColor:[UIColor colorWithRed:231.0/255 green:8.0/255 blue:53.0/255 alpha:1]];
+        [contentLabel setBackgroundColor:[UIColor grayColor]];
         [contentLabel setTextColor:[UIColor whiteColor]];
         contentLabel.textAlignment = UITextAlignmentCenter;
         contentLabel.text = [NSString stringWithFormat:@"%d", i];
@@ -46,7 +46,7 @@
 //        UIImageView *contentImage = [[UIImageView alloc]initWithFrame:imageFrame];
         UILabel *contentImage = [[UILabel alloc]initWithFrame:imageFrame];
         [contentImage setTag:i+columns+1];
-        [contentImage setBackgroundColor:[UIColor grayColor]];
+        [contentImage setBackgroundColor:[UIColor colorWithRed:231.0/255 green:8.0/255 blue:53.0/255 alpha:1]];
         [contentImage setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:24]];
         contentImage.textAlignment = UITextAlignmentCenter;
         [contentImage setTextColor:[UIColor blackColor]];

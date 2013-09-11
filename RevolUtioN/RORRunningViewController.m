@@ -27,16 +27,16 @@
 @end
 
 @implementation RORRunningViewController
-@synthesize locationManager, motionManager;
-@synthesize mapView, expandButton, collapseButton, formerLocation, count, repeatingTimer, timerCount, isStarted, latestUserLocation, offset, latestINLocation;
+//@synthesize locationManager, motionManager;
+@synthesize expandButton, collapseButton, repeatingTimer, timerCount, isStarted, latestUserLocation, latestINLocation;
 @synthesize timeLabel, speedLabel, distanceLabel, startButton, endButton;
-@synthesize distance, routePoints, routeLine, routeLineView;
+@synthesize routePoints, routeLine, routeLineView;
 @synthesize record;
 @synthesize doCollect;
-@synthesize kalmanFilter, OldVn, stepCounting, inDistance;
+@synthesize kalmanFilter, stepCounting, inDistance;
 @synthesize avgDisPerStep, avgTimePerStep;
 @synthesize runMission;
-@synthesize coverView;
+@synthesize mapView, coverView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,20 +52,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [RORUtils setFontFamily:@"FZKaTong-M19S" forView:self.view andSubViews:YES];
-    self.backButton.alpha = 0;
-    coverView.alpha =0;
-    isNetworkOK = YES;
 }
 
 //initial all when view appears
 - (void)viewWillAppear:(BOOL)animated{
-    if (![RORNetWorkUtils getIsConnetioned]){
-        isNetworkOK = NO;
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"网络连接错误" message:@"定位精度将受到严重影响，本次跑步将不能获得相应奖励，请检查相关系统设置。\n\n（小声的：启动数据网络可以大大提高定位精度与速度，同时只会产生极小的流量。）" delegate:self cancelButtonTitle:@"知道呢！" otherButtonTitles:nil];
-        [alertView show];
-        alertView = nil;
-    }
-
+    [super viewWillAppear:animated];
     [self controllerInit];
 }
 
@@ -77,6 +68,9 @@
 }
 
 -(void)controllerInit{
+    self.coverView.alpha = 0;
+    self.backButton.alpha = 0;
+
     self.mapView.delegate = self;
     [startButton setTitle:@"走你" forState:UIControlStateNormal];
     UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
@@ -104,18 +98,10 @@
     [mapView removeOverlays:[mapView overlays]];
     motionManager = [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] sharedManager];
 
-    wasFound = NO;
-    count = 0;
+    MKwasFound = NO;
     timerCount = 0;
     distance = 0;
-    offset.latitude = 0.0;
-    offset.longitude = 0.0;
     isStarted = NO;
-    
-    //init inertia navigation distance
-    inDistance.v1 = 0;
-    inDistance.v2 = 0;
-    inDistance.v3 = 0;
 }
 
 -(void)LogDeviceStatus{
@@ -159,113 +145,22 @@
     
 }
 
--(void)backToMain:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)startDeviceLocation{
-    locationManager = [[CLLocationManager alloc]init];
-    locationManager.delegate = self;
-    [locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
-    locationManager.distanceFilter = 1;
-    // start the compass
-    [locationManager startUpdatingLocation];
-    
-	if ([CLLocationManager headingAvailable] == NO) {
-		// No compass is available. This application cannot function without a compass,
-        // so a dialog will be displayed and no magnetic data will be measured.
-        NSLog(@"Magnet is not available.");
-	} else {
-        // heading service configuration
-        locationManager.headingFilter = kCLHeadingFilterNone;
-        
-        [locationManager startUpdatingHeading];
-    }
-}
-
-- (void)startDeviceMotion
-{
-    //	motionManager = [[CMMotionManager alloc] init];
-	// Tell CoreMotion to show the compass calibration HUD when required to provide true north-referenced attitude
-	motionManager.showsDeviceMovementDisplay = YES;
-    
-	motionManager.deviceMotionUpdateInterval = delta_T;
-    motionManager.accelerometerUpdateInterval = delta_T;
-	
-	// New in iOS 5.0: Attitude that is referenced to true north
-    if (motionManager.isMagnetometerAvailable){
-        [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical];
-        //        [motionManager startAccelerometerUpdates];
-        NSLog(@"start updating device motion using X true north Z vertical reference frame.");
-    } else {
-        [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXArbitraryZVertical];
-        //        [motionManager startAccelerometerUpdates];
-        NSLog(@"start updating device motion using Z vertical reference frame.");
-    }
-}
-
-- (void)stopUpdates
-{
-    if ([motionManager isDeviceMotionActive] == YES) {
-        [motionManager stopDeviceMotionUpdates];
-    }
-    [locationManager stopUpdatingLocation];
-    [locationManager stopUpdatingHeading];
-}
-
 -(void)awakeFromNib {
+    [super awakeFromNib];
     [self navigationInit];
-    [self startDeviceLocation];
 }
 
-- (CLLocation *)transToRealLocation:(CLLocation *)orginalLocation{
-    CLLocation *absoluteLocation = [[CLLocation alloc] initWithLatitude:orginalLocation.coordinate.latitude + offset.latitude longitude:orginalLocation.coordinate.longitude + offset.longitude];
-    return absoluteLocation;
-}
-
--(CLLocation *)getNewRealLocation{
-    return [self transToRealLocation:[locationManager location]];
-}
-
-////center the route line
+////center the map to userLocation of MKMapView
 - (IBAction)center_map:(id)sender{
-//    MKCoordinateRegion region;
-//    CLLocationDegrees maxLat = -90;
-//    CLLocationDegrees maxLon = -180;
-//    CLLocationDegrees minLat = 90;
-//    CLLocationDegrees minLon = 180;
-//
-//    for (int i=0; i<routePoints.count; i++){
-//        CLLocation *currentLocation = [routePoints objectAtIndex:i];
-//        if (currentLocation.coordinate.latitude > maxLat)
-//            maxLat = currentLocation.coordinate.latitude;
-//        if (currentLocation.coordinate.longitude > maxLon)
-//            maxLon = currentLocation.coordinate.longitude;
-//        if (currentLocation.coordinate.latitude < minLat)
-//            minLat = currentLocation.coordinate.latitude;
-//        if (currentLocation.coordinate.longitude < minLon)
-//            minLon = currentLocation.coordinate.longitude;
-//    }
-//    region.center.latitude = (maxLat + minLat)/2;
-//    region.center.longitude = (maxLon + minLon)/2;
-//    region.span.latitudeDelta = maxLat - minLat ;
-//    region.span.longitudeDelta = maxLon - minLon;
-//
-//    [mapView setRegion:region animated:YES];
     CLLocation *loc = [mapView userLocation].location;
-    
     float zoomLevel = 0.005;
     MKCoordinateRegion region = MKCoordinateRegionMake(loc.coordinate, MKCoordinateSpanMake(zoomLevel, zoomLevel));
-    //    region.center.latitude = oldLocation.coordinate.latitude;
-    //    region.center.longitude = oldLocation.coordinate.longitude;
-    //    region.span.latitudeDelta = maxLat - minLat ;
-    //    region.span.longitudeDelta = maxLon - minLon;
     [mapView setRegion:[mapView regionThatFits:region] animated:NO];
 
 }
@@ -278,22 +173,11 @@
     [mapView addAnnotation:annotation];
 }
 
-- (BOOL) compareLocation:(CLLocationCoordinate2D) locA withLocation:(CLLocationCoordinate2D) locB{
-    float lat = locA.latitude - locB.latitude;
-    float lon = locA.longitude - locB.longitude;
-    float lat2 = lat * lat;
-    float lon2 = lon * lon;
-    if (lat2 + lon2 > 1e-8)
-        return YES;
-    return NO;
-}
-
 - (void)viewDidUnload {
     [self setMapView:nil];
     [self setDistanceLabel:nil];
     [self setTimeLabel:nil];
     [self setSpeedLabel:nil];
-    [locationManager stopUpdatingLocation];
     [self setExpandButton:nil];
     [self setStartButton:nil];
     [self setEndButton:nil];
@@ -342,12 +226,6 @@
     
 }
 
-- (void)initOffset{
-    MKUserLocation *userLocation = [mapView userLocation];
-    CLLocation *cl = [locationManager location];
-    offset.latitude = userLocation.coordinate.latitude - cl.coordinate.latitude;
-    offset.longitude = userLocation.coordinate.longitude - cl.coordinate.longitude;
-}
 
 - (IBAction)startButtonAction:(id)sender {
     if (!isStarted){
@@ -366,9 +244,9 @@
             [self startDeviceMotion];
             
             //the first point after started
-            [self initOffset];
-            self.latestUserLocation = [self transToRealLocation:latestUserLocation];
-            self.formerLocation = self.latestUserLocation;//[locationManager location];
+            [self initOffset:[mapView userLocation]];
+            self.latestUserLocation = [self getNewRealLocation];
+            formerLocation = self.latestUserLocation;//[locationManager location];
             [routePoints addObject:self.latestUserLocation];
             [self drawLineWithLocationArray:routePoints];
             
@@ -377,6 +255,7 @@
         
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(timerDot) userInfo:nil repeats:YES];
         self.repeatingTimer = timer;
+        
         UIImage *image = [UIImage imageNamed:@"redbutton_bg.png"];
         [startButton setBackgroundImage:image forState:UIControlStateNormal];
         [startButton setTitle:@"歇会儿" forState:UIControlStateNormal];
@@ -392,35 +271,13 @@
 }
 
 - (void)initNavi{
-    OldVn.v1 = 0;
-    OldVn.v2 = 0;
-    OldVn.v3 = 0;
-    
+    [super initNavi];
     [mapView removeOverlays:[mapView overlays]];
-    //    [routePoints addObject:initialLocation];
-    //init kalman filter
-//    kalmanFilter = [[INKalmanFilter alloc]initWithCoordinate:[locationManager location].coordinate];
-    
-    stepCounting = [[INStepCounting alloc]init];
-    
-    //    [self drawLineWithLocationArray:routePoints];
-    //    [self center_map];
 }
 
 - (void)inertiaNavi{
-    CMDeviceMotion *deviceMotion = motionManager.deviceMotion;
-    INDeviceStatus *newDeviceStatus = [[INDeviceStatus alloc]initWithDeviceMotion:deviceMotion];
-    //    newDeviceStatus.timeTag = timeCounter;
-    newDeviceStatus.timeTag = timerCount;
-
-    CLLocation *currentLocation = [self getNewRealLocation];
-    timeFromLastLocation += delta_T;
-    if ([currentLocation distanceFromLocation:formerLocation]>0){
-        currentSpeed = [INDeviceStatus getSpeedVectorBetweenLocation1:formerLocation andLocation2:currentLocation deltaTime:timeFromLastLocation];
-        timeFromLastLocation = 0;
-    }
-    //step counting
-    [stepCounting pushNewLAcc:[INMatrix modOfVec_3:newDeviceStatus.an] GAcc:newDeviceStatus.an.v3 speed:[INMatrix modOfVec_3:currentSpeed]];
+    [super inertiaNavi];
+    
     self.stepLabel.text = [NSString stringWithFormat:@"%d", stepCounting.counter];
     self.avgTimePerStep.text = [NSString stringWithFormat:@"%.2f s", duration/((double)stepCounting.counter)];
     self.avgDisPerStep.text = [NSString stringWithFormat:@"%.2f m", distance/((double)stepCounting.counter)];
@@ -447,10 +304,10 @@
 }
 
 - (void)pushPoint{
-    CLLocation *currentLocation = self.latestUserLocation;
+    CLLocation *currentLocation = [self getNewRealLocation];
     if (formerLocation != currentLocation){
-        distance += [self.formerLocation distanceFromLocation:currentLocation];
-        self.formerLocation = currentLocation;
+        distance += [formerLocation distanceFromLocation:currentLocation];
+        formerLocation = currentLocation;
         [routePoints addObject:currentLocation];
         [self drawLineWithLocationArray:routePoints];
     }
@@ -466,10 +323,6 @@
     [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
 }
 
-- (IBAction)setUserCentered:(id)sender {
-    [self centerMap];
-}
-
 - (IBAction)btnCoverInside:(id)sender {
     [Animations fadeOut:coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
 }
@@ -481,7 +334,6 @@
         self.endTime = [NSDate date];
     [[UIApplication sharedApplication] setIdleTimerDisabled: NO];
     
-    [locationManager stopUpdatingLocation];
     [repeatingTimer invalidate];
     [startButton setEnabled:NO];
     self.repeatingTimer = nil;
@@ -490,14 +342,6 @@
 
 - (IBAction)btnDeleteRunHistory:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-
--(NSNumber *)calculateCalorie{
-    double weight = 60; //tempory value
-    double K = (9*distance)/(2*duration);
-    return [NSNumber numberWithDouble:(duration * weight * K / 3600)];
 }
 
 -(NSNumber *)calculateGrade{
@@ -622,7 +466,7 @@
     
     routeLine = [MKPolyline polylineWithCoordinates:coordinateArray count:pointCount];
     self.routeLineShadow = [MKPolyline polylineWithCoordinates:coordinateArray count:pointCount];
-
+    
     //    [mapView setVisibleMapRect:[routeLine boundingMapRect]];
     [mapView addOverlay:self.routeLineShadow];
     [mapView addOverlay:routeLine];
@@ -630,52 +474,16 @@
     coordinateArray = NULL;
 }
 
-- (void) centerMap{
-    [mapView setCenterCoordinate:self.latestUserLocation.coordinate animated:YES];
-    //CLLocation *cl = [mapView userLocation].location;
-    //    [self drawTestLine];
-}
-
-- (void)drawTestLine
-{
-    //    CLLocation *location0 = [[CLLocation alloc] initWithLatitude:31.014008 longitude:121.427551];
-    ////
-    ////    RORMapAnnotation *mapAnno = [[RORMapAnnotation alloc]initWithCoordinate:location0.coordinate];
-    ////    mapAnno.title = @"cyberace";
-    ////    mapAnno.headImage = nil;
-    ////    mapAnno.subtitle = @"snail";
-    ////    [mapView addAnnotation:mapAnno];
-    //
-    //    //31.014008,121.427551
-    //    CLLocation *location1 = [[CLLocation alloc] initWithLatitude:31.014308 longitude:121.427851];
-    //    NSArray *array = [NSArray arrayWithObjects:location0,location1, nil];
-    //    [self drawLineWithLocationArray:array];
-}
-
-#pragma mark - CLLocationDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    NSLog(@"ToLocation:%f, %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
-    NSLog(@"Device did %f meters move.", [self.latestUserLocation distanceFromLocation:newLocation]);
-    self.latestUserLocation = [self transToRealLocation:newLocation];
-    if (!wasFound){
-        [self center_map:self];
-        wasFound = YES;
-    }
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    
-}
 
 #pragma mark - MKMapViewDelegate
 
 
 -(void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    
+    if (!MKwasFound){
+        MKwasFound = YES;
+        [self center_map:self];
+    }
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {

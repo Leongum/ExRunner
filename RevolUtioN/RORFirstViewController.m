@@ -43,7 +43,11 @@ NSInteger centerLoc =-10000;
     
     //初始化按钮位置
     [self initControlsLayout];
-    [self initLocationServcie];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [locationManager stopUpdatingLocation];
+    [super viewWillDisappear:animated];
 }
 
 -(void)prepareControlsForAnimation{
@@ -77,7 +81,7 @@ NSInteger centerLoc =-10000;
     NSLog(@"ToLocation:%f, %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
     wasFound = YES; 
     if (wasFound){
-        [locationManager stopUpdatingLocation];
+//        [locationManager stopUpdatingLocation];
         [self getCitynameByLocation];
     }
 //    NSLog(@"Device did %f meters move.", [self.latestUserLocation getDistanceFrom:newLocation]);
@@ -128,7 +132,8 @@ NSInteger centerLoc =-10000;
         [self controlsInAction];
     }
 //    [Animations zoomIn:self.chactorView andAnimationDuration:2 andWait:YES];
-    
+    [self initLocationServcie];
+
 }
 
 - (IBAction)segueToLogin:(id)sender{
@@ -162,6 +167,7 @@ NSInteger centerLoc =-10000;
                 if(temp < 38 && pm25 < 300){
                     index = (100-pm25/3)*0.6 +(100-fabs(temp - 22)*5)*0.4;
                 }
+                
                 weatherInformation = [NSString stringWithFormat:@"%@总:%d", weatherInformation, index];
             });
         });
