@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "RORLoginViewController.h"
-#import "RORSettings.h"
 #import "RORThirdPartyService.h"
 #import "RORAppDelegate.h"
 #import "RORUserUtils.h"

@@ -11,12 +11,7 @@
 
 
 @interface RORMoreViewController : RORViewController
-- (void)saveAll;
 
-@property (strong, nonatomic) NSString *cityName;
-@property (strong, nonatomic) NSString *cityCode;
-@property (strong, nonatomic) NSNumber *provRow;
-@property (strong, nonatomic) NSNumber *cityRow;
 @property (strong,nonatomic)NSManagedObjectContext *context;
 
 @property (strong, nonatomic) IBOutlet UITableView *moreTableView;

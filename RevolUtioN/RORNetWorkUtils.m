@@ -48,17 +48,12 @@ static BOOL isConnectioned = NO;
     networkStatus = newNetWorkStatus;
     NSMutableDictionary *settingDict = [RORUserUtils getUserSettingsPList];
     if(isConnectioned){
-        if(settingDict == nil){
-                doUploadable = YES;
-        }
-        else{
-            NSString *updatemode = [settingDict valueForKey:@"uploadMode"];
-            if([NET_WORK_MODE isEqualToString: updatemode]){
-                doUploadable = YES;
-            }
+        NSString *updatemode = [settingDict valueForKey:@"uploadMode"];
+        if([DEFAULT_NET_WORK_MODE isEqualToString: updatemode]){
+            doUploadable = YES;
         }
     }
-
+    
 }
 
 @end

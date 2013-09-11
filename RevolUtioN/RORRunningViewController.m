@@ -589,7 +589,14 @@
     record = runHistory;
     [RORRunHistoryServices saveRunInfoToDB:runHistory];
     if([RORUserUtils getUserId].integerValue > 0){
+        BOOL updated = [RORRunHistoryServices uploadRunningHistories];
         [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
+        if(updated){
+            [self sendNotification:@"Yeah,上传成功!"];
+        }
+        else{
+            [self sendNotification:@"哎呀～上传失败了!请查看上传设置以及网络连接!"];
+        }
     }
     [self performSegueWithIdentifier:@"ResultSegue" sender:self];
 }

@@ -47,14 +47,23 @@
 }
 
 -(void)loadData{
-    content = [RORUserServices fetchUser:[RORUserUtils getUserId]];
+    content = [User_Base intiUnassociateEntity];
+    User_Attributes *attributes = [User_Attributes intiUnassociateEntity];
+    content.attributes = attributes;
+    NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
+    content.sex = [settinglist valueForKey:@"sex"];
+    content.attributes.height =[settinglist valueForKey:@"height"];
+    content.attributes.weight = [settinglist valueForKey:@"weight"];
 }
 
 - (void)saveAction {
     NSDictionary *saveDict = [NSDictionary dictionaryWithObjectsAndKeys:content.attributes.height, @"height",
                              content.attributes.weight, @"weight",
                              content.sex, @"sex", nil];
-    [RORUserServices updateUserInfo:saveDict];
+    [RORUserUtils writeToUserSettingsPList:saveDict];
+    if([RORUserUtils getUserId].integerValue > 0){
+        [RORUserServices updateUserInfo:saveDict];
+    }
 }
 
 - (IBAction)selectSexAction:(id)sender {

@@ -72,8 +72,6 @@
 		0F8F262F17894E120037C130 /* libsbjson-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9A9D3817894A1B0025E49B /* libsbjson-ios.a */; };
 		0F972BD2179255F300A27EF2 /* RORHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F972BD1179255F300A27EF2 /* RORHttpResponse.m */; };
 		300149901750F444005DAF1D /* RORMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3001498F1750F444005DAF1D /* RORMoreViewController.m */; };
-		3008CC54175756F70032F5C7 /* DefaultSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3008CC53175756F60032F5C7 /* DefaultSettings.plist */; };
-		3008CC571758997E0032F5C7 /* RORSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 3008CC561758997E0032F5C7 /* RORSettings.m */; };
 		3008CC591759FAA00032F5C7 /* weather_flat_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3008CC581759FAA00032F5C7 /* weather_flat_bg.png */; };
 		301250F0177B21A60082A09A /* RORAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 301250EF177B21A60082A09A /* RORAccountViewController.m */; };
 		3012510117814F470082A09A /* inprocess_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 301250FE17814F470082A09A /* inprocess_icon@2x.png */; };
@@ -350,9 +348,6 @@
 		0F9A9D2C17894A1B0025E49B /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBJson.xcodeproj; path = "json-framework-master/SBJson.xcodeproj"; sourceTree = "<group>"; };
 		3001498E1750F444005DAF1D /* RORMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMoreViewController.h; sourceTree = "<group>"; };
 		3001498F1750F444005DAF1D /* RORMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMoreViewController.m; sourceTree = "<group>"; };
-		3008CC53175756F60032F5C7 /* DefaultSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultSettings.plist; sourceTree = "<group>"; };
-		3008CC551758997E0032F5C7 /* RORSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORSettings.h; sourceTree = "<group>"; };
-		3008CC561758997E0032F5C7 /* RORSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORSettings.m; sourceTree = "<group>"; };
 		3008CC581759FAA00032F5C7 /* weather_flat_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather_flat_bg.png; sourceTree = "<group>"; };
 		301250EE177B21A60082A09A /* RORAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORAccountViewController.h; sourceTree = "<group>"; };
 		301250EF177B21A60082A09A /* RORAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORAccountViewController.m; sourceTree = "<group>"; };
@@ -924,9 +919,6 @@
 		302FD00B1727D870004DA005 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3008CC53175756F60032F5C7 /* DefaultSettings.plist */,
-				3008CC551758997E0032F5C7 /* RORSettings.h */,
-				3008CC561758997E0032F5C7 /* RORSettings.m */,
 				3061F3A4174C70F0006093FC /* userInfo.plist */,
 				30D21E8C173CE517006B24A8 /* Cells */,
 				302FD00C1727D870004DA005 /* PopTrack-Info.plist */,
@@ -1264,7 +1256,6 @@
 				30507C05174A186300EC7F12 /* main_userButton_bg.png in Resources */,
 				3061F3A5174C70F0006093FC /* userInfo.plist in Resources */,
 				30C658941755F78C0076AFA3 /* CityCode.geojson in Resources */,
-				3008CC54175756F70032F5C7 /* DefaultSettings.plist in Resources */,
 				3008CC591759FAA00032F5C7 /* weather_flat_bg.png in Resources */,
 				30FC2901175E2E3500DEC042 /* MainStoryboard_iPhone.storyboard in Resources */,
 				30FC291317603C1500DEC042 /* graybutton_bg.png in Resources */,
@@ -1383,7 +1374,6 @@
 				3061F3B9174CDBEB006093FC /* RORCoreData.xcdatamodeld in Sources */,
 				305A1878174F1EFB003A8CD7 /* RORLoginViewController.m in Sources */,
 				300149901750F444005DAF1D /* RORMoreViewController.m in Sources */,
-				3008CC571758997E0032F5C7 /* RORSettings.m in Sources */,
 				30FC2906175EF6F300DEC042 /* RORMapViewController.m in Sources */,
 				30FC2909175F1F5800DEC042 /* RORMapAnnotation.m in Sources */,
 				30BB0AFD1761C5C50009A847 /* RORHistoryViewController.m in Sources */,

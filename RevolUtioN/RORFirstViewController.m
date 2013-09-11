@@ -163,6 +163,18 @@ NSInteger centerLoc =-10000;
                     index = (100-pm25/3)*0.6 +(100-fabs(temp - 22)*5)*0.4;
                 }
                 weatherInformation = [NSString stringWithFormat:@"%@总:%d", weatherInformation, index];
+                if (temp < 0 || temp > 38 || pm25>300 || index<50){
+                    UIImage *image = [UIImage imageNamed:@"main_trafficlight_red.png"];
+                    [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
+                }
+                else if (index<75){
+                    UIImage *image = [UIImage imageNamed:@"main_trafficlight_yellow.png"];
+                    [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
+                }
+                else{
+                    UIImage *image = [UIImage imageNamed:@"main_trafficlight_green.png"];
+                    [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
+                }
             });
         });
     }];

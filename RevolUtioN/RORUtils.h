@@ -11,6 +11,7 @@
 #import <SBJson/SBJson.h>
 #import "RORAppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
+#import "RORConstant.h"
 
 @interface RORUtils : NSObject
 

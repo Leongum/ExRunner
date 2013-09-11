@@ -103,6 +103,12 @@
     [userDict setValue:user.nickName forKey:@"nickName"];
     [userDict setValue:user.uuid forKey:@"uuid"];
     [RORUserUtils writeToUserInfoPList:userDict];
+    
+    NSMutableDictionary *settingDict = [RORUserUtils getUserSettingsPList];
+    [settingDict setValue:user.sex forKey:@"sex"];
+    [settingDict setValue:user.attributes.weight forKey:@"weight"];
+    [settingDict setValue:user.attributes.height forKey:@"height"];
+    [RORUserUtils writeToUserSettingsPList:settingDict];
 }
     
 +(User_Base *)syncUserFromResponse:(RORHttpResponse *)httpResponse{

@@ -9,7 +9,6 @@
 #import "RORMoreViewController.h"
 #import "RORUserServices.h"
 #import "RORAppDelegate.h"
-#import "RORSettings.h"
 
 @interface RORMoreViewController ()
 
@@ -17,10 +16,6 @@
 
 @implementation RORMoreViewController
 @synthesize context;
-@synthesize cityName;
-@synthesize cityRow;
-@synthesize cityCode;
-@synthesize provRow;
 @synthesize moreTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,9 +31,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
-    [self loadAll];
-//    cityName = cityName;
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,33 +46,13 @@
     if ([destination respondsToSelector:@selector(setDelegate:)]){
         [destination setValue:self forKey:@"delegate"];
     }
-    if ([destination respondsToSelector:@selector(setSubLocalityName:)]){
-        [destination setValue:cityName forKey:@"subLocalityName"];
-    }
 }
 
 - (void)viewDidUnload {
-    [self saveAll];
     [self setMoreTableView:nil];
     [super viewDidUnload];
 }
 
-- (void)loadAll {
-    NSMutableDictionary *data = [RORSettings getInstance];
-    NSMutableDictionary *location = [data valueForKey:@"location"];
-    cityName = [location valueForKey:@"name"];
-    
-}
-
-- (void)saveAll {
-    NSMutableDictionary *data = [RORSettings getInstance];
-    NSMutableDictionary *location = [data valueForKey:@"location"];
-    [location setValue:cityName forKey:@"name"];
-    [location setValue:cityCode forKey:@"code"];
-    [location setValue:cityRow forKey:@"cityRow"];
-    [location setValue:provRow forKey:@"provRow"];
-    [RORSettings setValue:location forKey:@"location"];
-}
 #pragma mark -
 #pragma mark Table view data source
 
@@ -116,10 +88,22 @@
         }
         case 2:
         {
+            NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
+            NSString *syncMode = [settinglist valueForKey:@"uploadMode"];
             identifier = @"syncCell";
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             UILabel *label = (UILabel*)[cell viewWithTag:1];
-            label.text = @"即时同步";
+            UISwitch *switchCtrl = (UISwitch *)[cell viewWithTag:2];
+            [switchCtrl addTarget:self action:@selector(syncModeSwitchChangeHandler:) forControlEvents:UIControlEventValueChanged];
+            cell.accessoryView = switchCtrl;
+            if([syncMode isEqualToString:DEFAULT_NET_WORK_MODE]){
+                ((UISwitch *)cell.accessoryView).on = 1;
+                 label.text = @"即时同步";
+            }
+            else{
+                ((UISwitch *)cell.accessoryView).on = 0;
+                label.text = @"仅wifi同步";
+            }
             break;
         }
     }
@@ -128,25 +112,24 @@
     return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    switch (section) {
-//        case 0:
-//            return @"计划中";
-//        case 1:
-//            return @"已收到的邀请";
-//        case 2:
-//            return @"已发出的邀请";
-//        case 3:
-//            return @"好友列表";
-//        default:
-//            break;
-//    }
-//    return nil;
-//}
 
-
+- (void)syncModeSwitchChangeHandler:(UISwitch *)sender
+{
+    NSMutableDictionary *settingDict = [[NSMutableDictionary alloc] init];
+    if (sender.on)
+    {   
+        [settingDict setValue:DEFAULT_NET_WORK_MODE forKey:@"uploadMode"];
+    }
+    else
+    {
+        [settingDict setValue:NET_WORK_MODE_WIFI forKey:@"uploadMode"];
+    }
+    [RORUserUtils writeToUserSettingsPList:settingDict];
+    [moreTableView reloadData];
+}
 
 @end

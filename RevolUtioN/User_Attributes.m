@@ -29,6 +29,13 @@
 @dynamic userId;
 @dynamic weight;
 
++(User_Attributes *) intiUnassociateEntity{
+    NSManagedObjectContext *context = [RORContextUtils getShareContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User_Attributes" inManagedObjectContext:context];
+    User_Attributes *unassociatedEntity = [[User_Attributes alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    return unassociatedEntity;
+}
+
 +(User_Attributes *) removeAssociateForEntity:(User_Attributes *)associatedEntity{
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"User_Attributes" inManagedObjectContext:context];
