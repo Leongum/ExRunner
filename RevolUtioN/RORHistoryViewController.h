@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RORPageViewController.h"
+
 typedef enum {DISTANCE = 1, DURATION = 2, MISSIONTYPE = 3} controlInHistoryTableCell;
 
-@interface RORHistoryViewController : UIViewController{
+@interface RORHistoryViewController : RORPageViewController{
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *syncButtonItem;

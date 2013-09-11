@@ -666,7 +666,10 @@
     NSLog(@"ToLocation:%f, %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
     NSLog(@"Device did %f meters move.", [self.latestUserLocation distanceFromLocation:newLocation]);
     self.latestUserLocation = [self transToRealLocation:newLocation];
-    
+    if (!wasFound){
+        [self center_map:self];
+        wasFound = YES;
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
