@@ -61,7 +61,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     if (![RORNetWorkUtils getIsConnetioned]){
         isNetworkOK = NO;
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"网络连接错误" message:@"定位精度将受到严重影响，本次跑步将不能获得相应奖励，请检查相关系统设置。\n\n（小声的：启动数据网络可以大大提高定位精度与速度，同时只会产生极小的流量。）" delegate:self cancelButtonTitle:@"知道呢！" otherButtonTitles:nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:CONNECTION_ERROR message:CONNECTION_ERROR_CONTECT delegate:self cancelButtonTitle:CANCEL_BUTTON otherButtonTitles:nil];
         [alertView show];
         alertView = nil;
     }
@@ -78,11 +78,11 @@
 
 -(void)controllerInit{
     self.mapView.delegate = self;
-    [startButton setTitle:@"走你" forState:UIControlStateNormal];
+    [startButton setTitle:START_RUNNING_BUTTON forState:UIControlStateNormal];
     UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
     [startButton setBackgroundImage:image forState:UIControlStateNormal];
     
-    [endButton setTitle:@"取消" forState:UIControlStateNormal];
+    [endButton setTitle:CANCEL_RUNNING_BUTTON forState:UIControlStateNormal];
     [endButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     
     collapseButton.alpha = 0;
@@ -356,7 +356,7 @@
             self.startTime = [NSDate date];
             [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
 
-            [endButton setTitle:@"完成" forState:UIControlStateNormal];
+            [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
             [endButton removeTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
             [endButton addTarget:self action:@selector(endButtonAction:) forControlEvents:UIControlEventTouchUpInside];
             
@@ -379,14 +379,14 @@
         self.repeatingTimer = timer;
         UIImage *image = [UIImage imageNamed:@"redbutton_bg.png"];
         [startButton setBackgroundImage:image forState:UIControlStateNormal];
-        [startButton setTitle:@"歇会儿" forState:UIControlStateNormal];
+        [startButton setTitle:PAUSSE_RUNNING_BUTTON forState:UIControlStateNormal];
         [endButton setEnabled:YES];
     } else {
         [repeatingTimer invalidate];
         self.repeatingTimer = nil;
         isStarted = NO;
         
-        [startButton setTitle:@"再走你" forState:UIControlStateNormal];
+        [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     }
     //    [[NSRunLoop  currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
 }
@@ -461,7 +461,7 @@
     self.repeatingTimer = nil;
     isStarted = NO;
     
-    [startButton setTitle:@"再走你" forState:UIControlStateNormal];
+    [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     
     [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
 }
@@ -592,10 +592,10 @@
         BOOL updated = [RORRunHistoryServices uploadRunningHistories];
         [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
         if(updated){
-            [self sendNotification:@"Yeah,上传成功!"];
+            [self sendNotification:SYNC_DATA_SUCCESS];
         }
         else{
-            [self sendNotification:@"哎呀～上传失败了!请查看上传设置以及网络连接!"];
+            [self sendNotification:SYNC_DATA_FAIL];
         }
     }
     [self performSegueWithIdentifier:@"ResultSegue" sender:self];

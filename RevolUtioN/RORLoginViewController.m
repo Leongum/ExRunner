@@ -76,7 +76,7 @@
 //提交用户名密码之后的操作
 - (IBAction)loginAction:(id)sender {
     if(![RORNetWorkUtils getIsConnetioned]){
-        [self sendNotification:@"设备尚未连接网络！"];
+        [self sendNotification:CONNECTION_ERROR];
         return;
     }
     if (![self isLegalInput]) return;
@@ -86,7 +86,7 @@
         User_Base *user = [RORUserServices syncUserInfoByLogin:userName withUserPasswordL:password];
         
         if (user == nil){
-            [self sendNotification:@"登录失败,用户名或密码错误！"];
+            [self sendNotification:LOGIN_ERROR];
             return;
         }
         [RORRunHistoryServices syncRunningHistories];
@@ -95,11 +95,11 @@
         User_Base *user = [RORUserServices registerUser:regDict];
         
         if (user != nil){
-            [self sendNotification:@"恭喜你，注册成功！请继续完善个人信息！"];
+            [self sendNotification:REGISTER_SUCCESS];
             [self performSelector:@selector(performDismiss) withObject:nil afterDelay:1.5f];
             return;
         } else {
-            [self sendNotification:@"注册失败，注用户名已存在！"];
+            [self sendNotification:REGISTER_FAIL];
             return;
         }
     }
@@ -112,14 +112,14 @@
     if (switchButton.selectedSegmentIndex == 0){
         if ([usernameTextField.text isEqualToString:@""] ||
             [passwordTextField.text isEqualToString:@""]) {
-            [self sendNotification:@"用户名或密码不能为空！"];
+            [self sendNotification:LOGIN_INPUT_CHECK];
             return NO;
         }
     } else {
         if ([usernameTextField.text isEqualToString:@""] ||
             [passwordTextField.text isEqualToString:@""] ||
             [nicknameTextField.text isEqualToString:@""]) {
-            [self sendNotification:@"用户名,密码或昵称不能为空"];
+            [self sendNotification:REGISTER_INPUT_CHECK];
             return NO;
         }
     }

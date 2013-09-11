@@ -74,7 +74,6 @@ NSInteger centerLoc =-10000;
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     userLocation = newLocation;
-    NSLog(@"ToLocation:%f, %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
     wasFound = YES; 
     if (wasFound){
         [locationManager stopUpdatingLocation];

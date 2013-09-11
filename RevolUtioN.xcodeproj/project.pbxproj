@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F07ABF617E0391B0009C8A8 /* RORMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F07ABF517E0391B0009C8A8 /* RORMessages.m */; };
 		0F0D589217B0E4680046515C /* RORLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589117B0E4680046515C /* RORLoadingViewController.m */; };
 		0F0D589817B23F490046515C /* RORThirdPartyClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589717B23F490046515C /* RORThirdPartyClientHandler.m */; };
 		0F0D589B17B249230046515C /* RORThirdPartyService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589A17B249230046515C /* RORThirdPartyService.m */; };
@@ -247,6 +248,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F07ABF417E0391B0009C8A8 /* RORMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMessages.h; sourceTree = "<group>"; };
+		0F07ABF517E0391B0009C8A8 /* RORMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMessages.m; sourceTree = "<group>"; };
 		0F0D589017B0E4680046515C /* RORLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORLoadingViewController.h; sourceTree = "<group>"; };
 		0F0D589117B0E4680046515C /* RORLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORLoadingViewController.m; sourceTree = "<group>"; };
 		0F0D589617B23F490046515C /* RORThirdPartyClientHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORThirdPartyClientHandler.h; sourceTree = "<group>"; };
@@ -735,6 +738,8 @@
 				0F16EF9617CDBAC10055DEE6 /* RORContextUtils.m */,
 				0F535D6F17CF90460032F58D /* RORNetWorkUtils.h */,
 				0F535D7017CF90460032F58D /* RORNetWorkUtils.m */,
+				0F07ABF417E0391B0009C8A8 /* RORMessages.h */,
+				0F07ABF517E0391B0009C8A8 /* RORMessages.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1464,6 +1469,7 @@
 				0F535D7117CF90470032F58D /* RORNetWorkUtils.m in Sources */,
 				30FECBBB17D83AE5002C3C90 /* RORNotificationView.m in Sources */,
 				30621D2117DF00220063A007 /* RORPageViewController.m in Sources */,
+				0F07ABF617E0391B0009C8A8 /* RORMessages.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

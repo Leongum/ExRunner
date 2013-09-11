@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AGCommon/CMHTableView.h>
 #import "RORAppDelegate.h"
+#import "RORUtils.h"
 
 @interface RORCustomShareViewToolbar : UIView<CMHTableViewDataSource,CMHTableViewDelegate>
 {

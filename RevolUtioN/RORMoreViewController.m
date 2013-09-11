@@ -98,11 +98,11 @@
             cell.accessoryView = switchCtrl;
             if([syncMode isEqualToString:DEFAULT_NET_WORK_MODE]){
                 ((UISwitch *)cell.accessoryView).on = 1;
-                 label.text = @"即时同步";
+                 label.text = SYNC_MODE_ALL;
             }
             else{
                 ((UISwitch *)cell.accessoryView).on = 0;
-                label.text = @"仅wifi同步";
+                label.text = SYNC_MODE_WIFI;
             }
             break;
         }

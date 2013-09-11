@@ -12,6 +12,7 @@
 #import "RORAppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
 #import "RORConstant.h"
+#import "RORMessages.h"
 
 @interface RORUtils : NSObject
 

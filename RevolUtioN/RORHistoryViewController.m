@@ -139,10 +139,10 @@
     BOOL updated = [RORRunHistoryServices uploadRunningHistories];
     [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
     if(synced && updated){
-        [(RORViewController *)[self parentViewController] sendNotification:@"Yeah,上传成功!"];
+        [(RORViewController *)[self parentViewController] sendNotification:SYNC_DATA_SUCCESS];
     }
     else{
-        [(RORViewController *)[self parentViewController] sendNotification:@"哎呀～上传失败了!请查看上传设置以及网络连接!"];
+        [(RORViewController *)[self parentViewController] sendNotification:SYNC_DATA_FAIL];
     }
 }
 
