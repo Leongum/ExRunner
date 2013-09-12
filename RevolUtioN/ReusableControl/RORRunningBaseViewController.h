@@ -38,6 +38,7 @@
     CMMotionManager *motionManager;
     CLLocationCoordinate2D offset;
     CLLocation *formerLocation;
+    CLLocation *latestUserLocation;
     vec_3 OldVn;
 }
 

@@ -1,29 +1,25 @@
 //
-//  RORGetReadyViewController.m
+//  RORChanllengeRunViewController.m
 //  RevolUtioN
 //
-//  Created by Beyond on 13-5-16.
+//  Created by Bjorn on 13-9-11.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
-#import "RORRunningViewController.h"
+#import "RORChanllengeRunViewController.h"
 
-#define SCALE_SMALL CGRectMake(0,0,320,155)
-
-
-@interface RORRunningViewController ()
+@interface RORChanllengeRunViewController ()
 
 @end
 
-@implementation RORRunningViewController
-//@synthesize locationManager, motionManager;
+@implementation RORChanllengeRunViewController
 @synthesize expandButton, collapseButton, repeatingTimer, timerCount, isStarted;
 @synthesize timeLabel, speedLabel, distanceLabel, startButton, endButton;
 @synthesize routePoints, routeLine, routeLineView;
 @synthesize record;
 @synthesize doCollect;
-@synthesize kalmanFilter, stepCounting, inDistance;
-@synthesize avgDisPerStep, avgTimePerStep;
+@synthesize kalmanFilter, stepCounting;
+@synthesize runMission;
 @synthesize mapView, coverView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,28 +41,31 @@
 //initial all when view appears
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-
+    
     if (![RORNetWorkUtils getIsConnetioned]){
         isNetworkOK = NO;
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:CONNECTION_ERROR message:CONNECTION_ERROR_CONTECT delegate:self cancelButtonTitle:CANCEL_BUTTON otherButtonTitles:nil];
         [alertView show];
         alertView = nil;
     }
-
+    
     [self controllerInit];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
-//        [self.navigationController popViewControllerAnimated:YES];
+        //        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
 -(void)controllerInit{
+    if (mission == nil)
+        mission = [RORMissionServices fetchMission:runMission.missionId];
+    
     self.coverView.alpha = 0;
     self.backButton.alpha = 0;
-
+    
     self.mapView.delegate = self;
     [startButton setTitle:START_RUNNING_BUTTON forState:UIControlStateNormal];
     UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
@@ -79,8 +78,7 @@
     
     timeLabel.text = @"00:00:00";
     speedLabel.text = [RORUserUtils formatedSpeed:0];
-    distanceLabel.text = @"0 m";
-    self.stepLabel.text = @"0";
+    distanceLabel.text = [RORUtils outputDistance:mission.missionDistance];
     mapView.frame = SCALE_SMALL;
     
     doCollect = NO;
@@ -92,7 +90,7 @@
     //    [mapView setUserTrackingMode:MKUserTrackingModeFollow];
     [mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading animated:YES];
     [mapView removeOverlays:[mapView overlays]];
-
+    
     MKwasFound = NO;
     timerCount = 0;
     distance = 0;
@@ -157,7 +155,7 @@
     float zoomLevel = 0.005;
     MKCoordinateRegion region = MKCoordinateRegionMake(loc.coordinate, MKCoordinateSpanMake(zoomLevel, zoomLevel));
     [mapView setRegion:[mapView regionThatFits:region] animated:NO];
-
+    
 }
 
 -(void)createAnnotationWithCoords:(CLLocationCoordinate2D) coords withTitle:(NSString *)title andSubTitle:(NSString *) subTitle {
@@ -184,9 +182,6 @@
     [self setEndTime:nil];
     [self setRecord:nil];
     
-    [self setStepLabel:nil];
-    [self setAvgDisPerStep:nil];
-    [self setAvgTimePerStep:nil];
     [self setCoverView:nil];
     [super viewDidUnload];
 }
@@ -228,7 +223,7 @@
         if (self.startTime == nil){
             self.startTime = [NSDate date];
             [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
-
+            
             [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
             [endButton removeTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
             [endButton addTarget:self action:@selector(endButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -245,7 +240,7 @@
             [routePoints addObject:formerLocation];
             [self drawLineWithLocationArray:routePoints];
             
-                        //            [self pushPoint];
+            //            [self pushPoint];
         }
         
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(timerDot) userInfo:nil repeats:YES];
@@ -272,10 +267,6 @@
 
 - (void)inertiaNavi{
     [super inertiaNavi];
-    
-    self.stepLabel.text = [NSString stringWithFormat:@"%d", stepCounting.counter];
-    self.avgTimePerStep.text = [NSString stringWithFormat:@"%.2f s", duration/((double)stepCounting.counter)];
-    self.avgDisPerStep.text = [NSString stringWithFormat:@"%.2f m", distance/((double)stepCounting.counter)];
 }
 
 - (void)timerDot{
@@ -294,17 +285,19 @@
         speedLabel.text = [RORUserUtils formatedSpeed:(float)distance/duration];
         //    }
     }
-
+    
     timeLabel.text = [RORUtils transSecondToStandardFormat:duration];
 }
 
 - (void)pushPoint{
     CLLocation *currentLocation = [self getNewRealLocation];
     if (formerLocation != currentLocation){
-        distance += [formerLocation distanceFromLocation:currentLocation];
+        distance -= [formerLocation distanceFromLocation:currentLocation];
         formerLocation = currentLocation;
         [routePoints addObject:currentLocation];
         [self drawLineWithLocationArray:routePoints];
+        if (distance<=0)
+            [self endButtonAction:self];
     }
 }
 
@@ -334,7 +327,7 @@
     self.repeatingTimer = nil;
     [self saveRunInfo];
     
-    [self performSegueWithIdentifier:@"NormalRunResultSegue" sender:self];
+    [self performSegueWithIdentifier:@"ChallengeRunResultSegue" sender:self];
 }
 
 - (IBAction)btnDeleteRunHistory:(id)sender {
@@ -343,6 +336,18 @@
 
 -(NSNumber *)calculateGrade{
     return [self calculateCalorie];
+}
+
+-(NSString *)calculateMissionGrade{
+    if (mission == nil)
+        mission = [RORMissionServices fetchMission:runMission.missionId];
+    NSArray *gradeList = mission.challengeList;
+    for (int i=0; i<gradeList.count; i++){
+        NSInteger thisGrade = ((NSNumber *)[[gradeList objectAtIndex:i] valueForKey:@"time"]).integerValue;
+        if (duration<thisGrade)
+            return MissionGradeEnum_toString[i];
+    }
+    return MissionGradeEnum_toString[GRADE_F];
 }
 
 -(NSNumber *)calculateAward:(NSString *)missionGrade baseValue:(double) base{
@@ -367,6 +372,14 @@
     return [NSNumber numberWithDouble:GRADE_F*base];
 }
 
+-(NSNumber *)calculateExperience:(NSString *)missionGrade{
+    return [self calculateAward:(NSString *)missionGrade baseValue:runMission.experience.doubleValue];
+}
+
+-(NSNumber *)calculateScore:(NSString *)missionGrade{
+    return [self calculateAward:(NSString *)missionGrade baseValue:runMission.scores.doubleValue];
+}
+
 -(NSNumber *)isValidRun:(NSInteger)steps {
     double avgStepDistance = distance / steps;
     double avgStepFrequency = steps * 60 / duration ;
@@ -385,8 +398,22 @@
     runHistory.missionEndTime = self.endTime;
     runHistory.missionStartTime = self.startTime;
     runHistory.userId = [RORUserUtils getUserId];
-    runHistory.missionTypeId = [NSNumber numberWithInteger:NormalRun];
-    runHistory.grade = [self calculateGrade];
+    if (runMission!=nil){
+        runHistory.missionTypeId = runMission.missionTypeId;
+        switch (runMission.missionTypeId.integerValue) {
+            case Challenge:
+                runHistory.missionId = runMission.missionId;
+                runHistory.missionGrade = [self calculateMissionGrade];
+                runHistory.experience = [self calculateExperience:runHistory.missionGrade];
+                runHistory.scores = [self calculateScore:runHistory.missionGrade];
+                break;
+            default:
+                break;
+        }
+    } else {
+        runHistory.missionTypeId = [NSNumber numberWithInteger:NormalRun];
+        runHistory.grade = [self calculateGrade];
+    }
     runHistory.spendCarlorie = [self calculateCalorie];
     runHistory.runUuid = [RORUtils uuidString];
     runHistory.uuid = [RORUserUtils getUserUuid];
@@ -530,7 +557,7 @@
 ////
 ////            UIImageView *headImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:travellerAnnotation.headImage]];
 ////            pulsingView.leftCalloutAccessoryView = headImage; //设置最左边的头像
-//            
+//
 //            return pulsingView;
 //        }
 //        else

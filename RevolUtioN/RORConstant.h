@@ -36,6 +36,8 @@
 
 #define DEFAULT_HEIGHT [NSNumber numberWithDouble:175]
 
+#define DEFAULT_SPEEDTYPE 0
+
 #endif
 
 typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3, NormalRun = 4} MissionTypeEnum;

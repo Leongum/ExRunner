@@ -63,6 +63,7 @@ static NSDate *systemTime = nil;
     [settingDict setValue:DEFAULT_WEIGHT forKey:@"weight"];
     [settingDict setValue:DEFAULT_HEIGHT forKey:@"height"];
     [settingDict setValue:DEFAULT_SEX forKey:@"sex"];
+    [settingDict setValue:DEFAULT_SPEEDTYPE forKey:@"speedType"];
     [settingDict writeToFile:path atomically:YES];
     return settingDict;
 }
@@ -186,5 +187,18 @@ static NSDate *systemTime = nil;
     }
     
     [authList writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
+}
+
++(NSString *)formatedSpeed:(double)metersPerSec{
+    NSMutableDictionary *settinglist = [self getUserSettingsPList];
+    NSInteger speedType = ((NSNumber *)[settinglist valueForKey:@"speedType"]).integerValue;
+    NSInteger orginSpeed = round(metersPerSec);
+    if (speedType == 0) {
+        int minutes = orginSpeed * 1000 / 60;
+        int seconds = (orginSpeed * 1000) % 60;
+        return [NSString stringWithFormat:@"%d\'%d\"/km", minutes, seconds];
+    } else {
+        return [NSString stringWithFormat:@"%.2f km/h", metersPerSec * 3.6];
+    }
 }
 @end

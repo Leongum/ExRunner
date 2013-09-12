@@ -11,9 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "RORViewController.h"
 
-@interface RORMapViewController : RORViewController<CLLocationManagerDelegate,   MKMapViewDelegate>{
-//    BOOL wasFound;
-//    CLLocationManager* locationManager;
+@interface RORMapViewController : RORViewController<MKMapViewDelegate>{
     NSMutableArray *improvedRoute;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

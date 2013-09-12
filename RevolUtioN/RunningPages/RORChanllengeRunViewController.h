@@ -1,24 +1,19 @@
 //
-//  RORGetReadyViewController.h
+//  RORChanllengeRunViewController.h
 //  RevolUtioN
 //
-//  Created by Beyond on 13-5-16.
+//  Created by Bjorn on 13-9-11.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
-#import <MapKit/MapKit.h>
-#import "User_Running_History.h"
-#import "INTimeWindow.h"
-#import "INKalmanFilter.h"
-#import "INStepCounting.h"
-#import "RORViewController.h"
-#import "Mission.h"
 #import "RORRunningBaseViewController.h"
 
-@interface RORRunningViewController : RORRunningBaseViewController<CLLocationManagerDelegate,MKMapViewDelegate> {
+#define SCALE_SMALL CGRectMake(0,0,320,155)
+
+
+@interface RORChanllengeRunViewController : RORRunningBaseViewController<MKMapViewDelegate>{
     BOOL MKwasFound;
+    Mission *mission;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
@@ -29,17 +24,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *speedLabel;
 @property (weak, nonatomic) IBOutlet UIButton *expandButton;
 @property (weak, nonatomic) IBOutlet UIButton *collapseButton;
-@property (weak, nonatomic) IBOutlet UILabel *stepLabel;
-@property (weak, nonatomic) IBOutlet UILabel *avgDisPerStep;
-@property (weak, nonatomic) IBOutlet UILabel *avgTimePerStep;
-
-//@property (strong, nonatomic) CLLocation *initialLocation;
-//@property (strong, nonatomic) CLLocation *latestUserLocation;
-//@property (nonatomic) CLLocationCoordinate2D latestINLocation;
-//@property (nonatomic) vec_3 OldVn;
-//@property (strong, nonatomic) INKalmanFilter *kalmanFilter;
-//@property (strong, nonatomic) INStepCounting *stepCounting;
-@property (nonatomic) vec_3 inDistance;
 
 @property (nonatomic) NSInteger timerCount;
 @property (assign) NSTimer *repeatingTimer;
@@ -57,17 +41,6 @@
 
 @property (nonatomic) BOOL doCollect;
 
-//@property (strong, nonatomic) Mission *runMission;
+@property (strong, nonatomic) Mission *runMission;
 @property (weak, nonatomic) IBOutlet UIControl *coverView;
-
-- (IBAction)expandAction:(id)sender;
-- (IBAction)collapseAction:(id)sender;
-- (IBAction)startButtonAction:(id)sender;
-- (IBAction)endButtonAction:(id)sender;
-
-- (IBAction)btnCoverInside:(id)sender;
-- (IBAction)btnSaveRun:(id)sender;
-- (IBAction)btnDeleteRunHistory:(id)sender;
-
-
 @end

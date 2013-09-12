@@ -215,6 +215,7 @@
     if (self.coverView.alpha ==0){
         [self updateFilter];
         [listViewController refreshTable];
+        [statisticsViewController viewWillAppear:NO];
     }
 }
 

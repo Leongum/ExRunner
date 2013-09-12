@@ -53,6 +53,13 @@
     [super viewDidUnload];
 }
 
+-(IBAction)changeSpeedType:(id)sender{
+    NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
+    UISegmentedControl *seg = (UISegmentedControl*)sender;
+    [settinglist setValue:[NSNumber numberWithInteger:[seg selectedSegmentIndex]] forKey:@"speedType"];
+    [RORUserUtils writeToUserSettingsPList:settinglist];
+}
+
 #pragma mark -
 #pragma mark Table view data source
 
@@ -61,7 +68,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -104,6 +111,21 @@
                 ((UISwitch *)cell.accessoryView).on = 0;
                 label.text = SYNC_MODE_WIFI;
             }
+            break;
+        }
+        case 3:
+        {
+            identifier = @"speedCell";
+            cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            UISegmentedControl *seg = (UISegmentedControl *)[cell viewWithTag:2];
+            
+            NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
+            NSNumber *speedType = [settinglist valueForKey:@"speedType"];
+            if (speedType != nil){
+                NSInteger st = speedType.integerValue;
+                [seg setSelectedSegmentIndex:st];
+            }
+            [seg addTarget:self action:@selector(changeSpeedType:) forControlEvents:UIControlEventValueChanged];
             break;
         }
     }

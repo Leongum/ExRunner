@@ -116,6 +116,9 @@
 		30621D1E17DEFFA00063A007 /* red_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30621D1A17DEFFA00063A007 /* red_left@2x.png */; };
 		30621D2117DF00220063A007 /* RORPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30621D2017DF00220063A007 /* RORPageViewController.m */; };
 		30621D2717E00ED90063A007 /* RORRunningBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30621D2617E00ED90063A007 /* RORRunningBaseViewController.m */; };
+		30621D2B17E093EF0063A007 /* centerMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 30621D2917E093EF0063A007 /* centerMap.png */; };
+		30621D2C17E093EF0063A007 /* centerMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30621D2A17E093EF0063A007 /* centerMap@2x.png */; };
+		30621D3317E09F880063A007 /* RORChanllengeRunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30621D3217E09F880063A007 /* RORChanllengeRunViewController.m */; };
 		308FAC6617C64C290025B807 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308FAC6517C64C290025B807 /* icon.png */; };
 		308FAC6817C64C300025B807 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 308FAC6717C64C300025B807 /* icon@2x.png */; };
 		308FAC6B17C65B060025B807 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 308FAC6A17C65B060025B807 /* Reachability.m */; };
@@ -415,6 +418,10 @@
 		30621D2017DF00220063A007 /* RORPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORPageViewController.m; path = ReusableControl/RORPageViewController.m; sourceTree = "<group>"; };
 		30621D2517E00ED90063A007 /* RORRunningBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORRunningBaseViewController.h; path = ReusableControl/RORRunningBaseViewController.h; sourceTree = "<group>"; };
 		30621D2617E00ED90063A007 /* RORRunningBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORRunningBaseViewController.m; path = ReusableControl/RORRunningBaseViewController.m; sourceTree = "<group>"; };
+		30621D2917E093EF0063A007 /* centerMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = centerMap.png; sourceTree = "<group>"; };
+		30621D2A17E093EF0063A007 /* centerMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "centerMap@2x.png"; sourceTree = "<group>"; };
+		30621D3117E09F880063A007 /* RORChanllengeRunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORChanllengeRunViewController.h; path = RunningPages/RORChanllengeRunViewController.h; sourceTree = "<group>"; };
+		30621D3217E09F880063A007 /* RORChanllengeRunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORChanllengeRunViewController.m; path = RunningPages/RORChanllengeRunViewController.m; sourceTree = "<group>"; };
 		308FAC6517C64C290025B807 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		308FAC6717C64C300025B807 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		308FAC6917C65B060025B807 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -797,6 +804,8 @@
 				30C58AC217C4840F0065FC90 /* RORChallengeViewController.m */,
 				30FC2907175F1F5800DEC042 /* RORMapAnnotation.h */,
 				30FC2908175F1F5800DEC042 /* RORMapAnnotation.m */,
+				30621D3117E09F880063A007 /* RORChanllengeRunViewController.h */,
+				30621D3217E09F880063A007 /* RORChanllengeRunViewController.m */,
 			);
 			name = RORRunningPage;
 			sourceTree = "<group>";
@@ -1128,6 +1137,8 @@
 		30FC291A17607F6D00DEC042 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				30621D2917E093EF0063A007 /* centerMap.png */,
+				30621D2A17E093EF0063A007 /* centerMap@2x.png */,
 				30621D1717DEFFA00063A007 /* red_left.png */,
 				30621D1817DEFFA00063A007 /* red_right.png */,
 				30621D1917DEFFA00063A007 /* red_right@2x.png */,
@@ -1363,6 +1374,8 @@
 				30621D1C17DEFFA00063A007 /* red_right.png in Resources */,
 				30621D1D17DEFFA00063A007 /* red_right@2x.png in Resources */,
 				30621D1E17DEFFA00063A007 /* red_left@2x.png in Resources */,
+				30621D2B17E093EF0063A007 /* centerMap.png in Resources */,
+				30621D2C17E093EF0063A007 /* centerMap@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1476,6 +1489,7 @@
 				30621D2117DF00220063A007 /* RORPageViewController.m in Sources */,
 				30621D2717E00ED90063A007 /* RORRunningBaseViewController.m in Sources */,
 				0F07ABF617E0391B0009C8A8 /* RORMessages.m in Sources */,
+				30621D3317E09F880063A007 /* RORChanllengeRunViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

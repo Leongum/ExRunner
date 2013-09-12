@@ -36,6 +36,7 @@
     wasFound = NO;
     offset.latitude = 0;
     offset.longitude = 0;
+    
 }
 
 -(void)viewDidUnload{
@@ -144,6 +145,8 @@
 {
     //	motionManager = [[CMMotionManager alloc] init];
 	// Tell CoreMotion to show the compass calibration HUD when required to provide true north-referenced attitude
+    motionManager = [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] sharedManager];
+
 	motionManager.showsDeviceMovementDisplay = YES;
     
 	motionManager.deviceMotionUpdateInterval = delta_T;
