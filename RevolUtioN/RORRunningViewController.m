@@ -375,6 +375,19 @@
     return [NSNumber numberWithInteger:1];
 }
 
+-(NSNumber *)calculateExperience:(User_Running_History *)runningHistory{
+    return [NSNumber numberWithDouble:(runningHistory.distance.doubleValue/1000*200)];
+}
+
+-(NSNumber *)calculateScore:(User_Running_History *)runningHistory{
+    NSTimeInterval scape = [runningHistory.missionStartTime timeIntervalSinceDate:runningHistory.missionEndTime];
+    double scores = 0;
+    if(scape != 0){
+        scores = runningHistory.distance.doubleValue / (scape/60) * runningHistory.distance.doubleValue / 1000;
+    }
+    return [NSNumber numberWithDouble:scores];
+}
+
 - (void)saveRunInfo{
     User_Running_History *runHistory = [User_Running_History intiUnassociateEntity];
     runHistory.distance = [NSNumber numberWithDouble:distance];
@@ -391,7 +404,13 @@
     runHistory.runUuid = [RORUtils uuidString];
     runHistory.uuid = [RORUserUtils getUserUuid];
     runHistory.steps = [NSNumber numberWithInteger:stepCounting.counter / 0.8];
+    runHistory.experience =[self calculateExperience:runHistory];
+    runHistory.scores =[self calculateScore:runHistory];
     runHistory.valid = [self isValidRun:stepCounting.counter / 0.8];
+    if(runHistory.valid.doubleValue != 1){
+        runHistory.experience =[NSNumber numberWithDouble:0];
+        runHistory.scores =[NSNumber  numberWithDouble:0];
+    }
     
     NSLog(@"%@", runHistory);
     record = runHistory;

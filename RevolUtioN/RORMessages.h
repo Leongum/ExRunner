@@ -40,6 +40,7 @@
 #define SHARE_DEFAULT_URL @"http://www.cyberace.cc"
 #define SHARE_DEFAULT_DESCRIPTION @"来自赛跑乐的晒跑了"
 #define SHARE_SUBMITTED @"分享已提交"
+#define GPS_SETTING_ERROR @"定位失败，请打开GPS定位功能"
 
 #endif
 

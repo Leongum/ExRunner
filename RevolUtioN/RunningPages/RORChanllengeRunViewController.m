@@ -372,12 +372,17 @@
     return [NSNumber numberWithDouble:GRADE_F*base];
 }
 
--(NSNumber *)calculateExperience:(NSString *)missionGrade{
-    return [self calculateAward:(NSString *)missionGrade baseValue:runMission.experience.doubleValue];
+-(NSNumber *)calculateExperience:(User_Running_History *)runningHistory{
+    return [NSNumber numberWithDouble:(runningHistory.distance.doubleValue/1000*200)];
 }
 
--(NSNumber *)calculateScore:(NSString *)missionGrade{
-    return [self calculateAward:(NSString *)missionGrade baseValue:runMission.scores.doubleValue];
+-(NSNumber *)calculateScore:(User_Running_History *)runningHistory{
+    NSTimeInterval scape = [runningHistory.missionStartTime timeIntervalSinceDate:runningHistory.missionEndTime];
+    double scores = 0;
+    if(scape != 0){
+        scores = runningHistory.distance.doubleValue / (scape/60) * runningHistory.distance.doubleValue / 1000;
+    }
+    return [NSNumber numberWithDouble:scores];
 }
 
 -(NSNumber *)isValidRun:(NSInteger)steps {
@@ -404,8 +409,8 @@
             case Challenge:
                 runHistory.missionId = runMission.missionId;
                 runHistory.missionGrade = [self calculateMissionGrade];
-                runHistory.experience = [self calculateExperience:runHistory.missionGrade];
-                runHistory.scores = [self calculateScore:runHistory.missionGrade];
+                runHistory.experience =[NSNumber numberWithDouble:[self calculateExperience:runHistory].doubleValue + [self calculateAward:(NSString *)runHistory.missionGrade baseValue:runMission.experience.doubleValue].doubleValue];
+                runHistory.scores =[NSNumber  numberWithDouble:[self calculateScore:runHistory].doubleValue + [self calculateAward:(NSString *)runHistory.missionGrade baseValue:runMission.scores.doubleValue].doubleValue];
                 break;
             default:
                 break;
@@ -413,12 +418,20 @@
     } else {
         runHistory.missionTypeId = [NSNumber numberWithInteger:NormalRun];
         runHistory.grade = [self calculateGrade];
+        runHistory.experience =[self calculateExperience:runHistory];
+        runHistory.scores =[self calculateScore:runHistory];
     }
+    
     runHistory.spendCarlorie = [self calculateCalorie];
     runHistory.runUuid = [RORUtils uuidString];
     runHistory.uuid = [RORUserUtils getUserUuid];
     runHistory.steps = [NSNumber numberWithInteger:stepCounting.counter / 0.8];
     runHistory.valid = [self isValidRun:stepCounting.counter / 0.8];
+    
+    if(runHistory.valid.doubleValue != 1){
+        runHistory.experience =[NSNumber numberWithDouble:0];
+        runHistory.scores =[NSNumber  numberWithDouble:0];
+    }
     
     NSLog(@"%@", runHistory);
     record = runHistory;

@@ -68,8 +68,17 @@
     locationManager.delegate = self;
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
     locationManager.distanceFilter = 1;
-    // start the compass
-    [locationManager startUpdatingLocation];
+    NSLog(@"%u %c",[CLLocationManager  authorizationStatus],[CLLocationManager  locationServicesEnabled]);
+    if (! ([CLLocationManager  locationServicesEnabled])
+        || ( [CLLocationManager  authorizationStatus] == kCLAuthorizationStatusDenied))
+    {
+        [self sendNotification:GPS_SETTING_ERROR];
+        return;
+    }
+    else{
+        // start the compass
+        [locationManager startUpdatingLocation];
+    }
     
 	if ([CLLocationManager headingAvailable] == NO) {
 		// No compass is available. This application cannot function without a compass,

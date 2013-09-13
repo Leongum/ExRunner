@@ -12,9 +12,8 @@
 #import "User_Running_History.h"
 #import "RORViewController.h"
 
-@interface RORHistoryDetailViewController : RORViewController<CLLocationManagerDelegate> {
+@interface RORHistoryDetailViewController : RORViewController {
     BOOL wasFound;
-    CLLocationManager* locationManager;
 }
 @property (weak, nonatomic) UIViewController *delegate;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButtonItem;
