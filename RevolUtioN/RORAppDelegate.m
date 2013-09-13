@@ -105,6 +105,13 @@
     
     [self initializePlat];
     
+    // Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the
+    // method "reachabilityChanged" will be called.
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+    
+	hostReach = [Reachability reachabilityWithHostName: @"www.apple.com"];
+	[hostReach startNotifier];
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -255,18 +262,6 @@
 	NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
     [RORNetWorkUtils updateNetWorkStatus:[curReach currentReachabilityStatus]];
 }
-
-- (void) applicationDidFinishLaunching: (UIApplication* )application
-{
-    NSLog(@"step 1");
-    // Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the
-    // method "reachabilityChanged" will be called.
-    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
-    
-	hostReach = [Reachability reachabilityWithHostName: @"www.apple.com"];
-	[hostReach startNotifier];
-}
-
 
 #pragma mark - Application's Documents directory
 

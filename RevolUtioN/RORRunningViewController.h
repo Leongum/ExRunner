@@ -17,7 +17,7 @@
 #import "Mission.h"
 #import "RORRunningBaseViewController.h"
 
-@interface RORRunningViewController : RORRunningBaseViewController<CLLocationManagerDelegate,MKMapViewDelegate> {
+@interface RORRunningViewController : RORRunningBaseViewController<MKMapViewDelegate> {
     BOOL MKwasFound;
 }
 

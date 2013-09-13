@@ -73,8 +73,16 @@ NSInteger centerLoc =-10000;
     locationManager = [[CLLocationManager alloc]init];
     locationManager.delegate = self;
     [locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
-    // start the compass
-    [locationManager startUpdatingLocation];
+    if (! ([CLLocationManager  locationServicesEnabled])
+        || ( [CLLocationManager  authorizationStatus] == kCLAuthorizationStatusDenied))
+    {
+        [self sendNotification:GPS_SETTING_ERROR];
+        return;
+    }
+    else{
+        // start the compass
+        [locationManager startUpdatingLocation];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation

@@ -41,6 +41,7 @@
 #define SHARE_DEFAULT_DESCRIPTION @"来自Cyberace赛跑乐"
 #define SHARE_SUBMITTED @"晒跑成功"
 #define NO_HISTORY @"你还没跑过耶哪来得记录"
+#define GPS_SETTING_ERROR @"定位失败，请打开GPS定位功能"
 
 #endif
 

@@ -141,31 +141,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//- (IBAction)update {
-//    
-//    locmanager = [[CLLocationManager alloc] init];
-//    [locmanager setDelegate:self];
-////    [locmanager setDesiredAccuracy:kCLLocationAccuracyBest];
-////    
-////    [locmanager startUpdatingLocation];
-//}
-
-//CLLocationManager* locmanager;
-//-(void)awakeFromNib {
-////    [self update];
-//}
-
-//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-//{
-//    if (wasFound) return;
-//    wasFound = YES;
-//}
-
-//- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-//{
-//    
-//}
-
 #pragma mark - MKMapViewDelegate
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
