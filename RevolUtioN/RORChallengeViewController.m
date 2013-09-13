@@ -146,6 +146,7 @@
     
     UILabel *titleLabel = (UILabel*)[cell viewWithTag:CELL_TITLE_TAG];
     titleLabel.text = challenge.missionName;
+    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:titleLabel andSubViews:NO];
 //    UILabel *levelLabel = (UILabel *)[cell viewWithTag:CELL_LEVEL_TAG];
 //    levelLabel.text = [content valueForKey:@"level"];
     

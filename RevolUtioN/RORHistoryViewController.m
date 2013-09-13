@@ -27,6 +27,7 @@
     [self setDateList:nil];
     [self setSortedDateList:nil];
     [self setTableView:nil];
+    [self setNoHistoryMessageLabel:nil];
     [super viewDidUnload];
 }
 
@@ -59,7 +60,9 @@
     [super viewDidLoad];
     //syncButtonItem.enabled = ([RORUtils hasLoggedIn]!=nil);
 //    [self initTableData];
-    
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.noHistoryMessageLabel andSubViews:NO];
+    self.noHistoryMessageLabel.text = NO_HISTORY;
+    self.noHistoryMessageLabel.alpha = 0;
 }
 
 -(void)initTableData{
@@ -76,28 +79,31 @@
 //    [fetchRequest setEntity:historyEntity];
 //    NSError *error = nil;
     NSArray *fetchObject = [RORRunHistoryServices fetchRunHistory];
-    
-    for (User_Running_History *historyObj in fetchObject) {
-        NSNumber *missionType = (NSNumber *)[historyObj valueForKey:@"missionTypeId"];
-        
-        if (![filter containsObject:missionType]) {
-            continue;
+    if (fetchObject>0){
+        [self showContent];
+        for (User_Running_History *historyObj in fetchObject) {
+            NSNumber *missionType = (NSNumber *)[historyObj valueForKey:@"missionTypeId"];
+            
+            if (![filter containsObject:missionType]) {
+                continue;
+            }
+            NSDate *date = [historyObj valueForKey:@"missionDate"];
+            NSDateFormatter *formate = [[NSDateFormatter alloc] init];
+            //    formate.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+            [formate setDateFormat:@"yyyy-MM-dd"];
+            //        [formate setTimeStyle:NSDateFormatterNoStyle];
+            NSString *formatDateString = [formate stringFromDate:date];
+            if (![dateList containsObject:formatDateString])
+                [dateList addObject:formatDateString];
+            NSMutableArray *record4Date = [runHistoryList objectForKey:formatDateString];
+            if (record4Date == nil)
+                record4Date = [[NSMutableArray alloc] init];
+            [record4Date addObject:historyObj];
+            [runHistoryList setObject:record4Date forKey:formatDateString];
         }
-        NSDate *date = [historyObj valueForKey:@"missionDate"];
-        NSDateFormatter *formate = [[NSDateFormatter alloc] init];
-        //    formate.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-        [formate setDateFormat:@"yyyy-MM-dd"];
-        //        [formate setTimeStyle:NSDateFormatterNoStyle];
-        NSString *formatDateString = [formate stringFromDate:date];
-        if (![dateList containsObject:formatDateString])
-            [dateList addObject:formatDateString];
-        NSMutableArray *record4Date = [runHistoryList objectForKey:formatDateString];
-        if (record4Date == nil)
-            record4Date = [[NSMutableArray alloc] init];
-        [record4Date addObject:historyObj];
-        [runHistoryList setObject:record4Date forKey:formatDateString];
+    } else {
+        [self hideContent];
     }
-    
     //    NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"string"
     //																   ascending:NO
     //																	selector:@selector(localizedCaseInsensitiveCompare:)] ;
@@ -131,6 +137,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)showContent{
+    self.tableView.alpha = 1;
+    self.noHistoryMessageLabel.alpha = 0;
+}
+
+-(void)hideContent{
+    self.tableView.alpha = 0;
+    self.noHistoryMessageLabel.alpha = 1;
 }
 
 - (IBAction)syncAction:(id)sender {
@@ -170,12 +186,13 @@
 {
     static NSString *CellIdentifier = @"plainCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-
+    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:cell andSubViews:YES];
+    
     NSString *date_str = [sortedDateList objectAtIndex:indexPath.section];
     NSArray *records4DateList = [runHistoryList objectForKey:date_str];
     User_Running_History *record4Date = [records4DateList objectAtIndex:indexPath.row];
     UILabel *distanceLabel = (UILabel *)[cell viewWithTag:DISTANCE];
-    distanceLabel.text = [NSString stringWithFormat:@"%@",[RORUtils outputDistance:record4Date.distance]];
+    distanceLabel.text = [NSString stringWithFormat:@"%@",[RORUtils outputDistance:record4Date.distance.doubleValue]];    
     UILabel *durationLabel = (UILabel *)[cell viewWithTag:DURATION];
     durationLabel.text = [RORUtils transSecondToStandardFormat:[record4Date.duration integerValue]];
     UILabel *missionTypeLabel = (UILabel *)[cell viewWithTag:MISSIONTYPE];
@@ -192,7 +209,7 @@
     label.textAlignment = UITextAlignmentRight;
     label.textColor = [UIColor darkGrayColor];
     label.backgroundColor = [UIColor clearColor];
-    
+    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:label andSubViews:YES];
 //    //将UILabel向右移动10个点，沿y轴向下移动5个点
 //    label.frame = CGRectMake(label.frame.origin.x + 10.0f,5.0f,label.frame.size.width, label.frame.size.height);
     //container的宽度比UILabel多出是个像素这些像素用于缩进

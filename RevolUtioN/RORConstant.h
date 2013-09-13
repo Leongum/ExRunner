@@ -26,17 +26,20 @@
 
 #define WEATHER_URL @"http://www.weather.com.cn/data/sk/%@.html"
 
+
 #define DEFAULT_NET_WORK_MODE @"All_Mode"
-
 #define NET_WORK_MODE_WIFI @"Only_Wifi"
-
 #define DEFAULT_SEX @"男"
-
 #define DEFAULT_WEIGHT [NSNumber numberWithDouble:60]
-
 #define DEFAULT_HEIGHT [NSNumber numberWithDouble:175]
-
 #define DEFAULT_SPEEDTYPE 0
+
+
+#define CHN_PRINT_FONT @"FZKaTong-M19S"
+#define CHN_WRITTEN_FONT @"陈继世-怪怪体"
+#define ENG_WRITTEN_FONT @"Chalkduster"
+#define ENG_PRINT_FONT @"Chavenir-Bold"
+
 
 #endif
 

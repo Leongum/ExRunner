@@ -27,7 +27,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [RORUtils setFontFamily:@"FZKaTong-M19S" forView:self.view andSubViews:YES];
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
+    
+    [self.totalDistanceLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
+    [self.totalSpeedLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
+    [self.totalCalorieLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,16 +66,43 @@
         avgSpeed += historyObj.avgSpeed.doubleValue;
     }
     avgSpeed/=fetchObject.count;
-    
-    self.totalDistanceLabel.text = [RORUtils outputDistance:[NSNumber numberWithDouble:totalDistance]];
-    self.totalSpeedLabel.text = [NSString stringWithFormat:@"%.2f km/s", avgSpeed];
-    self.totalCalorieLabel.text = [NSString stringWithFormat:@"%.2f kca", totalCalorie];
+    if (fetchObject.count>0){
+        [self showContents];
+        self.totalDistanceLabel.text = [RORUtils outputDistance:totalDistance];
+        self.totalSpeedLabel.text = [RORUserUtils formatedSpeed:avgSpeed];
+        self.totalCalorieLabel.text = [NSString stringWithFormat:@"%.2f kca", totalCalorie];
+    } else {
+        [self hideContents];
+        self.totalSpeedLabel.text = NO_HISTORY;
+        
+    }
+}
+
+-(void)showContents{
+    for (int i=1; i<7; i++){
+        UIView *view = [self.containerView viewWithTag:i];
+        view.alpha = 1;
+    }
+    self.totalDistanceLabel.alpha =1;
+    self.totalCalorieLabel.alpha = 1;
+    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.totalSpeedLabel andSubViews:NO];
+}
+
+-(void)hideContents{
+    for (int i=1; i<7; i++){
+        UIView *view = [self.containerView viewWithTag:i];
+        view.alpha = 0;
+    }
+    self.totalDistanceLabel.alpha =0;
+    self.totalCalorieLabel.alpha = 0;
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.totalSpeedLabel andSubViews:NO];
 }
 
 - (void)viewDidUnload {
     [self setTotalDistanceLabel:nil];
     [self setTotalSpeedLabel:nil];
     [self setTotalCalorieLabel:nil];
+    [self setContainerView:nil];
     [super viewDidUnload];
 }
 @end

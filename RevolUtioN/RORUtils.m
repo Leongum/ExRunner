@@ -254,11 +254,11 @@
     return nil;
 }
 
-+(NSString*)outputDistance:(NSNumber*)distance{
-    if (distance.doubleValue<1000){
-        return [NSString stringWithFormat:@"%.0f m", round(distance.doubleValue)];
++(NSString*)outputDistance:(double)distance{
+    if (distance<1000){
+        return [NSString stringWithFormat:@"%.0f m", round(distance)];
     }
-    return [NSString stringWithFormat:@"%.2f km", distance.doubleValue/1000];
+    return [NSString stringWithFormat:@"%.2f km", distance/1000];
 }
 
 +(void)setFontFamily:(NSString*)fontFamily forView:(UIView*)view andSubViews:(BOOL)isSubViews
@@ -280,6 +280,27 @@
         {
             [self setFontFamily:fontFamily forView:sview andSubViews:YES];
         }
+    }
+}
+
++(void)listFontFamilies
+{
+    NSArray* familys = [UIFont familyNames];
+    
+    for (int i = 0; i<[familys count]; i++) {
+        
+        NSString* family = [familys objectAtIndex:i];
+        
+        NSLog(@"Fontfamily:%@=====",family);
+        
+        NSArray* fonts = [UIFont fontNamesForFamilyName:family];
+        
+        for (int j = 0; j<[fonts count]; j++) {
+            
+            NSLog(@"FontName:%@",[fonts objectAtIndex:j]);
+            
+        }
+        
     }
 }
 

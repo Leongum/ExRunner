@@ -39,7 +39,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [moreTableView reloadData];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     UIViewController *destination = segue.destinationViewController;
@@ -129,13 +132,20 @@
             break;
         }
     }
-    [RORUtils setFontFamily:@"FZKaTong-M19S" forView:cell andSubViews:YES];
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
 
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row== 2)
+    {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        UISwitch *switchCtrl = (UISwitch *)[cell viewWithTag:2];
+        [switchCtrl setOn:!switchCtrl.on animated:YES];
+//        [self syncModeSwitchChangeHandler:switchCtrl];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

@@ -19,6 +19,7 @@ typedef enum {DISTANCE = 1, DURATION = 2, MISSIONTYPE = 3} controlInHistoryTable
 @property (strong, nonatomic) NSMutableArray *dateList;
 @property (strong, nonatomic) NSArray *sortedDateList;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UILabel *noHistoryMessageLabel;
 
 - (IBAction)syncAction:(id)sender;
 - (void)refreshTable;

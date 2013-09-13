@@ -7,6 +7,7 @@
 //
 
 #import "RORChanllengeRunViewController.h"
+#import "FTAnimation.h"
 
 @interface RORChanllengeRunViewController ()
 
@@ -50,6 +51,7 @@
     }
     
     [self controllerInit];
+    [self navigationInit];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -78,7 +80,7 @@
     
     timeLabel.text = @"00:00:00";
     speedLabel.text = [RORUserUtils formatedSpeed:0];
-    distanceLabel.text = [RORUtils outputDistance:mission.missionDistance];
+    distanceLabel.text = [RORUtils outputDistance:mission.missionDistance.doubleValue-distance];
     mapView.frame = SCALE_SMALL;
     
     doCollect = NO;
@@ -93,7 +95,7 @@
     
     MKwasFound = NO;
     timerCount = 0;
-    distance = 0;
+    distance = mission.missionDistance.doubleValue;
     isStarted = NO;
 }
 
@@ -146,7 +148,6 @@
 
 -(void)awakeFromNib {
     [super awakeFromNib];
-    [self navigationInit];
 }
 
 ////center the map to userLocation of MKMapView
@@ -216,8 +217,15 @@
     
 }
 
+-(void)startButtonAnimation{
+    [Animations rotate:startButton andAnimationDuration:0.3 andWait:NO andAngle:-45];
+    [startButton flyOut:0.3 delegate:self];
+    [startButton backOutTo:kFTAnimationBottom withFade:NO duration:0.3 delegate:self];
+}
 
 - (IBAction)startButtonAction:(id)sender {
+    [self startButtonAnimation];
+
     if (!isStarted){
         isStarted = YES;
         if (self.startTime == nil){
@@ -240,15 +248,11 @@
             [routePoints addObject:formerLocation];
             [self drawLineWithLocationArray:routePoints];
             
-            //            [self pushPoint];
         }
         
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(timerDot) userInfo:nil repeats:YES];
         self.repeatingTimer = timer;
         
-        UIImage *image = [UIImage imageNamed:@"redbutton_bg.png"];
-        [startButton setBackgroundImage:image forState:UIControlStateNormal];
-        [startButton setTitle:PAUSSE_RUNNING_BUTTON forState:UIControlStateNormal];
         [endButton setEnabled:YES];
     } else {
         [repeatingTimer invalidate];
@@ -281,7 +285,7 @@
     if (duration - intTime < 0.001){ //1 second
         //    if (time % 3 == 0){
         [self pushPoint];
-        distanceLabel.text = [RORUtils outputDistance:[NSNumber numberWithDouble:distance]];
+        distanceLabel.text = [RORUtils outputDistance:mission.missionDistance.doubleValue-distance];
         speedLabel.text = [RORUserUtils formatedSpeed:(float)distance/duration];
         //    }
     }
@@ -292,11 +296,11 @@
 - (void)pushPoint{
     CLLocation *currentLocation = [self getNewRealLocation];
     if (formerLocation != currentLocation){
-        distance -= [formerLocation distanceFromLocation:currentLocation];
+        distance += [formerLocation distanceFromLocation:currentLocation];
         formerLocation = currentLocation;
         [routePoints addObject:currentLocation];
         [self drawLineWithLocationArray:routePoints];
-        if (distance<=0)
+        if (distance>=mission.missionDistance.doubleValue)
             [self endButtonAction:self];
     }
 }

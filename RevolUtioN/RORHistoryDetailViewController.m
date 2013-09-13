@@ -40,12 +40,14 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    distanceLabel.text = [NSString stringWithFormat:@"%.1f", [record.distance floatValue]];
-    speedLabel.text = [NSString stringWithFormat:@"%.1f", [record.avgSpeed floatValue]];
-    durationLabel.text = [RORUtils transSecondToStandardFormat:[record.duration integerValue]];
-    energyLabel.text = [NSString stringWithFormat:@"%d", [record.spendCarlorie integerValue]];
-    scoreLabel.text = [NSString stringWithFormat:@"%d", [record.scores integerValue]];
-    experienceLabel.text = [NSString stringWithFormat:@"%d" ,[record.experience integerValue]];
+    distanceLabel.text = [RORUtils outputDistance:record.distance.doubleValue];
+    speedLabel.text = [RORUserUtils formatedSpeed:record.avgSpeed.doubleValue/3.6];
+    durationLabel.text = [RORUtils transSecondToStandardFormat:record.duration.integerValue];
+    energyLabel.text = [NSString stringWithFormat:@"%.1f kca", record.spendCarlorie.doubleValue];
+    
+    scoreLabel.text = [NSString stringWithFormat:@"%@", record.grade];
+    bonusLabel.text = [NSString stringWithFormat:@"%@", record.scores];
+    experienceLabel.text = [NSString stringWithFormat:@"%@" , record.experience];
 //    [self.navigationItem.backBarButtonItem setAction:@selector(backToMain:)];
 //    [delegate viewDidLoad];
 }

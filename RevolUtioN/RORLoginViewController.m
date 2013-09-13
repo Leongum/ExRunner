@@ -73,6 +73,13 @@
     }
 }
 
+-(IBAction)nickNameTapped:(id)sender{
+//    nicknameTextField.backgroundColor = [UIColor lightGrayColor];
+    CGRect rx = [ UIScreen mainScreen ].applicationFrame;
+    if (rx.size.height-nicknameTextField.frame.origin.y + nicknameTextField.frame.size.height<=260)
+        [Animations moveUp:self.view andAnimationDuration:0.3 andWait:NO andLength:75];
+}
+
 //提交用户名密码之后的操作
 - (IBAction)loginAction:(id)sender {
     if(![RORNetWorkUtils getIsConnetioned]){
@@ -130,6 +137,8 @@
     [usernameTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
     [nicknameTextField resignFirstResponder];
+    if (self.view.frame.origin.y<0)
+        [Animations moveDown:self.view andAnimationDuration:0.3 andWait:NO andLength:75];
 }
 
 - (IBAction)usernameDone:(id)sender {
@@ -179,6 +188,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setScrollView:nil];
     
     [self setBtnRenRenLogin:nil];
     [self setBtnQQLogin:nil];

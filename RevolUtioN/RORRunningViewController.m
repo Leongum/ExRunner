@@ -290,7 +290,7 @@
     if (duration - intTime < 0.001){ //1 second
         //    if (time % 3 == 0){
         [self pushPoint];
-        distanceLabel.text = [RORUtils outputDistance:[NSNumber numberWithDouble:distance]];
+        distanceLabel.text = [RORUtils outputDistance:distance];
         speedLabel.text = [RORUserUtils formatedSpeed:(float)distance/duration];
         //    }
     }
@@ -379,7 +379,7 @@
     User_Running_History *runHistory = [User_Running_History intiUnassociateEntity];
     runHistory.distance = [NSNumber numberWithDouble:distance];
     runHistory.duration = [NSNumber numberWithDouble:duration];
-    runHistory.avgSpeed = [NSNumber numberWithDouble:(double)distance/duration*3.6];
+    runHistory.avgSpeed = [NSNumber numberWithDouble:(double)distance/duration];
     runHistory.missionRoute = [RORDBCommon getStringFromRoutePoints:routePoints];
     runHistory.missionDate = [NSDate date];
     runHistory.missionEndTime = self.endTime;

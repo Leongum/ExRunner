@@ -37,12 +37,14 @@ NSInteger centerLoc =-10000;
 {
     [super viewDidLoad];
     
-    [RORUtils setFontFamily:@"FZKaTong-M19S" forView:self.view andSubViews:YES];
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
     
     [self prepareControlsForAnimation];
     
     //初始化按钮位置
     [self initControlsLayout];
+    
+//    [RORUtils listFontFamilies];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -115,8 +117,11 @@ NSInteger centerLoc =-10000;
         
         User_Base *userInfo = [RORUserServices fetchUser:[RORUserUtils getUserId]];
         self.usernameLabel.text = userInfo.nickName;
-        self.levelLabel.text = [NSString stringWithFormat:@"等级：%@", userInfo.attributes.level];
-        self.scoreLabel.text = [NSString stringWithFormat:@"积分：%@", userInfo.attributes.scores];
+        [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.usernameLabel andSubViews:NO];
+        self.levelLabel.text = [NSString stringWithFormat:@"%.1f", userInfo.attributes.level.doubleValue];
+        [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.levelLabel andSubViews:NO];
+        self.scoreLabel.text = [NSString stringWithFormat:@"%d", userInfo.attributes.scores.integerValue];
+        [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.scoreLabel andSubViews:NO];
     } else {
         self.loginButton.alpha = 1;
     }

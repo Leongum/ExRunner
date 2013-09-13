@@ -33,6 +33,7 @@
 - (IBAction)switchAction:(id)sender;
 - (IBAction)visibilityOfPW:(id)sender;
 - (IBAction)cancelAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSinaLogin;

@@ -4,6 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>chavenir_bold.ttf</string>
+		<string>CJS-GGT.ttf</string>
 		<string>FZKATJW.TTF</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>

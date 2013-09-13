@@ -160,7 +160,7 @@
 {
     // switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
-    NSLog(@"%f",self.scrollView.contentOffset.x);
+//    NSLog(@"%f",self.scrollView.contentOffset.x);
     NSUInteger page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     
 //    CGRect arrowFrame = self.nextPagePointer.frame;
