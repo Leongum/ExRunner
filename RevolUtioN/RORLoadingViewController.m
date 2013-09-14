@@ -34,8 +34,22 @@
     [RORNetWorkUtils initCheckNetWork];
 	// Do any additional setup after loading the view.
     //sync version
-    [RORSystemService syncVersion:@"ios"];
-    [RORSystemService syncSystemMessage];
+    Version_Control *version = [RORSystemService syncVersion:@"ios"];
+    if(version != nil){
+        NSString *missionLastUpdateTime = [RORUserUtils getLastUpdateTime:@"MissionUpdateTime"];
+        NSString *messageLastUpdateTime = [RORUserUtils getLastUpdateTime:@"SystemMessageUpdateTime"];
+        NSTimeInterval messageScape = [version.messageLastUpdateTime timeIntervalSinceDate:[RORUtils getDateFromString:messageLastUpdateTime]];
+        NSTimeInterval missionScape = [version.missionLastUpdateTime timeIntervalSinceDate:[RORUtils getDateFromString:missionLastUpdateTime]];
+        if(messageScape > 0){
+            //sync message
+            [RORSystemService syncSystemMessage];
+        }
+        if(missionScape > 0)
+        {
+            //sync missions
+            [RORMissionServices syncMissions];
+        }
+    }
     //sync user
     NSNumber *userId = [RORUserUtils getUserId];
     if([userId intValue] > 0){
@@ -45,9 +59,6 @@
         //sync userInfo.
         [RORUserServices syncUserInfoById:userId];
     }
-    //sync missions
-    [RORMissionServices syncMissions];
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated{

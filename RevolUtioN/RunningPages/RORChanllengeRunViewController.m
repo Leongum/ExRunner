@@ -381,7 +381,7 @@
 }
 
 -(NSNumber *)calculateScore:(User_Running_History *)runningHistory{
-    NSTimeInterval scape = [runningHistory.missionStartTime timeIntervalSinceDate:runningHistory.missionEndTime];
+    NSTimeInterval scape = [runningHistory.missionEndTime timeIntervalSinceDate:runningHistory.missionStartTime];
     double scores = 0;
     if(scape != 0){
         scores = runningHistory.distance.doubleValue / (scape/60) * runningHistory.distance.doubleValue / 1000;

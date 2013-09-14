@@ -54,7 +54,7 @@
     [RORUserUtils writeToUserInfoPList:userDict];
 }
 
-+(void)syncVersion:(NSString *)platform{
++(Version_Control *)syncVersion:(NSString *)platform{
     NSError *error = nil;
     RORHttpResponse *httpResponse =[RORSystemClientHandler getVersionInfo:platform];
     
@@ -70,9 +70,11 @@
         [RORContextUtils saveContext];
         NSLog(@"%@",versionEntity.systemTime);
         [self saveSystimeTime:[RORUtils getStringFromDate:versionEntity.systemTime]];
+        return [self fetchVersionInfo:platform];
     } else {
         NSLog(@"sync with host error: can't get version info. Status Code: %d", [httpResponse responseStatus]);
     }
+    return nil;
 }
 
 + (BOOL)syncSystemMessage{
