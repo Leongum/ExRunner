@@ -126,6 +126,9 @@
 		30621D3F17E2BCB80063A007 /* sync_apply@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30621D3B17E2BCB70063A007 /* sync_apply@2x.png */; };
 		30621D4117E2D4640063A007 /* CJS-GGT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30621D4017E2D4640063A007 /* CJS-GGT.ttf */; };
 		30621D4317E2DD490063A007 /* chavenir_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30621D4217E2DD490063A007 /* chavenir_bold.ttf */; };
+		30621D4817E45EB70063A007 /* RORPlaySound.m in Sources */ = {isa = PBXBuildFile; fileRef = 30621D4717E45EB70063A007 /* RORPlaySound.m */; };
+		30621D4E17E45F490063A007 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30621D4D17E45F480063A007 /* AudioToolbox.framework */; };
+		30621D5517E4609C0063A007 /* bo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 30621D5417E4609C0063A007 /* bo.wav */; };
 		308FAC6617C64C290025B807 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308FAC6517C64C290025B807 /* icon.png */; };
 		308FAC6817C64C300025B807 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 308FAC6717C64C300025B807 /* icon@2x.png */; };
 		308FAC6B17C65B060025B807 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 308FAC6A17C65B060025B807 /* Reachability.m */; };
@@ -193,8 +196,6 @@
 		30FC292817607F6D00DEC042 /* people@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC292017607F6D00DEC042 /* people@2x.png */; };
 		30FC292917607F6D00DEC042 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC292117607F6D00DEC042 /* settings.png */; };
 		30FC292A17607F6D00DEC042 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC292217607F6D00DEC042 /* settings@2x.png */; };
-		30FC29311760815700DEC042 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC292B1760815700DEC042 /* arrow.png */; };
-		30FC29321760815700DEC042 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC292C1760815700DEC042 /* arrow@2x.png */; };
 		30FC29331760815700DEC042 /* kmperh_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC292D1760815700DEC042 /* kmperh_icon@2x.png */; };
 		30FC29341760815700DEC042 /* km_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC292E1760815700DEC042 /* km_icon@2x.png */; };
 		30FC29351760815700DEC042 /* kmperh_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC292F1760815700DEC042 /* kmperh_icon.png */; };
@@ -436,6 +437,10 @@
 		30621D3B17E2BCB70063A007 /* sync_apply@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync_apply@2x.png"; sourceTree = "<group>"; };
 		30621D4017E2D4640063A007 /* CJS-GGT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CJS-GGT.ttf"; path = "Resources/CJS-GGT.ttf"; sourceTree = "<group>"; };
 		30621D4217E2DD490063A007 /* chavenir_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = chavenir_bold.ttf; path = Resources/chavenir_bold.ttf; sourceTree = "<group>"; };
+		30621D4617E45EB70063A007 /* RORPlaySound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORPlaySound.h; path = Common/RORPlaySound.h; sourceTree = "<group>"; };
+		30621D4717E45EB70063A007 /* RORPlaySound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORPlaySound.m; path = Common/RORPlaySound.m; sourceTree = "<group>"; };
+		30621D4D17E45F480063A007 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		30621D5417E4609C0063A007 /* bo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bo.wav; path = Resources/sound/bo.wav; sourceTree = "<group>"; };
 		308FAC6517C64C290025B807 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		308FAC6717C64C300025B807 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		308FAC6917C65B060025B807 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -536,8 +541,6 @@
 		30FC292017607F6D00DEC042 /* people@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people@2x.png"; sourceTree = "<group>"; };
 		30FC292117607F6D00DEC042 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		30FC292217607F6D00DEC042 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
-		30FC292B1760815700DEC042 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
-		30FC292C1760815700DEC042 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		30FC292D1760815700DEC042 /* kmperh_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kmperh_icon@2x.png"; sourceTree = "<group>"; };
 		30FC292E1760815700DEC042 /* km_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "km_icon@2x.png"; sourceTree = "<group>"; };
 		30FC292F1760815700DEC042 /* kmperh_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kmperh_icon.png; sourceTree = "<group>"; };
@@ -569,6 +572,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30621D4E17E45F490063A007 /* AudioToolbox.framework in Frameworks */,
 				0F8501E317C1C9510005993E /* CoreTelephony.framework in Frameworks */,
 				0F8501E017C1C68E0005993E /* libsqlite3.dylib in Frameworks */,
 				0F8501DE17C1C63E0005993E /* libstdc++.dylib in Frameworks */,
@@ -764,6 +768,8 @@
 				0F535D7017CF90460032F58D /* RORNetWorkUtils.m */,
 				0F07ABF417E0391B0009C8A8 /* RORMessages.h */,
 				0F07ABF517E0391B0009C8A8 /* RORMessages.m */,
+				30621D4617E45EB70063A007 /* RORPlaySound.h */,
+				30621D4717E45EB70063A007 /* RORPlaySound.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -857,9 +863,8 @@
 		301C1F6817378AF30068B43B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				30621D4217E2DD490063A007 /* chavenir_bold.ttf */,
-				30621D4017E2D4640063A007 /* CJS-GGT.ttf */,
-				30A6D9F517CDD8CA00D1116E /* FZKATJW.TTF */,
+				30621D5017E460330063A007 /* Font */,
+				30621D4F17E4602B0063A007 /* sound */,
 				30FC291A17607F6D00DEC042 /* icons */,
 				301C1F6D1737B5B80068B43B /* bg */,
 			);
@@ -925,6 +930,7 @@
 		302FD0031727D870004DA005 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30621D4D17E45F480063A007 /* AudioToolbox.framework */,
 				0F8501D517C1C6160005993E /* CoreTelephony.framework */,
 				30BB0BA7176A03AC0009A847 /* QuartzCore.framework */,
 				30BB0B071769A2E70009A847 /* SystemConfiguration.framework */,
@@ -1035,6 +1041,24 @@
 				30F44B4F1778267200876915 /* RORDBCommon.m */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		30621D4F17E4602B0063A007 /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				30621D5417E4609C0063A007 /* bo.wav */,
+			);
+			name = sound;
+			sourceTree = "<group>";
+		};
+		30621D5017E460330063A007 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				30621D4217E2DD490063A007 /* chavenir_bold.ttf */,
+				30621D4017E2D4640063A007 /* CJS-GGT.ttf */,
+				30A6D9F517CDD8CA00D1116E /* FZKATJW.TTF */,
+			);
+			name = Font;
 			sourceTree = "<group>";
 		};
 		30A6D99F17C6821500D1116E /* FTUtils */ = {
@@ -1180,8 +1204,6 @@
 				30FC2937176082C600DEC042 /* female_icon.png */,
 				30FC2938176082C600DEC042 /* recommand_icon.png */,
 				30FC2939176082C600DEC042 /* inprocess_icon.png */,
-				30FC292B1760815700DEC042 /* arrow.png */,
-				30FC292C1760815700DEC042 /* arrow@2x.png */,
 				30FC292D1760815700DEC042 /* kmperh_icon@2x.png */,
 				30FC292E1760815700DEC042 /* km_icon@2x.png */,
 				30FC292F1760815700DEC042 /* kmperh_icon.png */,
@@ -1327,8 +1349,6 @@
 				30FC292817607F6D00DEC042 /* people@2x.png in Resources */,
 				30FC292917607F6D00DEC042 /* settings.png in Resources */,
 				30FC292A17607F6D00DEC042 /* settings@2x.png in Resources */,
-				30FC29311760815700DEC042 /* arrow.png in Resources */,
-				30FC29321760815700DEC042 /* arrow@2x.png in Resources */,
 				30FC29331760815700DEC042 /* kmperh_icon@2x.png in Resources */,
 				30FC29341760815700DEC042 /* km_icon@2x.png in Resources */,
 				30FC29351760815700DEC042 /* kmperh_icon.png in Resources */,
@@ -1404,6 +1424,7 @@
 				30621D3F17E2BCB80063A007 /* sync_apply@2x.png in Resources */,
 				30621D4117E2D4640063A007 /* CJS-GGT.ttf in Resources */,
 				30621D4317E2DD490063A007 /* chavenir_bold.ttf in Resources */,
+				30621D5517E4609C0063A007 /* bo.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1518,6 +1539,7 @@
 				30621D2717E00ED90063A007 /* RORRunningBaseViewController.m in Sources */,
 				0F07ABF617E0391B0009C8A8 /* RORMessages.m in Sources */,
 				30621D3317E09F880063A007 /* RORChanllengeRunViewController.m in Sources */,
+				30621D4817E45EB70063A007 /* RORPlaySound.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

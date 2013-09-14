@@ -109,8 +109,6 @@ NSInteger centerLoc =-10000;
         self.runButton.frame = RUN_BUTTON_FRAME_RATINA;
         self.challenge.frame = CHALLENGE_BUTTON_FRAME_RATINA;
     }
-    
-    
 }
 
 - (void)initPageData{

@@ -19,6 +19,8 @@
 //    [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpOutside];
 //    [self addTarget:self action:@selector(touchDrag:) forControlEvents:UIControlEventTouchDragOutside]
 //    ;
+    sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"bo.wav"];
+
     return self;
 }
 
@@ -46,6 +48,7 @@
 
 -(IBAction)touchUp:(id)sender{
     self.transform = CGAffineTransformMakeScale(1, 1);
+    [sound play];
 }
 
 -(IBAction)touchDrag:(id)sender{

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RORPlaySound.h"
 
 @interface RORNormalButton : UIButton{
     CGRect originFrame;
     UIImage *normal_bg;
+    RORPlaySound *sound;
 }
 
 
