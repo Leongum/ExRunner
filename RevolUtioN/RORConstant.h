@@ -20,7 +20,8 @@
 #define USER_RUNNING_URL @"http://121.199.56.231:8080/usavich/service/api/running/ongoing/%@?lastUpdateTime=%@"
 #define FRIEND_URL @"http://121.199.56.231:8080/usavich/service/api/account/friends/%@?lastUpdateTime=%@"
 #define MISSION_URL @"http://121.199.56.231:8080/usavich/service/api/missions/mission?lastUpdateTime=%@"
-#define VERSION_URL @"http://121.199.56.231:8080/usavich/service/api/version/%@"
+#define VERSION_URL @"http://121.199.56.231:8080/usavich/service/api/system/version/%@"
+#define SYSTEM_MESSAGE_URL @"http://121.199.56.231:8080/usavich/service/api/system/message/%@"
 #define PM25_URL @"http://121.199.56.231:8080/usavich/service/api/weather/pm25?cityName=%@&provinceName=%@"
 
 

@@ -103,7 +103,7 @@
         
         if (user != nil){
             [self sendNotification:REGISTER_SUCCESS];
-            [self performSelector:@selector(performDismiss) withObject:nil afterDelay:1.5f];
+            [self performSegueWithIdentifier:@"bodySetting" sender:self];
             return;
         } else {
             [self sendNotification:REGISTER_FAIL];

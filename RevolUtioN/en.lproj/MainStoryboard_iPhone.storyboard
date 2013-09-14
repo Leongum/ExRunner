@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="fbj-I0-4lZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E3067" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="fbj-I0-4lZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -227,9 +227,6 @@
                                     <segment title="男"/>
                                     <segment title="女"/>
                                 </segments>
-                                <connections>
-                                    <segue destination="B7d-5Y-71V" kind="push" identifier="bodySetting" id="IrS-Dp-vq2"/>
-                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="mRf-ge-RyB">
                                 <rect key="frame" x="91" y="35" width="143" height="30"/>
@@ -330,6 +327,7 @@
                                 </state>
                                 <connections>
                                     <action selector="qqAccountLogin:" destination="ZbL-oL-5D5" eventType="touchUpInside" id="HYk-D6-hea"/>
+                                    <segue destination="B7d-5Y-71V" kind="push" identifier="bodySetting" id="uPX-LH-ce9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WDC-zq-Dcx">
@@ -2178,7 +2176,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="IrS-Dp-vq2"/>
         <segue reference="tZI-uj-hCk"/>
+        <segue reference="uPX-LH-ce9"/>
     </inferredMetricsTieBreakers>
 </document>
