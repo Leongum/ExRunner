@@ -16,7 +16,7 @@
 
 @interface RORSystemService : NSObject
 
-+(void)syncVersion:(NSString *)platform;
++(Version_Control *)syncVersion:(NSString *)platform;
 
 +(BOOL)syncSystemMessage;
 

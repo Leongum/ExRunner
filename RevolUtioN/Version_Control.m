@@ -17,6 +17,8 @@
 @dynamic subVersion;
 @dynamic systemTime;
 @dynamic version;
+@dynamic missionLastUpdateTime;
+@dynamic messageLastUpdateTime;
 
 +(Version_Control *) removeAssociateForEntity:(Version_Control *)associatedEntity{
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
@@ -29,11 +31,13 @@
 }
 
 -(void)initWithDictionary:(NSDictionary *)dict{
-        self.platform = [RORDBCommon getStringFromId:[dict valueForKey:@"platform"]];
-        self.version = [RORDBCommon getNumberFromId:[dict valueForKey:@"version"]];
-        self.subVersion = [RORDBCommon getNumberFromId:[dict valueForKey:@"subVersion"]];
-        self.decs = [RORDBCommon getStringFromId:[dict valueForKey:@"description"]];
-        self.systemTime = [RORDBCommon getDateFromId:[dict valueForKey:@"systemTime"]];
+    self.platform = [RORDBCommon getStringFromId:[dict valueForKey:@"platform"]];
+    self.version = [RORDBCommon getNumberFromId:[dict valueForKey:@"version"]];
+    self.subVersion = [RORDBCommon getNumberFromId:[dict valueForKey:@"subVersion"]];
+    self.decs = [RORDBCommon getStringFromId:[dict valueForKey:@"description"]];
+    self.systemTime = [RORDBCommon getDateFromId:[dict valueForKey:@"systemTime"]];
+    self.missionLastUpdateTime = [RORDBCommon getDateFromId:[dict valueForKey:@"missionLastUpdateTime"]];
+    self.messageLastUpdateTime = [RORDBCommon getDateFromId:[dict valueForKey:@"messageLastUpdateTime"]];
 }
 
 @end

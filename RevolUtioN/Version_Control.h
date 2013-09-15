@@ -17,6 +17,8 @@
 @property (nonatomic, retain) NSNumber * subVersion;
 @property (nonatomic, retain) NSDate * systemTime;
 @property (nonatomic, retain) NSNumber * version;
+@property (nonatomic, retain) NSDate * missionLastUpdateTime;
+@property (nonatomic, retain) NSDate * messageLastUpdateTime;
 
 +(Version_Control *) removeAssociateForEntity:(Version_Control *)associatedEntity;
 
