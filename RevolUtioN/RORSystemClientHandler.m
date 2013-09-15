@@ -16,5 +16,10 @@
     return httpResponse;
 }
 
++(RORHttpResponse *)getSystemMessage:(NSString *) lastUpdateTime{
+    NSString *url = [NSString stringWithFormat:SYSTEM_MESSAGE_URL, lastUpdateTime];
+    RORHttpResponse *httpResponse = [RORHttpClientHandler getRequest:url];
+    return httpResponse;
+}
 
 @end

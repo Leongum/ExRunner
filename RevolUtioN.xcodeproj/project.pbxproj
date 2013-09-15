@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F07ABF617E0391B0009C8A8 /* RORMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F07ABF517E0391B0009C8A8 /* RORMessages.m */; };
+		0F07AC0D17E44D280009C8A8 /* System_Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F07AC0C17E44D260009C8A8 /* System_Message.m */; };
 		0F0D589217B0E4680046515C /* RORLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589117B0E4680046515C /* RORLoadingViewController.m */; };
 		0F0D589817B23F490046515C /* RORThirdPartyClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589717B23F490046515C /* RORThirdPartyClientHandler.m */; };
 		0F0D589B17B249230046515C /* RORThirdPartyService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589A17B249230046515C /* RORThirdPartyService.m */; };
@@ -262,6 +263,8 @@
 /* Begin PBXFileReference section */
 		0F07ABF417E0391B0009C8A8 /* RORMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMessages.h; sourceTree = "<group>"; };
 		0F07ABF517E0391B0009C8A8 /* RORMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMessages.m; sourceTree = "<group>"; };
+		0F07AC0B17E44D240009C8A8 /* System_Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = System_Message.h; sourceTree = "<group>"; };
+		0F07AC0C17E44D260009C8A8 /* System_Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = System_Message.m; sourceTree = "<group>"; };
 		0F0D589017B0E4680046515C /* RORLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORLoadingViewController.h; sourceTree = "<group>"; };
 		0F0D589117B0E4680046515C /* RORLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORLoadingViewController.m; sourceTree = "<group>"; };
 		0F0D589617B23F490046515C /* RORThirdPartyClientHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORThirdPartyClientHandler.h; sourceTree = "<group>"; };
@@ -1039,6 +1042,8 @@
 				0F16EF6617CD9F1E0055DEE6 /* Friend.m */,
 				30F44B4E1778267200876915 /* RORDBCommon.h */,
 				30F44B4F1778267200876915 /* RORDBCommon.m */,
+				0F07AC0B17E44D240009C8A8 /* System_Message.h */,
+				0F07AC0C17E44D260009C8A8 /* System_Message.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -1540,6 +1545,7 @@
 				0F07ABF617E0391B0009C8A8 /* RORMessages.m in Sources */,
 				30621D3317E09F880063A007 /* RORChanllengeRunViewController.m in Sources */,
 				30621D4817E45EB70063A007 /* RORPlaySound.m in Sources */,
+				0F07AC0D17E44D280009C8A8 /* System_Message.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

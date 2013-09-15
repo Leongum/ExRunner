@@ -16,4 +16,6 @@
 
 +(RORHttpResponse *)getVersionInfo:(NSString *) platform;
 
++(RORHttpResponse *)getSystemMessage:(NSString *) lastUpdateTime;
+
 @end

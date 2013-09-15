@@ -91,6 +91,12 @@
         <attribute name="missionType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="runningTime" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
+    <entity name="System_Message" representedClassName="System_Message" syncable="YES">
+        <attribute name="lastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="rule" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="User_Attributes" representedClassName="User_Attributes" syncable="YES">
         <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="baseAcc" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -182,6 +188,7 @@
         <element name="Place_Package" positionX="313" positionY="-0" width="128" height="120"/>
         <element name="Products" positionX="7" positionY="384" width="128" height="345"/>
         <element name="Running_Invite" positionX="-315" positionY="414" width="128" height="210"/>
+        <element name="System_Message" positionX="-155" positionY="459" width="128" height="105"/>
         <element name="User_Attributes" positionX="153" positionY="324" width="128" height="300"/>
         <element name="User_Base" positionX="-153" positionY="297" width="128" height="135"/>
         <element name="User_Last_Location" positionX="-153" positionY="165" width="128" height="105"/>

@@ -11,10 +11,13 @@
 #import "RORHttpResponse.h"
 #import "RORSystemClientHandler.h"
 #import "Version_Control.h"
+#import "System_Message.h"
 #import "RORContextUtils.h"
 
 @interface RORSystemService : NSObject
 
 +(void)syncVersion:(NSString *)platform;
+
++(BOOL)syncSystemMessage;
 
 @end

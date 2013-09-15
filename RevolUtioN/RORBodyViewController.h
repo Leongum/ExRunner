@@ -25,6 +25,7 @@
     int selection;
 }
 
+@property (strong, nonatomic) UIViewController *delegate;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) IBOutlet RORBottomPopSubview *coverView;
 @property (retain, nonatomic) IBOutlet User_Base *content;

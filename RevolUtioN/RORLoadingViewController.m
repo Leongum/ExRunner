@@ -35,6 +35,7 @@
 	// Do any additional setup after loading the view.
     //sync version
     [RORSystemService syncVersion:@"ios"];
+    [RORSystemService syncSystemMessage];
     //sync user
     NSNumber *userId = [RORUserUtils getUserId];
     if([userId intValue] > 0){

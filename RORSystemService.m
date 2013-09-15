@@ -29,6 +29,25 @@
     return  (Version_Control *) [fetchObject objectAtIndex:0];
 }
 
++ (System_Message *)fetchSystemMessageInfo:(NSNumber *) messageId{
+    return [self fetchSystemMessageInfo:messageId withContext:NO];
+}
+
++ (System_Message *)fetchSystemMessageInfo:(NSNumber *) messageId withContext:(BOOL) needContext{
+    
+    NSString *table=@"System_Message";
+    NSString *query = @"messageId = %@";
+    NSArray *params = [NSArray arrayWithObjects:messageId, nil];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    if (fetchObject == nil || [fetchObject count] == 0) {
+        return nil;
+    }
+    if(!needContext){
+        return [System_Message removeAssociateForEntity:(System_Message *) [fetchObject objectAtIndex:0]];
+    }
+    return  (System_Message *) [fetchObject objectAtIndex:0];
+}
+
 + (void) saveSystimeTime:(NSString *)systemTime{
     NSMutableDictionary *userDict = [RORUserUtils getUserInfoPList];
     [userDict setValue:systemTime forKey:@"systemTime"];
@@ -54,6 +73,32 @@
     } else {
         NSLog(@"sync with host error: can't get version info. Status Code: %d", [httpResponse responseStatus]);
     }
+}
+
++ (BOOL)syncSystemMessage{
+    NSError *error = nil;
+    NSManagedObjectContext *context = [RORContextUtils getShareContext];
+    NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"SystemMessageUpdateTime"];
+    
+    RORHttpResponse *httpResponse =[RORSystemClientHandler getSystemMessage:lastUpdateTime];
+    
+    if ([httpResponse responseStatus]  == 200){
+        NSArray *messageList = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
+        for (NSDictionary *messageDict in messageList){
+            NSNumber *messageId = [messageDict valueForKey:@"messageId"];
+            System_Message *messageEntity = [self fetchSystemMessageInfo:messageId withContext:YES];
+            if(messageEntity == nil)
+                messageEntity = [NSEntityDescription insertNewObjectForEntityForName:@"System_Message" inManagedObjectContext:context];
+            [messageEntity initWithDictionary:messageDict];
+        }
+        
+        [RORContextUtils saveContext];
+        [RORUserUtils saveLastUpdateTime:@"SystemMessageUpdateTime"];
+    } else {
+        NSLog(@"sync with host error: can't get sync message list. Status Code: %d", [httpResponse responseStatus]);
+        return NO;
+    }
+    return YES;
 }
 
 @end

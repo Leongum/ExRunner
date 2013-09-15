@@ -8,6 +8,8 @@
 
 #import "RORBodyViewController.h"
 #import "FTAnimation.h"
+#import "RORMoreViewController.h"
+#import "RORLoginViewController.h"
 
 @interface RORBodyViewController ()
 
@@ -15,6 +17,7 @@
 
 @implementation RORBodyViewController
 @synthesize content;
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +32,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.backButton.alpha = 0;
     self.coverView.alpha = 0;
     [self loadData];
 }
@@ -85,7 +89,7 @@
 
 -(void)hideCoverView{
     [Animations fadeOut:self.coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
-    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:YES];
+//    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:YES];
 }
 
 -(void)showCoverView{
@@ -93,7 +97,7 @@
     [self.coverView popIn:0.4 delegate:nil];
     
     //    [Animations fadeIn:self.coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
-    [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:YES];
+//    [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:YES];
 }
 
 - (IBAction)coverViewTap:(id)sender {
@@ -120,9 +124,13 @@
     [self hideCoverView];
 }
 
--(IBAction)backAction:(id)sender{
+-(IBAction)submitAction:(id)sender{
     [self saveAction];
-    [super backAction:sender];
+    if ([delegate isKindOfClass:[RORLoginViewController class]]){
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 

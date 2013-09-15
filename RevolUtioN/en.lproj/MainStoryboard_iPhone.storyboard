@@ -227,9 +227,6 @@
                                     <segment title="男"/>
                                     <segment title="女"/>
                                 </segments>
-                                <connections>
-                                    <segue destination="B7d-5Y-71V" kind="push" identifier="bodySetting" id="IrS-Dp-vq2"/>
-                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="mRf-ge-RyB">
                                 <rect key="frame" x="91" y="35" width="143" height="30"/>
@@ -330,6 +327,7 @@
                                 </state>
                                 <connections>
                                     <action selector="qqAccountLogin:" destination="ZbL-oL-5D5" eventType="touchUpInside" id="HYk-D6-hea"/>
+                                    <segue destination="B7d-5Y-71V" kind="push" identifier="bodySetting" id="uPX-LH-ce9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WDC-zq-Dcx">
@@ -1772,6 +1770,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kKY-NS-yZk" userLabel="submit Button" customClass="RORNormalButton">
+                                <rect key="frame" x="255" y="15" width="55" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="13"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="28" maxX="0.0" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
+                                <state key="normal" backgroundImage="submit.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginAction:" destination="ZbL-oL-5D5" eventType="touchUpInside" id="jmg-YX-3at"/>
+                                    <action selector="submitAction:" destination="B7d-5Y-71V" eventType="touchUpInside" id="so1-kl-wRq"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="zNJ-up-nr9">
                                 <rect key="frame" x="43" y="101" width="244" height="280"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
@@ -1926,6 +1939,20 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgg-AL-AZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UsQ-o5-Hq6" customClass="RORNormalButton">
+                    <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="13"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="28" maxX="0.0" maxY="0.0"/>
+                    <size key="titleShadowOffset" width="0.0" height="1"/>
+                    <state key="normal" backgroundImage="submit.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="loginAction:" destination="ZbL-oL-5D5" eventType="touchUpInside" id="625-Uq-qMy"/>
+                    </connections>
+                </button>
             </objects>
             <point key="canvasLocation" x="4124" y="1314"/>
         </scene>
@@ -1968,6 +1995,9 @@
         <class className="RORBodyViewController" superclassName="RORViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RORBodyViewController.h"/>
             <relationships>
+                <relationship kind="action" name="coverViewTap:"/>
+                <relationship kind="action" name="selectSexAction:"/>
+                <relationship kind="action" name="submitAction:"/>
                 <relationship kind="outlet" name="content" candidateClass="User_Base"/>
                 <relationship kind="outlet" name="coverView" candidateClass="RORBottomPopSubview"/>
                 <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
@@ -2083,6 +2113,7 @@
                 <relationship kind="action" name="backgroundTap:"/>
                 <relationship kind="action" name="cancelAction:"/>
                 <relationship kind="action" name="loginAction:"/>
+                <relationship kind="action" name="nickNameTapped:"/>
                 <relationship kind="action" name="passwordDone:"/>
                 <relationship kind="action" name="qqAccountLogin:"/>
                 <relationship kind="action" name="renrenAccountLogin:"/>
@@ -2173,7 +2204,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="wyF-zp-Z04"/>
-        <segue reference="IrS-Dp-vq2"/>
+        <segue reference="tZI-uj-hCk"/>
+        <segue reference="uPX-LH-ce9"/>
     </inferredMetricsTieBreakers>
 </document>
