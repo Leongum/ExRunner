@@ -103,4 +103,39 @@
     return YES;
 }
 
++ (NSString *)getSystemMessage:(NSNumber *)messageId {
+   return [self getSystemMessage:messageId withRegion:nil];
+}
+
++ (NSString *)getSystemMessage:(NSNumber *)messageId withRegion:(NSNumber *)region{
+    NSString *result = @"";
+    System_Message *message = [self fetchSystemMessageInfo:messageId];
+    //if have no messages do sync
+    if(message == nil){
+        [self syncSystemMessage];
+        message = [self fetchSystemMessageInfo:messageId];
+    }
+    //logic to return message
+    if(message != nil){
+        result = message.message;
+        if(region != nil && [message.rule length] != 0){
+            NSArray *messageArray = [message.message componentsSeparatedByString:@"|"];
+            NSArray *ruleArray = [message.rule componentsSeparatedByString:@"|"];
+            if([messageArray count] == [ruleArray count] && [ruleArray count] > 1){
+                for (int i = 0; i< [ruleArray count]; i++)
+                {
+                    NSArray *ruleDetails = [(NSString *)[ruleArray objectAtIndex:i] componentsSeparatedByString:@","];
+                    double left = ((NSNumber *)[ruleDetails objectAtIndex:0]).doubleValue;
+                    double right = ((NSNumber *)[ruleDetails objectAtIndex:1]).doubleValue;
+                    if(region.doubleValue <= right &&  region.doubleValue > left){
+                        result = (NSString *)[messageArray objectAtIndex:i];
+                    }
+                }
+            }
+        }
+    }
+    //default value is empty
+    return result;
+}
+
 @end

@@ -177,8 +177,10 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    if (!wasFound){
-        wasFound = YES;
+    if([newLocation.timestamp timeIntervalSinceNow] <= (60 * 2)){
+        if (!wasFound){
+            wasFound = YES;
+        }
     }
 }
 
