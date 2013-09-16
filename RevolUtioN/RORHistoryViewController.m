@@ -71,13 +71,7 @@
     runHistoryList = [[NSMutableDictionary alloc] init];
     dateList = [[NSMutableArray alloc] init];
     
-//    RORAppDelegate *delegate = (RORAppDelegate *)[[UIApplication sharedApplication] delegate];
-//    NSManagedObjectContext *context = delegate.managedObjectContext;
-//    NSEntityDescription *historyEntity = [NSEntityDescription entityForName:@"User_Running_History" inManagedObjectContext:context];
-//    
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-//    [fetchRequest setEntity:historyEntity];
-//    NSError *error = nil;
+
     NSArray *fetchObject = [RORRunHistoryServices fetchRunHistory];
     if (fetchObject>0){
         [self showContent];
@@ -104,12 +98,7 @@
     } else {
         [self hideContent];
     }
-    //    NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"string"
-    //																   ascending:NO
-    //																	selector:@selector(localizedCaseInsensitiveCompare:)] ;
-	
-    //	NSArray *descriptors = [NSArray arrayWithObject:dateDescriptor];
-    //    [dateList sortUsingDescriptors:descriptors];
+
     sortedDateList = [dateList sortedArrayUsingComparator:^(NSString *str1, NSString *str2){
         return [str2 compare:str1];
     }];

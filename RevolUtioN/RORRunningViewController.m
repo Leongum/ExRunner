@@ -287,7 +287,7 @@
     [self inertiaNavi];
     
     NSInteger intTime = (NSInteger)time;
-    if (duration - intTime < 0.001){ //1 second
+    if (duration - intTime < 0.00001){ //1 second
         //    if (time % 3 == 0){
         [self pushPoint];
         distanceLabel.text = [RORUtils outputDistance:distance];
@@ -304,7 +304,7 @@
         distance += [formerLocation distanceFromLocation:currentLocation];
         formerLocation = currentLocation;
         [routePoints addObject:currentLocation];
-        [self drawLineWithLocationArray:routePoints];
+//        [self drawLineWithLocationArray:routePoints];
     }
 }
 
@@ -441,10 +441,8 @@
 {
     //    [self updateLocation];
     
-    if (self.routeLine != nil){
-        [mapView removeOverlay:self.routeLine];
-        self.routeLine = nil;
-    }
+    [mapView removeOverlays:[mapView overlays]];
+
     int pointCount = [locationArray count];
     CLLocationCoordinate2D *coordinateArray = (CLLocationCoordinate2D *)malloc(pointCount * sizeof(CLLocationCoordinate2D));
     
@@ -454,10 +452,10 @@
     }
     
     routeLine = [MKPolyline polylineWithCoordinates:coordinateArray count:pointCount];
-    self.routeLineShadow = [MKPolyline polylineWithCoordinates:coordinateArray count:pointCount];
+//    self.routeLineShadow = [MKPolyline polylineWithCoordinates:coordinateArray count:pointCount];
     
     //    [mapView setVisibleMapRect:[routeLine boundingMapRect]];
-    [mapView addOverlay:self.routeLineShadow];
+//    [mapView addOverlay:self.routeLineShadow];
     [mapView addOverlay:routeLine];
     free(coordinateArray);
     coordinateArray = NULL;
@@ -490,15 +488,16 @@
         //        }
         overlayView = self.routeLineView;
         
-    } else if (overlay == self.routeLineShadow){
-        self.routeLineShadowView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
-        //        self.routeLineView.fillColor = [UIColor colorWithRed:223 green:8 blue:50 alpha:1];
-        self.routeLineShadowView.strokeColor = [UIColor colorWithRed:107.0/255.0 green:96.0/255.0 blue:97.0/255.0 alpha:1];
-        self.routeLineShadowView.lineWidth = 12;
-        //        }
-        
-        overlayView = self.routeLineShadowView;
     }
+//    else if (overlay == self.routeLineShadow){
+//        self.routeLineShadowView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
+//        //        self.routeLineView.fillColor = [UIColor colorWithRed:223 green:8 blue:50 alpha:1];
+//        self.routeLineShadowView.strokeColor = [UIColor colorWithRed:107.0/255.0 green:96.0/255.0 blue:97.0/255.0 alpha:1];
+//        self.routeLineShadowView.lineWidth = 12;
+//        //        }
+//        
+//        overlayView = self.routeLineShadowView;
+//    }
     
     
     return overlayView;

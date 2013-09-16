@@ -66,7 +66,7 @@
         avgSpeed += historyObj.avgSpeed.doubleValue;
     }
     avgSpeed/=fetchObject.count;
-    if (fetchObject.count>0){
+    if (fetchObject.count>0 && totalDistance >0){
         [self showContents];
         self.totalDistanceLabel.text = [RORUtils outputDistance:totalDistance];
         self.totalSpeedLabel.text = [RORUserUtils formatedSpeed:avgSpeed];

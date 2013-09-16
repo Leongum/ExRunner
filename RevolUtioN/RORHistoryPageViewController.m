@@ -160,21 +160,8 @@
 {
     // switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
-//    NSLog(@"%f",self.scrollView.contentOffset.x);
     NSUInteger page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    
-//    CGRect arrowFrame = self.nextPagePointer.frame;
-//    if (arrowFrame.origin.x<0)
-//        self.nextPagePointer.frame = CGRectMake(0, arrowFrame.origin.y, arrowFrame.size.width, arrowFrame.size.height);
-    
     self.pageControl.currentPage = page;
-    
-    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
-//    [self loadPage:0];
-//    [self loadUserInfoRunHistoryPage:1];
-//    [self loadUserInfoDoneMissionsPage:2];
-    
-    // a possible optimization would be to unload the views+controllers which are no longer visible
 }
 
 - (void)gotoPage:(BOOL)animated
@@ -213,9 +200,12 @@
 - (IBAction)showFilter:(id)sender {
     self.coverView.alpha = 1 - self.coverView.alpha;
     if (self.coverView.alpha ==0){
+        [Animations fadeOut:self.coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
         [self updateFilter];
         [listViewController refreshTable];
         [statisticsViewController viewWillAppear:NO];
+    } else {
+        [Animations fadeIn:self.coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
     }
 }
 

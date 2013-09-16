@@ -139,13 +139,6 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row== 2)
-    {
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        UISwitch *switchCtrl = (UISwitch *)[cell viewWithTag:2];
-        [switchCtrl setOn:!switchCtrl.on animated:YES];
-//        [self syncModeSwitchChangeHandler:switchCtrl];
-    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
