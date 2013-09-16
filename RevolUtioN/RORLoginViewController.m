@@ -58,7 +58,45 @@
                                         ShareTypeTencentWeibo]
                             bundleName:@"Resource"];
     [self.btnTencentLogin setBackgroundImage:img forState:UIControlStateNormal];
+    
+    RORSegmentControl *seg = [[RORSegmentControl alloc]initWithFrame:CGRectMake(66, 28, 188, 38) andSegmentNumber:2];
+    seg.delegate = self;
+    [seg setSegmentTitle:@"登录" withIndex:0];
+    [seg setSegmentTitle:@"注册" withIndex:1];
+    
+//    [seg addObserver:self forKeyPath:@"selectionIndex" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    [self.view addSubview:seg];
 }
+
+//-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+//
+//{
+//    
+//    if([keyPath isEqualToString:@"selectionIndex"])
+//        
+//    {
+//        
+//        NSLog(@"%@",change);
+//        
+//    }  
+//    
+//}
+
+#pragma RORSegmentControl-Delegate======
+
+-(void)SegmentValueChanged:(NSInteger)segmentIndex{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    [UIView setAnimationDuration:0.2];
+    
+    nicknameTextField.alpha = segmentIndex;
+    sexButton.alpha = segmentIndex;
+    
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
+    [UIView commitAnimations];
+}
+//=======
 
 - (void)didReceiveMemoryWarning
 {
@@ -87,7 +125,7 @@
         return;
     }
     if (![self isLegalInput]) return;
-    if (switchButton.selectedSegmentIndex == 0){ //登录
+    if (switchButton.selectionIndex == 0){ //登录
         NSString *userName = usernameTextField.text;
         NSString *password = [RORUtils md5:passwordTextField.text];
         User_Base *user = [RORUserServices syncUserInfoByLogin:userName withUserPasswordL:password];
@@ -116,7 +154,7 @@
 }
 
 - (BOOL) isLegalInput {
-    if (switchButton.selectedSegmentIndex == 0){
+    if (switchButton.selectionIndex == 0){
         if ([usernameTextField.text isEqualToString:@""] ||
             [passwordTextField.text isEqualToString:@""]) {
             [self sendNotification:LOGIN_INPUT_CHECK];
@@ -149,16 +187,7 @@
 }
 
 - (IBAction)switchAction:(id)sender {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    [UIView setAnimationDuration:0.2];
     
-    nicknameTextField.alpha = [sender selectedSegmentIndex];
-    sexButton.alpha = [sender selectedSegmentIndex];
-    
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
-    [UIView commitAnimations];
 }
 
 - (IBAction)visibilityOfPW:(id)sender {

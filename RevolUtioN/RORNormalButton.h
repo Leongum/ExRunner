@@ -15,5 +15,5 @@
     RORPlaySound *sound;
 }
 
-
+-(void)initButtonInteraction;
 @end

@@ -13,14 +13,7 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
-    [self addTarget:self action:@selector(pressOn:) forControlEvents:UIControlEventTouchDown];
-    [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpInside];
-    [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpOutside];
-//    [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpOutside];
-//    [self addTarget:self action:@selector(touchDrag:) forControlEvents:UIControlEventTouchDragOutside]
-//    ;
-    sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"bo.wav"];
-
+    [self initButtonInteraction];
     return self;
 }
 
@@ -28,9 +21,19 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [self initButtonInteraction];
         // Initialization code
     }
     return self;
+}
+
+-(void)initButtonInteraction{
+    [self addTarget:self action:@selector(pressOn:) forControlEvents:UIControlEventTouchDown];
+    [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpInside];
+    [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpOutside];
+    self.adjustsImageWhenDisabled = NO;
+    self.adjustsImageWhenHighlighted = NO;
+    sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"bo.wav"];
 }
 
 /*

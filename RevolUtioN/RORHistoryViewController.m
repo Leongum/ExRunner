@@ -61,7 +61,7 @@
     //syncButtonItem.enabled = ([RORUtils hasLoggedIn]!=nil);
 //    [self initTableData];
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.noHistoryMessageLabel andSubViews:NO];
-    self.noHistoryMessageLabel.text = NO_HISTORY;
+    self.noHistoryMessageLabel.text = @"真的一次都没有跑过耶";
     self.noHistoryMessageLabel.alpha = 0;
 }
 
