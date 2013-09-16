@@ -44,7 +44,7 @@ NSInteger centerLoc =-10000;
     //初始化按钮位置
     [self initControlsLayout];
     
-//    [RORUtils listFontFamilies];
+    //    [RORUtils listFontFamilies];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -54,8 +54,8 @@ NSInteger centerLoc =-10000;
 
 -(void)prepareControlsForAnimation{
     hasAnimated = NO;
-//    self.chactorView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
-//    self.chactorView.frame = CHARACTOR_FRAME_NORMAL;
+    //    self.chactorView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
+    //    self.chactorView.frame = CHARACTOR_FRAME_NORMAL;
     self.chactorView.alpha = 0;
     self.charactorWindView.alpha = 0;
     self.weatherInfoButtonView.frame = WEATHER_BUTTON_INITIAL_FRAME;
@@ -87,15 +87,14 @@ NSInteger centerLoc =-10000;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    userLocation = newLocation;
-    wasFound = YES; 
-    if (wasFound){
-//        [locationManager stopUpdatingLocation];
-        [self getCitynameByLocation];
+    if([newLocation.timestamp timeIntervalSinceNow] <= (60 * 2)){
+        userLocation = newLocation;
+        wasFound = YES;
+        if (wasFound){
+            [locationManager stopUpdatingLocation];
+            [self getCitynameByLocation];
+        }
     }
-//    NSLog(@"Device did %f meters move.", [self.latestUserLocation getDistanceFrom:newLocation]);
-//    self.latestUserLocation = [self transToRealLocation:newLocation];
-    
 }
 
 - (void)initControlsLayout{
@@ -112,11 +111,11 @@ NSInteger centerLoc =-10000;
 }
 
 - (void)initPageData{
-//    [self.loginButton.titleLabel setFont: [UIFont fontWithName:@"FZKaTong-M19S" size:20]];
-//    [self.levelLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
-//    [self.scoreLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
-//    [self.usernameLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:20]];
-
+    //    [self.loginButton.titleLabel setFont: [UIFont fontWithName:@"FZKaTong-M19S" size:20]];
+    //    [self.levelLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
+    //    [self.scoreLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
+    //    [self.usernameLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:20]];
+    
     //初始化用户名
     if ([RORUserUtils getUserId].integerValue>=0){
         self.loginButton.alpha = 0;
@@ -141,9 +140,9 @@ NSInteger centerLoc =-10000;
         [self charactorAnimation];
         [self controlsInAction];
     }
-//    [Animations zoomIn:self.chactorView andAnimationDuration:2 andWait:YES];
+    //    [Animations zoomIn:self.chactorView andAnimationDuration:2 andWait:YES];
     [self initLocationServcie];
-
+    
 }
 
 - (IBAction)segueToLogin:(id)sender{
@@ -183,12 +182,12 @@ NSInteger centerLoc =-10000;
                     UIImage *image = [UIImage imageNamed:@"main_trafficlight_red.png"];
                     [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
                 }
-                else if (index<75){
-                    UIImage *image = [UIImage imageNamed:@"main_trafficlight_yellow.png"];
+                else if (index > 75){
+                    UIImage *image = [UIImage imageNamed:@"main_trafficlight_green.png"];
                     [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
                 }
                 else{
-                    UIImage *image = [UIImage imageNamed:@"main_trafficlight_green.png"];
+                    UIImage *image = [UIImage imageNamed:@"main_trafficlight_yellow.png"];
                     [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
                 }
             });
@@ -240,34 +239,34 @@ NSInteger centerLoc =-10000;
     self.chactorView.alpha = 1;
     [Animations moveUp:self.chactorView andAnimationDuration:1 andWait:YES andLength:20];
     [Animations fadeIn:self.charactorWindView andAnimationDuration:1 toAlpha:1 andWait:YES];
-//    [Animations moveDown:self.chactorView andAnimationDuration:1 andWait:YES andLength:20];
+    //    [Animations moveDown:self.chactorView andAnimationDuration:1 andWait:YES andLength:20];
 }
 
 -(void)controlsInAction{
-//    self.weatherInfoButtonView
+    //    self.weatherInfoButtonView
     
     [self.runButton fallIn:0.5 delegate:self];
     [self.challenge fallIn:0.5 delegate:self];
     self.runButton.alpha = 1;
     self.challenge.alpha = 1;
-//    [Animations fadeIn:self.runButton andAnimationDuration:1 toAlpha:1 andWait:NO];
-//    [Animations fadeIn:self.challenge andAnimationDuration:1 toAlpha:1 andWait:YES];
+    //    [Animations fadeIn:self.runButton andAnimationDuration:1 toAlpha:1 andWait:NO];
+    //    [Animations fadeIn:self.challenge andAnimationDuration:1 toAlpha:1 andWait:YES];
     self.historyButton.alpha =1;
     self.settingButton.alpha = 1;
     [self.historyButton slideInFrom:kFTAnimationRight duration:0.5 delegate:self];
     [self.settingButton slideInFrom:kFTAnimationLeft duration:0.5 delegate:self];
-//    [Animations fadeIn:self.settingButton andAnimationDuration:1.5 toAlpha:1 andWait:YES];
+    //    [Animations fadeIn:self.settingButton andAnimationDuration:1.5 toAlpha:1 andWait:YES];
     
     [Animations moveRight:self.weatherInfoButtonView andAnimationDuration:0.4 andWait:NO andLength:110];
     [Animations moveLeft:self.userInfoView andAnimationDuration:0.4 andWait:YES andLength:220];
-
+    
     [Animations moveLeft:self.weatherInfoButtonView andAnimationDuration:0.1 andWait:NO andLength:10];
     [Animations moveRight:self.userInfoView andAnimationDuration:0.1 andWait:YES andLength:10];
 }
 
 - (IBAction)weatherPopAction:(id)sender{
     [self sendNotification:weatherInformation];
-//    [self charactorAnimation];
+    //    [self charactorAnimation];
 }
 
 - (IBAction)normalRunAction:(id)sender {

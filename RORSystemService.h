@@ -20,4 +20,8 @@
 
 +(BOOL)syncSystemMessage;
 
++(NSString *)getSystemMessage:(NSNumber *)messageId;
+
++(NSString *)getSystemMessage:(NSNumber *)messageId withRegion:(NSNumber *)region;
+
 @end
