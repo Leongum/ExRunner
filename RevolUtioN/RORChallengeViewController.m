@@ -120,6 +120,7 @@
     if ([destination respondsToSelector:@selector(setRunMission:)]){
         [destination setValue:selectedChallenge forKey:@"runMission"];
     }
+    [self hideCoverView];
 }
 
 #pragma mark - Table view data source

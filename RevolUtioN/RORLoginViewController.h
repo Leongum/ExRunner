@@ -13,12 +13,12 @@
 #import "RORHttpResponse.h"
 #import "RORUserServices.h"
 #import "RORViewController.h"
-
+#import "RORSegmentControl.h"
 
 @interface RORLoginViewController : RORViewController
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *switchButton;
+@property (weak, nonatomic) IBOutlet RORSegmentControl *switchButton;
 @property (weak, nonatomic) IBOutlet UITextField *nicknameTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sexButton;
 
@@ -30,7 +30,6 @@
 - (IBAction)backgroundTap:(id)sender;
 - (IBAction)usernameDone:(id)sender;
 - (IBAction)passwordDone:(id)sender;
-- (IBAction)switchAction:(id)sender;
 - (IBAction)visibilityOfPW:(id)sender;
 - (IBAction)cancelAction:(id)sender;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;

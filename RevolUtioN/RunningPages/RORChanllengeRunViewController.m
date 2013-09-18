@@ -95,7 +95,7 @@
     
     MKwasFound = NO;
     timerCount = 0;
-    distance = mission.missionDistance.doubleValue;
+    distance = 0;
     isStarted = NO;
 }
 
