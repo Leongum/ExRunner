@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		0F07ABF617E0391B0009C8A8 /* RORMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F07ABF517E0391B0009C8A8 /* RORMessages.m */; };
 		0F07AC0D17E44D280009C8A8 /* System_Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F07AC0C17E44D260009C8A8 /* System_Message.m */; };
-		0F07AC2D17E6FDBD0009C8A8 /* switch_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F07AC2B17E6FDB90009C8A8 /* switch_off.png */; };
-		0F07AC2E17E6FDBD0009C8A8 /* switch_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F07AC2C17E6FDBA0009C8A8 /* switch_on.png */; };
 		0F07AC3517E957070009C8A8 /* RORCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F07AC3417E957070009C8A8 /* RORCheckBox.m */; };
 		0F0D589217B0E4680046515C /* RORLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589117B0E4680046515C /* RORLoadingViewController.m */; };
 		0F0D589817B23F490046515C /* RORThirdPartyClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589717B23F490046515C /* RORThirdPartyClientHandler.m */; };
@@ -286,8 +284,6 @@
 		0F07ABF517E0391B0009C8A8 /* RORMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMessages.m; sourceTree = "<group>"; };
 		0F07AC0B17E44D240009C8A8 /* System_Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = System_Message.h; sourceTree = "<group>"; };
 		0F07AC0C17E44D260009C8A8 /* System_Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = System_Message.m; sourceTree = "<group>"; };
-		0F07AC2B17E6FDB90009C8A8 /* switch_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = switch_off.png; path = ../../../Downloads/switch_off.png; sourceTree = "<group>"; };
-		0F07AC2C17E6FDBA0009C8A8 /* switch_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = switch_on.png; path = ../../../Downloads/switch_on.png; sourceTree = "<group>"; };
 		0F07AC3317E957070009C8A8 /* RORCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORCheckBox.h; sourceTree = "<group>"; };
 		0F07AC3417E957070009C8A8 /* RORCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORCheckBox.m; sourceTree = "<group>"; };
 		0F0D589017B0E4680046515C /* RORLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORLoadingViewController.h; sourceTree = "<group>"; };
