@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0F07ABF617E0391B0009C8A8 /* RORMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F07ABF517E0391B0009C8A8 /* RORMessages.m */; };
 		0F07AC0D17E44D280009C8A8 /* System_Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F07AC0C17E44D260009C8A8 /* System_Message.m */; };
+		0F07AC2D17E6FDBD0009C8A8 /* switch_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F07AC2B17E6FDB90009C8A8 /* switch_off.png */; };
+		0F07AC2E17E6FDBD0009C8A8 /* switch_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F07AC2C17E6FDBA0009C8A8 /* switch_on.png */; };
+		0F07AC3517E957070009C8A8 /* RORCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F07AC3417E957070009C8A8 /* RORCheckBox.m */; };
 		0F0D589217B0E4680046515C /* RORLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589117B0E4680046515C /* RORLoadingViewController.m */; };
 		0F0D589817B23F490046515C /* RORThirdPartyClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589717B23F490046515C /* RORThirdPartyClientHandler.m */; };
 		0F0D589B17B249230046515C /* RORThirdPartyService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D589A17B249230046515C /* RORThirdPartyService.m */; };
@@ -134,8 +137,6 @@
 		307C85F517E6BD50007C1DE5 /* filter_btn_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C85F117E6BD50007C1DE5 /* filter_btn_bg@2x.png */; };
 		307C85F617E6BD50007C1DE5 /* filter_cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C85F217E6BD50007C1DE5 /* filter_cell_bg.png */; };
 		307C85F717E6BD50007C1DE5 /* filter_cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C85F317E6BD50007C1DE5 /* filter_cell_bg@2x.png */; };
-		307C85FA17E6E2FE007C1DE5 /* switch_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C85F817E6E2FE007C1DE5 /* switch_on.png */; };
-		307C85FB17E6E2FE007C1DE5 /* switch_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C85F917E6E2FE007C1DE5 /* switch_off.png */; };
 		308FAC6617C64C290025B807 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308FAC6517C64C290025B807 /* icon.png */; };
 		308FAC6817C64C300025B807 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 308FAC6717C64C300025B807 /* icon@2x.png */; };
 		308FAC6B17C65B060025B807 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 308FAC6A17C65B060025B807 /* Reachability.m */; };
@@ -271,6 +272,10 @@
 		0F07ABF517E0391B0009C8A8 /* RORMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMessages.m; sourceTree = "<group>"; };
 		0F07AC0B17E44D240009C8A8 /* System_Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = System_Message.h; sourceTree = "<group>"; };
 		0F07AC0C17E44D260009C8A8 /* System_Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = System_Message.m; sourceTree = "<group>"; };
+		0F07AC2B17E6FDB90009C8A8 /* switch_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = switch_off.png; path = ../../../Downloads/switch_off.png; sourceTree = "<group>"; };
+		0F07AC2C17E6FDBA0009C8A8 /* switch_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = switch_on.png; path = ../../../Downloads/switch_on.png; sourceTree = "<group>"; };
+		0F07AC3317E957070009C8A8 /* RORCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORCheckBox.h; sourceTree = "<group>"; };
+		0F07AC3417E957070009C8A8 /* RORCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORCheckBox.m; sourceTree = "<group>"; };
 		0F0D589017B0E4680046515C /* RORLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORLoadingViewController.h; sourceTree = "<group>"; };
 		0F0D589117B0E4680046515C /* RORLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORLoadingViewController.m; sourceTree = "<group>"; };
 		0F0D589617B23F490046515C /* RORThirdPartyClientHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORThirdPartyClientHandler.h; sourceTree = "<group>"; };
@@ -454,8 +459,6 @@
 		307C85F117E6BD50007C1DE5 /* filter_btn_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "filter_btn_bg@2x.png"; path = "bg/filter_btn_bg@2x.png"; sourceTree = "<group>"; };
 		307C85F217E6BD50007C1DE5 /* filter_cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = filter_cell_bg.png; path = bg/filter_cell_bg.png; sourceTree = "<group>"; };
 		307C85F317E6BD50007C1DE5 /* filter_cell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "filter_cell_bg@2x.png"; path = "bg/filter_cell_bg@2x.png"; sourceTree = "<group>"; };
-		307C85F817E6E2FE007C1DE5 /* switch_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = switch_on.png; path = bg/switch_on.png; sourceTree = "<group>"; };
-		307C85F917E6E2FE007C1DE5 /* switch_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = switch_off.png; path = bg/switch_off.png; sourceTree = "<group>"; };
 		308FAC6517C64C290025B807 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		308FAC6717C64C300025B807 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		308FAC6917C65B060025B807 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -636,6 +639,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F07AC1617E6E3C70009C8A8 /* ThirdPartyTools */ = {
+			isa = PBXGroup;
+			children = (
+				0F07AC1B17E6E4250009C8A8 /* CustomControl */,
+				0F8501F217C20DD60005993E /* CustomShareDetail */,
+			);
+			name = ThirdPartyTools;
+			sourceTree = "<group>";
+		};
+		0F07AC1B17E6E4250009C8A8 /* CustomControl */ = {
+			isa = PBXGroup;
+			children = (
+				0F07AC3317E957070009C8A8 /* RORCheckBox.h */,
+				0F07AC3417E957070009C8A8 /* RORCheckBox.m */,
+			);
+			name = CustomControl;
+			sourceTree = "<group>";
+		};
 		0F59A0FD17BA2170000DEFEF /* ShareSDK_v2.3.1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,7 +749,6 @@
 		0F7F39841792DEB600B1C720 /* RORServices */ = {
 			isa = PBXGroup;
 			children = (
-				0F8501F217C20DD60005993E /* CustomShareDetail */,
 				0F7F398C1792DF1000B1C720 /* RORUserServices.h */,
 				0F7F398D1792DF1000B1C720 /* RORUserServices.m */,
 				0F7F3992179BD08000B1C720 /* RORMissionServices.h */,
@@ -757,6 +777,7 @@
 				0F85020417C217060005993E /* RORCustomShareViewController.m */,
 			);
 			name = CustomShareDetail;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		0F87D885179D7313007E0412 /* Common */ = {
@@ -889,8 +910,8 @@
 		301C1F6D1737B5B80068B43B /* bg */ = {
 			isa = PBXGroup;
 			children = (
-				307C85F817E6E2FE007C1DE5 /* switch_on.png */,
-				307C85F917E6E2FE007C1DE5 /* switch_off.png */,
+				0F07AC2B17E6FDB90009C8A8 /* switch_off.png */,
+				0F07AC2C17E6FDBA0009C8A8 /* switch_on.png */,
 				307C85EB17E6BD2A007C1DE5 /* history */,
 				30621D3417E19FB00063A007 /* map_cover.png */,
 				30FECBE217DD96B1002C3C90 /* hand.png */,
@@ -969,6 +990,7 @@
 		302FD00A1727D870004DA005 /* RevolUtioN */ = {
 			isa = PBXGroup;
 			children = (
+				0F07AC1617E6E3C70009C8A8 /* ThirdPartyTools */,
 				30A6D9B817C733F700D1116E /* ReusableControl */,
 				0F87D885179D7313007E0412 /* Common */,
 				3061F3C7174DC6CC006093FC /* CoreData */,
@@ -1460,8 +1482,8 @@
 				307C85F517E6BD50007C1DE5 /* filter_btn_bg@2x.png in Resources */,
 				307C85F617E6BD50007C1DE5 /* filter_cell_bg.png in Resources */,
 				307C85F717E6BD50007C1DE5 /* filter_cell_bg@2x.png in Resources */,
-				307C85FA17E6E2FE007C1DE5 /* switch_on.png in Resources */,
-				307C85FB17E6E2FE007C1DE5 /* switch_off.png in Resources */,
+				0F07AC2D17E6FDBD0009C8A8 /* switch_off.png in Resources */,
+				0F07AC2E17E6FDBD0009C8A8 /* switch_on.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1578,6 +1600,7 @@
 				30621D3317E09F880063A007 /* RORChanllengeRunViewController.m in Sources */,
 				30621D4817E45EB70063A007 /* RORPlaySound.m in Sources */,
 				0F07AC0D17E44D280009C8A8 /* System_Message.m in Sources */,
+				0F07AC3517E957070009C8A8 /* RORCheckBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
