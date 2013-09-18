@@ -1685,10 +1685,6 @@
                                     <outlet property="delegate" destination="dpc-IG-tq1" id="8hP-it-Kmj"/>
                                 </connections>
                             </tableView>
-                            <switch opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Xou-gI-Vem">
-                                <rect key="frame" x="107" y="15" width="79" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -2122,12 +2118,10 @@
                 <relationship kind="action" name="backgroundTap:"/>
                 <relationship kind="action" name="cancelAction:"/>
                 <relationship kind="action" name="loginAction:"/>
-                <relationship kind="action" name="nickNameTapped:"/>
                 <relationship kind="action" name="passwordDone:"/>
                 <relationship kind="action" name="qqAccountLogin:"/>
                 <relationship kind="action" name="renrenAccountLogin:"/>
                 <relationship kind="action" name="sinaWeiboLogin:"/>
-                <relationship kind="action" name="switchAction:"/>
                 <relationship kind="action" name="tencentWeiboLogin:"/>
                 <relationship kind="action" name="usernameDone:"/>
                 <relationship kind="action" name="visibilityOfPW:"/>
@@ -2139,7 +2133,7 @@
                 <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="sexButton" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="switchButton" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="switchButton" candidateClass="RORSegmentControl"/>
                 <relationship kind="outlet" name="usernameTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -2188,6 +2182,9 @@
                 <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="RORSegmentControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RORSegmentControl.h"/>
+        </class>
         <class className="RORStatisticsViewController" superclassName="RORPageViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RORStatisticsViewController.h"/>
             <relationships>
@@ -2213,7 +2210,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="nhm-2v-kry"/>
         <segue reference="tZI-uj-hCk"/>
-        <segue reference="uPX-LH-ce9"/>
     </inferredMetricsTieBreakers>
 </document>
