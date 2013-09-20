@@ -10,6 +10,7 @@
 #import "RORUserServices.h"
 #import "RORAppDelegate.h"
 #import "RORSegmentControl.h"
+#import "RORCheckBox.h"
 
 @interface RORMoreViewController ()
 
@@ -110,16 +111,16 @@
             identifier = @"syncCell";
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             UILabel *label = (UILabel*)[cell viewWithTag:1];
-            UISwitch *switchCtrl = (UISwitch *)[cell viewWithTag:2];
-            [switchCtrl addTarget:self action:@selector(syncModeSwitchChangeHandler:) forControlEvents:UIControlEventValueChanged];
-            cell.accessoryView = switchCtrl;
+            label.text = SYNC_MODE_WIFI;
+            RORCheckBox *switchCtrl = (RORCheckBox *)[cell viewWithTag:3];
+            [switchCtrl setTarget:self fun:@selector(syncModeSwitchChangeHandler:)];
             if([syncMode isEqualToString:DEFAULT_NET_WORK_MODE]){
-                ((UISwitch *)cell.accessoryView).on = 1;
-                 label.text = SYNC_MODE_ALL;
+                [switchCtrl setIsChecked:NO];
+                //label.text = SYNC_MODE_ALL;
             }
             else{
-                ((UISwitch *)cell.accessoryView).on = 0;
-                label.text = SYNC_MODE_WIFI;
+                [switchCtrl setIsChecked:YES];
+                //label.text = SYNC_MODE_WIFI;
             }
             break;
         }
@@ -154,10 +155,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)syncModeSwitchChangeHandler:(UISwitch *)sender
+- (void)syncModeSwitchChangeHandler:(RORCheckBox *)sender
 {
     NSMutableDictionary *settingDict = [[NSMutableDictionary alloc] init];
-    if (sender.on)
+    if (![sender isChecked])
     {   
         [settingDict setValue:DEFAULT_NET_WORK_MODE forKey:@"uploadMode"];
     }
@@ -166,7 +167,7 @@
         [settingDict setValue:NET_WORK_MODE_WIFI forKey:@"uploadMode"];
     }
     [RORUserUtils writeToUserSettingsPList:settingDict];
-    [moreTableView reloadData];
+    //[moreTableView reloadData];
 }
 
 @end

@@ -536,8 +536,10 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
   //Check for chaining and forward the delegate call if necessary
   NSObject *callerDelegate = [theAnimation valueForKey:kFTAnimationCallerDelegateKey];
   SEL startSelector = NSSelectorFromString([theAnimation valueForKey:kFTAnimationCallerStartSelectorKey]);
-  
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
   FT_CALL_DELEGATE_WITH_ARG(callerDelegate, startSelector, theAnimation)
+  #pragma clang diagnostic pop
 }
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)finished {
   UIView *targetView = [theAnimation valueForKey:kFTAnimationTargetViewKey];
