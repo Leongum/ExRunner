@@ -8,6 +8,7 @@
 
 #import "RORHistoryPageViewController.h"
 #import "RORPageViewController.h"
+#import "FTAnimation.h"
 
 #define FILTER_TABLECELL_TITLE 1
 #define FILTER_TABLECELL_IMAGE 2
@@ -63,10 +64,17 @@
 
     self.formerPageButton.frame = [self nextPagePointLeftFrame];
     self.nextPageButton.frame = [self nextPagePointRigheFrame];
-    self.formerPageButton.alpha = 0;
     
     [self loadPage:0];
     [self loadPage:1];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+//    [self.pageControl popIn:0.5 delegate:self];
+//    [self.pageControl backInFrom:kFTAnimationTop withFade:NO duration:0.7 delegate:self];
+    self.formerPageButton.alpha = 0;
+    self.nextPageButton.alpha = 1;
 }
 
 -(CGRect)nextPagePointLeftFrame{

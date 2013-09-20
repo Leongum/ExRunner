@@ -69,7 +69,7 @@
     if (fetchObject.count>0 && totalDistance >0){
         [self showContents];
         self.totalDistanceLabel.text = [RORUtils outputDistance:totalDistance];
-        self.totalSpeedLabel.text = [RORUserUtils formatedSpeed:avgSpeed];
+        self.totalSpeedLabel.text = [RORUserUtils formatedSpeed:avgSpeed / 3.6];
         self.totalCalorieLabel.text = [NSString stringWithFormat:@"%.2f kca", totalCalorie];
     } else {
         [self hideContents];

@@ -14,12 +14,12 @@
 @end
 
 @implementation RORChanllengeRunViewController
-@synthesize expandButton, collapseButton, repeatingTimer, timerCount, isStarted;
+@synthesize repeatingTimer, timerCount, isStarted;
 @synthesize timeLabel, speedLabel, distanceLabel, startButton, endButton;
 @synthesize routePoints, routeLine, routeLineView;
 @synthesize record;
 @synthesize doCollect;
-@synthesize kalmanFilter, stepCounting;
+@synthesize kalmanFilter;
 @synthesize runMission;
 @synthesize mapView, coverView;
 
@@ -36,7 +36,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [RORUtils setFontFamily:@"FZKaTong-M19S" forView:self.view andSubViews:YES];
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
+    [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainer andSubViews:YES];
 }
 
 //initial all when view appears
@@ -70,18 +71,18 @@
     
     self.mapView.delegate = self;
     [startButton setTitle:START_RUNNING_BUTTON forState:UIControlStateNormal];
-    UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
-    [startButton setBackgroundImage:image forState:UIControlStateNormal];
+//    UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
+//    [startButton setBackgroundImage:image forState:UIControlStateNormal];
     
     [endButton setTitle:CANCEL_RUNNING_BUTTON forState:UIControlStateNormal];
     [endButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    collapseButton.alpha = 0;
+//    collapseButton.alpha = 0;
     
     timeLabel.text = @"00:00:00";
     speedLabel.text = [RORUserUtils formatedSpeed:0];
     distanceLabel.text = [RORUtils outputDistance:mission.missionDistance.doubleValue-distance];
-    mapView.frame = SCALE_SMALL;
+//    mapView.frame = SCALE_SMALL;
     
     doCollect = NO;
     
@@ -172,10 +173,10 @@
     [self setDistanceLabel:nil];
     [self setTimeLabel:nil];
     [self setSpeedLabel:nil];
-    [self setExpandButton:nil];
+//    [self setExpandButton:nil];
     [self setStartButton:nil];
     [self setEndButton:nil];
-    [self setCollapseButton:nil];
+//    [self setCollapseButton:nil];
     [self setRoutePoints:nil];
     [self setRouteLine:nil];
     [self setRouteLineView:nil];
@@ -184,43 +185,48 @@
     [self setRecord:nil];
     
     [self setCoverView:nil];
+    [self setSpringImage:nil];
+    [self setDataContainer:nil];
     [super viewDidUnload];
 }
 
-- (IBAction)expandAction:(id)sender {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    [UIView setAnimationDuration:0.6];
-    
-    expandButton.alpha = 0;
-    collapseButton.alpha = 0.7;
-    mapView.frame = [ UIScreen mainScreen ].bounds;
-    
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
-    [UIView commitAnimations];
-    
-}
-
-- (IBAction)collapseAction:(id)sender {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    [UIView setAnimationDuration:0.3];
-    
-    collapseButton.alpha = 0;
-    expandButton.alpha = 0.7;
-    mapView.frame = SCALE_SMALL;
-    
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
-    [UIView commitAnimations];
-    
-}
+//- (IBAction)expandAction:(id)sender {
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+//    [UIView setAnimationDuration:0.6];
+//    
+//    expandButton.alpha = 0;
+//    collapseButton.alpha = 0.7;
+//    mapView.frame = [ UIScreen mainScreen ].bounds;
+//    
+//    [UIView setAnimationDelegate:self];
+//    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
+//    [UIView commitAnimations];
+//    
+//}
+//
+//- (IBAction)collapseAction:(id)sender {
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+//    [UIView setAnimationDuration:0.3];
+//    
+//    collapseButton.alpha = 0;
+//    expandButton.alpha = 0.7;
+//    mapView.frame = SCALE_SMALL;
+//    
+//    [UIView setAnimationDelegate:self];
+//    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
+//    [UIView commitAnimations];
+//    
+//}
 
 -(void)startButtonAnimation{
-    [Animations rotate:startButton andAnimationDuration:0.3 andWait:NO andAngle:-45];
+    [Animations rotate:startButton andAnimationDuration:0.3 andWait:NO andAngle:45];
     [startButton flyOut:0.3 delegate:self];
     [startButton backOutTo:kFTAnimationBottom withFade:NO duration:0.3 delegate:self];
+    
+    self.springImage.alpha = 1;
+    [self.springImage popIn:0.5 delegate:self];
 }
 
 - (IBAction)startButtonAction:(id)sender {
@@ -231,6 +237,8 @@
         if (self.startTime == nil){
             self.startTime = [NSDate date];
             [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
+            
+            [countDownView show];
             
             [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
             [endButton removeTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -281,7 +289,7 @@
     // currently, only do running status judgement here.
     [self inertiaNavi];
     
-    NSInteger intTime = (NSInteger)time;
+    NSInteger intTime = (NSInteger)duration;
     if (duration - intTime < 0.001){ //1 second
         //    if (time % 3 == 0){
         [self pushPoint];
@@ -313,6 +321,7 @@
     [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     
     [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
+    NSLog(@"%d", stepCounting.counter);
 }
 
 - (IBAction)btnCoverInside:(id)sender {
@@ -389,13 +398,13 @@
     return [NSNumber numberWithDouble:scores];
 }
 
--(NSNumber *)isValidRun:(NSInteger)steps {
-    double avgStepDistance = distance / steps;
-    double avgStepFrequency = steps * 60 / duration ;
-    if (avgStepFrequency < 70 || avgStepFrequency > 240 || avgStepDistance < 0.5 || avgStepDistance > 2.5)
-        return [NSNumber numberWithInteger:-1];
-    return [NSNumber numberWithInteger:1];
-}
+//-(NSNumber *)isValidRun:(NSInteger)steps {
+//    double avgStepDistance = distance / steps;
+//    double avgStepFrequency = steps * 60 / duration ;
+//    if (avgStepFrequency < 70 || avgStepFrequency > 240 || avgStepDistance < 0.5 || avgStepDistance > 2.5)
+//        return [NSNumber numberWithInteger:-1];
+//    return [NSNumber numberWithInteger:1];
+//}
 
 - (void)saveRunInfo{
     User_Running_History *runHistory = [User_Running_History intiUnassociateEntity];

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RORSegmentButton.h"
+#import "RORUtils.h"
 
 @protocol CustomSegmentedControlDelegate
 @optional
@@ -27,5 +28,5 @@
 - (id)initWithSegmentNumber:(NSInteger)num;
 - (id)initWithFrame:(CGRect)frame andSegmentNumber:(NSInteger)num;
 -(void)setSegmentTitle:(NSString*)text withIndex:(NSInteger)index;
-
+-(void)selectSegmentAtIndex:(NSInteger)index;
 @end

@@ -39,8 +39,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    NSLog(@"%@", record);
     distanceLabel.text = [RORUtils outputDistance:record.distance.doubleValue];
+    NSLog(@"%f", record.avgSpeed.doubleValue/3.6);
     speedLabel.text = [RORUserUtils formatedSpeed:record.avgSpeed.doubleValue/3.6];
     durationLabel.text = [RORUtils transSecondToStandardFormat:record.duration.integerValue];
     energyLabel.text = [NSString stringWithFormat:@"%.1f kca", record.spendCarlorie.doubleValue];

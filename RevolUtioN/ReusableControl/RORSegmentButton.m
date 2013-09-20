@@ -22,7 +22,7 @@
         selected = NO;
         seg_style = style;
         [self setBackgroundImage:[self imageForStyle:style andSelection:NO] forState:UIControlStateNormal];
-        [self.titleLabel setFont:[UIFont fontWithName:CHN_PRINT_FONT size:14]];
+        [self.titleLabel setFont:[UIFont fontWithName:CHN_PRINT_FONT size:13]];
     }
     return self;
 }

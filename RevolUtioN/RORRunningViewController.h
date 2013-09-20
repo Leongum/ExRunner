@@ -27,11 +27,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *speedLabel;
-@property (weak, nonatomic) IBOutlet UIButton *expandButton;
-@property (weak, nonatomic) IBOutlet UIButton *collapseButton;
-@property (weak, nonatomic) IBOutlet UILabel *stepLabel;
-@property (weak, nonatomic) IBOutlet UILabel *avgDisPerStep;
-@property (weak, nonatomic) IBOutlet UILabel *avgTimePerStep;
+//@property (weak, nonatomic) IBOutlet UIButton *expandButton;
+//@property (weak, nonatomic) IBOutlet UIButton *collapseButton;
+@property (strong, nonatomic) IBOutlet UIButton *saveButton;
+@property (strong, nonatomic) IBOutlet UIView *dataContainer;
+
 
 //@property (strong, nonatomic) CLLocation *initialLocation;
 //@property (strong, nonatomic) CLLocation *latestUserLocation;
@@ -60,8 +60,8 @@
 //@property (strong, nonatomic) Mission *runMission;
 @property (weak, nonatomic) IBOutlet UIControl *coverView;
 
-- (IBAction)expandAction:(id)sender;
-- (IBAction)collapseAction:(id)sender;
+//- (IBAction)expandAction:(id)sender;
+//- (IBAction)collapseAction:(id)sender;
 - (IBAction)startButtonAction:(id)sender;
 - (IBAction)endButtonAction:(id)sender;
 

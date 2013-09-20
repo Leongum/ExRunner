@@ -22,8 +22,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *speedLabel;
-@property (weak, nonatomic) IBOutlet UIButton *expandButton;
-@property (weak, nonatomic) IBOutlet UIButton *collapseButton;
+//@property (weak, nonatomic) IBOutlet UIButton *expandButton;
+//@property (weak, nonatomic) IBOutlet UIButton *collapseButton;
+@property (strong, nonatomic) IBOutlet UIImageView *springImage;
+@property (strong, nonatomic) IBOutlet UIView *dataContainer;
 
 @property (nonatomic) NSInteger timerCount;
 @property (assign) NSTimer *repeatingTimer;

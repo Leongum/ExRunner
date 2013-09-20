@@ -10,6 +10,7 @@
 #import "RORHistoryViewController.h"
 #import "RORStatisticsViewController.h"
 #import "RORViewController.h"
+#import "RORBreathingControl.h"
 
 @interface RORHistoryPageViewController : RORViewController<UIScrollViewDelegate>{
     BOOL isChecked[2];
@@ -26,5 +27,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *formerPageButton;
 @property (strong, nonatomic) IBOutlet UIButton *nextPageButton;
+
+@property (assign) NSTimer *repeatingTimer;
 
 @end

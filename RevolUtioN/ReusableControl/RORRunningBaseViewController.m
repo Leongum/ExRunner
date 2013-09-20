@@ -13,7 +13,7 @@
 @end
 
 @implementation RORRunningBaseViewController
-@synthesize locationManager, motionManager, stepCounting;
+@synthesize locationManager, motionManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,8 +37,11 @@
     offset.latitude = 0;
     offset.longitude = 0;
     
+    countDownView = [[RORCountDownCoverView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height)];
+    [self.view addSubview:countDownView];
+    [countDownView hide];
 }
-
+         
 -(void)viewDidUnload{
     [self stopUpdates];
     [super viewDidUnload];
@@ -148,6 +151,7 @@
     }
     //step counting
     [stepCounting pushNewLAcc:[INMatrix modOfVec_3:newDeviceStatus.an] GAcc:newDeviceStatus.an.v3 speed:[INMatrix modOfVec_3:currentSpeed]];
+    NSLog(@"%d", stepCounting.counter);
 }
 
 - (void)startDeviceMotion
@@ -171,6 +175,16 @@
         //        [motionManager startAccelerometerUpdates];
         NSLog(@"start updating device motion using Z vertical reference frame.");
     }
+}
+
+-(NSNumber *)isValidRun:(NSInteger)steps {
+    double avgStepDistance = distance / steps;
+    double avgStepFrequency = steps * 60 / duration ;
+    if (distance/duration < 2)
+        return [NSNumber numberWithInteger:1];
+    if (avgStepFrequency < 70 || avgStepFrequency > 240 || avgStepDistance < 0.5 || avgStepDistance > 2.5)
+        return [NSNumber numberWithInteger:-1];
+    return [NSNumber numberWithInteger:1];
 }
 
 #pragma CLLocationManager Delegate

@@ -59,12 +59,10 @@
                             bundleName:@"Resource"];
     [self.btnTencentLogin setBackgroundImage:img forState:UIControlStateNormal];
     
-    RORSegmentControl *seg = [[RORSegmentControl alloc]initWithFrame:CGRectMake(66, 28, 188, 38) andSegmentNumber:2];
+    RORSegmentControl *seg = [[RORSegmentControl alloc]initWithFrame:CGRectMake(95, 22.5, 150, 30) andSegmentNumber:2];
     seg.delegate = self;
     [seg setSegmentTitle:@"登录" withIndex:0];
     [seg setSegmentTitle:@"注册" withIndex:1];
-    
-//    [seg addObserver:self forKeyPath:@"selectionIndex" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     [self.view addSubview:seg];
 }
 

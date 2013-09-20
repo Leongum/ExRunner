@@ -185,7 +185,11 @@
     UILabel *durationLabel = (UILabel *)[cell viewWithTag:DURATION];
     durationLabel.text = [RORUtils transSecondToStandardFormat:[record4Date.duration integerValue]];
     UILabel *missionTypeLabel = (UILabel *)[cell viewWithTag:MISSIONTYPE];
-    missionTypeLabel.text = [NSString stringWithFormat:@"%@",record4Date.valid];
+    
+    if (((NSNumber *)record4Date.valid).integerValue>0)
+        missionTypeLabel.text = [NSString stringWithFormat:@"验证通过"];
+    else
+        missionTypeLabel.text = [NSString stringWithFormat:@"验证未通过"];
     
     return cell;
 }

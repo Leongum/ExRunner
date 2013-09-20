@@ -100,14 +100,14 @@ NSInteger centerLoc =-10000;
 - (void)initControlsLayout{
     [self.backButton setAlpha:0];
     
-    CGRect rx = [ UIScreen mainScreen ].applicationFrame;
-    if (rx.size.height == 460){
-        self.runButton.frame = RUN_BUTTON_FRAME_NORMAL;
-        self.challenge.frame = CHALLENGE_BUTTON_FRAME_NORMAL;
-    } else {
-        self.runButton.frame = RUN_BUTTON_FRAME_RATINA;
-        self.challenge.frame = CHALLENGE_BUTTON_FRAME_RATINA;
-    }
+//    CGRect rx = [ UIScreen mainScreen ].applicationFrame;
+//    if (rx.size.height == 460){
+//        self.runButton.frame = RUN_BUTTON_FRAME_NORMAL;
+//        self.challenge.frame = CHALLENGE_BUTTON_FRAME_NORMAL;
+//    } else {
+//        self.runButton.frame = RUN_BUTTON_FRAME_RATINA;
+//        self.challenge.frame = CHALLENGE_BUTTON_FRAME_RATINA;
+//    }
 }
 
 - (void)initPageData{

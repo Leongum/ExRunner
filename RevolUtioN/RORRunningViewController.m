@@ -8,7 +8,7 @@
 
 #import "RORRunningViewController.h"
 
-#define SCALE_SMALL CGRectMake(0,0,320,155)
+#define SCALE_SMALL CGRectMake(50,70,220,188)
 
 
 @interface RORRunningViewController ()
@@ -17,13 +17,12 @@
 
 @implementation RORRunningViewController
 //@synthesize locationManager, motionManager;
-@synthesize expandButton, collapseButton, repeatingTimer, timerCount, isStarted;
+@synthesize repeatingTimer, timerCount, isStarted;
 @synthesize timeLabel, speedLabel, distanceLabel, startButton, endButton;
 @synthesize routePoints, routeLine, routeLineView;
 @synthesize record;
 @synthesize doCollect;
-@synthesize kalmanFilter, stepCounting, inDistance;
-@synthesize avgDisPerStep, avgTimePerStep;
+@synthesize kalmanFilter, inDistance;
 @synthesize mapView, coverView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -39,7 +38,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [RORUtils setFontFamily:@"FZKaTong-M19S" forView:self.view andSubViews:YES];
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
+    [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainer andSubViews:YES];
 }
 
 //initial all when view appears
@@ -69,19 +69,19 @@
 
     self.mapView.delegate = self;
     [startButton setTitle:START_RUNNING_BUTTON forState:UIControlStateNormal];
-    UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
-    [startButton setBackgroundImage:image forState:UIControlStateNormal];
+//    UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
+//    [startButton setBackgroundImage:image forState:UIControlStateNormal];
     
     [endButton setTitle:CANCEL_RUNNING_BUTTON forState:UIControlStateNormal];
     [endButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    collapseButton.alpha = 0;
+//    collapseButton.alpha = 0;
     
     timeLabel.text = @"00:00:00";
     speedLabel.text = [RORUserUtils formatedSpeed:0];
     distanceLabel.text = @"0 m";
-    self.stepLabel.text = @"0";
-    mapView.frame = SCALE_SMALL;
+//    self.stepLabel.text = @"0";
+//    mapView.frame = SCALE_SMALL;
     
     doCollect = NO;
     
@@ -173,10 +173,8 @@
     [self setDistanceLabel:nil];
     [self setTimeLabel:nil];
     [self setSpeedLabel:nil];
-    [self setExpandButton:nil];
     [self setStartButton:nil];
     [self setEndButton:nil];
-    [self setCollapseButton:nil];
     [self setRoutePoints:nil];
     [self setRouteLine:nil];
     [self setRouteLineView:nil];
@@ -184,42 +182,41 @@
     [self setEndTime:nil];
     [self setRecord:nil];
     
-    [self setStepLabel:nil];
-    [self setAvgDisPerStep:nil];
-    [self setAvgTimePerStep:nil];
     [self setCoverView:nil];
+    [self setSaveButton:nil];
+    [self setDataContainer:nil];
     [super viewDidUnload];
 }
 
-- (IBAction)expandAction:(id)sender {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    [UIView setAnimationDuration:0.6];
-    
-    expandButton.alpha = 0;
-    collapseButton.alpha = 0.7;
-    mapView.frame = [ UIScreen mainScreen ].bounds;
-    
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
-    [UIView commitAnimations];
-    
-}
-
-- (IBAction)collapseAction:(id)sender {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    [UIView setAnimationDuration:0.3];
-    
-    collapseButton.alpha = 0;
-    expandButton.alpha = 0.7;
-    mapView.frame = SCALE_SMALL;
-    
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
-    [UIView commitAnimations];
-    
-}
+//- (IBAction)expandAction:(id)sender {
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+//    [UIView setAnimationDuration:0.6];
+//    
+//    expandButton.alpha = 0;
+//    collapseButton.alpha = 0.7;
+//    mapView.frame = [ UIScreen mainScreen ].bounds;
+//    
+//    [UIView setAnimationDelegate:self];
+//    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
+//    [UIView commitAnimations];
+//    
+//}
+//
+//- (IBAction)collapseAction:(id)sender {
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+//    [UIView setAnimationDuration:0.3];
+//    
+//    collapseButton.alpha = 0;
+//    expandButton.alpha = 0.7;
+//    mapView.frame = SCALE_SMALL;
+//    
+//    [UIView setAnimationDelegate:self];
+//    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
+//    [UIView commitAnimations];
+//    
+//}
 
 
 - (IBAction)startButtonAction:(id)sender {
@@ -227,6 +224,9 @@
         isStarted = YES;
         if (self.startTime == nil){
             self.startTime = [NSDate date];
+            
+            [countDownView show];
+            
             [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
 
             [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
@@ -273,9 +273,9 @@
 - (void)inertiaNavi{
     [super inertiaNavi];
     
-    self.stepLabel.text = [NSString stringWithFormat:@"%d", stepCounting.counter];
-    self.avgTimePerStep.text = [NSString stringWithFormat:@"%.2f s", duration/((double)stepCounting.counter)];
-    self.avgDisPerStep.text = [NSString stringWithFormat:@"%.2f m", distance/((double)stepCounting.counter)];
+//    self.stepLabel.text = [NSString stringWithFormat:@"%d", stepCounting.counter];
+//    self.avgTimePerStep.text = [NSString stringWithFormat:@"%.2f s", duration/((double)stepCounting.counter)];
+//    self.avgDisPerStep.text = [NSString stringWithFormat:@"%.2f m", distance/((double)stepCounting.counter)];
 }
 
 - (void)timerDot{
@@ -286,7 +286,7 @@
     // currently, only do running status judgement here.
     [self inertiaNavi];
     
-    NSInteger intTime = (NSInteger)time;
+    NSInteger intTime = (NSInteger)duration;
     if (duration - intTime < 0.00001){ //1 second
         //    if (time % 3 == 0){
         [self pushPoint];
@@ -304,7 +304,7 @@
         distance += [formerLocation distanceFromLocation:currentLocation];
         formerLocation = currentLocation;
         [routePoints addObject:currentLocation];
-//        [self drawLineWithLocationArray:routePoints];
+        [self drawLineWithLocationArray:routePoints];
     }
 }
 
@@ -315,6 +315,13 @@
     
     [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     
+    if (distance > 30){
+        [self.saveButton setEnabled:YES];
+        [self.saveButton setTitle:@"跑完啦，存起来吧！" forState:UIControlStateNormal];
+    } else {
+        [self.saveButton setEnabled:NO];
+        [self.saveButton setTitle:@"你确定你跑了么？" forState:UIControlStateNormal];
+    }
     [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
 }
 
@@ -367,13 +374,7 @@
     return [NSNumber numberWithDouble:GRADE_F*base];
 }
 
--(NSNumber *)isValidRun:(NSInteger)steps {
-    double avgStepDistance = distance / steps;
-    double avgStepFrequency = steps * 60 / duration ;
-    if (avgStepFrequency < 70 || avgStepFrequency > 240 || avgStepDistance < 0.5 || avgStepDistance > 2.5)
-        return [NSNumber numberWithInteger:-1];
-    return [NSNumber numberWithInteger:1];
-}
+
 
 -(NSNumber *)calculateExperience:(User_Running_History *)runningHistory{
     return [NSNumber numberWithDouble:(runningHistory.distance.doubleValue/1000*200)];
@@ -444,6 +445,8 @@
     [mapView removeOverlays:[mapView overlays]];
 
     int pointCount = [locationArray count];
+    //debug
+    NSLog(@"%d", pointCount);
     CLLocationCoordinate2D *coordinateArray = (CLLocationCoordinate2D *)malloc(pointCount * sizeof(CLLocationCoordinate2D));
     
     for (int i = 0; i < pointCount; ++i) {
@@ -487,7 +490,6 @@
         self.routeLineView.lineWidth = 10;
         //        }
         overlayView = self.routeLineView;
-        
     }
 //    else if (overlay == self.routeLineShadow){
 //        self.routeLineShadowView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];

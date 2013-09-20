@@ -8,8 +8,8 @@
 
 #import "RORSegmentControl.h"
 
-#define SEGMENT_BUTTON_WIDTH 100
-#define SEGMENT_BUTTON_HEIGHT 40
+#define SEGMENT_BUTTON_WIDTH 75
+#define SEGMENT_BUTTON_HEIGHT 30
 
 @implementation RORSegmentControl
 @synthesize segment, selectionIndex;
@@ -52,6 +52,12 @@
         [self addSubview:btn];
     }
     return self;
+}
+
+-(void)selectSegmentAtIndex:(NSInteger)index
+{
+    selectionIndex = index;
+    [self touchInside:[self.subviews objectAtIndex:index]];
 }
 
 -(IBAction)touchInside:(id)sender

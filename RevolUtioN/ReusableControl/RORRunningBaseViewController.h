@@ -23,6 +23,7 @@
 #import "INStepCounting.h"
 #import "RORViewController.h"
 #import "Mission.h"
+#import "RORCountDownCoverView.h"
 
 
 #define TIMER_INTERVAL delta_T
@@ -40,6 +41,9 @@
     CLLocation *formerLocation;
     CLLocation *latestUserLocation;
     vec_3 OldVn;
+    INStepCounting *stepCounting;
+    
+    RORCountDownCoverView *countDownView;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
@@ -50,7 +54,7 @@
 //@property (strong, nonatomic) CLLocation *latestUserLocation;
 //@property (nonatomic) CLLocationCoordinate2D latestINLocation;
 @property (strong, nonatomic) INKalmanFilter *kalmanFilter;
-@property (strong, nonatomic) INStepCounting *stepCounting;
+//@property (strong, nonatomic) INStepCounting *stepCounting;
 //@property (nonatomic) vec_3 inDistance;
 //@property (nonatomic) NSInteger timerCount;
 //@property (assign) NSTimer *repeatingTimer;
@@ -71,5 +75,6 @@
 - (void)inertiaNavi;
 - (void)initNavi;
 - (void)startDeviceMotion;
+-(NSNumber *)isValidRun:(NSInteger)steps;
 
 @end

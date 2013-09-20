@@ -9,6 +9,7 @@
 #import "RORMoreViewController.h"
 #import "RORUserServices.h"
 #import "RORAppDelegate.h"
+#import "RORSegmentControl.h"
 
 @interface RORMoreViewController ()
 
@@ -56,10 +57,16 @@
     [super viewDidUnload];
 }
 
--(IBAction)changeSpeedType:(id)sender{
+//-(IBAction)changeSpeedType:(id)sender{
+//    NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
+//    RORSegmentControl *seg = (RORSegmentControl*)sender;
+//    [settinglist setValue:[NSNumber numberWithInteger:[seg selectionIndex]] forKey:@"speedType"];
+//    [RORUserUtils writeToUserSettingsPList:settinglist];
+//}
+
+- (void) SegmentValueChanged:(NSUInteger)segmentIndex{
     NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
-    UISegmentedControl *seg = (UISegmentedControl*)sender;
-    [settinglist setValue:[NSNumber numberWithInteger:[seg selectedSegmentIndex]] forKey:@"speedType"];
+    [settinglist setValue:[NSNumber numberWithInteger:segmentIndex] forKey:@"speedType"];
     [RORUserUtils writeToUserSettingsPList:settinglist];
 }
 
@@ -120,15 +127,20 @@
         {
             identifier = @"speedCell";
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-            UISegmentedControl *seg = (UISegmentedControl *)[cell viewWithTag:2];
-            
+//            UISegmentedControl *seg = (UISegmentedControl *)[cell viewWithTag:2];
+            RORSegmentControl *seg = [[RORSegmentControl alloc]initWithFrame:CGRectMake(107, 16, 130, 26) andSegmentNumber:2];
+            seg.delegate = self;
+            [seg setSegmentTitle:@"7'41\"/km" withIndex:0];
+            [seg setSegmentTitle:@"7.8km/h" withIndex:1];
+            [cell addSubview:seg];
+
             NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
             NSNumber *speedType = [settinglist valueForKey:@"speedType"];
             if (speedType != nil){
                 NSInteger st = speedType.integerValue;
-                [seg setSelectedSegmentIndex:st];
+                [seg selectSegmentAtIndex:st];
             }
-            [seg addTarget:self action:@selector(changeSpeedType:) forControlEvents:UIControlEventValueChanged];
+//            [seg addTarget:self action:@selector(changeSpeedType:) forControlEvents:UIControlEventValueChanged];
             break;
         }
     }
