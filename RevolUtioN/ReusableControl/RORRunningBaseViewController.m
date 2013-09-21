@@ -52,7 +52,7 @@
 }
 
 //initial all when view appears
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated{
     if (![RORNetWorkUtils getIsConnetioned]){
         isNetworkOK = NO;
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"网络连接错误" message:@"定位精度将受到严重影响，本次跑步将不能获得相应奖励，请检查相关系统设置。  （小声的：启动数据网络可以大大提高定位精度与速度，同时只会产生极小的流量。）" delegate:self cancelButtonTitle:@"知道呢！" otherButtonTitles:nil];
@@ -75,7 +75,7 @@
     if (! ([CLLocationManager  locationServicesEnabled])
         || ( [CLLocationManager  authorizationStatus] == kCLAuthorizationStatusDenied))
     {
-        [self sendNotification:GPS_SETTING_ERROR];
+        [self sendAlart:GPS_SETTING_ERROR];
         return;
     }
     else{

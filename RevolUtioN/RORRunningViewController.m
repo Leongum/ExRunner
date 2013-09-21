@@ -423,7 +423,7 @@
             [self sendNotification:SYNC_DATA_SUCCESS];
         }
         else{
-            [self sendNotification:SYNC_DATA_FAIL];
+            [self sendAlart:SYNC_DATA_FAIL];
         }
     }
 }

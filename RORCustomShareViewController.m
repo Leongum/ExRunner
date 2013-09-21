@@ -71,7 +71,7 @@
     NSArray *selectedClients = [_shareBar selectedClients];
     if ([selectedClients count] == 0)
     {
-        [self sendNotification:SELECT_SHARE_PLATFORM_ERROR];
+        [self sendAlart:SELECT_SHARE_PLATFORM_ERROR];
         return;
     }
     

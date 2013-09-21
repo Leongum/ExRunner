@@ -187,6 +187,7 @@
     [self setCoverView:nil];
     [self setSpringImage:nil];
     [self setDataContainer:nil];
+    [self setSaveButton:nil];
     [super viewDidUnload];
 }
 
@@ -319,6 +320,14 @@
     isStarted = NO;
     
     [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
+    
+    if (distance > 30){
+        [self.saveButton setEnabled:YES];
+        [self.saveButton setTitle:@"跑完啦，存起来吧！" forState:UIControlStateNormal];
+    } else {
+        [self.saveButton setEnabled:NO];
+        [self.saveButton setTitle:@"你确定你跑了么？" forState:UIControlStateNormal];
+    }
     
     [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
     NSLog(@"%d", stepCounting.counter);
@@ -456,7 +465,7 @@
             [self sendNotification:SYNC_DATA_SUCCESS];
         }
         else{
-            [self sendNotification:SYNC_DATA_FAIL];
+            [self sendAlart:SYNC_DATA_FAIL];
         }
     }
 }

@@ -12,11 +12,20 @@
 #import "User_Running_History.h"
 #import "RORViewController.h"
 
-@interface RORHistoryDetailViewController : RORViewController {
+@interface RORHistoryDetailViewController : RORViewController <MKMapViewDelegate>{
+    NSMutableArray *improvedRoute;
     BOOL wasFound;
 }
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) MKPolyline *routeLine;
+@property (strong, nonatomic) MKPolyline *routeLineShadow;
+@property (retain, nonatomic) NSMutableArray *routePoints;
+@property (retain, nonatomic) MKPolylineView *routeLineView;
+@property (retain, nonatomic) MKPolylineView *routeLineShadowView;
+@property (strong, nonatomic) IBOutlet UIView *labelContainerView;
+@property (strong, nonatomic) IBOutlet UIView *dataContainerView;
+
 @property (weak, nonatomic) UIViewController *delegate;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButtonItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *speedLabel;
@@ -27,10 +36,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *experienceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bonusLabel;
 @property (strong, nonatomic) User_Running_History *record;
+@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (strong, nonatomic) IBOutlet UIControl *coverView;
 
-- (IBAction)backAction:(id)sender;
 - (IBAction)shareToWeixin:(id)sender;
 
 //@property (strong, nonatomic) NSNumber *distance;

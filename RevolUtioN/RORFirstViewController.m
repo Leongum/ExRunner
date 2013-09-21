@@ -76,7 +76,7 @@ NSInteger centerLoc =-10000;
     if (! ([CLLocationManager  locationServicesEnabled])
         || ( [CLLocationManager  authorizationStatus] == kCLAuthorizationStatusDenied))
     {
-        [self sendNotification:GPS_SETTING_ERROR];
+        [self sendAlart:GPS_SETTING_ERROR];
         return;
     }
     else{

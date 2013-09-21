@@ -64,6 +64,7 @@ static NSDate *systemTime = nil;
     [settingDict setValue:DEFAULT_HEIGHT forKey:@"height"];
     [settingDict setValue:DEFAULT_SEX forKey:@"sex"];
     [settingDict setValue:DEFAULT_SPEEDTYPE forKey:@"speedType"];
+    [settingDict setValue:DEFAULT_ANIMATION forKey:@"loadingAnimation"];
     [settingDict writeToFile:path atomically:YES];
     return settingDict;
 }
@@ -198,7 +199,7 @@ static NSDate *systemTime = nil;
             return @"0\'0\"/km";
         int minutes = (int)(1000/( orginSpeed * 60));
         int seconds = ((int) (1000/orginSpeed)) % 60;
-        return [NSString stringWithFormat:@"%d\'%d\"/km", minutes, seconds];
+        return [NSString stringWithFormat:@"%d\'%d''/km", minutes, seconds];
     } else {
         return [NSString stringWithFormat:@"%.1f km/h", metersPerSec * 3.6];
     }

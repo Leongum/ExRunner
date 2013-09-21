@@ -26,6 +26,7 @@
 //@property (weak, nonatomic) IBOutlet UIButton *collapseButton;
 @property (strong, nonatomic) IBOutlet UIImageView *springImage;
 @property (strong, nonatomic) IBOutlet UIView *dataContainer;
+@property (strong, nonatomic) IBOutlet UIButton *saveButton;
 
 @property (nonatomic) NSInteger timerCount;
 @property (assign) NSTimer *repeatingTimer;

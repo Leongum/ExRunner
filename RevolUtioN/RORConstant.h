@@ -34,7 +34,7 @@
 #define DEFAULT_WEIGHT [NSNumber numberWithDouble:60]
 #define DEFAULT_HEIGHT [NSNumber numberWithDouble:175]
 #define DEFAULT_SPEEDTYPE 0
-
+#define DEFAULT_ANIMATION [NSNumber numberWithBool:YES]
 
 #define CHN_PRINT_FONT @"FZKaTong-M19S"
 #define CHN_WRITTEN_FONT @"陈继世-怪怪体"

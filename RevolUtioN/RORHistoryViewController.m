@@ -147,7 +147,7 @@
         [(RORViewController *)[self parentViewController] sendNotification:SYNC_DATA_SUCCESS];
     }
     else{
-        [(RORViewController *)[self parentViewController] sendNotification:SYNC_DATA_FAIL];
+        [(RORViewController *)[self parentViewController] sendAlart:SYNC_DATA_FAIL];
     }
 }
 

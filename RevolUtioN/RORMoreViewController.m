@@ -144,6 +144,19 @@
 //            [seg addTarget:self action:@selector(changeSpeedType:) forControlEvents:UIControlEventValueChanged];
             break;
         }
+//        case 4:
+//        {
+//            NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
+//            NSNumber *loadingAnimation = [settinglist valueForKey:@"loadingAnimation"];
+//            identifier = @"loadingAnimationCell";
+//            cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+//            UILabel *label = (UILabel*)[cell viewWithTag:1];
+//            label.text = SYNC_MODE_WIFI;
+//            RORCheckBox *switchCtrl = (RORCheckBox *)[cell viewWithTag:2];
+//            [switchCtrl setTarget:self fun:@selector(loadingAnimationChangeHandler:)];
+//            [switchCtrl setIsChecked:loadingAnimation.boolValue];
+//            break;
+//        }
     }
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
 
@@ -168,6 +181,12 @@
     }
     [RORUserUtils writeToUserSettingsPList:settingDict];
     //[moreTableView reloadData];
+}
+
+- (void)loadingAnimationChangeHandler:(RORCheckBox *)sender{
+    NSMutableDictionary *settingDict = [[NSMutableDictionary alloc] init];
+    [settingDict setValue:[NSNumber numberWithBool:sender.isChecked] forKey:@"loadingAnimation"];
+    [RORUserUtils writeToUserInfoPList:settingDict];
 }
 
 @end

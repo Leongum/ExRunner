@@ -119,7 +119,7 @@
 //提交用户名密码之后的操作
 - (IBAction)loginAction:(id)sender {
     if(![RORNetWorkUtils getIsConnetioned]){
-        [self sendNotification:CONNECTION_ERROR];
+        [self sendAlart:CONNECTION_ERROR];
         return;
     }
     if (![self isLegalInput]) return;
@@ -129,7 +129,7 @@
         User_Base *user = [RORUserServices syncUserInfoByLogin:userName withUserPasswordL:password];
         
         if (user == nil){
-            [self sendNotification:LOGIN_ERROR];
+            [self sendAlart:LOGIN_ERROR];
             return;
         }
         [RORRunHistoryServices syncRunningHistories];
@@ -142,7 +142,7 @@
             [self performSegueWithIdentifier:@"bodySetting" sender:self];
             return;
         } else {
-            [self sendNotification:REGISTER_FAIL];
+            [self sendAlart:REGISTER_FAIL];
             return;
         }
     }
@@ -155,14 +155,14 @@
     if (switchButton.selectionIndex == 0){
         if ([usernameTextField.text isEqualToString:@""] ||
             [passwordTextField.text isEqualToString:@""]) {
-            [self sendNotification:LOGIN_INPUT_CHECK];
+            [self sendAlart:LOGIN_INPUT_CHECK];
             return NO;
         }
     } else {
         if ([usernameTextField.text isEqualToString:@""] ||
             [passwordTextField.text isEqualToString:@""] ||
             [nicknameTextField.text isEqualToString:@""]) {
-            [self sendNotification:REGISTER_INPUT_CHECK];
+            [self sendAlart:REGISTER_INPUT_CHECK];
             return NO;
         }
     }
@@ -259,7 +259,7 @@
                                }
                                else
                                {
-                                   [self sendNotification:error.errorDescription];
+                                   [self sendAlart:error.errorDescription];
                                }
                            }];
 }

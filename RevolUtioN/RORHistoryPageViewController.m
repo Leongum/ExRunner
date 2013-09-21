@@ -64,6 +64,8 @@
 
     self.formerPageButton.frame = [self nextPagePointLeftFrame];
     self.nextPageButton.frame = [self nextPagePointRigheFrame];
+    self.formerPageButton.alpha = 0;
+    self.nextPageButton.alpha = 0.5;
     
     [self loadPage:0];
     [self loadPage:1];
@@ -72,9 +74,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 //    [self.pageControl popIn:0.5 delegate:self];
-//    [self.pageControl backInFrom:kFTAnimationTop withFade:NO duration:0.7 delegate:self];
-    self.formerPageButton.alpha = 0;
-    self.nextPageButton.alpha = 1;
+    [self.pageControl backInFrom:kFTAnimationTop withFade:NO duration:0.5 delegate:self];
 }
 
 -(CGRect)nextPagePointLeftFrame{
@@ -159,9 +159,9 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
     if (self.pageControl.currentPage <=1)
-        self.formerPageButton.alpha = scrollView.contentOffset.x/pageWidth;
+        self.formerPageButton.alpha = scrollView.contentOffset.x/pageWidth / 2;
     if (self.pageControl.currentPage >=contentViews.count-2)
-        self.nextPageButton.alpha = (pageWidth * (contentViews.count-1) - scrollView.contentOffset.x)/pageWidth;
+        self.nextPageButton.alpha = (pageWidth * (contentViews.count-1) - scrollView.contentOffset.x)/pageWidth /2;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
