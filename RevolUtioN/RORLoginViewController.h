@@ -14,6 +14,7 @@
 #import "RORUserServices.h"
 #import "RORViewController.h"
 #import "RORSegmentControl.h"
+#import "RORCheckBox.h"
 
 @interface RORLoginViewController : RORViewController
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet RORSegmentControl *switchButton;
 @property (weak, nonatomic) IBOutlet UITextField *nicknameTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sexButton;
+@property (strong, nonatomic) IBOutlet RORCheckBox *showPWCheckBox;
 
 @property (strong,nonatomic)NSManagedObjectContext *context;
 

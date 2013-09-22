@@ -45,8 +45,11 @@
     speedLabel.text = [RORUserUtils formatedSpeed:record.avgSpeed.doubleValue/3.6];
     durationLabel.text = [RORUtils transSecondToStandardFormat:record.duration.integerValue];
     energyLabel.text = [NSString stringWithFormat:@"%.1f kca", record.spendCarlorie.doubleValue];
-    scoreLabel.text = [NSString stringWithFormat:@"%@", record.grade];
-    
+    if (record.missionTypeId.integerValue == Challenge)
+        scoreLabel.text = [NSString stringWithFormat:@"%@", record.grade];
+    else
+        scoreLabel.text = [NSString stringWithFormat:@"%@", record.experience];
+
     NSDateFormatter *formattter = [[NSDateFormatter alloc] init];
     [formattter setDateFormat:@"yyyy-MM-dd"];
     self.dateLabel.text = [NSString stringWithFormat:@"%@", [formattter stringFromDate:record.missionDate]];

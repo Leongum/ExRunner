@@ -66,7 +66,8 @@
 -(void)controllerInit{
     self.coverView.alpha = 0;
     self.backButton.alpha = 0;
-
+    [self.startButton setEnabled:NO];
+    
     self.mapView.delegate = self;
     [startButton setTitle:START_RUNNING_BUTTON forState:UIControlStateNormal];
 //    UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
@@ -473,6 +474,7 @@
     if (!MKwasFound){
         MKwasFound = YES;
         [self center_map:self];
+        [self.startButton setEnabled:YES];
     }
 }
 

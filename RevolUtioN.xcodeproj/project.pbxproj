@@ -128,7 +128,6 @@
 		30621D3D17E2BCB80063A007 /* sync_done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30621D3917E2BCB70063A007 /* sync_done@2x.png */; };
 		30621D3E17E2BCB80063A007 /* sync_apply.png in Resources */ = {isa = PBXBuildFile; fileRef = 30621D3A17E2BCB70063A007 /* sync_apply.png */; };
 		30621D3F17E2BCB80063A007 /* sync_apply@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30621D3B17E2BCB70063A007 /* sync_apply@2x.png */; };
-		30621D4117E2D4640063A007 /* CJS-GGT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30621D4017E2D4640063A007 /* CJS-GGT.ttf */; };
 		30621D4317E2DD490063A007 /* chavenir_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30621D4217E2DD490063A007 /* chavenir_bold.ttf */; };
 		30621D4817E45EB70063A007 /* RORPlaySound.m in Sources */ = {isa = PBXBuildFile; fileRef = 30621D4717E45EB70063A007 /* RORPlaySound.m */; };
 		30621D4E17E45F490063A007 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30621D4D17E45F480063A007 /* AudioToolbox.framework */; };
@@ -168,6 +167,7 @@
 		30978DA417EDA57E00CA58B9 /* history_detail_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30978DA217EDA57E00CA58B9 /* history_detail_bg@2x.png */; };
 		30978DA717EDAFEA00CA58B9 /* share_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 30978DA517EDAFEA00CA58B9 /* share_btn.png */; };
 		30978DA817EDAFEA00CA58B9 /* share_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30978DA617EDAFEA00CA58B9 /* share_btn@2x.png */; };
+		30978DAA17EE9CAF00CA58B9 /* NeoTech.otf in Resources */ = {isa = PBXBuildFile; fileRef = 30978DA917EE9CAF00CA58B9 /* NeoTech.otf */; };
 		30A6D9AA17C6821500D1116E /* FTAnimation+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */; };
 		30A6D9AB17C6821500D1116E /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A417C6821500D1116E /* FTAnimationManager.m */; };
 		30A6D9AC17C6821500D1116E /* FTUtils+NSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A617C6821500D1116E /* FTUtils+NSObject.m */; };
@@ -478,7 +478,6 @@
 		30621D3917E2BCB70063A007 /* sync_done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync_done@2x.png"; sourceTree = "<group>"; };
 		30621D3A17E2BCB70063A007 /* sync_apply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sync_apply.png; sourceTree = "<group>"; };
 		30621D3B17E2BCB70063A007 /* sync_apply@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync_apply@2x.png"; sourceTree = "<group>"; };
-		30621D4017E2D4640063A007 /* CJS-GGT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CJS-GGT.ttf"; path = "Resources/CJS-GGT.ttf"; sourceTree = "<group>"; };
 		30621D4217E2DD490063A007 /* chavenir_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = chavenir_bold.ttf; path = Resources/chavenir_bold.ttf; sourceTree = "<group>"; };
 		30621D4617E45EB70063A007 /* RORPlaySound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORPlaySound.h; path = Common/RORPlaySound.h; sourceTree = "<group>"; };
 		30621D4717E45EB70063A007 /* RORPlaySound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORPlaySound.m; path = Common/RORPlaySound.m; sourceTree = "<group>"; };
@@ -522,6 +521,7 @@
 		30978DA217EDA57E00CA58B9 /* history_detail_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history_detail_bg@2x.png"; sourceTree = "<group>"; };
 		30978DA517EDAFEA00CA58B9 /* share_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_btn.png; sourceTree = "<group>"; };
 		30978DA617EDAFEA00CA58B9 /* share_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_btn@2x.png"; sourceTree = "<group>"; };
+		30978DA917EE9CAF00CA58B9 /* NeoTech.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NeoTech.otf; path = Resources/NeoTech.otf; sourceTree = "<group>"; };
 		30A6D9A017C6821500D1116E /* FTAnimation+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FTAnimation+UIView.h"; sourceTree = "<group>"; };
 		30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTAnimation+UIView.m"; sourceTree = "<group>"; };
 		30A6D9A217C6821500D1116E /* FTAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimation.h; sourceTree = "<group>"; };
@@ -1171,8 +1171,8 @@
 		30621D5017E460330063A007 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				30978DA917EE9CAF00CA58B9 /* NeoTech.otf */,
 				30621D4217E2DD490063A007 /* chavenir_bold.ttf */,
-				30621D4017E2D4640063A007 /* CJS-GGT.ttf */,
 				30A6D9F517CDD8CA00D1116E /* FZKATJW.TTF */,
 			);
 			name = Font;
@@ -1586,7 +1586,6 @@
 				30621D3D17E2BCB80063A007 /* sync_done@2x.png in Resources */,
 				30621D3E17E2BCB80063A007 /* sync_apply.png in Resources */,
 				30621D3F17E2BCB80063A007 /* sync_apply@2x.png in Resources */,
-				30621D4117E2D4640063A007 /* CJS-GGT.ttf in Resources */,
 				30621D4317E2DD490063A007 /* chavenir_bold.ttf in Resources */,
 				30621D5517E4609C0063A007 /* bo.wav in Resources */,
 				307C85F417E6BD50007C1DE5 /* filter_btn_bg.png in Resources */,
@@ -1622,6 +1621,7 @@
 				30978DA417EDA57E00CA58B9 /* history_detail_bg@2x.png in Resources */,
 				30978DA717EDAFEA00CA58B9 /* share_btn.png in Resources */,
 				30978DA817EDAFEA00CA58B9 /* share_btn@2x.png in Resources */,
+				30978DAA17EE9CAF00CA58B9 /* NeoTech.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

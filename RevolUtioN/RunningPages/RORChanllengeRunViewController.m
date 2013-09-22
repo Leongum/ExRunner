@@ -68,7 +68,8 @@
     
     self.coverView.alpha = 0;
     self.backButton.alpha = 0;
-    
+    [self.startButton setEnabled:NO];
+
     self.mapView.delegate = self;
     [startButton setTitle:START_RUNNING_BUTTON forState:UIControlStateNormal];
 //    UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
@@ -374,22 +375,22 @@
 
 -(NSNumber *)calculateAward:(NSString *)missionGrade baseValue:(double) base{
     if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_S]]){
-        return [NSNumber numberWithDouble:GRADE_S*base];
+        return [NSNumber numberWithDouble:3*base];
     }
     if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_A]]){
-        return [NSNumber numberWithDouble:(1.0 + (double)GRADE_A/10)*base];
+        return [NSNumber numberWithDouble:(1.8)*base];
     }
     if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_B]]){
-        return [NSNumber numberWithDouble:(1.0 + (double)GRADE_B/10)*base];
+        return [NSNumber numberWithDouble:(1.6)*base];
     }
     if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_C]]){
-        return [NSNumber numberWithDouble:(1.0 + (double)GRADE_C/10)*base];
+        return [NSNumber numberWithDouble:(1.4)*base];
     }
     if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_D]]){
-        return [NSNumber numberWithDouble:(1.0 + (double)GRADE_D/10)*base];
+        return [NSNumber numberWithDouble:(1.2)*base];
     }
     if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_E]]){
-        return [NSNumber numberWithDouble:GRADE_E*base];
+        return [NSNumber numberWithDouble:base];
     }
     return [NSNumber numberWithDouble:GRADE_F*base];
 }
@@ -515,6 +516,7 @@
     if (!MKwasFound){
         MKwasFound = YES;
         [self center_map:self];
+        [self.startButton setEnabled:YES];
     }
 }
 

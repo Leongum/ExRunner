@@ -58,8 +58,8 @@ NSInteger centerLoc =-10000;
     //    self.chactorView.frame = CHARACTOR_FRAME_NORMAL;
     self.chactorView.alpha = 0;
     self.charactorWindView.alpha = 0;
-    self.weatherInfoButtonView.frame = WEATHER_BUTTON_INITIAL_FRAME;
-    self.userInfoView.frame = LOGIN_BUTTON_INITIAL_FRAME;
+//    self.weatherInfoButtonView.frame = WEATHER_BUTTON_INITIAL_FRAME;
+//    self.userInfoView.frame = LOGIN_BUTTON_INITIAL_FRAME;
     
     self.runButton.alpha = 0;
     self.challenge.alpha = 0;
@@ -237,8 +237,8 @@ NSInteger centerLoc =-10000;
 -(void)charactorAnimation{
     [Animations zoomIn:self.chactorView andAnimationDuration:2 andWait:NO];
     self.chactorView.alpha = 1;
-    [Animations moveUp:self.chactorView andAnimationDuration:1 andWait:YES andLength:20];
-    [Animations fadeIn:self.charactorWindView andAnimationDuration:1 toAlpha:1 andWait:YES];
+    [Animations moveUp:self.chactorView andAnimationDuration:1 andWait:NO andLength:20];
+//    [Animations fadeIn:self.charactorWindView andAnimationDuration:1 toAlpha:1 andWait:YES];
     //    [Animations moveDown:self.chactorView andAnimationDuration:1 andWait:YES andLength:20];
 }
 
@@ -256,12 +256,15 @@ NSInteger centerLoc =-10000;
     [self.historyButton slideInFrom:kFTAnimationRight duration:0.5 delegate:self];
     [self.settingButton slideInFrom:kFTAnimationLeft duration:0.5 delegate:self];
     //    [Animations fadeIn:self.settingButton andAnimationDuration:1.5 toAlpha:1 andWait:YES];
+    self.weatherInfoButtonView.alpha = 1;
+    self.userInfoView.alpha = 1;
+    [self.weatherInfoButtonView slideInFrom:kFTAnimationLeft duration:0.5 delegate:self];
+    [self.userInfoView slideInFrom:kFTAnimationRight duration:0.5 delegate:self];
+//    [Animations moveRight:self.weatherInfoButtonView andAnimationDuration:0.4 andWait:NO andLength:110];
+//    [Animations moveLeft:self.userInfoView andAnimationDuration:0.4 andWait:NO andLength:220];
     
-    [Animations moveRight:self.weatherInfoButtonView andAnimationDuration:0.4 andWait:NO andLength:110];
-    [Animations moveLeft:self.userInfoView andAnimationDuration:0.4 andWait:YES andLength:220];
-    
-    [Animations moveLeft:self.weatherInfoButtonView andAnimationDuration:0.1 andWait:NO andLength:10];
-    [Animations moveRight:self.userInfoView andAnimationDuration:0.1 andWait:YES andLength:10];
+//    [Animations moveLeft:self.weatherInfoButtonView andAnimationDuration:0.1 andWait:NO andLength:10];
+//    [Animations moveRight:self.userInfoView andAnimationDuration:0.1 andWait:NO andLength:10];
 }
 
 - (IBAction)weatherPopAction:(id)sender{

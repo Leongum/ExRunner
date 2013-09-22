@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.backButton.alpha = 0;
+//    self.backButton.alpha = 0;
     self.coverView.alpha = 0;
     [self loadData];
 }

@@ -37,7 +37,7 @@
     offset.latitude = 0;
     offset.longitude = 0;
     
-    countDownView = [[RORCountDownCoverView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height)];
+    countDownView = [[RORCountDownCoverView alloc]initWithFrame:CGRectMake(0, 0, 320, 640)];
     [self.view addSubview:countDownView];
     [countDownView hide];
 }

@@ -37,9 +37,9 @@
 #define DEFAULT_ANIMATION [NSNumber numberWithBool:YES]
 
 #define CHN_PRINT_FONT @"FZKaTong-M19S"
-#define CHN_WRITTEN_FONT @"陈继世-怪怪体"
-#define ENG_WRITTEN_FONT @"Chalkduster"
-#define ENG_PRINT_FONT @"Chavenir-Bold"
+#define CHN_WRITTEN_FONT @"FZKaTong-M19S"
+#define ENG_WRITTEN_FONT @"Noteworthy"
+#define ENG_PRINT_FONT @"Neotech"
 
 
 #endif

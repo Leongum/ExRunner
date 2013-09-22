@@ -64,6 +64,13 @@
     [seg setSegmentTitle:@"登录" withIndex:0];
     [seg setSegmentTitle:@"注册" withIndex:1];
     [self.view addSubview:seg];
+    
+    self.showPWCheckBox.isChecked = YES;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.nicknameTextField.alpha = 0;
 }
 
 //-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -177,25 +184,11 @@
         [Animations moveDown:self.view andAnimationDuration:0.3 andWait:NO andLength:75];
 }
 
-- (IBAction)usernameDone:(id)sender {
-}
-
-- (IBAction)passwordDone:(id)sender {
-    [passwordTextField resignFirstResponder];
-}
-
-- (IBAction)switchAction:(id)sender {
-    
-}
 
 - (IBAction)visibilityOfPW:(id)sender {
-    UISwitch *button = (UISwitch *)sender;
-    passwordTextField.secureTextEntry = button.isOn;
+    RORCheckBox *button = (RORCheckBox *)sender;
+    passwordTextField.secureTextEntry = button.isChecked;
     [passwordTextField resignFirstResponder];
-}
-
-- (IBAction)cancelAction:(id)sender {
-    [self dismissModalViewControllerAnimated:YES]; // for IOS 5+
 }
 
 - (IBAction)sinaWeiboLogin:(id)sender {
