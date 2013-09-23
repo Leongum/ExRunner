@@ -9,6 +9,7 @@
 #import "RORViewController.h"
 #import "RORBottomPopSubview.h"
 #import "RORUserServices.h"
+#import "RORSegmentControl.h"
 
 #define HEIGHT_PICKER 0
 #define WEIGHT_PICKER 1

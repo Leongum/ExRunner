@@ -21,8 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet RORSegmentControl *switchButton;
 @property (weak, nonatomic) IBOutlet UITextField *nicknameTextField;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *sexButton;
 @property (strong, nonatomic) IBOutlet RORCheckBox *showPWCheckBox;
+@property (strong, nonatomic) IBOutlet UIView *snsContainerView;
 
 @property (strong,nonatomic)NSManagedObjectContext *context;
 

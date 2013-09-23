@@ -79,22 +79,22 @@
     }
 }
 
-- (IBAction)selectSexAction:(id)sender {
-    UISegmentedControl *seg = (UISegmentedControl *)sender;
-    switch (seg.selectedSegmentIndex) {
-        case 0:
-            content.sex = @"男";
-            break;
-        case 1:
-            content.sex = @"未知";
-            break;      
-        case 2:
-            content.sex = @"女";
-            break;
-        default:
-            break;
-    };
-}
+//- (IBAction)selectSexAction:(id)sender {
+//    UISegmentedControl *seg = (UISegmentedControl *)sender;
+//    switch (seg.selectedSegmentIndex) {
+//        case 0:
+//            content.sex = @"男";
+//            break;
+//        case 1:
+//            content.sex = @"未知";
+//            break;      
+//        case 2:
+//            content.sex = @"女";
+//            break;
+//        default:
+//            break;
+//    };
+//}
 
 -(IBAction)submitAction:(id)sender{
     [self saveAction];
@@ -219,15 +219,24 @@
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"sexCell" forIndexPath:indexPath];
             newSex = content.sex;
-            UISegmentedControl *seg = (UISegmentedControl *)[cell viewWithTag:1];
-            [seg addTarget:self action:@selector(selectSexAction:) forControlEvents:UIControlEventValueChanged];
+//            UISegmentedControl *seg = (UISegmentedControl *)[cell viewWithTag:1];
+            RORSegmentControl *segment = [[RORSegmentControl alloc]initWithFrame:CGRectMake(33, 7, 204, 29) andSegmentNumber:3];
+            segment.delegate = self;
+            [segment setSegmentTitle:@"男" withIndex:0];
+            [segment setSegmentTitle:@"很矛盾" withIndex:1];
+            [segment setSegmentTitle:@"女" withIndex:2];
+            [cell addSubview:segment];
+            
             if ([content.sex isEqualToString:@"男"]){
-                [seg setSelectedSegmentIndex:0];
+                [segment setSelectionIndex:0];
             } else if ([content.sex isEqualToString:@"女"]){
-                [seg setSelectedSegmentIndex:2];
+                [segment setSelectionIndex:2];
             } else{
-                [seg setSelectedSegmentIndex:1];
+                [segment setSelectionIndex:1];
             }
+            
+//            [seg addTarget:self action:@selector(selectSexAction:) forControlEvents:UIControlEventValueChanged];
+            
             
 //            [RORUtils setFontFamily:CHN_WRITTEN_FONT forView:cell andSubViews:YES];
 
@@ -238,6 +247,25 @@
     }
     
     return cell;
+}
+
+#pragma mark - RORSegmentContorl delegate
+
+-(void)SegmentValueChanged:(NSInteger)segmentIndex{
+//    UISegmentedControl *seg = (UISegmentedControl *)sender;
+    switch (segmentIndex) {
+        case 0:
+            content.sex = @"男";
+            break;
+        case 1:
+            content.sex = @"未知";
+            break;
+        case 2:
+            content.sex = @"女";
+            break;
+        default:
+            break;
+    };
 }
 
 #pragma mark - Table view delegate

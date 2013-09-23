@@ -12,6 +12,7 @@
 #import "RORNetWorkUtils.h"
 #import <AGCommon/UIImage+Common.h>
 
+#define SEGMENT_FRAME CGRectMake(95, 370, 150, 30)
 @interface RORLoginViewController ()
 
 @end
@@ -21,7 +22,6 @@
 @synthesize passwordTextField;
 @synthesize nicknameTextField;
 @synthesize switchButton;
-@synthesize sexButton;
 @synthesize context;
 @synthesize delegate;
 
@@ -59,7 +59,7 @@
                             bundleName:@"Resource"];
     [self.btnTencentLogin setBackgroundImage:img forState:UIControlStateNormal];
     
-    RORSegmentControl *seg = [[RORSegmentControl alloc]initWithFrame:CGRectMake(95, 22.5, 150, 30) andSegmentNumber:2];
+    RORSegmentControl *seg = [[RORSegmentControl alloc]initWithFrame:SEGMENT_FRAME andSegmentNumber:2];
     seg.delegate = self;
     [seg setSegmentTitle:@"登录" withIndex:0];
     [seg setSegmentTitle:@"注册" withIndex:1];
@@ -95,7 +95,7 @@
     [UIView setAnimationDuration:0.2];
     
     nicknameTextField.alpha = segmentIndex;
-    sexButton.alpha = segmentIndex;
+    self.snsContainerView.alpha = 1-segmentIndex;
     
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(animationFinished)];
@@ -141,7 +141,7 @@
         }
         [RORRunHistoryServices syncRunningHistories];
     } else { //注册
-        NSDictionary *regDict = [[NSDictionary alloc]initWithObjectsAndKeys:usernameTextField.text, @"userEmail",[RORUtils md5:passwordTextField.text], @"password", nicknameTextField.text, @"nickName", [sexButton selectedSegmentIndex]==0?@"男":@"女", @"sex", nil];
+        NSDictionary *regDict = [[NSDictionary alloc]initWithObjectsAndKeys:usernameTextField.text, @"userEmail",[RORUtils md5:passwordTextField.text], @"password", nicknameTextField.text, @"nickName", nil];
         User_Base *user = [RORUserServices registerUser:regDict];
         
         if (user != nil){
@@ -218,7 +218,6 @@
     [self setPasswordTextField:nil];
     [self setSwitchButton:nil];
     [self setNicknameTextField:nil];
-    [self setSexButton:nil];
     //[super viewDidUnload];
 }
 

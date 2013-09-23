@@ -18,9 +18,11 @@
         // Initialization code
         self.adjustsImageWhenHighlighted = NO;
         self.adjustsImageWhenDisabled = NO;
+        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         seg_index = index;
         selected = NO;
         seg_style = style;
+        [self setBackgroundColor:[UIColor clearColor]];
         [self setBackgroundImage:[self imageForStyle:style andSelection:NO] forState:UIControlStateNormal];
         [self.titleLabel setFont:[UIFont fontWithName:CHN_PRINT_FONT size:13]];
     }
@@ -38,8 +40,11 @@
 
 -(UIImage *)imageForStyle:(NSInteger)style andSelection:(BOOL)isSelected
 {
-    NSString *imageName = [NSString stringWithFormat:@"segment_button_%d_%@.png",style, isSelected?@"selected":@"unselected"];
-    return [UIImage imageNamed:imageName];
+    if (isSelected) {
+        NSString *imageName = [NSString stringWithFormat:@"seg_selected_bg.png"];
+        return [UIImage imageNamed:imageName];
+    }
+    return nil;
 }
 
 -(IBAction)refreshAppearence:(id)sender{

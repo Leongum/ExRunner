@@ -129,7 +129,7 @@
             identifier = @"speedCell";
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 //            UISegmentedControl *seg = (UISegmentedControl *)[cell viewWithTag:2];
-            RORSegmentControl *seg = [[RORSegmentControl alloc]initWithFrame:CGRectMake(107, 16, 130, 26) andSegmentNumber:2];
+            RORSegmentControl *seg = [[RORSegmentControl alloc]initWithFrame:CGRectMake(cell.frame.size.width - 130 - 10, (cell.frame.size.height - 29)/2, 130, 29) andSegmentNumber:2];
             seg.delegate = self;
             [seg setSegmentTitle:@"7'41\"/km" withIndex:0];
             [seg setSegmentTitle:@"7.8km/h" withIndex:1];
