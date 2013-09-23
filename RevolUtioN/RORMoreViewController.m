@@ -166,6 +166,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 2){
+        RORCheckBox *check = (RORCheckBox*)[[tableView cellForRowAtIndexPath:indexPath] viewWithTag:3];
+        [check checkBoxClicked];
+    }
 }
 
 - (void)syncModeSwitchChangeHandler:(RORCheckBox *)sender

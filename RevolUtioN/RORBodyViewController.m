@@ -11,6 +11,10 @@
 #import "RORMoreViewController.h"
 #import "RORLoginViewController.h"
 
+#define TITLE_TAG 1
+#define TEXTFIELD_TAG 2
+#define UNIT_TAG 3
+
 @interface RORBodyViewController ()
 
 @end
@@ -61,6 +65,11 @@
 }
 
 - (void)saveAction {
+    [self collepseKeyboard:[[self.table cellForRowAtIndexPath:selection] viewWithTag:2]];
+    
+    content.attributes.height = [NSNumber numberWithDouble:newHeight];
+    content.attributes.weight = [NSNumber numberWithDouble:newWeight];
+    
     NSDictionary *saveDict = [NSDictionary dictionaryWithObjectsAndKeys:content.attributes.height, @"height",
                              content.attributes.weight, @"weight",
                              content.sex, @"sex", nil];
@@ -89,6 +98,7 @@
 
 -(IBAction)submitAction:(id)sender{
     [self saveAction];
+    if (!isValid) return;
     [self backAction:sender];
 }
 
@@ -102,11 +112,7 @@
 
 - (IBAction)collepseKeyboard:(id)sender {
     UITextField *textField = (UITextField *)sender;
-    UIView *temp = [textField superview];
-    while (![temp isKindOfClass:[UITableViewCell class]]) {
-        temp = [temp superview];
-    }
-    UITableViewCell *cell = (UITableViewCell *)temp;
+    UITableViewCell *cell = [self cellForTextField:textField];
 
     NSIndexPath *indexPath = [self.table indexPathForCell:(UITableViewCell*)cell];
     switch (indexPath.row) {
@@ -115,6 +121,8 @@
             double dec = textField.text.doubleValue;
             if (dec<120 || dec>250){
                 [self sendAlart:@"身高输入不对"];
+                isValid = NO;
+                textField.text = cache;
                 return;
             }
             newHeight = dec;
@@ -125,6 +133,8 @@
             double dec = textField.text.doubleValue;
             if (dec<30 || dec>150){
                 [self sendAlart:@"体重输入不对"];
+                isValid = NO;
+                textField.text = cache;
                 return;
             }
             newWeight = dec;
@@ -137,6 +147,23 @@
 }
 
 -(IBAction)backgroundTap:(id)sender{
+    UITextField *textField = (UITextField *)[[self.table cellForRowAtIndexPath:selection] viewWithTag:TEXTFIELD_TAG];
+    [self collepseKeyboard:textField];
+}
+
+-(IBAction)startEditingAction:(id)sender{
+    UITextField *textField = (UITextField *)sender;
+    UITableViewCell *cell = [self cellForTextField:textField];
+    selection = [self.table indexPathForCell:(UITableViewCell*)cell];
+    cache = textField.text;
+}
+
+-(UITableViewCell *)cellForTextField:(UITextField*)textField{
+    UIView *temp = [textField superview];
+    while (![temp isKindOfClass:[UITableViewCell class]]) {
+        temp = [temp superview];
+    }
+    return (UITableViewCell *)temp;
 }
 
 #pragma mark - Table view data source
@@ -153,21 +180,39 @@
         case 0:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"plainCell" forIndexPath:indexPath];
-            UILabel *titleLabel = (UILabel *)[cell viewWithTag:1];
-            titleLabel.text = @"身高(cm)";
+            UILabel *titleLabel = (UILabel *)[cell viewWithTag:TITLE_TAG];
+            titleLabel.text = @"身高";
+            
             newHeight = content.attributes.height.doubleValue;
-            UITextField *textField = (UITextField *)[cell viewWithTag:2];
+            UITextField *textField = (UITextField *)[cell viewWithTag:TEXTFIELD_TAG];
+            [textField addTarget:self action:@selector(startEditingAction:) forControlEvents:UIControlEventEditingDidBegin];
             textField.text = [NSString stringWithFormat:@"%.1f",newHeight];
+            
+            UILabel *unitLabel = (UILabel *)[cell viewWithTag:UNIT_TAG];
+            unitLabel.text = @"(cm)";
+            
+            [RORUtils setFontFamily:CHN_WRITTEN_FONT forView:titleLabel andSubViews:NO];
+            [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:textField andSubViews:YES];
+            
             break;
         }
         case 1:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"plainCell" forIndexPath:indexPath];
-            UILabel *titleLabel = (UILabel *)[cell viewWithTag:1];
-            titleLabel.text = @"体重(kg)";
+            UILabel *titleLabel = (UILabel *)[cell viewWithTag:TITLE_TAG];
+            titleLabel.text = @"体重";
+            
             newWeight = content.attributes.weight.doubleValue;
-            UITextField *textField = (UITextField *)[cell viewWithTag:2];
+            UITextField *textField = (UITextField *)[cell viewWithTag:TEXTFIELD_TAG];
+            [textField addTarget:self action:@selector(startEditingAction:) forControlEvents:UIControlEventEditingDidBegin];
             textField.text = [NSString stringWithFormat:@"%.1f",newWeight];
+            
+            UILabel *unitLabel = (UILabel *)[cell viewWithTag:UNIT_TAG];
+            unitLabel.text = @"(kg)";
+
+            [RORUtils setFontFamily:CHN_WRITTEN_FONT forView:titleLabel andSubViews:NO];
+            [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:textField andSubViews:YES];
+            
             break;
         }
         case 2:
@@ -183,6 +228,9 @@
             } else{
                 [seg setSelectedSegmentIndex:1];
             }
+            
+//            [RORUtils setFontFamily:CHN_WRITTEN_FONT forView:cell andSubViews:YES];
+
             break;
         }
         default:

@@ -27,7 +27,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="okw-Sl-nSY" userLabel="history_Button" customClass="RORNormalButton">
-                                <rect key="frame" x="20" y="401" width="31" height="39"/>
+                                <rect key="frame" x="15" y="395" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="history.png">
@@ -103,7 +103,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="OYL-wh-XmF" userLabel="more_Button" customClass="RORNormalButton">
-                                <rect key="frame" x="269" y="401" width="31" height="39"/>
+                                <rect key="frame" x="250" y="395" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="settings.png">
@@ -118,7 +118,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="HRn-AF-9Ns" userLabel="weatherlevel_Button">
-                                <rect key="frame" x="0.0" y="27" width="76" height="24"/>
+                                <rect key="frame" x="0.0" y="27" width="100" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -138,7 +138,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="B6U-e1-Jur" userLabel="challenge_Button" customClass="RORNormalButton">
-                                        <rect key="frame" x="104" y="25" width="112" height="44"/>
+                                        <rect key="frame" x="92" y="17" width="136" height="60"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -158,7 +158,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="OFm-LO-YNj" userLabel="run_Button" customClass="RORFunnyButton">
-                                <rect key="frame" x="92" y="135" width="112" height="44"/>
+                                <rect key="frame" x="92" y="129" width="136" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="main_run_btn_bg.png">
@@ -233,7 +233,7 @@
                                     <action selector="loginAction:" destination="ZbL-oL-5D5" eventType="touchUpInside" id="QzK-32-D6R"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hKk-eB-BCs" customClass="RORCheckBox">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hKk-eB-BCs" customClass="RORCheckBox">
                                 <rect key="frame" x="239" y="197" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -241,9 +241,6 @@
                                 <state key="normal">
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="visibilityOfPW:" destination="ZbL-oL-5D5" eventType="touchUpInside" id="owr-et-6ur"/>
@@ -911,7 +908,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jiY-Mp-CpN" userLabel="filterButton" customClass="RORNormalButton">
-                                <rect key="frame" x="255" y="10" width="31" height="39"/>
+                                <rect key="frame" x="255" y="10" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="filter_btn_bg.png">
@@ -1168,7 +1165,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="92o-s4-vMa">
-                                        <rect key="frame" x="92" y="223" width="112" height="44"/>
+                                        <rect key="frame" x="104" y="223" width="112" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <state key="normal" title="微信朋友圈" backgroundImage="main_btn_bg.png">
@@ -1461,7 +1458,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3it-yr-aAU" customClass="RORNormalButton">
-                                <rect key="frame" x="255" y="10" width="31" height="39"/>
+                                <rect key="frame" x="255" y="10" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="logout_btn_bg.png">
@@ -1500,7 +1497,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kKY-NS-yZk" userLabel="submit Button" customClass="RORNormalButton">
-                                <rect key="frame" x="267" y="10" width="31" height="39"/>
+                                <rect key="frame" x="255" y="10" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="13"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="28" maxX="0.0" maxY="0.0"/>
@@ -1530,18 +1527,26 @@
                                             <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1G9-yR-6EX">
-                                                    <rect key="frame" x="20" y="11" width="80" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身高" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1G9-yR-6EX">
+                                                    <rect key="frame" x="20" y="7" width="80" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(cm)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7ef-UL-uQz">
+                                                    <rect key="frame" x="65" y="7" width="42" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="textfield.png" id="WB8-LV-NKY">
                                                     <rect key="frame" x="108" y="7" width="162" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                                     <connections>
                                                         <action selector="collepseKeyboard:" destination="B7d-5Y-71V" eventType="editingDidEndOnExit" id="LMu-Na-sD1"/>
@@ -1568,6 +1573,9 @@
                                                         <segment title="女"/>
                                                     </segments>
                                                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <connections>
+                                                        <action selector="backgroundTap:" destination="B7d-5Y-71V" eventType="touchDown" id="FM2-dy-xet"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1582,6 +1590,9 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="backgroundTap:" destination="B7d-5Y-71V" eventType="touchDown" id="J3F-hl-nWC"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="aCP-sf-oGd"/>
                     <connections>
@@ -1628,7 +1639,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pve-tS-V6h">
-                                <rect key="frame" x="259" y="10" width="31" height="39"/>
+                                <rect key="frame" x="255" y="10" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="submit.png">
@@ -1844,19 +1855,33 @@
     </scenes>
     <resources>
         <image name="centerMap.png" width="50" height="50"/>
+        <image name="centerMap.png" width="50" height="50"/>
         <image name="challenge_pop_bg.png" width="640" height="1136"/>
         <image name="charactor.png" width="585" height="457"/>
         <image name="check.png" width="19" height="19"/>
         <image name="details.png" width="32" height="32"/>
+        <image name="details.png" width="32" height="32"/>
+        <image name="details.png" width="32" height="32"/>
         <image name="filter_btn_bg.png" width="55" height="55"/>
         <image name="filter_cell_bg.png" width="191" height="45"/>
         <image name="finishrunning_pop_bg.png" width="640" height="1136"/>
+        <image name="finishrunning_pop_bg.png" width="640" height="1136"/>
+        <image name="green_btn_bg.png" width="110" height="44"/>
+        <image name="green_btn_bg.png" width="110" height="44"/>
+        <image name="green_btn_bg.png" width="110" height="44"/>
         <image name="green_btn_bg.png" width="110" height="44"/>
         <image name="hand.png" width="320" height="568"/>
         <image name="history.png" width="55" height="55"/>
         <image name="history_detail_bg.png" width="320" height="568"/>
         <image name="logout_btn_bg.png" width="55" height="55"/>
         <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_btn_bg.png" width="136" height="60"/>
         <image name="main_btn_bg.png" width="136" height="60"/>
         <image name="main_challenge_btn_bg.png" width="136" height="60"/>
         <image name="main_login_bg.png" width="210" height="68"/>
@@ -1864,20 +1889,34 @@
         <image name="main_trafficlight_green.png" width="100" height="40"/>
         <image name="main_username_bg.png" width="210" height="68"/>
         <image name="paper.png" width="320" height="568"/>
+        <image name="paper.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
         <image name="paper_bg.png" width="320" height="568"/>
         <image name="red_left.png" width="44" height="44"/>
         <image name="red_right.png" width="44" height="44"/>
         <image name="running_bg.png" width="320" height="568"/>
+        <image name="running_bg.png" width="320" height="568"/>
+        <image name="running_bg.png" width="320" height="568"/>
         <image name="running_wind.png" width="609" height="99"/>
+        <image name="settings.png" width="55" height="55"/>
         <image name="settings.png" width="55" height="55"/>
         <image name="share_btn.png" width="55" height="55"/>
         <image name="share_pop_bg.png" width="640" height="1136"/>
         <image name="spring_bg.png" width="141" height="66"/>
         <image name="submit.png" width="55" height="55"/>
+        <image name="submit.png" width="55" height="55"/>
+        <image name="submit.png" width="55" height="55"/>
+        <image name="submit.png" width="55" height="55"/>
         <image name="sync_apply.png" width="55" height="55"/>
         <image name="textfield.png" width="320" height="60"/>
+        <image name="textfield.png" width="320" height="60"/>
+        <image name="textfield.png" width="320" height="60"/>
+        <image name="textfield.png" width="320" height="60"/>
     </resources>
-    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

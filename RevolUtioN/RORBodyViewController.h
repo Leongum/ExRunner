@@ -22,7 +22,9 @@
 @interface RORBodyViewController : RORViewController{
     double newHeight, newWeight;
     NSString *newSex;
-    int selection;
+    NSIndexPath *selection;
+    NSString *cache;
+    BOOL isValid;
 }
 
 @property (strong, nonatomic) UIViewController *delegate;
