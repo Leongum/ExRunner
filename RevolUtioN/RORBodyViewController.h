@@ -27,9 +27,9 @@
 
 @property (strong, nonatomic) UIViewController *delegate;
 @property (strong, nonatomic) NSManagedObjectContext *context;
-@property (strong, nonatomic) IBOutlet RORBottomPopSubview *coverView;
+//@property (strong, nonatomic) IBOutlet RORBottomPopSubview *coverView;
 @property (retain, nonatomic) IBOutlet User_Base *content;
-@property (strong, nonatomic) IBOutlet UIPickerView *picker;
+//@property (strong, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) IBOutlet UITableView *table;
 
 @end

@@ -41,7 +41,6 @@
 #define ENG_WRITTEN_FONT @"Noteworthy"
 #define ENG_PRINT_FONT @"Neotech"
 
-
 #endif
 
 typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3, NormalRun = 4} MissionTypeEnum;

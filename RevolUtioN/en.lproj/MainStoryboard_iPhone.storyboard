@@ -208,14 +208,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hKk-eB-BCs" customClass="RORCheckBox">
                                 <rect key="frame" x="239" y="206" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="visibilityOfPW:" destination="ZbL-oL-5D5" eventType="touchUpInside" id="owr-et-6ur"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="密码" textAlignment="center" minimumFontSize="17" id="vwW-LX-VTP">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="17" background="textfield.png" id="vwW-LX-VTP">
                                 <rect key="frame" x="38" y="169" width="245" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -225,7 +227,7 @@
                                     <action selector="backgroundTap:" destination="ZbL-oL-5D5" eventType="editingDidEndOnExit" id="VPx-g8-fx2"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="昵称" textAlignment="center" minimumFontSize="17" id="ivk-zs-mr7">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="昵称" textAlignment="center" minimumFontSize="17" background="textfield.png" id="ivk-zs-mr7">
                                 <rect key="frame" x="38" y="262" width="245" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -236,7 +238,7 @@
                                     <action selector="nickNameTapped:" destination="ZbL-oL-5D5" eventType="editingDidBegin" id="wfm-Qk-vGU"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="邮箱" textAlignment="center" minimumFontSize="17" id="0Sl-s7-pKs">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱" textAlignment="center" minimumFontSize="17" background="textfield.png" id="0Sl-s7-pKs">
                                 <rect key="frame" x="38" y="115" width="245" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1224,11 +1226,11 @@
             <objects>
                 <viewController id="dpc-IG-tq1" customClass="RORMoreViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Zp-7r-MAi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000006"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="paper_bg.png" id="Kps-fj-hIN">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="479.99999999999994"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000011"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="6fL-6f-vv6">
@@ -1312,6 +1314,7 @@
                                                     <rect key="frame" x="212" y="8" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal">
                                                         <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1400,7 +1403,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="paper_bg.png" id="fhI-11-lbH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000006"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="KRa-J5-Al0">
@@ -1449,7 +1452,7 @@
         <scene sceneID="IjO-mb-utM">
             <objects>
                 <viewController id="B7d-5Y-71V" customClass="RORBodyViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wl4-sA-46f">
+                    <view key="view" contentMode="scaleToFill" id="wl4-sA-46f" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -1478,27 +1481,30 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="plainCell" textLabel="0r4-ae-kK3" detailTextLabel="Ixu-1A-j3d" style="IBUITableViewCellStyleValue1" id="fgi-Ou-UMS">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="plainCell" id="fgi-Ou-UMS">
                                         <rect key="frame" x="0.0" y="22" width="270" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fgi-Ou-UMS" id="NIq-OZ-spJ">
                                             <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0r4-ae-kK3">
-                                                    <rect key="frame" x="15" y="12" width="34" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ixu-1A-j3d">
-                                                    <rect key="frame" x="211" y="12" width="44" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1G9-yR-6EX">
+                                                    <rect key="frame" x="20" y="11" width="80" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
                                                 </label>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="textfield.png" id="WB8-LV-NKY">
+                                                    <rect key="frame" x="108" y="7" width="162" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                                    <connections>
+                                                        <action selector="collepseKeyboard:" destination="B7d-5Y-71V" eventType="editingDidEndOnExit" id="LMu-Na-sD1"/>
+                                                    </connections>
+                                                </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1518,6 +1524,7 @@
                                                         <segment title="有点矛盾"/>
                                                         <segment title="女"/>
                                                     </segments>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </segmentedControl>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1529,36 +1536,11 @@
                                     <outlet property="delegate" destination="B7d-5Y-71V" id="Dtd-VC-3xj"/>
                                 </connections>
                             </tableView>
-                            <view alpha="0.0" contentMode="scaleToFill" id="KQW-gp-iO5" customClass="RORBottomPopSubview">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <view alpha="0.50000000000000011" contentMode="scaleToFill" id="Otu-Hq-ADG" customClass="UIControl">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="coverViewTap:" destination="B7d-5Y-71V" eventType="touchUpInside" id="CAb-d5-G43"/>
-                                        </connections>
-                                    </view>
-                                    <pickerView contentMode="scaleToFill" id="Em6-Z4-cIH">
-                                        <rect key="frame" x="1" y="142" width="320" height="216"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="B7d-5Y-71V" id="zKr-Lo-1MU"/>
-                                            <outlet property="delegate" destination="B7d-5Y-71V" id="w6t-jH-zmG"/>
-                                        </connections>
-                                    </pickerView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="aCP-sf-oGd"/>
                     <connections>
-                        <outlet property="coverView" destination="KQW-gp-iO5" id="5Qt-wa-2Uk"/>
-                        <outlet property="picker" destination="Em6-Z4-cIH" id="IjH-Xc-sUv"/>
                         <outlet property="table" destination="zNJ-up-nr9" id="exz-SU-N9o"/>
                     </connections>
                 </viewController>
@@ -1840,6 +1822,7 @@
         <image name="spring_bg.png" width="141" height="66"/>
         <image name="submit.png" width="55" height="55"/>
         <image name="sync_apply.png" width="55" height="55"/>
+        <image name="textfield.png" width="320" height="60"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -208,6 +208,7 @@
 		30D21E9A173D4D02006B24A8 /* RORRelationsOnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D21E99173D4D02006B24A8 /* RORRelationsOnlineCell.m */; };
 		30D95E6E17C35EB70056E7C0 /* RORStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */; };
 		30D95E6F17C35EB70056E7C0 /* RORHistoryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D95E6D17C35EB70056E7C0 /* RORHistoryPageViewController.m */; };
+		30DBB71F17EF300E00552391 /* textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DBB71E17EF300E00552391 /* textfield.png */; };
 		30DFE7DF17C6748F00678780 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DFE7DD17C6748F00678780 /* submit.png */; };
 		30DFE7E017C6748F00678780 /* submit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DFE7DE17C6748F00678780 /* submit@2x.png */; };
 		30F44B501778267200876915 /* RORDBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F44B4F1778267200876915 /* RORDBCommon.m */; };
@@ -584,6 +585,7 @@
 		30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORStatisticsViewController.m; sourceTree = "<group>"; };
 		30D95E6C17C35EB70056E7C0 /* RORHistoryPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHistoryPageViewController.h; sourceTree = "<group>"; };
 		30D95E6D17C35EB70056E7C0 /* RORHistoryPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORHistoryPageViewController.m; sourceTree = "<group>"; };
+		30DBB71E17EF300E00552391 /* textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = textfield.png; path = bg/textfield.png; sourceTree = "<group>"; };
 		30DFE7DD17C6748F00678780 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
 		30DFE7DE17C6748F00678780 /* submit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submit@2x.png"; sourceTree = "<group>"; };
 		30F44B4E1778267200876915 /* RORDBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORDBCommon.h; sourceTree = "<group>"; };
@@ -972,6 +974,7 @@
 		301C1F6D1737B5B80068B43B /* bg */ = {
 			isa = PBXGroup;
 			children = (
+				30DBB71E17EF300E00552391 /* textfield.png */,
 				30978DA017EDA57E00CA58B9 /* history */,
 				30978D9817ECB09400CA58B9 /* running_countdown_1.png */,
 				30978D9917ECB09400CA58B9 /* running_countdown_2.png */,
@@ -1558,6 +1561,7 @@
 				30A6D9F017CDD58700D1116E /* main_trafficlight_green@2x.png in Resources */,
 				30A6D9F117CDD58700D1116E /* main_trafficlight_red.png in Resources */,
 				30A6D9F217CDD58700D1116E /* main_trafficlight_red@2x.png in Resources */,
+				30DBB71F17EF300E00552391 /* textfield.png in Resources */,
 				30A6D9F317CDD58700D1116E /* main_trafficlight_yellow.png in Resources */,
 				30A6D9F417CDD58700D1116E /* main_trafficlight_yellow@2x.png in Resources */,
 				30A6D9F617CDD8CA00D1116E /* FZKATJW.TTF in Resources */,
