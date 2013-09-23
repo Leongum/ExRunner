@@ -7,6 +7,7 @@
 //
 
 #import "RORCustomShareViewController.h"
+#import <QuartzCore/QuartzCore.h>
 #import <AGCommon/UIImage+Common.h>
 #import <AGCommon/UIDevice+Common.h>
 #import <AGCommon/UINavigationBar+Common.h>
@@ -30,13 +31,48 @@
 
 - (void)viewDidLoad
 {
+//    _txtShareContent.backgroundColor = [UIColor greenColor];
+//    _txtShareContent.layer.masksToBounds=YES;
+//    _txtShareContent.layer.borderWidth=1.0;
+//    _txtShareContent.layer.borderColor=[[UIColor grayColor] CGColor];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _txtShareContent.delegate = self;
-    [_txtShareContent becomeFirstResponder];
+    //[_txtShareContent becomeFirstResponder];
     _lblContentCount.text = [NSString stringWithFormat:@"%d/%d", SHARE_MAX_CONTENT, SHARE_MAX_CONTENT];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
     self.backButton.frame = BACKBUTTON_FRAME_TOP;
+}
+
+- (void)keyboardWillShow:(NSNotification*)notification {
+    NSDictionary* info = [notification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    _txtShareContent.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - keyboardSize.height);
+}
+
+- (void)keyboardWillHide:(NSNotification*)notification {
+    _txtShareContent.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+}
+
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [_txtShareContent resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (void)updateWordCount

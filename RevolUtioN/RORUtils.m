@@ -232,14 +232,14 @@
 	return compressedData;
 }
 
-+(NSString *)getCitycodeByCityname:(NSString *)cityName{
++(NSString *)getCitycodeByCityname:(NSString *)cityName withProvince:(NSString *)provinceName{
     if(cityName == nil)return nil;
     NSError *error;
     NSData *CityCodeJson = [NSData dataWithContentsOfFile:[RORUtils getCityCodeJSon]];
     NSDictionary *citycodeDic = [NSJSONSerialization JSONObjectWithData:CityCodeJson options:NSJSONReadingMutableLeaves error:&error];
     //    weatherDic字典中存放的数据也是字典型，从它里面通过键值取值
     NSArray *citycodeList = [citycodeDic objectForKey:@"城市代码"];
-    
+    NSString * defaultCityCode = nil;
     for (int i=0; i<citycodeList.count; i++){
         NSDictionary *prov = [citycodeList objectAtIndex:i];
         NSArray *cityList = [prov objectForKey:@"市"];
@@ -249,9 +249,12 @@
             if ([cityName rangeOfString:name].location != NSNotFound){
                 return [city valueForKey:@"编码"];
             }
+            if ([provinceName rangeOfString:name].location != NSNotFound){
+                defaultCityCode = [city valueForKey:@"编码"];
+            }
         }
     }
-    return nil;
+    return defaultCityCode;
 }
 
 +(NSString*)outputDistance:(double)distance{

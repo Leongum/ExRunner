@@ -157,7 +157,7 @@ NSInteger centerLoc =-10000;
         cityName = placemark.subLocality;
         NSString * provinceName = placemark.administrativeArea;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSDictionary *weatherInfo = [RORThirdPartyService syncWeatherInfo:[RORUtils getCitycodeByCityname:cityName]];
+            NSDictionary *weatherInfo = [RORThirdPartyService syncWeatherInfo:[RORUtils getCitycodeByCityname:cityName withProvince:provinceName]];
             NSDictionary *pm25info =[RORThirdPartyService syncPM25Info:cityName withProvince:provinceName];
             dispatch_async(dispatch_get_main_queue(), ^{
                 weatherInformation = @"";

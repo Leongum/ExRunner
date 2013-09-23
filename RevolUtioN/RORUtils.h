@@ -40,7 +40,7 @@ _Pragma("clang diagnostic pop") \
 
 + (NSString*)getCityCodeJSon;
 
-+ (NSString *)getCitycodeByCityname:(NSString *)cityName;
++ (NSString *)getCitycodeByCityname:(NSString *)cityName withProvince:(NSString *)provinceName;
 
 + (NSString*)outputDistance:(double)distance;
 
