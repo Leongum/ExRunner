@@ -29,7 +29,7 @@
         contentImageView = [[UIImageView alloc] initWithFrame:frame];
         [self addSubview:contentImageView];
         contentImageView.alpha = 0;
-        count = 3;
+//        count = 3;
     }
     return self;
 }
@@ -37,12 +37,12 @@
 -(void)doAnimation{
     contentImageView.alpha = 1;
 
-    for (int i=0; i<count; i++){
-        [contentImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"running_countdown_%d.png", count - i]]];
+//    for (int i=0; i<count; i++){
+        [contentImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"running_countdown_%d.png", 3]]];
 //        [contentImageView fallIn:1 delegate:self];
         [Animations zoomIn:contentImageView andAnimationDuration:1 andWait:YES];
 //        [Animations fadeOut:contentImageView andAnimationDuration:0.5 fromAlpha:1 andWait:YES];
-    }
+//    }
     self.alpha = 0;
 }
 

@@ -40,7 +40,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    NSLog(@"%@", record);
+//    NSLog(@"%@", record);
+    
+    
     distanceLabel.text = [RORUtils outputDistance:record.distance.doubleValue];
     speedLabel.text = [RORUserUtils formatedSpeed:record.avgSpeed.doubleValue/3.6];
     durationLabel.text = [RORUtils transSecondToStandardFormat:record.duration.integerValue];
@@ -64,6 +66,8 @@
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.labelContainerView andSubViews:YES];
     [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainerView andSubViews:YES];
     [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dateLabel andSubViews:YES];
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.coverView andSubViews:YES];
+
 //    [self.navigationItem.backBarButtonItem setAction:@selector(backToMain:)];
 //    [delegate viewDidLoad];
 }

@@ -26,7 +26,7 @@ static BOOL isConnectioned = NO;
 }
 
 + (void) initCheckNetWork{
-    Reachability *reach = [Reachability reachabilityWithHostName:@"www.apple.com"];
+    Reachability *reach = [Reachability reachabilityWithHostName:@"www.baidu.com"];
     [self updateNetWorkStatus:[reach currentReachabilityStatus]];
 }
 

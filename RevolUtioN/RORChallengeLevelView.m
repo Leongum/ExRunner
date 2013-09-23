@@ -34,10 +34,10 @@
         CGRect imageFrame = CGRectMake(self.frame.size.width/2 - cellWidth/2, cellHeight*i, cellHeight, cellHeight);
 
         UILabel *contentLabel = [[UILabel alloc]initWithFrame:labelFrame];
-        [contentLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:15]];
+        [contentLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:15]];
         [contentLabel setLineBreakMode:NSLineBreakByCharWrapping];
         [contentLabel setTag:i+1];
-        [contentLabel setBackgroundColor:[UIColor grayColor]];
+        [contentLabel setBackgroundColor:[UIColor clearColor]];
         [contentLabel setTextColor:[UIColor whiteColor]];
         contentLabel.textAlignment = UITextAlignmentCenter;
         contentLabel.text = [NSString stringWithFormat:@"%d", i];
@@ -46,10 +46,10 @@
 //        UIImageView *contentImage = [[UIImageView alloc]initWithFrame:imageFrame];
         UILabel *contentImage = [[UILabel alloc]initWithFrame:imageFrame];
         [contentImage setTag:i+columns+1];
-        [contentImage setBackgroundColor:[UIColor colorWithRed:231.0/255 green:8.0/255 blue:53.0/255 alpha:1]];
-        [contentImage setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:24]];
+        [contentImage setBackgroundColor:[UIColor clearColor]];
+        [contentImage setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:24]];
         contentImage.textAlignment = UITextAlignmentCenter;
-        [contentImage setTextColor:[UIColor blackColor]];
+        [contentImage setTextColor:[UIColor whiteColor]];
         [contentImage setText:MissionGradeEnum_toString[i]];
         [self addSubview:contentImage];
 

@@ -20,7 +20,7 @@
 #define COVERVIEW_BUTTON_TAG 3
 #define COVERVIEW_BG_TAG 4
 
-#define LEVELTABLE_FRAME CGRectMake(17.5, 85, 285, 270)
+#define LEVELTABLE_FRAME CGRectMake(17.5, 120, 285, 240)
 
 @interface RORChallengeViewController ()
 
@@ -50,6 +50,9 @@
     [levelTable addTarget:self action:@selector(coverViewBgTap:) forControlEvents:UIControlEventTouchUpInside];
 //    levelTable.backgroundColor=[UIColor whiteColor];//[UIColor colorWithRed:231/255 green:8/255 blue:53/255 alpha:1];
     [self.coverView addSubview:levelTable];
+    
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.coverView andSubViews:YES];
+    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:levelTable andSubViews:YES];
 }
 
 -(void)loadChallengeTable{

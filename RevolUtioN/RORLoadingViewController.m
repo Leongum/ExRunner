@@ -32,6 +32,8 @@
 {
     [super viewDidLoad];
     [RORNetWorkUtils initCheckNetWork];
+    NSLog(@"%hhd",[RORNetWorkUtils getIsConnetioned]);
+
 	// Do any additional setup after loading the view.
     //sync version
     Version_Control *version = [RORSystemService syncVersion:@"ios"];
