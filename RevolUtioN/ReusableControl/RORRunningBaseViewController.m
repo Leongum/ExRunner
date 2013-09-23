@@ -37,11 +37,15 @@
     offset.latitude = 0;
     offset.longitude = 0;
     
-    countDownView = [[RORCountDownCoverView alloc]initWithFrame:CGRectMake(0, 0, 320, 640)];
+//    CGRect rx = [ UIScreen mainScreen ].applicationFrame;
+    countDownView = [[RORCountDownCoverView alloc]initWithFrame:self.view.frame];
+    [countDownView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin];
     [self.view addSubview:countDownView];
     [countDownView hide];
+    
+    sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"all_set_gun.mp3"];
 }
-         
+
 -(void)viewDidUnload{
     [self stopUpdates];
     [super viewDidUnload];
@@ -151,7 +155,7 @@
     }
     //step counting
     [stepCounting pushNewLAcc:[INMatrix modOfVec_3:newDeviceStatus.an] GAcc:newDeviceStatus.an.v3 speed:[INMatrix modOfVec_3:currentSpeed]];
-    NSLog(@"%d", stepCounting.counter);
+//    NSLog(@"%d", stepCounting.counter);
 }
 
 - (void)startDeviceMotion

@@ -46,7 +46,8 @@
 -(void)initUIControls{
     self.coverView.alpha =0;
     self.backButton.alpha = 1;
-    levelTable = [[RORChallengeLevelView alloc]initWithFrame:LEVELTABLE_FRAME andNumberOfColumns:6];
+    levelTable = [[RORChallengeLevelView alloc]initWithFrame:self.contentFrameView.frame andNumberOfColumns:6];
+    [levelTable setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin];
     [levelTable addTarget:self action:@selector(coverViewBgTap:) forControlEvents:UIControlEventTouchUpInside];
 //    levelTable.backgroundColor=[UIColor whiteColor];//[UIColor colorWithRed:231/255 green:8/255 blue:53/255 alpha:1];
     [self.coverView addSubview:levelTable];
@@ -100,16 +101,17 @@
 }
 
 -(void)hideCoverView{
-    [Animations fadeOut:self.coverView andAnimationDuration:0.1 fromAlpha:1 andWait:NO];
-    [Animations fadeIn:self.backButton andAnimationDuration:0.1 toAlpha:1 andWait:YES];
+    [Animations fadeOut:self.coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
+    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:YES];
 }
 
 -(void)showCoverView{
     self.coverView.alpha = 1;
-    [self.coverView fadeIn:0.1 delegate:nil];
+    self.backButton.alpha = 0;
+//    [self.coverView fadeIn:0.1 delegate:nil];
 
 //    [Animations fadeIn:self.coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
-    [Animations fadeOut:self.backButton andAnimationDuration:0.1 fromAlpha:1 andWait:YES];
+//    [Animations fadeOut:self.backButton andAnimationDuration:0.1 fromAlpha:1 andWait:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -216,6 +218,6 @@
         [self loadChallengeTable];
         [self showCoverView];
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 @end

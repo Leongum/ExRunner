@@ -80,7 +80,7 @@
     
 //    collapseButton.alpha = 0;
     
-    timeLabel.text = @"00:00:00";
+    timeLabel.text = [RORUtils transSecondToStandardFormat:0];
     speedLabel.text = [RORUserUtils formatedSpeed:0];
     distanceLabel.text = [RORUtils outputDistance:mission.missionDistance.doubleValue-distance];
 //    mapView.frame = SCALE_SMALL;
@@ -158,7 +158,6 @@
     float zoomLevel = 0.005;
     MKCoordinateRegion region = MKCoordinateRegionMake(loc.coordinate, MKCoordinateSpanMake(zoomLevel, zoomLevel));
     [mapView setRegion:[mapView regionThatFits:region] animated:NO];
-    
 }
 
 -(void)createAnnotationWithCoords:(CLLocationCoordinate2D) coords withTitle:(NSString *)title andSubTitle:(NSString *) subTitle {

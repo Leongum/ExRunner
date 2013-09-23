@@ -111,6 +111,10 @@
 		30507C05174A186300EC7F12 /* main_userButton_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30507C04174A186300EC7F12 /* main_userButton_bg.png */; };
 		305428CB17CF85DA00A9E6E9 /* RORChallengeLevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 305428CA17CF85DA00A9E6E9 /* RORChallengeLevelView.m */; };
 		30594BC417F06B4F00E6A19B /* seg_selected_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30594BC317F06B4F00E6A19B /* seg_selected_bg.png */; };
+		30594BCD17F0851500E6A19B /* last_kilo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 30594BC917F0851500E6A19B /* last_kilo.mp3 */; };
+		30594BCE17F0851500E6A19B /* last_hundred.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 30594BCA17F0851500E6A19B /* last_hundred.mp3 */; };
+		30594BCF17F0851500E6A19B /* all_set_gun.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 30594BCB17F0851500E6A19B /* all_set_gun.mp3 */; };
+		30594BD017F0851500E6A19B /* all_set.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 30594BCC17F0851500E6A19B /* all_set.mp3 */; };
 		305A1878174F1EFB003A8CD7 /* RORLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 305A1877174F1EFB003A8CD7 /* RORLoginViewController.m */; };
 		3061F3A5174C70F0006093FC /* userInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3061F3A4174C70F0006093FC /* userInfo.plist */; };
 		3061F3B6174CDB96006093FC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3061F3B5174CDB96006093FC /* CoreData.framework */; };
@@ -462,6 +466,10 @@
 		305428C917CF85DA00A9E6E9 /* RORChallengeLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORChallengeLevelView.h; sourceTree = "<group>"; };
 		305428CA17CF85DA00A9E6E9 /* RORChallengeLevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORChallengeLevelView.m; sourceTree = "<group>"; };
 		30594BC317F06B4F00E6A19B /* seg_selected_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seg_selected_bg.png; path = bg/seg_selected_bg.png; sourceTree = "<group>"; };
+		30594BC917F0851500E6A19B /* last_kilo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = last_kilo.mp3; path = Resources/sound/last_kilo.mp3; sourceTree = "<group>"; };
+		30594BCA17F0851500E6A19B /* last_hundred.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = last_hundred.mp3; path = Resources/sound/last_hundred.mp3; sourceTree = "<group>"; };
+		30594BCB17F0851500E6A19B /* all_set_gun.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = all_set_gun.mp3; path = Resources/sound/all_set_gun.mp3; sourceTree = "<group>"; };
+		30594BCC17F0851500E6A19B /* all_set.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = all_set.mp3; path = Resources/sound/all_set.mp3; sourceTree = "<group>"; };
 		305A1876174F1EFA003A8CD7 /* RORLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORLoginViewController.h; sourceTree = "<group>"; };
 		305A1877174F1EFB003A8CD7 /* RORLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORLoginViewController.m; sourceTree = "<group>"; };
 		3061F3A4174C70F0006093FC /* userInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userInfo.plist; sourceTree = "<group>"; };
@@ -1178,6 +1186,10 @@
 		30621D4F17E4602B0063A007 /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				30594BC917F0851500E6A19B /* last_kilo.mp3 */,
+				30594BCA17F0851500E6A19B /* last_hundred.mp3 */,
+				30594BCB17F0851500E6A19B /* all_set_gun.mp3 */,
+				30594BCC17F0851500E6A19B /* all_set.mp3 */,
 				30621D5417E4609C0063A007 /* bo.wav */,
 			);
 			name = sound;
@@ -1516,6 +1528,7 @@
 				302FD0171727D870004DA005 /* Default.png in Resources */,
 				302FD0191727D870004DA005 /* Default@2x.png in Resources */,
 				30507C05174A186300EC7F12 /* main_userButton_bg.png in Resources */,
+				30594BCF17F0851500E6A19B /* all_set_gun.mp3 in Resources */,
 				3061F3A5174C70F0006093FC /* userInfo.plist in Resources */,
 				30C658941755F78C0076AFA3 /* CityCode.geojson in Resources */,
 				3008CC591759FAA00032F5C7 /* weather_flat_bg.png in Resources */,
@@ -1542,6 +1555,7 @@
 				30BB0AF91761BEA10009A847 /* history@2x.png in Resources */,
 				3012510117814F470082A09A /* inprocess_icon@2x.png in Resources */,
 				3012510217814F470082A09A /* collapse.png in Resources */,
+				30594BCD17F0851500E6A19B /* last_kilo.mp3 in Resources */,
 				3012510317814F470082A09A /* collapse@2x.png in Resources */,
 				0F59A14817BA2171000DEFEF /* Resource.bundle in Resources */,
 				0F59A14A17BA2171000DEFEF /* ShareSDKLocalizable.strings in Resources */,
@@ -1553,6 +1567,7 @@
 				30166A9417C3B84C0035C722 /* main_btn_bg.png in Resources */,
 				30166A9517C3B84C0035C722 /* main_btn_bg@2x.png in Resources */,
 				30166A9617C3B84C0035C722 /* main_challenge_btn_bg.png in Resources */,
+				30594BD017F0851500E6A19B /* all_set.mp3 in Resources */,
 				30166A9717C3B84C0035C722 /* main_challenge_btn_bg@2x.png in Resources */,
 				30166A9817C3B84C0035C722 /* main_run_btn_bg.png in Resources */,
 				30166A9917C3B84C0035C722 /* main_run_btn_bg@2x.png in Resources */,
@@ -1573,6 +1588,7 @@
 				30A6D9EF17CDD58700D1116E /* main_trafficlight_green.png in Resources */,
 				30A6D9F017CDD58700D1116E /* main_trafficlight_green@2x.png in Resources */,
 				30A6D9F117CDD58700D1116E /* main_trafficlight_red.png in Resources */,
+				30594BCE17F0851500E6A19B /* last_hundred.mp3 in Resources */,
 				30A6D9F217CDD58700D1116E /* main_trafficlight_red@2x.png in Resources */,
 				30DBB71F17EF300E00552391 /* textfield.png in Resources */,
 				30A6D9F317CDD58700D1116E /* main_trafficlight_yellow.png in Resources */,

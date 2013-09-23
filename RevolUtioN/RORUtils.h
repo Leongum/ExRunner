@@ -24,7 +24,7 @@ _Pragma("clang diagnostic pop") \
 
 @interface RORUtils : NSObject
 
-+ (NSString *)transSecondToStandardFormat:(NSInteger) seconds;
++ (NSString *)transSecondToStandardFormat:(double) seconds;
 
 + (NSDate *)getDateFromString:(NSString *) date;
 

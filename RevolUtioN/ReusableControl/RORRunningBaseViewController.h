@@ -44,6 +44,7 @@
     INStepCounting *stepCounting;
     
     RORCountDownCoverView *countDownView;
+    RORPlaySound *sound;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;

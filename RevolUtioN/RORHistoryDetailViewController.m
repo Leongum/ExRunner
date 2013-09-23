@@ -44,7 +44,7 @@
     
     
     distanceLabel.text = [RORUtils outputDistance:record.distance.doubleValue];
-    speedLabel.text = [RORUserUtils formatedSpeed:record.avgSpeed.doubleValue/3.6];
+    speedLabel.text = [RORUserUtils formatedSpeed:record.avgSpeed.doubleValue];
     durationLabel.text = [RORUtils transSecondToStandardFormat:record.duration.integerValue];
     energyLabel.text = [NSString stringWithFormat:@"%.1f kca", record.spendCarlorie.doubleValue];
     if (record.missionTypeId.integerValue == Challenge)

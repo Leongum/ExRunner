@@ -78,9 +78,9 @@
     
 //    collapseButton.alpha = 0;
     
-    timeLabel.text = @"00:00:00";
+    timeLabel.text = [RORUtils transSecondToStandardFormat:0];
     speedLabel.text = [RORUserUtils formatedSpeed:0];
-    distanceLabel.text = @"0 m";
+    distanceLabel.text = [RORUtils outputDistance:0];
 //    self.stepLabel.text = @"0";
 //    mapView.frame = SCALE_SMALL;
     
@@ -226,6 +226,7 @@
         if (self.startTime == nil){
             self.startTime = [NSDate date];
             
+            [sound play];
             [countDownView show];
             
             [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
@@ -394,7 +395,7 @@
     User_Running_History *runHistory = [User_Running_History intiUnassociateEntity];
     runHistory.distance = [NSNumber numberWithDouble:distance];
     runHistory.duration = [NSNumber numberWithDouble:duration];
-    runHistory.avgSpeed = [NSNumber numberWithDouble:(double)distance/duration];
+    runHistory.avgSpeed = [NSNumber numberWithDouble:(double)distance/duration*3.6];
     runHistory.missionRoute = [RORDBCommon getStringFromRoutePoints:routePoints];
     runHistory.missionDate = [NSDate date];
     runHistory.missionEndTime = self.endTime;

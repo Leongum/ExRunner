@@ -62,6 +62,7 @@
     content.sex = [settinglist valueForKey:@"sex"];
     content.attributes.height =[settinglist valueForKey:@"height"];
     content.attributes.weight = [settinglist valueForKey:@"weight"];
+    isValid = YES;
 }
 
 - (void)saveAction {

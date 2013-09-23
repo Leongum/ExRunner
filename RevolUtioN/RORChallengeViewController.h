@@ -17,6 +17,7 @@
 }
 
 @property (strong, nonatomic) IBOutlet RORBottomPopSubview *coverView;
+@property (strong, nonatomic) IBOutlet UIView *contentFrameView;
 @property (strong, nonatomic) NSArray *contentList;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
