@@ -235,7 +235,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hKk-eB-BCs" customClass="RORCheckBox">
                                 <rect key="frame" x="239" y="189" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal">
@@ -279,7 +279,7 @@
                             </textField>
                             <view contentMode="scaleToFill" id="sj3-gJ-70D" userLabel="sns-container">
                                 <rect key="frame" x="39" y="250" width="243" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Cp-Xe-NMU">
                                         <rect key="frame" x="11" y="5" width="40" height="40"/>
@@ -1854,19 +1854,33 @@
     </scenes>
     <resources>
         <image name="centerMap.png" width="50" height="50"/>
+        <image name="centerMap.png" width="50" height="50"/>
         <image name="challenge_pop_bg.png" width="640" height="1136"/>
         <image name="charactor.png" width="585" height="457"/>
         <image name="check.png" width="19" height="19"/>
         <image name="details.png" width="32" height="32"/>
+        <image name="details.png" width="32" height="32"/>
+        <image name="details.png" width="32" height="32"/>
         <image name="filter_btn_bg.png" width="55" height="55"/>
         <image name="filter_cell_bg.png" width="191" height="45"/>
         <image name="finishrunning_pop_bg.png" width="640" height="1136"/>
+        <image name="finishrunning_pop_bg.png" width="640" height="1136"/>
+        <image name="green_btn_bg.png" width="110" height="44"/>
+        <image name="green_btn_bg.png" width="110" height="44"/>
+        <image name="green_btn_bg.png" width="110" height="44"/>
         <image name="green_btn_bg.png" width="110" height="44"/>
         <image name="hand.png" width="320" height="568"/>
         <image name="history.png" width="55" height="55"/>
         <image name="history_detail_bg.png" width="320" height="568"/>
         <image name="logout_btn_bg.png" width="55" height="55"/>
         <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_btn_bg.png" width="136" height="60"/>
         <image name="main_btn_bg.png" width="136" height="60"/>
         <image name="main_challenge_btn_bg.png" width="136" height="60"/>
         <image name="main_login_bg.png" width="210" height="68"/>
@@ -1874,17 +1888,31 @@
         <image name="main_trafficlight_green.png" width="100" height="40"/>
         <image name="main_username_bg.png" width="210" height="68"/>
         <image name="paper.png" width="320" height="568"/>
+        <image name="paper.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
         <image name="paper_bg.png" width="320" height="568"/>
         <image name="red_left.png" width="44" height="44"/>
         <image name="red_right.png" width="44" height="44"/>
         <image name="running_bg.png" width="320" height="568"/>
+        <image name="running_bg.png" width="320" height="568"/>
+        <image name="running_bg.png" width="320" height="568"/>
         <image name="running_wind.png" width="609" height="99"/>
+        <image name="settings.png" width="55" height="55"/>
         <image name="settings.png" width="55" height="55"/>
         <image name="share_btn.png" width="55" height="55"/>
         <image name="share_pop_bg.png" width="640" height="1136"/>
         <image name="spring_bg.png" width="141" height="66"/>
         <image name="submit.png" width="55" height="55"/>
+        <image name="submit.png" width="55" height="55"/>
+        <image name="submit.png" width="55" height="55"/>
+        <image name="submit.png" width="55" height="55"/>
         <image name="sync_apply.png" width="55" height="55"/>
+        <image name="textfield.png" width="320" height="60"/>
+        <image name="textfield.png" width="320" height="60"/>
+        <image name="textfield.png" width="320" height="60"/>
         <image name="textfield.png" width="320" height="60"/>
     </resources>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
