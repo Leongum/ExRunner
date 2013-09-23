@@ -112,6 +112,9 @@
 }
 
 - (IBAction)collepseKeyboard:(id)sender {
+    if (!sender) {
+        return;
+    }
     UITextField *textField = (UITextField *)sender;
     UITableViewCell *cell = [self cellForTextField:textField];
 
@@ -229,18 +232,13 @@
             [cell addSubview:segment];
             
             if ([content.sex isEqualToString:@"男"]){
-                [segment setSelectionIndex:0];
+                [segment selectSegmentAtIndex:0];
             } else if ([content.sex isEqualToString:@"女"]){
-                [segment setSelectionIndex:2];
+                [segment selectSegmentAtIndex:2];
             } else{
-                [segment setSelectionIndex:1];
+                [segment selectSegmentAtIndex:1];
             }
             
-//            [seg addTarget:self action:@selector(selectSexAction:) forControlEvents:UIControlEventValueChanged];
-            
-            
-//            [RORUtils setFontFamily:CHN_WRITTEN_FONT forView:cell andSubViews:YES];
-
             break;
         }
         default:
