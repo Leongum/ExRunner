@@ -22,11 +22,13 @@
         self.alpha = 0;
         
         bgView = [[UIControl alloc] initWithFrame:frame];
+        [bgView setAutoresizingMask:UIViewAutoresizingFlexibleHeight| UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin];
         [bgView setBackgroundColor:[UIColor blackColor]];
         bgView.alpha = 0.5;
         [self addSubview:bgView];
         
         contentImageView = [[UIImageView alloc] initWithFrame:frame];
+        [contentImageView setAutoresizingMask:UIViewAutoresizingFlexibleHeight| UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin];
         [self addSubview:contentImageView];
         contentImageView.alpha = 0;
 //        count = 3;
@@ -40,7 +42,10 @@
 //    for (int i=0; i<count; i++){
         [contentImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"running_countdown_%d.png", 3]]];
 //        [contentImageView fallIn:1 delegate:self];
+        [Animations zoomIn:contentImageView andAnimationDuration:4 andWait:YES];
+        [Animations zoomIn:contentImageView andAnimationDuration:3 andWait:YES];
         [Animations zoomIn:contentImageView andAnimationDuration:1 andWait:YES];
+    
 //        [Animations fadeOut:contentImageView andAnimationDuration:0.5 fromAlpha:1 andWait:YES];
 //    }
     self.alpha = 0;

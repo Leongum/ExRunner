@@ -33,13 +33,17 @@
     return uuidStr;
 }
 
-+ (NSString *)transSecondToStandardFormat:(NSInteger) seconds {
++ (NSString *)transSecondToStandardFormat:(double) seconds {
     NSInteger min=0, hour=0;
     min = seconds / 60;
-    seconds = seconds % 60;
+    NSInteger intSeconds = (NSInteger)seconds % 60;
     hour = min / 60;
     min = min % 60;
-    return [NSString stringWithFormat:@"%.2d:%.2d:%.2d",hour, min, seconds];
+    if (hour>0)
+        return [NSString stringWithFormat:@"%d:%d'%d''",hour, min, intSeconds];
+    else if (min>0)
+        return [NSString stringWithFormat:@"%d' %d''", min, intSeconds];
+    return [NSString stringWithFormat:@"%d'' %d", intSeconds, (NSInteger)((seconds - (NSInteger)seconds)*10)];
 }
 
 + (NSString *)toJsonFormObject:(NSObject *)object{

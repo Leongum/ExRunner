@@ -190,7 +190,8 @@ static NSDate *systemTime = nil;
     [authList writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
 }
 
-+(NSString *)formatedSpeed:(double)metersPerSec{
++(NSString *)formatedSpeed:(double)kmperhour{
+    double metersPerSec = kmperhour/3.6;
     NSMutableDictionary *settinglist = [self getUserSettingsPList];
     NSInteger speedType = ((NSNumber *)[settinglist valueForKey:@"speedType"]).integerValue;
     double orginSpeed = metersPerSec;
@@ -199,9 +200,9 @@ static NSDate *systemTime = nil;
             return @"0\'0\"/km";
         int minutes = (int)(1000/( orginSpeed * 60));
         int seconds = ((int) (1000/orginSpeed)) % 60;
-        return [NSString stringWithFormat:@"%d\'%d''/km", minutes, seconds];
+        return [NSString stringWithFormat:@"%d\' %d'' /km", minutes, seconds];
     } else {
-        return [NSString stringWithFormat:@"%.1f km/h", metersPerSec * 3.6];
+        return [NSString stringWithFormat:@"%.1f km/h", kmperhour];
     }
 }
 @end
