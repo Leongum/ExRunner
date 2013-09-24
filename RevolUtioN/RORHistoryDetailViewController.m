@@ -145,6 +145,10 @@
     if ([destination respondsToSelector:@selector(setShareImage:)]){
         [destination setValue:img forKey:@"shareImage"];
     }
+    
+    if ([destination respondsToSelector:@selector(setRecord:)]){
+        [destination setValue:record forKey:@"record"];
+    }
 }
 
 - (IBAction)backAction:(id)sender {

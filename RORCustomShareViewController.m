@@ -19,6 +19,7 @@
 @implementation RORCustomShareViewController
 
 @synthesize shareImage;
+@synthesize record;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

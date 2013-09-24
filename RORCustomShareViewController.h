@@ -11,12 +11,14 @@
 #import <ShareSDK/ShareSDK.h>
 #import "RORCustomShareViewToolbar.h"
 #import "RORViewController.h"
+#import "User_Running_History.h"
 
 @interface RORCustomShareViewController : RORViewController<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *txtShareContent;
 @property (weak, nonatomic) IBOutlet UILabel *lblContentCount;
 @property (weak, nonatomic) IBOutlet RORCustomShareViewToolbar *shareBar;
 @property (retain, nonatomic) UIImage *shareImage;
+@property (strong, nonatomic) User_Running_History *record;
 
 
 - (IBAction)shareContentAction:(id)sender;
