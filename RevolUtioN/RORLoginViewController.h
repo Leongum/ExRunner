@@ -19,7 +19,7 @@
 @interface RORLoginViewController : RORViewController
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet RORSegmentControl *switchButton;
+@property (strong, nonatomic) RORSegmentControl *switchButton;
 @property (weak, nonatomic) IBOutlet UITextField *nicknameTextField;
 @property (strong, nonatomic) IBOutlet RORCheckBox *showPWCheckBox;
 @property (strong, nonatomic) IBOutlet UIView *snsContainerView;
@@ -28,14 +28,7 @@
 
 @property (strong, nonatomic) UIViewController *delegate;
 
-- (IBAction)loginAction:(id)sender;
-- (IBAction)backgroundTap:(id)sender;
-- (IBAction)usernameDone:(id)sender;
-- (IBAction)passwordDone:(id)sender;
-- (IBAction)visibilityOfPW:(id)sender;
-- (IBAction)cancelAction:(id)sender;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSinaLogin;
 @property (weak, nonatomic) IBOutlet UIButton *btnTencentLogin;
@@ -43,6 +36,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnRenRenLogin;
 
 
+- (IBAction)loginAction:(id)sender;
+- (IBAction)backgroundTap:(id)sender;
+- (IBAction)visibilityOfPW:(id)sender;
 - (IBAction)sinaWeiboLogin:(id)sender;
 - (IBAction)tencentWeiboLogin:(id)sender;
 - (IBAction)qqAccountLogin:(id)sender;

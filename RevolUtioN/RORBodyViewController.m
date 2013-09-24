@@ -224,12 +224,16 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"sexCell" forIndexPath:indexPath];
             newSex = content.sex;
 //            UISegmentedControl *seg = (UISegmentedControl *)[cell viewWithTag:1];
-            RORSegmentControl *segment = [[RORSegmentControl alloc]initWithFrame:CGRectMake(33, 7, 204, 29) andSegmentNumber:3];
-            segment.delegate = self;
-            [segment setSegmentTitle:@"男" withIndex:0];
-            [segment setSegmentTitle:@"很矛盾" withIndex:1];
-            [segment setSegmentTitle:@"女" withIndex:2];
-            [cell addSubview:segment];
+            RORSegmentControl *segment = (RORSegmentControl *)[cell viewWithTag:2];
+            if (!segment){
+                segment = [[RORSegmentControl alloc]initWithFrame:CGRectMake(33, 7, 204, 29) andSegmentNumber:3];
+                segment.delegate = self;
+                [segment setSegmentTitle:@"男" withIndex:0];
+                [segment setSegmentTitle:@"很矛盾" withIndex:1];
+                [segment setSegmentTitle:@"女" withIndex:2];
+                [segment setTag:2];
+                [cell addSubview:segment];
+            }
             
             if ([content.sex isEqualToString:@"男"]){
                 [segment selectSegmentAtIndex:0];

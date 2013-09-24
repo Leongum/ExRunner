@@ -27,7 +27,6 @@
 
 @implementation RORFirstViewController
 @synthesize weatherInfoButtonView;
-@synthesize locationManager;
 
 NSInteger expanded = 0;
 BOOL isWeatherButtonClicked = false;
@@ -70,9 +69,10 @@ NSInteger centerLoc =-10000;
 - (void)initLocationServcie{
     userLocation = nil;
     wasFound = NO;
-    locationManager = [[CLLocationManager alloc]init];
+    
+    locationManager = [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] sharedLocationManager];
     locationManager.delegate = self;
-    [locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     if (! ([CLLocationManager  locationServicesEnabled])
         || ( [CLLocationManager  authorizationStatus] == kCLAuthorizationStatusDenied))
     {
@@ -85,13 +85,14 @@ NSInteger centerLoc =-10000;
     }
 }
 
+#pragma mark - core location delegate
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     if([newLocation.timestamp timeIntervalSinceNow] <= (60 * 2)){
         userLocation = newLocation;
-        wasFound = YES;
-        if (wasFound){
-            [locationManager stopUpdatingLocation];
+        if (!wasFound){
+            wasFound = YES;
             [self getCitynameByLocation];
         }
     }

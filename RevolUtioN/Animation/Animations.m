@@ -54,6 +54,23 @@
     while (done == YES)
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
 }
+
++ (void)zoomOut: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait{
+    __block BOOL done = wait; //wait =  YES wait to finish animation
+    view.transform = CGAffineTransformIdentity;
+    [UIView animateWithDuration:duration animations:^{
+        view.transform = CGAffineTransformMakeScale(0, 0);
+        //view.transform = CGAffineTransformMakeScale(0, 0);
+        //view.transform = CGAffineTransformIdentity;
+        
+    } completion:^(BOOL finished) {
+        done = NO;
+    }];
+    // wait for animation to finish
+    while (done == YES)
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+}
+
 + (void)buttonPressAnimate: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait{
     //Usually Changes the position
     __block BOOL done = wait; //wait =  YES wait to finish animation

@@ -50,7 +50,7 @@
     if (record.missionTypeId.integerValue == Challenge)
         scoreLabel.text = [NSString stringWithFormat:@"%@", record.grade];
     else
-        scoreLabel.text = [NSString stringWithFormat:@"%@", record.experience];
+        scoreLabel.text = [NSString stringWithFormat:@"%d", record.experience.integerValue];
 
     NSDateFormatter *formattter = [[NSDateFormatter alloc] init];
     [formattter setDateFormat:@"yyyy-MM-dd"];

@@ -37,7 +37,7 @@
     }
 }
 
-- (CMMotionManager *)sharedManager
+- (CMMotionManager *)sharedMotionManager
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -45,6 +45,17 @@
     });
     return motionmanager;
 }
+
+
+- (CLLocationManager *)sharedLocationManager
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        locationManager = [[CLLocationManager alloc] init];
+    });
+    return locationManager;
+}
+
 
 - (void)initializePlat
 {

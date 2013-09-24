@@ -37,18 +37,25 @@
     offset.latitude = 0;
     offset.longitude = 0;
     
-//    CGRect rx = [ UIScreen mainScreen ].applicationFrame;
+//    CGRect rx = self.view.frame;//[ UIScreen mainScreen ].applicationFrame;
     countDownView = [[RORCountDownCoverView alloc]initWithFrame:self.view.frame];
     [countDownView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin];
     [self.view addSubview:countDownView];
     [countDownView hide];
     
     sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"all_set_gun.mp3"];
+    lastHundred = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"last_hundred.mp3"];
+    lastKilo = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"last_kilo.mp3"];
+    lastKiloPlayed = NO;
+    lastHundredPlayed = NO;
 }
 
 -(void)viewDidUnload{
-    [self stopUpdates];
     [super viewDidUnload];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [self stopUpdates];
 }
 
 - (void)awakeFromNib{
@@ -64,6 +71,7 @@
         alertView = nil;
     }
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -71,8 +79,9 @@
 }
 
 - (void)startDeviceLocation{
-    locationManager = [[CLLocationManager alloc]init];
+    locationManager = [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] sharedLocationManager];
     locationManager.delegate = self;
+    
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
     locationManager.distanceFilter = 1;
     NSLog(@"%u %c",[CLLocationManager  authorizationStatus],[CLLocationManager  locationServicesEnabled]);
@@ -126,6 +135,7 @@
     if ([motionManager isDeviceMotionActive] == YES) {
         [motionManager stopDeviceMotionUpdates];
     }
+    locationManager.delegate = nil;
     [locationManager stopUpdatingLocation];
     [locationManager stopUpdatingHeading];
 }
@@ -162,7 +172,7 @@
 {
     //	motionManager = [[CMMotionManager alloc] init];
 	// Tell CoreMotion to show the compass calibration HUD when required to provide true north-referenced attitude
-    motionManager = [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] sharedManager];
+    motionManager = [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] sharedMotionManager];
 
 	motionManager.showsDeviceMovementDisplay = YES;
     

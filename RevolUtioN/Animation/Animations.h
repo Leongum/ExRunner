@@ -11,7 +11,7 @@
 @interface Animations : UIViewController{
 }
 
-
++ (void)zoomOut: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait;
 + (void)zoomIn: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait;
 + (void)buttonPressAnimate: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait;
 

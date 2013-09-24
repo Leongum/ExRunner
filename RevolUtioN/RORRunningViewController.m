@@ -293,7 +293,7 @@
         //    if (time % 3 == 0){
         [self pushPoint];
         distanceLabel.text = [RORUtils outputDistance:distance];
-        speedLabel.text = [RORUserUtils formatedSpeed:(float)distance/duration];
+        speedLabel.text = [RORUserUtils formatedSpeed:(float)distance/duration *3.6];
         //    }
     }
 
@@ -302,7 +302,8 @@
 
 - (void)pushPoint{
     CLLocation *currentLocation = [self getNewRealLocation];
-    if (formerLocation != currentLocation){
+    double deltaDistance = [formerLocation distanceFromLocation:currentLocation];
+    if (formerLocation != currentLocation && deltaDistance>MIN_PUSHPOINT_DISTANCE){
         distance += [formerLocation distanceFromLocation:currentLocation];
         formerLocation = currentLocation;
         [routePoints addObject:currentLocation];
@@ -475,6 +476,7 @@
     if (!MKwasFound){
         MKwasFound = YES;
         [self center_map:self];
+        formerCenterMapLocation = [self getNewRealLocation];
         [self.startButton setEnabled:YES];
     }
 }

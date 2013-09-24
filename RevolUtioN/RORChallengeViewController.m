@@ -44,16 +44,20 @@
 }
 
 -(void)initUIControls{
-    self.coverView.alpha =0;
-    self.backButton.alpha = 1;
+    
     levelTable = [[RORChallengeLevelView alloc]initWithFrame:self.contentFrameView.frame andNumberOfColumns:6];
     [levelTable setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin];
     [levelTable addTarget:self action:@selector(coverViewBgTap:) forControlEvents:UIControlEventTouchUpInside];
-//    levelTable.backgroundColor=[UIColor whiteColor];//[UIColor colorWithRed:231/255 green:8/255 blue:53/255 alpha:1];
+    //    levelTable.backgroundColor=[UIColor whiteColor];//[UIColor colorWithRed:231/255 green:8/255 blue:53/255 alpha:1];
     [self.coverView addSubview:levelTable];
     
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.coverView andSubViews:YES];
     [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:levelTable andSubViews:YES];
+}
+
+-(void)initUIControlsAppearance{
+    self.coverView.alpha =0;
+    self.backButton.alpha = 1;
 }
 
 -(void)loadChallengeTable{
@@ -67,6 +71,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self initUIControlsAppearance];
     [self loadContentList];
     [self.tableView reloadData];
 }
@@ -102,6 +107,7 @@
 
 -(void)hideCoverView{
     [Animations fadeOut:self.coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
+    self.backButton.alpha = 1;
     [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:YES];
 }
 
@@ -119,13 +125,10 @@
     if ([destination respondsToSelector:@selector(setDelegate:)]){
         [destination setValue:self forKey:@"delegate"];
     }
-    if ([destination respondsToSelector:@selector(setMissionType:)]){
-        [destination setValue:[NSNumber numberWithInteger:Challenge] forKey:@"missionType"];
-    }
+
     if ([destination respondsToSelector:@selector(setRunMission:)]){
         [destination setValue:selectedChallenge forKey:@"runMission"];
     }
-    [self hideCoverView];
 }
 
 #pragma mark - Table view data source

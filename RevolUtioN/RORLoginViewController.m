@@ -59,11 +59,11 @@
                             bundleName:@"Resource"];
     [self.btnTencentLogin setBackgroundImage:img forState:UIControlStateNormal];
     
-    RORSegmentControl *seg = [[RORSegmentControl alloc]initWithFrame:SEGMENT_FRAME andSegmentNumber:2];
-    seg.delegate = self;
-    [seg setSegmentTitle:@"登录" withIndex:0];
-    [seg setSegmentTitle:@"注册" withIndex:1];
-    [self.view addSubview:seg];
+    switchButton = [[RORSegmentControl alloc]initWithFrame:SEGMENT_FRAME andSegmentNumber:2];
+    switchButton.delegate = self;
+    [switchButton setSegmentTitle:@"登录" withIndex:0];
+    [switchButton setSegmentTitle:@"注册" withIndex:1];
+    [self.view addSubview:switchButton];
     
     self.showPWCheckBox.isChecked = YES;
 }
@@ -123,6 +123,10 @@
         [Animations moveUp:self.view andAnimationDuration:0.3 andWait:NO andLength:75];
 }
 
+-(BOOL)prefersStatusBarHidden{
+    return YES;
+}
+
 //提交用户名密码之后的操作
 - (IBAction)loginAction:(id)sender {
     if(![RORNetWorkUtils getIsConnetioned]){
@@ -160,16 +164,22 @@
 
 - (BOOL) isLegalInput {
     if (switchButton.selectionIndex == 0){
-        if ([usernameTextField.text isEqualToString:@""] ||
-            [passwordTextField.text isEqualToString:@""]) {
+//        NSLog(@"%@,%@",usernameTextField.text,passwordTextField.text);
+        if (usernameTextField.text.length<=0 ||
+            passwordTextField.text.length <=0) {
             [self sendAlart:LOGIN_INPUT_CHECK];
             return NO;
         }
     } else {
-        if ([usernameTextField.text isEqualToString:@""] ||
-            [passwordTextField.text isEqualToString:@""] ||
-            [nicknameTextField.text isEqualToString:@""]) {
+        if (usernameTextField.text.length<=0 ||
+            passwordTextField.text.length<=0 ||
+            nicknameTextField.text.length<=0) {
             [self sendAlart:REGISTER_INPUT_CHECK];
+            return NO;
+        }
+//        NSLog(@"%d",)
+        if (nicknameTextField.text.length>12) {
+            [self sendAlart:@"昵称太长啦！"];
             return NO;
         }
     }

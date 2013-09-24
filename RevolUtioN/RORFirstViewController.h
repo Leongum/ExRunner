@@ -23,6 +23,8 @@
     NSString *cityName;
     NSString *weatherInformation;
     BOOL hasAnimated;
+    
+    CLLocationManager *locationManager;
 }
 
 //@property (strong,nonatomic)NSManagedObjectContext *context;
@@ -31,7 +33,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *runButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *challenge;
 //@property (strong, nonatomic) IBOutlet UIImageView *testView;
-@property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *levelLabel;
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;

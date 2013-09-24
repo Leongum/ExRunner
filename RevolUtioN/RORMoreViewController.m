@@ -93,7 +93,10 @@
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             UILabel *label = (UILabel*)[cell viewWithTag:1];
             User_Base *userInfo = [RORUserServices fetchUser:[RORUserUtils getUserId]];
-            label.text =  userInfo.nickName;
+            if (userInfo.nickName.length<=0)
+                label.text = @"未登录";
+            else
+                label.text =  userInfo.nickName;
             break;
         }
         case 1:
@@ -129,12 +132,17 @@
             identifier = @"speedCell";
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 //            UISegmentedControl *seg = (UISegmentedControl *)[cell viewWithTag:2];
-            RORSegmentControl *seg = [[RORSegmentControl alloc]initWithFrame:CGRectMake(cell.frame.size.width - 130 - 10, (cell.frame.size.height - 29)/2, 130, 29) andSegmentNumber:2];
-            seg.delegate = self;
-            [seg setSegmentTitle:@"7'41\"/km" withIndex:0];
-            [seg setSegmentTitle:@"7.8km/h" withIndex:1];
-            [cell addSubview:seg];
-
+            RORSegmentControl *seg = (RORSegmentControl *)[cell viewWithTag:2];
+            if (seg == nil){
+                seg = [[RORSegmentControl alloc]initWithFrame:CGRectMake(cell.frame.size.width - 130 - 10, (cell.frame.size.height - 29)/2, 130, 29) andSegmentNumber:2];
+                seg.delegate = self;
+                [seg setSegmentTitle:@"7'41\"/km" withIndex:0];
+                [seg setSegmentTitle:@"7.8km/h" withIndex:1];
+                [seg setTag:2];
+                [cell addSubview:seg];
+            }
+            [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:seg andSubViews:YES];
+            
             NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
             NSNumber *speedType = [settinglist valueForKey:@"speedType"];
             if (speedType != nil){

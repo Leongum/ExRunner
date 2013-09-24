@@ -33,6 +33,9 @@
     [self addBackButton];
 }
 
+-(BOOL)prefersStatusBarHidden{
+    return YES;
+}
 -(void)addBackButton{
     backButton = [[RORNormalButton alloc]initWithFrame:BACKBUTTON_FRAME_TOP ];//[RORNormalButton buttonWithType:UIButtonTypeRoundedRect];
 //    [backButton initButtonInteraction];

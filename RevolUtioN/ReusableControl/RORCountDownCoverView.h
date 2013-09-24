@@ -11,7 +11,8 @@
 #define COUNTDOWN_IMAGE_FRAME CGRectMake(0,0,320,460)
 
 @interface RORCountDownCoverView : UIControl{
-    UIControl *bgView;
+//    UIControl *bgView;
+    UIImageView *bgView;
     UIImageView *contentImageView;
 }
 

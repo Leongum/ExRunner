@@ -27,6 +27,7 @@
 
 
 #define TIMER_INTERVAL delta_T
+#define MIN_PUSHPOINT_DISTANCE 1
 
 @interface RORRunningBaseViewController : RORViewController<CLLocationManagerDelegate>{
     BOOL wasFound;
@@ -45,6 +46,12 @@
     
     RORCountDownCoverView *countDownView;
     RORPlaySound *sound;
+    RORPlaySound *lastHundred;
+    RORPlaySound *lastKilo;
+    BOOL lastHundredPlayed;
+    BOOL lastKiloPlayed;
+    
+    CLLocation *formerCenterMapLocation;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;

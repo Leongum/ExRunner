@@ -239,6 +239,8 @@
             self.startTime = [NSDate date];
             [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
             
+            [sound play];
+
             [countDownView show];
             
             [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
@@ -294,8 +296,16 @@
     if (duration - intTime < 0.001){ //1 second
         //    if (time % 3 == 0){
         [self pushPoint];
+        if (mission.missionDistance.doubleValue-distance < 1000 && !lastKiloPlayed){
+            lastKiloPlayed = YES;
+            [lastKilo play];
+        }
+        if (mission.missionDistance.doubleValue-distance < 100 && !lastHundredPlayed){
+            lastHundredPlayed = YES;
+            [lastHundred play];
+        }
         distanceLabel.text = [RORUtils outputDistance:mission.missionDistance.doubleValue-distance];
-        speedLabel.text = [RORUserUtils formatedSpeed:(float)distance/duration];
+        speedLabel.text = [RORUserUtils formatedSpeed:(float)distance/duration*3.6];
         //    }
     }
     
@@ -304,7 +314,9 @@
 
 - (void)pushPoint{
     CLLocation *currentLocation = [self getNewRealLocation];
-    if (formerLocation != currentLocation){
+    double deltaDistance = [formerLocation distanceFromLocation:currentLocation];
+
+    if (formerLocation != currentLocation  && deltaDistance>MIN_PUSHPOINT_DISTANCE){
         distance += [formerLocation distanceFromLocation:currentLocation];
         formerLocation = currentLocation;
         [routePoints addObject:currentLocation];
@@ -515,6 +527,7 @@
     if (!MKwasFound){
         MKwasFound = YES;
         [self center_map:self];
+        formerCenterMapLocation = [self getNewRealLocation];
         [self.startButton setEnabled:YES];
     }
 }
