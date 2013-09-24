@@ -30,12 +30,7 @@
 }
 
 - (void)viewDidLoad
-{
-//    _txtShareContent.backgroundColor = [UIColor greenColor];
-//    _txtShareContent.layer.masksToBounds=YES;
-//    _txtShareContent.layer.borderWidth=1.0;
-//    _txtShareContent.layer.borderColor=[[UIColor grayColor] CGColor];
-    
+{   
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _txtShareContent.delegate = self;
@@ -50,18 +45,17 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    
+    _txtShareContent.layer.borderWidth=1.0;
+    _txtShareContent.layer.borderColor=[[UIColor grayColor] CGColor];
     self.backButton.frame = BACKBUTTON_FRAME_TOP;
 }
 
 - (void)keyboardWillShow:(NSNotification*)notification {
-    NSDictionary* info = [notification userInfo];
-    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    _txtShareContent.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - keyboardSize.height);
+   [Animations moveUp:self.view andAnimationDuration:0.3 andWait:NO andLength:75];
 }
 
 - (void)keyboardWillHide:(NSNotification*)notification {
-    _txtShareContent.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [Animations moveDown:self.view andAnimationDuration:0.3 andWait:NO andLength:75];
 }
 
 
@@ -87,7 +81,7 @@
     }
     else
     {
-        _lblContentCount.textColor = [UIColor lightGrayColor];
+        _lblContentCount.textColor = [UIColor darkGrayColor];
     }
 }
 
