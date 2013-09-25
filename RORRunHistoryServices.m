@@ -157,20 +157,22 @@
 + (BOOL)uploadRunningHistories{
     if(![RORNetWorkUtils getDoUploadable])return YES;
     NSNumber *userId = [RORUserUtils getUserId];
-    NSArray *dataList = [self fetchUnsyncedRunHistories:NO];
-    if([dataList count] > 0){
-        NSMutableArray *array = [[NSMutableArray alloc] init];
-        for (User_Running_History *history in dataList) {
-            [array addObject:history.transToDictionary];
-        }
-        RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createRunHistories:userId withRunHistories:array];
-        
-        if ([httpResponse responseStatus] == 200){
-            [self updateUnsyncedRunHistories];
+    if(userId.integerValue > 0){
+        NSArray *dataList = [self fetchUnsyncedRunHistories:NO];
+        if([dataList count] > 0){
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (User_Running_History *history in dataList) {
+                [array addObject:history.transToDictionary];
+            }
+            RORHttpResponse *httpResponse = [RORRunHistoryClientHandler createRunHistories:userId withRunHistories:array];
             
-        } else {
-            NSLog(@"error: statCode = %@", [httpResponse errorMessage]);
-            return NO;
+            if ([httpResponse responseStatus] == 200){
+                [self updateUnsyncedRunHistories];
+                
+            } else {
+                NSLog(@"error: statCode = %@", [httpResponse errorMessage]);
+                return NO;
+            }
         }
     }
     return YES;
