@@ -70,9 +70,10 @@ NSInteger centerLoc =-10000;
     userLocation = nil;
     wasFound = NO;
     
-    locationManager = [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] sharedLocationManager];
-    locationManager.delegate = self;
-    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+//    locationManager = [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] sharedLocationManager];
+    locationManager = [[CLLocationManager alloc]init];
+    
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
     if (! ([CLLocationManager  locationServicesEnabled])
         || ( [CLLocationManager  authorizationStatus] == kCLAuthorizationStatusDenied))
     {
@@ -94,6 +95,7 @@ NSInteger centerLoc =-10000;
         if (!wasFound){
             wasFound = YES;
             [self getCitynameByLocation];
+            [locationManager stopUpdatingLocation];
         }
     }
 }

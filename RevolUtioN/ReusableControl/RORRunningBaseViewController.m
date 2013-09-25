@@ -52,10 +52,12 @@
 
 -(void)viewDidUnload{
     [super viewDidUnload];
+    [self stopUpdates];
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    [self stopUpdates];
+//    [self stopUpdates];
 }
 
 - (void)awakeFromNib{
@@ -80,32 +82,34 @@
 
 - (void)startDeviceLocation{
     locationManager = [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] sharedLocationManager];
-    locationManager.delegate = self;
+//    if (locationManager == nil)
+//        locationManager = [[CLLocationManager alloc]init];
+//    locationManager.delegate = self;
     
-    [locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
-    locationManager.distanceFilter = 1;
-    NSLog(@"%u %c",[CLLocationManager  authorizationStatus],[CLLocationManager  locationServicesEnabled]);
-    if (! ([CLLocationManager  locationServicesEnabled])
-        || ( [CLLocationManager  authorizationStatus] == kCLAuthorizationStatusDenied))
-    {
-        [self sendAlart:GPS_SETTING_ERROR];
-        return;
-    }
-    else{
-        // start the compass
-        [locationManager startUpdatingLocation];
-    }
-    
-	if ([CLLocationManager headingAvailable] == NO) {
-		// No compass is available. This application cannot function without a compass,
-        // so a dialog will be displayed and no magnetic data will be measured.
-        NSLog(@"Magnet is not available.");
-	} else {
-        // heading service configuration
-        locationManager.headingFilter = kCLHeadingFilterNone;
-        
-        [locationManager startUpdatingHeading];
-    }
+//    [locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
+//    locationManager.distanceFilter = 1;
+//    NSLog(@"%u %c",[CLLocationManager  authorizationStatus],[CLLocationManager  locationServicesEnabled]);
+//    if (! ([CLLocationManager  locationServicesEnabled])
+//        || ( [CLLocationManager  authorizationStatus] == kCLAuthorizationStatusDenied))
+//    {
+//        [self sendAlart:GPS_SETTING_ERROR];
+//        return;
+//    }
+//    else{
+//        // start the compass
+//        [locationManager startUpdatingLocation];
+//    }
+//    
+//	if ([CLLocationManager headingAvailable] == NO) {
+//		// No compass is available. This application cannot function without a compass,
+//        // so a dialog will be displayed and no magnetic data will be measured.
+//        NSLog(@"Magnet is not available.");
+//	} else {
+//        // heading service configuration
+//        locationManager.headingFilter = kCLHeadingFilterNone;
+//        
+//        [locationManager startUpdatingHeading];
+//    }
 }
 
 - (void)initOffset:(MKUserLocation *)userLocation{
@@ -135,9 +139,9 @@
     if ([motionManager isDeviceMotionActive] == YES) {
         [motionManager stopDeviceMotionUpdates];
     }
-    locationManager.delegate = nil;
-    [locationManager stopUpdatingLocation];
-    [locationManager stopUpdatingHeading];
+//    locationManager.delegate = nil;
+//    [locationManager stopUpdatingLocation];
+//    [locationManager stopUpdatingHeading];
 }
 
 - (void)initNavi{
@@ -201,21 +205,21 @@
     return [NSNumber numberWithInteger:1];
 }
 
-#pragma CLLocationManager Delegate
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    if([newLocation.timestamp timeIntervalSinceNow] <= (60 * 2)){
-        if (!wasFound){
-            wasFound = YES;
-        }
-    }
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    
-}
+//#pragma CLLocationManager Delegate
+//
+//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+//{
+//    if([newLocation.timestamp timeIntervalSinceNow] <= (60 * 2)){
+//        if (!wasFound){
+//            wasFound = YES;
+//        }
+//    }
+//}
+//
+//- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+//{
+//    
+//}
 
 
 @end

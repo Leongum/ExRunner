@@ -229,7 +229,9 @@
             [sound play];
             [countDownView show];
             
-            [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
+            [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] setRunningStatus:YES];
+            
+//            [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
 
             [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
             [endButton removeTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -303,7 +305,9 @@
 - (void)pushPoint{
     CLLocation *currentLocation = [self getNewRealLocation];
     double deltaDistance = [formerLocation distanceFromLocation:currentLocation];
+    NSLog(@"[%@, %@], delta_d = %f", formerLocation, currentLocation, deltaDistance);
     if (formerLocation != currentLocation && deltaDistance>MIN_PUSHPOINT_DISTANCE){
+        NSLog(@"%f",distance);
         distance += [formerLocation distanceFromLocation:currentLocation];
         formerLocation = currentLocation;
         [routePoints addObject:currentLocation];
@@ -337,17 +341,24 @@
     
     if (self.endTime == nil)
         self.endTime = [NSDate date];
-    [[UIApplication sharedApplication] setIdleTimerDisabled: NO];
-    
-    [repeatingTimer invalidate];
-    [startButton setEnabled:NO];
-    self.repeatingTimer = nil;
+//    [[UIApplication sharedApplication] setIdleTimerDisabled: NO];
+//    [startButton setEnabled:NO];
+    [self prepareForQuit];
     [self saveRunInfo];
     
     [self performSegueWithIdentifier:@"NormalRunResultSegue" sender:self];
 }
 
+-(void)prepareForQuit{
+    [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] setRunningStatus:NO];
+    
+    [repeatingTimer invalidate];
+    self.repeatingTimer = nil;
+}
+
 - (IBAction)btnDeleteRunHistory:(id)sender {
+    [self prepareForQuit];
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -478,6 +489,9 @@
         [self center_map:self];
         formerCenterMapLocation = [self getNewRealLocation];
         [self.startButton setEnabled:YES];
+    }
+    if ([formerCenterMapLocation distanceFromLocation:[self getNewRealLocation]]>20){
+        [self center_map:self];
     }
 }
 

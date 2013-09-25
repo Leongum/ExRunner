@@ -242,6 +242,8 @@
             [sound play];
 
             [countDownView show];
+            [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] setRunningStatus:YES];
+
             
             [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
             [endButton removeTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -354,17 +356,26 @@
     
     if (self.endTime == nil)
         self.endTime = [NSDate date];
-    [[UIApplication sharedApplication] setIdleTimerDisabled: NO];
-    
-    [repeatingTimer invalidate];
-    [startButton setEnabled:NO];
-    self.repeatingTimer = nil;
+//    [[UIApplication sharedApplication] setIdleTimerDisabled: NO];
+//    
+//    [repeatingTimer invalidate];
+//    [startButton setEnabled:NO];
+//    self.repeatingTimer = nil;
+    [self prepareForQuit];
     [self saveRunInfo];
     
     [self performSegueWithIdentifier:@"ChallengeRunResultSegue" sender:self];
 }
 
+-(void)prepareForQuit{
+    [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] setRunningStatus:NO];
+    
+    [repeatingTimer invalidate];
+    self.repeatingTimer = nil;
+}
+
 - (IBAction)btnDeleteRunHistory:(id)sender {
+    [self prepareForQuit];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -529,6 +540,9 @@
         [self center_map:self];
         formerCenterMapLocation = [self getNewRealLocation];
         [self.startButton setEnabled:YES];
+    }
+    if ([formerCenterMapLocation distanceFromLocation:[self getNewRealLocation]]>20){
+        [self center_map:self];
     }
 }
 

@@ -19,7 +19,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface RORAppDelegate : UIResponder <UIApplicationDelegate>
+@interface RORAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 {
     RORShareViewDelegate *_viewDelegate;
     Reachability* hostReach;
@@ -37,6 +37,8 @@
 @property (nonatomic,readonly) RORShareViewDelegate *viewDelegate;
 @property (strong, nonatomic, readonly) CMMotionManager *sharedMotionManager;
 @property (strong, nonatomic, readonly) CLLocationManager *sharedLocationManager;
+
+@property (nonatomic) BOOL runningStatus;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

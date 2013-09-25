@@ -14,6 +14,7 @@
 @synthesize managedObjectContext =_managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize runningStatus;
 
 @synthesize viewDelegate = _viewDelegate;
 
@@ -22,6 +23,7 @@
     if(self = [super init])
     {
         _viewDelegate = [[RORShareViewDelegate alloc] init];
+        runningStatus = NO;
     }
     return self;
 }
@@ -52,10 +54,33 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
     });
     return locationManager;
 }
 
+-(void)applicationDidBecomeActive:(UIApplication *)application{
+    [[self sharedLocationManager] setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
+    locationManager.distanceFilter = 1;
+    NSLog(@"%u %c",[CLLocationManager  authorizationStatus],[CLLocationManager  locationServicesEnabled]);
+    if (! ([CLLocationManager  locationServicesEnabled])
+        || ( [CLLocationManager  authorizationStatus] == kCLAuthorizationStatusDenied))
+    {
+        //            [self sendAlart:GPS_SETTING_ERROR];
+        NSLog(@"%@",GPS_SETTING_ERROR);
+        return;
+    }
+    else{
+        // start the compass
+        [locationManager startUpdatingLocation];
+    }
+    
+}
+
+-(void)applicationWillResignActive:(UIApplication *)application{
+    if (!runningStatus)
+        [locationManager stopUpdatingLocation];
+}
 
 - (void)initializePlat
 {
@@ -139,11 +164,11 @@
                         wxDelegate:self];
 }
 							
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-}
+//- (void)applicationWillResignActive:(UIApplication *)application
+//{
+//    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+//    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+//}
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
@@ -156,10 +181,10 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
+//- (void)applicationDidBecomeActive:(UIApplication *)application
+//{
+//    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//}
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
@@ -285,6 +310,12 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     
+}
+
+#pragma mark - core location delegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
 }
 
 @end
