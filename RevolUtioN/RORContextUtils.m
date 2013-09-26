@@ -66,6 +66,26 @@ static NSManagedObjectContext *context = nil;
     return fetchObject;
 }
 
++(NSArray *)fetchFromDelegate:(NSString *) tableName withParams:(NSArray *) params withPredicate:(NSString *) query withOrderBy:(NSArray *) sortParams withLimit:(int)limitNumber{
+    [self getShareContext];
+    NSError *error;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:tableName inManagedObjectContext:context];
+    
+    [fetchRequest setEntity:entity];
+    [fetchRequest setReturnsObjectsAsFaults:NO];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:query argumentArray:params];
+    [fetchRequest setPredicate:predicate];
+    [fetchRequest setSortDescriptors:sortParams];
+    [fetchRequest setFetchLimit:limitNumber];
+    NSArray *fetchObject = [context executeFetchRequest:fetchRequest error:&error];
+    if (fetchObject == nil || [fetchObject count] == 0) {
+        return nil;
+    }
+    return fetchObject;
+}
+
 +(void)deleteFromDelegate:(NSString *) tableName withParams:(NSArray *) params withPredicate:(NSString *) query{
     [self getShareContext];
     NSError *error;

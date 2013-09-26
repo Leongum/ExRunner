@@ -68,7 +68,7 @@
     self.spendCarlorie = [RORDBCommon getNumberFromId:[dict valueForKey:@"spendCarlorie"]];
     self.duration = [RORDBCommon getNumberFromId:[dict valueForKey:@"duration"]];
     self.offerUsers = [RORDBCommon getStringFromId:[dict valueForKey:@"offerUsers"]];
-    self.missionGrade = [RORDBCommon getStringFromId:[dict valueForKey:@"missionGrade"]];
+    self.missionGrade = [RORDBCommon getNumberFromId:[dict valueForKey:@"missionGrade"]];
     self.scores = [RORDBCommon getNumberFromId:[dict valueForKey:@"scores"]];
     self.experience = [RORDBCommon getNumberFromId:[dict valueForKey:@"experience"]];
     self.missionId = [RORDBCommon getNumberFromId:[dict valueForKey:@"missionId"]];

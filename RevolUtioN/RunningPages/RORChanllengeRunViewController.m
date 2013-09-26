@@ -383,35 +383,35 @@
     return [self calculateCalorie];
 }
 
--(NSString *)calculateMissionGrade{
+-(NSNumber *)calculateMissionGrade{
     if (mission == nil)
         mission = [RORMissionServices fetchMission:runMission.missionId];
     NSArray *gradeList = mission.challengeList;
     for (int i=0; i<gradeList.count; i++){
         NSInteger thisGrade = ((NSNumber *)[[gradeList objectAtIndex:i] valueForKey:@"time"]).integerValue;
         if (duration<thisGrade)
-            return MissionGradeEnum_toString[i];
+            return [NSNumber numberWithInt:i];//MissionGradeEnum_toString[i]
     }
-    return MissionGradeEnum_toString[GRADE_F];
+    return [NSNumber numberWithInt:GRADE_F];//MissionGradeEnum_toString[GRADE_F];
 }
 
 -(NSNumber *)calculateAward:(NSString *)missionGrade baseValue:(double) base{
-    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_S]]){
+    if (missionGrade.integerValue == GRADE_S){
         return [NSNumber numberWithDouble:3*base];
     }
-    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_A]]){
+    if (missionGrade.integerValue == GRADE_A){
         return [NSNumber numberWithDouble:(1.8)*base];
     }
-    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_B]]){
+    if (missionGrade.integerValue == GRADE_B){
         return [NSNumber numberWithDouble:(1.6)*base];
     }
-    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_C]]){
+    if (missionGrade.integerValue == GRADE_C){
         return [NSNumber numberWithDouble:(1.4)*base];
     }
-    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_D]]){
+    if (missionGrade.integerValue == GRADE_D){
         return [NSNumber numberWithDouble:(1.2)*base];
     }
-    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_E]]){
+    if (missionGrade.integerValue == GRADE_E){
         return [NSNumber numberWithDouble:base];
     }
     return [NSNumber numberWithDouble:GRADE_F*base];
@@ -473,7 +473,7 @@
     runHistory.steps = [NSNumber numberWithInteger:stepCounting.counter / 0.8];
     runHistory.valid = [self isValidRun:stepCounting.counter / 0.8];
     
-    if(runHistory.valid.doubleValue != 1){
+    if(runHistory.valid.doubleValue != 1 || runHistory.userId.integerValue < 0){
         runHistory.experience =[NSNumber numberWithDouble:0];
         runHistory.scores =[NSNumber  numberWithDouble:0];
     }

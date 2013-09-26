@@ -21,6 +21,8 @@
 
 + (User_Running *)fetchUserRunningByRunId:(NSString *) runId;
 
++(User_Running_History *)fetchBestRunHistoryByMissionId:(NSNumber *)missionId withUserId:(NSNumber *)userId;
+
 + (BOOL)uploadRunningHistories;
 
 + (BOOL)syncRunningHistories;

@@ -366,30 +366,6 @@
     return [self calculateCalorie];
 }
 
--(NSNumber *)calculateAward:(NSString *)missionGrade baseValue:(double) base{
-    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_S]]){
-        return [NSNumber numberWithDouble:GRADE_S*base];
-    }
-    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_A]]){
-        return [NSNumber numberWithDouble:(1.0 + (double)GRADE_A/10)*base];
-    }
-    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_B]]){
-        return [NSNumber numberWithDouble:(1.0 + (double)GRADE_B/10)*base];
-    }
-    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_C]]){
-        return [NSNumber numberWithDouble:(1.0 + (double)GRADE_C/10)*base];
-    }
-    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_D]]){
-        return [NSNumber numberWithDouble:(1.0 + (double)GRADE_D/10)*base];
-    }
-    if ([missionGrade isEqualToString:MissionGradeEnum_toString[GRADE_E]]){
-        return [NSNumber numberWithDouble:GRADE_E*base];
-    }
-    return [NSNumber numberWithDouble:GRADE_F*base];
-}
-
-
-
 -(NSNumber *)calculateExperience:(User_Running_History *)runningHistory{
     return [NSNumber numberWithDouble:(runningHistory.distance.doubleValue/1000*200)];
 }
@@ -422,7 +398,7 @@
     runHistory.experience =[self calculateExperience:runHistory];
     runHistory.scores =[self calculateScore:runHistory];
     runHistory.valid = [self isValidRun:stepCounting.counter / 0.8];
-    if(runHistory.valid.doubleValue != 1){
+    if(runHistory.valid.doubleValue != 1 || runHistory.userId.integerValue < 0){
         runHistory.experience =[NSNumber numberWithDouble:0];
         runHistory.scores =[NSNumber  numberWithDouble:0];
     }

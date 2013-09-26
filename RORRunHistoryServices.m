@@ -33,6 +33,19 @@
     return fetchObject;
 }
 
++(User_Running_History *)fetchBestRunHistoryByMissionId:(NSNumber *)missionId withUserId:(NSNumber *)userId{
+    NSString *table=@"User_Running_History";
+    NSString *query = @"userId = %@ and missionId = %@";
+    NSArray *params = [NSArray arrayWithObjects:userId,missionId, nil];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"missionGrade" ascending:YES];
+    NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams withLimit:1];
+    if (fetchObject == nil || [fetchObject count] == 0) {
+        return nil;
+    }
+    return [User_Running_History removeAssociateForEntity:(User_Running_History *) [fetchObject objectAtIndex:0]];
+}
+
 +(NSArray*)fetchRunHistory{
     NSNumber *userId = [RORUserUtils getUserId];
     NSArray *fetchObject = [self fetchRunHistoryByUserId:userId];
@@ -44,7 +57,7 @@
     NSNumber *userId = [RORUserUtils getUserId];
     
     NSString *table=@"User_Running_History";
-    NSString *query = @"userId = %@ and commitTime = nil";
+    NSString *query = @"(userId = %@ or userId = -1) and commitTime = nil";
     NSArray *params = [NSArray arrayWithObjects:userId, nil];
     NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
@@ -68,7 +81,7 @@
     NSNumber *userId = [RORUserUtils getUserId];
     
     NSString *table=@"User_Running";
-    NSString *query = @"userId = %@ and commitTime = nil";
+    NSString *query = @"(userId = %@ or userId = -1) and commitTime = nil";
     NSArray *params = [NSArray arrayWithObjects:userId, nil];
     NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
@@ -133,8 +146,6 @@
     return (User_Running_History *) [fetchObject objectAtIndex:0];
     
 }
-
-
 
 +(User_Running *)fetchUserRunningByRunId:(NSString *) runId{
     return [self fetchUserRunningByRunId:runId withContext:NO];
@@ -244,7 +255,6 @@
     }
     return YES;
 }
-
 
 + (BOOL)syncUserRunning{
     if(![RORNetWorkUtils getDoUploadable])return YES;

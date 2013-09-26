@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSNumber * grade;
 @property (nonatomic, retain) NSDate * missionDate;
 @property (nonatomic, retain) NSDate * missionEndTime;
-@property (nonatomic, retain) NSString * missionGrade;
+@property (nonatomic, retain) NSNumber * missionGrade;
 @property (nonatomic, retain) NSNumber * missionId;
 @property (nonatomic, retain) NSString * missionRoute;
 @property (nonatomic, retain) NSDate * missionStartTime;
