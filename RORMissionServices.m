@@ -98,7 +98,7 @@
         NSString *table = @"Mission_Challenge";
         NSString *query = @"challengeId = %@";
         NSArray *params = [NSArray arrayWithObjects:mission.challengeId, nil];
-        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:NO];
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:YES];
         NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
         NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
         mission.challengeList = [(NSArray*)fetchObject mutableCopy];
