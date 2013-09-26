@@ -374,7 +374,6 @@
 		0F53B45F17F3481D006DB4C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareSDKLocalizable.strings; sourceTree = "<group>"; };
 		0F53B46017F3481D006DB4C4 /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
 		0F53B46117F3481D006DB4C4 /* ShareSDKCoreService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKCoreService.framework; sourceTree = "<group>"; };
-		0F53B46217F3481D006DB4C4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ShareSDKLocalizable.strings"; sourceTree = "<group>"; };
 		0F53B46917F3481D006DB4C4 /* libSinaWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSinaWeiboSDK.a; sourceTree = "<group>"; };
 		0F53B46A17F3481D006DB4C4 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		0F53B46B17F3481D006DB4C4 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
@@ -509,6 +508,8 @@
 		30621D4717E45EB70063A007 /* RORPlaySound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORPlaySound.m; path = Common/RORPlaySound.m; sourceTree = "<group>"; };
 		30621D4D17E45F480063A007 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		30621D5417E4609C0063A007 /* bo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bo.wav; path = Resources/sound/bo.wav; sourceTree = "<group>"; };
+		307A1D4B17F40A24006692DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard_iPhone.storyboard"; sourceTree = "<group>"; };
+		307A1D4C17F40A24006692DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ShareSDKLocalizable.strings"; sourceTree = "<group>"; };
 		307C85F017E6BD50007C1DE5 /* filter_btn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = filter_btn_bg.png; path = bg/filter_btn_bg.png; sourceTree = "<group>"; };
 		307C85F117E6BD50007C1DE5 /* filter_btn_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "filter_btn_bg@2x.png"; path = "bg/filter_btn_bg@2x.png"; sourceTree = "<group>"; };
 		307C85F217E6BD50007C1DE5 /* filter_cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = filter_cell_bg.png; path = bg/filter_cell_bg.png; sourceTree = "<group>"; };
@@ -1828,6 +1829,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0F53B43D17F34795006DB4C4 /* en */,
+				307A1D4B17F40A24006692DD /* zh-Hans */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -1836,7 +1838,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0F53B45F17F3481D006DB4C4 /* en */,
-				0F53B46217F3481D006DB4C4 /* zh-Hans */,
+				307A1D4C17F40A24006692DD /* zh-Hans */,
 			);
 			name = ShareSDKLocalizable.strings;
 			sourceTree = "<group>";

@@ -14,6 +14,9 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *tableCell;
+@property (nonatomic) NSInteger currentLevel;
+
 - (id)initWithFrame:(CGRect)frame andNumberOfColumns:(NSInteger)number;
+
 
 @end

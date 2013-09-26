@@ -11,6 +11,7 @@
 #import "Animations.h"
 #import "FTAnimation.h"
 #import "RORMissionServices.h"
+#import "RORRunHistoryServices.h"
 
 #define CELL_TITLE_TAG 1
 #define CELL_LEVEL_TAG 2
@@ -62,10 +63,15 @@
 
 -(void)loadChallengeTable{
     NSArray *gradeList = selectedChallenge.challengeList;
+    User_Running_History *thisRecord = [RORRunHistoryServices fetchBestRunHistoryByMissionId:selectedChallenge.missionId withUserId:[RORUserUtils getUserId]];
+    NSInteger userThisGrade = thisRecord?thisRecord.missionGrade.integerValue:GRADE_F;
+    [levelTable setCurrentLevel:userThisGrade];
     for (int i=0; i<gradeList.count; i++){
-        NSInteger thisGrade = ((NSNumber *)[[gradeList objectAtIndex:i] valueForKey:@"time"]).integerValue;
+        double thisGrade = ((NSNumber *)[[gradeList objectAtIndex:i] valueForKey:@"time"]).doubleValue;
+        if (i == userThisGrade)
+            thisGrade = thisRecord.duration.doubleValue;
         UILabel *label = (UILabel*)[levelTable viewWithTag:i+1];
-        label.text = [RORUtils transSecondToStandardFormat:thisGrade];;
+        label.text = [RORUtils transSecondToStandardFormat:thisGrade];
     }
 }
 
