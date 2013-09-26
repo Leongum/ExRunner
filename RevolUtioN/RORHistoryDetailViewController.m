@@ -152,7 +152,7 @@
 }
 
 - (IBAction)backAction:(id)sender {
-    if ([delegate isKindOfClass:[RORRunningViewController class]]){
+    if ([delegate isKindOfClass:[RORRunningBaseViewController class]]){
         [self.navigationController popToRootViewControllerAnimated:YES];
     } else
         [self.navigationController popViewControllerAnimated:YES];

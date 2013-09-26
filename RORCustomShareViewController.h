@@ -13,7 +13,9 @@
 #import "RORViewController.h"
 #import "User_Running_History.h"
 
-@interface RORCustomShareViewController : RORViewController<UITextViewDelegate>
+@interface RORCustomShareViewController : RORViewController<UITextViewDelegate>{
+    NSInteger deltaY;
+}
 @property (weak, nonatomic) IBOutlet UITextView *txtShareContent;
 @property (weak, nonatomic) IBOutlet UILabel *lblContentCount;
 @property (weak, nonatomic) IBOutlet RORCustomShareViewToolbar *shareBar;

@@ -113,7 +113,7 @@
     double Rn = [INConstant earth_Rn:loc2.coordinate.latitude];//(earth_Rn + oldLocation.altitude);
     double Re = [INConstant earth_Re:loc2.coordinate.latitude];
     
-    NSLog(@"(%f, %f), (%f, %f)", loc1.coordinate.latitude, loc1.coordinate.longitude, loc2.coordinate.latitude, loc2.coordinate.longitude);
+//    NSLog(@"(%f, %f), (%f, %f)", loc1.coordinate.latitude, loc1.coordinate.longitude, loc2.coordinate.latitude, loc2.coordinate.longitude);
     deltaDistance.v1 = (loc2.coordinate.latitude - loc1.coordinate.latitude) * (Rn * M_PI) / 180;
     deltaDistance.v2 = (loc2.coordinate.longitude - loc1.coordinate.longitude) * (Re * cos([INConstant degree2Radians:loc2.coordinate.latitude]) * M_PI) / 180;
     return deltaDistance;

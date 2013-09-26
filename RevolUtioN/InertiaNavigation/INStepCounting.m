@@ -63,6 +63,8 @@
 
 -(void)oneStepFound{
     counter++;
+    NSLog(@"Steps: %d", counter);
+    
 //    head = tail-1;
     
     lastGPeak = totalPoints -1;

@@ -44,9 +44,9 @@
 //        [Animations fadeOut:contentImageView andAnimationDuration:4 fromAlpha:1 andWait:YES];
         [Animations zoomOut:contentImageView andAnimationDuration:4 andWait:YES];
         [contentImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"running_countdown_2.png"]]];
-        [Animations zoomOut:contentImageView andAnimationDuration:3 andWait:YES];
+        [Animations zoomOut:contentImageView andAnimationDuration:2.5 andWait:YES];
         [contentImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"running_countdown_1.png"]]];
-        [Animations zoomOut:contentImageView andAnimationDuration:1 andWait:YES];
+        [Animations zoomOut:contentImageView andAnimationDuration:0.5 andWait:YES];
     
 //        [Animations fadeOut:contentImageView andAnimationDuration:0.5 fromAlpha:1 andWait:YES];
 //    }

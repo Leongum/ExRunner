@@ -27,7 +27,7 @@
 
 
 #define TIMER_INTERVAL delta_T
-#define MIN_PUSHPOINT_DISTANCE 1
+#define MIN_PUSHPOINT_DISTANCE 5
 
 @interface RORRunningBaseViewController : RORViewController{
     BOOL wasFound;

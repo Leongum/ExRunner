@@ -44,23 +44,16 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    if (![RORNetWorkUtils getIsConnetioned]){
-        isNetworkOK = NO;
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:CONNECTION_ERROR message:CONNECTION_ERROR_CONTECT delegate:self cancelButtonTitle:CANCEL_BUTTON otherButtonTitles:nil];
-        [alertView show];
-        alertView = nil;
-    }
-    
     [self controllerInit];
     [self navigationInit];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) {
-        //        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (buttonIndex == 0) {
+//        //        [self.navigationController popViewControllerAnimated:YES];
+//    }
+//}
 
 -(void)controllerInit{
     if (mission == nil)
@@ -245,7 +238,7 @@
             [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] setRunningStatus:YES];
 
             
-            [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
+            [endButton setTitle:@"放弃" forState:UIControlStateNormal];
             [endButton removeTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
             [endButton addTarget:self action:@selector(endButtonAction:) forControlEvents:UIControlEventTouchUpInside];
             
@@ -306,8 +299,14 @@
             lastHundredPlayed = YES;
             [lastHundred play];
         }
-        distanceLabel.text = [RORUtils outputDistance:mission.missionDistance.doubleValue-distance];
+        double leftDistance = mission.missionDistance.doubleValue-distance;
+        distanceLabel.text = [RORUtils outputDistance:leftDistance<0?0:leftDistance];
         speedLabel.text = [RORUserUtils formatedSpeed:(float)distance/duration*3.6];
+        
+        if (leftDistance<=0){
+            [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
+            [self endButtonAction:self];
+        }
         //    }
     }
     
@@ -323,28 +322,44 @@
         formerLocation = currentLocation;
         [routePoints addObject:currentLocation];
         [self drawLineWithLocationArray:routePoints];
-        if (distance>=mission.missionDistance.doubleValue)
-            [self endButtonAction:self];
+    }
+}
+
+-(void)abortConfirm{
+    UIAlertView *confirmView = [[UIAlertView alloc] initWithTitle:@"放弃" message:@"确定放弃么？" delegate:self cancelButtonTitle:CANCEL_BUTTON_CANCEL otherButtonTitles:OK_BUTTON_OK, nil];
+    [confirmView show];
+    confirmView = nil;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+//        if (self.startTime != nil) {
+//            NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(timerDot) userInfo:nil repeats:YES];
+//            self.repeatingTimer = timer;
+//        }
+        return;
+    }else if(buttonIndex == 1){
+        [self prepareForQuit];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
 - (IBAction)endButtonAction:(id)sender {
-    [repeatingTimer invalidate];
-    self.repeatingTimer = nil;
-    isStarted = NO;
+//    [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     
-    [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
-    
-    if (distance > 30){
+    if (runMission.missionDistance.doubleValue - distance <= 0){
+        [repeatingTimer invalidate];
+        self.repeatingTimer = nil;
+        isStarted = NO;
+
         [self.saveButton setEnabled:YES];
         [self.saveButton setTitle:@"跑完啦，存起来吧！" forState:UIControlStateNormal];
+        [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
+//        NSLog(@"%d", stepCounting.counter);
     } else {
-        [self.saveButton setEnabled:NO];
-        [self.saveButton setTitle:@"你确定你跑了么？" forState:UIControlStateNormal];
+        [self abortConfirm];
     }
-    
-    [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
-    NSLog(@"%d", stepCounting.counter);
 }
 
 - (IBAction)btnCoverInside:(id)sender {
@@ -352,7 +367,8 @@
 }
 
 - (IBAction)btnSaveRun:(id)sender {
-    [self stopUpdates];
+    [self saveRunInfo];
+
     
     if (self.endTime == nil)
         self.endTime = [NSDate date];
@@ -362,12 +378,12 @@
 //    [startButton setEnabled:NO];
 //    self.repeatingTimer = nil;
     [self prepareForQuit];
-    [self saveRunInfo];
     
     [self performSegueWithIdentifier:@"ChallengeRunResultSegue" sender:self];
 }
 
 -(void)prepareForQuit{
+    [self stopUpdates];
     [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] setRunningStatus:NO];
     
     [repeatingTimer invalidate];
@@ -440,7 +456,7 @@
 
 - (void)saveRunInfo{
     User_Running_History *runHistory = [User_Running_History intiUnassociateEntity];
-    runHistory.distance = [NSNumber numberWithDouble:distance];
+    runHistory.distance = runMission.missionDistance;
     runHistory.duration = [NSNumber numberWithDouble:duration];
     runHistory.avgSpeed = [NSNumber numberWithDouble:(double)distance/duration*3.6];
     runHistory.missionRoute = [RORDBCommon getStringFromRoutePoints:routePoints];

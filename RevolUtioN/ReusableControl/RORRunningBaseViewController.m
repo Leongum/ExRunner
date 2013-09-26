@@ -169,7 +169,6 @@
     }
     //step counting
     [stepCounting pushNewLAcc:[INMatrix modOfVec_3:newDeviceStatus.an] GAcc:newDeviceStatus.an.v3 speed:[INMatrix modOfVec_3:currentSpeed]];
-//    NSLog(@"%d", stepCounting.counter);
 }
 
 - (void)startDeviceMotion
@@ -196,10 +195,13 @@
 }
 
 -(NSNumber *)isValidRun:(NSInteger)steps {
+    if (!isNetworkOK)
+        return [NSNumber numberWithInteger:-2];
+    
     double avgStepDistance = distance / steps;
     double avgStepFrequency = steps * 60 / duration ;
-    if (distance/duration < 2)
-        return [NSNumber numberWithInteger:1];
+//    if (distance/duration < 2)
+//        return [NSNumber numberWithInteger:1];
     if (avgStepFrequency < 70 || avgStepFrequency > 240 || avgStepDistance < 0.5 || avgStepDistance > 2.5)
         return [NSNumber numberWithInteger:-1];
     return [NSNumber numberWithInteger:1];

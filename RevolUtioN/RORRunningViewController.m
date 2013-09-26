@@ -46,13 +46,6 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 
-    if (![RORNetWorkUtils getIsConnetioned]){
-        isNetworkOK = NO;
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:CONNECTION_ERROR message:CONNECTION_ERROR_CONTECT delegate:self cancelButtonTitle:CANCEL_BUTTON otherButtonTitles:nil];
-        [alertView show];
-        alertView = nil;
-    }
-
     [self controllerInit];
 }
 
@@ -305,9 +298,9 @@
 - (void)pushPoint{
     CLLocation *currentLocation = [self getNewRealLocation];
     double deltaDistance = [formerLocation distanceFromLocation:currentLocation];
-    NSLog(@"[%@, %@], delta_d = %f", formerLocation, currentLocation, deltaDistance);
+//    NSLog(@"[%@, %@], delta_d = %f", formerLocation, currentLocation, deltaDistance);
     if (formerLocation != currentLocation && deltaDistance>MIN_PUSHPOINT_DISTANCE){
-        NSLog(@"%f",distance);
+        NSLog(@"%f",deltaDistance);
         distance += [formerLocation distanceFromLocation:currentLocation];
         formerLocation = currentLocation;
         [routePoints addObject:currentLocation];
