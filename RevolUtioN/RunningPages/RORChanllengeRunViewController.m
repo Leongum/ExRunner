@@ -411,7 +411,7 @@
     return [NSNumber numberWithInt:GRADE_F];//MissionGradeEnum_toString[GRADE_F];
 }
 
--(NSNumber *)calculateAward:(NSString *)missionGrade baseValue:(double) base{
+-(NSNumber *)calculateAward:(NSNumber *)missionGrade baseValue:(double) base{
     if (missionGrade.integerValue == GRADE_S){
         return [NSNumber numberWithDouble:3*base];
     }

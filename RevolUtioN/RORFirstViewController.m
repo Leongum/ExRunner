@@ -28,10 +28,6 @@
 @implementation RORFirstViewController
 @synthesize weatherInfoButtonView;
 
-NSInteger expanded = 0;
-BOOL isWeatherButtonClicked = false;
-NSInteger centerLoc =-10000;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,7 +39,7 @@ NSInteger centerLoc =-10000;
     //初始化按钮位置
     [self initControlsLayout];
     
-    //    [RORUtils listFontFamilies];
+//    [RORUtils listFontFamilies];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -125,11 +121,11 @@ NSInteger centerLoc =-10000;
         
         User_Base *userInfo = [RORUserServices fetchUser:[RORUserUtils getUserId]];
         self.usernameLabel.text = userInfo.nickName;
-        [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.usernameLabel andSubViews:NO];
+//        [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.usernameLabel andSubViews:NO];
         self.levelLabel.text = [NSString stringWithFormat:@"%.1f", userInfo.attributes.level.doubleValue];
-        [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.levelLabel andSubViews:NO];
+        [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.levelLabel andSubViews:NO];
         self.scoreLabel.text = [NSString stringWithFormat:@"%d", userInfo.attributes.scores.integerValue];
-        [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.scoreLabel andSubViews:NO];
+        [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.scoreLabel andSubViews:NO];
     } else {
         self.loginButton.alpha = 1;
     }

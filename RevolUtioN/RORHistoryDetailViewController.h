@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "User_Running_History.h"
+#import "RORRunHistoryServices.h"
 #import "RORViewController.h"
+#import "RORCongratsCoverView.h"
 
 @interface RORHistoryDetailViewController : RORViewController <MKMapViewDelegate>{
     NSMutableArray *improvedRoute;

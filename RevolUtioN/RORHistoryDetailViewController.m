@@ -48,7 +48,7 @@
     durationLabel.text = [RORUtils transSecondToStandardFormat:record.duration.integerValue];
     energyLabel.text = [NSString stringWithFormat:@"%.1f kca", record.spendCarlorie.doubleValue];
     if (record.missionTypeId.integerValue == Challenge)
-        scoreLabel.text = [NSString stringWithFormat:@"%@", record.grade];
+        scoreLabel.text = [NSString stringWithFormat:@"%@", MissionGradeEnum_toString[record.missionGrade.integerValue]];
     else
         scoreLabel.text = [NSString stringWithFormat:@"%d", record.experience.integerValue];
 
@@ -67,11 +67,20 @@
     [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainerView andSubViews:YES];
     [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dateLabel andSubViews:YES];
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.coverView andSubViews:YES];
-
-//    [self.navigationItem.backBarButtonItem setAction:@selector(backToMain:)];
-//    [delegate viewDidLoad];
+    
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    User_Running_History *best = [RORRunHistoryServices fetchBestRunHistoryByMissionId:record.missionId withUserId:[RORUserUtils getUserId]];
+    if (record.missionTypeId.integerValue == Challenge)// && [delegate isKindOfClass:[RORRunningBaseViewController class]])
+    {
+        RORCongratsCoverView *congratsCoverView = [[RORCongratsCoverView alloc]initWithFrame:self.coverView.frame andLevel:best];
+        [self.view addSubview:congratsCoverView];
+        [congratsCoverView show:self];
+    }
+}
 
 -(void)drawRouteOntoMap{
     int couter = 4;

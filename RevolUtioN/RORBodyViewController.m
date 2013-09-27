@@ -38,6 +38,9 @@
 	// Do any additional setup after loading the view.
 //    self.backButton.alpha = 0;
 //    self.coverView.alpha = 0;
+    if ([delegate isKindOfClass:[RORLoginViewController class]]){
+        self.backButton.alpha = 0;
+    }
     [self loadData];
 }
 

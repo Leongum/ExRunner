@@ -144,6 +144,9 @@
 		30621D4817E45EB70063A007 /* RORPlaySound.m in Sources */ = {isa = PBXBuildFile; fileRef = 30621D4717E45EB70063A007 /* RORPlaySound.m */; };
 		30621D4E17E45F490063A007 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30621D4D17E45F480063A007 /* AudioToolbox.framework */; };
 		30621D5517E4609C0063A007 /* bo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 30621D5417E4609C0063A007 /* bo.wav */; };
+		307A1D5417F4353B006692DD /* RORCongratsCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 307A1D5317F4353B006692DD /* RORCongratsCoverView.m */; };
+		307A1D5A17F47CCD006692DD /* EHSMB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 307A1D5917F47CCD006692DD /* EHSMB.TTF */; };
+		307A1D5C17F480B4006692DD /* FZMWT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 307A1D5B17F480B4006692DD /* FZMWT.ttf */; };
 		307C85F417E6BD50007C1DE5 /* filter_btn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C85F017E6BD50007C1DE5 /* filter_btn_bg.png */; };
 		307C85F517E6BD50007C1DE5 /* filter_btn_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C85F117E6BD50007C1DE5 /* filter_btn_bg@2x.png */; };
 		307C85F617E6BD50007C1DE5 /* filter_cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C85F217E6BD50007C1DE5 /* filter_cell_bg.png */; };
@@ -170,6 +173,7 @@
 		307C862617E97A90007C1DE5 /* spring_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C861E17E97A90007C1DE5 /* spring_bg@2x.png */; };
 		307C862E17E9A78B007C1DE5 /* details.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C862C17E9A78B007C1DE5 /* details.png */; };
 		307C862F17E9A78B007C1DE5 /* details@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C862D17E9A78B007C1DE5 /* details@2x.png */; };
+		3083DC7517F5248F009A50F6 /* entsani.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3083DC7417F5248F009A50F6 /* entsani.ttf */; };
 		308FAC6617C64C290025B807 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 308FAC6517C64C290025B807 /* icon.png */; };
 		308FAC6817C64C300025B807 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 308FAC6717C64C300025B807 /* icon@2x.png */; };
 		308FAC6B17C65B060025B807 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 308FAC6A17C65B060025B807 /* Reachability.m */; };
@@ -510,6 +514,10 @@
 		30621D5417E4609C0063A007 /* bo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bo.wav; path = Resources/sound/bo.wav; sourceTree = "<group>"; };
 		307A1D4B17F40A24006692DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard_iPhone.storyboard"; sourceTree = "<group>"; };
 		307A1D4C17F40A24006692DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ShareSDKLocalizable.strings"; sourceTree = "<group>"; };
+		307A1D5217F4353B006692DD /* RORCongratsCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORCongratsCoverView.h; path = ReusableControl/RORCongratsCoverView.h; sourceTree = "<group>"; };
+		307A1D5317F4353B006692DD /* RORCongratsCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORCongratsCoverView.m; path = ReusableControl/RORCongratsCoverView.m; sourceTree = "<group>"; };
+		307A1D5917F47CCD006692DD /* EHSMB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = EHSMB.TTF; path = Resources/EHSMB.TTF; sourceTree = "<group>"; };
+		307A1D5B17F480B4006692DD /* FZMWT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FZMWT.ttf; path = Resources/FZMWT.ttf; sourceTree = "<group>"; };
 		307C85F017E6BD50007C1DE5 /* filter_btn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = filter_btn_bg.png; path = bg/filter_btn_bg.png; sourceTree = "<group>"; };
 		307C85F117E6BD50007C1DE5 /* filter_btn_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "filter_btn_bg@2x.png"; path = "bg/filter_btn_bg@2x.png"; sourceTree = "<group>"; };
 		307C85F217E6BD50007C1DE5 /* filter_cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = filter_cell_bg.png; path = bg/filter_cell_bg.png; sourceTree = "<group>"; };
@@ -538,6 +546,7 @@
 		307C861E17E97A90007C1DE5 /* spring_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spring_bg@2x.png"; sourceTree = "<group>"; };
 		307C862C17E9A78B007C1DE5 /* details.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = details.png; sourceTree = "<group>"; };
 		307C862D17E9A78B007C1DE5 /* details@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "details@2x.png"; sourceTree = "<group>"; };
+		3083DC7417F5248F009A50F6 /* entsani.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = entsani.ttf; path = Resources/entsani.ttf; sourceTree = "<group>"; };
 		308FAC6517C64C290025B807 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		308FAC6717C64C300025B807 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		308FAC6917C65B060025B807 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -1217,6 +1226,9 @@
 		30621D5017E460330063A007 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				3083DC7417F5248F009A50F6 /* entsani.ttf */,
+				307A1D5B17F480B4006692DD /* FZMWT.ttf */,
+				307A1D5917F47CCD006692DD /* EHSMB.TTF */,
 				30978DA917EE9CAF00CA58B9 /* NeoTech.otf */,
 				30621D4217E2DD490063A007 /* chavenir_bold.ttf */,
 				30A6D9F517CDD8CA00D1116E /* FZKATJW.TTF */,
@@ -1308,6 +1320,8 @@
 				30C1218717EA963B0077CBD3 /* RORCountDownCoverView.m */,
 				30C1218F17EC99EA0077CBD3 /* RORBreathingControl.h */,
 				30C1219017EC99EA0077CBD3 /* RORBreathingControl.m */,
+				307A1D5217F4353B006692DD /* RORCongratsCoverView.h */,
+				307A1D5317F4353B006692DD /* RORCongratsCoverView.m */,
 			);
 			name = ReusableControl;
 			sourceTree = "<group>";
@@ -1551,6 +1565,7 @@
 				302FD0191727D870004DA005 /* Default@2x.png in Resources */,
 				30507C05174A186300EC7F12 /* main_userButton_bg.png in Resources */,
 				30594BCF17F0851500E6A19B /* all_set_gun.mp3 in Resources */,
+				307A1D5A17F47CCD006692DD /* EHSMB.TTF in Resources */,
 				3061F3A5174C70F0006093FC /* userInfo.plist in Resources */,
 				30C658941755F78C0076AFA3 /* CityCode.geojson in Resources */,
 				3008CC591759FAA00032F5C7 /* weather_flat_bg.png in Resources */,
@@ -1620,6 +1635,7 @@
 				30FECBC817D981F5002C3C90 /* Default-568h@2x.png in Resources */,
 				30FECBCB17D98453002C3C90 /* main_bg@2x.png in Resources */,
 				30FECBD217D9845A002C3C90 /* paper_bg.png in Resources */,
+				307A1D5C17F480B4006692DD /* FZMWT.ttf in Resources */,
 				30FECBD317D9845A002C3C90 /* paper_bg@2x.png in Resources */,
 				30FECBDA17DD94A6002C3C90 /* paper.png in Resources */,
 				30FECBDB17DD94A6002C3C90 /* paper@2x.png in Resources */,
@@ -1648,6 +1664,7 @@
 				307C85FE17E6E8DE007C1DE5 /* logout_btn_bg.png in Resources */,
 				307C85FF17E6E8DE007C1DE5 /* logout_btn_bg@2x.png in Resources */,
 				307C860E17E7007A007C1DE5 /* segment_button_1_selected.png in Resources */,
+				3083DC7517F5248F009A50F6 /* entsani.ttf in Resources */,
 				307C860F17E7007A007C1DE5 /* segment_button_1_selected@2x.png in Resources */,
 				307C861017E7007A007C1DE5 /* segment_button_0_selected.png in Resources */,
 				307C861117E7007A007C1DE5 /* segment_button_0_selected@2x.png in Resources */,
@@ -1739,6 +1756,7 @@
 				0F7F39911794360800B1C720 /* RORUserClientHandler.m in Sources */,
 				0F7F3994179BD08000B1C720 /* RORMissionServices.m in Sources */,
 				0F87D877179D642A007E0412 /* RORMissionClientHandler.m in Sources */,
+				307A1D5417F4353B006692DD /* RORCongratsCoverView.m in Sources */,
 				0F87D881179D72C7007E0412 /* RORRunHistoryServices.m in Sources */,
 				0F87D884179D72F8007E0412 /* RORRunHistoryClientHandler.m in Sources */,
 				0F0D589217B0E4680046515C /* RORLoadingViewController.m in Sources */,
