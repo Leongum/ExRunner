@@ -38,26 +38,26 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
+//                                        @"Icon/sns_icon_%d.png",
+//                                        ShareTypeRenren]
+//                            bundleName:@"Resource"];
+//    [self.btnRenRenLogin setBackgroundImage:img forState:UIControlStateNormal];
+//    img = [UIImage imageNamed:[NSString stringWithFormat:
+//                                        @"Icon/sns_icon_%d.png",
+//                                        ShareTypeSinaWeibo]
+//                            bundleName:@"Resource"];
+//    [self.btnSinaLogin setBackgroundImage:img forState:UIControlStateNormal];
     UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
-                                        @"Icon/sns_icon_%d.png",
-                                        ShareTypeRenren]
-                            bundleName:@"Resource"];
-    [self.btnRenRenLogin setBackgroundImage:img forState:UIControlStateNormal];
-    img = [UIImage imageNamed:[NSString stringWithFormat:
-                                        @"Icon/sns_icon_%d.png",
-                                        ShareTypeSinaWeibo]
-                            bundleName:@"Resource"];
-    [self.btnSinaLogin setBackgroundImage:img forState:UIControlStateNormal];
-    img = [UIImage imageNamed:[NSString stringWithFormat:
                                         @"Icon/sns_icon_%d.png",
                                         ShareTypeQQ]
                             bundleName:@"Resource"];
     [self.btnQQLogin setBackgroundImage:img forState:UIControlStateNormal];
-    img = [UIImage imageNamed:[NSString stringWithFormat:
-                                        @"Icon/sns_icon_%d.png",
-                                        ShareTypeTencentWeibo]
-                            bundleName:@"Resource"];
-    [self.btnTencentLogin setBackgroundImage:img forState:UIControlStateNormal];
+//    img = [UIImage imageNamed:[NSString stringWithFormat:
+//                                        @"Icon/sns_icon_%d.png",
+//                                        ShareTypeTencentWeibo]
+//                            bundleName:@"Resource"];
+//    [self.btnTencentLogin setBackgroundImage:img forState:UIControlStateNormal];
     
     switchButton = [[RORSegmentControl alloc]initWithFrame:SEGMENT_FRAME andSegmentNumber:2];
     switchButton.delegate = self;

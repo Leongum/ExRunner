@@ -66,6 +66,10 @@
     }
 }
 
+-(BOOL)prefersStatusBarHidden{
+    return YES;
+}
+
 -(void)viewDidAppear:(BOOL)animated{
 //    [self performSegueWithIdentifier:@"loadingfinished" sender:self];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];

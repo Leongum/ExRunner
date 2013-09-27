@@ -174,6 +174,14 @@
 		307C862F17E9A78B007C1DE5 /* details@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C862D17E9A78B007C1DE5 /* details@2x.png */; };
 		30804E8817F566DD00F1A353 /* loading_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30804E8717F566DD00F1A353 /* loading_bg.png */; };
 		30804E8A17F5671600F1A353 /* loading_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30804E8917F5671600F1A353 /* loading_bg@2x.png */; };
+		30804E9417F56D6E00F1A353 /* QQ_friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 30804E8C17F56D6E00F1A353 /* QQ_friend.png */; };
+		30804E9517F56D6E00F1A353 /* QQ_friend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30804E8D17F56D6E00F1A353 /* QQ_friend@2x.png */; };
+		30804E9617F56D6E00F1A353 /* renren.png in Resources */ = {isa = PBXBuildFile; fileRef = 30804E8E17F56D6E00F1A353 /* renren.png */; };
+		30804E9717F56D6E00F1A353 /* renren@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30804E8F17F56D6E00F1A353 /* renren@2x.png */; };
+		30804E9817F56D6E00F1A353 /* tencent_weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = 30804E9017F56D6E00F1A353 /* tencent_weibo.png */; };
+		30804E9917F56D6E00F1A353 /* tencent_weibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30804E9117F56D6E00F1A353 /* tencent_weibo@2x.png */; };
+		30804E9A17F56D6E00F1A353 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = 30804E9217F56D6E00F1A353 /* weibo.png */; };
+		30804E9B17F56D6E00F1A353 /* weibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30804E9317F56D6E00F1A353 /* weibo@2x.png */; };
 		3083DC7517F5248F009A50F6 /* entsani.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3083DC7417F5248F009A50F6 /* entsani.ttf */; };
 		308FAC6B17C65B060025B807 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 308FAC6A17C65B060025B807 /* Reachability.m */; };
 		30978DA317EDA57E00CA58B9 /* history_detail_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30978DA117EDA57E00CA58B9 /* history_detail_bg.png */; };
@@ -547,6 +555,14 @@
 		307C862D17E9A78B007C1DE5 /* details@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "details@2x.png"; sourceTree = "<group>"; };
 		30804E8717F566DD00F1A353 /* loading_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loading_bg.png; path = bg/loading_bg.png; sourceTree = "<group>"; };
 		30804E8917F5671600F1A353 /* loading_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading_bg@2x.png"; path = "bg/loading_bg@2x.png"; sourceTree = "<group>"; };
+		30804E8C17F56D6E00F1A353 /* QQ_friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QQ_friend.png; sourceTree = "<group>"; };
+		30804E8D17F56D6E00F1A353 /* QQ_friend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QQ_friend@2x.png"; sourceTree = "<group>"; };
+		30804E8E17F56D6E00F1A353 /* renren.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = renren.png; sourceTree = "<group>"; };
+		30804E8F17F56D6E00F1A353 /* renren@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "renren@2x.png"; sourceTree = "<group>"; };
+		30804E9017F56D6E00F1A353 /* tencent_weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tencent_weibo.png; sourceTree = "<group>"; };
+		30804E9117F56D6E00F1A353 /* tencent_weibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tencent_weibo@2x.png"; sourceTree = "<group>"; };
+		30804E9217F56D6E00F1A353 /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo.png; sourceTree = "<group>"; };
+		30804E9317F56D6E00F1A353 /* weibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weibo@2x.png"; sourceTree = "<group>"; };
 		3083DC7417F5248F009A50F6 /* entsani.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = entsani.ttf; path = Resources/entsani.ttf; sourceTree = "<group>"; };
 		308FAC6917C65B060025B807 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		308FAC6A17C65B060025B807 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -1275,6 +1291,21 @@
 			name = loading;
 			sourceTree = "<group>";
 		};
+		30804E8B17F56D6E00F1A353 /* SNS */ = {
+			isa = PBXGroup;
+			children = (
+				30804E8C17F56D6E00F1A353 /* QQ_friend.png */,
+				30804E8D17F56D6E00F1A353 /* QQ_friend@2x.png */,
+				30804E8E17F56D6E00F1A353 /* renren.png */,
+				30804E8F17F56D6E00F1A353 /* renren@2x.png */,
+				30804E9017F56D6E00F1A353 /* tencent_weibo.png */,
+				30804E9117F56D6E00F1A353 /* tencent_weibo@2x.png */,
+				30804E9217F56D6E00F1A353 /* weibo.png */,
+				30804E9317F56D6E00F1A353 /* weibo@2x.png */,
+			);
+			path = SNS;
+			sourceTree = "<group>";
+		};
 		30978DA017EDA57E00CA58B9 /* history */ = {
 			isa = PBXGroup;
 			children = (
@@ -1412,6 +1443,7 @@
 		30FC291A17607F6D00DEC042 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				30804E8B17F56D6E00F1A353 /* SNS */,
 				30978DA517EDAFEA00CA58B9 /* share_btn.png */,
 				30978DA617EDAFEA00CA58B9 /* share_btn@2x.png */,
 				307C862C17E9A78B007C1DE5 /* details.png */,
@@ -1599,6 +1631,8 @@
 				30BB0AF91761BEA10009A847 /* history@2x.png in Resources */,
 				3012510117814F470082A09A /* inprocess_icon@2x.png in Resources */,
 				3012510217814F470082A09A /* collapse.png in Resources */,
+				30804E9917F56D6E00F1A353 /* tencent_weibo@2x.png in Resources */,
+				30804E9417F56D6E00F1A353 /* QQ_friend.png in Resources */,
 				30594BCD17F0851500E6A19B /* last_kilo.mp3 in Resources */,
 				3012510317814F470082A09A /* collapse@2x.png in Resources */,
 				30594BD817F16FA700E6A19B /* coverview_bg.png in Resources */,
@@ -1607,6 +1641,7 @@
 				30166A9517C3B84C0035C722 /* main_btn_bg@2x.png in Resources */,
 				30166A9617C3B84C0035C722 /* main_challenge_btn_bg.png in Resources */,
 				30594BD017F0851500E6A19B /* all_set.mp3 in Resources */,
+				30804E9717F56D6E00F1A353 /* renren@2x.png in Resources */,
 				30166A9717C3B84C0035C722 /* main_challenge_btn_bg@2x.png in Resources */,
 				30166A9817C3B84C0035C722 /* main_run_btn_bg.png in Resources */,
 				30166A9917C3B84C0035C722 /* main_run_btn_bg@2x.png in Resources */,
@@ -1642,12 +1677,15 @@
 				30FECBCB17D98453002C3C90 /* main_bg@2x.png in Resources */,
 				30FECBD217D9845A002C3C90 /* paper_bg.png in Resources */,
 				307A1D5C17F480B4006692DD /* FZMWT.ttf in Resources */,
+				30804E9817F56D6E00F1A353 /* tencent_weibo.png in Resources */,
 				30FECBD317D9845A002C3C90 /* paper_bg@2x.png in Resources */,
 				30FECBDA17DD94A6002C3C90 /* paper.png in Resources */,
+				30804E9A17F56D6E00F1A353 /* weibo.png in Resources */,
 				30FECBDB17DD94A6002C3C90 /* paper@2x.png in Resources */,
 				3003D71017F55899002557F4 /* Images.xcassets in Resources */,
 				30FECBDC17DD94A6002C3C90 /* paper_hand_bg@2x.png in Resources */,
 				30FECBDD17DD94A6002C3C90 /* paper_hand_bg.png in Resources */,
+				30804E9617F56D6E00F1A353 /* renren.png in Resources */,
 				30FECBE417DD96B1002C3C90 /* hand.png in Resources */,
 				30FECBE517DD96B1002C3C90 /* hand@2x.png in Resources */,
 				30621D1B17DEFFA00063A007 /* red_left.png in Resources */,
@@ -1663,6 +1701,7 @@
 				30621D3E17E2BCB80063A007 /* sync_apply.png in Resources */,
 				30621D3F17E2BCB80063A007 /* sync_apply@2x.png in Resources */,
 				30621D4317E2DD490063A007 /* chavenir_bold.ttf in Resources */,
+				30804E9517F56D6E00F1A353 /* QQ_friend@2x.png in Resources */,
 				30621D5517E4609C0063A007 /* bo.wav in Resources */,
 				307C85F417E6BD50007C1DE5 /* filter_btn_bg.png in Resources */,
 				307C85F517E6BD50007C1DE5 /* filter_btn_bg@2x.png in Resources */,
@@ -1690,6 +1729,7 @@
 				307C862317E97A90007C1DE5 /* running_bg.png in Resources */,
 				307C862417E97A90007C1DE5 /* running_bg@2x.png in Resources */,
 				307C862517E97A90007C1DE5 /* spring_bg.png in Resources */,
+				30804E9B17F56D6E00F1A353 /* weibo@2x.png in Resources */,
 				307C862617E97A90007C1DE5 /* spring_bg@2x.png in Resources */,
 				307C862E17E9A78B007C1DE5 /* details.png in Resources */,
 				307C862F17E9A78B007C1DE5 /* details@2x.png in Resources */,
