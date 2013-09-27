@@ -182,16 +182,19 @@
 	motionManager.deviceMotionUpdateInterval = delta_T;
     motionManager.accelerometerUpdateInterval = delta_T;
 	
-	// New in iOS 5.0: Attitude that is referenced to true north
-    if (motionManager.isMagnetometerAvailable){
-        [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical];
-        //        [motionManager startAccelerometerUpdates];
-        NSLog(@"start updating device motion using X true north Z vertical reference frame.");
-    } else {
-        [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXArbitraryZVertical];
-        //        [motionManager startAccelerometerUpdates];
-        NSLog(@"start updating device motion using Z vertical reference frame.");
-    }
+    [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXArbitraryZVertical];
+    
+//	//may cause megnet calibrating operation application
+//    if (motionManager.isMagnetometerAvailable){
+//        [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical];
+//        //        [motionManager startAccelerometerUpdates];
+//        NSLog(@"start updating device motion using X true north Z vertical reference frame.");
+//    } else {
+//        [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXArbitraryZVertical];
+//        //        [motionManager startAccelerometerUpdates];
+//        NSLog(@"start updating device motion using Z vertical reference frame.");
+//    }
+    
 }
 
 -(NSNumber *)isValidRun:(NSInteger)steps {

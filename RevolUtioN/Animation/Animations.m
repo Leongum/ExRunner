@@ -94,7 +94,7 @@
         done = NO;
     }];
     // wait for animation to finish
-    while (done == YES)
+    if (wait == YES)
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:duration]];
 }
 + (void)fadeOut: (UIView *)view andAnimationDuration: (float) duration fromAlpha:(double)oldAlpha andWait:(BOOL) wait{

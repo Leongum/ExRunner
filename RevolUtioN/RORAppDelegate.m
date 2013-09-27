@@ -60,7 +60,7 @@
 }
 
 -(void)applicationDidBecomeActive:(UIApplication *)application{
-    [[self sharedLocationManager] setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
+    [[self sharedLocationManager] setDesiredAccuracy:kCLLocationAccuracyBest];
     locationManager.distanceFilter = 1;
     NSLog(@"%u %c",[CLLocationManager  authorizationStatus],[CLLocationManager  locationServicesEnabled]);
     if (! ([CLLocationManager  locationServicesEnabled])

@@ -36,11 +36,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-//    self.backButton.alpha = 0;
-//    self.coverView.alpha = 0;
+
     if ([delegate isKindOfClass:[RORLoginViewController class]]){
         self.backButton.alpha = 0;
     }
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(collepseKeyboard:)] ;
+//    [self.table.backgroundView addGestureRecognizer:tap];
+    
     [self loadData];
 }
 
@@ -69,7 +71,7 @@
 }
 
 - (void)saveAction {
-    [self collepseKeyboard:[[self.table cellForRowAtIndexPath:selection] viewWithTag:2]];
+//    [self collepseKeyboard:[[self.table cellForRowAtIndexPath:selection] viewWithTag:2]];
     
     content.attributes.height = [NSNumber numberWithDouble:newHeight];
     content.attributes.weight = [NSNumber numberWithDouble:newWeight];
@@ -115,12 +117,15 @@
 }
 
 - (IBAction)collepseKeyboard:(id)sender {
-    if (!sender) {
-        return;
-    }
-    UITextField *textField = (UITextField *)sender;
-    UITableViewCell *cell = [self cellForTextField:textField];
+    [sender resignFirstResponder];
+}
 
+-(IBAction)textFieldDidEndEditing:(id)sender
+{
+    UITextField *textField = (UITextField *)sender;
+//    NSLog(@"%@", textField.text);
+    UITableViewCell *cell = [self cellForTextField:textField];
+    
     NSIndexPath *indexPath = [self.table indexPathForCell:(UITableViewCell*)cell];
     switch (indexPath.row) {
         case HEIGHT_PICKER:
@@ -150,7 +155,7 @@
         default:
             break;
     }
-    [sender resignFirstResponder];
+
 }
 
 -(IBAction)backgroundTap:(id)sender{
@@ -163,6 +168,7 @@
     UITableViewCell *cell = [self cellForTextField:textField];
     selection = [self.table indexPathForCell:(UITableViewCell*)cell];
     cache = textField.text;
+    textField.text = @"";
 }
 
 -(UITableViewCell *)cellForTextField:(UITextField*)textField{
@@ -193,6 +199,7 @@
             newHeight = content.attributes.height.doubleValue;
             UITextField *textField = (UITextField *)[cell viewWithTag:TEXTFIELD_TAG];
             [textField addTarget:self action:@selector(startEditingAction:) forControlEvents:UIControlEventEditingDidBegin];
+            [textField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
             textField.text = [NSString stringWithFormat:@"%.1f",newHeight];
             
             UILabel *unitLabel = (UILabel *)[cell viewWithTag:UNIT_TAG];
@@ -211,7 +218,10 @@
             
             newWeight = content.attributes.weight.doubleValue;
             UITextField *textField = (UITextField *)[cell viewWithTag:TEXTFIELD_TAG];
+            
             [textField addTarget:self action:@selector(startEditingAction:) forControlEvents:UIControlEventEditingDidBegin];
+            [textField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
+            
             textField.text = [NSString stringWithFormat:@"%.1f",newWeight];
             
             UILabel *unitLabel = (UILabel *)[cell viewWithTag:UNIT_TAG];

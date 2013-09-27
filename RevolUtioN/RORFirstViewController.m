@@ -55,6 +55,8 @@
     self.charactorWindView.alpha = 0;
 //    self.weatherInfoButtonView.frame = WEATHER_BUTTON_INITIAL_FRAME;
 //    self.userInfoView.frame = LOGIN_BUTTON_INITIAL_FRAME;
+    self.weatherInfoButtonView.alpha = 0;
+    self.userInfoView.alpha = 0;
     
     self.runButton.alpha = 0;
     self.challenge.alpha = 0;
@@ -138,7 +140,7 @@
     if (!hasAnimated){
         hasAnimated = YES;
         [self charactorAnimation];
-        [self controlsInAction];
+//        [self controlsInAction];
     }
     //    [Animations zoomIn:self.chactorView andAnimationDuration:2 andWait:YES];
     [self initLocationServcie];
@@ -235,11 +237,13 @@
 }
 
 -(void)charactorAnimation{
-    [Animations zoomIn:self.chactorView andAnimationDuration:2 andWait:NO];
     self.chactorView.alpha = 1;
+    [self.chactorView popIn:2 delegate:self startSelector:nil stopSelector:@selector(controlsInAction)];
+
     [Animations moveUp:self.chactorView andAnimationDuration:1 andWait:NO andLength:20];
-//    [Animations fadeIn:self.charactorWindView andAnimationDuration:1 toAlpha:1 andWait:YES];
-    //    [Animations moveDown:self.chactorView andAnimationDuration:1 andWait:YES andLength:20];
+
+    self.charactorWindView.alpha = 1;
+    [self.charactorWindView fadeIn:2 delegate:self];
 }
 
 -(void)controlsInAction{
