@@ -17,6 +17,8 @@
 @dynamic note;
 @dynamic sequence;
 @dynamic time;
+@dynamic sex;
+@dynamic rule;
 
 +(Mission_Challenge *) removeAssociateForEntity:(Mission_Challenge *)associatedEntity{
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
@@ -35,5 +37,7 @@
     self.distance = [RORDBCommon getNumberFromId:[dict valueForKey:@"distance"]];
     self.sequence = [RORDBCommon getNumberFromId:[dict valueForKey:@"sequence"]];
     self.note = [RORDBCommon getStringFromId:[dict valueForKey:@"note"]];
+    self.sex = [RORDBCommon getStringFromId:[dict valueForKey:@"sex"]];
+    self.rule = [RORDBCommon getStringFromId:[dict valueForKey:@"rule"]];
 }
 @end

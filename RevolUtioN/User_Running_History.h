@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSNumber * distance;
 @property (nonatomic, retain) NSNumber * duration;
 @property (nonatomic, retain) NSNumber * experience;
+@property (nonatomic, retain) NSNumber * extraExperience;
 @property (nonatomic, retain) NSNumber * grade;
 @property (nonatomic, retain) NSDate * missionDate;
 @property (nonatomic, retain) NSDate * missionEndTime;

@@ -14,9 +14,11 @@
 @property (nonatomic, retain) NSNumber * challengeId;
 @property (nonatomic, retain) NSNumber * distance;
 @property (nonatomic, retain) NSString * grade;
+@property (nonatomic, retain) NSString * sex;
 @property (nonatomic, retain) NSString * note;
 @property (nonatomic, retain) NSNumber * sequence;
 @property (nonatomic, retain) NSNumber * time;
+@property (nonatomic, retain) NSString * rule;
 
 +(Mission_Challenge *) removeAssociateForEntity:(Mission_Challenge *)associatedEntity;
 

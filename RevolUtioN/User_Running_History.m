@@ -18,6 +18,7 @@
 @dynamic distance;
 @dynamic duration;
 @dynamic experience;
+@dynamic extraExperience;
 @dynamic grade;
 @dynamic missionDate;
 @dynamic missionEndTime;
@@ -71,6 +72,7 @@
     self.missionGrade = [RORDBCommon getNumberFromId:[dict valueForKey:@"missionGrade"]];
     self.scores = [RORDBCommon getNumberFromId:[dict valueForKey:@"scores"]];
     self.experience = [RORDBCommon getNumberFromId:[dict valueForKey:@"experience"]];
+    self.extraExperience = [RORDBCommon getNumberFromId:[dict valueForKey:@"extraExperience"]];
     self.missionId = [RORDBCommon getNumberFromId:[dict valueForKey:@"missionId"]];
     self.uuid = [RORDBCommon getStringFromId:[dict valueForKey:@"uuid"]];
     self.steps = [RORDBCommon getNumberFromId:[dict valueForKey:@"steps"]];
@@ -99,6 +101,7 @@
     [tempoDict setValue:self.missionGrade forKey:@"missionGrade"];
     [tempoDict setValue:self.scores forKey:@"scores"];
     [tempoDict setValue:self.experience forKey:@"experience"];
+    [tempoDict setValue:self.extraExperience forKey:@"extraExperience"];
     [tempoDict setValue:self.missionId forKey:@"missionId"];
     [tempoDict setValue:self.uuid forKey:@"uuid"];
     [tempoDict setValue:[RORDBCommon getStringFromId:self.commitTime] forKey:@"commitTime"];

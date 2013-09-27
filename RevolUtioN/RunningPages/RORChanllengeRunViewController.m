@@ -301,7 +301,7 @@
         }
         double leftDistance = mission.missionDistance.doubleValue-distance;
         distanceLabel.text = [RORUtils outputDistance:leftDistance<0?0:leftDistance];
-        speedLabel.text = [RORUserUtils formatedSpeed:(float)distance/duration*3.6];
+        speedLabel.text = [RORUserUtils formatedSpeed:(float)(distance/duration*3.6)];
         
         if (leftDistance<=0){
             [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
@@ -458,7 +458,7 @@
     User_Running_History *runHistory = [User_Running_History intiUnassociateEntity];
     runHistory.distance = runMission.missionDistance;
     runHistory.duration = [NSNumber numberWithDouble:duration];
-    runHistory.avgSpeed = [NSNumber numberWithDouble:(double)distance/duration*3.6];
+    runHistory.avgSpeed = [NSNumber numberWithDouble:(double)(distance/duration*3.6)];
     runHistory.missionRoute = [RORDBCommon getStringFromRoutePoints:routePoints];
     runHistory.missionDate = [NSDate date];
     runHistory.missionEndTime = self.endTime;
@@ -470,7 +470,8 @@
             case Challenge:
                 runHistory.missionId = runMission.missionId;
                 runHistory.missionGrade = [self calculateMissionGrade];
-                runHistory.experience =[NSNumber numberWithDouble:[self calculateExperience:runHistory].doubleValue + [self calculateAward:(NSString *)runHistory.missionGrade baseValue:runMission.experience.doubleValue].doubleValue];
+                runHistory.extraExperience = [NSNumber numberWithDouble:[self calculateAward:(NSString *)runHistory.missionGrade baseValue:runMission.experience.doubleValue].doubleValue];
+                runHistory.experience =[NSNumber numberWithDouble:[self calculateExperience:runHistory].doubleValue + runHistory.extraExperience.doubleValue];
                 runHistory.scores =[NSNumber  numberWithDouble:[self calculateScore:runHistory].doubleValue + [self calculateAward:(NSString *)runHistory.missionGrade baseValue:runMission.scores.doubleValue].doubleValue];
                 break;
             default:
@@ -492,6 +493,7 @@
     if(runHistory.valid.doubleValue != 1 || runHistory.userId.integerValue < 0){
         runHistory.experience =[NSNumber numberWithDouble:0];
         runHistory.scores =[NSNumber  numberWithDouble:0];
+        runHistory.extraExperience =[NSNumber  numberWithDouble:0];
     }
     
     NSLog(@"%@", runHistory);

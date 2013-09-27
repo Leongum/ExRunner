@@ -288,7 +288,7 @@
         //    if (time % 3 == 0){
         [self pushPoint];
         distanceLabel.text = [RORUtils outputDistance:distance];
-        speedLabel.text = [RORUserUtils formatedSpeed:(float)distance/duration *3.6];
+        speedLabel.text = [RORUserUtils formatedSpeed:(double)(distance/duration*3.6)];
         //    }
     }
 
@@ -376,7 +376,7 @@
     User_Running_History *runHistory = [User_Running_History intiUnassociateEntity];
     runHistory.distance = [NSNumber numberWithDouble:distance];
     runHistory.duration = [NSNumber numberWithDouble:duration];
-    runHistory.avgSpeed = [NSNumber numberWithDouble:(double)distance/duration*3.6];
+    runHistory.avgSpeed = [NSNumber numberWithDouble:(double)(distance/duration*3.6)];
     runHistory.missionRoute = [RORDBCommon getStringFromRoutePoints:routePoints];
     runHistory.missionDate = [NSDate date];
     runHistory.missionEndTime = self.endTime;
@@ -390,6 +390,7 @@
     runHistory.steps = [NSNumber numberWithInteger:stepCounting.counter / 0.8];
     runHistory.experience =[self calculateExperience:runHistory];
     runHistory.scores =[self calculateScore:runHistory];
+    runHistory.extraExperience =[NSNumber  numberWithDouble:0];
     runHistory.valid = [self isValidRun:stepCounting.counter / 0.8];
     if(runHistory.valid.doubleValue != 1 || runHistory.userId.integerValue < 0){
         runHistory.experience =[NSNumber numberWithDouble:0];

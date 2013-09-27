@@ -95,9 +95,14 @@
         mission.missionPlacePackageList = [(NSArray*)fetchObject mutableCopy];
     }
     if(mission.challengeId != nil){
+        NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
+        NSString * sex = [settinglist valueForKey:@"sex"];
+        if(![sex isEqualToString:@"女"]){
+            sex = @"男";
+        }
         NSString *table = @"Mission_Challenge";
-        NSString *query = @"challengeId = %@";
-        NSArray *params = [NSArray arrayWithObjects:mission.challengeId, nil];
+        NSString *query = @"challengeId = %@ and sex = %@";
+        NSArray *params = [NSArray arrayWithObjects:mission.challengeId,sex, nil];
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:YES];
         NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
         NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
