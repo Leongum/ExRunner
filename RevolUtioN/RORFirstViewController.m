@@ -243,7 +243,7 @@
     [Animations moveUp:self.chactorView andAnimationDuration:1 andWait:NO andLength:20];
 
     self.charactorWindView.alpha = 1;
-    [self.charactorWindView fadeIn:2 delegate:self];
+    [self.charactorWindView fadeIn:4 delegate:self];
 }
 
 -(void)controlsInAction{

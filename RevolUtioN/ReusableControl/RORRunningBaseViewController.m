@@ -153,22 +153,21 @@
     //    kalmanFilter = [[INKalmanFilter alloc]initWithCoordinate:[locationManager location].coordinate];
     
     stepCounting = [[INStepCounting alloc]init];
+    timeFromLastLocation = 0;
+    
+    currentSpeed = 0.f;
 }
 
 - (void)inertiaNavi{
+    timeFromLastLocation += delta_T;
+
     CMDeviceMotion *deviceMotion = motionManager.deviceMotion;
     INDeviceStatus *newDeviceStatus = [[INDeviceStatus alloc]initWithDeviceMotion:deviceMotion];
     //    newDeviceStatus.timeTag = timeCounter;
 //    newDeviceStatus.timeTag = timerCount;
-    
-    CLLocation *currentLocation = [self getNewRealLocation];
-    timeFromLastLocation += delta_T;
-    if ([currentLocation distanceFromLocation:formerLocation]>0){
-        currentSpeed = [INDeviceStatus getSpeedVectorBetweenLocation1:formerLocation andLocation2:currentLocation deltaTime:timeFromLastLocation];
-        timeFromLastLocation = 0;
-    }
+
     //step counting
-    [stepCounting pushNewLAcc:[INMatrix modOfVec_3:newDeviceStatus.an] GAcc:newDeviceStatus.an.v3 speed:[INMatrix modOfVec_3:currentSpeed]];
+    [stepCounting pushNewLAcc:[INMatrix modOfVec_3:newDeviceStatus.an] GAcc:newDeviceStatus.an.v3 speed:currentSpeed];
 }
 
 - (void)startDeviceMotion
