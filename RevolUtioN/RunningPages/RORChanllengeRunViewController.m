@@ -438,10 +438,15 @@
 }
 
 -(NSNumber *)calculateExperience:(User_Running_History *)runningHistory{
+    if (!runningHistory.valid.boolValue)
+        return [NSNumber numberWithDouble:0.f];
     return [NSNumber numberWithDouble:(runningHistory.distance.doubleValue/1000*200)];
 }
 
 -(NSNumber *)calculateScore:(User_Running_History *)runningHistory{
+    if (!runningHistory.valid.boolValue)
+        return [NSNumber numberWithDouble:0.f];
+    
     NSTimeInterval scape = [runningHistory.missionEndTime timeIntervalSinceDate:runningHistory.missionStartTime];
     double scores = 0;
     if(scape != 0){
@@ -468,13 +473,14 @@
     runHistory.missionEndTime = self.endTime;
     runHistory.missionStartTime = self.startTime;
     runHistory.userId = [RORUserUtils getUserId];
+    runHistory.valid = [self isValidRun:stepCounting.counter / 0.8];
     if (runMission!=nil){
         runHistory.missionTypeId = runMission.missionTypeId;
         switch (runMission.missionTypeId.integerValue) {
             case Challenge:
                 runHistory.missionId = runMission.missionId;
                 runHistory.missionGrade = [self calculateMissionGrade];
-                runHistory.extraExperience = [NSNumber numberWithDouble:[self calculateAward:runHistory.missionGrade baseValue:runMission.experience.doubleValue].doubleValue];
+                runHistory.extraExperience = [self calculateAward:runHistory.missionGrade baseValue:runMission.experience.doubleValue];
                 runHistory.experience =[NSNumber numberWithDouble:[self calculateExperience:runHistory].doubleValue + runHistory.extraExperience.doubleValue];
                 runHistory.scores =[NSNumber  numberWithDouble:[self calculateScore:runHistory].doubleValue + [self calculateAward:runHistory.missionGrade baseValue:runMission.scores.doubleValue].doubleValue];
                 break;
@@ -492,7 +498,6 @@
     runHistory.runUuid = [RORUtils uuidString];
     runHistory.uuid = [RORUserUtils getUserUuid];
     runHistory.steps = [NSNumber numberWithInteger:stepCounting.counter / 0.8];
-    runHistory.valid = [self isValidRun:stepCounting.counter / 0.8];
     
     if(runHistory.valid.doubleValue != 1 || runHistory.userId.integerValue < 0){
         runHistory.experience =[NSNumber numberWithDouble:0];
