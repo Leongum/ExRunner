@@ -8,7 +8,7 @@
 
 #import "RORChallengeLevelView.h"
 
-#define CURRENTLEVEL_DELTA_SIZE 10
+#define CURRENTLEVEL_DELTA_SIZE 25
 
 @implementation RORChallengeLevelView
 @synthesize currentLevel = _currentLevel;
@@ -73,25 +73,27 @@
 }
 
 -(void)setCurrentLevel:(NSInteger)level{
-    if (level>=GRADE_F)
-        return;
-    UILabel *contentLabel = (UILabel *)[self viewWithTag:_currentLevel+1];
-    UILabel *contentImage = (UILabel *)[self viewWithTag:_currentLevel+columns+1];
+    if (_currentLevel<GRADE_F) {
+        UILabel *contentLabel = (UILabel *)[self viewWithTag:_currentLevel+1];
+        UILabel *contentImage = (UILabel *)[self viewWithTag:_currentLevel+columns+1];
 
-    [contentImage setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:24]];
-    [contentLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:15]];
-    contentLabel.frame = CGRectMake(contentLabel.frame.origin.x+CURRENTLEVEL_DELTA_SIZE, contentLabel.frame.origin.y+CURRENTLEVEL_DELTA_SIZE, contentLabel.frame.size.width-CURRENTLEVEL_DELTA_SIZE*2, contentLabel.frame.size.height-CURRENTLEVEL_DELTA_SIZE*2);
-    contentImage.frame = CGRectMake(contentImage.frame.origin.x+CURRENTLEVEL_DELTA_SIZE, contentImage.frame.origin.y+CURRENTLEVEL_DELTA_SIZE, contentImage.frame.size.width-CURRENTLEVEL_DELTA_SIZE*2, contentImage.frame.size.height-CURRENTLEVEL_DELTA_SIZE*2);
+        [contentImage setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:24]];
+        [contentLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:15]];
+        contentLabel.frame = CGRectMake(contentLabel.frame.origin.x+CURRENTLEVEL_DELTA_SIZE*0.75, contentLabel.frame.origin.y+CURRENTLEVEL_DELTA_SIZE, contentLabel.frame.size.width-CURRENTLEVEL_DELTA_SIZE*2, contentLabel.frame.size.height-CURRENTLEVEL_DELTA_SIZE*2);
+        contentImage.frame = CGRectMake(contentImage.frame.origin.x+CURRENTLEVEL_DELTA_SIZE*1.25, contentImage.frame.origin.y+CURRENTLEVEL_DELTA_SIZE, contentImage.frame.size.width-CURRENTLEVEL_DELTA_SIZE*2, contentImage.frame.size.height-CURRENTLEVEL_DELTA_SIZE*2);
+    }
     
     _currentLevel = level;
     
-    contentLabel = (UILabel *)[self viewWithTag:self.currentLevel+1];
-    contentImage = (UILabel *)[self viewWithTag:self.currentLevel+columns+1];
+    if (_currentLevel<GRADE_F){
+        UILabel *contentLabel = (UILabel *)[self viewWithTag:self.currentLevel+1];
+        UILabel *contentImage = (UILabel *)[self viewWithTag:self.currentLevel+columns+1];
 
-    [contentImage setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
-    [contentLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:18]];
-    contentLabel.frame = CGRectMake(contentLabel.frame.origin.x-CURRENTLEVEL_DELTA_SIZE, contentLabel.frame.origin.y-CURRENTLEVEL_DELTA_SIZE, contentLabel.frame.size.width+CURRENTLEVEL_DELTA_SIZE*2, contentLabel.frame.size.height+CURRENTLEVEL_DELTA_SIZE*2);
-    contentImage.frame = CGRectMake(contentImage.frame.origin.x-CURRENTLEVEL_DELTA_SIZE, contentImage.frame.origin.y-CURRENTLEVEL_DELTA_SIZE, contentImage.frame.size.width+CURRENTLEVEL_DELTA_SIZE, contentImage.frame.size.height+CURRENTLEVEL_DELTA_SIZE);
+        [contentImage setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:44]];
+        [contentLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:24]];
+        contentLabel.frame = CGRectMake(contentLabel.frame.origin.x-CURRENTLEVEL_DELTA_SIZE*0.75, contentLabel.frame.origin.y-CURRENTLEVEL_DELTA_SIZE, contentLabel.frame.size.width+CURRENTLEVEL_DELTA_SIZE*2, contentLabel.frame.size.height+CURRENTLEVEL_DELTA_SIZE*2);
+        contentImage.frame = CGRectMake(contentImage.frame.origin.x-CURRENTLEVEL_DELTA_SIZE*1.25, contentImage.frame.origin.y-CURRENTLEVEL_DELTA_SIZE, contentImage.frame.size.width+CURRENTLEVEL_DELTA_SIZE*2, contentImage.frame.size.height+CURRENTLEVEL_DELTA_SIZE*2);
+    }
 }
 /*
 // Only override drawRect: if you perform custom drawing.

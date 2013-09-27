@@ -56,6 +56,9 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>entsani.ttf</string>
+		<string>FZMWT.ttf</string>
+		<string>EHSMB.TTF</string>
 		<string>NeoTech.otf</string>
 		<string>chavenir_bold.ttf</string>
 		<string>FZKATJW.TTF</string>

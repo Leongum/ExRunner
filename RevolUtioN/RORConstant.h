@@ -37,9 +37,11 @@
 #define DEFAULT_ANIMATION [NSNumber numberWithBool:YES]
 
 #define CHN_PRINT_FONT @"FZKaTong-M19S"
-#define CHN_WRITTEN_FONT @"FZKaTong-M19S"
+#define CHN_WRITTEN_FONT @"FZMWJW--GB1-0"
 #define ENG_WRITTEN_FONT @"Noteworthy"
-#define ENG_PRINT_FONT @"Neotech"
+//#define ENG_PRINT_FONT @"Neotech"
+#define ENG_PRINT_FONT @"Electronic Highway Sign"
+#define ENG_GAME_FONT @"EnterSansmanBoldItalic"
 
 #endif
 

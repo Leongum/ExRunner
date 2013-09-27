@@ -197,10 +197,10 @@ static NSDate *systemTime = nil;
     double orginSpeed = metersPerSec;
     if (speedType == 0) {
         if (orginSpeed == 0)
-            return @"0\'0\"/km";
+            return @"0\'0\" /km";
         int minutes = (int)(1000/( orginSpeed * 60));
         int seconds = ((int) (1000/orginSpeed)) % 60;
-        return [NSString stringWithFormat:@"%d\' %d'' /km", minutes, seconds];
+        return [NSString stringWithFormat:@"%d\' %d\" /km", minutes, seconds];
     } else {
         return [NSString stringWithFormat:@"%.1f km/h", kmperhour];
     }

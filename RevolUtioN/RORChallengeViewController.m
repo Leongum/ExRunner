@@ -161,10 +161,16 @@
     
     UILabel *titleLabel = (UILabel*)[cell viewWithTag:CELL_TITLE_TAG];
     titleLabel.text = challenge.missionName;
-    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:titleLabel andSubViews:NO];
-//    UILabel *levelLabel = (UILabel *)[cell viewWithTag:CELL_LEVEL_TAG];
-//    levelLabel.text = [content valueForKey:@"level"];
+    UILabel *levelLabel = (UILabel *)[cell viewWithTag:CELL_LEVEL_TAG];
+    User_Running_History *best = [RORRunHistoryServices fetchBestRunHistoryByMissionId:challenge.missionId withUserId:[RORUserUtils getUserId]];
+    if (best)
+        levelLabel.text = MissionGradeEnum_toString[best.missionGrade.integerValue];
+    else
+        levelLabel.text = @"?";
     
+    [RORUtils setFontFamily:ENG_PRINT_FONT forView:titleLabel andSubViews:NO];
+    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:levelLabel andSubViews:NO];
+
     return cell;
 }
 
