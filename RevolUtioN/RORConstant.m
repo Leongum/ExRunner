@@ -38,4 +38,12 @@ NSString * const MissionGradeImageEnum_toString[] = {
     @"F.png"
 };
 
++(NSString *)SoundNameForSpecificGrade:(MissionGradeEnum)grade{
+    if (grade == GRADE_S)
+        return @"challenge_S.m4a";
+    if (grade == GRADE_F)
+        return @"challenge_F.m4a";
+    return @"challenge_normal.m4a";
+}
+
 @end

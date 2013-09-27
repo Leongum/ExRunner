@@ -10,4 +10,6 @@
 
 @interface RORLoadingViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UILabel *loadingLabel;
+
 @end

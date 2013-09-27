@@ -10,6 +10,7 @@
 #import "RORUtils.h"
 #import "FTAnimation.h"
 #import "Animations.h"
+#import "RORPlaySound.h"
 
 @implementation RORCongratsCoverView
 @synthesize bestRecord;
@@ -82,14 +83,20 @@
 
 -(void)doAnimation{
     [titleLabel fallIn:2 delegate:self];
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:4]];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]];
     levelLabel.alpha = 1;
+    
     [levelLabel fallIn:0.2 delegate:self];
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    
     awardTitleLabel.alpha = 1;
     [awardTitleLabel backInFrom:kFTAnimationLeft withFade:YES duration:0.5 delegate:self];
     extraAwardLabel.alpha = 1;
     [extraAwardLabel backInFrom:kFTAnimationRight withFade:YES duration:0.5 delegate:self];
+    
+    RORPlaySound *sound = [[RORPlaySound alloc] initForPlayingSoundEffectWith:[RORConstant SoundNameForSpecificGrade:bestRecord.missionGrade.integerValue]];
+    [sound play];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:4]];
+
 }
 
 -(IBAction)show:(id)sender{

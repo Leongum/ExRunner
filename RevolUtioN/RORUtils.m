@@ -40,10 +40,10 @@
     hour = min / 60;
     min = min % 60;
     if (hour>0)
-        return [NSString stringWithFormat:@"%d:%d'%d''",hour, min, intSeconds];
+        return [NSString stringWithFormat:@"%d:%d'%d\"",hour, min, intSeconds];
     else if (min>0)
-        return [NSString stringWithFormat:@"%d' %d''", min, intSeconds];
-    return [NSString stringWithFormat:@"%d'' %d", intSeconds, (NSInteger)((seconds - (NSInteger)seconds)*10)];
+        return [NSString stringWithFormat:@"%d'%d\"", min, intSeconds];
+    return [NSString stringWithFormat:@"%d\"%d", intSeconds, (NSInteger)((seconds - (NSInteger)seconds)*10)];
 }
 
 + (NSString *)toJsonFormObject:(NSObject *)object{

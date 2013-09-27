@@ -31,6 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.loadingLabel setFont:[UIFont fontWithName:ENG_GAME_FONT size:24]];
+    
     [RORNetWorkUtils initCheckNetWork];
     NSLog(@"%hhd",[RORNetWorkUtils getIsConnetioned]);
 
@@ -67,7 +70,10 @@
 //    [self performSegueWithIdentifier:@"loadingfinished" sender:self];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
     UINavigationController *navigationController =  [storyboard instantiateViewControllerWithIdentifier:@"RORNavigationController"];
-    sleep(1);
+    
+//    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]];
+    sleep(3);
+    
     [self presentViewController:navigationController animated:NO completion:NULL];
 
 }

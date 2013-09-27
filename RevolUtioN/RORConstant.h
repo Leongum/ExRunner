@@ -55,4 +55,6 @@ NSString *const MissionGradeImageEnum_toString[7];
 
 @interface RORConstant : NSObject
 
++(NSString *)SoundNameForSpecificGrade:(MissionGradeEnum)grade;
+
 @end

@@ -68,6 +68,7 @@
     
 //    locationManager = [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] sharedLocationManager];
     locationManager = [[CLLocationManager alloc]init];
+    locationManager.delegate = self;
     
     [locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
     if (! ([CLLocationManager  locationServicesEnabled])
@@ -122,7 +123,7 @@
         User_Base *userInfo = [RORUserServices fetchUser:[RORUserUtils getUserId]];
         self.usernameLabel.text = userInfo.nickName;
 //        [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.usernameLabel andSubViews:NO];
-        self.levelLabel.text = [NSString stringWithFormat:@"%.1f", userInfo.attributes.level.doubleValue];
+        self.levelLabel.text = [NSString stringWithFormat:@"%d", userInfo.attributes.level.integerValue];
         [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.levelLabel andSubViews:NO];
         self.scoreLabel.text = [NSString stringWithFormat:@"%d", userInfo.attributes.scores.integerValue];
         [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.scoreLabel andSubViews:NO];
