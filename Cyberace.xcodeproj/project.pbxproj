@@ -195,6 +195,9 @@
 		30989CAC17F5D87800CA9F83 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CA717F5D87800CA9F83 /* Default.png */; };
 		30989CAD17F5D87800CA9F83 /* Default@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CA817F5D87800CA9F83 /* Default@2x-1.png */; };
 		30989CAE17F5D87800CA9F83 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CA917F5D87800CA9F83 /* Default@2x.png */; };
+		30989CB317F5F7C800CA9F83 /* A.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CB017F5F7C800CA9F83 /* A.png */; };
+		30989CB417F5F7C800CA9F83 /* congrats_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CB117F5F7C800CA9F83 /* congrats_bg.png */; };
+		30989CB517F5F7C800CA9F83 /* S.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CB217F5F7C800CA9F83 /* S.png */; };
 		30A6D9AA17C6821500D1116E /* FTAnimation+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */; };
 		30A6D9AB17C6821500D1116E /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A417C6821500D1116E /* FTAnimationManager.m */; };
 		30A6D9AC17C6821500D1116E /* FTUtils+NSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A617C6821500D1116E /* FTUtils+NSObject.m */; };
@@ -580,6 +583,9 @@
 		30989CA717F5D87800CA9F83 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		30989CA817F5D87800CA9F83 /* Default@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x-1.png"; sourceTree = "<group>"; };
 		30989CA917F5D87800CA9F83 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		30989CB017F5F7C800CA9F83 /* A.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = A.png; sourceTree = "<group>"; };
+		30989CB117F5F7C800CA9F83 /* congrats_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = congrats_bg.png; sourceTree = "<group>"; };
+		30989CB217F5F7C800CA9F83 /* S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = S.png; sourceTree = "<group>"; };
 		30A6D9A017C6821500D1116E /* FTAnimation+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FTAnimation+UIView.h"; sourceTree = "<group>"; };
 		30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTAnimation+UIView.m"; sourceTree = "<group>"; };
 		30A6D9A217C6821500D1116E /* FTAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimation.h; sourceTree = "<group>"; };
@@ -1035,6 +1041,7 @@
 		301C1F6817378AF30068B43B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				30989CAF17F5F7C800CA9F83 /* congrats */,
 				30989CA417F5D87800CA9F83 /* launching */,
 				30621D5017E460330063A007 /* Font */,
 				30621D4F17E4602B0063A007 /* sound */,
@@ -1336,6 +1343,17 @@
 			);
 			name = launching;
 			path = Resources/launching;
+			sourceTree = "<group>";
+		};
+		30989CAF17F5F7C800CA9F83 /* congrats */ = {
+			isa = PBXGroup;
+			children = (
+				30989CB017F5F7C800CA9F83 /* A.png */,
+				30989CB117F5F7C800CA9F83 /* congrats_bg.png */,
+				30989CB217F5F7C800CA9F83 /* S.png */,
+			);
+			name = congrats;
+			path = Resources/congrats;
 			sourceTree = "<group>";
 		};
 		30A6D99F17C6821500D1116E /* FTUtils */ = {
@@ -1652,6 +1670,7 @@
 				30FC293C176082C600DEC042 /* inprocess_icon.png in Resources */,
 				30FC293E176082F100DEC042 /* male_icon.png in Resources */,
 				30FC29411760861C00DEC042 /* expand.png in Resources */,
+				30989CB517F5F7C800CA9F83 /* S.png in Resources */,
 				30FC29421760861C00DEC042 /* expand@2x.png in Resources */,
 				30BB0AF81761BEA10009A847 /* history.png in Resources */,
 				30BB0AF91761BEA10009A847 /* history@2x.png in Resources */,
@@ -1677,6 +1696,7 @@
 				30166AA217C3C6260035C722 /* back_bg@2x.png in Resources */,
 				30DBB72317EFE04400552391 /* challenge_pop_bg.png in Resources */,
 				30166AA317C3C6260035C722 /* back_bg.png in Resources */,
+				30989CB317F5F7C800CA9F83 /* A.png in Resources */,
 				30DFE7DF17C6748F00678780 /* submit.png in Resources */,
 				30DFE7E017C6748F00678780 /* submit@2x.png in Resources */,
 				30A6D9C217C7781200D1116E /* btn_scared.png in Resources */,
@@ -1714,6 +1734,7 @@
 				30804E9617F56D6E00F1A353 /* renren.png in Resources */,
 				30FECBE417DD96B1002C3C90 /* hand.png in Resources */,
 				30FECBE517DD96B1002C3C90 /* hand@2x.png in Resources */,
+				30989CB417F5F7C800CA9F83 /* congrats_bg.png in Resources */,
 				30621D1B17DEFFA00063A007 /* red_left.png in Resources */,
 				30D008D517F53FBB004E6747 /* challenge_F.m4a in Resources */,
 				30621D1C17DEFFA00063A007 /* red_right.png in Resources */,
