@@ -102,9 +102,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		307A1D4D17F40A24006692DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		307A1D4E17F40A24006692DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		307A1D4F17F40A24006692DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		BC12323D1391D5CC00131607 /* SBJson.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SBJson.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1232481391D5CC00131607 /* SBJson-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SBJson-Info.plist"; sourceTree = "<group>"; };
 		BC12324A1391D5CC00131607 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -669,7 +666,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				BC12324A1391D5CC00131607 /* en */,
-				307A1D4D17F40A24006692DD /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -678,7 +674,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				BC12325B1391D5CC00131607 /* en */,
-				307A1D4E17F40A24006692DD /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -687,7 +682,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				BCC2628013920FC7003D9994 /* en */,
-				307A1D4F17F40A24006692DD /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
