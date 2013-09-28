@@ -205,8 +205,8 @@
 //    if (distance/duration < 2)
 //        return [NSNumber numberWithInteger:1];
     if (avgStepFrequency < 70 || avgStepFrequency > 240 || avgStepDistance < 0.5 || avgStepDistance > 2.5)
-        return [NSNumber numberWithBool:NO];
-    return [NSNumber numberWithBool:YES];
+        return [NSNumber numberWithInteger:-1];
+    return [NSNumber numberWithInteger:1];
 }
 
 //#pragma CLLocationManager Delegate

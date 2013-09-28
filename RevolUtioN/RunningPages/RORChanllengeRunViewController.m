@@ -499,7 +499,7 @@
     runHistory.uuid = [RORUserUtils getUserUuid];
     runHistory.steps = [NSNumber numberWithInteger:stepCounting.counter / 0.8];
     
-    if(runHistory.valid.doubleValue != 1 || runHistory.userId.integerValue < 0){
+    if(runHistory.valid.integerValue != 1 || runHistory.userId.integerValue < 0){
         runHistory.experience =[NSNumber numberWithDouble:0];
         runHistory.scores =[NSNumber  numberWithDouble:0];
         runHistory.extraExperience =[NSNumber  numberWithDouble:0];
