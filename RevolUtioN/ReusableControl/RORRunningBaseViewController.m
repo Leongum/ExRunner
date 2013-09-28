@@ -44,8 +44,7 @@
     [countDownView hide];
     
     sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"all_set_gun.mp3"];
-    lastHundred = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"last_hundred.mp3"];
-    lastKilo = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"last_kilo.mp3"];
+    
     lastKiloPlayed = NO;
     lastHundredPlayed = NO;
 }

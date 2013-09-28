@@ -200,6 +200,8 @@
 		30989CB517F5F7C800CA9F83 /* S.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CB217F5F7C800CA9F83 /* S.png */; };
 		30989CB817F6877800CA9F83 /* oneButtonShare_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CB617F6877800CA9F83 /* oneButtonShare_bg.png */; };
 		30989CB917F6877800CA9F83 /* oneButtonShare_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CB717F6877800CA9F83 /* oneButtonShare_bg@2x.png */; };
+		30989CC117F6B5A900CA9F83 /* pass.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CBF17F6B5A900CA9F83 /* pass.png */; };
+		30989CC217F6B5A900CA9F83 /* pass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CC017F6B5A900CA9F83 /* pass@2x.png */; };
 		30A6D9AA17C6821500D1116E /* FTAnimation+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */; };
 		30A6D9AB17C6821500D1116E /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A417C6821500D1116E /* FTAnimationManager.m */; };
 		30A6D9AC17C6821500D1116E /* FTUtils+NSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A617C6821500D1116E /* FTUtils+NSObject.m */; };
@@ -590,6 +592,8 @@
 		30989CB217F5F7C800CA9F83 /* S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = S.png; sourceTree = "<group>"; };
 		30989CB617F6877800CA9F83 /* oneButtonShare_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oneButtonShare_bg.png; sourceTree = "<group>"; };
 		30989CB717F6877800CA9F83 /* oneButtonShare_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oneButtonShare_bg@2x.png"; sourceTree = "<group>"; };
+		30989CBF17F6B5A900CA9F83 /* pass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass.png; sourceTree = "<group>"; };
+		30989CC017F6B5A900CA9F83 /* pass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pass@2x.png"; sourceTree = "<group>"; };
 		30A6D9A017C6821500D1116E /* FTAnimation+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FTAnimation+UIView.h"; sourceTree = "<group>"; };
 		30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTAnimation+UIView.m"; sourceTree = "<group>"; };
 		30A6D9A217C6821500D1116E /* FTAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimation.h; sourceTree = "<group>"; };
@@ -1329,6 +1333,8 @@
 		30978DA017EDA57E00CA58B9 /* history */ = {
 			isa = PBXGroup;
 			children = (
+				30989CBF17F6B5A900CA9F83 /* pass.png */,
+				30989CC017F6B5A900CA9F83 /* pass@2x.png */,
 				30989CB617F6877800CA9F83 /* oneButtonShare_bg.png */,
 				30989CB717F6877800CA9F83 /* oneButtonShare_bg@2x.png */,
 				30978DA117EDA57E00CA58B9 /* history_detail_bg.png */,
@@ -1695,6 +1701,7 @@
 				30804E9717F56D6E00F1A353 /* renren@2x.png in Resources */,
 				30166A9717C3B84C0035C722 /* main_challenge_btn_bg@2x.png in Resources */,
 				30166A9817C3B84C0035C722 /* main_run_btn_bg.png in Resources */,
+				30989CC217F6B5A900CA9F83 /* pass@2x.png in Resources */,
 				30166A9917C3B84C0035C722 /* main_run_btn_bg@2x.png in Resources */,
 				30166A9C17C3B84C0035C722 /* main_username_bg.png in Resources */,
 				30D008D417F53FBB004E6747 /* challenge_normal.m4a in Resources */,
@@ -1760,6 +1767,7 @@
 				307C85F417E6BD50007C1DE5 /* filter_btn_bg.png in Resources */,
 				307C85F517E6BD50007C1DE5 /* filter_btn_bg@2x.png in Resources */,
 				307C85F617E6BD50007C1DE5 /* filter_cell_bg.png in Resources */,
+				30989CC117F6B5A900CA9F83 /* pass.png in Resources */,
 				30804E8A17F5671600F1A353 /* loading_bg@2x.png in Resources */,
 				307C85F717E6BD50007C1DE5 /* filter_cell_bg@2x.png in Resources */,
 				30DBB72417EFE04400552391 /* finishrunning_pop_bg.png in Resources */,

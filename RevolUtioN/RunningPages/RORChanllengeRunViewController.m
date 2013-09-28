@@ -61,10 +61,12 @@
     
     self.coverView.alpha = 0;
     self.backButton.alpha = 0;
-    [self.startButton setEnabled:NO];
 
     self.mapView.delegate = self;
-    [startButton setTitle:START_RUNNING_BUTTON forState:UIControlStateNormal];
+    
+    [startButton setTitle:SEARCHING_LOCATION forState:UIControlStateNormal];
+    [self.startButton setEnabled:NO];
+
 //    UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
 //    [startButton setBackgroundImage:image forState:UIControlStateNormal];
     
@@ -81,6 +83,11 @@
     doCollect = NO;
     
     routePoints = [[NSMutableArray alloc]init];
+    
+    if (runMission.missionDistance.integerValue >= 1000)
+        lastKilo = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"last_kilo.mp3"];
+    if (runMission.missionDistance.integerValue >= 100)
+        lastHundred = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"last_hundred.mp3"];
 }
 
 -(void)navigationInit{
@@ -564,6 +571,7 @@
         MKwasFound = YES;
         [self center_map:self];
         formerCenterMapLocation = [self getNewRealLocation];
+        [startButton setTitle:START_RUNNING_BUTTON forState:UIControlStateNormal];
         [self.startButton setEnabled:YES];
     }
     if ([formerCenterMapLocation distanceFromLocation:[self getNewRealLocation]]>20){

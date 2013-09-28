@@ -298,6 +298,10 @@
  before shrinking to nothing in the middle of the screen.
 */
 - (void)popOut:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
+/**
+custom animation elastic 
+ */
+-(void)elastic:(NSTimeInterval)duration delegate:(id)delegate;
 
 /**
  The view will fade in and shrink from double its size down to its regular size. This makes

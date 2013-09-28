@@ -186,6 +186,9 @@
                            }];
 }
 
+- (IBAction)hideKeyboard:(id)sender {
+    [self.txtShareContent resignFirstResponder];
+}
 
 - (void)viewDidUnload {
     [self setTxtShareContent:nil];

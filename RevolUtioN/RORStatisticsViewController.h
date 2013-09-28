@@ -18,5 +18,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *totalSpeedLabel;
 @property (strong, nonatomic) IBOutlet UILabel *totalCalorieLabel;
 @property (strong, nonatomic) IBOutlet UIScrollView *containerView;
+@property (strong, nonatomic) IBOutlet UILabel *distanceCommentLabel;
+@property (strong, nonatomic) IBOutlet UILabel *speedCommentLabel;
+@property (strong, nonatomic) IBOutlet UILabel *calorieCommentLabel;
 
 @end

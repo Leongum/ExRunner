@@ -467,6 +467,20 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
                             name:kFTAnimationPopOut type:kFTAnimationTypeOut];
 }
 
+- (CAAnimation *)elasticAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate{
+    CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    scale.duration = duration;
+    scale.removedOnCompletion = NO;
+    scale.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.f],
+                    [NSNumber numberWithFloat:.95f],
+                    [NSNumber numberWithFloat:1.01f],
+                    [NSNumber numberWithFloat:1.f],
+                    nil];
+    return [self animationGroupFor:[NSArray arrayWithObjects:scale, nil] withView:view duration:duration
+                          delegate:delegate startSelector:nil stopSelector:nil
+                              name:kFTAnimationPopIn type:kFTAnimationTypeIn];
+}
+
 #pragma mark -
 #pragma mark Fall In and Fly Out Builders
 

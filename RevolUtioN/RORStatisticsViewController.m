@@ -74,8 +74,11 @@
     } else {
         [self hideContents];
         self.totalSpeedLabel.text = NO_HISTORY;
-        
     }
+    
+    self.distanceCommentLabel.text = STATISTICS_DISTANCE_MESSAGE([NSNumber numberWithDouble:totalDistance/1000]);
+    self.speedCommentLabel.text = STATISTICS_SPEED_MESSAGE([NSNumber numberWithDouble:avgSpeed]);
+    self.calorieCommentLabel.text = STATISTICS_CALORIE_MESSAGE([NSNumber numberWithDouble:totalCalorie]);
 }
 
 -(void)showContents{

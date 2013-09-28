@@ -7,6 +7,7 @@
 //
 
 #import "RORFunnyButton.h"
+#import "FTAnimation.h"
 
 @implementation RORFunnyButton
 
@@ -58,20 +59,28 @@
     if (translation.y < 0)
         deltaY = translation.y/2;
     self.frame = CGRectMake(originFrame.origin.x + deltaX, originFrame.origin.y + deltaY, fabs(translation.x/2)+originFrame.size.width, fabs(translation.y/2)+originFrame.size.height);
-    CGContextRef gccontext = UIGraphicsGetCurrentContext();
-    [UIView beginAnimations:nil context:gccontext];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    [UIView setAnimationDuration:0.3];
+    
     
     if (recognizer.state == UIGestureRecognizerStateEnded) {
+        CGContextRef gccontext = UIGraphicsGetCurrentContext();
+        [UIView beginAnimations:nil context:gccontext];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+        [UIView setAnimationDuration:0.15];
+        
         self.frame = originFrame;
         [self setBackgroundImage:normal_bg forState:UIControlStateNormal];
-        self.transform = CGAffineTransformMakeScale(1, 1);
+        self.transform = CGAffineTransformMakeScale(1.f, 1.f);
+        
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(animationFinished)];
+        [UIView commitAnimations];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.15]];
+
+        [self elastic:0.2 delegate:self];
     }
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
-    [UIView commitAnimations];
     
+
+
     //    [recognizer setTranslation:CGPointZero inView:self];
 }
 

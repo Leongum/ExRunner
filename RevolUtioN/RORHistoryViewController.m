@@ -13,6 +13,7 @@
 #import "RORHistoryPageViewController.h"
 #import "RORRunHistoryServices.h"
 #import "RORUserServices.h"
+#import "Animations.h"
 
 @interface RORHistoryViewController ()
 
@@ -184,12 +185,15 @@
     distanceLabel.text = [NSString stringWithFormat:@"%@",[RORUtils outputDistance:record4Date.distance.doubleValue]];    
     UILabel *durationLabel = (UILabel *)[cell viewWithTag:DURATION];
     durationLabel.text = [RORUtils transSecondToStandardFormat:[record4Date.duration integerValue]];
-    UILabel *missionTypeLabel = (UILabel *)[cell viewWithTag:MISSIONTYPE];
+    UIImageView *isValidImage = (UIImageView *)[cell viewWithTag:VALID];
     
-    if (((NSNumber *)record4Date.valid).integerValue>0)
-        missionTypeLabel.text = [NSString stringWithFormat:@"验证通过"];
-    else
-        missionTypeLabel.text = [NSString stringWithFormat:@"验证未通过"];
+    if (((NSNumber *)record4Date.valid).integerValue>0){
+        isValidImage.alpha = 1;
+        isValidImage.center = CGPointMake([RORUtils randomBetween:57 and:205], [RORUtils randomBetween:30 and:50]);
+        [Animations rotate:isValidImage andAnimationDuration:0 andWait:NO andAngle:[RORUtils randomBetween:-10 and:10]];
+//        isValidImage.transform = CGAffineTransformMakeRotation(degreesToRadians([RORUtils randomBetween:-45 and:45]));
+    } else
+        isValidImage.alpha = 0;
     
     return cell;
 }

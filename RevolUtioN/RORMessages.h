@@ -34,9 +34,12 @@
 #define SHARE_SUBMITTED [RORSystemService getSystemMessage:[NSNumber numberWithDouble:19]]
 #define NO_HISTORY [RORSystemService getSystemMessage:[NSNumber numberWithDouble:20]]
 #define GPS_SETTING_ERROR [RORSystemService getSystemMessage:[NSNumber numberWithDouble:21]]
-#define DISTANCE_MESSAGE(region) [RORSystemService getSystemMessage:[NSNumber numberWithDouble:22] withRegion:(region)]
+#define STATISTICS_DISTANCE_MESSAGE(region) [RORSystemService getSystemMessage:[NSNumber numberWithDouble:22] withRegion:(region)]
+#define STATISTICS_SPEED_MESSAGE(region) [RORSystemService getSystemMessage:[NSNumber numberWithDouble:23] withRegion:(region)]
+#define STATISTICS_CALORIE_MESSAGE(region) [RORSystemService getSystemMessage:[NSNumber numberWithDouble:24] withRegion:(region)]
 
 #define CANCEL_BUTTON @"知道呢！"
+#define SEARCHING_LOCATION @"定位中..."
 #define START_RUNNING_BUTTON @"走你"
 #define CANCEL_RUNNING_BUTTON @"取消"
 #define FINISH_RUNNING_BUTTON @"完成"

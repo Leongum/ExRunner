@@ -48,4 +48,5 @@ _Pragma("clang diagnostic pop") \
 //help finding out new added fonts
 +(void)listFontFamilies;
 
++(double)randomBetween:(NSInteger)x1 and:(NSInteger)x2;
 @end

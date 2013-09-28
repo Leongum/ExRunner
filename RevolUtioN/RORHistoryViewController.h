@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RORPageViewController.h"
 
-typedef enum {DISTANCE = 1, DURATION = 2, MISSIONTYPE = 3} controlInHistoryTableCell;
+typedef enum {DISTANCE = 1, DURATION = 2, VALID = 3} controlInHistoryTableCell;
 
 @interface RORHistoryViewController : RORPageViewController{
 }

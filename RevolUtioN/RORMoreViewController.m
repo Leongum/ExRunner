@@ -97,6 +97,7 @@
                 label.text = @"未登录";
             else
                 label.text =  userInfo.nickName;
+            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
             break;
         }
         case 1:
@@ -105,6 +106,7 @@
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             UILabel *label = (UILabel*)[cell viewWithTag:1];
             label.text = @"身体参数";
+            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
             break;
         }
         case 2:
@@ -125,6 +127,7 @@
                 [switchCtrl setIsChecked:YES];
                 //label.text = SYNC_MODE_WIFI;
             }
+            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
             break;
         }
         case 3:
@@ -141,7 +144,6 @@
                 [seg setTag:2];
                 [cell addSubview:seg];
             }
-            [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:seg andSubViews:YES];
             
             NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
             NSNumber *speedType = [settinglist valueForKey:@"speedType"];
@@ -149,7 +151,9 @@
                 NSInteger st = speedType.integerValue;
                 [seg selectSegmentAtIndex:st];
             }
-//            [seg addTarget:self action:@selector(changeSpeedType:) forControlEvents:UIControlEventValueChanged];
+            
+            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
+            [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:seg andSubViews:YES];
             break;
         }
 //        case 4:
@@ -166,7 +170,6 @@
 //            break;
 //        }
     }
-    [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
 
     return cell;
 }

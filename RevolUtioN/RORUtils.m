@@ -311,5 +311,9 @@
     }
 }
 
++(double)randomBetween:(NSInteger)x1 and:(NSInteger)x2{
+    return rand()%(x2-x1)+x1;
+}
+
 
 @end
