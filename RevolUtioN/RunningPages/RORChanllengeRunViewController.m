@@ -347,7 +347,6 @@
 
 - (IBAction)endButtonAction:(id)sender {
 //    [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
-    
     if (runMission.missionDistance.doubleValue - distance <= 0){
         [repeatingTimer invalidate];
         self.repeatingTimer = nil;
@@ -367,11 +366,10 @@
 }
 
 - (IBAction)btnSaveRun:(id)sender {
-    [self saveRunInfo];
-
-    
     if (self.endTime == nil)
         self.endTime = [NSDate date];
+    [self saveRunInfo];
+
 //    [[UIApplication sharedApplication] setIdleTimerDisabled: NO];
 //    
 //    [repeatingTimer invalidate];
@@ -470,9 +468,9 @@
             case Challenge:
                 runHistory.missionId = runMission.missionId;
                 runHistory.missionGrade = [self calculateMissionGrade];
-                runHistory.extraExperience = [NSNumber numberWithDouble:[self calculateAward:(NSString *)runHistory.missionGrade baseValue:runMission.experience.doubleValue].doubleValue];
+                runHistory.extraExperience = [NSNumber numberWithDouble:[self calculateAward:runHistory.missionGrade baseValue:runMission.experience.doubleValue].doubleValue];
                 runHistory.experience =[NSNumber numberWithDouble:[self calculateExperience:runHistory].doubleValue + runHistory.extraExperience.doubleValue];
-                runHistory.scores =[NSNumber  numberWithDouble:[self calculateScore:runHistory].doubleValue + [self calculateAward:(NSString *)runHistory.missionGrade baseValue:runMission.scores.doubleValue].doubleValue];
+                runHistory.scores =[NSNumber  numberWithDouble:[self calculateScore:runHistory].doubleValue + [self calculateAward:runHistory.missionGrade baseValue:runMission.scores.doubleValue].doubleValue];
                 break;
             default:
                 break;
