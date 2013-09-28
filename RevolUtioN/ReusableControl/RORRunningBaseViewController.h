@@ -35,7 +35,7 @@
     double duration; // seconds
     double distance;
     double timeFromLastLocation;
-    vec_3 currentSpeed;
+    double currentSpeed;
     CLLocationManager *locationManager;
     CMMotionManager *motionManager;
     CLLocationCoordinate2D offset;

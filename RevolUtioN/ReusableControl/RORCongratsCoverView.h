@@ -10,8 +10,11 @@
 #import "RORRunHistoryServices.h"
 
 @interface RORCongratsCoverView : UIControl{
+    NSInteger grade;
     UIImageView *bgView;
     UILabel *titleLabel;
+    UIImageView *levelBgImageView;
+    UIImageView *levelImageView;
     UILabel *levelLabel;
     UILabel *extraAwardLabel;
     UILabel *awardTitleLabel;

@@ -301,7 +301,7 @@
         }
         double leftDistance = mission.missionDistance.doubleValue-distance;
         distanceLabel.text = [RORUtils outputDistance:leftDistance<0?0:leftDistance];
-        speedLabel.text = [RORUserUtils formatedSpeed:(float)(distance/duration*3.6)];
+        speedLabel.text = [RORUserUtils formatedSpeed:currentSpeed*3.6];
         
         if (leftDistance<=0){
             [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
@@ -318,6 +318,10 @@
     double deltaDistance = [formerLocation distanceFromLocation:currentLocation];
 
     if (formerLocation != currentLocation  && deltaDistance>MIN_PUSHPOINT_DISTANCE){
+        //calculate real-time speed
+        currentSpeed = deltaDistance / timeFromLastLocation;//[INDeviceStatus getSpeedVectorBetweenLocation1:formerLocation andLocation2:currentLocation deltaTime:timeFromLastLocation];
+        timeFromLastLocation = 0;
+        
         distance += [formerLocation distanceFromLocation:currentLocation];
         formerLocation = currentLocation;
         [routePoints addObject:currentLocation];

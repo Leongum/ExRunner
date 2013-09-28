@@ -288,7 +288,7 @@
         //    if (time % 3 == 0){
         [self pushPoint];
         distanceLabel.text = [RORUtils outputDistance:distance];
-        speedLabel.text = [RORUserUtils formatedSpeed:(double)(distance/duration*3.6)];
+        speedLabel.text = [RORUserUtils formatedSpeed:(double)(currentSpeed*3.6)];
         //    }
     }
 
@@ -300,6 +300,10 @@
     double deltaDistance = [formerLocation distanceFromLocation:currentLocation];
 //    NSLog(@"[%@, %@], delta_d = %f", formerLocation, currentLocation, deltaDistance);
     if (formerLocation != currentLocation && deltaDistance>MIN_PUSHPOINT_DISTANCE){
+        //calculate real-time speed
+        currentSpeed = deltaDistance / timeFromLastLocation;//[INDeviceStatus getSpeedVectorBetweenLocation1:formerLocation andLocation2:currentLocation deltaTime:timeFromLastLocation];
+        timeFromLastLocation = 0;
+        
         NSLog(@"%f",deltaDistance);
         distance += [formerLocation distanceFromLocation:currentLocation];
         formerLocation = currentLocation;
