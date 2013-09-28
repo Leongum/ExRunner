@@ -31,6 +31,7 @@ static BOOL isConnectioned = NO;
 }
 
 + (void) updateNetWorkStatus:(NetworkStatus) newNetWorkStatus{
+    doUploadable = NO;
     BOOL isExistenceNetwork = YES;
     switch (newNetWorkStatus) {
         case NotReachable:
@@ -39,6 +40,7 @@ static BOOL isConnectioned = NO;
         case ReachableViaWiFi:
             [RORRunHistoryServices uploadRunningHistories];
             isExistenceNetwork = YES;
+            doUploadable = YES;
             break;
         case ReachableViaWWAN:
             isExistenceNetwork = YES;

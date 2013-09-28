@@ -351,7 +351,6 @@
 
 - (IBAction)endButtonAction:(id)sender {
 //    [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
-    
     if (runMission.missionDistance.doubleValue - distance <= 0){
         [repeatingTimer invalidate];
         self.repeatingTimer = nil;
@@ -371,11 +370,10 @@
 }
 
 - (IBAction)btnSaveRun:(id)sender {
-    [self saveRunInfo];
-
-    
     if (self.endTime == nil)
         self.endTime = [NSDate date];
+    [self saveRunInfo];
+
 //    [[UIApplication sharedApplication] setIdleTimerDisabled: NO];
 //    
 //    [repeatingTimer invalidate];
