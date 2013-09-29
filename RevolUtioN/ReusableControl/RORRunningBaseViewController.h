@@ -57,6 +57,10 @@
     
     NSMutableArray *routes;
     NSMutableArray *routePoints;
+    MKPolyline *routeLine;
+    
+    NSTimer *repeatingTimer;
+    BOOL isStarted;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
@@ -90,4 +94,8 @@
 - (void)startDeviceMotion;
 -(NSNumber *)isValidRun:(NSInteger)steps;
 
+//reset route points after pause
+-(void)resetRoutePoints;
+
+-(void)stopTimer;
 @end

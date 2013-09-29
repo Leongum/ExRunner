@@ -34,6 +34,7 @@
 -(void)sendAlart:(NSString *)message;
 
 - (IBAction)startIndicator:(id)sender;
+- (IBAction)endIndicator:(id)sender;
 - (IBAction)startProgress:(id)sender;
 - (IBAction)startNetWork:(id)sender;
 

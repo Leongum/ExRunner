@@ -17,9 +17,9 @@
 
 @implementation RORRunningViewController
 //@synthesize locationManager, motionManager;
-@synthesize repeatingTimer, timerCount, isStarted;
+@synthesize timerCount;
 @synthesize timeLabel, speedLabel, distanceLabel, startButton, endButton;
-@synthesize routeLine, routeLineView;
+@synthesize routeLineView;
 @synthesize record;
 @synthesize doCollect;
 @synthesize kalmanFilter, inDistance;
@@ -170,7 +170,6 @@
     [self setSpeedLabel:nil];
     [self setStartButton:nil];
     [self setEndButton:nil];
-    [self setRouteLine:nil];
     [self setRouteLineView:nil];
     [self setStartTime:nil];
     [self setEndTime:nil];
@@ -246,16 +245,14 @@
         [self drawLineWithLocationArray:routePoints];
         
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(timerDot) userInfo:nil repeats:YES];
-        self.repeatingTimer = timer;
+        repeatingTimer = timer;
         
         UIImage *image = [UIImage imageNamed:@"redbutton_bg.png"];
         [startButton setBackgroundImage:image forState:UIControlStateNormal];
         [startButton setTitle:PAUSSE_RUNNING_BUTTON forState:UIControlStateNormal];
         [endButton setEnabled:YES];
     } else {
-        [repeatingTimer invalidate];
-        self.repeatingTimer = nil;
-        isStarted = NO;
+        [self stopTimer];
         
         [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     }
@@ -313,10 +310,8 @@
 }
 
 - (IBAction)endButtonAction:(id)sender {
-    [repeatingTimer invalidate];
-    self.repeatingTimer = nil;
-    isStarted = NO;
-    
+    [self stopTimer];
+
     [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     
     if (distance > 30){
@@ -349,13 +344,15 @@
     [self saveRunInfo];
     
     [self performSegueWithIdentifier:@"NormalRunResultSegue" sender:self];
+    
+    [self endIndicator:self];
 }
 
 -(void)prepareForQuit{
     [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] setRunningStatus:NO];
     
     [repeatingTimer invalidate];
-    self.repeatingTimer = nil;
+    repeatingTimer = nil;
 }
 
 - (IBAction)btnDeleteRunHistory:(id)sender {
@@ -387,7 +384,7 @@
     runHistory.duration = [NSNumber numberWithDouble:duration];
     runHistory.avgSpeed = [NSNumber numberWithDouble:(double)(distance/duration*3.6)];
     runHistory.valid = [self isValidRun:stepCounting.counter / 0.8];
-    runHistory.missionRoute = [RORDBCommon getStringFromRoutePoints:routePoints];
+    runHistory.missionRoute = [RORDBCommon getStringFromRoutes:routes];
     runHistory.missionDate = [NSDate date];
     runHistory.missionEndTime = self.endTime;
     runHistory.missionStartTime = self.startTime;
@@ -434,9 +431,10 @@
 - (void)drawLineWithLocationArray:(NSArray *)locationArray
 {
     //    [self updateLocation];
+    if (routeLine!=nil){
+        [mapView removeOverlay:routeLine];
+    }
     
-    [mapView removeOverlays:[mapView overlays]];
-
     int pointCount = [locationArray count];
     //debug
 //    NSLog(@"%d", pointCount);
@@ -478,12 +476,12 @@
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
     MKOverlayView* overlayView = nil;
     
-    if(overlay == self.routeLine)
+    if(overlay == routeLine)
     {
         //if we have not yet created an overlay view for this overlay, create it now.
         //        if(nil == self.routeLineView)
         //        {
-        self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
+        self.routeLineView = [[MKPolylineView alloc] initWithPolyline:routeLine];
         //        self.routeLineView.fillColor = [UIColor colorWithRed:223 green:8 blue:50 alpha:1];
         self.routeLineView.strokeColor = [UIColor colorWithRed:(46.0/255.0) green:(170.0/255.0) blue:(218.0/255.0) alpha:1];
         self.routeLineView.lineWidth = 10;

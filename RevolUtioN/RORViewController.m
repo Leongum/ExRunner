@@ -131,6 +131,10 @@ activity indicator
     
 }
 
+- (IBAction)endIndicator:(id)sender{
+    [self.activityIndicator stopAnimating];
+}
+
 - (IBAction)startProgress:(id)sender
 {
     self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(70, 260, 180, 20)];

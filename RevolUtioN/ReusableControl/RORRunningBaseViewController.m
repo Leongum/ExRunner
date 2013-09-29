@@ -83,6 +83,14 @@
     routePoints = [[NSMutableArray alloc]init];
 }
 
+-(void)stopTimer{
+    [repeatingTimer invalidate];
+    repeatingTimer = nil;
+    isStarted = NO;
+    [self resetRoutePoints];
+    routeLine = nil;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

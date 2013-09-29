@@ -140,18 +140,7 @@
     self.noHistoryMessageLabel.alpha = 1;
 }
 
-- (IBAction)syncAction:(id)sender {
-    //sync runningHistory
-    BOOL synced = [RORRunHistoryServices syncRunningHistories];
-    BOOL updated = [RORRunHistoryServices uploadRunningHistories];
-    [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
-    if(synced && updated){
-        [(RORViewController *)[self parentViewController] sendNotification:SYNC_DATA_SUCCESS];
-    }
-    else{
-        [(RORViewController *)[self parentViewController] sendAlart:SYNC_DATA_FAIL];
-    }
-}
+
 
 #pragma mark - Table view data source
 

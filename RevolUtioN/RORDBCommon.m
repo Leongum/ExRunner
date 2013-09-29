@@ -61,29 +61,38 @@
     return nil;
 }
 
-+ (NSString *)getStringFromRoutePoints:(NSArray *)routePoints{
++ (NSString *)getStringFromRoutes:(NSArray *)routes{
     NSMutableString *route_str = [[NSMutableString alloc] init];
-    for (int i=0; i<routePoints.count; i++){
-        CLLocation *loc_i = [routePoints objectAtIndex:i];
-        CLLocationCoordinate2D loc_coor = [loc_i coordinate];
-        [route_str appendString:[NSString stringWithFormat:@"%f,%f ",loc_coor.latitude, loc_coor.longitude]];
+
+    for (NSArray *routePoints in routes) {
+        for (int i=0; i<routePoints.count; i++){
+            CLLocation *loc_i = [routePoints objectAtIndex:i];
+            CLLocationCoordinate2D loc_coor = [loc_i coordinate];
+            [route_str appendString:[NSString stringWithFormat:@"%f,%f ",loc_coor.latitude, loc_coor.longitude]];
+        }
+        [route_str appendString:@"|"];
     }
+    
     return route_str;
 }
 
-+ (NSArray *)getRoutePointsFromString:(NSString *)route_str{
-    NSArray *pairs = [route_str componentsSeparatedByString:@" "];
-    NSMutableArray *routePoints = [[NSMutableArray alloc] init];
-    for (int i=0; i<pairs.count-1; i++){
-        NSString *thisString = (NSString *)[pairs objectAtIndex:i];
-        NSArray *pair = [thisString componentsSeparatedByString:@","];
-        float latitude = [[self getNumberFromId:pair[0]] floatValue];
-        float longitude = [[self getNumberFromId:pair[1]] floatValue];
-//        CLLocationCoordinate2D loc_coor = CLLocationCoordinate2DMake(latitude, longitude);
-        CLLocation *loc = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
-        [routePoints addObject:loc];
++ (NSArray *)getRoutesFromString:(NSString *)route_str{
+    NSMutableArray *routes = [[NSMutableArray alloc]init];
+    NSArray *route_str_array = [route_str componentsSeparatedByString:@"|"];
+    for (NSString *routePoints_str in route_str_array) {
+        NSArray *pairs = [routePoints_str componentsSeparatedByString:@" "];
+        NSMutableArray *routePoints = [[NSMutableArray alloc] init];
+        for (int i=0; i<pairs.count-1; i++){
+            NSString *thisString = (NSString *)[pairs objectAtIndex:i];
+            NSArray *pair = [thisString componentsSeparatedByString:@","];
+            float latitude = [[self getNumberFromId:pair[0]] floatValue];
+            float longitude = [[self getNumberFromId:pair[1]] floatValue];
+            CLLocation *loc = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+            [routePoints addObject:loc];
+        }
+        [routes addObject:routePoints];
     }
-    return routePoints;
+    return routes;
 }
 
 @end

@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) MKPolyline *routeLine;
 @property (strong, nonatomic) MKPolyline *routeLineShadow;
-@property (retain, nonatomic) NSMutableArray *routePoints;
+@property (retain, nonatomic) NSMutableArray *routes;
 @property (retain, nonatomic) MKPolylineView *routeLineView;
 @property (retain, nonatomic) MKPolylineView *routeLineShadowView;
 

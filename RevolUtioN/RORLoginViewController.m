@@ -37,6 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    [self endIndicator:self];
+    
     // Do any additional setup after loading the view.
 //    UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
 //                                        @"Icon/sns_icon_%d.png",
@@ -130,11 +132,16 @@
 //提交用户名密码之后的操作
 - (IBAction)loginAction:(id)sender {
     [self startIndicator:self];
+    
     if(![RORNetWorkUtils getIsConnetioned]){
         [self sendAlart:CONNECTION_ERROR];
+        [self endIndicator:self];
         return;
     }
-    if (![self isLegalInput]) return;
+    if (![self isLegalInput]) {
+        [self endIndicator:self];
+        return;
+    }
     if (switchButton.selectionIndex == 0){ //登录
         NSString *userName = usernameTextField.text;
         NSString *password = [RORUtils md5:passwordTextField.text];
@@ -142,6 +149,7 @@
         
         if (user == nil){
             [self sendAlart:LOGIN_ERROR];
+            [self endIndicator:self];
             return;
         }
         [RORRunHistoryServices syncRunningHistories];
@@ -152,9 +160,11 @@
         if (user != nil){
             [self sendNotification:REGISTER_SUCCESS];
             [self performSegueWithIdentifier:@"bodySetting" sender:self];
+            [self endIndicator:self];
             return;
         } else {
             [self sendAlart:REGISTER_FAIL];
+            [self endIndicator:self];
             return;
         }
     }

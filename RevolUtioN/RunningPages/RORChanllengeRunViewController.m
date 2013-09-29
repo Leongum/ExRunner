@@ -14,9 +14,9 @@
 @end
 
 @implementation RORChanllengeRunViewController
-@synthesize repeatingTimer, timerCount, isStarted;
+@synthesize timerCount;
 @synthesize timeLabel, speedLabel, distanceLabel, startButton, endButton;
-@synthesize routeLine, routeLineView;
+@synthesize routeLineView;
 @synthesize record;
 @synthesize doCollect;
 @synthesize kalmanFilter;
@@ -177,7 +177,6 @@
     [self setStartButton:nil];
     [self setEndButton:nil];
 //    [self setCollapseButton:nil];
-    [self setRouteLine:nil];
     [self setRouteLineView:nil];
     [self setStartTime:nil];
     [self setEndTime:nil];
@@ -263,14 +262,10 @@
         }
         
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(timerDot) userInfo:nil repeats:YES];
-        self.repeatingTimer = timer;
+        repeatingTimer = timer;
         
         [endButton setEnabled:YES];
     } else {
-        [repeatingTimer invalidate];
-        self.repeatingTimer = nil;
-        isStarted = NO;
-        
         [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     }
     //    [[NSRunLoop  currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
@@ -358,9 +353,7 @@
 - (IBAction)endButtonAction:(id)sender {
 //    [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     if (runMission.missionDistance.doubleValue - distance <= 0){
-        [repeatingTimer invalidate];
-        self.repeatingTimer = nil;
-        isStarted = NO;
+        [self resetRoutePoints];
 
         [self.saveButton setEnabled:YES];
         [self.saveButton setTitle:@"保存" forState:UIControlStateNormal];
@@ -392,6 +385,8 @@
     [self prepareForQuit];
     
     [self performSegueWithIdentifier:@"ChallengeRunResultSegue" sender:self];
+    
+    [self endIndicator:self];
 }
 
 -(void)prepareForQuit{
@@ -399,7 +394,7 @@
     [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] setRunningStatus:NO];
     
     [repeatingTimer invalidate];
-    self.repeatingTimer = nil;
+    repeatingTimer = nil;
 }
 
 - (IBAction)btnDeleteRunHistory:(id)sender {
@@ -476,7 +471,7 @@
     runHistory.distance = runMission.missionDistance;
     runHistory.duration = [NSNumber numberWithDouble:duration];
     runHistory.avgSpeed = [NSNumber numberWithDouble:(double)(distance/duration*3.6)];
-    runHistory.missionRoute = [RORDBCommon getStringFromRoutePoints:routePoints];
+    runHistory.missionRoute = [RORDBCommon getStringFromRoutes:routes];
     runHistory.missionDate = [NSDate date];
     runHistory.missionEndTime = self.endTime;
     runHistory.missionStartTime = self.startTime;
@@ -542,9 +537,9 @@
 {
     //    [self updateLocation];
     
-    if (self.routeLine != nil){
-        [mapView removeOverlay:self.routeLine];
-        self.routeLine = nil;
+    if (routeLine != nil){
+        [mapView removeOverlay:routeLine];
+        routeLine = nil;
     }
     int pointCount = [locationArray count];
     CLLocationCoordinate2D *coordinateArray = (CLLocationCoordinate2D *)malloc(pointCount * sizeof(CLLocationCoordinate2D));
@@ -585,12 +580,12 @@
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
     MKOverlayView* overlayView = nil;
     
-    if(overlay == self.routeLine)
+    if(overlay == routeLine)
     {
         //if we have not yet created an overlay view for this overlay, create it now.
         //        if(nil == self.routeLineView)
         //        {
-        self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
+        self.routeLineView = [[MKPolylineView alloc] initWithPolyline:routeLine];
         //        self.routeLineView.fillColor = [UIColor colorWithRed:223 green:8 blue:50 alpha:1];
         self.routeLineView.strokeColor = [UIColor colorWithRed:(46.0/255.0) green:(170.0/255.0) blue:(218.0/255.0) alpha:1];
         self.routeLineView.lineWidth = 10;
@@ -598,7 +593,7 @@
         overlayView = self.routeLineView;
         
     } else if (overlay == self.routeLineShadow){
-        self.routeLineShadowView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
+        self.routeLineShadowView = [[MKPolylineView alloc] initWithPolyline:routeLine];
         //        self.routeLineView.fillColor = [UIColor colorWithRed:223 green:8 blue:50 alpha:1];
         self.routeLineShadowView.strokeColor = [UIColor colorWithRed:107.0/255.0 green:96.0/255.0 blue:97.0/255.0 alpha:1];
         self.routeLineShadowView.lineWidth = 12;

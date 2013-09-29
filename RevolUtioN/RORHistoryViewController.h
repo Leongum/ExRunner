@@ -21,6 +21,5 @@ typedef enum {DISTANCE = 1, DURATION = 2, VALID = 3} controlInHistoryTableCell;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *noHistoryMessageLabel;
 
-- (IBAction)syncAction:(id)sender;
 - (void)refreshTable;
 @end

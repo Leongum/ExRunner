@@ -14,6 +14,6 @@
 + (NSDate *)getDateFromId:(id)obj;
 + (NSString *)getStringFromId:(id)obj;
 + (NSNumber *)getNumberFromId:(id)obj;
-+ (NSString *)getStringFromRoutePoints:(NSArray *)routePoints;
-+ (NSArray *)getRoutePointsFromString:(NSString *)route_str;
++ (NSString *)getStringFromRoutes:(NSArray *)routes;
++ (NSArray *)getRoutesFromString:(NSString *)route_str;
 @end

@@ -9,6 +9,7 @@
 #import "RORHistoryPageViewController.h"
 #import "RORPageViewController.h"
 #import "FTAnimation.h"
+#import "RORUserServices.h"
 
 #define FILTER_TABLECELL_TITLE 1
 #define FILTER_TABLECELL_IMAGE 2
@@ -27,6 +28,19 @@
         // Custom initialization
     }
     return self;
+}
+
+- (IBAction)syncAction:(id)sender {
+    //sync runningHistory
+    BOOL synced = [RORRunHistoryServices syncRunningHistories];
+    BOOL updated = [RORRunHistoryServices uploadRunningHistories];
+    [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
+    if(synced && updated){
+        [self sendNotification:SYNC_DATA_SUCCESS];
+    }
+    else{
+        [self sendAlart:SYNC_DATA_FAIL];
+    }
 }
 
 - (void)viewDidLoad
@@ -211,12 +225,15 @@
 - (IBAction)showFilter:(id)sender {
     self.coverView.alpha = 1 - self.coverView.alpha;
     if (self.coverView.alpha ==0){
-        [Animations fadeOut:self.coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
+//        [Animations fadeOut:self.coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
         [self updateFilter];
         [listViewController refreshTable];
         [statisticsViewController viewWillAppear:NO];
+        [Animations moveRight:self.syncButton andAnimationDuration:0 andWait:NO andLength:40];
     } else {
-        [Animations fadeIn:self.coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
+//        self.coverView.alpha = 1;
+//        [Animations fadeIn:self.coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
+        [Animations moveLeft:self.syncButton andAnimationDuration:0 andWait:NO andLength:40];
     }
 }
 

@@ -29,10 +29,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 
 @property (nonatomic) NSInteger timerCount;
-@property (assign) NSTimer *repeatingTimer;
-@property (nonatomic) BOOL isStarted;
 //@property (nonatomic) double distance; // meters
-@property (retain, nonatomic) MKPolyline *routeLine;
 @property (retain, nonatomic) MKPolylineView *routeLineView;
 @property (retain, nonatomic) MKPolylineView *routeLineShadowView;
 @property (strong, nonatomic) MKPolyline *routeLineShadow;

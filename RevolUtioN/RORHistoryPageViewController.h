@@ -29,5 +29,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *nextPageButton;
 
 @property (assign) NSTimer *repeatingTimer;
+@property (strong, nonatomic) IBOutlet RORNormalButton *syncButton;
 
 @end
