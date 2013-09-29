@@ -16,7 +16,7 @@
 @implementation RORChanllengeRunViewController
 @synthesize repeatingTimer, timerCount, isStarted;
 @synthesize timeLabel, speedLabel, distanceLabel, startButton, endButton;
-@synthesize routePoints, routeLine, routeLineView;
+@synthesize routeLine, routeLineView;
 @synthesize record;
 @synthesize doCollect;
 @synthesize kalmanFilter;
@@ -177,7 +177,6 @@
     [self setStartButton:nil];
     [self setEndButton:nil];
 //    [self setCollapseButton:nil];
-    [self setRoutePoints:nil];
     [self setRouteLine:nil];
     [self setRouteLineView:nil];
     [self setStartTime:nil];

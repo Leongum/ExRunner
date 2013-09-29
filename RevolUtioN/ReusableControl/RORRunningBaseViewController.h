@@ -54,6 +54,9 @@
     CLLocation *formerCenterMapLocation;
     
     NSTimeInterval updatingStartime;
+    
+    NSMutableArray *routes;
+    NSMutableArray *routePoints;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;

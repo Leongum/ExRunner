@@ -19,7 +19,7 @@
 //@synthesize locationManager, motionManager;
 @synthesize repeatingTimer, timerCount, isStarted;
 @synthesize timeLabel, speedLabel, distanceLabel, startButton, endButton;
-@synthesize routePoints, routeLine, routeLineView;
+@synthesize routeLine, routeLineView;
 @synthesize record;
 @synthesize doCollect;
 @synthesize kalmanFilter, inDistance;
@@ -170,7 +170,6 @@
     [self setSpeedLabel:nil];
     [self setStartButton:nil];
     [self setEndButton:nil];
-    [self setRoutePoints:nil];
     [self setRouteLine:nil];
     [self setRouteLineView:nil];
     [self setStartTime:nil];
@@ -440,7 +439,7 @@
 
     int pointCount = [locationArray count];
     //debug
-    NSLog(@"%d", pointCount);
+//    NSLog(@"%d", pointCount);
     CLLocationCoordinate2D *coordinateArray = (CLLocationCoordinate2D *)malloc(pointCount * sizeof(CLLocationCoordinate2D));
     
     for (int i = 0; i < pointCount; ++i) {

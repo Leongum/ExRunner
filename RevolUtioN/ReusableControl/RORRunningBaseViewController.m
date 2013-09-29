@@ -48,7 +48,8 @@
     lastKiloPlayed = NO;
     lastHundredPlayed = NO;
     
-    
+    routes = [[NSMutableArray alloc]init ];
+    [self resetRoutePoints];
 }
 
 -(void)viewDidUnload{
@@ -73,6 +74,13 @@
         [alertView show];
         alertView = nil;
     }
+}
+
+-(void)resetRoutePoints{
+    if (routePoints) {
+        [routes addObject:routePoints];
+    }
+    routePoints = [[NSMutableArray alloc]init];
 }
 
 - (void)didReceiveMemoryWarning
