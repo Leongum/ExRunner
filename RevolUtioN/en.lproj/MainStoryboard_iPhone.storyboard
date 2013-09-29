@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="running_wind.png" id="cQ0-DD-Xrz">
-                                <rect key="frame" x="-3" y="447" width="330" height="32.999999999999936"/>
+                                <rect key="frame" x="-3" y="446.99999999999994" width="330" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="okw-Sl-nSY" userLabel="history_Button" customClass="RORNormalButton">
@@ -743,7 +743,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="paper_bg.png" id="Wir-UH-8Qt">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000006"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="NzP-Gj-0h9">
@@ -795,15 +795,15 @@
                                 </connections>
                             </tableView>
                             <view alpha="0.0" contentMode="scaleToFill" id="bwM-IM-EvA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000006"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challenge_pop_bg.png" id="88T-7H-hMp">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000006"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" id="t6r-KH-7yU" customClass="UIControl">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000006"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AhE-CC-CCf" customClass="RORNormalButton">
@@ -1314,7 +1314,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="paper_bg.png" id="Kps-fj-hIN">
-                                <rect key="frame" x="0.0" y="5.6843418860808015e-14" width="320" height="479.99999999999994"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="6fL-6f-vv6">
@@ -2045,8 +2045,6 @@
     </scenes>
     <resources>
         <image name="QQ_friend.png" width="55" height="55"/>
-        <image name="QQ_friend.png" width="55" height="55"/>
-        <image name="centerMap.png" width="50" height="50"/>
         <image name="centerMap.png" width="50" height="50"/>
         <image name="challenge_pop_bg.png" width="640" height="1136"/>
         <image name="charactor.png" width="585" height="457"/>
@@ -2054,28 +2052,16 @@
         <image name="contactUs_bg.png" width="536" height="174"/>
         <image name="contactUs_icon.png" width="256" height="256"/>
         <image name="details.png" width="32" height="32"/>
-        <image name="details.png" width="32" height="32"/>
-        <image name="details.png" width="32" height="32"/>
-        <image name="details.png" width="32" height="32"/>
         <image name="expand.png" width="55" height="55"/>
         <image name="filter_btn_bg.png" width="55" height="55"/>
         <image name="filter_cell_bg.png" width="191" height="45"/>
         <image name="finishrunning_pop_bg.png" width="640" height="1136"/>
-        <image name="finishrunning_pop_bg.png" width="640" height="1136"/>
-        <image name="green_btn_bg.png" width="110" height="44"/>
-        <image name="green_btn_bg.png" width="110" height="44"/>
-        <image name="green_btn_bg.png" width="110" height="44"/>
         <image name="green_btn_bg.png" width="110" height="44"/>
         <image name="hand.png" width="320" height="568"/>
         <image name="history.png" width="55" height="55"/>
         <image name="history_detail_bg.png" width="320" height="568"/>
         <image name="loading_bg.png" width="320" height="568"/>
         <image name="logout_btn_bg.png" width="55" height="55"/>
-        <image name="main_bg.png" width="320" height="568"/>
-        <image name="main_bg.png" width="320" height="568"/>
-        <image name="main_bg.png" width="320" height="568"/>
-        <image name="main_bg.png" width="320" height="568"/>
-        <image name="main_bg.png" width="320" height="568"/>
         <image name="main_bg.png" width="320" height="568"/>
         <image name="main_btn_bg.png" width="136" height="60"/>
         <image name="main_challenge_btn_bg.png" width="136" height="60"/>
@@ -2085,40 +2071,22 @@
         <image name="main_username_bg.png" width="210" height="68"/>
         <image name="oneButtonShare_bg.png" width="150" height="55"/>
         <image name="paper.png" width="320" height="568"/>
-        <image name="paper.png" width="320" height="568"/>
-        <image name="paper_bg.png" width="320" height="568"/>
-        <image name="paper_bg.png" width="320" height="568"/>
-        <image name="paper_bg.png" width="320" height="568"/>
-        <image name="paper_bg.png" width="320" height="568"/>
-        <image name="paper_bg.png" width="320" height="568"/>
-        <image name="paper_bg.png" width="320" height="568"/>
         <image name="paper_bg.png" width="320" height="568"/>
         <image name="pass.png" width="92" height="50"/>
         <image name="red_left.png" width="44" height="44"/>
         <image name="red_right.png" width="44" height="44"/>
         <image name="renren.png" width="55" height="55"/>
         <image name="running_bg.png" width="320" height="568"/>
-        <image name="running_bg.png" width="320" height="568"/>
-        <image name="running_end_bg.png" width="305" height="100"/>
-        <image name="running_end_bg.png" width="305" height="100"/>
-        <image name="running_end_bg.png" width="305" height="100"/>
         <image name="running_end_bg.png" width="305" height="100"/>
         <image name="running_wind.png" width="609" height="99"/>
-        <image name="settings.png" width="55" height="55"/>
         <image name="settings.png" width="55" height="55"/>
         <image name="share_btn.png" width="55" height="55"/>
         <image name="share_pop_bg.png" width="640" height="1136"/>
         <image name="spring_bg.png" width="141" height="66"/>
         <image name="submit.png" width="55" height="55"/>
-        <image name="submit.png" width="55" height="55"/>
-        <image name="submit.png" width="55" height="55"/>
         <image name="sync_apply.png" width="55" height="55"/>
         <image name="tencent_weibo.png" width="55" height="55"/>
         <image name="textfield.png" width="320" height="60"/>
-        <image name="textfield.png" width="320" height="60"/>
-        <image name="textfield.png" width="320" height="60"/>
-        <image name="textfield.png" width="320" height="60"/>
-        <image name="weibo.png" width="55" height="55"/>
         <image name="weibo.png" width="55" height="55"/>
     </resources>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
