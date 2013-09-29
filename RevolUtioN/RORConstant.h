@@ -9,21 +9,25 @@
 #import <Foundation/Foundation.h>
 
 #ifndef URLS
-#define SERVICE_URL @"http://121.199.56.231:8080/usavich/service/api"
-#define LOGIN_URL @"http://121.199.56.231:8080/usavich/service/api/account/%@/%@"
-#define REGISTER_URL @"http://121.199.56.231:8080/usavich/service/api/account"
-#define USER_ADDITIONAL_UPDATE @"http://121.199.56.231:8080/usavich/service/api/account/additional/%@"
-#define USER_INFO @"http://121.199.56.231:8080/usavich/service/api/account/%@?checkUuid=true"
-#define POST_RUNNING_HISTORY_URL @"http://121.199.56.231:8080/usavich/service/api/running/history/%@"
-#define RUNNING_HISTORY_URL @"http://121.199.56.231:8080/usavich/service/api/running/history/%@?lastUpdateTime=%@"
-#define POST_USER_RUNNING_URL @"http://121.199.56.231:8080/usavich/service/api/running/ongoing/%@"
-#define USER_RUNNING_URL @"http://121.199.56.231:8080/usavich/service/api/running/ongoing/%@?lastUpdateTime=%@"
-#define FRIEND_URL @"http://121.199.56.231:8080/usavich/service/api/account/friends/%@?lastUpdateTime=%@"
-#define MISSION_URL @"http://121.199.56.231:8080/usavich/service/api/missions/mission?lastUpdateTime=%@"
-#define VERSION_URL @"http://121.199.56.231:8080/usavich/service/api/system/version/%@"
-#define SYSTEM_MESSAGE_URL @"http://121.199.56.231:8080/usavich/service/api/system/message/%@"
-#define PM25_URL @"http://121.199.56.231:8080/usavich/service/api/weather/pm25?cityName=%@&provinceName=%@"
+//define test service host
+#define SERVICE_HOST @"http://121.199.56.231:8080/usavich/service/api"
 
+//define prod service host
+//#define SERVICE_HOST @"http://www.cyberace.cc/service/api"
+
+#define LOGIN_URL [SERVICE_HOST stringByAppendingString:@"/account/%@/%@"] 
+#define REGISTER_URL [SERVICE_HOST stringByAppendingString:@"/account"]
+#define USER_ADDITIONAL_UPDATE [SERVICE_HOST stringByAppendingString:@"/account/additional/%@"] 
+#define USER_INFO [SERVICE_HOST stringByAppendingString:@"/account/%@?checkUuid=true"]
+#define POST_RUNNING_HISTORY_URL [SERVICE_HOST stringByAppendingString:@"/running/history/%@"]
+#define RUNNING_HISTORY_URL [SERVICE_HOST stringByAppendingString:@"/running/history/%@?lastUpdateTime=%@"]
+#define POST_USER_RUNNING_URL [SERVICE_HOST stringByAppendingString:@"/running/ongoing/%@"]
+#define USER_RUNNING_URL [SERVICE_HOST stringByAppendingString:@"/running/ongoing/%@?lastUpdateTime=%@"]
+#define FRIEND_URL [SERVICE_HOST stringByAppendingString:@"/account/friends/%@?lastUpdateTime=%@"] 
+#define MISSION_URL [SERVICE_HOST stringByAppendingString:@"/missions/mission?lastUpdateTime=%@"] 
+#define VERSION_URL [SERVICE_HOST stringByAppendingString:@"/system/version/%@"]
+#define SYSTEM_MESSAGE_URL [SERVICE_HOST stringByAppendingString:@"/system/message/%@"]
+#define PM25_URL [SERVICE_HOST stringByAppendingString:@"/weather/pm25?cityName=%@&provinceName=%@"] 
 
 #define WEATHER_URL @"http://www.weather.com.cn/data/sk/%@.html"
 
