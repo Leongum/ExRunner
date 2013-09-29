@@ -44,18 +44,15 @@ static BOOL isConnectioned = NO;
             break;
         case ReachableViaWWAN:
             isExistenceNetwork = YES;
+            NSMutableDictionary *settingDict = [RORUserUtils getUserSettingsPList];
+            NSString *updatemode = [settingDict valueForKey:@"uploadMode"];
+            if([DEFAULT_NET_WORK_MODE isEqualToString: updatemode]){
+                doUploadable = YES;
+            }
             break;
     }
     isConnectioned = isExistenceNetwork;
     networkStatus = newNetWorkStatus;
-    NSMutableDictionary *settingDict = [RORUserUtils getUserSettingsPList];
-    if(isConnectioned){
-        NSString *updatemode = [settingDict valueForKey:@"uploadMode"];
-        if([DEFAULT_NET_WORK_MODE isEqualToString: updatemode]){
-            doUploadable = YES;
-        }
-    }
-    
 }
 
 @end
