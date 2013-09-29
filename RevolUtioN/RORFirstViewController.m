@@ -38,12 +38,26 @@
     //初始化按钮位置
     [self initControlsLayout];
     
+    [self checkLevelUp];
 //    [RORUtils listFontFamilies];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [locationManager stopUpdatingLocation];
     [super viewWillDisappear:animated];
+}
+
+-(void)checkLevelUp{
+    NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
+    NSNumber *userLevel = [settinglist valueForKey:@"userLevel"];
+    User_Attributes *userInfo = [RORUserServices fetchUserAttrsByUserId:[RORUserUtils getUserId]];
+    if (userLevel.integerValue<userInfo.level.integerValue){
+        [self performLevelUp];
+    }
+}
+
+-(void)performLevelUp{
+    
 }
 
 -(void)prepareControlsForAnimation{
@@ -179,7 +193,7 @@
                 }
                 
                 weatherInformation = [NSString stringWithFormat:@"%@总:%d", weatherInformation, index];
-                if (temp < 0 || temp > 38 || pm25>300 || index<50){
+                if (temp < 0 || temp > 38 || pm25>250 || index<50){
                     UIImage *image = [UIImage imageNamed:@"main_trafficlight_red.png"];
                     [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
                 }

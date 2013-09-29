@@ -14,6 +14,7 @@
 #import "RORRunHistoryServices.h"
 #import "RORUserServices.h"
 #import "Animations.h"
+#import "RORImageView.h"
 
 @interface RORHistoryViewController ()
 
@@ -186,19 +187,15 @@
     
     UILabel *durationLabel = (UILabel *)[cell viewWithTag:DURATION];
     durationLabel.text = [RORUtils transSecondToStandardFormat:[record4Date.duration integerValue]];
-    UIImageView *isValidImage = (UIImageView *)[cell viewWithTag:VALID];
-    
+    RORImageView *isValidImage = (RORImageView *)[cell viewWithTag:VALID];
     if (((NSNumber *)record4Date.valid).integerValue>0){
         isValidImage.alpha = 1;
         isValidImage.center = CGPointMake([RORUtils randomBetween:100 and:205], [RORUtils randomBetween:30 and:50]);
-//        isValidImage.frame = CGRectMake(isValidImage.frame.origin.x, isValidImage.frame.origin.y
-//                                        , 74, 40);
         [Animations rotate:isValidImage andAnimationDuration:0 andWait:NO andAngle:[RORUtils randomBetween:-10 and:10]];
 //        isValidImage.transform = CGAffineTransformMakeRotation(degreesToRadians([RORUtils randomBetween:-45 and:45]));
-//        CGAffineTransformTranslate(<#CGAffineTransform t#>, <#CGFloat tx#>, <#CGFloat ty#>)
     } else
         isValidImage.alpha = 0;
-    
+
     return cell;
 }
 

@@ -32,8 +32,11 @@
 {
     [super viewDidLoad];
     
+    self.backButton.alpha = 0;
+    
     [self.loadingLabel setFont:[UIFont fontWithName:ENG_GAME_FONT size:18]];
     
+    [self startIndicator:self];
     [RORNetWorkUtils initCheckNetWork];
     NSLog(@"%hhd",[RORNetWorkUtils getIsConnetioned]);
 

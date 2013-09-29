@@ -15,6 +15,7 @@
 
 #define CELL_TITLE_TAG 1
 #define CELL_LEVEL_TAG 2
+#define CELL_SEX_TAG 3
 
 #define COVERVIEW_LABEL_TAG 1
 #define COVERVIEW_BOARD_TAG 2
@@ -168,9 +169,19 @@
     else
         levelLabel.text = @"?";
     
-    [RORUtils setFontFamily:ENG_PRINT_FONT forView:titleLabel andSubViews:NO];
+    NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
+    NSString *sex = [settinglist valueForKey:@"sex"];
+    UILabel *sexLabel = (UILabel*)[cell viewWithTag:CELL_SEX_TAG];
+    if ([sex isEqualToString:@"女"]){
+        sexLabel.text = @"女子";
+    } else {
+        sexLabel.text = @"男子";
+    }
+    
+    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:titleLabel andSubViews:NO];
     [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:levelLabel andSubViews:NO];
-
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:sexLabel andSubViews:NO];
+    
     return cell;
 }
 

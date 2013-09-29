@@ -205,6 +205,8 @@
 		30989CC417F7245E00CA9F83 /* contactUs_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CC317F7245E00CA9F83 /* contactUs_icon.png */; };
 		30989CC617F7291000CA9F83 /* contactUs_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CC517F7291000CA9F83 /* contactUs_bg.png */; };
 		30989CC817F7356300CA9F83 /* running_end_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CC717F7356300CA9F83 /* running_end_bg.png */; };
+		30989CCB17F7D72A00CA9F83 /* RORImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30989CCA17F7D72A00CA9F83 /* RORImageView.m */; };
+		30989CCE17F80FB000CA9F83 /* RORAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30989CCD17F80FB000CA9F83 /* RORAboutViewController.m */; };
 		30A6D9AA17C6821500D1116E /* FTAnimation+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */; };
 		30A6D9AB17C6821500D1116E /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A417C6821500D1116E /* FTAnimationManager.m */; };
 		30A6D9AC17C6821500D1116E /* FTUtils+NSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A617C6821500D1116E /* FTUtils+NSObject.m */; };
@@ -599,6 +601,10 @@
 		30989CC317F7245E00CA9F83 /* contactUs_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contactUs_icon.png; sourceTree = "<group>"; };
 		30989CC517F7291000CA9F83 /* contactUs_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = contactUs_bg.png; path = bg/contactUs_bg.png; sourceTree = "<group>"; };
 		30989CC717F7356300CA9F83 /* running_end_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = running_end_bg.png; path = bg/running/running_end_bg.png; sourceTree = "<group>"; };
+		30989CC917F7D72A00CA9F83 /* RORImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORImageView.h; path = ReusableControl/RORImageView.h; sourceTree = "<group>"; };
+		30989CCA17F7D72A00CA9F83 /* RORImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORImageView.m; path = ReusableControl/RORImageView.m; sourceTree = "<group>"; };
+		30989CCC17F80FB000CA9F83 /* RORAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORAboutViewController.h; path = MorePage/RORAboutViewController.h; sourceTree = "<group>"; };
+		30989CCD17F80FB000CA9F83 /* RORAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORAboutViewController.m; path = MorePage/RORAboutViewController.m; sourceTree = "<group>"; };
 		30A6D9A017C6821500D1116E /* FTAnimation+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FTAnimation+UIView.h"; sourceTree = "<group>"; };
 		30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTAnimation+UIView.m"; sourceTree = "<group>"; };
 		30A6D9A217C6821500D1116E /* FTAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimation.h; sourceTree = "<group>"; };
@@ -1001,6 +1007,8 @@
 				301250EF177B21A60082A09A /* RORAccountViewController.m */,
 				30A6D9DF17CC93AE00D1116E /* RORBodyViewController.h */,
 				30A6D9E017CC93AE00D1116E /* RORBodyViewController.m */,
+				30989CCC17F80FB000CA9F83 /* RORAboutViewController.h */,
+				30989CCD17F80FB000CA9F83 /* RORAboutViewController.m */,
 			);
 			name = RORMorePage;
 			sourceTree = "<group>";
@@ -1420,6 +1428,8 @@
 				30C1219017EC99EA0077CBD3 /* RORBreathingControl.m */,
 				307A1D5217F4353B006692DD /* RORCongratsCoverView.h */,
 				307A1D5317F4353B006692DD /* RORCongratsCoverView.m */,
+				30989CC917F7D72A00CA9F83 /* RORImageView.h */,
+				30989CCA17F7D72A00CA9F83 /* RORImageView.m */,
 			);
 			name = ReusableControl;
 			sourceTree = "<group>";
@@ -1882,6 +1892,7 @@
 				0F87D877179D642A007E0412 /* RORMissionClientHandler.m in Sources */,
 				307A1D5417F4353B006692DD /* RORCongratsCoverView.m in Sources */,
 				0F87D881179D72C7007E0412 /* RORRunHistoryServices.m in Sources */,
+				30989CCB17F7D72A00CA9F83 /* RORImageView.m in Sources */,
 				0F87D884179D72F8007E0412 /* RORRunHistoryClientHandler.m in Sources */,
 				0F0D589217B0E4680046515C /* RORLoadingViewController.m in Sources */,
 				0F0D589817B23F490046515C /* RORThirdPartyClientHandler.m in Sources */,
@@ -1934,6 +1945,7 @@
 				305428CB17CF85DA00A9E6E9 /* RORChallengeLevelView.m in Sources */,
 				0F535D7117CF90470032F58D /* RORNetWorkUtils.m in Sources */,
 				30FECBBB17D83AE5002C3C90 /* RORNotificationView.m in Sources */,
+				30989CCE17F80FB000CA9F83 /* RORAboutViewController.m in Sources */,
 				30621D2117DF00220063A007 /* RORPageViewController.m in Sources */,
 				30621D2717E00ED90063A007 /* RORRunningBaseViewController.m in Sources */,
 				0F07ABF617E0391B0009C8A8 /* RORMessages.m in Sources */,

@@ -45,11 +45,11 @@
     listViewController =  [storyboard instantiateViewControllerWithIdentifier:@"historyListViewController"];
     statisticsViewController = [storyboard instantiateViewControllerWithIdentifier:@"historyStatisticsViewController"];
     
-    [contentViews replaceObjectAtIndex:0 withObject:statisticsViewController];
+    [contentViews replaceObjectAtIndex:1 withObject:statisticsViewController];
     //    userInfoRunHistoryView = [[RORUserRunHistoryViewController alloc]initWithPageNumber:1];
     //    [contentViews replaceObjectAtIndex:1 withObject:userInfoRunHistoryView];
     //    self.historyInStoryboard = [[RORUserRunHistoryViewController alloc]initWithPageNumber:1];
-    [contentViews replaceObjectAtIndex:1 withObject:listViewController];
+    [contentViews replaceObjectAtIndex:0 withObject:listViewController];
     
     NSInteger numberPages = contentViews.count;
     // a page is the width of the scroll view
@@ -74,7 +74,10 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 //    [self.pageControl popIn:0.5 delegate:self];
-    [self.pageControl elastic:0.5 delegate:self];
+//    [self.pageControl elastic:0.5 delegate:self];
+//    if (self.pageControl.currentPage != 1){
+//        [self gotoNextPage:self];
+//    }
 }
 
 -(CGRect)nextPagePointLeftFrame{
@@ -179,9 +182,9 @@
 //    [self loadUserInfoBasicPage:0];
 //    [self loadUserInfoRunHistoryPage:1];
 //    [self loadUserInfoDoneMissionsPage:2];
-    [self loadPage:0];
-    [self loadPage:1];
-    
+//    [self loadPage:0];
+//    [self loadPage:1];
+//    
 	// update the scroll view to the appropriate page
     CGRect bounds = self.scrollView.bounds;
     CGPoint offset;

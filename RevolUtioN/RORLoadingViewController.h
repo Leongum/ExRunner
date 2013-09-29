@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface RORLoadingViewController : UIViewController
+#import "RORViewController.h"
+@interface RORLoadingViewController : RORViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *loadingLabel;
 

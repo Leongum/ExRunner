@@ -10,7 +10,7 @@
 
 #define delta_T 0.05
 #define MIN_STEP_TIME 0.2
-#define THRESHOLD_GACC -2
+#define THRESHOLD_GACC -1
 
 #define earth_R 6378137.0
 #define earth_Rn(L) earth_R*(1 - 2*M_E + 3*M_E*sin(L))

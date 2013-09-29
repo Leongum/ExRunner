@@ -129,6 +129,7 @@
 
 //提交用户名密码之后的操作
 - (IBAction)loginAction:(id)sender {
+    [self startIndicator:self];
     if(![RORNetWorkUtils getIsConnetioned]){
         [self sendAlart:CONNECTION_ERROR];
         return;

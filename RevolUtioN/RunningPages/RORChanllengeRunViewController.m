@@ -92,7 +92,7 @@
 
 -(void)navigationInit{
     //    [mapView setUserTrackingMode:MKUserTrackingModeFollow];
-    [mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading animated:YES];
+    [mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
     [mapView removeOverlays:[mapView overlays]];
     
     MKwasFound = NO;
@@ -379,6 +379,9 @@
 - (IBAction)btnSaveRun:(id)sender {
     if (self.endTime == nil)
         self.endTime = [NSDate date];
+    
+    [self startIndicator:self];
+
     [self saveRunInfo];
 
 //    [[UIApplication sharedApplication] setIdleTimerDisabled: NO];
@@ -386,6 +389,7 @@
 //    [repeatingTimer invalidate];
 //    [startButton setEnabled:NO];
 //    self.repeatingTimer = nil;
+    
     [self prepareForQuit];
     
     [self performSegueWithIdentifier:@"ChallengeRunResultSegue" sender:self];

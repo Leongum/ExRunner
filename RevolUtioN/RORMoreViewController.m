@@ -74,12 +74,8 @@
 #pragma mark -
 #pragma mark Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -156,19 +152,14 @@
             [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:seg andSubViews:YES];
             break;
         }
-//        case 4:
-//        {
-//            NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
-//            NSNumber *loadingAnimation = [settinglist valueForKey:@"loadingAnimation"];
-//            identifier = @"loadingAnimationCell";
-//            cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//            UILabel *label = (UILabel*)[cell viewWithTag:1];
-//            label.text = SYNC_MODE_WIFI;
-//            RORCheckBox *switchCtrl = (RORCheckBox *)[cell viewWithTag:2];
-//            [switchCtrl setTarget:self fun:@selector(loadingAnimationChangeHandler:)];
-//            [switchCtrl setIsChecked:loadingAnimation.boolValue];
-//            break;
-//        }
+        case 4:
+        {
+            identifier = @"aboutCell";
+            cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            [RORUtils setFontFamily:CHN_PRINT_FONT forView:[cell viewWithTag:1] andSubViews:NO];
+            [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:[cell viewWithTag:2] andSubViews:NO];
+            break;
+        }
     }
 
     return cell;

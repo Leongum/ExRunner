@@ -85,7 +85,7 @@
 
 -(void)navigationInit{
     //    [mapView setUserTrackingMode:MKUserTrackingModeFollow];
-    [mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading animated:YES];
+    [mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
     [mapView removeOverlays:[mapView overlays]];
 
     MKwasFound = NO;
@@ -238,13 +238,13 @@
             
             //the first point after started
             [self initOffset:[mapView userLocation]];
-            latestUserLocation = [self getNewRealLocation];
-            formerLocation = latestUserLocation;
-            [routePoints addObject:formerLocation];
-            [self drawLineWithLocationArray:routePoints];
-            
                         //            [self pushPoint];
         }
+        //init former location
+        latestUserLocation = [self getNewRealLocation];
+        formerLocation = latestUserLocation;
+        [routePoints addObject:formerLocation];
+        [self drawLineWithLocationArray:routePoints];
         
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(timerDot) userInfo:nil repeats:YES];
         self.repeatingTimer = timer;
@@ -343,6 +343,9 @@
         self.endTime = [NSDate date];
 //    [[UIApplication sharedApplication] setIdleTimerDisabled: NO];
 //    [startButton setEnabled:NO];
+    
+    [self startIndicator:self];
+    
     [self prepareForQuit];
     [self saveRunInfo];
     
