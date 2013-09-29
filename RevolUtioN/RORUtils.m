@@ -315,5 +315,21 @@
     return rand()%(x2-x1)+x1;
 }
 
++ (int)convertToInt:(NSString*)strtemp
+{
+    int strlength = 0;
+    char* p = (char*)[strtemp cStringUsingEncoding:NSUnicodeStringEncoding];
+    for (int i=0 ; i<[strtemp lengthOfBytesUsingEncoding:NSUnicodeStringEncoding] ;i++) {
+        if (*p) {
+            p++;
+            strlength++;
+        }
+        else {
+            p++;
+        }
+    }
+    return (strlength+1)/2;
+}
+
 
 @end

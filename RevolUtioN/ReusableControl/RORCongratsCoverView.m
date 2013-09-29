@@ -88,7 +88,7 @@
     extraAwardLabel.font = [UIFont fontWithName:ENG_GAME_FONT size:22];
     extraAwardLabel.textColor = [UIColor yellowColor];
     extraAwardLabel.textAlignment = UITextAlignmentCenter;
-    extraAwardLabel.text = [NSString stringWithFormat:@"exp: %@   gold: %@", bestRecord.experience, bestRecord.scores];
+    extraAwardLabel.text = [NSString stringWithFormat:@"exp: %d   gold: %d", bestRecord.experience.integerValue, bestRecord.scores.integerValue];
     extraAwardLabel.alpha = 0;
     [self addSubview:extraAwardLabel];
     

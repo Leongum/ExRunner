@@ -52,6 +52,8 @@
     BOOL lastKiloPlayed;
     
     CLLocation *formerCenterMapLocation;
+    
+    NSTimeInterval updatingStartime;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;

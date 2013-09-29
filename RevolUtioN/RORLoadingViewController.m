@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    [self.loadingLabel setFont:[UIFont fontWithName:ENG_GAME_FONT size:24]];
+    [self.loadingLabel setFont:[UIFont fontWithName:ENG_GAME_FONT size:18]];
     
     [RORNetWorkUtils initCheckNetWork];
     NSLog(@"%hhd",[RORNetWorkUtils getIsConnetioned]);

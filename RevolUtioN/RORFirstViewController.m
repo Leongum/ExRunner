@@ -20,7 +20,6 @@
 #define CHALLENGE_BUTTON_FRAME_NORMAL CGRectMake(0, 190, 320, 94)
 #define CHALLENGE_BUTTON_FRAME_RATINA CGRectMake(0, 250, 320, 94)
 
-
 @interface RORFirstViewController ()
 
 @end

@@ -145,7 +145,7 @@
     // method "reachabilityChanged" will be called.
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
     
-	hostReach = [Reachability reachabilityWithHostName: @"www.apple.com"];
+	hostReach = [Reachability reachabilityWithHostName: @"www.baidu.com"];
 	[hostReach startNotifier];
     
     // Override point for customization after application launch.

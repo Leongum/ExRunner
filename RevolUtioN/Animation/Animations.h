@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-#define degreesToRadians(x)(M_PI*x/180.0)
+#define degreesToRadians(x) (M_PI*x/180.0)
 
 @interface Animations : UIViewController{
 }

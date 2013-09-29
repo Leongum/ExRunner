@@ -49,4 +49,7 @@ _Pragma("clang diagnostic pop") \
 +(void)listFontFamilies;
 
 +(double)randomBetween:(NSInteger)x1 and:(NSInteger)x2;
+
++ (int)convertToInt:(NSString*)strtemp;
+
 @end

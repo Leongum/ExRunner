@@ -74,7 +74,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 //    [self.pageControl popIn:0.5 delegate:self];
-    [self.pageControl backInFrom:kFTAnimationTop withFade:NO duration:0.5 delegate:self];
+    [self.pageControl elastic:0.5 delegate:self];
 }
 
 -(CGRect)nextPagePointLeftFrame{

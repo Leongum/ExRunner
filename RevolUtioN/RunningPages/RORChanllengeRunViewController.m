@@ -364,7 +364,7 @@
         isStarted = NO;
 
         [self.saveButton setEnabled:YES];
-        [self.saveButton setTitle:@"跑完啦，存起来吧！" forState:UIControlStateNormal];
+        [self.saveButton setTitle:@"保存" forState:UIControlStateNormal];
         [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
 //        NSLog(@"%d", stepCounting.counter);
     } else {

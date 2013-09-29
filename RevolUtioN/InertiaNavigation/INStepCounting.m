@@ -94,10 +94,10 @@
                 minGAcc = THRESHOLD_GACC;
             }
             else if ((v>MAX_WALK_SPEED && v <= MAX_SLOWRUN_SPEED) ){// || (rtStepFrequency >100 && rtStepFrequency <= 200)){
-                minGAcc = -10;
+                minGAcc = -2;
             }
             else if (v>16/3.6){// || rtStepFrequency > 200){
-                minGAcc = -30;
+                minGAcc = -5;
             }
             
             if (now < minGAcc)

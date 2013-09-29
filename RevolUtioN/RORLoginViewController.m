@@ -177,9 +177,19 @@
             [self sendAlart:REGISTER_INPUT_CHECK];
             return NO;
         }
-//        NSLog(@"%d",)
-        if (nicknameTextField.text.length>12) {
+        
+//        NSLog(@"%d",nicknameTextField.text.length);
+        if ([RORUtils convertToInt:nicknameTextField.text]>6) {
             [self sendAlart:@"昵称太长啦！"];
+            return NO;
+        }
+        if ([usernameTextField.text rangeOfString:@"@"].location == NSNotFound||
+            [usernameTextField.text rangeOfString:@"."].location == NSNotFound){
+            [self sendAlart:@"请填写正确的邮箱"];
+            return NO;
+        }
+        if (passwordTextField.text.length <6){
+            [self sendAlart:@"密码太短"];
             return NO;
         }
     }
@@ -229,6 +239,7 @@
     [self setSwitchButton:nil];
     [self setNicknameTextField:nil];
     //[super viewDidUnload];
+    
 }
 
 - (void)authLoginFromSNS:(ShareType) type{

@@ -47,6 +47,8 @@
     
     lastKiloPlayed = NO;
     lastHundredPlayed = NO;
+    
+    
 }
 
 -(void)viewDidUnload{

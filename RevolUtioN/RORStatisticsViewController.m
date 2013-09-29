@@ -58,7 +58,7 @@
     for (User_Running_History *historyObj in fetchObject) {
         NSNumber *missionType = (NSNumber *)[historyObj valueForKey:@"missionTypeId"];
         
-        if (![filter containsObject:missionType]) {
+        if (![filter containsObject:missionType] || historyObj.valid.integerValue<0) {
             continue;
         }
         totalDistance += historyObj.distance.doubleValue;
@@ -70,7 +70,7 @@
         [self showContents];
         self.totalDistanceLabel.text = [RORUtils outputDistance:totalDistance];
         self.totalSpeedLabel.text = [RORUserUtils formatedSpeed:avgSpeed];
-        self.totalCalorieLabel.text = [NSString stringWithFormat:@"%.2f kca", totalCalorie];
+        self.totalCalorieLabel.text = [NSString stringWithFormat:@"%.0f kca", totalCalorie];
     } else {
         [self hideContents];
         self.totalSpeedLabel.text = NO_HISTORY;

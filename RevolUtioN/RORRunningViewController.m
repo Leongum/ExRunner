@@ -322,10 +322,12 @@
     
     if (distance > 30){
         [self.saveButton setEnabled:YES];
-        [self.saveButton setTitle:@"跑完啦，存起来吧！" forState:UIControlStateNormal];
+        [self.saveButton setTitle:@"保存" forState:UIControlStateNormal];
+        [self.saveButton setBackgroundImage:[UIImage imageNamed:@"running_end_bg.png"] forState:UIControlStateNormal];
     } else {
         [self.saveButton setEnabled:NO];
         [self.saveButton setTitle:@"你确定你跑了么？" forState:UIControlStateNormal];
+        [self.saveButton setBackgroundImage:nil forState:UIControlStateNormal];
     }
     [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
 }

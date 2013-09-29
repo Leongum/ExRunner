@@ -7,7 +7,8 @@
 //
 
 #import "RORAccountViewController.h"
-#import "RORUserUtils.h"
+#import "RORUserServices.h"
+
 #import <AGCommon/UIImage+Common.h>
 
 @interface RORAccountViewController ()
@@ -76,6 +77,14 @@
                       nil];
     [self initDataFromPlist];
     
+    if ([RORUserUtils getUserId].integerValue<0)
+        self.logoutButton.alpha = 0;
+    else
+        self.logoutButton.alpha = 1;
+    
+    User_Base *userInfo = [RORUserServices fetchUser:[RORUserUtils getUserId]];
+    self.userNameLabel.text = userInfo.nickName;
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.userNameLabel andSubViews:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -185,11 +194,24 @@
     if (indexPath.row < [shareTypeArray count])
     {
         NSDictionary *item = [shareTypeArray objectAtIndex:indexPath.row];
-        
-        UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
-                                            @"Icon/sns_icon_%d.png",
-                                            [[item objectForKey:@"type"] integerValue]]
-                                bundleName:@"Resource"];
+        UIImage *img;
+        switch (indexPath.row) {
+            case 0:
+                img = [UIImage imageNamed:@"weibo.png"];
+                break;
+            case 1:
+                img = [UIImage imageNamed:@"tencent_weibo.png"];
+                break;
+            case 2:
+                img = [UIImage imageNamed:@"renren.png"];
+                break;
+            default:
+                break;
+        }
+//        UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
+//                                            @"Icon/sns_icon_%d.png",
+//                                            [[item objectForKey:@"type"] integerValue]]
+//                                bundleName:@"Resource"];
         cell.imageView.image = img;
         
         ((UISwitch *)cell.accessoryView).on = [ShareSDK hasAuthorizedWithType:[[item objectForKey:@"type"] integerValue]];

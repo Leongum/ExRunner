@@ -73,6 +73,13 @@
 - (void)saveAction {
 //    [self collepseKeyboard:[[self.table cellForRowAtIndexPath:selection] viewWithTag:2]];
     
+    if (newHeight<120 || newHeight>250 || newWeight<30 || newWeight>150){
+        isValid = NO;
+        [self sendAlart:@"信息填写有误"];
+        return;
+    } else
+        isValid = YES;
+    
     content.attributes.height = [NSNumber numberWithDouble:newHeight];
     content.attributes.weight = [NSNumber numberWithDouble:newWeight];
     

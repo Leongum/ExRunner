@@ -14,7 +14,9 @@
     NSMutableArray *shareTypeArray;
 }
 
+@property (strong, nonatomic) IBOutlet RORNormalButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UITableView *tblAutoView;
+@property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
 
 - (IBAction)backAction:(id)sender;
 - (IBAction)logoutAction:(id)sender ;
