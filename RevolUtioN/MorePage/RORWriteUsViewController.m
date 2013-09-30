@@ -40,7 +40,7 @@
 }
 
 -(IBAction)submitAction:(id)sender{
-    NSDictionary *feedbackDict = [[NSDictionary alloc]initWithObjectsAndKeys:nil, @"contact",self.textField.text, @"suggestion", nil];
+    NSDictionary *feedbackDict = [[NSDictionary alloc]initWithObjectsAndKeys:self.textField.text, @"suggestion",@"", @"contact", nil];
     [self startIndicator:self];
     [RORSystemService submitFeedback:feedbackDict];
     [self backAction:self];
