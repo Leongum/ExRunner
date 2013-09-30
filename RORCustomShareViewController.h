@@ -14,7 +14,7 @@
 #import "User_Running_History.h"
 
 @interface RORCustomShareViewController : RORViewController<UITextViewDelegate>{
-    NSInteger deltaY;
+    BOOL isTyping;
 }
 @property (weak, nonatomic) IBOutlet UITextView *txtShareContent;
 @property (weak, nonatomic) IBOutlet UILabel *lblContentCount;

@@ -9,6 +9,8 @@
 #import "RORChallengeLevelView.h"
 
 #define CURRENTLEVEL_DELTA_SIZE 25
+#define LIGHT_GRAY_COLOR [UIColor colorWithWhite:220.f/255.f alpha:1]
+#define FRONT_COLOR [UIColor yellowColor]
 
 @implementation RORChallengeLevelView
 @synthesize currentLevel = _currentLevel;
@@ -51,7 +53,7 @@
         [contentLabel setLineBreakMode:NSLineBreakByCharWrapping];
         [contentLabel setTag:i+1];
         [contentLabel setBackgroundColor:[UIColor clearColor]];
-        [contentLabel setTextColor:[UIColor whiteColor]];
+        [contentLabel setTextColor:LIGHT_GRAY_COLOR];
         contentLabel.textAlignment = UITextAlignmentCenter;
         contentLabel.text = [NSString stringWithFormat:@"%d", i];
         [self addSubview:contentLabel];
@@ -62,7 +64,7 @@
         contentImage.textAlignment = UITextAlignmentCenter;
         [contentImage setText:MissionGradeEnum_toString[i]];
         [contentImage setBackgroundColor:[UIColor clearColor]];
-        [contentImage setTextColor:[UIColor whiteColor]];
+        [contentImage setTextColor:LIGHT_GRAY_COLOR];
         [contentImage setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:24]];
         [self addSubview:contentImage];
 
@@ -81,6 +83,8 @@
         [contentLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:15]];
         contentLabel.frame = CGRectMake(contentLabel.frame.origin.x+CURRENTLEVEL_DELTA_SIZE*0.75, contentLabel.frame.origin.y+CURRENTLEVEL_DELTA_SIZE, contentLabel.frame.size.width-CURRENTLEVEL_DELTA_SIZE*2, contentLabel.frame.size.height-CURRENTLEVEL_DELTA_SIZE*2);
         contentImage.frame = CGRectMake(contentImage.frame.origin.x+CURRENTLEVEL_DELTA_SIZE*1.25, contentImage.frame.origin.y+CURRENTLEVEL_DELTA_SIZE, contentImage.frame.size.width-CURRENTLEVEL_DELTA_SIZE*2, contentImage.frame.size.height-CURRENTLEVEL_DELTA_SIZE*2);
+        contentLabel.textColor = LIGHT_GRAY_COLOR;
+        contentImage.textColor = LIGHT_GRAY_COLOR;
     }
     
     _currentLevel = level;
@@ -93,6 +97,8 @@
         [contentLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:24]];
         contentLabel.frame = CGRectMake(contentLabel.frame.origin.x-CURRENTLEVEL_DELTA_SIZE*0.75, contentLabel.frame.origin.y-CURRENTLEVEL_DELTA_SIZE, contentLabel.frame.size.width+CURRENTLEVEL_DELTA_SIZE*2, contentLabel.frame.size.height+CURRENTLEVEL_DELTA_SIZE*2);
         contentImage.frame = CGRectMake(contentImage.frame.origin.x-CURRENTLEVEL_DELTA_SIZE*1.25, contentImage.frame.origin.y-CURRENTLEVEL_DELTA_SIZE, contentImage.frame.size.width+CURRENTLEVEL_DELTA_SIZE*2, contentImage.frame.size.height+CURRENTLEVEL_DELTA_SIZE*2);
+        contentLabel.textColor = FRONT_COLOR;
+        contentImage.textColor = FRONT_COLOR;
     }
 }
 /*

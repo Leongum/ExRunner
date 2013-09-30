@@ -113,9 +113,10 @@
 }
 
 -(void)hideCoverView{
-    [Animations fadeOut:self.coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
+    self.coverView.alpha = 0;
+//    [Animations fadeOut:self.coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
     self.backButton.alpha = 1;
-    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:YES];
+//    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:YES];
 }
 
 -(void)showCoverView{

@@ -39,6 +39,12 @@
     [self initControlsLayout];
     
     [self checkLevelUp];
+    
+    weatherInformation = [NSString stringWithFormat:@"天气信息获取中"];
+    
+    UIImage *image = [UIImage imageNamed:@"main_trafficlight_none.png"];
+    [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
+    
 //    [RORUtils listFontFamilies];
 }
 
@@ -187,13 +193,18 @@
                     pm25 = [[pm25info objectForKey:@"pm2_5"] integerValue];
                     weatherInformation = [NSString stringWithFormat:@"%@  PM2.5:%d%@  ", weatherInformation,  pm25,[pm25info objectForKey:@"quality"]];
                 }
-                int index = 60;
+                int index = -1;
                 if(temp < 38 && pm25 < 300){
                     index = (100-pm25/3)*0.6 +(100-fabs(temp - 22)*5)*0.4;
                 }
                 
                 weatherInformation = [NSString stringWithFormat:@"%@总:%d", weatherInformation, index];
-                if (temp < 0 || temp > 38 || pm25>250 || index<50){
+                if (index <0) {
+                    UIImage *image = [UIImage imageNamed:@"main_trafficlight_none.png"];
+                    [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
+                    weatherInformation = [NSString stringWithFormat:@"天气信息获取失败"];
+                }
+                else if (temp < 0 || temp > 38 || pm25>250 || index<50){
                     UIImage *image = [UIImage imageNamed:@"main_trafficlight_red.png"];
                     [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
                 }

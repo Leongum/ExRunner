@@ -31,7 +31,8 @@
 }
 
 - (void)viewDidLoad
-{   
+{
+    isTyping = NO;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _txtShareContent.delegate = self;
@@ -48,17 +49,20 @@
                                                object:nil];
     _txtShareContent.layer.borderWidth=1.0;
     _txtShareContent.layer.borderColor=[[UIColor grayColor] CGColor];
-    self.backButton.frame = BACKBUTTON_FRAME_TOP;
-    deltaY =0;
+//    self.backButton.frame = BACKBUTTON_FRAME_TOP;
+//    deltaY =0;
 }
 
-- (void)keyboardWillShow:(NSNotification*)notification {
-   [Animations moveUp:self.view andAnimationDuration:0.3 andWait:NO andLength:75];
-    deltaY+=75;
+- (void)keyboardWillShow:(NSNotification *)sender {
+    if (!isTyping){
+       [Animations moveUp:self.view andAnimationDuration:0.3 andWait:NO andLength:150];
+        isTyping = YES;
+    }
 }
 
-- (void)keyboardWillHide:(NSNotification*)notification {
-    [Animations moveDown:self.view andAnimationDuration:0.3 andWait:NO andLength:deltaY];
+- (void)keyboardWillHide:(NSNotification *)sender  {
+    [Animations moveDown:self.view andAnimationDuration:0.3 andWait:NO andLength:150];
+    isTyping = NO;
 }
 
 

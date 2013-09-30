@@ -34,9 +34,10 @@
     
     self.backButton.alpha = 0;
     
-    [self.loadingLabel setFont:[UIFont fontWithName:ENG_GAME_FONT size:18]];
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
+    [RORUtils setFontFamily:ENG_GAME_FONT forView:self.loadingLabel andSubViews:NO];
     
-    [self startIndicator:self];
+//    [self startIndicator:self];
     [RORNetWorkUtils initCheckNetWork];
     NSLog(@"%hhd",[RORNetWorkUtils getIsConnetioned]);
 
@@ -79,7 +80,7 @@
     UINavigationController *navigationController =  [storyboard instantiateViewControllerWithIdentifier:@"RORNavigationController"];
     
 //    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]];
-    sleep(3);
+    sleep(2);
     
     [self presentViewController:navigationController animated:NO completion:NULL];
 

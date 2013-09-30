@@ -63,7 +63,7 @@
     //syncButtonItem.enabled = ([RORUtils hasLoggedIn]!=nil);
 //    [self initTableData];
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.noHistoryMessageLabel andSubViews:NO];
-    self.noHistoryMessageLabel.text = @"真的一次都没有跑过耶";
+    self.noHistoryMessageLabel.text = NO_HISTORY;// @"真的一次都没有跑过耶";
     self.noHistoryMessageLabel.alpha = 0;
 }
 
@@ -185,6 +185,13 @@
     } else
         isValidImage.alpha = 0;
 
+    UILabel *level = (UILabel *)[cell viewWithTag:LEVEL];
+    if (record4Date.missionTypeId.integerValue == Challenge) {
+        level.alpha = 1;
+        level.text = [NSString stringWithFormat:@"%@", MissionGradeEnum_toString[record4Date.missionGrade.integerValue]];
+    } else
+        level.alpha = 0;
+    
     return cell;
 }
 
