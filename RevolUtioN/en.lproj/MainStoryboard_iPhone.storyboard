@@ -740,7 +740,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="paper_bg.png" id="Wir-UH-8Qt">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000006"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="NzP-Gj-0h9">
@@ -801,15 +801,15 @@
                                 </connections>
                             </tableView>
                             <view alpha="0.0" contentMode="scaleToFill" id="bwM-IM-EvA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000006"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challenge_pop_bg.png" id="88T-7H-hMp">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000006"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" id="t6r-KH-7yU" customClass="UIControl">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480.00000000000006"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AhE-CC-CCf" customClass="RORNormalButton">
@@ -1502,51 +1502,54 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" id="aEs-zj-dtx" userLabel="contact us">
-                                <rect key="frame" x="26" y="340" width="268" height="87"/>
+                                <rect key="frame" x="26" y="335" width="268" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contactUs_bg.png" id="NtK-bO-J2b">
-                                        <rect key="frame" x="6" y="0.0" width="257" height="87"/>
+                                        <rect key="frame" x="6" y="5" width="257" height="87"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@Cyberace_赛跑乐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wE3-1P-D6O">
-                                        <rect key="frame" x="20" y="11" width="228" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新浪微博: @Cyberace_赛跑乐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wE3-1P-D6O">
+                                        <rect key="frame" x="20" y="16" width="228" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.25098040699958801" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cyberace" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ha4-j0-Ucf">
-                                        <rect key="frame" x="20" y="34" width="228" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信: Cyberace" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ha4-j0-Ucf">
+                                        <rect key="frame" x="20" y="39" width="228" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.25098040699958801" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weibo.png" id="TIw-1j-IAr">
-                                        <rect key="frame" x="41" y="11" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QQ_friend.png" id="fyk-ay-Fxj">
-                                        <rect key="frame" x="41" y="34" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contact@cyberace.cc" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l4i-jq-S15">
-                                        <rect key="frame" x="20" y="56" width="228" height="21"/>
+                                        <rect key="frame" x="20" y="61" width="228" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.25098040699958801" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mHq-Vp-XUT" customClass="RORNormalButton">
+                                        <rect key="frame" x="219" y="48" width="44" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="write_us.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="dxe-bT-zdq" kind="push" id="1Iu-8G-w8O"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contactUs_icon.png" id="5Oa-Fi-RRF">
+                                        <rect key="frame" x="-2" y="-3" width="55" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contactUs_icon.png" id="5Oa-Fi-RRF">
-                                <rect key="frame" x="228" y="372" width="55" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1559,6 +1562,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dcs-yI-Lar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="791" y="1765"/>
+        </scene>
+        <!--Write Us View Controller-->
+        <scene sceneID="YUw-Tm-u64">
+            <objects>
+                <viewController id="dxe-bT-zdq" customClass="RORWriteUsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5et-d3-8c9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paper_bg.png" id="e3v-VW-gME">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J7d-03-Nke" userLabel="submit Button" customClass="RORNormalButton">
+                                <rect key="frame" x="255" y="10" width="55" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="13"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="28" maxX="0.0" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
+                                <state key="normal" backgroundImage="submit.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitAction:" destination="B7d-5Y-71V" eventType="touchUpInside" id="AxI-4f-Ecb"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="hOV-Y9-AM7">
+                                <rect key="frame" x="32" y="94" width="256" height="322"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" id="ZTZ-A6-AKB">
+                                        <rect key="frame" x="8" y="10" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6CN-BS-lxG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pee-3v-onx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="791" y="2355"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="mSr-c3-ykW">
@@ -2076,22 +2130,36 @@
         <image name="QQ.png" width="55" height="55"/>
         <image name="QQ_friend.png" width="55" height="55"/>
         <image name="centerMap.png" width="110" height="110"/>
+        <image name="centerMap.png" width="110" height="110"/>
         <image name="challenge_pop_bg.png" width="640" height="1136"/>
         <image name="charactor.png" width="585" height="457"/>
         <image name="check.png" width="19" height="19"/>
         <image name="contactUs_bg.png" width="536" height="174"/>
+        <image name="contactUs_bg.png" width="536" height="174"/>
         <image name="contactUs_icon.png" width="256" height="256"/>
+        <image name="details.png" width="32" height="32"/>
+        <image name="details.png" width="32" height="32"/>
+        <image name="details.png" width="32" height="32"/>
         <image name="details.png" width="32" height="32"/>
         <image name="expand.png" width="110" height="110"/>
         <image name="filter_btn_bg.png" width="55" height="55"/>
         <image name="filter_cell_bg.png" width="191" height="45"/>
         <image name="finishrunning_pop_bg.png" width="640" height="1136"/>
+        <image name="finishrunning_pop_bg.png" width="640" height="1136"/>
+        <image name="green_btn_bg.png" width="110" height="44"/>
+        <image name="green_btn_bg.png" width="110" height="44"/>
+        <image name="green_btn_bg.png" width="110" height="44"/>
         <image name="green_btn_bg.png" width="110" height="44"/>
         <image name="hand.png" width="320" height="568"/>
         <image name="history.png" width="55" height="55"/>
         <image name="history_detail_bg.png" width="320" height="568"/>
         <image name="loading_bg.png" width="320" height="568"/>
         <image name="logout_btn_bg.png" width="55" height="55"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
+        <image name="main_bg.png" width="320" height="568"/>
         <image name="main_bg.png" width="320" height="568"/>
         <image name="main_btn_bg.png" width="136" height="60"/>
         <image name="main_challenge_btn_bg.png" width="280" height="122"/>
@@ -2101,23 +2169,44 @@
         <image name="main_username_bg.png" width="210" height="68"/>
         <image name="oneButtonShare_bg.png" width="150" height="55"/>
         <image name="paper.png" width="320" height="568"/>
+        <image name="paper.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
+        <image name="paper_bg.png" width="320" height="568"/>
         <image name="paper_bg.png" width="320" height="568"/>
         <image name="pass.png" width="92" height="50"/>
         <image name="red_left.png" width="44" height="44"/>
         <image name="red_right.png" width="44" height="44"/>
         <image name="renren.png" width="55" height="55"/>
         <image name="running_bg.png" width="320" height="568"/>
+        <image name="running_bg.png" width="320" height="568"/>
+        <image name="running_end_bg.png" width="305" height="100"/>
+        <image name="running_end_bg.png" width="305" height="100"/>
+        <image name="running_end_bg.png" width="305" height="100"/>
         <image name="running_end_bg.png" width="305" height="100"/>
         <image name="running_wind.png" width="609" height="99"/>
+        <image name="settings.png" width="55" height="55"/>
         <image name="settings.png" width="55" height="55"/>
         <image name="share_btn.png" width="55" height="55"/>
         <image name="share_pop_bg.png" width="640" height="1136"/>
         <image name="spring_bg.png" width="141" height="66"/>
         <image name="submit.png" width="55" height="55"/>
+        <image name="submit.png" width="55" height="55"/>
+        <image name="submit.png" width="55" height="55"/>
+        <image name="submit.png" width="55" height="55"/>
         <image name="sync_apply.png" width="110" height="110"/>
         <image name="tencent_weibo.png" width="55" height="55"/>
         <image name="textfield.png" width="320" height="60"/>
+        <image name="textfield.png" width="320" height="60"/>
+        <image name="textfield.png" width="320" height="60"/>
+        <image name="textfield.png" width="320" height="60"/>
+        <image name="textfield.png" width="320" height="60"/>
         <image name="weibo.png" width="55" height="55"/>
+        <image name="write_us.png" width="88" height="88"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

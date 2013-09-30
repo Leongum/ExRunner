@@ -80,7 +80,7 @@
     UINavigationController *navigationController =  [storyboard instantiateViewControllerWithIdentifier:@"RORNavigationController"];
     
 //    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]];
-    sleep(2);
+    sleep(3);
     
     [self presentViewController:navigationController animated:NO completion:NULL];
 
