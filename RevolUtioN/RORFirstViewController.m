@@ -197,6 +197,9 @@
                 if(temp < 38 && pm25 < 300){
                     index = (100-pm25/3)*0.6 +(100-fabs(temp - 22)*5)*0.4;
                 }
+                else{
+                    index =0;
+                }
                 
                 weatherInformation = [NSString stringWithFormat:@"%@总:%d", weatherInformation, index];
                 if (index <0) {

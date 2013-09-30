@@ -35,7 +35,7 @@
 
 +(User_Running_History *)fetchBestRunHistoryByMissionId:(NSNumber *)missionId withUserId:(NSNumber *)userId{
     NSString *table=@"User_Running_History";
-    NSString *query = @"userId = %@ and missionId = %@";
+    NSString *query = @"userId = %@ and missionId = %@ and valid = 1";
     NSArray *params = [NSArray arrayWithObjects:userId,missionId, nil];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"missionGrade" ascending:YES];
     NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
@@ -187,7 +187,7 @@
             }
         }
     }
-    return NO;
+    return YES;
 }
 
 + (BOOL)syncRunningHistories{
