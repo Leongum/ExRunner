@@ -184,7 +184,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"authCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"authCell"];
 
     UISwitch *switchCtrl = [[UISwitch alloc] initWithFrame:CGRectZero];
     [switchCtrl sizeToFit];

@@ -250,7 +250,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"plainCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     UILabel *title = (UILabel*)[cell viewWithTag:FILTER_TABLECELL_TITLE];
     UIImageView *check = (UIImageView*)[cell viewWithTag:FILTER_TABLECELL_IMAGE];
     check.alpha = 0;

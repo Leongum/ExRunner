@@ -201,7 +201,7 @@
     switch (indexPath.row) {
         case 0:
         {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"plainCell" forIndexPath:indexPath];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"plainCell"];
             UILabel *titleLabel = (UILabel *)[cell viewWithTag:TITLE_TAG];
             titleLabel.text = @"身高";
             
@@ -221,7 +221,7 @@
         }
         case 1:
         {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"plainCell" forIndexPath:indexPath];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"plainCell"];
             UILabel *titleLabel = (UILabel *)[cell viewWithTag:TITLE_TAG];
             titleLabel.text = @"体重";
             
@@ -243,7 +243,7 @@
         }
         case 2:
         {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"sexCell" forIndexPath:indexPath];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"sexCell"];
             newSex = content.sex;
 //            UISegmentedControl *seg = (UISegmentedControl *)[cell viewWithTag:1];
             RORSegmentControl *segment = (RORSegmentControl *)[cell viewWithTag:2];

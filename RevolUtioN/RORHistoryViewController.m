@@ -167,7 +167,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"plainCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:cell andSubViews:YES];
     
     NSString *date_str = [sortedDateList objectAtIndex:indexPath.section];
