@@ -40,6 +40,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (strong, nonatomic) IBOutlet UIControl *coverView;
+@property (strong, nonatomic) IBOutlet UILabel *levelTitleLabel;
 
 - (IBAction)shareToWeixin:(id)sender;
 

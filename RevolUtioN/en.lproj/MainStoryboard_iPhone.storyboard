@@ -1293,6 +1293,7 @@
                         <outlet property="durationLabel" destination="Mri-cz-lQt" id="U4n-0p-v2X"/>
                         <outlet property="energyLabel" destination="AfP-8k-ulj" id="j6r-Yk-wuU"/>
                         <outlet property="labelContainerView" destination="4XO-pg-4cd" id="1Du-Fa-gw6"/>
+                        <outlet property="levelTitleLabel" destination="Bm7-cb-aiv" id="K1q-qR-yzM"/>
                         <outlet property="mapView" destination="ECF-IS-60P" id="ML5-ec-s4w"/>
                         <outlet property="scoreLabel" destination="JOg-tD-DRM" id="H1m-im-YYX"/>
                         <outlet property="speedLabel" destination="5UB-DD-lvm" id="u6q-PE-9RD"/>
@@ -1775,7 +1776,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="textfield.png" id="WB8-LV-NKY">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="textfield.png" id="WB8-LV-NKY">
                                                     <rect key="frame" x="108" y="20" width="162" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="12"/>

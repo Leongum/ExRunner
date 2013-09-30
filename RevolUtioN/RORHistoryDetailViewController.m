@@ -49,15 +49,20 @@
     speedLabel.text = [RORUserUtils formatedSpeed:record.avgSpeed.doubleValue];
     durationLabel.text = [RORUtils transSecondToStandardFormat:record.duration.integerValue];
     energyLabel.text = [NSString stringWithFormat:@"%.1f kca", record.spendCarlorie.doubleValue];
-    if (record.missionTypeId.integerValue == Challenge)
+    if (record.missionTypeId.integerValue == Challenge){
         scoreLabel.text = [NSString stringWithFormat:@"%@", MissionGradeEnum_toString[record.missionGrade.integerValue]];
-    else
+        self.levelTitleLabel.text = @"级别";
+    }
+    else{
         scoreLabel.text = [NSString stringWithFormat:@"%d", record.experience.integerValue];
+        self.levelTitleLabel.text = @"得分";
+    }
 
     if (record.valid.integerValue<0) {
-        scoreLabel.text = @"Foul";
+        scoreLabel.text = @"NOT A RUNNING";
         scoreLabel.textColor = [UIColor redColor];
     }
+    
     NSDateFormatter *formattter = [[NSDateFormatter alloc] init];
     [formattter setDateFormat:@"yyyy-MM-dd"];
     self.dateLabel.text = [NSString stringWithFormat:@"%@", [formattter stringFromDate:record.missionDate]];
@@ -104,6 +109,8 @@
 }
 
 -(void)drawRouteOntoMap:(NSArray *)routePoints{
+    if (routePoints.count == 0 || routePoints == nil)
+        return;
     
     int couter = 4;
     while (couter-- > 0) {

@@ -36,6 +36,9 @@
     for (int j = 0; j<routes.count; j++){
         NSArray *routePoints = [routes objectAtIndex:j];
         
+        if (routePoints.count == 0 || routePoints == nil)
+            continue;
+        
         if (j==0){
             CLLocation *loc = [routePoints objectAtIndex:0];
             RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:loc.coordinate];

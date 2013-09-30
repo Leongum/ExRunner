@@ -188,7 +188,10 @@
     UILabel *level = (UILabel *)[cell viewWithTag:LEVEL];
     if (record4Date.missionTypeId.integerValue == Challenge) {
         level.alpha = 1;
-        level.text = [NSString stringWithFormat:@"%@", MissionGradeEnum_toString[record4Date.missionGrade.integerValue]];
+        if (isValidImage.alpha == 1)
+            level.text = [NSString stringWithFormat:@"%@", MissionGradeEnum_toString[record4Date.missionGrade.integerValue]];
+        else
+            level.text = @"F";
     } else
         level.alpha = 0;
     
