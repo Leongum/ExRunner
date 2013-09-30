@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
 }
 
 - (void)didReceiveMemoryWarning
