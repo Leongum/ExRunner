@@ -27,6 +27,7 @@
 #define MISSION_URL [SERVICE_HOST stringByAppendingString:@"/missions/mission?lastUpdateTime=%@"] 
 #define VERSION_URL [SERVICE_HOST stringByAppendingString:@"/system/version/%@"]
 #define SYSTEM_MESSAGE_URL [SERVICE_HOST stringByAppendingString:@"/system/message/%@"]
+#define FEEDBACK_URL [SERVICE_HOST stringByAppendingString:@"/system/feedback"]
 #define PM25_URL [SERVICE_HOST stringByAppendingString:@"/weather/pm25?cityName=%@&provinceName=%@"] 
 
 #define WEATHER_URL @"http://www.weather.com.cn/data/sk/%@.html"

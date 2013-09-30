@@ -138,4 +138,13 @@
     return result;
 }
 
++(BOOL)submitFeedback:(NSDictionary *)feedbackDic{
+    RORHttpResponse *httpResponse = [RORSystemClientHandler submitFeedback:feedbackDic];
+    if ([httpResponse responseStatus] == 200){
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 @end

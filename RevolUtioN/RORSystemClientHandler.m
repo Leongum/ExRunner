@@ -22,4 +22,9 @@
     return httpResponse;
 }
 
++(RORHttpResponse *)submitFeedback:(NSDictionary *) feedbackDic{
+    RORHttpResponse *httpResponse = [RORHttpClientHandler postRequest:FEEDBACK_URL withRequstBody:[RORUtils toJsonFormObject:feedbackDic]];
+    return httpResponse;
+}
+
 @end
