@@ -46,8 +46,8 @@
     
     CGRect rx = [ UIScreen mainScreen ].applicationFrame;
     if (rx.size.height < 500){
-        [Animations moveUp:self.backButton andAnimationDuration:0 andWait:NO andLength:5];
-        [Animations moveUp:self.shareButton andAnimationDuration:0 andWait:NO andLength:5];
+        [Animations moveUp:self.backButton andAnimationDuration:0 andWait:NO andLength:8];
+        [Animations moveUp:self.shareButton andAnimationDuration:0 andWait:NO andLength:8];
     }
 
     distanceLabel.text = [RORUtils outputDistance:record.distance.doubleValue];
