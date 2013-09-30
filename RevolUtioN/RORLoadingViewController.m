@@ -31,7 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.backButton.alpha = 0;
     
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];

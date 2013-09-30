@@ -97,7 +97,7 @@ activity indicator
 - (IBAction)startIndicator:(id)sender
 {
     //初始化指示器
-    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-25, self.view.frame.size.height/2-25, 50, 50)];
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height/2-50, 100, 100)];
     
     /*
      指定指示器的类型
@@ -106,7 +106,7 @@ activity indicator
      UIActivityIndicatorViewStyleWhite      //标准尺寸白色指示器
      UIActivityIndicatorViewStyleGray    //灰色指示器，用于白色背景
      */
-    self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+    self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
     
     //停止后是否隐藏(默认为YES)
     self.activityIndicator.hidesWhenStopped = YES;

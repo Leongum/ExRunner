@@ -43,6 +43,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
     UIViewController *destination = segue.destinationViewController;
     if ([destination respondsToSelector:@selector(setDelegate:)]){
         [destination setValue:self forKey:@"delegate"];
@@ -113,6 +114,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [self endIndicator:self];
     [super viewWillAppear:animated];
     [self refreshTable];
 }

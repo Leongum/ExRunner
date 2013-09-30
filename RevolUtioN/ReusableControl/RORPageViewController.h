@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RORViewController.h"
 
 #define NEXT_PAGE_POINTER_SIZE 44
 
 #define PAGE_POINTER_LEFT 1
 #define PAGE_POINTER_RIGHT 2
 
-@interface RORPageViewController : UIViewController{
+@interface RORPageViewController : RORViewController{
 }
 
 @property (nonatomic) NSInteger page;

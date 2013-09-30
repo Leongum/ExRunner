@@ -386,7 +386,7 @@
     
     [self performSegueWithIdentifier:@"ChallengeRunResultSegue" sender:self];
     
-    [self endIndicator:self];
+//    [self endIndicator:self];
 }
 
 -(void)prepareForQuit{

@@ -26,7 +26,7 @@
 @property (strong, nonatomic) IBOutlet UIView *labelContainerView;
 @property (strong, nonatomic) IBOutlet UIView *dataContainerView;
 
-@property (weak, nonatomic) UIViewController *delegate;
+@property (weak, nonatomic) RORViewController *delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *speedLabel;
@@ -41,6 +41,7 @@
 
 @property (strong, nonatomic) IBOutlet UIControl *coverView;
 @property (strong, nonatomic) IBOutlet UILabel *levelTitleLabel;
+@property (strong, nonatomic) IBOutlet UIButton *shareButton;
 
 - (IBAction)shareToWeixin:(id)sender;
 

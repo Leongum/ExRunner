@@ -331,6 +331,8 @@
 }
 
 - (IBAction)btnSaveRun:(id)sender {
+    [self startIndicator:self];
+
     [self stopUpdates];
     
     if (self.endTime == nil)
@@ -338,14 +340,13 @@
 //    [[UIApplication sharedApplication] setIdleTimerDisabled: NO];
 //    [startButton setEnabled:NO];
     
-    [self startIndicator:self];
     
     [self prepareForQuit];
     [self saveRunInfo];
     
     [self performSegueWithIdentifier:@"NormalRunResultSegue" sender:self];
     
-    [self endIndicator:self];
+//    [self endIndicator:self];
 }
 
 -(void)prepareForQuit{

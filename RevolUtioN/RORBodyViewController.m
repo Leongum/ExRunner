@@ -71,7 +71,7 @@
 }
 
 - (void)saveAction {
-//    [self collepseKeyboard:[[self.table cellForRowAtIndexPath:selection] viewWithTag:2]];
+    [self collepseKeyboard:[[self.table cellForRowAtIndexPath:selection] viewWithTag:2]];
     
     if (newHeight<120 || newHeight>250 || newWeight<30 || newWeight>150){
         isValid = NO;
@@ -110,8 +110,10 @@
 //}
 
 -(IBAction)submitAction:(id)sender{
+    [self startIndicator:self];
     [self saveAction];
     if (!isValid) return;
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:2]];
     [self backAction:sender];
 }
 

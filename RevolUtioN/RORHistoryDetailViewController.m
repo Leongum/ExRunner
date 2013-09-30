@@ -43,8 +43,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 //    NSLog(@"%@", record);
-    
-    
+
     distanceLabel.text = [RORUtils outputDistance:record.distance.doubleValue];
     speedLabel.text = [RORUserUtils formatedSpeed:record.avgSpeed.doubleValue];
     durationLabel.text = [RORUtils transSecondToStandardFormat:record.duration.integerValue];
@@ -101,7 +100,6 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
     User_Running_History *best = [RORRunHistoryServices fetchBestRunHistoryByMissionId:record.missionId withUserId:[RORUserUtils getUserId]];
     if (record.missionTypeId.integerValue == Challenge && record.valid.integerValue>0 && [delegate isKindOfClass:[RORRunningBaseViewController class]])
     {
@@ -209,7 +207,7 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    CGRect contentRectToCrop = CGRectMake(0, 80, image.size.width, image.size.height - 80);
+    CGRect contentRectToCrop = CGRectMake(0, 0, image.size.width, image.size.height);
     CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], contentRectToCrop);
     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
@@ -256,14 +254,20 @@
 }
 
 - (IBAction)shareAction:(id)sender {
+    self.backButton.alpha = 0;
+    self.shareButton.alpha = 0;
     img = [self captureScreen];
-    [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
-    [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
+    self.coverView.alpha = 1;
+//    [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
+//    [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
 }
 
 - (IBAction)hideCover:(id)sender {
-    [Animations fadeOut:coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
-    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:NO];
+    self.backButton.alpha = 1;
+    self.shareButton.alpha = 1;
+    self.coverView.alpha = 0;
+//    [Animations fadeOut:coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
+//    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:NO];
 }
 
 

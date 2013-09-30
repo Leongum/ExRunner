@@ -131,15 +131,12 @@
 
 //提交用户名密码之后的操作
 - (IBAction)loginAction:(id)sender {
-    [self startIndicator:self];
     
     if(![RORNetWorkUtils getIsConnetioned]){
         [self sendAlart:CONNECTION_ERROR];
-        [self endIndicator:self];
         return;
     }
     if (![self isLegalInput]) {
-        [self endIndicator:self];
         return;
     }
     if (switchButton.selectionIndex == 0){ //登录
@@ -149,18 +146,20 @@
         
         if (user == nil){
             [self sendAlart:LOGIN_ERROR];
-            [self endIndicator:self];
             return;
         }
+        [self startIndicator:self];
+
         [RORRunHistoryServices syncRunningHistories];
     } else { //注册
         NSDictionary *regDict = [[NSDictionary alloc]initWithObjectsAndKeys:usernameTextField.text, @"userEmail",[RORUtils md5:passwordTextField.text], @"password", nicknameTextField.text, @"nickName", nil];
+        [self startIndicator:self];
+
         User_Base *user = [RORUserServices registerUser:regDict];
         
         if (user != nil){
             [self sendNotification:REGISTER_SUCCESS];
             [self performSegueWithIdentifier:@"bodySetting" sender:self];
-            [self endIndicator:self];
             return;
         } else {
             [self sendAlart:REGISTER_FAIL];

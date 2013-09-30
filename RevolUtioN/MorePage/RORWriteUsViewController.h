@@ -10,4 +10,6 @@
 
 @interface RORWriteUsViewController : RORViewController
 
+@property (strong, nonatomic) IBOutlet UITextView *textField;
+
 @end

@@ -37,6 +37,8 @@
     [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
     if(synced && updated){
         [self sendNotification:SYNC_DATA_SUCCESS];
+        [listViewController refreshTable];
+        [statisticsViewController viewWillAppear:NO];
     }
     else{
         [self sendAlart:SYNC_DATA_FAIL];
