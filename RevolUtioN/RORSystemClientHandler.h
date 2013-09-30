@@ -18,4 +18,6 @@
 
 +(RORHttpResponse *)getSystemMessage:(NSString *) lastUpdateTime;
 
++(RORHttpResponse *)submitFeedback:(NSDictionary *) feedbackDic;
+
 @end

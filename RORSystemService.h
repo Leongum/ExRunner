@@ -24,4 +24,6 @@
 
 +(NSString *)getSystemMessage:(NSNumber *)messageId withRegion:(NSNumber *)region;
 
++(BOOL)submitFeedback:(NSDictionary *)feedbackDic;
+
 @end

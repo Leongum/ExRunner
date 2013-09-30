@@ -112,7 +112,11 @@
         return;
     }
     
-    NSString *shareContent = [NSString stringWithFormat:@"%@ %@",_txtShareContent.text,SHARE_DEFAULT_CONTENT];
+    NSString *shareContent = [NSString stringWithFormat:SHARE_DEFAULT_CONTENT,[RORUtils outputDistance:record.distance.doubleValue],[RORUtils transSecondToStandardFormat:record.spendCarlorie.doubleValue],[NSString stringWithFormat:@"%.1f kca", record.spendCarlorie.doubleValue]];
+    
+    if([_txtShareContent.text length]>0){
+        shareContent = [[NSString stringWithFormat:@"『%@』",_txtShareContent.text] stringByAppendingString:shareContent];
+    }
     
     id<ISSContent> publishContent = [ShareSDK content:shareContent
                                        defaultContent:nil
