@@ -33,24 +33,20 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    CLLocation *startLoc=nil;
+    CLLocation *endLoc=nil;
     for (int j = 0; j<routes.count; j++){
         NSArray *routePoints = [routes objectAtIndex:j];
         
         if (routePoints.count == 0 || routePoints == nil)
             continue;
-        
-        if (j==0){
-            CLLocation *loc = [routePoints objectAtIndex:0];
-            RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:loc.coordinate];
+        if (startLoc==nil){
+            startLoc = [routePoints objectAtIndex:0];
+            RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:startLoc.coordinate];
             annotation.title = @"起点";
             [mapView addAnnotation:annotation];
         }
-        if (j== routes.count-1){
-            CLLocation *loc = [routePoints objectAtIndex:routePoints.count-1];
-            RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:loc.coordinate];
-            annotation.title = @"终点";
-            [mapView addAnnotation:annotation];
-        }
+        endLoc = [routePoints objectAtIndex:routePoints.count-1];
         int couter = 4;
         while (couter-- > 0) {
             improvedRoute = [[NSMutableArray alloc]init];
@@ -79,10 +75,9 @@
         [self drawLineWithLocationArray:improvedRoute withStyle:ROUTE_SHADOW];
         [self drawLineWithLocationArray:routePoints withStyle:ROUTE_NORMAL];
     }
-//    NSLog(@"%@", [routePoints description]);
-//    [self center_map];
-    
-//    [mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading animated:YES];
+    RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:endLoc.coordinate];
+    annotation.title = @"终点";
+    [mapView addAnnotation:annotation];
 }
 
 - (void)viewDidUnload{

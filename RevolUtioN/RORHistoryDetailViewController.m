@@ -71,23 +71,26 @@
 //    experienceLabel.text = [NSString stringWithFormat:@"%@" , record.experience];
     
     routes = (NSMutableArray *)[RORDBCommon getRoutesFromString:record.missionRoute];
-    
+    CLLocation *startLoc=nil;
+    CLLocation *endLoc=nil;
     for (int i=0; i<routes.count; i++) {
         NSArray *routePoints = [routes objectAtIndex:i];
-        if (i==0){
-            CLLocation *loc = [routePoints objectAtIndex:0];
-            RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:loc.coordinate];
+        if (routePoints==nil || routePoints.count==0)
+            continue;
+        if (startLoc==nil){
+            startLoc = [routePoints objectAtIndex:0];
+            RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:startLoc.coordinate];
             annotation.title = @"起点";
             [mapView addAnnotation:annotation];
         }
-        if (i== routes.count-1){
-            CLLocation *loc = [routePoints objectAtIndex:routePoints.count-1];
-            RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:loc.coordinate];
-            annotation.title = @"终点";
-            [mapView addAnnotation:annotation];
-        }
+        endLoc = [routePoints objectAtIndex:routePoints.count-1];
         [self drawRouteOntoMap:routePoints];
     }
+    RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:endLoc.coordinate];
+    annotation.title = @"终点";
+    [mapView addAnnotation:annotation];
+    
+    [self center_map];
     
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.labelContainerView andSubViews:YES];
     [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainerView andSubViews:YES];
