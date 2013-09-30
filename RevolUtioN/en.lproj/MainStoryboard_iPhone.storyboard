@@ -744,7 +744,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="NzP-Gj-0h9">
-                                <rect key="frame" x="38" y="91.000000000000028" width="244" height="337"/>
+                                <rect key="frame" x="38" y="91" width="244" height="337"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1568,7 +1568,7 @@
         <scene sceneID="YUw-Tm-u64">
             <objects>
                 <viewController id="dxe-bT-zdq" customClass="RORWriteUsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5et-d3-8c9">
+                    <view key="view" contentMode="scaleToFill" id="5et-d3-8c9" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -1611,6 +1611,9 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="hideKeyboard:" destination="dxe-bT-zdq" eventType="touchDown" id="CUo-er-JWl"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="6CN-BS-lxG"/>
                     <connections>

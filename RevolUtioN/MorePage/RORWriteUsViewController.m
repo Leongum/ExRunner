@@ -35,6 +35,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)hideKeyboard:(id)sender {
+    [self.textField resignFirstResponder];
+}
 
 -(IBAction)submitAction:(id)sender{
     NSDictionary *feedbackDict = [[NSDictionary alloc]initWithObjectsAndKeys:nil, @"contact",self.textField.text, @"suggestion", nil];

@@ -1509,6 +1509,11 @@
 				CLASSPREFIX = ROR;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Beyond;
+				TargetAttributes = {
+					302FD0001727D870004DA005 = {
+						DevelopmentTeam = 8RLLL2GT4J;
+					};
+				};
 			};
 			buildConfigurationList = 302FCFFC1727D870004DA005 /* Build configuration list for PBXProject "Cyberace" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1925,6 +1930,8 @@
 		302FD0481727D870004DA005 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bingyang Zhao (TQ9NFCPT45)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Connection\"",
@@ -1956,6 +1963,7 @@
 		302FD0491727D870004DA005 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Connection\"",
