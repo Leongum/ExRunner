@@ -35,7 +35,7 @@
 
 +(User_Running_History *)fetchBestRunHistoryByMissionId:(NSNumber *)missionId withUserId:(NSNumber *)userId{
     NSString *table=@"User_Running_History";
-    NSString *query = @"userId = %@ and missionId = %@";
+    NSString *query = @"userId = %@ and missionId = %@ and valid = 1";
     NSArray *params = [NSArray arrayWithObjects:userId,missionId, nil];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"missionGrade" ascending:YES];
     NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
@@ -166,7 +166,7 @@
 }
 
 + (BOOL)uploadRunningHistories{
-    if(![RORNetWorkUtils getDoUploadable])return YES;
+    if(![RORNetWorkUtils getDoUploadable])return NO;
     NSNumber *userId = [RORUserUtils getUserId];
     if(userId.integerValue > 0){
         NSArray *dataList = [self fetchUnsyncedRunHistories:NO];
@@ -179,6 +179,7 @@
             
             if ([httpResponse responseStatus] == 200){
                 [self updateUnsyncedRunHistories];
+                return YES;
                 
             } else {
                 NSLog(@"error: statCode = %@", [httpResponse errorMessage]);
@@ -190,7 +191,7 @@
 }
 
 + (BOOL)syncRunningHistories{
-    if(![RORNetWorkUtils getDoUploadable])return YES;
+    if(![RORNetWorkUtils getDoUploadable])return NO;
     NSError *error = nil;
     NSNumber *userId = [RORUserUtils getUserId];
     NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"RunningHistoryUpdateTime"];
@@ -234,7 +235,7 @@
 }
 
 + (BOOL)uploadUserRunning{
-    if(![RORNetWorkUtils getDoUploadable])return YES;
+    if(![RORNetWorkUtils getDoUploadable])return NO;
     NSNumber *userId = [RORUserUtils getUserId];
     NSArray *dataList = [self fetchUnsyncedUserRunning:NO];
     if([dataList count] > 0){
@@ -257,7 +258,7 @@
 }
 
 + (BOOL)syncUserRunning{
-    if(![RORNetWorkUtils getDoUploadable])return YES;
+    if(![RORNetWorkUtils getDoUploadable])return NO;
     NSError *error = nil;
     NSNumber *userId = [RORUserUtils getUserId];
     NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"UserRunningUpdateTime"];

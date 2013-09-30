@@ -175,7 +175,7 @@
 }
 
 + (BOOL)syncMissions{
-    if(![RORNetWorkUtils getDoUploadable])return YES;
+    if(![RORNetWorkUtils getDoUploadable])return NO;
     NSError *error = nil;
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
     NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"MissionUpdateTime"];
