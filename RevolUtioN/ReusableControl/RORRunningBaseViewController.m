@@ -43,7 +43,11 @@
     [self.view addSubview:countDownView];
     [countDownView hide];
     
-    sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"all_set_gun.mp3"];
+    int randomValue = rand();
+    if (randomValue%100<20)
+        sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"all_set.mp3"];
+    else
+        sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"all_set_gun.mp3"];
     
     lastKiloPlayed = NO;
     lastHundredPlayed = NO;

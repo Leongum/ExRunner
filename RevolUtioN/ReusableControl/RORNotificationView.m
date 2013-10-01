@@ -34,7 +34,7 @@
         messageLabel = [[UILabel alloc]initWithFrame:frame];
         messageLabel.backgroundColor = [UIColor clearColor];
         messageLabel.textColor = [UIColor whiteColor];
-        messageLabel.textAlignment = UITextAlignmentCenter;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
         
         [messageLabel setFont:[UIFont systemFontOfSize:10]];
         [self addSubview:messageLabel];

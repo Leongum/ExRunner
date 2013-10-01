@@ -64,9 +64,11 @@
     
     [self.startButton setEnabled:NO];
     [startButton setTitle:SEARCHING_LOCATION forState:UIControlStateNormal];
-//    UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
-//    [startButton setBackgroundImage:image forState:UIControlStateNormal];
+    UIImage *image = [UIImage imageNamed:@"green_btn_bg.png"];
+    [startButton setBackgroundImage:image forState:UIControlStateNormal];
     
+    image = [UIImage imageNamed:@"redbutton_bg.png"];
+    [endButton setBackgroundImage:image forState:UIControlStateNormal];
     [endButton setTitle:CANCEL_RUNNING_BUTTON forState:UIControlStateNormal];
     [endButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -253,7 +255,8 @@
         [endButton setEnabled:YES];
     } else {
         [self stopTimer];
-        
+        UIImage *image = [UIImage imageNamed:@"green_btn_bg.png"];
+        [startButton setBackgroundImage:image forState:UIControlStateNormal];
         [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     }
     //    [[NSRunLoop  currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];

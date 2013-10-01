@@ -54,14 +54,14 @@
         [contentLabel setTag:i+1];
         [contentLabel setBackgroundColor:[UIColor clearColor]];
         [contentLabel setTextColor:LIGHT_GRAY_COLOR];
-        contentLabel.textAlignment = UITextAlignmentCenter;
+        contentLabel.textAlignment = NSTextAlignmentCenter;
         contentLabel.text = [NSString stringWithFormat:@"%d", i];
         [self addSubview:contentLabel];
         
 //        UIImageView *contentImage = [[UIImageView alloc]initWithFrame:imageFrame];
         UILabel *contentImage = [[UILabel alloc]initWithFrame:imageFrame];
         [contentImage setTag:i+columns+1];
-        contentImage.textAlignment = UITextAlignmentCenter;
+        contentImage.textAlignment = NSTextAlignmentCenter;
         [contentImage setText:MissionGradeEnum_toString[i]];
         [contentImage setBackgroundColor:[UIColor clearColor]];
         [contentImage setTextColor:LIGHT_GRAY_COLOR];

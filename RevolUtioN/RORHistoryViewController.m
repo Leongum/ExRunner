@@ -205,7 +205,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 22)];
     label.text = (NSString *)[sortedDateList objectAtIndex:section];
     label.font = [UIFont systemFontOfSize:15];
-    label.textAlignment = UITextAlignmentRight;
+    label.textAlignment = NSTextAlignmentRight;
     label.textColor = [UIColor darkGrayColor];
     label.backgroundColor = [UIColor clearColor];
     [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:label andSubViews:YES];

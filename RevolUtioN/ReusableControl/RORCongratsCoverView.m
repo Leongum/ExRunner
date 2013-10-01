@@ -46,7 +46,7 @@
     titleLabel.backgroundColor = [UIColor darkGrayColor];
     titleLabel.font = [UIFont fontWithName:CHN_PRINT_FONT size:18];
     titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.text = @"你这次跑步得了个";
     [self addSubview:titleLabel];
     
@@ -68,7 +68,7 @@
         levelLabel.backgroundColor = [UIColor clearColor];
         levelLabel.font = [UIFont fontWithName:ENG_GAME_FONT size:200];
         levelLabel.textColor = [UIColor yellowColor];
-        levelLabel.textAlignment = UITextAlignmentCenter;
+        levelLabel.textAlignment = NSTextAlignmentCenter;
         levelLabel.text = MissionGradeEnum_toString[bestRecord.missionGrade.integerValue];
         levelLabel.alpha = 0;
         [self addSubview:levelLabel];
@@ -79,7 +79,7 @@
     awardTitleLabel.textColor = [UIColor whiteColor];
     awardTitleLabel.font = [UIFont fontWithName:CHN_PRINT_FONT size:18];
     awardTitleLabel.text = @"获得额外的经验、积分奖励";
-    awardTitleLabel.textAlignment = UITextAlignmentCenter;
+    awardTitleLabel.textAlignment = NSTextAlignmentCenter;
     awardTitleLabel.alpha = 0;
     [self addSubview:awardTitleLabel];
     
@@ -87,7 +87,7 @@
     extraAwardLabel.backgroundColor = [UIColor clearColor];
     extraAwardLabel.font = [UIFont fontWithName:ENG_GAME_FONT size:22];
     extraAwardLabel.textColor = [UIColor yellowColor];
-    extraAwardLabel.textAlignment = UITextAlignmentCenter;
+    extraAwardLabel.textAlignment = NSTextAlignmentCenter;
     extraAwardLabel.text = [NSString stringWithFormat:@"exp: %d   gold: %d", bestRecord.experience.integerValue, bestRecord.scores.integerValue];
     extraAwardLabel.alpha = 0;
     [self addSubview:extraAwardLabel];

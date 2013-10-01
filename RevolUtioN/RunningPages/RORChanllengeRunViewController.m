@@ -66,9 +66,11 @@
     
     [startButton setTitle:SEARCHING_LOCATION forState:UIControlStateNormal];
     [self.startButton setEnabled:NO];
-
-//    UIImage *image = [UIImage imageNamed:@"graybutton_bg.png"];
-//    [startButton setBackgroundImage:image forState:UIControlStateNormal];
+    UIImage *image = [UIImage imageNamed:@"green_btn_bg.png"];
+    [startButton setBackgroundImage:image forState:UIControlStateNormal];
+    
+    image = [UIImage imageNamed:@"redbutton_bg.png"];
+    [endButton setBackgroundImage:image forState:UIControlStateNormal];
     
     [endButton setTitle:CANCEL_RUNNING_BUTTON forState:UIControlStateNormal];
     [endButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -258,7 +260,6 @@
             formerLocation = latestUserLocation;
             [routePoints addObject:formerLocation];
             [self drawLineWithLocationArray:routePoints];
-            
         }
         
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(timerDot) userInfo:nil repeats:YES];

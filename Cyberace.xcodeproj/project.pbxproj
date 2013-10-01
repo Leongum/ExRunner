@@ -92,6 +92,7 @@
 		30166AA217C3C6260035C722 /* back_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166AA017C3C6260035C722 /* back_bg@2x.png */; };
 		30166AA317C3C6260035C722 /* back_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166AA117C3C6260035C722 /* back_bg.png */; };
 		30166AA617C3C6730035C722 /* RORViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30166AA517C3C6730035C722 /* RORViewController.m */; };
+		3029769517F9F854001470CB /* SBJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9A9D3417894A1B0025E49B /* SBJson.framework */; };
 		302FD0051727D870004DA005 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302FD0041727D870004DA005 /* UIKit.framework */; };
 		302FD0071727D870004DA005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302FD0061727D870004DA005 /* Foundation.framework */; };
 		302FD0091727D870004DA005 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302FD0081727D870004DA005 /* CoreGraphics.framework */; };
@@ -225,8 +226,6 @@
 		30D008D317F53FBB004E6747 /* challenge_S.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 30D008D017F53FBB004E6747 /* challenge_S.m4a */; };
 		30D008D417F53FBB004E6747 /* challenge_normal.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 30D008D117F53FBB004E6747 /* challenge_normal.m4a */; };
 		30D008D517F53FBB004E6747 /* challenge_F.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 30D008D217F53FBB004E6747 /* challenge_F.m4a */; };
-		30D21E91173CE617006B24A8 /* RORRelationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D21E90173CE617006B24A8 /* RORRelationsCell.m */; };
-		30D21E9A173D4D02006B24A8 /* RORRelationsOnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D21E99173D4D02006B24A8 /* RORRelationsOnlineCell.m */; };
 		30D95E6E17C35EB70056E7C0 /* RORStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */; };
 		30D95E6F17C35EB70056E7C0 /* RORHistoryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D95E6D17C35EB70056E7C0 /* RORHistoryPageViewController.m */; };
 		30DBB71F17EF300E00552391 /* textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DBB71E17EF300E00552391 /* textfield.png */; };
@@ -608,10 +607,6 @@
 		30D008D017F53FBB004E6747 /* challenge_S.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = challenge_S.m4a; path = Resources/sound/challenge_S.m4a; sourceTree = "<group>"; };
 		30D008D117F53FBB004E6747 /* challenge_normal.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = challenge_normal.m4a; path = Resources/sound/challenge_normal.m4a; sourceTree = "<group>"; };
 		30D008D217F53FBB004E6747 /* challenge_F.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = challenge_F.m4a; path = Resources/sound/challenge_F.m4a; sourceTree = "<group>"; };
-		30D21E8F173CE617006B24A8 /* RORRelationsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORRelationsCell.h; path = Cells/RORRelationsCell.h; sourceTree = "<group>"; };
-		30D21E90173CE617006B24A8 /* RORRelationsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORRelationsCell.m; path = Cells/RORRelationsCell.m; sourceTree = "<group>"; };
-		30D21E98173D4D02006B24A8 /* RORRelationsOnlineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORRelationsOnlineCell.h; path = Cells/RORRelationsOnlineCell.h; sourceTree = "<group>"; };
-		30D21E99173D4D02006B24A8 /* RORRelationsOnlineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORRelationsOnlineCell.m; path = Cells/RORRelationsOnlineCell.m; sourceTree = "<group>"; };
 		30D95E6A17C35EB70056E7C0 /* RORStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORStatisticsViewController.h; sourceTree = "<group>"; };
 		30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORStatisticsViewController.m; sourceTree = "<group>"; };
 		30D95E6C17C35EB70056E7C0 /* RORHistoryPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHistoryPageViewController.h; sourceTree = "<group>"; };
@@ -671,6 +666,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3029769517F9F854001470CB /* SBJson.framework in Frameworks */,
 				30621D4E17E45F490063A007 /* AudioToolbox.framework in Frameworks */,
 				0F8501E317C1C9510005993E /* CoreTelephony.framework in Frameworks */,
 				0F8501E017C1C68E0005993E /* libsqlite3.dylib in Frameworks */,
@@ -1115,7 +1111,6 @@
 			isa = PBXGroup;
 			children = (
 				3061F3A4174C70F0006093FC /* userInfo.plist */,
-				30D21E8C173CE517006B24A8 /* Cells */,
 				302FD00C1727D870004DA005 /* PopTrack-Info.plist */,
 				302FD0101727D870004DA005 /* main.m */,
 				302FD0121727D870004DA005 /* Cyberace-Prefix.pch */,
@@ -1370,17 +1365,6 @@
 				30FC2905175EF6F300DEC042 /* RORMapViewController.m */,
 			);
 			name = RORHistoryPage;
-			sourceTree = "<group>";
-		};
-		30D21E8C173CE517006B24A8 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				30D21E8F173CE617006B24A8 /* RORRelationsCell.h */,
-				30D21E90173CE617006B24A8 /* RORRelationsCell.m */,
-				30D21E98173D4D02006B24A8 /* RORRelationsOnlineCell.h */,
-				30D21E99173D4D02006B24A8 /* RORRelationsOnlineCell.m */,
-			);
-			name = Cells;
 			sourceTree = "<group>";
 		};
 		30D21E8D173CE525006B24A8 /* MainPage */ = {
@@ -1739,8 +1723,6 @@
 				302FD0111727D870004DA005 /* main.m in Sources */,
 				302FD0151727D870004DA005 /* RORAppDelegate.m in Sources */,
 				302FD0241727D870004DA005 /* RORFirstViewController.m in Sources */,
-				30D21E91173CE617006B24A8 /* RORRelationsCell.m in Sources */,
-				30D21E9A173D4D02006B24A8 /* RORRelationsOnlineCell.m in Sources */,
 				30151A7D174488EB009BCADB /* RORRunningViewController.m in Sources */,
 				3061F3B9174CDBEB006093FC /* RORCoreData.xcdatamodeld in Sources */,
 				305A1878174F1EFB003A8CD7 /* RORLoginViewController.m in Sources */,
@@ -1930,8 +1912,8 @@
 		302FD0481727D870004DA005 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bingyang Zhao (TQ9NFCPT45)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bingyang Zhao (TQ9NFCPT45)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Connection\"",
@@ -1946,7 +1928,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RevolUtioN/Cyberace-Prefix.pch";
 				INFOPLIST_FILE = "RevolUtioN/PopTrack-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/libWeiboSDK\"",
@@ -1955,6 +1937,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Cyberace;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1963,7 +1946,8 @@
 		302FD0491727D870004DA005 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bingyang Zhao (TQ9NFCPT45)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Connection\"",
@@ -1978,7 +1962,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RevolUtioN/Cyberace-Prefix.pch";
 				INFOPLIST_FILE = "RevolUtioN/PopTrack-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/libWeiboSDK\"",
@@ -1987,6 +1971,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Cyberace;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
