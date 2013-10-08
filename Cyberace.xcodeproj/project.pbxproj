@@ -101,7 +101,7 @@
 		30166AA217C3C6260035C722 /* back_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166AA017C3C6260035C722 /* back_bg@2x.png */; };
 		30166AA317C3C6260035C722 /* back_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166AA117C3C6260035C722 /* back_bg.png */; };
 		30166AA617C3C6730035C722 /* RORViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30166AA517C3C6730035C722 /* RORViewController.m */; };
-		3029769517F9F854001470CB /* SBJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9A9D3417894A1B0025E49B /* SBJson.framework */; };
+		3029769517F9F854001470CB /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		302FD0051727D870004DA005 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302FD0041727D870004DA005 /* UIKit.framework */; };
 		302FD0071727D870004DA005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302FD0061727D870004DA005 /* Foundation.framework */; };
 		302FD0091727D870004DA005 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302FD0081727D870004DA005 /* CoreGraphics.framework */; };
@@ -194,7 +194,6 @@
 		30989CCE17F80FB000CA9F83 /* RORAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30989CCD17F80FB000CA9F83 /* RORAboutViewController.m */; };
 		30989CD517F863E000CA9F83 /* Comic Sans MS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30989CD417F863E000CA9F83 /* Comic Sans MS.ttf */; };
 		30989CDA17F8FF4E00CA9F83 /* QQ.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CD917F8FF4E00CA9F83 /* QQ.png */; };
-		30989CE017F9017B00CA9F83 /* LOGO.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CDF17F9017B00CA9F83 /* LOGO.png */; };
 		30989CE317F91C6F00CA9F83 /* main_trafficlight_none.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CE117F91C6F00CA9F83 /* main_trafficlight_none.png */; };
 		30989CE417F91C6F00CA9F83 /* main_trafficlight_none@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CE217F91C6F00CA9F83 /* main_trafficlight_none@2x.png */; };
 		30989CE617F9324B00CA9F83 /* write_us.png in Resources */ = {isa = PBXBuildFile; fileRef = 30989CE517F9324B00CA9F83 /* write_us.png */; };
@@ -548,7 +547,6 @@
 		30989CCD17F80FB000CA9F83 /* RORAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORAboutViewController.m; path = MorePage/RORAboutViewController.m; sourceTree = "<group>"; };
 		30989CD417F863E000CA9F83 /* Comic Sans MS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comic Sans MS.ttf"; path = "Resources/Comic Sans MS.ttf"; sourceTree = "<group>"; };
 		30989CD917F8FF4E00CA9F83 /* QQ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QQ.png; sourceTree = "<group>"; };
-		30989CDF17F9017B00CA9F83 /* LOGO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LOGO.png; sourceTree = "<group>"; };
 		30989CE117F91C6F00CA9F83 /* main_trafficlight_none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_trafficlight_none.png; sourceTree = "<group>"; };
 		30989CE217F91C6F00CA9F83 /* main_trafficlight_none@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_trafficlight_none@2x.png"; sourceTree = "<group>"; };
 		30989CE517F9324B00CA9F83 /* write_us.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = write_us.png; sourceTree = "<group>"; };
@@ -667,7 +665,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3029769517F9F854001470CB /* SBJson.framework in Frameworks */,
+				3029769517F9F854001470CB /* (null) in Frameworks */,
 				30621D4E17E45F490063A007 /* AudioToolbox.framework in Frameworks */,
 				0F8501E317C1C9510005993E /* CoreTelephony.framework in Frameworks */,
 				0F8501E017C1C68E0005993E /* libsqlite3.dylib in Frameworks */,
@@ -1434,7 +1432,6 @@
 			isa = PBXGroup;
 			children = (
 				30989CE517F9324B00CA9F83 /* write_us.png */,
-				30989CDF17F9017B00CA9F83 /* LOGO.png */,
 				30989CC317F7245E00CA9F83 /* contactUs_icon.png */,
 				30989CA017F5D86700CA9F83 /* icon.png */,
 				30989CA117F5D86700CA9F83 /* icon@2x.png */,
@@ -1574,7 +1571,6 @@
 				30166AA217C3C6260035C722 /* back_bg@2x.png in Resources */,
 				30DBB72317EFE04400552391 /* challenge_pop_bg.png in Resources */,
 				30166AA317C3C6260035C722 /* back_bg.png in Resources */,
-				30989CE017F9017B00CA9F83 /* LOGO.png in Resources */,
 				30989CB317F5F7C800CA9F83 /* A.png in Resources */,
 				30DFE7DF17C6748F00678780 /* submit.png in Resources */,
 				30DFE7E017C6748F00678780 /* submit@2x.png in Resources */,
@@ -1902,7 +1898,7 @@
 		302FD0481727D870004DA005 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bingyang Zhao (TQ9NFCPT45)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1936,9 +1932,8 @@
 		302FD0491727D870004DA005 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bingyang Zhao (TQ9NFCPT45)";
-
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Connection\"",
