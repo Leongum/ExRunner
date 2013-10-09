@@ -411,14 +411,18 @@
     record = runHistory;
     [RORRunHistoryServices saveRunInfoToDB:runHistory];
     if([RORUserUtils getUserId].integerValue > 0){
-        BOOL updated = [RORRunHistoryServices uploadRunningHistories];
-        [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
-        if(updated){
-            [self sendNotification:SYNC_DATA_SUCCESS];
-        }
-        else{
-            [self sendAlart:SYNC_DATA_FAIL];
-        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            BOOL updated = [RORRunHistoryServices uploadRunningHistories];
+            [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(updated){
+                    [self sendNotification:SYNC_DATA_SUCCESS];
+                }
+                else{
+                    [self sendAlart:SYNC_DATA_FAIL];
+                }
+            });
+        });
     }
 }
 
