@@ -42,7 +42,7 @@
             continue;
         if (startLoc==nil){
             startLoc = [routePoints objectAtIndex:0];
-            RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:startLoc.coordinate];
+            RORStartAnnotation *annotation = [[RORStartAnnotation alloc]initWithCoordinate:startLoc.coordinate];
             annotation.title = @"起点";
             [mapView addAnnotation:annotation];
         }
@@ -75,7 +75,7 @@
         [self drawLineWithLocationArray:improvedRoute withStyle:ROUTE_SHADOW];
         [self drawLineWithLocationArray:routePoints withStyle:ROUTE_NORMAL];
     }
-    RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:endLoc.coordinate];
+    ROREndAnnotation *annotation = [[ROREndAnnotation alloc]initWithCoordinate:endLoc.coordinate];
     annotation.title = @"终点";
     [mapView addAnnotation:annotation];
 }
@@ -200,7 +200,7 @@
         return nil;
     // 处理我们自定义的Annotation
     if ([annotation isKindOfClass:[RORMapAnnotation class]]) {
-//        RORMapAnnotation *travellerAnnotation = (RORMapAnnotation *)annotation;
+        //        RORMapAnnotation *travellerAnnotation = (RORMapAnnotation *)annotation;
         //        static NSString* travellerAnnotationIdentifier = @"TravellerAnnotationIdentifier";
         static NSString *identifier = @"currentLocation";
         //        SVPulsingAnnotationView *pulsingView = (SVPulsingAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
@@ -220,13 +220,17 @@
             //                  forControlEvents:UIControlEventTouchUpInside];
             //            pulsingView.rightCalloutAccessoryView = rightButton;
             //
-//            UIImage *image = [UIImage imageNamed:@"smail_annotation.png"];
-//            pulsingView.image = image;  //将图钉变成笑脸。
+            UIImage *image;
+            if ([annotation isKindOfClass:[RORStartAnnotation class]])
+                image = [UIImage imageNamed:@"start_annotation.png"];
+            else
+                image = [UIImage imageNamed:@"end_annotation.png"];
+            
+            pulsingView.image = image;
             pulsingView.canShowCallout = YES;
             //
             //            UIImageView *headImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:travellerAnnotation.headImage]];
             //            pulsingView.leftCalloutAccessoryView = headImage; //设置最左边的头像
-            
             return pulsingView;
         }
         else
@@ -235,6 +239,7 @@
         }
         return pulsingView;
     }
+    
     return nil;
 }
 @end

@@ -10,6 +10,8 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "RORViewController.h"
+#import "RORStartAnnotation.h"
+#import "ROREndAnnotation.h"
 
 @interface RORMapViewController : RORViewController<MKMapViewDelegate>{
     NSMutableArray *improvedRoute;

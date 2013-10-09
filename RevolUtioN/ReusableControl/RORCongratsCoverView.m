@@ -59,7 +59,7 @@
         levelBgImageView.alpha = 0;
         [self addSubview:levelBgImageView];
 
-        levelImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:MissionGradeImageEnum_toString[grade]]];
+        levelImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:MissionGradeCongratsImageEnum_toString[grade]]];
         levelImageView.frame = self.frame;
         levelImageView.alpha = 0;
         [self addSubview:levelImageView];

@@ -179,23 +179,23 @@
     UILabel *durationLabel = (UILabel *)[cell viewWithTag:DURATION];
     durationLabel.text = [RORUtils transSecondToStandardFormat:[record4Date.duration integerValue]];
     RORImageView *isValidImage = (RORImageView *)[cell viewWithTag:VALID];
-    if (((NSNumber *)record4Date.valid).integerValue>0){
+    if (((NSNumber *)record4Date.valid).integerValue>0 && record4Date.missionTypeId.integerValue == Challenge){
         isValidImage.alpha = 1;
+        [isValidImage setImage:[UIImage imageNamed:MissionGradeImageEnum_toString[record4Date.missionGrade.integerValue]]];
         isValidImage.center = CGPointMake([RORUtils randomBetween:100 and:205], [RORUtils randomBetween:30 and:50]);
         [Animations rotate:isValidImage andAnimationDuration:0 andWait:NO andAngle:[RORUtils randomBetween:-10 and:10]];
 //        isValidImage.transform = CGAffineTransformMakeRotation(degreesToRadians([RORUtils randomBetween:-45 and:45]));
     } else
         isValidImage.alpha = 0;
 
-    UILabel *level = (UILabel *)[cell viewWithTag:LEVEL];
-    if (record4Date.missionTypeId.integerValue == Challenge) {
-        level.alpha = 1;
-        if (isValidImage.alpha == 1)
-            level.text = [NSString stringWithFormat:@"%@", MissionGradeEnum_toString[record4Date.missionGrade.integerValue]];
-        else
-            level.text = @"F";
-    } else
-        level.alpha = 0;
+//    UILabel *level = (UILabel *)[cell viewWithTag:LEVEL];
+//    if (record4Date.missionTypeId.integerValue == Challenge) {
+//        level.alpha = 1;
+//        if (isValidImage.alpha == 1)
+//            level.text = [NSString stringWithFormat:@"%@", MissionGradeEnum_toString[record4Date.missionGrade.integerValue]];
+//        else
+//            level.text = @"F";
+//    }
     
     return cell;
 }

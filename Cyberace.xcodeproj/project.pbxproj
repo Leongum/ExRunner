@@ -113,6 +113,20 @@
 		302FD0391727D870004DA005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302FD0061727D870004DA005 /* Foundation.framework */; };
 		302FD0441727D870004DA005 /* RevolUtioNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 302FD0431727D870004DA005 /* RevolUtioNTests.m */; };
 		302FD04E172903D7004DA005 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302FD04D172903D7004DA005 /* CoreLocation.framework */; };
+		303707931805074900FE0238 /* stamp_a.png in Resources */ = {isa = PBXBuildFile; fileRef = 3037078D1805074900FE0238 /* stamp_a.png */; };
+		303707941805074900FE0238 /* stamp_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 3037078E1805074900FE0238 /* stamp_b.png */; };
+		303707951805074900FE0238 /* stamp_c.png in Resources */ = {isa = PBXBuildFile; fileRef = 3037078F1805074900FE0238 /* stamp_c.png */; };
+		303707961805074900FE0238 /* stamp_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707901805074900FE0238 /* stamp_d.png */; };
+		303707971805074900FE0238 /* stamp_e.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707911805074900FE0238 /* stamp_e.png */; };
+		303707981805074900FE0238 /* stamp_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707921805074900FE0238 /* stamp_s.png */; };
+		3037079B180511CB00FE0238 /* RORStartAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3037079A180511CB00FE0238 /* RORStartAnnotation.m */; };
+		3037079E180511DC00FE0238 /* ROREndAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3037079D180511DC00FE0238 /* ROREndAnnotation.m */; };
+		303707A11805132300FE0238 /* end_annotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 3037079F1805132300FE0238 /* end_annotation.png */; };
+		303707A21805132300FE0238 /* start_annotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707A01805132300FE0238 /* start_annotation.png */; };
+		303707A71805523900FE0238 /* friends.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707A31805523900FE0238 /* friends.png */; };
+		303707A81805523900FE0238 /* friends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707A41805523900FE0238 /* friends@2x.png */; };
+		303707A91805523900FE0238 /* mall.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707A51805523900FE0238 /* mall.png */; };
+		303707AA1805523900FE0238 /* mall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707A61805523900FE0238 /* mall@2x.png */; };
 		305428CB17CF85DA00A9E6E9 /* RORChallengeLevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 305428CA17CF85DA00A9E6E9 /* RORChallengeLevelView.m */; };
 		30594BC417F06B4F00E6A19B /* seg_selected_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30594BC317F06B4F00E6A19B /* seg_selected_bg.png */; };
 		30594BCD17F0851500E6A19B /* last_kilo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 30594BC917F0851500E6A19B /* last_kilo.mp3 */; };
@@ -454,6 +468,22 @@
 		302FD0421727D870004DA005 /* RevolUtioNTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RevolUtioNTests.h; sourceTree = "<group>"; };
 		302FD0431727D870004DA005 /* RevolUtioNTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RevolUtioNTests.m; sourceTree = "<group>"; };
 		302FD04D172903D7004DA005 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3037078D1805074900FE0238 /* stamp_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stamp_a.png; sourceTree = "<group>"; };
+		3037078E1805074900FE0238 /* stamp_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stamp_b.png; sourceTree = "<group>"; };
+		3037078F1805074900FE0238 /* stamp_c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stamp_c.png; sourceTree = "<group>"; };
+		303707901805074900FE0238 /* stamp_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stamp_d.png; sourceTree = "<group>"; };
+		303707911805074900FE0238 /* stamp_e.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stamp_e.png; sourceTree = "<group>"; };
+		303707921805074900FE0238 /* stamp_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stamp_s.png; sourceTree = "<group>"; };
+		30370799180511CB00FE0238 /* RORStartAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORStartAnnotation.h; path = ReusableControl/RORStartAnnotation.h; sourceTree = "<group>"; };
+		3037079A180511CB00FE0238 /* RORStartAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORStartAnnotation.m; path = ReusableControl/RORStartAnnotation.m; sourceTree = "<group>"; };
+		3037079C180511DC00FE0238 /* ROREndAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROREndAnnotation.h; sourceTree = "<group>"; };
+		3037079D180511DC00FE0238 /* ROREndAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROREndAnnotation.m; sourceTree = "<group>"; };
+		3037079F1805132300FE0238 /* end_annotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end_annotation.png; sourceTree = "<group>"; };
+		303707A01805132300FE0238 /* start_annotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_annotation.png; sourceTree = "<group>"; };
+		303707A31805523900FE0238 /* friends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friends.png; sourceTree = "<group>"; };
+		303707A41805523900FE0238 /* friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friends@2x.png"; sourceTree = "<group>"; };
+		303707A51805523900FE0238 /* mall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mall.png; sourceTree = "<group>"; };
+		303707A61805523900FE0238 /* mall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mall@2x.png"; sourceTree = "<group>"; };
 		305428C917CF85DA00A9E6E9 /* RORChallengeLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORChallengeLevelView.h; sourceTree = "<group>"; };
 		305428CA17CF85DA00A9E6E9 /* RORChallengeLevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORChallengeLevelView.m; sourceTree = "<group>"; };
 		30594BC317F06B4F00E6A19B /* seg_selected_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seg_selected_bg.png; path = bg/seg_selected_bg.png; sourceTree = "<group>"; };
@@ -966,8 +996,6 @@
 				30151A7C174488EB009BCADB /* RORRunningViewController.m */,
 				30C58AC117C4840F0065FC90 /* RORChallengeViewController.h */,
 				30C58AC217C4840F0065FC90 /* RORChallengeViewController.m */,
-				30FC2907175F1F5800DEC042 /* RORMapAnnotation.h */,
-				30FC2908175F1F5800DEC042 /* RORMapAnnotation.m */,
 				30621D3117E09F880063A007 /* RORChanllengeRunViewController.h */,
 				30621D3217E09F880063A007 /* RORChanllengeRunViewController.m */,
 			);
@@ -1152,6 +1180,19 @@
 				302FD03E1727D870004DA005 /* CyberaceTests-Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3037078C1805074900FE0238 /* levels */ = {
+			isa = PBXGroup;
+			children = (
+				3037078D1805074900FE0238 /* stamp_a.png */,
+				3037078E1805074900FE0238 /* stamp_b.png */,
+				3037078F1805074900FE0238 /* stamp_c.png */,
+				303707901805074900FE0238 /* stamp_d.png */,
+				303707911805074900FE0238 /* stamp_e.png */,
+				303707921805074900FE0238 /* stamp_s.png */,
+			);
+			path = levels;
 			sourceTree = "<group>";
 		};
 		3061F3C7174DC6CC006093FC /* CoreData */ = {
@@ -1361,6 +1402,12 @@
 				307A1D5317F4353B006692DD /* RORCongratsCoverView.m */,
 				30989CC917F7D72A00CA9F83 /* RORImageView.h */,
 				30989CCA17F7D72A00CA9F83 /* RORImageView.m */,
+				30FC2907175F1F5800DEC042 /* RORMapAnnotation.h */,
+				30FC2908175F1F5800DEC042 /* RORMapAnnotation.m */,
+				30370799180511CB00FE0238 /* RORStartAnnotation.h */,
+				3037079A180511CB00FE0238 /* RORStartAnnotation.m */,
+				3037079C180511DC00FE0238 /* ROREndAnnotation.h */,
+				3037079D180511DC00FE0238 /* ROREndAnnotation.m */,
 			);
 			name = ReusableControl;
 			sourceTree = "<group>";
@@ -1431,6 +1478,13 @@
 		30FC291A17607F6D00DEC042 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				303707A31805523900FE0238 /* friends.png */,
+				303707A41805523900FE0238 /* friends@2x.png */,
+				303707A51805523900FE0238 /* mall.png */,
+				303707A61805523900FE0238 /* mall@2x.png */,
+				3037079F1805132300FE0238 /* end_annotation.png */,
+				303707A01805132300FE0238 /* start_annotation.png */,
+				3037078C1805074900FE0238 /* levels */,
 				30989CE517F9324B00CA9F83 /* write_us.png */,
 				30989CC317F7245E00CA9F83 /* contactUs_icon.png */,
 				30989CA017F5D86700CA9F83 /* icon.png */,
@@ -1542,11 +1596,13 @@
 				30989CE617F9324B00CA9F83 /* write_us.png in Resources */,
 				30594BCF17F0851500E6A19B /* all_set_gun.mp3 in Resources */,
 				307A1D5A17F47CCD006692DD /* EHSMB.TTF in Resources */,
+				303707A21805132300FE0238 /* start_annotation.png in Resources */,
 				3061F3A5174C70F0006093FC /* userInfo.plist in Resources */,
 				30C658941755F78C0076AFA3 /* CityCode.geojson in Resources */,
 				30594BD517F16E0700E6A19B /* running_countdown_2.png in Resources */,
 				30FC292917607F6D00DEC042 /* settings.png in Resources */,
 				30FC292A17607F6D00DEC042 /* settings@2x.png in Resources */,
+				303707981805074900FE0238 /* stamp_s.png in Resources */,
 				30989CAE17F5D87800CA9F83 /* Default@2x.png in Resources */,
 				30989CAC17F5D87800CA9F83 /* Default.png in Resources */,
 				30FC29411760861C00DEC042 /* expand.png in Resources */,
@@ -1569,6 +1625,7 @@
 				30D008D417F53FBB004E6747 /* challenge_normal.m4a in Resources */,
 				30166A9D17C3B84C0035C722 /* main_username_bg@2x.png in Resources */,
 				30166AA217C3C6260035C722 /* back_bg@2x.png in Resources */,
+				303707A91805523900FE0238 /* mall.png in Resources */,
 				30DBB72317EFE04400552391 /* challenge_pop_bg.png in Resources */,
 				30166AA317C3C6260035C722 /* back_bg.png in Resources */,
 				30989CB317F5F7C800CA9F83 /* A.png in Resources */,
@@ -1580,6 +1637,7 @@
 				30594BD417F16E0700E6A19B /* running_countdown_3.png in Resources */,
 				30A6D9D017CA65F100D1116E /* check.png in Resources */,
 				30A6D9EF17CDD58700D1116E /* main_trafficlight_green.png in Resources */,
+				303707AA1805523900FE0238 /* mall@2x.png in Resources */,
 				30A6D9F017CDD58700D1116E /* main_trafficlight_green@2x.png in Resources */,
 				30A6D9F117CDD58700D1116E /* main_trafficlight_red.png in Resources */,
 				30594BCE17F0851500E6A19B /* last_hundred.mp3 in Resources */,
@@ -1604,6 +1662,7 @@
 				30FECBDB17DD94A6002C3C90 /* paper@2x.png in Resources */,
 				30989CE417F91C6F00CA9F83 /* main_trafficlight_none@2x.png in Resources */,
 				30FECBDD17DD94A6002C3C90 /* paper_hand_bg.jpg in Resources */,
+				303707971805074900FE0238 /* stamp_e.png in Resources */,
 				30804E9617F56D6E00F1A353 /* renren.png in Resources */,
 				30FECBE417DD96B1002C3C90 /* hand.png in Resources */,
 				30FECBE517DD96B1002C3C90 /* hand@2x.png in Resources */,
@@ -1619,6 +1678,7 @@
 				30804E9517F56D6E00F1A353 /* QQ_friend@2x.png in Resources */,
 				30989CD517F863E000CA9F83 /* Comic Sans MS.ttf in Resources */,
 				30621D5517E4609C0063A007 /* bo.wav in Resources */,
+				303707931805074900FE0238 /* stamp_a.png in Resources */,
 				307C85F417E6BD50007C1DE5 /* filter_btn_bg.png in Resources */,
 				307C85F517E6BD50007C1DE5 /* filter_btn_bg@2x.png in Resources */,
 				30989CC617F7291000CA9F83 /* contactUs_bg.png in Resources */,
@@ -1631,12 +1691,15 @@
 				307C85FF17E6E8DE007C1DE5 /* logout_btn_bg@2x.png in Resources */,
 				3083DC7517F5248F009A50F6 /* entsani.ttf in Resources */,
 				30989CB917F6877800CA9F83 /* oneButtonShare_bg@2x.png in Resources */,
+				303707A81805523900FE0238 /* friends@2x.png in Resources */,
 				30989CAB17F5D87800CA9F83 /* Default-568h@2x.png in Resources */,
 				307C861F17E97A90007C1DE5 /* green_btn_bg.png in Resources */,
 				30DBB72517EFE04400552391 /* share_pop_bg.png in Resources */,
 				307C862017E97A90007C1DE5 /* green_btn_bg@2x.png in Resources */,
 				30804E8817F566DD00F1A353 /* loading_bg.jpg in Resources */,
 				307C862117E97A90007C1DE5 /* redbutton_bg.png in Resources */,
+				303707941805074900FE0238 /* stamp_b.png in Resources */,
+				303707951805074900FE0238 /* stamp_c.png in Resources */,
 				307C862217E97A90007C1DE5 /* redbutton_bg@2x.png in Resources */,
 				30989CDA17F8FF4E00CA9F83 /* QQ.png in Resources */,
 				307C862317E97A90007C1DE5 /* running_bg.png in Resources */,
@@ -1658,6 +1721,9 @@
 				30989CA317F5D86700CA9F83 /* icon@2x.png in Resources */,
 				0F53B4A517F3481D006DB4C4 /* Resource.bundle in Resources */,
 				0F53B4AB17F3481D006DB4C4 /* WeiboSDK.bundle in Resources */,
+				303707961805074900FE0238 /* stamp_d.png in Resources */,
+				303707A71805523900FE0238 /* friends.png in Resources */,
+				303707A11805132300FE0238 /* end_annotation.png in Resources */,
 				0F53B4AE17F3481D006DB4C4 /* RennSDK.bundle in Resources */,
 				30989CC817F7356300CA9F83 /* running_end_bg.png in Resources */,
 				0F53B4B217F3481D006DB4C4 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
@@ -1713,6 +1779,7 @@
 				30F44B501778267200876915 /* RORDBCommon.m in Sources */,
 				301250F0177B21A60082A09A /* RORAccountViewController.m in Sources */,
 				0F857708178959DC00173A92 /* RORUtils.m in Sources */,
+				3037079B180511CB00FE0238 /* RORStartAnnotation.m in Sources */,
 				0F857712178C4EF100173A92 /* RORHttpClientHandler.m in Sources */,
 				0F972BD2179255F300A27EF2 /* RORHttpResponse.m in Sources */,
 				0F7F398E1792DF1000B1C720 /* RORUserServices.m in Sources */,
@@ -1737,6 +1804,7 @@
 				30989CE917F936E300CA9F83 /* RORWriteUsViewController.m in Sources */,
 				30F4547617BCB519006CB66C /* INVector.m in Sources */,
 				30F4548117BCB564006CB66C /* INStepCounting.m in Sources */,
+				3037079E180511DC00FE0238 /* ROREndAnnotation.m in Sources */,
 				30F4549317C1296C006CB66C /* Animations.m in Sources */,
 				0F59A16B17BC700A000DEFEF /* RORShareService.m in Sources */,
 				0F8501E817C1F32C0005993E /* RORShareViewDelegate.m in Sources */,

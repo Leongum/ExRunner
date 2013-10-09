@@ -29,6 +29,16 @@ NSString * const MissionGradeEnum_toString[] = {
 };
 
 NSString * const MissionGradeImageEnum_toString[] = {
+    @"stamp_s.png",
+    @"stamp_a.png",
+    @"stamp_b.png",
+    @"stamp_c.png",
+    @"stamp_d.png",
+    @"stamp_e.png",
+    @"stamp_f.png"
+};
+
+NSString * const MissionGradeCongratsImageEnum_toString[] = {
     @"S.png",
     @"A.png",
     @"B.png",

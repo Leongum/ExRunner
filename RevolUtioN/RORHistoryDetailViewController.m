@@ -84,14 +84,14 @@
             continue;
         if (startLoc==nil){
             startLoc = [routePoints objectAtIndex:0];
-            RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:startLoc.coordinate];
+            RORStartAnnotation *annotation = [[RORStartAnnotation alloc]initWithCoordinate:startLoc.coordinate];
             annotation.title = @"起点";
             [mapView addAnnotation:annotation];
         }
         endLoc = [routePoints objectAtIndex:routePoints.count-1];
         [self drawRouteOntoMap:routePoints];
     }
-    RORMapAnnotation *annotation = [[RORMapAnnotation alloc]initWithCoordinate:endLoc.coordinate];
+    ROREndAnnotation *annotation = [[ROREndAnnotation alloc]initWithCoordinate:endLoc.coordinate];
     annotation.title = @"终点";
     [mapView addAnnotation:annotation];
     
@@ -405,8 +405,13 @@
 //                  forControlEvents:UIControlEventTouchUpInside];
 //            pulsingView.rightCalloutAccessoryView = rightButton;
 //
-//            UIImage *image = [UIImage imageNamed:@"smail_annotation.png"];
-//            pulsingView.image = image;  //将图钉变成笑脸。
+            UIImage *image;
+            if ([annotation isKindOfClass:[RORStartAnnotation class]])
+                image = [UIImage imageNamed:@"start_annotation.png"];
+            else
+                image = [UIImage imageNamed:@"end_annotation.png"];
+
+            pulsingView.image = image;
             pulsingView.canShowCallout = YES;
 //
 //            UIImageView *headImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:travellerAnnotation.headImage]];
@@ -419,6 +424,7 @@
         }
         return pulsingView;
     }
+    
     return nil;
 }
 

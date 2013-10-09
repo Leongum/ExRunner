@@ -43,6 +43,7 @@
     [self.view addSubview:countDownView];
     [countDownView hide];
     
+    srand(time(NULL));
     int randomValue = rand();
     if (randomValue%100<20)
         sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"all_set.mp3"];

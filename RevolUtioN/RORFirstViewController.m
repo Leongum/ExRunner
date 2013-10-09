@@ -81,6 +81,8 @@
     self.challenge.alpha = 0;
     self.historyButton.alpha = 0;
     self.settingButton.alpha = 0;
+    self.mallButton.alpha = 0;
+    self.friendsButton.alpha = 0;
 }
 
 - (void)initLocationServcie{
@@ -284,8 +286,12 @@
     //    [Animations fadeIn:self.challenge andAnimationDuration:1 toAlpha:1 andWait:YES];
     self.historyButton.alpha =1;
     self.settingButton.alpha = 1;
+    self.mallButton.alpha = 1;
+    self.friendsButton.alpha = 1;
     [self.historyButton slideInFrom:kFTAnimationRight duration:0.5 delegate:self];
     [self.settingButton slideInFrom:kFTAnimationLeft duration:0.5 delegate:self];
+    [self.mallButton fadeIn:0.5 delegate:self];
+    [self.friendsButton fadeIn:0.5 delegate:self];
     //    [Animations fadeIn:self.settingButton andAnimationDuration:1.5 toAlpha:1 andWait:YES];
     self.weatherInfoButtonView.alpha = 1;
     self.userInfoView.alpha = 1;
@@ -308,4 +314,12 @@
 
 - (IBAction)challengeRunAction:(id)sender{
 }
+
+- (IBAction)mallUnderDeveloping:(id)sender {
+    [self sendNotification:@"【装备商城】正在哼哧哼哧开发中"];
+}
+- (IBAction)friendsUnderDeveloping:(id)sender {
+    [self sendNotification:@"【我的跑友】正在窟嚓窟嚓开发中"];
+}
+
 @end

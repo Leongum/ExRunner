@@ -44,6 +44,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *charactorWindView;
 @property (strong, nonatomic) IBOutlet RORNormalButton *historyButton;
 @property (strong, nonatomic) IBOutlet RORNormalButton *settingButton;
+@property (strong, nonatomic) IBOutlet RORNormalButton *mallButton;
+@property (strong, nonatomic) IBOutlet RORNormalButton *friendsButton;
 
 - (IBAction)normalRunAction:(id)sender;
 - (IBAction)challengeRunAction:(id)sender;

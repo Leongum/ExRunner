@@ -12,11 +12,14 @@
 #import "RORRunHistoryServices.h"
 #import "RORViewController.h"
 #import "RORCongratsCoverView.h"
+#import "RORStartAnnotation.h"
+#import "ROREndAnnotation.h"
 
 @interface RORHistoryDetailViewController : RORViewController <MKMapViewDelegate>{
     NSMutableArray *improvedRoute;
     BOOL wasFound;
     NSArray *routes;
+    UIImage *annotationImage;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) MKPolyline *routeLine;

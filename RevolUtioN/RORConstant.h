@@ -55,6 +55,7 @@ typedef enum {GRADE_S = 0, GRADE_A = 1, GRADE_B = 2, GRADE_C = 3, GRADE_D = 4, G
 
 NSString *const MissionTypeEnum_toString[5];
 NSString *const MissionGradeEnum_toString[7];
+NSString *const MissionGradeCongratsImageEnum_toString[7];
 NSString *const MissionGradeImageEnum_toString[7];
 
 @interface RORConstant : NSObject
