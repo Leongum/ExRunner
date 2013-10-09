@@ -47,11 +47,11 @@
 }
 
 + (NSString *)toJsonFormObject:(NSObject *)object{
-    SBJsonWriter *writer = [[SBJsonWriter alloc] init];
-    writer.humanReadable = YES;
-    NSString *regStr = [writer stringWithObject:object];
-    NSLog(@"%@",regStr);
-    return regStr;
+    NSError *writeError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:&writeError];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",jsonString);
+    return jsonString;
 }
 
 + (NSString*)getCityCodeJSon{
