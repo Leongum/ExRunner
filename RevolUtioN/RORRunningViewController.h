@@ -27,23 +27,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *speedLabel;
-//@property (weak, nonatomic) IBOutlet UIButton *expandButton;
-//@property (weak, nonatomic) IBOutlet UIButton *collapseButton;
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 @property (strong, nonatomic) IBOutlet UIView *dataContainer;
 
-
-//@property (strong, nonatomic) CLLocation *initialLocation;
-//@property (strong, nonatomic) CLLocation *latestUserLocation;
-//@property (nonatomic) CLLocationCoordinate2D latestINLocation;
-//@property (nonatomic) vec_3 OldVn;
-//@property (strong, nonatomic) INKalmanFilter *kalmanFilter;
-//@property (strong, nonatomic) INStepCounting *stepCounting;
 @property (nonatomic) vec_3 inDistance;
 
 @property (nonatomic) NSInteger timerCount;
 
-//@property (nonatomic) double distance; // meters
 @property (retain, nonatomic) MKPolylineView *routeLineView;
 @property (retain, nonatomic) MKPolylineView *routeLineShadowView;
 @property (strong, nonatomic) MKPolyline *routeLineShadow;
