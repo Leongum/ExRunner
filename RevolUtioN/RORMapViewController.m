@@ -78,6 +78,8 @@
     ROREndAnnotation *annotation = [[ROREndAnnotation alloc]initWithCoordinate:endLoc.coordinate];
     annotation.title = @"终点";
     [mapView addAnnotation:annotation];
+    
+    [self center_map];
 }
 
 - (void)viewDidUnload{
@@ -110,8 +112,8 @@
     }
     region.center.latitude = (maxLat + minLat)/2;
     region.center.longitude = (maxLon + minLon)/2;
-    region.span.latitudeDelta = maxLat - minLat ;
-    region.span.longitudeDelta = maxLon - minLon;
+    region.span.latitudeDelta = maxLat - minLat + 0.001;
+    region.span.longitudeDelta = maxLon - minLon + 0.001;
     
     [mapView setRegion:region animated:YES];
 }
@@ -132,8 +134,8 @@
     else
         self.routeLineShadow = [MKPolyline polylineWithCoordinates:coordinateArray count:pointCount];
     
-    MKMapRect rect = [routeLine boundingMapRect];
-    [mapView setVisibleMapRect:MKMapRectMake(rect.origin.x-1000, rect.origin.y-1000, rect.size.width+2000, rect.size.height+2000)];
+//    MKMapRect rect = [routeLine boundingMapRect];
+//    [mapView setVisibleMapRect:MKMapRectMake(rect.origin.x-1000, rect.origin.y-1000, rect.size.width+2000, rect.size.height+2000)];
     
     if (style == ROUTE_NORMAL)
         [mapView addOverlay:routeLine];

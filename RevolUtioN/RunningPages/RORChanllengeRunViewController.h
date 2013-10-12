@@ -7,6 +7,7 @@
 //
 
 #import "RORRunningBaseViewController.h"
+#import "RORPlaySound.h"
 
 #define SCALE_SMALL CGRectMake(0,0,320,155)
 
@@ -14,6 +15,7 @@
 @interface RORChanllengeRunViewController : RORRunningBaseViewController<MKMapViewDelegate>{
     BOOL MKwasFound;
     Mission *mission;
+    RORPlaySound *finishSound;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *startButton;

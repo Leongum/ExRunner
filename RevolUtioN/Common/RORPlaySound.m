@@ -44,13 +44,14 @@
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
         if (fileURL != nil)
         {
-            SystemSoundID theSoundID;
-            OSStatus error = AudioServicesCreateSystemSoundID((__bridge CFURLRef)fileURL, &theSoundID);
-            if (error == kAudioServicesNoError){
-                soundID = theSoundID;
-            }else {
-                NSLog(@"Failed to create sound ");
-            }
+            AVAudioSession *session = [AVAudioSession sharedInstance];
+            [session setActive:YES error:nil];
+            [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+            
+            player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+            [player prepareToPlay];
+            [player setVolume:1];
+
         }
     }
     return self;
@@ -58,7 +59,10 @@
 
 -(void)play
 {
-    AudioServicesPlaySystemSound(soundID);
+    
+//    AudioServicesPlaySystemSound(soundID);
+    [player play]; //播放
+    
 }
 
 -(void)dealloc

@@ -12,6 +12,7 @@
 typedef enum {DISTANCE = 1, DURATION = 2, VALID = 3, LEVEL = 4} controlInHistoryTableCell;
 
 @interface RORHistoryViewController : RORPageViewController{
+    NSMutableArray *stampList;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *syncButtonItem;

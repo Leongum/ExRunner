@@ -220,9 +220,6 @@
         if (self.startTime == nil){
             self.startTime = [NSDate date];
             
-            [sound play];
-            [countDownView show];
-            
             [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] setRunningStatus:YES];
             
 //            [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
@@ -239,6 +236,8 @@
             //the first point after started
             [self initOffset:[mapView userLocation]];
                         //            [self pushPoint];
+            [sound play];
+            [countDownView show];
         }
         //init former location
         latestUserLocation = [self getNewRealLocation];
@@ -369,19 +368,6 @@
     return [self calculateCalorie];
 }
 
--(NSNumber *)calculateExperience:(User_Running_History *)runningHistory{
-    return [NSNumber numberWithDouble:(runningHistory.distance.doubleValue/1000*200)];
-}
-
--(NSNumber *)calculateScore:(User_Running_History *)runningHistory{
-    NSTimeInterval scape = [runningHistory.missionEndTime timeIntervalSinceDate:runningHistory.missionStartTime];
-    double scores = 0;
-    if(scape != 0){
-        scores = runningHistory.distance.doubleValue / (scape/60) * runningHistory.distance.doubleValue / 1000;
-    }
-    return [NSNumber numberWithDouble:scores];
-}
-
 - (void)saveRunInfo{
     User_Running_History *runHistory = [User_Running_History intiUnassociateEntity];
     runHistory.distance = [NSNumber numberWithDouble:distance];
@@ -402,7 +388,8 @@
     runHistory.experience =[self calculateExperience:runHistory];
     runHistory.scores =[self calculateScore:runHistory];
     runHistory.extraExperience =[NSNumber  numberWithDouble:0];
-    if(runHistory.userId.integerValue < 0){
+    
+    if(runHistory.valid.integerValue != 1 || runHistory.userId.integerValue < 0){
         runHistory.experience =[NSNumber numberWithDouble:0];
         runHistory.scores =[NSNumber  numberWithDouble:0];
     }
@@ -478,6 +465,7 @@
     }
     if ([formerCenterMapLocation distanceFromLocation:[self getNewRealLocation]]>20){
         [self center_map:self];
+        formerCenterMapLocation = [self getNewRealLocation];
     }
 }
 

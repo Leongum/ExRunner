@@ -38,6 +38,13 @@
 	// Do any additional setup after loading the view.
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
     [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainer andSubViews:YES];
+    
+    srand(time(NULL));
+    int randomValue = rand();
+    if (randomValue%100<20)
+        finishSound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"running_end2.mp3"];
+    else
+        finishSound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"running_end1.mp3"];
 }
 
 //initial all when view appears
@@ -239,9 +246,6 @@
             self.startTime = [NSDate date];
             [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
             
-            [sound play];
-
-            [countDownView show];
             [(RORAppDelegate *)[[UIApplication sharedApplication] delegate] setRunningStatus:YES];
 
             
@@ -260,6 +264,9 @@
             formerLocation = latestUserLocation;
             [routePoints addObject:formerLocation];
             [self drawLineWithLocationArray:routePoints];
+            
+            [sound play];
+            [countDownView show];
         }
         
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(timerDot) userInfo:nil repeats:YES];
@@ -306,6 +313,7 @@
         speedLabel.text = [RORUserUtils formatedSpeed:currentSpeed*3.6];
         
         if (leftDistance<=0){
+            [finishSound play];
             [endButton setTitle:FINISH_RUNNING_BUTTON forState:UIControlStateNormal];
             [self endButtonAction:self];
         }
@@ -354,11 +362,11 @@
 - (IBAction)endButtonAction:(id)sender {
 //    [startButton setTitle:CONTINUE_RUNNING_BUTTON forState:UIControlStateNormal];
     if (runMission.missionDistance.doubleValue - distance <= 0){
-        [self resetRoutePoints];
-
+        [self stopTimer];
         [self.saveButton setEnabled:YES];
         [self.saveButton setTitle:@"保存" forState:UIControlStateNormal];
-        [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
+        coverView.alpha = 1;
+//        [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
 //        NSLog(@"%d", stepCounting.counter);
     } else {
         [self abortConfirm];
@@ -438,25 +446,7 @@
     if (missionGrade.integerValue == GRADE_E){
         return [NSNumber numberWithDouble:base];
     }
-    return [NSNumber numberWithDouble:GRADE_F*base];
-}
-
--(NSNumber *)calculateExperience:(User_Running_History *)runningHistory{
-    if (!runningHistory.valid.boolValue)
-        return [NSNumber numberWithDouble:0.f];
-    return [NSNumber numberWithDouble:(runningHistory.distance.doubleValue/1000*200)];
-}
-
--(NSNumber *)calculateScore:(User_Running_History *)runningHistory{
-    if (!runningHistory.valid.boolValue)
-        return [NSNumber numberWithDouble:0.f];
-    
-    NSTimeInterval scape = [runningHistory.missionEndTime timeIntervalSinceDate:runningHistory.missionStartTime];
-    double scores = 0;
-    if(scape != 0){
-        scores = runningHistory.distance.doubleValue / (scape/60) * runningHistory.distance.doubleValue / 1000;
-    }
-    return [NSNumber numberWithDouble:scores];
+    return [NSNumber numberWithDouble:0];
 }
 
 //-(NSNumber *)isValidRun:(NSInteger)steps {
@@ -579,6 +569,7 @@
     }
     if ([formerCenterMapLocation distanceFromLocation:[self getNewRealLocation]]>20){
         [self center_map:self];
+        formerCenterMapLocation = [self getNewRealLocation];
     }
 }
 

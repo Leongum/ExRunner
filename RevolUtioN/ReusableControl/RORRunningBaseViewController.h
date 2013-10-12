@@ -71,6 +71,8 @@
 - (void)initOffset:(MKUserLocation *)userLocation;
 -(CLLocation *)getNewRealLocation;
 -(NSNumber *)calculateCalorie;
+-(NSNumber *)calculateExperience:(User_Running_History *)runningHistory;
+-(NSNumber *)calculateScore:(User_Running_History *)runningHistory;
 - (void)stopUpdates;
 - (void)inertiaNavi;
 - (void)initNavi;

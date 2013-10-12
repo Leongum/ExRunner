@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 
 @interface RORPlaySound : NSObject
 {
     SystemSoundID soundID;
+    AVAudioPlayer *player;
 }
 
 /**

@@ -33,6 +33,7 @@ static NSDate *systemTime = nil;
 
 +(NSDate *)getSystemTime{
     if (systemTime == nil){
+        [RORSystemService syncVersion:@"ios"];
         NSMutableDictionary *userDict = [self getUserInfoPList];
         systemTime =[RORUtils getDateFromString:[userDict valueForKey:@"systemTime"]];
     }

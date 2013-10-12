@@ -15,6 +15,7 @@
 #import "RORUserServices.h"
 #import "Animations.h"
 #import "RORImageView.h"
+#import "FTAnimation+UIView.h"
 
 @interface RORHistoryViewController ()
 
@@ -68,6 +69,30 @@
     self.noHistoryMessageLabel.alpha = 0;
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self setRandomStampArc];
+}
+
+-(void)setRandomStampArc{
+    for (UITableViewCell *cell in stampList){
+//        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        UIView *isValidImage = [cell viewWithTag:VALID];
+        isValidImage.center = CGPointMake([RORUtils randomBetween:100 and:205], [RORUtils randomBetween:30 and:50]);
+        [Animations rotate:isValidImage andAnimationDuration:0 andWait:NO andAngle:[RORUtils randomBetween:-30 and:30]];
+        [isValidImage fallIn:.2f delegate:self];
+        isValidImage.alpha = 1;
+    }
+}
+
+-(void)hideStamps{
+    for (UITableViewCell *cell in stampList){
+        //        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        UIView *isValidImage = [cell viewWithTag:VALID];
+        isValidImage.alpha = 0;
+    }
+}
+
 -(void)initTableData{
     NSMutableArray *filter = ((RORHistoryPageViewController*)[self parentViewController]).filter;
     
@@ -106,6 +131,8 @@
         return [str2 compare:str1];
     }];
     
+    stampList = [[NSMutableArray alloc]init];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -117,6 +144,7 @@
     [self endIndicator:self];
     [super viewWillAppear:animated];
     [self refreshTable];
+//    [self hideStamps];
 }
 
 -(void)refreshTable{
@@ -179,23 +207,17 @@
     UILabel *durationLabel = (UILabel *)[cell viewWithTag:DURATION];
     durationLabel.text = [RORUtils transSecondToStandardFormat:[record4Date.duration integerValue]];
     RORImageView *isValidImage = (RORImageView *)[cell viewWithTag:VALID];
-    if (((NSNumber *)record4Date.valid).integerValue>0 && record4Date.missionTypeId.integerValue == Challenge){
-        isValidImage.alpha = 1;
+    if (record4Date.valid.integerValue>0 && record4Date.missionTypeId.integerValue == Challenge){
+//        isValidImage.alpha = 0;
         [isValidImage setImage:[UIImage imageNamed:MissionGradeImageEnum_toString[record4Date.missionGrade.integerValue]]];
-        isValidImage.center = CGPointMake([RORUtils randomBetween:100 and:205], [RORUtils randomBetween:30 and:50]);
-        [Animations rotate:isValidImage andAnimationDuration:0 andWait:NO andAngle:[RORUtils randomBetween:-10 and:10]];
-//        isValidImage.transform = CGAffineTransformMakeRotation(degreesToRadians([RORUtils randomBetween:-45 and:45]));
+        if (![stampList containsObject:cell]){
+            [stampList addObject:cell];
+            isValidImage = 0;
+            NSLog(@"(%d,%d)", indexPath.section, indexPath.row);
+        } else
+            isValidImage.alpha = 1;
     } else
         isValidImage.alpha = 0;
-
-//    UILabel *level = (UILabel *)[cell viewWithTag:LEVEL];
-//    if (record4Date.missionTypeId.integerValue == Challenge) {
-//        level.alpha = 1;
-//        if (isValidImage.alpha == 1)
-//            level.text = [NSString stringWithFormat:@"%@", MissionGradeEnum_toString[record4Date.missionGrade.integerValue]];
-//        else
-//            level.text = @"F";
-//    }
     
     return cell;
 }

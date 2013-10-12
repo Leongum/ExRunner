@@ -301,8 +301,8 @@
     }
     region.center.latitude = (maxLat + minLat)/2;
     region.center.longitude = (maxLon + minLon)/2;
-    region.span.latitudeDelta = maxLat - minLat ;
-    region.span.longitudeDelta = maxLon - minLon;
+    region.span.latitudeDelta = maxLat - minLat + 0.003 ;
+    region.span.longitudeDelta = maxLon - minLon + 0.003;
     
     [mapView setRegion:region animated:YES];
 }

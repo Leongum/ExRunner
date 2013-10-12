@@ -156,6 +156,25 @@
     return [NSNumber numberWithDouble:(duration * weight * K / 3600)];
 }
 
+-(NSNumber *)calculateExperience:(User_Running_History *)runningHistory{
+    if (!runningHistory.valid.boolValue)
+        return [NSNumber numberWithDouble:0.f];
+    
+    return [NSNumber numberWithDouble:(runningHistory.distance.doubleValue/1000*200)];
+}
+
+-(NSNumber *)calculateScore:(User_Running_History *)runningHistory{
+    if (!runningHistory.valid.boolValue)
+        return [NSNumber numberWithDouble:0.f];
+    
+    double scape = runningHistory.duration.doubleValue;
+    double scores = 0;
+    if(scape != 0){
+        scores = runningHistory.avgSpeed.doubleValue * runningHistory.distance.doubleValue / 1000;
+    }
+    return [NSNumber numberWithDouble:scores];
+}
+
 - (void)stopUpdates
 {
     if ([motionManager isDeviceMotionActive] == YES) {
