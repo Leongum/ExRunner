@@ -31,7 +31,7 @@
 @property (copy, nonatomic) NSString *userName;
 @property (nonatomic) NSNumber *userId;
 @property (strong, nonatomic) IBOutlet UIButton *runButton;
-@property (strong, nonatomic) IBOutlet UIScrollView *challenge;
+@property (strong, nonatomic) IBOutlet UIButton *challenge;
 //@property (strong, nonatomic) IBOutlet UIImageView *testView;
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *levelLabel;

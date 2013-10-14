@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RORConstant.h"
+#import "RORPlaySound.h"
 
 #define SEGMENT_STYLE_LEFT 0
 #define SEGMENT_STYLE_RIGHT 1
@@ -17,6 +18,7 @@
 //    NSInteger seg_index;
     NSInteger seg_style;
 //    UILabel *titleLabel;
+    RORPlaySound *sound;
 }
 
 @property (nonatomic) NSInteger seg_index;

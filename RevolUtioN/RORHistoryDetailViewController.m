@@ -38,6 +38,10 @@
     return self;
 }
 
+
+//===============================================
+//life cycle
+//===============================================
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -101,7 +105,9 @@
     [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainerView andSubViews:YES];
     [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dateLabel andSubViews:YES];
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.coverView andSubViews:YES];
+    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.dragLabel andSubViews:NO];
     
+    [self addGestures];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -114,6 +120,136 @@
         [congratsCoverView show:self];
     }
 }
+
+- (void)viewDidUnload {
+    [self setDistanceLabel:nil];
+    [self setSpeedLabel:nil];
+    [self setDurationLabel:nil];
+    [self setEnergyLabel:nil];
+    [self setWeatherLabel:nil];
+    [self setScoreLabel:nil];
+    [self setExperienceLabel:nil];
+    [self setBonusLabel:nil];
+    [self setRecord:nil];
+    [self setDelegate:nil];
+    [self setCoverView:nil];
+    [self setLabelContainerView:nil];
+    [self setDataContainerView:nil];
+    [self setDateLabel:nil];
+    [self setMapView:nil];
+    [self setRouteLine:nil];
+    [super viewDidUnload];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    UIViewController *destination = segue.destinationViewController;
+    if ([destination respondsToSelector:@selector(setDelegate:)]){
+        [destination setValue:self forKey:@"delegate"];
+    }
+    if ([destination respondsToSelector:@selector(setRoutes:)]){
+        [destination setValue:[RORDBCommon getRoutesFromString:record.missionRoute] forKey:@"routes"];
+    }
+    if ([destination respondsToSelector:@selector(setShareImage:)]){
+        [destination setValue:img forKey:@"shareImage"];
+    }
+    
+    if ([destination respondsToSelector:@selector(setRecord:)]){
+        [destination setValue:record forKey:@"record"];
+    }
+}
+
+
+//===============================================
+//gestures for map cover view
+//===============================================
+-(void)addGestures{
+    UITapGestureRecognizer *t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+    [self.mapCoverView addGestureRecognizer:t];
+    
+    UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
+    [self.mapCoverView addGestureRecognizer:panGes];
+}
+
+-(void) singleTap:(UITapGestureRecognizer*) tap {
+    if (expanded) {
+        [self popView];
+        expanded = 0;
+    }
+    else {
+        [self inView];
+        expanded = 1;
+    }
+}
+    
+-(void) panAction:(UIPanGestureRecognizer*) recognizer{
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+//        self.mapView.alpha = 0;
+        centerLoc = self.mapCoverView.center.x;
+        //        NSLog(@"began");
+    }
+    else if(recognizer.state==UIGestureRecognizerStateChanged) {
+        
+        CGPoint translation = [recognizer translationInView:self.mapCoverView];
+        [self dragView:translation.x];
+        
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+            int trans = self.mapCoverView.center.x - centerLoc;
+            if (trans<0 && expanded == 0 ){
+                [self inView];
+                expanded = 1;
+            } else if (trans>0 && expanded == 1 ){
+                [self popView];
+                expanded = 0;
+            }
+    //        self.mapView.alpha = 1;
+    }
+    [recognizer setTranslation:CGPointZero inView:self.mapCoverView];
+}
+
+- (void)dragView : (int)transition{
+    UIView* localView = self.mapCoverView;
+    int mostLeft = 23 + localView.frame.size.width/2;
+    int mostRight = 285 + localView.frame.size.width/2;
+    
+    if (localView.center.x + transition>mostRight)
+        localView.center = CGPointMake(mostRight,localView.center.y); //61.5
+    else if (localView.center.x  + transition<mostLeft)
+        localView.center = CGPointMake(mostLeft, localView.center.y);//25.5
+    else localView.center = CGPointMake(localView.center.x + transition,
+                                        localView.center.y);
+}
+
+- (void)inView{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [UIView beginAnimations:nil context:context];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    [UIView setAnimationDuration:0.3];
+    
+    self.mapCoverView.center = CGPointMake(23 + self.mapCoverView.frame.size.width/2, self.mapCoverView.center.y);
+    expanded = 1;
+    [self.mapView setUserInteractionEnabled:NO];
+    
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
+    [UIView commitAnimations];
+}
+
+- (void)popView{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [UIView beginAnimations:nil context:context];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    [UIView setAnimationDuration:0.3];
+
+    self.mapCoverView.center = CGPointMake(285 + self.mapCoverView.frame.size.width/2, self.mapCoverView.center.y);
+    expanded = 0;
+    [self.mapView setUserInteractionEnabled:YES];
+    
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
+    [UIView commitAnimations];
+}
+
+
 
 -(void)drawRouteOntoMap:(NSArray *)routePoints{
     if (routePoints.count == 0 || routePoints == nil)
@@ -156,42 +292,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidUnload {
-    [self setDistanceLabel:nil];
-    [self setSpeedLabel:nil];
-    [self setDurationLabel:nil];
-    [self setEnergyLabel:nil];
-    [self setWeatherLabel:nil];
-    [self setScoreLabel:nil];
-    [self setExperienceLabel:nil];
-    [self setBonusLabel:nil];
-    [self setRecord:nil];
-    [self setDelegate:nil];
-    [self setCoverView:nil];
-    [self setLabelContainerView:nil];
-    [self setDataContainerView:nil];
-    [self setDateLabel:nil];
-    [self setMapView:nil];
-    [self setRouteLine:nil];
-    [super viewDidUnload];
-}
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    UIViewController *destination = segue.destinationViewController;
-    if ([destination respondsToSelector:@selector(setDelegate:)]){
-        [destination setValue:self forKey:@"delegate"];
-    }
-    if ([destination respondsToSelector:@selector(setRoutes:)]){
-        [destination setValue:[RORDBCommon getRoutesFromString:record.missionRoute] forKey:@"routes"];
-    }
-    if ([destination respondsToSelector:@selector(setShareImage:)]){
-        [destination setValue:img forKey:@"shareImage"];
-    }
-    
-    if ([destination respondsToSelector:@selector(setRecord:)]){
-        [destination setValue:record forKey:@"record"];
-    }
-}
 
 - (IBAction)backAction:(id)sender {
     if ([delegate isKindOfClass:[RORRunningBaseViewController class]]){

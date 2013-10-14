@@ -75,11 +75,19 @@
 }
 
 -(void)setRandomStampArc{
+    
     for (UITableViewCell *cell in stampList){
+
 //        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+        NSString *date_str = [sortedDateList objectAtIndex:indexPath.section];
+        NSArray *records4DateList = [runHistoryList objectForKey:date_str];
+        User_Running_History *record4Date = [records4DateList objectAtIndex:indexPath.row];
+
         UIView *isValidImage = [cell viewWithTag:VALID];
-        isValidImage.center = CGPointMake([RORUtils randomBetween:100 and:205], [RORUtils randomBetween:30 and:50]);
-        [Animations rotate:isValidImage andAnimationDuration:0 andWait:NO andAngle:[RORUtils randomBetween:-30 and:30]];
+        isValidImage.center = CGPointMake(record4Date.duration .integerValue%50+155, ((int)(record4Date.avgSpeed.doubleValue*1024))%20+30);
+        [Animations rotate:isValidImage andAnimationDuration:0 andWait:NO andAngle:record4Date.duration.integerValue%60-30];
         [isValidImage fallIn:.2f delegate:self];
         isValidImage.alpha = 1;
     }
@@ -212,7 +220,7 @@
         [isValidImage setImage:[UIImage imageNamed:MissionGradeImageEnum_toString[record4Date.missionGrade.integerValue]]];
         if (![stampList containsObject:cell]){
             [stampList addObject:cell];
-            isValidImage = 0;
+            isValidImage.alpha = 0;
             NSLog(@"(%d,%d)", indexPath.section, indexPath.row);
         } else
             isValidImage.alpha = 1;

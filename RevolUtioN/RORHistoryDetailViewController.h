@@ -20,6 +20,8 @@
     BOOL wasFound;
     NSArray *routes;
     UIImage *annotationImage;
+    BOOL expanded;
+    double centerLoc;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) MKPolyline *routeLine;
@@ -45,6 +47,9 @@
 @property (strong, nonatomic) IBOutlet UIControl *coverView;
 @property (strong, nonatomic) IBOutlet UILabel *levelTitleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
+
+@property (strong, nonatomic) IBOutlet UIView *mapCoverView;
+@property (strong, nonatomic) IBOutlet UILabel *dragLabel;
 
 - (IBAction)shareToWeixin:(id)sender;
 

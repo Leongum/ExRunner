@@ -55,6 +55,7 @@
     
     NSArray *fetchObject = [RORRunHistoryServices fetchRunHistory];
 
+    int counter = 0;
     for (User_Running_History *historyObj in fetchObject) {
         NSNumber *missionType = (NSNumber *)[historyObj valueForKey:@"missionTypeId"];
         
@@ -64,9 +65,11 @@
         totalDistance += historyObj.distance.doubleValue;
         totalCalorie += historyObj.spendCarlorie.doubleValue;
         avgSpeed += historyObj.avgSpeed.doubleValue;
+        counter ++;
     }
-    avgSpeed/=fetchObject.count;
-    if (fetchObject.count>0 && totalDistance >0){
+    avgSpeed/=counter;
+    
+    if (counter>0 && totalDistance >0){
         [self showContents];
         self.totalDistanceLabel.text = [RORUtils outputDistance:totalDistance];
         self.totalSpeedLabel.text = [RORUserUtils formatedSpeed:avgSpeed];

@@ -10,7 +10,7 @@
 #import "FTAnimation.h"
 #import "Animations.h"
 
-#define NOTE_VIEW_FRAME CGRectMake(0,0,320,15)
+#define NOTE_VIEW_FRAME CGRectMake(0,0,320,25)
 
 @implementation RORNotificationView
 
@@ -36,7 +36,7 @@
         messageLabel.textColor = [UIColor whiteColor];
         messageLabel.textAlignment = NSTextAlignmentCenter;
         
-        [messageLabel setFont:[UIFont systemFontOfSize:10]];
+        [messageLabel setFont:[UIFont systemFontOfSize:13]];
         [self addSubview:messageLabel];
     }
     return self;

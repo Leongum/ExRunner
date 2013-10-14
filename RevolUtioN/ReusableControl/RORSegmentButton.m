@@ -25,6 +25,9 @@
         [self setBackgroundColor:[UIColor clearColor]];
         [self setBackgroundImage:[self imageForStyle:style andSelection:NO] forState:UIControlStateNormal];
         [self.titleLabel setFont:[UIFont fontWithName:CHN_PRINT_FONT size:13]];
+        
+        [self addTarget:self action:@selector(pressOn:) forControlEvents:UIControlEventTouchDown];
+        sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"segment.mp3"];
     }
     return self;
 }
@@ -52,4 +55,7 @@
     [self setBackgroundImage:[self imageForStyle:seg_style andSelection:selected] forState:UIControlStateNormal];
 }
 
+-(IBAction)pressOn:(id)sender{
+    [sound play];
+}
 @end
