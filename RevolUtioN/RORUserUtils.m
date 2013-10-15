@@ -115,6 +115,7 @@ static NSDate *systemTime = nil;
     NSString *path = [docPath stringByAppendingPathComponent:@"userInfo.plist"];
     NSMutableDictionary *logoutDict = [[NSMutableDictionary alloc] init];
     [logoutDict setValue:[self getLastUpdateTime:@"MissionUpdateTime"] forKey:@"MissionUpdateTime"];
+    [logoutDict setValue:[self getLastUpdateTime:@"SystemMessageUpdateTime"] forKey:@"SystemMessageUpdateTime"];
     [logoutDict writeToFile:path atomically:YES];
     userId = [NSNumber numberWithInteger:-1];
 }
