@@ -136,7 +136,7 @@
         User_Base *user = [RORUserServices registerUser:regDict];
         
         if (user != nil){
-            [self sendNotification:REGISTER_SUCCESS];
+            [self sendSuccess:REGISTER_SUCCESS];
             [self performSegueWithIdentifier:@"bodySetting" sender:self];
             return;
         } else {

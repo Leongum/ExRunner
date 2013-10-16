@@ -149,7 +149,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self endIndicator:self];
     [super viewWillAppear:animated];
     [self refreshTable];
 //    [self hideStamps];
@@ -226,7 +225,6 @@
             isValidImage.alpha = 1;
     } else
         isValidImage.alpha = 0;
-    
     return cell;
 }
 

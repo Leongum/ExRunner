@@ -32,7 +32,9 @@
     [self.totalDistanceLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
     [self.totalSpeedLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
     [self.totalCalorieLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
-
+    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.totalChallenge andSubViews:NO];
+    
+    [self initChallengeTable];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +52,7 @@
     totalCalorie = 0;
     totalDistance = 0;  
     avgSpeed = 0;
+    totalChallengeNum = 0;
     
     NSMutableArray *filter = ((RORHistoryPageViewController*)[self parentViewController]).filter;
     
@@ -66,14 +69,26 @@
         totalCalorie += historyObj.spendCarlorie.doubleValue;
         avgSpeed += historyObj.avgSpeed.doubleValue;
         counter ++;
+        if (historyObj.missionTypeId.integerValue == Challenge){
+            totalChallengeNum++;
+            challengeCounter[historyObj.missionGrade.integerValue]++;
+        }
     }
     avgSpeed/=counter;
+    
+    if ([filter containsObject:[NSNumber numberWithInteger:Challenge]]) {
+        self.challengeStatisView.alpha = 1;
+        [self fillChallengeTable];
+    } else
+        self.challengeStatisView.alpha = 0;
     
     if (counter>0 && totalDistance >0){
         [self showContents];
         self.totalDistanceLabel.text = [RORUtils outputDistance:totalDistance];
         self.totalSpeedLabel.text = [RORUserUtils formatedSpeed:avgSpeed];
-        self.totalCalorieLabel.text = [NSString stringWithFormat:@"%.0f kca", totalCalorie];
+        self.totalCalorieLabel.text = [NSString stringWithFormat:@"%.0f kcal", totalCalorie];
+        self.totalChallenge.text = [NSString stringWithFormat:@"%.0f", totalChallengeNum];
+        
     } else {
         [self hideContents];
         self.totalSpeedLabel.text = NO_HISTORY;
@@ -82,6 +97,17 @@
     self.distanceCommentLabel.text = STATISTICS_DISTANCE_MESSAGE([NSNumber numberWithDouble:totalDistance/1000]);
     self.speedCommentLabel.text = STATISTICS_SPEED_MESSAGE([NSNumber numberWithDouble:avgSpeed]);
     self.calorieCommentLabel.text = STATISTICS_CALORIE_MESSAGE([NSNumber numberWithDouble:totalCalorie]);
+}
+
+-(void)initChallengeTable{
+    for (int i=0; i<6; i++){
+        counterView[i] = (RORFiveCounterView *)[self.challengeStatisView viewWithTag:100+i];
+    }
+}
+
+-(void)fillChallengeTable{
+    for (int i=0; i<6; i++)
+        [counterView[i] setNewNumber:challengeCounter[i]];
 }
 
 -(void)showContents{

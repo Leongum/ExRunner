@@ -54,7 +54,8 @@
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             Version_Control *version = [RORSystemService syncVersion:@"ios"];
             cell.detailTextLabel.text = [NSString stringWithFormat:@"v %@.%@", version.version, version.subVersion];
-            [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:cell andSubViews:YES];
+            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
+            [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:cell.detailTextLabel andSubViews:YES];
             break;
         }
         case 1:

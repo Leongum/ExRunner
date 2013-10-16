@@ -36,7 +36,7 @@
     BOOL updated = [RORRunHistoryServices uploadRunningHistories];
     [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
     if(synced && updated){
-        [self sendNotification:SYNC_DATA_SUCCESS];
+        [self sendSuccess:SYNC_DATA_SUCCESS];
         [listViewController refreshTable];
         [statisticsViewController viewWillAppear:NO];
     }
