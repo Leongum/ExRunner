@@ -10,10 +10,10 @@
 
 #ifndef URLS
 //define test service host
-//#define SERVICE_HOST @"http://121.199.56.231:8080/usavich/service/api"
+#define SERVICE_HOST @"http://121.199.56.231:8080/usavich/service/api"
 
 //define prod service host
-#define SERVICE_HOST @"http://www.cyberace.cc/service/api"
+//#define SERVICE_HOST @"http://www.cyberace.cc/service/api"
 
 #define LOGIN_URL [SERVICE_HOST stringByAppendingString:@"/account/%@/%@"] 
 #define REGISTER_URL [SERVICE_HOST stringByAppendingString:@"/account"]
@@ -28,6 +28,7 @@
 #define VERSION_URL [SERVICE_HOST stringByAppendingString:@"/system/version/%@"]
 #define SYSTEM_MESSAGE_URL [SERVICE_HOST stringByAppendingString:@"/system/message/%@"]
 #define FEEDBACK_URL [SERVICE_HOST stringByAppendingString:@"/system/feedback"]
+#define DOWNLOADED_URL [SERVICE_HOST stringByAppendingString:@"/system/download"]
 #define PM25_URL [SERVICE_HOST stringByAppendingString:@"/weather/pm25?cityName=%@&provinceName=%@"] 
 
 #define WEATHER_URL @"http://www.weather.com.cn/data/sk/%@.html"

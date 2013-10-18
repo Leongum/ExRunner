@@ -25,6 +25,18 @@ static NSDate *systemTime = nil;
     return userId;
 }
 
++ (NSNumber *)getDownLoaded{
+    NSMutableDictionary *userDict = [self getUserInfoPList];
+    return [userDict valueForKey:@"downLoaded"];
+    
+}
+
++(void)doneDowned{
+    NSMutableDictionary *userDict = [RORUserUtils getUserInfoPList];
+    [userDict setValue:[NSNumber numberWithInt:1] forKey:@"downLoaded"];
+    [self writeToUserInfoPList:userDict];
+}
+
 + (NSString *)getUserUuid{
     NSMutableDictionary *userDict = [self getUserInfoPList];
     NSString *uuid = (NSString *)[userDict objectForKey:@"uuid"];

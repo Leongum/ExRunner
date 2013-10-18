@@ -27,4 +27,9 @@
     return httpResponse;
 }
 
++(RORHttpResponse *)submitDownLoaded:(NSDictionary *) downLoadDic{
+    RORHttpResponse *httpResponse = [RORHttpClientHandler postRequest:DOWNLOADED_URL withRequstBody:[RORUtils toJsonFormObject:downLoadDic]];
+    return httpResponse;
+}
+
 @end

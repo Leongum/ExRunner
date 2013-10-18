@@ -44,6 +44,13 @@
     //sync version
     Version_Control *version = [RORSystemService syncVersion:@"ios"];
     if(version != nil){
+        if([RORUserUtils getDownLoaded].doubleValue == 0){
+            NSDictionary *downLoadDict = [[NSDictionary alloc]initWithObjectsAndKeys:@"ios", @"platform",[NSString stringWithFormat:@"%@.%@", version.version,version.subVersion], @"version", nil];
+            BOOL success = [RORSystemService submitDownloaded:downLoadDict];
+            if(success){
+                [RORUserUtils doneDowned];
+            }
+        }
         NSString *missionLastUpdateTime = [RORUserUtils getLastUpdateTime:@"MissionUpdateTime"];
         NSString *messageLastUpdateTime = [RORUserUtils getLastUpdateTime:@"SystemMessageUpdateTime"];
         NSTimeInterval messageScape = [version.messageLastUpdateTime timeIntervalSinceDate:[RORUtils getDateFromString:messageLastUpdateTime]];
