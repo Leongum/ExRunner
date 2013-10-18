@@ -30,16 +30,27 @@
 
 - (void)viewDidLoad
 {
+//    [self startIndicator:self];
     [self.view setAutoresizesSubviews:YES];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self addBackButton];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didAppearNotification:)
+                                                 name:SVProgressHUDDidAppearNotification
+                                               object:nil];
 }
 
 -(void)viewDidUnload{
     [self setBackButton:nil];
     [self setActivityIndicator:nil];
     [self setProgressView:nil];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+//    [self endIndicator:self];
 }
 
 -(BOOL)prefersStatusBarHidden{
@@ -74,21 +85,33 @@
 }
 
 -(void)sendNotification:(NSString *)message{
-    if (notificationView == nil){
-        notificationView = [[RORNotificationView alloc]init];
-        [self.view addSubview:notificationView];
-    }
-    [notificationView popNotification:self Message:message];
+    if ([message rangeOfString:@"失败"].location != NSNotFound ||
+        [message rangeOfString:@"无法"].location != NSNotFound ||
+        [message rangeOfString:@"错误"].location != NSNotFound){
+        [SVProgressHUD showErrorWithStatus:message];
+    } else if ([message rangeOfString:@"成功"].location != NSNotFound ||
+               [message rangeOfString:@"完成"].location != NSNotFound){
+        [SVProgressHUD showSuccessWithStatus:message];
+    } else
+        [SVProgressHUD showImage:nil status:message];
+}
+
+-(void)sendSuccess:(NSString *)message{
+    [SVProgressHUD showSuccessWithStatus:message];
 }
 
 -(void)sendAlart:(NSString *)message{
-    if (notificationView == nil){
-        notificationView = [[RORNotificationView alloc]init];
-        [self.view addSubview:notificationView];
-    }
-    [notificationView popNotification:self Message:message andType:RORNOTIFICATION_TYPE_IMPORTANT];
+//    if (notificationView == nil){
+//        notificationView = [[RORNotificationView alloc]init];
+//        [self.view addSubview:notificationView];
+//    }
+//    [notificationView popNotification:self Message:message andType:RORNOTIFICATION_TYPE_IMPORTANT];
+    [SVProgressHUD showErrorWithStatus:message];
 }
 
+-(IBAction)didAppearNotification:(id)sender{
+//    [SVProgressHUD dismiss];
+}
 
 /**
 activity indicator
@@ -96,43 +119,45 @@ activity indicator
 
 - (IBAction)startIndicator:(id)sender
 {
-    //初始化指示器
-    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height/2-50, 100, 100)];
-    
-    /*
-     指定指示器的类型
-     一共有三种类型：
-     UIActivityIndicatorViewStyleWhiteLarge   //大型白色指示器
-     UIActivityIndicatorViewStyleWhite      //标准尺寸白色指示器
-     UIActivityIndicatorViewStyleGray    //灰色指示器，用于白色背景
-     */
-    self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-    
-    //停止后是否隐藏(默认为YES)
-    self.activityIndicator.hidesWhenStopped = YES;
-    
-    //将Indicator添加到视图中
-    [self.view addSubview:self.activityIndicator];
-    
-    //开始转动
-    [self.activityIndicator startAnimating];
-    
-    //操作队列
-    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
-    
-    //设置最大的操作数
-    [operationQueue setMaxConcurrentOperationCount:1];
-    
-    //构建一个操作对象，selector指定的方法是在另外一个线程中运行的
-    NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
-                                                                            selector:@selector(runIndicator) object:nil];
-    //将操作加入队列，此时后台线程开始执行
-    [operationQueue addOperation:operation];
-    
+//    //初始化指示器
+//    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height/2-50, 100, 100)];
+//    
+//    /*
+//     指定指示器的类型
+//     一共有三种类型：
+//     UIActivityIndicatorViewStyleWhiteLarge   //大型白色指示器
+//     UIActivityIndicatorViewStyleWhite      //标准尺寸白色指示器
+//     UIActivityIndicatorViewStyleGray    //灰色指示器，用于白色背景
+//     */
+//    self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+//    
+//    //停止后是否隐藏(默认为YES)
+//    self.activityIndicator.hidesWhenStopped = YES;
+//    
+//    //将Indicator添加到视图中
+//    [self.view addSubview:self.activityIndicator];
+//    
+//    //开始转动
+//    [self.activityIndicator startAnimating];
+//    
+//    //操作队列
+//    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
+//    
+//    //设置最大的操作数
+//    [operationQueue setMaxConcurrentOperationCount:1];
+//    
+//    //构建一个操作对象，selector指定的方法是在另外一个线程中运行的
+//    NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
+//                                                                            selector:@selector(runIndicator) object:nil];
+//    //将操作加入队列，此时后台线程开始执行
+//    [operationQueue addOperation:operation];
+//
+    [SVProgressHUD showWithStatus:nil maskType:SVProgressHUDMaskTypeGradient];
 }
 
 - (IBAction)endIndicator:(id)sender{
-    [self.activityIndicator stopAnimating];
+//    [self.activityIndicator stopAnimating];
+    [SVProgressHUD dismiss];
 }
 
 - (IBAction)startProgress:(id)sender

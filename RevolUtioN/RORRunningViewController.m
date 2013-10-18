@@ -403,7 +403,7 @@
             [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
             dispatch_async(dispatch_get_main_queue(), ^{
                 if(updated){
-                    [self sendNotification:SYNC_DATA_SUCCESS];
+                    [self sendSuccess:SYNC_DATA_SUCCESS];
                 }
                 else{
                     [self sendAlart:SYNC_DATA_FAIL];

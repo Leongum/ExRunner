@@ -13,6 +13,7 @@
 #import "RORNormalButton.h"
 #import "RORNotificationView.h"
 #import "RORPlaySound.h"
+#import "SVProgressHUD.h"
 
 //#define BACKBUTTON_FRAME_NORMAL CGRectMake(25, 375, 44, 44)
 //#define BACKBUTTON_FRAME_RETINA CGRectMake(25, 460, 44, 44)
@@ -31,6 +32,7 @@
 - (IBAction)backAction:(id)sender;
 
 -(void)sendNotification:(NSString *)message;
+-(void)sendSuccess:(NSString *)message;
 -(void)sendAlart:(NSString *)message;
 
 - (IBAction)startIndicator:(id)sender;

@@ -58,6 +58,7 @@ NSString *const MissionTypeEnum_toString[5];
 NSString *const MissionGradeEnum_toString[7];
 NSString *const MissionGradeCongratsImageEnum_toString[7];
 NSString *const MissionGradeImageEnum_toString[7];
+NSString *const CounterNumberImageInteger_toString[6];
 
 @interface RORConstant : NSObject
 

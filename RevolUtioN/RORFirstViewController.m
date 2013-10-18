@@ -193,21 +193,22 @@
                 }
                 if(pm25info != nil){
                     pm25 = [[pm25info objectForKey:@"pm2_5"] integerValue];
-                    weatherInformation = [NSString stringWithFormat:@"%@  PM2.5:%d%@  ", weatherInformation,  pm25,[pm25info objectForKey:@"quality"]];
+                    weatherInformation = [NSString stringWithFormat:@"%@  PM2.5: %d%@  ", weatherInformation,  pm25,[pm25info objectForKey:@"quality"]];
                 }
                 int index = -1;
                 if(temp < 38 && pm25 < 300){
                     index = (100-pm25/3)*0.6 +(100-fabs(temp - 22)*5)*0.4;
                 }
-                else{
-                    index =0;
+                if (index>=0) {
+                    weatherInformation = [NSString stringWithFormat:@"%@总: %d", weatherInformation, index];
                 }
-                
-                weatherInformation = [NSString stringWithFormat:@"%@总:%d", weatherInformation, index];
                 if (index <0) {
                     UIImage *image = [UIImage imageNamed:@"main_trafficlight_none.png"];
                     [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
-                    weatherInformation = [NSString stringWithFormat:@"天气信息获取失败"];
+                    if (temp == INT16_MAX) {
+                        weatherInformation = [NSString stringWithFormat:@"天气信息获取失败"];
+                    } else if (pm25==INT16_MAX)
+                        weatherInformation = [NSString stringWithFormat:@"%@\n空气质量信息获取失败", weatherInformation];
                 }
                 else if (temp < 0 || temp > 38 || pm25>250 || index<50){
                     UIImage *image = [UIImage imageNamed:@"main_trafficlight_red.png"];
@@ -305,7 +306,11 @@
 }
 
 - (IBAction)weatherPopAction:(id)sender{
-    [self sendNotification:weatherInformation];
+    if ([weatherInformation rangeOfString:@"失败"].location == NSNotFound){
+        [self sendNotification:weatherInformation];
+    } else
+        [self sendAlart:weatherInformation];
+//    [SVProgressHUD dismiss];
     //    [self charactorAnimation];
 }
 
@@ -316,10 +321,10 @@
 }
 
 - (IBAction)mallUnderDeveloping:(id)sender {
-    [self sendNotification:@"【装备商城】正在哼哧哼哧开发中"];
+    [self sendNotification:@"【装备商城】\n\n正在哼哧哼哧开发中"];
 }
 - (IBAction)friendsUnderDeveloping:(id)sender {
-    [self sendNotification:@"【我的跑友】正在窟嚓窟嚓开发中"];
+    [self sendNotification:@"【我的跑友】\n\n正在窟嚓窟嚓开发中"];
 }
 
 @end

@@ -48,6 +48,15 @@ NSString * const MissionGradeCongratsImageEnum_toString[] = {
     @"F.png"
 };
 
+NSString *const CounterNumberImageInteger_toString[] ={
+    nil,
+    @"1.png",
+    @"2.png",
+    @"3.png",
+    @"4.png",
+    @"5.png",
+};
+
 +(NSString *)SoundNameForSpecificGrade:(MissionGradeEnum)grade{
     if (grade == GRADE_S)
         return @"challenge_S.m4a";

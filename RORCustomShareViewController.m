@@ -149,7 +149,7 @@
         }
     
     }
-    [self sendNotification:SHARE_SUBMITTED];
+    [self sendSuccess:SHARE_SUBMITTED];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
