@@ -129,12 +129,13 @@
         [self startIndicator:self];
 
         [RORRunHistoryServices syncRunningHistories];
+        [self endIndicator:self];
     } else { //注册
         NSDictionary *regDict = [[NSDictionary alloc]initWithObjectsAndKeys:usernameTextField.text, @"userEmail",[RORUtils md5:passwordTextField.text], @"password", nicknameTextField.text, @"nickName", nil];
         [self startIndicator:self];
 
         User_Base *user = [RORUserServices registerUser:regDict];
-        
+        [self endIndicator:self];
         if (user != nil){
             [self sendSuccess:REGISTER_SUCCESS];
             [self performSegueWithIdentifier:@"bodySetting" sender:self];

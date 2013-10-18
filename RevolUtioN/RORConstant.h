@@ -10,10 +10,10 @@
 
 #ifndef URLS
 //define test service host
-#define SERVICE_HOST @"http://121.199.56.231:8080/usavich/service/api"
+//#define SERVICE_HOST @"http://121.199.56.231:8080/usavich/service/api"
 
 //define prod service host
-//#define SERVICE_HOST @"http://www.cyberace.cc/service/api"
+#define SERVICE_HOST @"http://www.cyberace.cc/service/api"
 
 #define LOGIN_URL [SERVICE_HOST stringByAppendingString:@"/account/%@/%@"] 
 #define REGISTER_URL [SERVICE_HOST stringByAppendingString:@"/account"]

@@ -114,6 +114,7 @@
     [self saveAction];
     if (!isValid) return;
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:2]];
+    [self endIndicator:self];
     [self backAction:sender];
 }
 

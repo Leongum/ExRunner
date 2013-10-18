@@ -345,7 +345,7 @@
     
     [self prepareForQuit];
     [self saveRunInfo];
-    
+    [self endIndicator:self];
     [self performSegueWithIdentifier:@"NormalRunResultSegue" sender:self];
     
 //    [self endIndicator:self];

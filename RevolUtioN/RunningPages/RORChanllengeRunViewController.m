@@ -390,12 +390,12 @@
 //    [repeatingTimer invalidate];
 //    [startButton setEnabled:NO];
 //    self.repeatingTimer = nil;
-    
+    [self endIndicator:self];
+
     [self prepareForQuit];
     
     [self performSegueWithIdentifier:@"ChallengeRunResultSegue" sender:self];
     
-//    [self endIndicator:self];
 }
 
 -(void)prepareForQuit{

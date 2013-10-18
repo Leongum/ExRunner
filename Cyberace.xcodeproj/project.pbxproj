@@ -157,6 +157,7 @@
 		30692D50180E724C00DA01EC /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 30692D4B180E724C00DA01EC /* 3.png */; };
 		30692D51180E724C00DA01EC /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 30692D4C180E724C00DA01EC /* 4.png */; };
 		30692D52180E724C00DA01EC /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 30692D4D180E724C00DA01EC /* 5.png */; };
+		30692D56181132B300DA01EC /* RORInstructionPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30692D55181132B300DA01EC /* RORInstructionPageViewController.m */; };
 		307A1D5417F4353B006692DD /* RORCongratsCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 307A1D5317F4353B006692DD /* RORCongratsCoverView.m */; };
 		307A1D5A17F47CCD006692DD /* EHSMB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 307A1D5917F47CCD006692DD /* EHSMB.TTF */; };
 		307C85F417E6BD50007C1DE5 /* filter_btn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C85F017E6BD50007C1DE5 /* filter_btn_bg.png */; };
@@ -521,6 +522,8 @@
 		30692D4B180E724C00DA01EC /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		30692D4C180E724C00DA01EC /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		30692D4D180E724C00DA01EC /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		30692D54181132B300DA01EC /* RORInstructionPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORInstructionPageViewController.h; path = Instruction/RORInstructionPageViewController.h; sourceTree = "<group>"; };
+		30692D55181132B300DA01EC /* RORInstructionPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORInstructionPageViewController.m; path = Instruction/RORInstructionPageViewController.m; sourceTree = "<group>"; };
 		307A1D5217F4353B006692DD /* RORCongratsCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORCongratsCoverView.h; path = ReusableControl/RORCongratsCoverView.h; sourceTree = "<group>"; };
 		307A1D5317F4353B006692DD /* RORCongratsCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORCongratsCoverView.m; path = ReusableControl/RORCongratsCoverView.m; sourceTree = "<group>"; };
 		307A1D5917F47CCD006692DD /* EHSMB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = EHSMB.TTF; path = Resources/EHSMB.TTF; sourceTree = "<group>"; };
@@ -1119,6 +1122,7 @@
 		302FD00A1727D870004DA005 /* RevolUtioN */ = {
 			isa = PBXGroup;
 			children = (
+				30692D531811327000DA01EC /* Instruction */,
 				0F07AC1617E6E3C70009C8A8 /* ThirdPartyTools */,
 				30A6D9B817C733F700D1116E /* ReusableControl */,
 				0F87D885179D7313007E0412 /* Common */,
@@ -1275,6 +1279,15 @@
 				30692D4D180E724C00DA01EC /* 5.png */,
 			);
 			path = count;
+			sourceTree = "<group>";
+		};
+		30692D531811327000DA01EC /* Instruction */ = {
+			isa = PBXGroup;
+			children = (
+				30692D54181132B300DA01EC /* RORInstructionPageViewController.h */,
+				30692D55181132B300DA01EC /* RORInstructionPageViewController.m */,
+			);
+			name = Instruction;
 			sourceTree = "<group>";
 		};
 		307C85EB17E6BD2A007C1DE5 /* history */ = {
@@ -1826,6 +1839,7 @@
 				30989CCB17F7D72A00CA9F83 /* RORImageView.m in Sources */,
 				0F87D884179D72F8007E0412 /* RORRunHistoryClientHandler.m in Sources */,
 				0F0D589217B0E4680046515C /* RORLoadingViewController.m in Sources */,
+				30692D56181132B300DA01EC /* RORInstructionPageViewController.m in Sources */,
 				0F0D589817B23F490046515C /* RORThirdPartyClientHandler.m in Sources */,
 				0F0D589B17B249230046515C /* RORThirdPartyService.m in Sources */,
 				0F274A6B17B6058C00F0E927 /* RORSystemService.m in Sources */,
