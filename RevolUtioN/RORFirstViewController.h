@@ -36,7 +36,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *levelLabel;
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (strong, nonatomic) IBOutlet UIView *userInfoView;
+@property (strong, nonatomic) IBOutlet UIControl *userInfoView;
 
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) IBOutlet UIButton *weatherInfoButtonView;

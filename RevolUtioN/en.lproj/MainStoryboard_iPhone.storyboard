@@ -41,7 +41,7 @@
                                     <segue destination="3ah-KS-G5a" kind="push" id="GFQ-W1-Ils"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="qK2-c0-60j" userLabel="userInfo_View">
+                            <view contentMode="scaleToFill" id="qK2-c0-60j" userLabel="userInfo_View" customClass="UIControl">
                                 <rect key="frame" x="110" y="20" width="210" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -555,7 +555,7 @@
             <objects>
                 <viewController storyboardIdentifier="historyStatisticsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6UB-eU-hyD" customClass="RORStatisticsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j1j-vE-yoH">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460.00000000000006"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="paper.png" id="31b-cn-SCi">

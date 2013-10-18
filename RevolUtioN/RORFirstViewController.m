@@ -45,6 +45,8 @@
     UIImage *image = [UIImage imageNamed:@"main_trafficlight_none.png"];
     [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
     
+    [self.userInfoView addTarget:self action:@selector(userInfoViewClick:) forControlEvents:UIControlEventTouchUpInside];
+    
 //    [RORUtils listFontFamilies];
 }
 
@@ -315,6 +317,10 @@
         [self sendAlart:weatherInformation];
 //    [SVProgressHUD dismiss];
     //    [self charactorAnimation];
+}
+
+-(IBAction)userInfoViewClick:(id)sender{
+    [self sendNotification:@"请等到下个版本再点我"];
 }
 
 - (IBAction)normalRunAction:(id)sender {

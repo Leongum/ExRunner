@@ -145,8 +145,6 @@
 		30621D4E17E45F490063A007 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30621D4D17E45F480063A007 /* AudioToolbox.framework */; };
 		30692D2E180C35FF00DA01EC /* segment.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 30692D2D180C35FF00DA01EC /* segment.mp3 */; };
 		30692D32180C40ED00DA01EC /* bo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 30692D31180C40ED00DA01EC /* bo.wav */; };
-		30692D3B180D272A00DA01EC /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 30692D38180D272A00DA01EC /* SVProgressHUD.bundle */; };
-		30692D3C180D272A00DA01EC /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 30692D3A180D272A00DA01EC /* SVProgressHUD.m */; };
 		30692D3F180D800200DA01EC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 30692D3D180D800200DA01EC /* logo.png */; };
 		30692D40180D800200DA01EC /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30692D3E180D800200DA01EC /* logo@2x.png */; };
 		30692D43180E6B1F00DA01EC /* level_table.png in Resources */ = {isa = PBXBuildFile; fileRef = 30692D41180E6B1F00DA01EC /* level_table.png */; };
@@ -158,6 +156,8 @@
 		30692D51180E724C00DA01EC /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 30692D4C180E724C00DA01EC /* 4.png */; };
 		30692D52180E724C00DA01EC /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 30692D4D180E724C00DA01EC /* 5.png */; };
 		30692D56181132B300DA01EC /* RORInstructionPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30692D55181132B300DA01EC /* RORInstructionPageViewController.m */; };
+		30692D5C18117C2500DA01EC /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 30692D5918117C2500DA01EC /* SVProgressHUD.bundle */; };
+		30692D5D18117C2500DA01EC /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 30692D5B18117C2500DA01EC /* SVProgressHUD.m */; };
 		307A1D5417F4353B006692DD /* RORCongratsCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 307A1D5317F4353B006692DD /* RORCongratsCoverView.m */; };
 		307A1D5A17F47CCD006692DD /* EHSMB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 307A1D5917F47CCD006692DD /* EHSMB.TTF */; };
 		307C85F417E6BD50007C1DE5 /* filter_btn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C85F017E6BD50007C1DE5 /* filter_btn_bg.png */; };
@@ -507,10 +507,6 @@
 		30621D4D17E45F480063A007 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		30692D2D180C35FF00DA01EC /* segment.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = segment.mp3; path = Resources/sound/segment.mp3; sourceTree = "<group>"; };
 		30692D31180C40ED00DA01EC /* bo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bo.wav; path = Resources/sound/bo.wav; sourceTree = "<group>"; };
-		30692D37180D272A00DA01EC /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		30692D38180D272A00DA01EC /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		30692D39180D272A00DA01EC /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		30692D3A180D272A00DA01EC /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		30692D3D180D800200DA01EC /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		30692D3E180D800200DA01EC /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		30692D41180E6B1F00DA01EC /* level_table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level_table.png; path = bg/level_table.png; sourceTree = "<group>"; };
@@ -524,6 +520,10 @@
 		30692D4D180E724C00DA01EC /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		30692D54181132B300DA01EC /* RORInstructionPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORInstructionPageViewController.h; path = Instruction/RORInstructionPageViewController.h; sourceTree = "<group>"; };
 		30692D55181132B300DA01EC /* RORInstructionPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORInstructionPageViewController.m; path = Instruction/RORInstructionPageViewController.m; sourceTree = "<group>"; };
+		30692D5818117C2500DA01EC /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		30692D5918117C2500DA01EC /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		30692D5A18117C2500DA01EC /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		30692D5B18117C2500DA01EC /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		307A1D5217F4353B006692DD /* RORCongratsCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORCongratsCoverView.h; path = ReusableControl/RORCongratsCoverView.h; sourceTree = "<group>"; };
 		307A1D5317F4353B006692DD /* RORCongratsCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORCongratsCoverView.m; path = ReusableControl/RORCongratsCoverView.m; sourceTree = "<group>"; };
 		307A1D5917F47CCD006692DD /* EHSMB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = EHSMB.TTF; path = Resources/EHSMB.TTF; sourceTree = "<group>"; };
@@ -1072,7 +1072,7 @@
 		302FCFF81727D870004DA005 = {
 			isa = PBXGroup;
 			children = (
-				30692D36180D272A00DA01EC /* SVProgressHUD */,
+				30692D5718117C2500DA01EC /* SVProgressHUD */,
 				0F8501DF17C1C68E0005993E /* libsqlite3.dylib */,
 				0F8501DD17C1C63E0005993E /* libstdc++.dylib */,
 				0F53B43F17F3481D006DB4C4 /* ShareSDK_v2.5.0 */,
@@ -1257,18 +1257,6 @@
 			name = Font;
 			sourceTree = "<group>";
 		};
-		30692D36180D272A00DA01EC /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				30692D37180D272A00DA01EC /* SVProgressHUD-Prefix.pch */,
-				30692D38180D272A00DA01EC /* SVProgressHUD.bundle */,
-				30692D39180D272A00DA01EC /* SVProgressHUD.h */,
-				30692D3A180D272A00DA01EC /* SVProgressHUD.m */,
-			);
-			name = SVProgressHUD;
-			path = "../SVProgressHUD-master/SVProgressHUD";
-			sourceTree = "<group>";
-		};
 		30692D48180E724C00DA01EC /* count */ = {
 			isa = PBXGroup;
 			children = (
@@ -1288,6 +1276,17 @@
 				30692D55181132B300DA01EC /* RORInstructionPageViewController.m */,
 			);
 			name = Instruction;
+			sourceTree = "<group>";
+		};
+		30692D5718117C2500DA01EC /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				30692D5818117C2500DA01EC /* SVProgressHUD-Prefix.pch */,
+				30692D5918117C2500DA01EC /* SVProgressHUD.bundle */,
+				30692D5A18117C2500DA01EC /* SVProgressHUD.h */,
+				30692D5B18117C2500DA01EC /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		307C85EB17E6BD2A007C1DE5 /* history */ = {
@@ -1643,6 +1642,7 @@
 				30989CB517F5F7C800CA9F83 /* S.png in Resources */,
 				30692D3F180D800200DA01EC /* logo.png in Resources */,
 				30BB0AF81761BEA10009A847 /* history.png in Resources */,
+				30692D5C18117C2500DA01EC /* SVProgressHUD.bundle in Resources */,
 				30BB0AF91761BEA10009A847 /* history@2x.png in Resources */,
 				30804E9917F56D6E00F1A353 /* tencent_weibo@2x.png in Resources */,
 				30804E9417F56D6E00F1A353 /* QQ_friend.png in Resources */,
@@ -1722,7 +1722,6 @@
 				30989CD517F863E000CA9F83 /* Comic Sans MS.ttf in Resources */,
 				30692D2E180C35FF00DA01EC /* segment.mp3 in Resources */,
 				303707931805074900FE0238 /* stamp_a.png in Resources */,
-				30692D3B180D272A00DA01EC /* SVProgressHUD.bundle in Resources */,
 				307C85F417E6BD50007C1DE5 /* filter_btn_bg.png in Resources */,
 				307C85F517E6BD50007C1DE5 /* filter_btn_bg@2x.png in Resources */,
 				30989CC617F7291000CA9F83 /* contactUs_bg.png in Resources */,
@@ -1813,11 +1812,11 @@
 				302FD0111727D870004DA005 /* main.m in Sources */,
 				302FD0151727D870004DA005 /* RORAppDelegate.m in Sources */,
 				302FD0241727D870004DA005 /* RORFirstViewController.m in Sources */,
-				30692D3C180D272A00DA01EC /* SVProgressHUD.m in Sources */,
 				30151A7D174488EB009BCADB /* RORRunningViewController.m in Sources */,
 				3061F3B9174CDBEB006093FC /* RORCoreData.xcdatamodeld in Sources */,
 				305A1878174F1EFB003A8CD7 /* RORLoginViewController.m in Sources */,
 				300149901750F444005DAF1D /* RORMoreViewController.m in Sources */,
+				30692D5D18117C2500DA01EC /* SVProgressHUD.m in Sources */,
 				30FC2906175EF6F300DEC042 /* RORMapViewController.m in Sources */,
 				30FC2909175F1F5800DEC042 /* RORMapAnnotation.m in Sources */,
 				30BB0AFD1761C5C50009A847 /* RORHistoryViewController.m in Sources */,
