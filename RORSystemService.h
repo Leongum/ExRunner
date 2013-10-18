@@ -26,4 +26,6 @@
 
 +(BOOL)submitFeedback:(NSDictionary *)feedbackDic;
 
++(BOOL)submitDownloaded:(NSDictionary *)downLoadDic;
+
 @end

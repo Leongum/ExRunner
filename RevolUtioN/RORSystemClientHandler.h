@@ -20,4 +20,6 @@
 
 +(RORHttpResponse *)submitFeedback:(NSDictionary *) feedbackDic;
 
++(RORHttpResponse *)submitDownLoaded:(NSDictionary *) downLoadDic;
+
 @end

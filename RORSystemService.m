@@ -147,4 +147,13 @@
     }
 }
 
++(BOOL)submitDownloaded:(NSDictionary *)downLoadDic{
+    RORHttpResponse *httpResponse = [RORSystemClientHandler submitDownLoaded:downLoadDic];
+    if ([httpResponse responseStatus] == 200){
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 @end

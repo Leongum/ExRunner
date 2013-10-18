@@ -33,6 +33,10 @@
 
 + (void)userInfoUpdateHandler:(id<ISSUserInfo>)userInfo withSNSType:(ShareType) shareType;
 
-+(NSString *)formatedSpeed:(double)metersPerSec;
++ (NSString *)formatedSpeed:(double)metersPerSec;
+
++ (NSNumber *)getDownLoaded;
+
++(void)doneDowned;
 
 @end
