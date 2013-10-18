@@ -112,10 +112,10 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    User_Running_History *best = [RORRunHistoryServices fetchBestRunHistoryByMissionId:record.missionId withUserId:[RORUserUtils getUserId]];
+//    User_Running_History *best = [RORRunHistoryServices fetchBestRunHistoryByMissionId:record.missionId withUserId:[RORUserUtils getUserId]];
     if (record.missionTypeId.integerValue == Challenge && record.valid.integerValue>0 && [delegate isKindOfClass:[RORRunningBaseViewController class]])
     {
-        RORCongratsCoverView *congratsCoverView = [[RORCongratsCoverView alloc]initWithFrame:self.coverView.frame andLevel:best];
+        RORCongratsCoverView *congratsCoverView = [[RORCongratsCoverView alloc]initWithFrame:self.coverView.frame andLevel:record];
         [self.view addSubview:congratsCoverView];
         [congratsCoverView show:self];
     }
