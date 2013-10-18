@@ -39,4 +39,12 @@
 
 +(void)doneDowned;
 
++(NSNumber*)hasStatisticsPageAppeared;
+
++(void)statisticsPageDidAppeared;
+
++(NSNumber*)getStatisticsDefaultPage;
+
++(void)saveStatisticsDefaultPage:(NSInteger)page;
+
 @end

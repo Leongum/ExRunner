@@ -37,6 +37,28 @@ static NSDate *systemTime = nil;
     [self writeToUserInfoPList:userDict];
 }
 
++(void)statisticsPageDidAppeared{
+    NSMutableDictionary *userDict = [RORUserUtils getUserInfoPList];
+    [userDict setValue:[NSNumber numberWithInt:1] forKey:@"statisticsPageAppeared"];
+    [self writeToUserInfoPList:userDict];
+}
+
++(NSNumber*)hasStatisticsPageAppeared{
+    NSMutableDictionary *userDict = [self getUserInfoPList];
+    return [userDict valueForKey:@"statisticsPageAppeared"];
+}
+
++(NSNumber*)getStatisticsDefaultPage{
+    NSMutableDictionary *userDict = [self getUserInfoPList];
+    return [userDict valueForKey:@"statisticsDefaultPage"];
+}
+
++(void)saveStatisticsDefaultPage:(NSInteger)page{
+    NSMutableDictionary *userDict = [RORUserUtils getUserInfoPList];
+    [userDict setValue:[NSNumber numberWithInt:page] forKey:@"statisticsDefaultPage"];
+    [self writeToUserInfoPList:userDict];
+}
+
 + (NSString *)getUserUuid{
     NSMutableDictionary *userDict = [self getUserInfoPList];
     NSString *uuid = (NSString *)[userDict objectForKey:@"uuid"];
@@ -219,4 +241,5 @@ static NSDate *systemTime = nil;
         return [NSString stringWithFormat:@"%.1f km/h", kmperhour];
     }
 }
+
 @end

@@ -119,6 +119,7 @@
     }
     self.totalDistanceLabel.alpha =1;
     self.totalCalorieLabel.alpha = 1;
+    self.challengeStatisView.alpha = 1;
     [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.totalSpeedLabel andSubViews:NO];
 }
 
@@ -129,6 +130,7 @@
     }
     self.totalDistanceLabel.alpha =0;
     self.totalCalorieLabel.alpha = 0;
+    self.challengeStatisView.alpha = 0;
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.totalSpeedLabel andSubViews:NO];
 }
 

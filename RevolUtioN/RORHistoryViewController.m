@@ -222,10 +222,18 @@
     User_Running_History *record4Date = [records4DateList objectAtIndex:indexPath.row];
     UILabel *distanceLabel = (UILabel *)[cell viewWithTag:DISTANCE];
     distanceLabel.text = [NSString stringWithFormat:@"%@",[RORUtils outputDistance:record4Date.distance.doubleValue]];
-    
     UILabel *durationLabel = (UILabel *)[cell viewWithTag:DURATION];
     durationLabel.text = [RORUtils transSecondToStandardFormat:[record4Date.duration integerValue]];
+    if (record4Date.valid.integerValue<=0){
+        distanceLabel.textColor = [UIColor grayColor];
+        durationLabel.textColor = [UIColor grayColor];
+    }else{
+        distanceLabel.textColor = [UIColor blackColor];
+        durationLabel.textColor = [UIColor darkGrayColor];
+    }
+    
     RORImageView *isValidImage = (RORImageView *)[cell viewWithTag:VALID];
+
     if (record4Date.valid.integerValue>0 && record4Date.missionTypeId.integerValue == Challenge){
 //        isValidImage.alpha = 0;
         [isValidImage setImage:[UIImage imageNamed:MissionGradeImageEnum_toString[record4Date.missionGrade.integerValue]]];

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>statisticsDefaultPage</key>
+	<integer>0</integer>
+	<key>statisticsPageAppeared</key>
+	<integer>0</integer>
 	<key>downLoaded</key>
 	<integer>0</integer>
 	<key>userId</key>

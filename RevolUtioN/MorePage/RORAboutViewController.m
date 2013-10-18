@@ -28,6 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    hasNewVersion = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,8 +53,13 @@
         {
             identifier = @"versionCell";
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d.%d", CURRENT_VERSION_MAIN, CURRENT_VERSION_SUB];
             Version_Control *version = [RORSystemService syncVersion:@"ios"];
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"v %@.%@", version.version, version.subVersion];
+            if (version.version.integerValue != CURRENT_VERSION_MAIN ||
+                version.subVersion.integerValue != CURRENT_VERSION_SUB){
+                hasNewVersion = YES;
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@(点击更新%d.%d)",cell.detailTextLabel.text, version.version.integerValue, version.subVersion.integerValue];
+            }
             [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
             [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:cell.detailTextLabel andSubViews:YES];
             break;
@@ -75,6 +81,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 0 && hasNewVersion){
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/cyberace/id718299464?ls=1&mt=8"]];
+    }
     if (indexPath.row == 1){
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.cyberace.cc"]];
     }

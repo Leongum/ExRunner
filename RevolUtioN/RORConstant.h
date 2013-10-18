@@ -15,6 +15,9 @@
 //define prod service host
 #define SERVICE_HOST @"http://www.cyberace.cc/service/api"
 
+#define CURRENT_VERSION_MAIN 1
+#define CURRENT_VERSION_SUB 1
+
 #define LOGIN_URL [SERVICE_HOST stringByAppendingString:@"/account/%@/%@"] 
 #define REGISTER_URL [SERVICE_HOST stringByAppendingString:@"/account"]
 #define USER_ADDITIONAL_UPDATE [SERVICE_HOST stringByAppendingString:@"/account/additional/%@"] 
@@ -52,7 +55,10 @@
 
 typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3, NormalRun = 4} MissionTypeEnum;
 typedef enum {GRADE_S = 0, GRADE_A = 1, GRADE_B = 2, GRADE_C = 3, GRADE_D = 4, GRADE_E = 5, GRADE_F = 6} MissionGradeEnum;
-
+typedef struct {
+    int mainVersion;
+    int subVersion;
+} Version;
 
 NSString *const MissionTypeEnum_toString[5];
 NSString *const MissionGradeEnum_toString[7];

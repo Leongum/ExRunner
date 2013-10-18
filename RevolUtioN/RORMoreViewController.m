@@ -158,6 +158,14 @@
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             [RORUtils setFontFamily:CHN_PRINT_FONT forView:[cell viewWithTag:1] andSubViews:NO];
             [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:[cell viewWithTag:2] andSubViews:NO];
+            [RORUtils setFontFamily:CHN_PRINT_FONT forView:[cell viewWithTag:3] andSubViews:NO];
+
+            Version_Control *version = [RORSystemService syncVersion:@"ios"];
+            if (version.version.integerValue != CURRENT_VERSION_MAIN ||
+                version.subVersion.integerValue != CURRENT_VERSION_SUB){
+                [cell viewWithTag:3].alpha = 1;
+            } else
+                [cell viewWithTag:3].alpha = 0;
             break;
         }
     }

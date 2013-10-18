@@ -49,6 +49,7 @@
 {
     [super viewDidLoad];
     
+    
     [self loadChecked];
     
 	// Do any additional setup after loading the view.
@@ -78,10 +79,10 @@
     self.pageControl.numberOfPages = numberPages;
     self.pageControl.currentPage = 0;
 
-    self.formerPageButton.frame = [self nextPagePointLeftFrame];
-    self.nextPageButton.frame = [self nextPagePointRigheFrame];
+//    self.formerPageButton.frame = [self nextPagePointLeftFrame];
+//    self.nextPageButton.frame = [self nextPagePointRigheFrame];
     self.formerPageButton.alpha = 0;
-    self.nextPageButton.alpha = 0.5;
+    self.nextPageButton.alpha = 0;
     
     [self loadPage:0];
     [self loadPage:1];
@@ -94,6 +95,21 @@
 //    if (self.pageControl.currentPage != 1){
 //        [self gotoNextPage:self];
 //    }
+    if (!((NSNumber *)[RORUserUtils hasStatisticsPageAppeared]).boolValue){
+        [self gotoNextPage:self];
+        [RORUserUtils statisticsPageDidAppeared];
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.pageControl.currentPage = [RORUserUtils getStatisticsDefaultPage].integerValue;
+    [self gotoPage:NO];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [RORUserUtils saveStatisticsDefaultPage:self.pageControl.currentPage];
 }
 
 -(CGRect)nextPagePointLeftFrame{
@@ -126,7 +142,6 @@
     [self setFilterTableView:nil];
     [self setCoverView:nil];
     [self setFormerPageButton:nil];
-    [self setNextPageButton:nil];
     [self setNextPageButton:nil];
     [super viewDidUnload];
 }
@@ -175,13 +190,13 @@
 
 // at the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
-    if (self.pageControl.currentPage <=1)
-        self.formerPageButton.alpha = scrollView.contentOffset.x/pageWidth / 2;
-    if (self.pageControl.currentPage >=contentViews.count-2)
-        self.nextPageButton.alpha = (pageWidth * (contentViews.count-1) - scrollView.contentOffset.x)/pageWidth /2;
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
+//    if (self.pageControl.currentPage <=1)
+//        self.formerPageButton.alpha = scrollView.contentOffset.x/pageWidth / 2;
+//    if (self.pageControl.currentPage >=contentViews.count-2)
+//        self.nextPageButton.alpha = (pageWidth * (contentViews.count-1) - scrollView.contentOffset.x)/pageWidth /2;
+//}
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {

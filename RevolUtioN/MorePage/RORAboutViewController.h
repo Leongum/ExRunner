@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "RORViewController.h"
 
-@interface RORAboutViewController : RORViewController
+@interface RORAboutViewController : RORViewController{
+    BOOL hasNewVersion;
+}
 
 @end
