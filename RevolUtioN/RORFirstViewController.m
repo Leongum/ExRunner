@@ -207,8 +207,11 @@
                     [weatherInfoButtonView setImage:image forState:UIControlStateNormal];
                     if (temp == INT16_MAX) {
                         weatherInformation = [NSString stringWithFormat:@"天气信息获取失败"];
-                    } else if (pm25==INT16_MAX)
+                    } else if (pm25==INT16_MAX){
                         weatherInformation = [NSString stringWithFormat:@"%@\n空气质量信息获取失败", weatherInformation];
+                    } else {
+                        weatherInformation = [NSString stringWithFormat:@"%@\n空气质量信息获取失败", weatherInformation];
+                    }
                 }
                 else if (temp < 0 || temp > 38 || pm25>250 || index<50){
                     UIImage *image = [UIImage imageNamed:@"main_trafficlight_red.png"];

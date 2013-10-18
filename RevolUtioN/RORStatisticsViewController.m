@@ -53,6 +53,8 @@
     totalDistance = 0;  
     avgSpeed = 0;
     totalChallengeNum = 0;
+    for (int i=0; i<7; i++)
+        challengeCounter[i] = 0;
     
     NSMutableArray *filter = ((RORHistoryPageViewController*)[self parentViewController]).filter;
     

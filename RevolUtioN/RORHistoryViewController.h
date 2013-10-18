@@ -13,6 +13,9 @@ typedef enum {DISTANCE = 1, DURATION = 2, VALID = 3, LEVEL = 4} controlInHistory
 
 @interface RORHistoryViewController : RORPageViewController{
     NSMutableArray *stampList;
+    NSIndexPath *bottomIndexPath;
+    BOOL scrolled;
+    NSMutableDictionary *hasRotated;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *syncButtonItem;

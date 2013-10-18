@@ -61,6 +61,7 @@
 
 - (void)viewDidLoad
 {
+    scrolled = NO;
     [super viewDidLoad];
     //syncButtonItem.enabled = ([RORUtils hasLoggedIn]!=nil);
 //    [self initTableData];
@@ -71,16 +72,25 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self setRandomStampArc];
+//    [self setRandomStampArc];
+//    if (!scrolled) {
+//        NSString *date_str = [sortedDateList objectAtIndex:sortedDateList.count-1];
+//        NSArray *records4Date = [runHistoryList objectForKey:date_str];
+//        bottomIndexPath = [NSIndexPath indexPathForRow:records4Date.count-1 inSection:sortedDateList.count-1];
+//
+//        [self.tableView scrollToRowAtIndexPath:bottomIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+//        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//        scrolled = YES;
+//    }
 }
 
 -(void)setRandomStampArc{
     
-    for (UITableViewCell *cell in stampList){
+    for (NSIndexPath *indexPath in stampList){
 
-//        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+//        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+
         NSString *date_str = [sortedDateList objectAtIndex:indexPath.section];
         NSArray *records4DateList = [runHistoryList objectForKey:date_str];
         User_Running_History *record4Date = [records4DateList objectAtIndex:indexPath.row];
@@ -102,6 +112,8 @@
 }
 
 -(void)initTableData{
+    hasRotated = [[NSMutableDictionary alloc]init];
+    
     NSMutableArray *filter = ((RORHistoryPageViewController*)[self parentViewController]).filter;
     
     runHistoryList = [[NSMutableDictionary alloc] init];
@@ -217,16 +229,39 @@
     if (record4Date.valid.integerValue>0 && record4Date.missionTypeId.integerValue == Challenge){
 //        isValidImage.alpha = 0;
         [isValidImage setImage:[UIImage imageNamed:MissionGradeImageEnum_toString[record4Date.missionGrade.integerValue]]];
-        if (![stampList containsObject:cell]){
-            [stampList addObject:cell];
-            isValidImage.alpha = 0;
-            NSLog(@"(%d,%d)", indexPath.section, indexPath.row);
-        } else
+        isValidImage.center = CGPointMake(record4Date.duration .integerValue%30+155, ((int)(record4Date.avgSpeed.doubleValue*1024))%20+30);
+        [Animations rotate:isValidImage andAnimationDuration:0 andWait:NO andAngle:record4Date.duration.integerValue%10-5];
+
+//        if (!((NSNumber*)[hasRotated objectForKey:indexPath]).boolValue){
+////            if (![stampList containsObject:cell]){
+////                [stampList addObject:cell];
+////                isValidImage.alpha = 0;
+////                NSLog(@"(%d,%d)", indexPath.section, indexPath.row);
+////            }
+//            [hasRotated setObject:[NSNumber numberWithBool:YES] forKey:indexPath];
+//            [stampList addObject:indexPath];
+//            isValidImage.alpha = 0;
+//        } else
             isValidImage.alpha = 1;
+        [cell setHighlighted:YES];
     } else
         isValidImage.alpha = 0;
+    bottomIndexPath = indexPath;
     return cell;
 }
+
+//-(void)tableView:(UITableView*)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+////    if (!scrolled){
+//        NSString *date_str = [sortedDateList objectAtIndex:indexPath.section];
+//        NSArray *records4DateList = [runHistoryList objectForKey:date_str];
+//        User_Running_History *record4Date = [records4DateList objectAtIndex:indexPath.row];
+//    
+//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//        RORImageView *isValidImage = (RORImageView *)[cell viewWithTag:VALID];
+//
+//        [Animations rotate:isValidImage andAnimationDuration:0 andWait:NO andAngle:record4Date.duration.integerValue%60-30];
+////    }
+//}
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *result = nil;
