@@ -118,6 +118,9 @@
 		303707A91805523900FE0238 /* mall.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707A51805523900FE0238 /* mall.png */; };
 		303707AA1805523900FE0238 /* mall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707A61805523900FE0238 /* mall@2x.png */; };
 		303707AC1806590B00FE0238 /* stamp_f.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707AB1806590B00FE0238 /* stamp_f.png */; };
+		3053E4061827924400F671F7 /* RORTrainingMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3053E4051827924400F671F7 /* RORTrainingMainViewController.m */; };
+		3053E40A18279BD500F671F7 /* TrainingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3053E40918279BD500F671F7 /* TrainingStoryboard.storyboard */; };
+		3053E40D1828994100F671F7 /* RORBookletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3053E40C1828994100F671F7 /* RORBookletViewController.m */; };
 		305428CB17CF85DA00A9E6E9 /* RORChallengeLevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 305428CA17CF85DA00A9E6E9 /* RORChallengeLevelView.m */; };
 		30594BC417F06B4F00E6A19B /* seg_selected_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30594BC317F06B4F00E6A19B /* seg_selected_bg.png */; };
 		30594BCD17F0851500E6A19B /* last_kilo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 30594BC917F0851500E6A19B /* last_kilo.mp3 */; };
@@ -253,6 +256,7 @@
 		30BB0BAC176A04A10009A847 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BB0BAB176A04A10009A847 /* libz.1.2.5.dylib */; };
 		30BB0BAF176AB2BE0009A847 /* RORConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0BAE176AB2BE0009A847 /* RORConstant.m */; };
 		30BB0BBD176F004D0009A847 /* RORMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0BBC176F004D0009A847 /* RORMapPoint.m */; };
+		30BDBE611828FBAF001829D5 /* RORTraineesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BDBE601828FBAF001829D5 /* RORTraineesViewController.m */; };
 		30C1218817EA963B0077CBD3 /* RORCountDownCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C1218717EA963B0077CBD3 /* RORCountDownCoverView.m */; };
 		30C1219117EC99EA0077CBD3 /* RORBreathingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C1219017EC99EA0077CBD3 /* RORBreathingControl.m */; };
 		30C58AC317C4840F0065FC90 /* RORChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C58AC217C4840F0065FC90 /* RORChallengeViewController.m */; };
@@ -476,6 +480,11 @@
 		303707A51805523900FE0238 /* mall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mall.png; sourceTree = "<group>"; };
 		303707A61805523900FE0238 /* mall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mall@2x.png"; sourceTree = "<group>"; };
 		303707AB1806590B00FE0238 /* stamp_f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stamp_f.png; sourceTree = "<group>"; };
+		3053E4041827924400F671F7 /* RORTrainingMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingMainViewController.h; path = Training/RORTrainingMainViewController.h; sourceTree = "<group>"; };
+		3053E4051827924400F671F7 /* RORTrainingMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingMainViewController.m; path = Training/RORTrainingMainViewController.m; sourceTree = "<group>"; };
+		3053E40918279BD500F671F7 /* TrainingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainingStoryboard.storyboard; sourceTree = "<group>"; };
+		3053E40B1828994100F671F7 /* RORBookletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORBookletViewController.h; sourceTree = "<group>"; };
+		3053E40C1828994100F671F7 /* RORBookletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORBookletViewController.m; sourceTree = "<group>"; };
 		305428C917CF85DA00A9E6E9 /* RORChallengeLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORChallengeLevelView.h; sourceTree = "<group>"; };
 		305428CA17CF85DA00A9E6E9 /* RORChallengeLevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORChallengeLevelView.m; sourceTree = "<group>"; };
 		30594BC317F06B4F00E6A19B /* seg_selected_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seg_selected_bg.png; path = bg/seg_selected_bg.png; sourceTree = "<group>"; };
@@ -642,6 +651,8 @@
 		30BB0BAE176AB2BE0009A847 /* RORConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORConstant.m; sourceTree = "<group>"; };
 		30BB0BBB176F004D0009A847 /* RORMapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMapPoint.h; sourceTree = "<group>"; };
 		30BB0BBC176F004D0009A847 /* RORMapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMapPoint.m; sourceTree = "<group>"; };
+		30BDBE5F1828FBAF001829D5 /* RORTraineesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTraineesViewController.h; path = Training/RORTraineesViewController.h; sourceTree = "<group>"; };
+		30BDBE601828FBAF001829D5 /* RORTraineesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTraineesViewController.m; path = Training/RORTraineesViewController.m; sourceTree = "<group>"; };
 		30C1218617EA963B0077CBD3 /* RORCountDownCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORCountDownCoverView.h; path = ReusableControl/RORCountDownCoverView.h; sourceTree = "<group>"; };
 		30C1218717EA963B0077CBD3 /* RORCountDownCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORCountDownCoverView.m; path = ReusableControl/RORCountDownCoverView.m; sourceTree = "<group>"; };
 		30C1218F17EC99EA0077CBD3 /* RORBreathingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORBreathingControl.h; path = ReusableControl/RORBreathingControl.h; sourceTree = "<group>"; };
@@ -1126,6 +1137,7 @@
 		302FD00A1727D870004DA005 /* RevolUtioN */ = {
 			isa = PBXGroup;
 			children = (
+				3053E3FC18278E1700F671F7 /* Training */,
 				30692D531811327000DA01EC /* Instruction */,
 				0F07AC1617E6E3C70009C8A8 /* ThirdPartyTools */,
 				30A6D9B817C733F700D1116E /* ReusableControl */,
@@ -1188,6 +1200,28 @@
 				303707921805074900FE0238 /* stamp_s.png */,
 			);
 			path = levels;
+			sourceTree = "<group>";
+		};
+		3053E3FC18278E1700F671F7 /* Training */ = {
+			isa = PBXGroup;
+			children = (
+				3053E40918279BD500F671F7 /* TrainingStoryboard.storyboard */,
+				3053E3FD18278E2900F671F7 /* TrainingMain */,
+			);
+			name = Training;
+			sourceTree = "<group>";
+		};
+		3053E3FD18278E2900F671F7 /* TrainingMain */ = {
+			isa = PBXGroup;
+			children = (
+				3053E4041827924400F671F7 /* RORTrainingMainViewController.h */,
+				3053E4051827924400F671F7 /* RORTrainingMainViewController.m */,
+				3053E40B1828994100F671F7 /* RORBookletViewController.h */,
+				3053E40C1828994100F671F7 /* RORBookletViewController.m */,
+				30BDBE5F1828FBAF001829D5 /* RORTraineesViewController.h */,
+				30BDBE601828FBAF001829D5 /* RORTraineesViewController.m */,
+			);
+			name = TrainingMain;
 			sourceTree = "<group>";
 		};
 		3061F3C7174DC6CC006093FC /* CoreData */ = {
@@ -1646,6 +1680,7 @@
 				30989CAC17F5D87800CA9F83 /* Default.png in Resources */,
 				30FC29411760861C00DEC042 /* expand.png in Resources */,
 				30989CB517F5F7C800CA9F83 /* S.png in Resources */,
+				3053E40A18279BD500F671F7 /* TrainingStoryboard.storyboard in Resources */,
 				30692D3F180D800200DA01EC /* logo.png in Resources */,
 				30BB0AF81761BEA10009A847 /* history.png in Resources */,
 				30692D5C18117C2500DA01EC /* SVProgressHUD.bundle in Resources */,
@@ -1826,6 +1861,7 @@
 				300149901750F444005DAF1D /* RORMoreViewController.m in Sources */,
 				30692D5D18117C2500DA01EC /* SVProgressHUD.m in Sources */,
 				30FC2906175EF6F300DEC042 /* RORMapViewController.m in Sources */,
+				3053E40D1828994100F671F7 /* RORBookletViewController.m in Sources */,
 				30FC2909175F1F5800DEC042 /* RORMapAnnotation.m in Sources */,
 				30BB0AFD1761C5C50009A847 /* RORHistoryViewController.m in Sources */,
 				30BB0B001761C5DB0009A847 /* RORHistoryDetailViewController.m in Sources */,
@@ -1843,6 +1879,7 @@
 				0F87D877179D642A007E0412 /* RORMissionClientHandler.m in Sources */,
 				307A1D5417F4353B006692DD /* RORCongratsCoverView.m in Sources */,
 				0F87D881179D72C7007E0412 /* RORRunHistoryServices.m in Sources */,
+				30BDBE611828FBAF001829D5 /* RORTraineesViewController.m in Sources */,
 				30989CCB17F7D72A00CA9F83 /* RORImageView.m in Sources */,
 				0F87D884179D72F8007E0412 /* RORRunHistoryClientHandler.m in Sources */,
 				0F0D589217B0E4680046515C /* RORLoadingViewController.m in Sources */,
@@ -1894,6 +1931,7 @@
 				0F16EF8517CD9F370055DEE6 /* User_Attributes.m in Sources */,
 				0F16EF8817CD9F380055DEE6 /* User_Running.m in Sources */,
 				0F16EF8B17CD9F380055DEE6 /* Version_Control.m in Sources */,
+				3053E4061827924400F671F7 /* RORTrainingMainViewController.m in Sources */,
 				0F16EF8E17CD9F390055DEE6 /* Products.m in Sources */,
 				0F16EF9417CDBA940055DEE6 /* RORUserUtils.m in Sources */,
 				0F16EF9717CDBAC20055DEE6 /* RORContextUtils.m in Sources */,

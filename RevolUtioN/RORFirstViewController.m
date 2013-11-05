@@ -8,6 +8,7 @@
 
 #import "RORFirstViewController.h"
 #import "FTAnimation.h"
+#import "RORTrainingMainViewController.h"
 
 //#define CHARACTOR_FRAME_NORMAL CGRectMake(10,300,280,183)
 //#define CHARACTOR_FRAME_RATINA CGRectMake(10,300,280,183)
@@ -336,4 +337,10 @@
     [self sendNotification:@"【我的跑友】\n\n正在窟嚓窟嚓开发中"];
 }
 
+- (IBAction)trainingAction:(id)sender {
+    UIStoryboard *secondStoryboard = [UIStoryboard storyboardWithName:@"TrainingStoryboard" bundle:nil];
+    UIViewController *trainingViewController = [secondStoryboard instantiateViewControllerWithIdentifier:@"TrainingMainViewController"];
+    
+    [self.navigationController pushViewController:trainingViewController animated:YES];
+}
 @end

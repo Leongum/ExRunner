@@ -45,6 +45,12 @@ NSString *const kFTAnimationPopOut = @"kFTAnimationPopOut";
 NSString *const kFTAnimationFallIn = @"kFTAnimationFallIn";
 NSString *const kFTAnimationFallOut = @"kFTAnimationFallOut";
 NSString *const kFTAnimationFlyOut = @"kFTAnimationFlyOut";
+NSString *const kFTAnimationMoveUp = @"kFTAnimationMoveUp";
+NSString *const kFTAnimationMoveDown = @"kFTAnimationMoveDown";
+NSString *const kFTAnimationMoveLeft = @"kFTAnimationMoveLeft";
+NSString *const kFTAnimationMoveRight = @"kFTAnimationMoveRight";
+NSString *const kFTAnimationExpand = @"kFTAnimationExpand";
+NSString *const kFTAnimationFold = @"kFTAnimationFold";
 
 NSString *const kFTAnimationCallerDelegateKey = @"kFTAnimationCallerDelegateKey";
 NSString *const kFTAnimationCallerStartSelectorKey = @"kFTAnimationCallerStartSelectorKey";
@@ -359,6 +365,29 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
 }
 
 #pragma mark -
+-(CAAnimation *)moveUpFor:(UIView *)view duration:(NSTimeInterval)duration length:(double)length delegate:(id)delegate{
+    CGPoint path[4] = {
+        view.center,
+        CGPointMake(view.center.x, view.center.y+length*1.04),
+        CGPointMake(view.center.x, view.center.y+length*0.98),
+        CGPointMake(view.center.x, view.center.y+length)
+    };
+    
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    CGMutablePathRef thePath = CGPathCreateMutable();
+    CGPathAddLines(thePath, NULL, path, 4);
+    
+	animation.path = thePath;
+	CGPathRelease(thePath);
+	NSArray *animations;
+    animations = [NSArray arrayWithObject:animation];
+    
+	return [self animationGroupFor:animations withView:view duration:duration
+						  delegate:delegate startSelector:nil stopSelector:nil
+							  name:kFTAnimationMoveUp type:kFTAnimationTypeIn];
+}
+
+#pragma mark -
 #pragma mark Fade Animation Builders
 
 - (CAAnimation *)fadeAnimationFor:(UIView *)view duration:(NSTimeInterval)duration 
@@ -527,6 +556,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
                       startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
   
   CABasicAnimation *fly = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+
   fly.toValue = [NSNumber numberWithFloat:2.f];
   fly.duration = duration;
   
@@ -540,6 +570,63 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
   return group;
 }
 
+- (CAAnimation *)expandAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate
+                     startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
+    CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale.y"];
+    scale.duration = duration;
+    scale.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:.0f],
+                    [NSNumber numberWithFloat:1.1f],
+                    [NSNumber numberWithFloat:0.98f],
+                    [NSNumber numberWithFloat:1.f],
+                    nil];
+
+    CGPoint path[4] = {
+        CGPointMake(view.center.x, view.center.y - view.frame.size.height/2),
+        CGPointMake(view.center.x, view.center.y + view.frame.size.height*0.1/2),
+        CGPointMake(view.center.x, view.center.y - view.frame.size.height*0.02/2),
+        CGPointMake(view.center.x, view.center.y)
+    };
+    
+    CAKeyframeAnimation *pos = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    CGMutablePathRef thePath = CGPathCreateMutable();
+    CGPathAddLines(thePath, NULL, path, 4);
+	pos.path = thePath;
+	CGPathRelease(thePath);
+    
+    CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObjects:scale, pos, nil] withView:view duration:duration
+                                             delegate:delegate startSelector:startSelector stopSelector:stopSelector
+                                                 name:kFTAnimationExpand type:kFTAnimationTypeIn];
+    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    return group;
+}
+
+- (CAAnimation *)foldAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate
+                      startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
+    CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale.y"];
+    scale.duration = duration;
+    scale.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0f],
+                    [NSNumber numberWithFloat:1.02f],
+                    [NSNumber numberWithFloat:.0f],
+                    nil];
+    
+    CGPoint path[3] = {
+        CGPointMake(view.center.x, view.center.y),
+        CGPointMake(view.center.x, view.center.y + view.frame.size.height*0.02/2),
+        CGPointMake(view.center.x, view.center.y - view.frame.size.height/2)
+    };
+    
+    CAKeyframeAnimation *pos = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    CGMutablePathRef thePath = CGPathCreateMutable();
+    CGPathAddLines(thePath, NULL, path, 3);
+	pos.path = thePath;
+	CGPathRelease(thePath);
+    
+    CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObjects:scale, pos, nil] withView:view duration:duration
+                                             delegate:delegate startSelector:startSelector stopSelector:stopSelector
+                                                 name:kFTAnimationFold type:kFTAnimationTypeOut];
+    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    return group;
+}
 
 #pragma mark -
 #pragma mark Animation Delegate Methods

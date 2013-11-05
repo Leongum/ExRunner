@@ -57,7 +57,12 @@ extern NSString *const kFTAnimationPopOut;
 extern NSString *const kFTAnimationFallIn;
 extern NSString *const kFTAnimationFallOut;
 extern NSString *const kFTAnimationFlyOut;
-
+extern NSString *const kFTAnimationMoveUp;
+extern NSString *const kFTAnimationMoveDown;
+extern NSString *const kFTAnimationMoveLeft;
+extern NSString *const kFTAnimationMoveRight;
+extern NSString *const kFTAnimationExpand;
+extern NSString *const kFTAnimationFold;
 extern NSString *const kFTAnimationTargetViewKey;
 
 #pragma mark Inline Functions
@@ -355,8 +360,20 @@ static inline CGPoint FTAnimationOffscreenCenterPoint(CGRect viewFrame, CGPoint 
 - (CAAnimation *)flyOutAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate 
                       startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 
+/**
+ move up
+ */
+-(CAAnimation *)moveUpFor:(UIView *)view duration:(NSTimeInterval)duration length:(double)length delegate:(id)delegate;
 
+
+/**
+ expand
+ */
+- (CAAnimation *)expandAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector ;
+- (CAAnimation *)foldAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector ;
 @end
+
+
 
 /**
  This category on `CAAnimation` allows for using individual selectors

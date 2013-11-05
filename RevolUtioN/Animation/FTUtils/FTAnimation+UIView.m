@@ -186,6 +186,27 @@
   [self popOut:duration delegate:delegate startSelector:nil stopSelector:nil];
 }
 
+#pragma mark - Expand and Fold
+
+-(void)expand:(NSTimeInterval)duration delegate:(id)delegate{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] expandAnimationFor:self duration:duration delegate:delegate startSelector:nil stopSelector:nil];
+    [self.layer addAnimation:anim forKey:kFTAnimationExpand];
+}
+
+-(void)fold:(NSTimeInterval)duration delegate:(id)delegate{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] foldAnimationFor:self duration:duration delegate:delegate startSelector:nil stopSelector:nil];
+    [self.layer addAnimation:anim forKey:kFTAnimationFold];
+}
+
+-(void)expand:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] expandAnimationFor:self duration:duration delegate:delegate startSelector:startSelector stopSelector:stopSelector];
+    [self.layer addAnimation:anim forKey:kFTAnimationExpand];
+}
+
+-(void)fold:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] foldAnimationFor:self duration:duration delegate:delegate startSelector:startSelector stopSelector:stopSelector];
+    [self.layer addAnimation:anim forKey:kFTAnimationFold];
+}
 #pragma mark - Fall In and Fly Out
 
 - (void)fallIn:(NSTimeInterval)duration delegate:(id)delegate {
@@ -216,6 +237,12 @@
   CAAnimation *anim = [[FTAnimationManager sharedManager] flyOutAnimationFor:self duration:duration delegate:delegate
                                                                startSelector:startSelector stopSelector:stopSelector];
   [self.layer addAnimation:anim forKey:kFTAnimationFlyOut];
+}
+
+#pragma mark - Fall In and Fly Out
+-(void)moveUp:(NSTimeInterval)duration length:(double)l delegate:(id)delegate{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] moveUpFor:self duration:duration length:l delegate:delegate];
+    [self.layer addAnimation:anim forKey:kFTAnimationMoveUp];
 }
 
 @end

@@ -334,4 +334,14 @@ custom animation elastic
  */
 - (void)flyOut:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 
+
+-(void)moveUp:(NSTimeInterval)duration length:(double)l delegate:(id)delegate;
+
+/**
+ expand or fold with elasticity
+ */
+-(void)expand:(NSTimeInterval)duration delegate:(id)delegate;
+-(void)fold:(NSTimeInterval)duration delegate:(id)delegate;
+-(void)expand:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
+-(void)fold:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 @end

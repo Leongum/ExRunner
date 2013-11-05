@@ -12,22 +12,22 @@
 
 
 @implementation INStepCounting
-@synthesize gAccList, levelAccList, counter, dSum, rtStepFrequency;
+@synthesize gAccList, levelAccList, counter, rtStepFrequency;
 
 -(id)init{
     self = [super init];
     counter = 0;
-    gAccTrend = 0;
-    lAccTrend = 0;
-    p=0;
+//    gAccTrend = 0;
+//    lAccTrend = 0;
+//    p=0;
     gAccList = [[NSMutableArray alloc]init];
     levelAccList = [[NSMutableArray alloc]init];
 
     totalPoints = 0;
     head = 0;
     tail = 0;
-    duration = 0;
-    dSum = 0;
+//    duration = 0;
+//    dSum = 0;
     
     return self;
 }
