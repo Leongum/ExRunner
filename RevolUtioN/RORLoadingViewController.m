@@ -12,6 +12,7 @@
 #import "RORRunHistoryServices.h"
 #import "RORSystemService.h"
 #import "RORNetWorkUtils.h"
+#import "MLNavigationController.h"
 
 @interface RORLoadingViewController ()
 
@@ -98,7 +99,7 @@
 -(void)viewDidAppear:(BOOL)animated{
 //    [self performSegueWithIdentifier:@"loadingfinished" sender:self];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
-    UINavigationController *navigationController =  [storyboard instantiateViewControllerWithIdentifier:@"RORNavigationController"];
+    MLNavigationController *navigationController =  [storyboard instantiateViewControllerWithIdentifier:@"RORNavigationController"];
     
 //    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]];
     sleep(3);

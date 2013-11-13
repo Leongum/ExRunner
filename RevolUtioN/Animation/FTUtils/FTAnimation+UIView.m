@@ -239,10 +239,35 @@
   [self.layer addAnimation:anim forKey:kFTAnimationFlyOut];
 }
 
-#pragma mark - Fall In and Fly Out
--(void)moveUp:(NSTimeInterval)duration length:(double)l delegate:(id)delegate{
-    CAAnimation *anim = [[FTAnimationManager sharedManager] moveUpFor:self duration:duration length:l delegate:delegate];
+#pragma mark - move
+-(void)moveUp:(NSTimeInterval)duration length:(double)l delegate:(id)delegate {
+    [self moveUp:duration length:l delegate:delegate startSelector:nil stopSelector:nil];
+}
+
+-(void)moveRight:(NSTimeInterval)duration length:(double)l delegate:(id)delegate{
+    [self moveRight:duration length:l delegate:delegate startSelector:nil stopSelector:nil];
+}
+
+-(void)moveUp:(NSTimeInterval)duration length:(double)l delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] moveUpFor:self duration:duration length:l delegate:delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector];
     [self.layer addAnimation:anim forKey:kFTAnimationMoveUp];
 }
+
+-(void)moveRight:(NSTimeInterval)duration length:(double)l delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] moveUpFor:self duration:duration length:l delegate:delegate startSelector:startSelector stopSelector:stopSelector];
+    [self.layer addAnimation:anim forKey:kFTAnimationMoveUp];
+}
+
+#pragma mark - upfloat
+
+-(void)upfloat:(NSTimeInterval)duration rate:(double)rate delegate:(id)delegate{
+    [self upfloat:duration rate:rate delegate:delegate startSelector:nil stopSelector:nil];
+}
+
+-(void)upfloat:(NSTimeInterval)duration rate:(double)rate delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] upfloatAnimationFor:self rate:rate duration:duration delegate:delegate startSelector:startSelector stopSelector:stopSelector];
+    [self.layer addAnimation:anim forKey:kFTAnimationUpfloat];
+}
+
 
 @end

@@ -63,6 +63,8 @@ extern NSString *const kFTAnimationMoveLeft;
 extern NSString *const kFTAnimationMoveRight;
 extern NSString *const kFTAnimationExpand;
 extern NSString *const kFTAnimationFold;
+extern NSString *const kFTAnimationUpfloat;
+
 extern NSString *const kFTAnimationTargetViewKey;
 
 #pragma mark Inline Functions
@@ -361,18 +363,23 @@ static inline CGPoint FTAnimationOffscreenCenterPoint(CGRect viewFrame, CGPoint 
                       startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 
 /**
- move up
+ move up and right
  */
--(CAAnimation *)moveUpFor:(UIView *)view duration:(NSTimeInterval)duration length:(double)length delegate:(id)delegate;
+-(CAAnimation *)moveUpFor:(UIView *)view duration:(NSTimeInterval)duration length:(double)length delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 
+-(CAAnimation *)moveRightFor:(UIView *)view duration:(NSTimeInterval)duration length:(double)length delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 
 /**
  expand
  */
 - (CAAnimation *)expandAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector ;
 - (CAAnimation *)foldAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector ;
-@end
 
+
+- (CAAnimation *)upfloatAnimationFor:(UIView *)view rate:(double)rate duration:(NSTimeInterval)duration delegate:(id)delegate
+                     startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
+
+@end
 
 
 /**

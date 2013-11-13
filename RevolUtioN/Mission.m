@@ -34,6 +34,7 @@
 @dynamic scores;
 @dynamic sequence;
 @dynamic subMissionList;
+@dynamic plan_id;
 
 
 //array list for place package, challenge, submission
@@ -88,6 +89,7 @@
     self.missionPackageId = [RORDBCommon getNumberFromId:[dict valueForKey:@"missionPackageId"]];
     self.sequence = [RORDBCommon getNumberFromId:[dict valueForKey:@"sequence"]];
     self.lastUpdateTime = [RORDBCommon getDateFromId:[dict valueForKey:@"lastUpdateTime"]];
+    self.plan_id = [RORDBCommon getNumberFromId:[dict valueForKey:@"plan_id"]];
 }
 
 @end

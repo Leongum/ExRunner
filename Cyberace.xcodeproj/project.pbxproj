@@ -227,6 +227,8 @@
 		3098B5001809DCE400029164 /* running_end1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3098B4FE1809DCE400029164 /* running_end1.mp3 */; };
 		3098B503180BBFC000029164 /* map_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 3098B501180BBFC000029164 /* map_cover.png */; };
 		3098B504180BBFC000029164 /* map_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3098B502180BBFC000029164 /* map_cover@2x.png */; };
+		309EE152182D06AC00B37587 /* RORCreatSimpleTrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 309EE151182D06AC00B37587 /* RORCreatSimpleTrainingViewController.m */; };
+		309EE155182D06C900B37587 /* RORCreatAdvTrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 309EE154182D06C900B37587 /* RORCreatAdvTrainingViewController.m */; };
 		30A6D9AA17C6821500D1116E /* FTAnimation+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */; };
 		30A6D9AB17C6821500D1116E /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A417C6821500D1116E /* FTAnimationManager.m */; };
 		30A6D9AC17C6821500D1116E /* FTUtils+NSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D9A617C6821500D1116E /* FTUtils+NSObject.m */; };
@@ -246,6 +248,7 @@
 		30A6D9F617CDD8CA00D1116E /* FZKATJW.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9F517CDD8CA00D1116E /* FZKATJW.TTF */; };
 		30A6D9FB17CE2BF800D1116E /* main_login_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9F917CE2BF800D1116E /* main_login_bg.png */; };
 		30A6D9FC17CE2BF800D1116E /* main_login_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D9FA17CE2BF800D1116E /* main_login_bg@2x.png */; };
+		30B3906618322B4C005CE74D /* MLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B3906518322B4C005CE74D /* MLNavigationController.m */; };
 		30BB0AF81761BEA10009A847 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = 30BB0AF61761BEA10009A847 /* history.png */; };
 		30BB0AF91761BEA10009A847 /* history@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30BB0AF71761BEA10009A847 /* history@2x.png */; };
 		30BB0AFD1761C5C50009A847 /* RORHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0AFC1761C5C50009A847 /* RORHistoryViewController.m */; };
@@ -257,6 +260,12 @@
 		30BB0BAF176AB2BE0009A847 /* RORConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0BAE176AB2BE0009A847 /* RORConstant.m */; };
 		30BB0BBD176F004D0009A847 /* RORMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0BBC176F004D0009A847 /* RORMapPoint.m */; };
 		30BDBE611828FBAF001829D5 /* RORTraineesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BDBE601828FBAF001829D5 /* RORTraineesViewController.m */; };
+		30BDBE66182A3603001829D5 /* FriendsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BDBE65182A3603001829D5 /* FriendsStoryboard.storyboard */; };
+		30BDBE69182A3BA4001829D5 /* RORFriendsMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BDBE68182A3BA4001829D5 /* RORFriendsMainViewController.m */; };
+		30BDBE6F182B8FB0001829D5 /* RORSimpleTrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BDBE6E182B8FB0001829D5 /* RORSimpleTrainingViewController.m */; };
+		30BDBE72182BC9EC001829D5 /* RORAdvancedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BDBE71182BC9EC001829D5 /* RORAdvancedViewController.m */; };
+		30BDBE76182BDCE9001829D5 /* RORSearchTrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BDBE75182BDCE9001829D5 /* RORSearchTrainingViewController.m */; };
+		30BDBE79182C8AF9001829D5 /* RORCustomTrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BDBE78182C8AF9001829D5 /* RORCustomTrainingViewController.m */; };
 		30C1218817EA963B0077CBD3 /* RORCountDownCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C1218717EA963B0077CBD3 /* RORCountDownCoverView.m */; };
 		30C1219117EC99EA0077CBD3 /* RORBreathingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C1219017EC99EA0077CBD3 /* RORBreathingControl.m */; };
 		30C58AC317C4840F0065FC90 /* RORChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C58AC217C4840F0065FC90 /* RORChallengeViewController.m */; };
@@ -608,6 +617,10 @@
 		3098B4FE1809DCE400029164 /* running_end1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = running_end1.mp3; path = Resources/sound/running_end1.mp3; sourceTree = "<group>"; };
 		3098B501180BBFC000029164 /* map_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map_cover.png; path = bg/map_cover.png; sourceTree = "<group>"; };
 		3098B502180BBFC000029164 /* map_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "map_cover@2x.png"; path = "bg/map_cover@2x.png"; sourceTree = "<group>"; };
+		309EE150182D06AC00B37587 /* RORCreatSimpleTrainingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORCreatSimpleTrainingViewController.h; path = Training/RORCreatSimpleTrainingViewController.h; sourceTree = "<group>"; };
+		309EE151182D06AC00B37587 /* RORCreatSimpleTrainingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORCreatSimpleTrainingViewController.m; path = Training/RORCreatSimpleTrainingViewController.m; sourceTree = "<group>"; };
+		309EE153182D06C900B37587 /* RORCreatAdvTrainingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORCreatAdvTrainingViewController.h; path = Training/RORCreatAdvTrainingViewController.h; sourceTree = "<group>"; };
+		309EE154182D06C900B37587 /* RORCreatAdvTrainingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORCreatAdvTrainingViewController.m; path = Training/RORCreatAdvTrainingViewController.m; sourceTree = "<group>"; };
 		30A6D9A017C6821500D1116E /* FTAnimation+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FTAnimation+UIView.h"; sourceTree = "<group>"; };
 		30A6D9A117C6821500D1116E /* FTAnimation+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTAnimation+UIView.m"; sourceTree = "<group>"; };
 		30A6D9A217C6821500D1116E /* FTAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimation.h; sourceTree = "<group>"; };
@@ -636,6 +649,9 @@
 		30A6D9F517CDD8CA00D1116E /* FZKATJW.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = FZKATJW.TTF; path = Resources/FZKATJW.TTF; sourceTree = "<group>"; };
 		30A6D9F917CE2BF800D1116E /* main_login_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_login_bg.png; sourceTree = "<group>"; };
 		30A6D9FA17CE2BF800D1116E /* main_login_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_login_bg@2x.png"; sourceTree = "<group>"; };
+		30B390631831348D005CE74D /* RORCoreData 1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RORCoreData 1.2.xcdatamodel"; sourceTree = "<group>"; };
+		30B3906418322B4C005CE74D /* MLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLNavigationController.h; path = ReusableControl/MLNavigationController.h; sourceTree = "<group>"; };
+		30B3906518322B4C005CE74D /* MLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MLNavigationController.m; path = ReusableControl/MLNavigationController.m; sourceTree = "<group>"; };
 		30BB0AF61761BEA10009A847 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
 		30BB0AF71761BEA10009A847 /* history@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history@2x.png"; sourceTree = "<group>"; };
 		30BB0AFB1761C5C50009A847 /* RORHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHistoryViewController.h; sourceTree = "<group>"; };
@@ -653,6 +669,17 @@
 		30BB0BBC176F004D0009A847 /* RORMapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMapPoint.m; sourceTree = "<group>"; };
 		30BDBE5F1828FBAF001829D5 /* RORTraineesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTraineesViewController.h; path = Training/RORTraineesViewController.h; sourceTree = "<group>"; };
 		30BDBE601828FBAF001829D5 /* RORTraineesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTraineesViewController.m; path = Training/RORTraineesViewController.m; sourceTree = "<group>"; };
+		30BDBE65182A3603001829D5 /* FriendsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FriendsStoryboard.storyboard; path = Friends/FriendsStoryboard.storyboard; sourceTree = "<group>"; };
+		30BDBE67182A3BA4001829D5 /* RORFriendsMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORFriendsMainViewController.h; path = Friends/RORFriendsMainViewController.h; sourceTree = "<group>"; };
+		30BDBE68182A3BA4001829D5 /* RORFriendsMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORFriendsMainViewController.m; path = Friends/RORFriendsMainViewController.m; sourceTree = "<group>"; };
+		30BDBE6D182B8FB0001829D5 /* RORSimpleTrainingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORSimpleTrainingViewController.h; path = Training/RORSimpleTrainingViewController.h; sourceTree = "<group>"; };
+		30BDBE6E182B8FB0001829D5 /* RORSimpleTrainingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORSimpleTrainingViewController.m; path = Training/RORSimpleTrainingViewController.m; sourceTree = "<group>"; };
+		30BDBE70182BC9EC001829D5 /* RORAdvancedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORAdvancedViewController.h; path = Training/RORAdvancedViewController.h; sourceTree = "<group>"; };
+		30BDBE71182BC9EC001829D5 /* RORAdvancedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORAdvancedViewController.m; path = Training/RORAdvancedViewController.m; sourceTree = "<group>"; };
+		30BDBE74182BDCE9001829D5 /* RORSearchTrainingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORSearchTrainingViewController.h; path = Training/RORSearchTrainingViewController.h; sourceTree = "<group>"; };
+		30BDBE75182BDCE9001829D5 /* RORSearchTrainingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORSearchTrainingViewController.m; path = Training/RORSearchTrainingViewController.m; sourceTree = "<group>"; };
+		30BDBE77182C8AF9001829D5 /* RORCustomTrainingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORCustomTrainingViewController.h; path = Training/RORCustomTrainingViewController.h; sourceTree = "<group>"; };
+		30BDBE78182C8AF9001829D5 /* RORCustomTrainingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORCustomTrainingViewController.m; path = Training/RORCustomTrainingViewController.m; sourceTree = "<group>"; };
 		30C1218617EA963B0077CBD3 /* RORCountDownCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORCountDownCoverView.h; path = ReusableControl/RORCountDownCoverView.h; sourceTree = "<group>"; };
 		30C1218717EA963B0077CBD3 /* RORCountDownCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORCountDownCoverView.m; path = ReusableControl/RORCountDownCoverView.m; sourceTree = "<group>"; };
 		30C1218F17EC99EA0077CBD3 /* RORBreathingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORBreathingControl.h; path = ReusableControl/RORBreathingControl.h; sourceTree = "<group>"; };
@@ -1137,6 +1164,7 @@
 		302FD00A1727D870004DA005 /* RevolUtioN */ = {
 			isa = PBXGroup;
 			children = (
+				30BDBE62182A357A001829D5 /* Friends */,
 				3053E3FC18278E1700F671F7 /* Training */,
 				30692D531811327000DA01EC /* Instruction */,
 				0F07AC1617E6E3C70009C8A8 /* ThirdPartyTools */,
@@ -1206,22 +1234,26 @@
 			isa = PBXGroup;
 			children = (
 				3053E40918279BD500F671F7 /* TrainingStoryboard.storyboard */,
-				3053E3FD18278E2900F671F7 /* TrainingMain */,
-			);
-			name = Training;
-			sourceTree = "<group>";
-		};
-		3053E3FD18278E2900F671F7 /* TrainingMain */ = {
-			isa = PBXGroup;
-			children = (
 				3053E4041827924400F671F7 /* RORTrainingMainViewController.h */,
 				3053E4051827924400F671F7 /* RORTrainingMainViewController.m */,
 				3053E40B1828994100F671F7 /* RORBookletViewController.h */,
 				3053E40C1828994100F671F7 /* RORBookletViewController.m */,
 				30BDBE5F1828FBAF001829D5 /* RORTraineesViewController.h */,
 				30BDBE601828FBAF001829D5 /* RORTraineesViewController.m */,
+				30BDBE6D182B8FB0001829D5 /* RORSimpleTrainingViewController.h */,
+				30BDBE6E182B8FB0001829D5 /* RORSimpleTrainingViewController.m */,
+				30BDBE70182BC9EC001829D5 /* RORAdvancedViewController.h */,
+				30BDBE71182BC9EC001829D5 /* RORAdvancedViewController.m */,
+				30BDBE74182BDCE9001829D5 /* RORSearchTrainingViewController.h */,
+				30BDBE75182BDCE9001829D5 /* RORSearchTrainingViewController.m */,
+				30BDBE77182C8AF9001829D5 /* RORCustomTrainingViewController.h */,
+				30BDBE78182C8AF9001829D5 /* RORCustomTrainingViewController.m */,
+				309EE150182D06AC00B37587 /* RORCreatSimpleTrainingViewController.h */,
+				309EE151182D06AC00B37587 /* RORCreatSimpleTrainingViewController.m */,
+				309EE153182D06C900B37587 /* RORCreatAdvTrainingViewController.h */,
+				309EE154182D06C900B37587 /* RORCreatAdvTrainingViewController.m */,
 			);
-			name = TrainingMain;
+			name = Training;
 			sourceTree = "<group>";
 		};
 		3061F3C7174DC6CC006093FC /* CoreData */ = {
@@ -1440,6 +1472,8 @@
 		30A6D9B817C733F700D1116E /* ReusableControl */ = {
 			isa = PBXGroup;
 			children = (
+				30B3906418322B4C005CE74D /* MLNavigationController.h */,
+				30B3906518322B4C005CE74D /* MLNavigationController.m */,
 				30621D1F17DF00220063A007 /* RORPageViewController.h */,
 				30621D2017DF00220063A007 /* RORPageViewController.m */,
 				30F8BEBD17C4A72700DB137D /* RORBottomPopSubview.h */,
@@ -1495,6 +1529,16 @@
 				30FC2905175EF6F300DEC042 /* RORMapViewController.m */,
 			);
 			name = RORHistoryPage;
+			sourceTree = "<group>";
+		};
+		30BDBE62182A357A001829D5 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				30BDBE65182A3603001829D5 /* FriendsStoryboard.storyboard */,
+				30BDBE67182A3BA4001829D5 /* RORFriendsMainViewController.h */,
+				30BDBE68182A3BA4001829D5 /* RORFriendsMainViewController.m */,
+			);
+			name = Friends;
 			sourceTree = "<group>";
 		};
 		30D21E8D173CE525006B24A8 /* MainPage */ = {
@@ -1678,6 +1722,7 @@
 				30692D6518117D7300DA01EC /* 2.png in Resources */,
 				30989CAE17F5D87800CA9F83 /* Default@2x.png in Resources */,
 				30989CAC17F5D87800CA9F83 /* Default.png in Resources */,
+				30BDBE66182A3603001829D5 /* FriendsStoryboard.storyboard in Resources */,
 				30FC29411760861C00DEC042 /* expand.png in Resources */,
 				30989CB517F5F7C800CA9F83 /* S.png in Resources */,
 				3053E40A18279BD500F671F7 /* TrainingStoryboard.storyboard in Resources */,
@@ -1888,6 +1933,7 @@
 				0F0D589B17B249230046515C /* RORThirdPartyService.m in Sources */,
 				0F274A6B17B6058C00F0E927 /* RORSystemService.m in Sources */,
 				0F274A7517B6061F00F0E927 /* RORSystemClientHandler.m in Sources */,
+				30BDBE69182A3BA4001829D5 /* RORFriendsMainViewController.m in Sources */,
 				30F4547017BCB519006CB66C /* INConstant.m in Sources */,
 				30F4547117BCB519006CB66C /* INDeviceStatus.m in Sources */,
 				30F4547217BCB519006CB66C /* INKalmanFilter.m in Sources */,
@@ -1895,13 +1941,16 @@
 				30F4547517BCB519006CB66C /* INTimeWindow.m in Sources */,
 				30989CE917F936E300CA9F83 /* RORWriteUsViewController.m in Sources */,
 				30F4547617BCB519006CB66C /* INVector.m in Sources */,
+				30BDBE6F182B8FB0001829D5 /* RORSimpleTrainingViewController.m in Sources */,
 				30F4548117BCB564006CB66C /* INStepCounting.m in Sources */,
 				3037079E180511DC00FE0238 /* ROREndAnnotation.m in Sources */,
 				30F4549317C1296C006CB66C /* Animations.m in Sources */,
+				30BDBE79182C8AF9001829D5 /* RORCustomTrainingViewController.m in Sources */,
 				0F59A16B17BC700A000DEFEF /* RORShareService.m in Sources */,
 				0F8501E817C1F32C0005993E /* RORShareViewDelegate.m in Sources */,
 				0F8501FC17C20E260005993E /* RORCustomShareViewToolbar.m in Sources */,
 				0F8501FF17C2104D0005993E /* RORCustomShareItemView.m in Sources */,
+				30BDBE76182BDCE9001829D5 /* RORSearchTrainingViewController.m in Sources */,
 				0F85020517C217060005993E /* RORCustomShareViewController.m in Sources */,
 				30D95E6E17C35EB70056E7C0 /* RORStatisticsViewController.m in Sources */,
 				30D95E6F17C35EB70056E7C0 /* RORHistoryPageViewController.m in Sources */,
@@ -1927,12 +1976,15 @@
 				0F16EF7917CD9F350055DEE6 /* Mission_Type.m in Sources */,
 				0F16EF7C17CD9F350055DEE6 /* Place_Package.m in Sources */,
 				0F16EF7F17CD9F360055DEE6 /* User_Products_History.m in Sources */,
+				309EE155182D06C900B37587 /* RORCreatAdvTrainingViewController.m in Sources */,
 				0F16EF8217CD9F370055DEE6 /* Communication.m in Sources */,
+				309EE152182D06AC00B37587 /* RORCreatSimpleTrainingViewController.m in Sources */,
 				0F16EF8517CD9F370055DEE6 /* User_Attributes.m in Sources */,
 				0F16EF8817CD9F380055DEE6 /* User_Running.m in Sources */,
 				0F16EF8B17CD9F380055DEE6 /* Version_Control.m in Sources */,
 				3053E4061827924400F671F7 /* RORTrainingMainViewController.m in Sources */,
 				0F16EF8E17CD9F390055DEE6 /* Products.m in Sources */,
+				30BDBE72182BC9EC001829D5 /* RORAdvancedViewController.m in Sources */,
 				0F16EF9417CDBA940055DEE6 /* RORUserUtils.m in Sources */,
 				0F16EF9717CDBAC20055DEE6 /* RORContextUtils.m in Sources */,
 				305428CB17CF85DA00A9E6E9 /* RORChallengeLevelView.m in Sources */,
@@ -1941,6 +1993,7 @@
 				30989CCE17F80FB000CA9F83 /* RORAboutViewController.m in Sources */,
 				30621D2117DF00220063A007 /* RORPageViewController.m in Sources */,
 				30621D2717E00ED90063A007 /* RORRunningBaseViewController.m in Sources */,
+				30B3906618322B4C005CE74D /* MLNavigationController.m in Sources */,
 				0F07ABF617E0391B0009C8A8 /* RORMessages.m in Sources */,
 				30621D3317E09F880063A007 /* RORChanllengeRunViewController.m in Sources */,
 				30621D4817E45EB70063A007 /* RORPlaySound.m in Sources */,
@@ -2187,6 +2240,7 @@
 		3061F3B7174CDBEB006093FC /* RORCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				30B390631831348D005CE74D /* RORCoreData 1.2.xcdatamodel */,
 				3061F3B8174CDBEB006093FC /* RORCoreData.xcdatamodel */,
 			);
 			currentVersion = 3061F3B8174CDBEB006093FC /* RORCoreData.xcdatamodel */;

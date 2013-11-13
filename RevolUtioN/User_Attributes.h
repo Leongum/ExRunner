@@ -29,6 +29,10 @@
 @property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) NSNumber * weight;
 @property (nonatomic, retain) NSNumber * height;
+@property (nonatomic, retain) NSNumber * total_distance;
+@property (nonatomic, retain) NSNumber * avg_speed;
+@property (nonatomic, retain) NSNumber * spend_carlorie;
+@property (nonatomic, retain) NSNumber * total_run_times;
 
 +(User_Attributes *) intiUnassociateEntity;
 

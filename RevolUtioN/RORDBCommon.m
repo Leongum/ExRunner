@@ -95,4 +95,23 @@
     return routes;
 }
 
++ (NSString *)getStringFromSpeedList:(NSArray *)speedList{
+    NSMutableString *speedListString = [[NSMutableString alloc]init];
+    for (int i=0; i<speedList.count; i++){
+        NSNumber *spdNum = [speedList objectAtIndex:i];
+        [speedListString appendString:[NSString stringWithFormat:@"%.2f,", spdNum.doubleValue]];
+    }
+    return speedListString;
+}
+
++ (NSArray *)getSpeedListFromString:(NSString *)speedListString{
+    NSMutableArray *speedList = [[NSMutableArray alloc]init];
+    NSArray *speedStrList = [speedListString componentsSeparatedByString:@","];
+    for (int i=0; i<speedStrList.count; i++){
+        NSString *thisString = (NSString *)[speedStrList objectAtIndex:i];
+        [speedList addObject:[self getNumberFromId:thisString]];
+    }
+    return speedList;
+}
+
 @end

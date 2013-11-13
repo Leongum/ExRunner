@@ -28,6 +28,10 @@
 @dynamic spirit;
 @dynamic userId;
 @dynamic weight;
+@dynamic total_distance;
+@dynamic avg_speed;
+@dynamic spend_carlorie;
+@dynamic total_run_times;
 
 +(User_Attributes *) intiUnassociateEntity{
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
@@ -64,6 +68,10 @@
     self.age = [RORDBCommon getNumberFromId:[dict valueForKey:@"age"]];
     self.weight = [RORDBCommon getNumberFromId:[dict valueForKey:@"weight"]];
     self.height = [RORDBCommon getNumberFromId:[dict valueForKey:@"height"]];
+    self.total_distance = [RORDBCommon getNumberFromId:[dict valueForKey:@"total_distance"]];
+    self.avg_speed = [RORDBCommon getNumberFromId:[dict valueForKey:@"avg_speed"]];
+    self.spend_carlorie = [RORDBCommon getNumberFromId:[dict valueForKey:@"spend_carlorie"]];
+    self.total_run_times = [RORDBCommon getNumberFromId:[dict valueForKey:@"total_run_times"]];   
 }
 
 @end

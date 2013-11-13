@@ -8,8 +8,18 @@
 
 #import "RORViewController.h"
 
-@interface RORTraineesViewController : RORViewController
+@interface RORTraineesViewController : RORViewController{
+    double traineeBtnInitY, tableViewInitY;
+    double tableViewPathLength;
+    double traineeBtnPathLength;
+    
+    double tableViewHeight;
+}
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIView *partnerView;
+@property (strong, nonatomic) IBOutlet UIButton *showFriendsButton;
+@property (strong, nonatomic) IBOutlet UIButton *showTraineesButton;
 
+@property (strong, nonatomic) IBOutlet UIView *friendBoard;
 @end

@@ -8,6 +8,11 @@
 
 #import "RORTraineesViewController.h"
 #import "FTAnimation.h"
+#import "Animations.h"
+
+#define FRAME_OF_TABLEVIEWTRAINEE CGRectMake(20, 253, 280, 200)
+#define FRAME_OF_TABLEVIEWFRIENDS CGRectMake(20, 193, 280, 200)
+#define ROWS 10
 
 @interface RORTraineesViewController ()
 
@@ -28,10 +33,25 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [Animations frameAndShadow:self.partnerView];
+    
+    tableViewHeight = 4 * 44;
+    
+    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, tableViewHeight);
+
+    self.tableView.alpha = 0;
+    traineeBtnInitY = self.showTraineesButton.center.y;
+    tableViewInitY = self.tableView.center.y;
+    
+    tableViewPathLength = traineeBtnInitY - self.showFriendsButton.center.y;
+    traineeBtnPathLength = self.tableView.frame.size.height;
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+//    self.tableView.contentSize = CGSizeMake(0, tableViewHeight);
+    
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:ROWS inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,16 +61,33 @@
 }
 
 - (IBAction)showTraineesAction:(id)sender {
+    double duration = 0.5;
     
-    double duration = 0.3;
-    if (self.tableView.alpha>0) {
-        [self.tableView fold:duration delegate:self startSelector:nil stopSelector:@selector(hideTableView)];
-    } else {
-        self.tableView.alpha = 1;
-        [self.tableView expand:duration delegate:self startSelector:@selector(showTableView) stopSelector:nil];
+//    self.tableView.frame.size.height/2 + self.showTraineesButton.frame.size.height/2 + 
+    UIButton *btn = (UIButton *)sender;
+//    if (self.tableView.alpha>0) {
+//        [self.tableView fold:duration delegate:self startSelector:nil stopSelector:@selector(hideTableView)];
+//    }
+    self.tableView.alpha = 0;
+    if (btn == self.showFriendsButton){
+        if (self.showTraineesButton.center.y == traineeBtnInitY){
+            [Animations moveDown:self.showTraineesButton andAnimationDuration:duration/2 andWait:NO andLength:traineeBtnPathLength];
+        }
+        if (self.tableView.center.y==tableViewInitY){
+            [Animations moveUp:self.tableView andAnimationDuration:0 andWait:NO andLength:tableViewPathLength];
+        }
+    } else{
+        if (!(self.showTraineesButton.center.y == traineeBtnInitY)){
+            [Animations moveUp:self.showTraineesButton andAnimationDuration:duration andWait:YES andLength:traineeBtnPathLength];
+        }
+        if (!(self.tableView.center.y==tableViewInitY)){
+            [Animations moveDown:self.tableView andAnimationDuration:0 andWait:NO andLength:tableViewPathLength];
+        }
     }
+    
+    [self.tableView expand:duration delegate:self startSelector:@selector(showTableView) stopSelector:nil];
 
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:ROWS inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 -(void)showTableView{
@@ -66,18 +103,24 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 5;
+    return ROWS+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"traineeCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    UILabel *label = (UILabel*)[cell viewWithTag:100];
-    label.text = [NSString stringWithFormat:@"%d",indexPath.row];
+    UITableViewCell *cell;
+    
+    if (indexPath.row == 0){
+        static NSString *CellIdentifier = @"refreshCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    } else {
+        static NSString *CellIdentifier = @"traineeCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        UILabel *label = (UILabel*)[cell viewWithTag:100];
+        label.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    }
+    
     return cell;
 }
-
-
 
 @end

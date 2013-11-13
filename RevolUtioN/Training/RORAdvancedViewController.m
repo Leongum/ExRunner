@@ -1,18 +1,18 @@
 //
-//  RORTrainingMainViewController.m
+//  RORAdvancedViewController.m
 //  Cyberace
 //
-//  Created by Bjorn on 13-11-4.
+//  Created by Bjorn on 13-11-7.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
-#import "RORTrainingMainViewController.h"
+#import "RORAdvancedViewController.h"
 
-@interface RORTrainingMainViewController ()
+@interface RORAdvancedViewController ()
 
 @end
 
-@implementation RORTrainingMainViewController
+@implementation RORAdvancedViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,12 +35,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 3;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,13 +49,10 @@
     UITableViewCell *cell;
     
     if (indexPath.row == 0){
-        static NSString *CellIdentifier = @"doneCell";
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    } else if (indexPath.row == 1) {
-        static NSString *CellIdentifier = @"thisCell";
+        static NSString *CellIdentifier = @"sample1Cell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     } else {
-        static NSString *CellIdentifier = @"todoCell";
+        static NSString *CellIdentifier = @"sample2Cell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     }
     

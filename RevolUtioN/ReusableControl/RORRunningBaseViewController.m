@@ -55,6 +55,10 @@
     
     routes = [[NSMutableArray alloc]init ];
     [self resetRoutePoints];
+    
+    kmCounter = 0;
+    avgSpeedPerKMList = [[NSMutableArray alloc]init];
+    timeOfLatest1KM = 0;
 }
 
 -(void)viewDidUnload{
@@ -86,6 +90,20 @@
         [routes addObject:routePoints];
     }
     routePoints = [[NSMutableArray alloc]init];
+}
+
+-(void)timerDotCommon{
+    timeOfLatest1KM +=TIMER_INTERVAL;
+}
+
+-(void)pushAvgSpeedPerKM{
+    if (((int)distance/1000) > avgSpeedPerKMList.count){
+        [avgSpeedPerKMList addObject:[NSNumber numberWithDouble:3600/timeOfLatest1KM]];
+//        //debug
+//        NSLog(@"第%d km用时:%.2f,平均速度为:%@", avgSpeedPerKMList.count, timeOfLatest1KM, [avgSpeedPerKMList objectAtIndex:avgSpeedPerKMList.count-1]);
+        
+        timeOfLatest1KM = 0;
+    }
 }
 
 -(void)stopTimer{

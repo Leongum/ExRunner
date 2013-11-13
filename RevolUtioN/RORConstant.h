@@ -12,8 +12,11 @@
 //define test service host
 //#define SERVICE_HOST @"http://121.199.56.231:8080/usavich/service/api"
 
+//define v1.2 host
+#define SERVICE_HOST @"http://121.199.56.231:8080/usavichV2/service/api"
+
 //define prod service host
-#define SERVICE_HOST @"http://www.cyberace.cc/service/api"
+//#define SERVICE_HOST @"http://www.cyberace.cc/service/api"
 
 #define CURRENT_VERSION_MAIN 1
 #define CURRENT_VERSION_SUB 1

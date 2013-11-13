@@ -289,6 +289,8 @@
 }
 
 - (void)timerDot{
+    [self timerDotCommon];
+
     doCollect = YES;
     
     timerCount++;
@@ -336,6 +338,9 @@
         formerLocation = currentLocation;
         [routePoints addObject:currentLocation];
         [self drawLineWithLocationArray:routePoints];
+        
+        //记录每KM平均速度
+        [self pushAvgSpeedPerKM];
     }
 }
 

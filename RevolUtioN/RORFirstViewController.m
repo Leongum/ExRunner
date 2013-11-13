@@ -343,4 +343,13 @@
     
     [self.navigationController pushViewController:trainingViewController animated:YES];
 }
+
+- (IBAction)friendsAction:(id)sender {
+    
+    UIStoryboard *secondStoryboard = [UIStoryboard storyboardWithName:@"FriendsStoryboard" bundle:nil];
+    UIViewController *trainingViewController = [secondStoryboard instantiateViewControllerWithIdentifier:@"FriendsMainViewController"];
+    
+    [self.navigationController pushViewController:trainingViewController animated:YES];
+}
+
 @end

@@ -16,4 +16,6 @@
 + (NSNumber *)getNumberFromId:(id)obj;
 + (NSString *)getStringFromRoutes:(NSArray *)routes;
 + (NSArray *)getRoutesFromString:(NSString *)route_str;
++ (NSString *)getStringFromSpeedList:(NSArray *)speedList;
++ (NSArray *)getSpeedListFromString:(NSString *)speedListString;
 @end

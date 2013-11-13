@@ -35,6 +35,9 @@
 @property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) NSString * waveForm;
 @property (nonatomic, retain) NSNumber * valid;
+@property (nonatomic, retain) NSString * plan_run_uuid;
+@property (nonatomic, retain) NSNumber * sequence;
+@property (nonatomic, retain) NSString * speed_list;
 
 +(User_Running_History *) intiUnassociateEntity;
 

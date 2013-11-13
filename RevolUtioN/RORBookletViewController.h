@@ -7,11 +7,15 @@
 //
 
 #import "RORViewController.h"
+#import "RORSearchTrainingViewController.h"
 
 @interface RORBookletViewController : RORViewController{
-    double searchViewTop;
+    RORSearchTrainingViewController *searchViewController;
+    BOOL isEditing;
 }
 
-@property (strong, nonatomic) IBOutlet UIView *searchTrainingView;
+@property (strong, nonatomic) UIView *searchTrainingView;
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end

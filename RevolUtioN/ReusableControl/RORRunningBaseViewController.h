@@ -59,6 +59,10 @@
     NSMutableArray *routePoints;
     MKPolyline *routeLine;
     
+    NSMutableArray *avgSpeedPerKMList;
+    double timeOfLatest1KM;
+    int kmCounter;
+    
     NSTimer *repeatingTimer;
     BOOL isStarted;
 }
@@ -78,6 +82,8 @@
 - (void)initNavi;
 - (void)startDeviceMotion;
 -(NSNumber *)isValidRun:(NSInteger)steps;
+-(void)timerDotCommon;
+-(void)pushAvgSpeedPerKM;
 
 //reset route points after pause
 -(void)resetRoutePoints;

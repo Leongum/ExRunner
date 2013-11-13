@@ -30,6 +30,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainingStoryboard" bundle:[NSBundle mainBundle]];
+    searchViewController =  [storyboard instantiateViewControllerWithIdentifier:@"searchViewController"];
+    CGRect frame = self.view.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 55-frame.size.height;
+    searchViewController.view.frame = frame;
+    
+    [self addChildViewController:searchViewController];
+    [self.view addSubview:searchViewController.view];
+    [searchViewController didMoveToParentViewController:self];
+    self.searchTrainingView = searchViewController.view;
+    
+    [self.view bringSubviewToFront:self.backButton];
+    [self.view bringSubviewToFront:self.editButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,17 +53,43 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)expandAction:(id)sender {
-    CGRect f = self.searchTrainingView.frame;
-
-    if (f.origin.y < 0) {
-        searchViewTop = f.origin.y;
-        [self.searchTrainingView moveUp:0.5 length:-searchViewTop delegate:self];
-        self.searchTrainingView.frame = CGRectMake(f.origin.x, 0, f.size.width, f.size.height);
+- (IBAction)editButtonAction:(id)sender {
+    if (isEditing){
+        isEditing = NO;
+        [self.editButton setTitle:@"编辑" forState:UIControlStateNormal];
     } else {
-        [self.searchTrainingView moveUp:0.5 length:searchViewTop delegate:self];
-        self.searchTrainingView.frame = CGRectMake(f.origin.x, searchViewTop, f.size.width, f.size.height);
+        isEditing = YES;
+        [self.editButton setTitle:@"完成" forState:UIControlStateNormal];
     }
+    [self.tableView reloadData];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+    
+    if (indexPath.row == 0){
+        static NSString *CellIdentifier = @"1Cell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    } else if (indexPath.row == 1){
+        static NSString *CellIdentifier = @"2Cell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    } else{
+        static NSString *CellIdentifier = @"3Cell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    }
+    UIButton *deleteButton = (UIButton*)[cell viewWithTag:100];
+    deleteButton.alpha = isEditing;
+    
+    return cell;
 }
 
 @end

@@ -161,7 +161,7 @@
                                     <segue destination="PbC-RF-pa6" kind="push" id="Rxd-eV-2oK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="LRG-PL-w28" userLabel="training_Button" customClass="RORFunnyButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="LRG-PL-w28" userLabel="training_Button" customClass="RORNormalButton">
                                 <rect key="frame" x="92" y="173" width="136" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
@@ -187,7 +187,7 @@
                                     <action selector="mallUnderDeveloping:" destination="2" eventType="touchUpInside" id="51Z-9h-Hq8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="obB-ez-7xu" userLabel="friends-Button" customClass="RORNormalButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="obB-ez-7xu" userLabel="friends-Button" customClass="RORNormalButton">
                                 <rect key="frame" x="284" y="343" width="36" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -195,6 +195,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="friendsAction:" destination="2" eventType="touchUpInside" id="2en-76-WiS"/>
                                     <action selector="friendsUnderDeveloping:" destination="2" eventType="touchUpInside" id="MNA-jt-eH0"/>
                                 </connections>
                             </button>
@@ -1000,9 +1001,8 @@
         <!--Navigation Controller-->
         <scene sceneID="FmZ-we-Evh">
             <objects>
-                <navigationController storyboardIdentifier="RORNavigationController" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="VcK-Gx-lSI" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RORNavigationController" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="VcK-Gx-lSI" customClass="MLNavigationController" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="h5I-Tk-K4A">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>

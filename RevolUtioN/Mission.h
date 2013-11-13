@@ -33,6 +33,7 @@
 @property (nonatomic, retain) NSNumber * scores;
 @property (nonatomic, retain) NSNumber * sequence;
 @property (nonatomic, retain) NSString * subMissionList;
+@property (nonatomic, retain) NSNumber *plan_id;
 
 //array list for place package, challenge, submission
 @property (nonatomic, retain) NSArray * missionPlacePackageList;

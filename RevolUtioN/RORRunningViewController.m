@@ -275,6 +275,7 @@
 }
 
 - (void)timerDot{
+    [self timerDotCommon];
     doCollect = YES;
     
     timerCount++;
@@ -306,8 +307,12 @@
         NSLog(@"%f",deltaDistance);
         distance += [formerLocation distanceFromLocation:currentLocation];
         formerLocation = currentLocation;
+        
         [routePoints addObject:currentLocation];
         [self drawLineWithLocationArray:routePoints];
+        
+        //记录每KM平均速度
+        [self pushAvgSpeedPerKM];
     }
 }
 
@@ -375,6 +380,8 @@
     runHistory.avgSpeed = [NSNumber numberWithDouble:(double)(distance/duration*3.6)];
     runHistory.valid = [self isValidRun:stepCounting.counter / 0.8];
     runHistory.missionRoute = [RORDBCommon getStringFromRoutes:routes];
+    NSLog(@"%@", [RORDBCommon getStringFromSpeedList:avgSpeedPerKMList]);
+    
     runHistory.missionDate = [NSDate date];
     runHistory.missionEndTime = self.endTime;
     runHistory.missionStartTime = self.startTime;
