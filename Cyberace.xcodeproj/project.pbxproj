@@ -60,6 +60,11 @@
 		0F53B4BB17F3481D006DB4C4 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F53B48517F3481D006DB4C4 /* ShareSDKiPhoneDefaultShareViewUI.framework */; };
 		0F53B4BC17F3481D006DB4C4 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F53B48617F3481D006DB4C4 /* ShareSDKiPhoneSimpleShareViewUI.bundle */; };
 		0F53B4BD17F3481D006DB4C4 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F53B48717F3481D006DB4C4 /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
+		0F56242F1834AA6E006581E0 /* Plan.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F56242E1834AA6E006581E0 /* Plan.m */; };
+		0F5624321834AA6E006581E0 /* Plan_Run_History.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5624311834AA6E006581E0 /* Plan_Run_History.m */; };
+		0F5624351834AA6F006581E0 /* Plan_Collect.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5624341834AA6F006581E0 /* Plan_Collect.m */; };
+		0F5624381834AA6F006581E0 /* Plan_User_Follow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5624371834AA6F006581E0 /* Plan_User_Follow.m */; };
+		0F56243E1834F9D4006581E0 /* Plan_Next_mission.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F56243D1834F9D4006581E0 /* Plan_Next_mission.m */; };
 		0F59A16B17BC700A000DEFEF /* RORShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F59A16A17BC700A000DEFEF /* RORShareService.m */; };
 		0F59A17217BCA4BD000DEFEF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BB0B071769A2E70009A847 /* SystemConfiguration.framework */; };
 		0F7F398E1792DF1000B1C720 /* RORUserServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7F398D1792DF1000B1C720 /* RORUserServices.m */; };
@@ -406,6 +411,16 @@
 		0F53B48517F3481D006DB4C4 /* ShareSDKiPhoneDefaultShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneDefaultShareViewUI.framework; sourceTree = "<group>"; };
 		0F53B48617F3481D006DB4C4 /* ShareSDKiPhoneSimpleShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKiPhoneSimpleShareViewUI.bundle; sourceTree = "<group>"; };
 		0F53B48717F3481D006DB4C4 /* ShareSDKiPhoneSimpleShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneSimpleShareViewUI.framework; sourceTree = "<group>"; };
+		0F56242D1834AA6E006581E0 /* Plan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan.h; sourceTree = "<group>"; };
+		0F56242E1834AA6E006581E0 /* Plan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan.m; sourceTree = "<group>"; };
+		0F5624301834AA6E006581E0 /* Plan_Run_History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan_Run_History.h; sourceTree = "<group>"; };
+		0F5624311834AA6E006581E0 /* Plan_Run_History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan_Run_History.m; sourceTree = "<group>"; };
+		0F5624331834AA6E006581E0 /* Plan_Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan_Collect.h; sourceTree = "<group>"; };
+		0F5624341834AA6F006581E0 /* Plan_Collect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan_Collect.m; sourceTree = "<group>"; };
+		0F5624361834AA6F006581E0 /* Plan_User_Follow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan_User_Follow.h; sourceTree = "<group>"; };
+		0F5624371834AA6F006581E0 /* Plan_User_Follow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan_User_Follow.m; sourceTree = "<group>"; };
+		0F56243C1834F9D4006581E0 /* Plan_Next_mission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan_Next_mission.h; sourceTree = "<group>"; };
+		0F56243D1834F9D4006581E0 /* Plan_Next_mission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan_Next_mission.m; sourceTree = "<group>"; };
 		0F59A16917BC700A000DEFEF /* RORShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORShareService.h; sourceTree = "<group>"; };
 		0F59A16A17BC700A000DEFEF /* RORShareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORShareService.m; sourceTree = "<group>"; };
 		0F7F398C1792DF1000B1C720 /* RORUserServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORUserServices.h; sourceTree = "<group>"; };
@@ -649,7 +664,7 @@
 		30A6D9F517CDD8CA00D1116E /* FZKATJW.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = FZKATJW.TTF; path = Resources/FZKATJW.TTF; sourceTree = "<group>"; };
 		30A6D9F917CE2BF800D1116E /* main_login_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_login_bg.png; sourceTree = "<group>"; };
 		30A6D9FA17CE2BF800D1116E /* main_login_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_login_bg@2x.png"; sourceTree = "<group>"; };
-		30B390631831348D005CE74D /* RORCoreData 1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RORCoreData 1.2.xcdatamodel"; sourceTree = "<group>"; };
+		30B390631831348D005CE74D /* RORCoreData 1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RORCoreData 1.2.xcdatamodel"; sourceTree = "<group>"; };
 		30B3906418322B4C005CE74D /* MLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLNavigationController.h; path = ReusableControl/MLNavigationController.h; sourceTree = "<group>"; };
 		30B3906518322B4C005CE74D /* MLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MLNavigationController.m; path = ReusableControl/MLNavigationController.m; sourceTree = "<group>"; };
 		30BB0AF61761BEA10009A847 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
@@ -1260,6 +1275,16 @@
 			isa = PBXGroup;
 			children = (
 				3061F3B7174CDBEB006093FC /* RORCoreData.xcdatamodeld */,
+				0F5624361834AA6F006581E0 /* Plan_User_Follow.h */,
+				0F5624371834AA6F006581E0 /* Plan_User_Follow.m */,
+				0F5624331834AA6E006581E0 /* Plan_Collect.h */,
+				0F5624341834AA6F006581E0 /* Plan_Collect.m */,
+				0F5624301834AA6E006581E0 /* Plan_Run_History.h */,
+				0F5624311834AA6E006581E0 /* Plan_Run_History.m */,
+				0F56242D1834AA6E006581E0 /* Plan.h */,
+				0F56242E1834AA6E006581E0 /* Plan.m */,
+				0F56243C1834F9D4006581E0 /* Plan_Next_mission.h */,
+				0F56243D1834F9D4006581E0 /* Plan_Next_mission.m */,
 				0F16EF6217CD9F190055DEE6 /* User_Base.h */,
 				0F16EF6317CD9F1A0055DEE6 /* User_Base.m */,
 				0F16EF8C17CD9F380055DEE6 /* Products.h */,
@@ -1903,6 +1928,7 @@
 				30151A7D174488EB009BCADB /* RORRunningViewController.m in Sources */,
 				3061F3B9174CDBEB006093FC /* RORCoreData.xcdatamodeld in Sources */,
 				305A1878174F1EFB003A8CD7 /* RORLoginViewController.m in Sources */,
+				0F5624351834AA6F006581E0 /* Plan_Collect.m in Sources */,
 				300149901750F444005DAF1D /* RORMoreViewController.m in Sources */,
 				30692D5D18117C2500DA01EC /* SVProgressHUD.m in Sources */,
 				30FC2906175EF6F300DEC042 /* RORMapViewController.m in Sources */,
@@ -1919,9 +1945,11 @@
 				0F857712178C4EF100173A92 /* RORHttpClientHandler.m in Sources */,
 				0F972BD2179255F300A27EF2 /* RORHttpResponse.m in Sources */,
 				0F7F398E1792DF1000B1C720 /* RORUserServices.m in Sources */,
+				0F56243E1834F9D4006581E0 /* Plan_Next_mission.m in Sources */,
 				0F7F39911794360800B1C720 /* RORUserClientHandler.m in Sources */,
 				0F7F3994179BD08000B1C720 /* RORMissionServices.m in Sources */,
 				0F87D877179D642A007E0412 /* RORMissionClientHandler.m in Sources */,
+				0F5624321834AA6E006581E0 /* Plan_Run_History.m in Sources */,
 				307A1D5417F4353B006692DD /* RORCongratsCoverView.m in Sources */,
 				0F87D881179D72C7007E0412 /* RORRunHistoryServices.m in Sources */,
 				30BDBE611828FBAF001829D5 /* RORTraineesViewController.m in Sources */,
@@ -1941,6 +1969,7 @@
 				30F4547517BCB519006CB66C /* INTimeWindow.m in Sources */,
 				30989CE917F936E300CA9F83 /* RORWriteUsViewController.m in Sources */,
 				30F4547617BCB519006CB66C /* INVector.m in Sources */,
+				0F5624381834AA6F006581E0 /* Plan_User_Follow.m in Sources */,
 				30BDBE6F182B8FB0001829D5 /* RORSimpleTrainingViewController.m in Sources */,
 				30F4548117BCB564006CB66C /* INStepCounting.m in Sources */,
 				3037079E180511DC00FE0238 /* ROREndAnnotation.m in Sources */,
@@ -1962,6 +1991,7 @@
 				30A6D9AA17C6821500D1116E /* FTAnimation+UIView.m in Sources */,
 				30A6D9AB17C6821500D1116E /* FTAnimationManager.m in Sources */,
 				30A6D9AC17C6821500D1116E /* FTUtils+NSObject.m in Sources */,
+				0F56242F1834AA6E006581E0 /* Plan.m in Sources */,
 				30A6D9AD17C6821500D1116E /* FTUtils+UIGestureRecognizer.m in Sources */,
 				30A6D9BB17C7342400D1116E /* RORNormalButton.m in Sources */,
 				30A6D9D517CB2C8900D1116E /* RORFunnyButton.m in Sources */,
@@ -2243,7 +2273,7 @@
 				30B390631831348D005CE74D /* RORCoreData 1.2.xcdatamodel */,
 				3061F3B8174CDBEB006093FC /* RORCoreData.xcdatamodel */,
 			);
-			currentVersion = 3061F3B8174CDBEB006093FC /* RORCoreData.xcdatamodel */;
+			currentVersion = 30B390631831348D005CE74D /* RORCoreData 1.2.xcdatamodel */;
 			path = RORCoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

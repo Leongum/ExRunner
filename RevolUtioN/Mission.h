@@ -33,7 +33,7 @@
 @property (nonatomic, retain) NSNumber * scores;
 @property (nonatomic, retain) NSNumber * sequence;
 @property (nonatomic, retain) NSString * subMissionList;
-@property (nonatomic, retain) NSNumber *plan_id;
+@property (nonatomic, retain) NSNumber *planId;
 
 //array list for place package, challenge, submission
 @property (nonatomic, retain) NSArray * missionPlacePackageList;
@@ -43,4 +43,7 @@
 +(Mission *) removeAssociateForEntity:(Mission *)associatedEntity;
 
 -(void)initWithDictionary:(NSDictionary *)dict;
+
+-(NSMutableDictionary *)transToDictionary;
+
 @end

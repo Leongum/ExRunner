@@ -36,9 +36,9 @@
 @dynamic uuid;
 @dynamic waveForm;
 @dynamic valid;
-@dynamic plan_run_uuid;
+@dynamic planRunUuid;
 @dynamic sequence;
-@dynamic speed_list;
+@dynamic speedList;
 
 +(User_Running_History *) intiUnassociateEntity{
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
@@ -82,9 +82,9 @@
     self.commitTime = [RORDBCommon getDateFromId:[dict valueForKey:@"commitTime"]];
     self.grade = [RORDBCommon getNumberFromId:[dict valueForKey:@"grade"]];
     self.valid = [RORDBCommon getNumberFromId:[dict valueForKey:@"valid"]];
-    self.plan_run_uuid = [RORDBCommon getStringFromId:[dict valueForKey:@"plan_run_uuid"]];
+    self.planRunUuid = [RORDBCommon getStringFromId:[dict valueForKey:@"planRunUuid"]];
     self.sequence = [RORDBCommon getNumberFromId:[dict valueForKey:@"sequence"]];
-    self.speed_list = [RORDBCommon getStringFromId:[dict valueForKey:@"speed_list"]];
+    self.speedList = [RORDBCommon getStringFromId:[dict valueForKey:@"speedList"]];
 }
 
 -(NSMutableDictionary *)transToDictionary{
@@ -113,9 +113,9 @@
     [tempoDict setValue:[RORDBCommon getStringFromId:self.commitTime] forKey:@"commitTime"];
     [tempoDict setValue:self.grade forKey:@"grade"];
     [tempoDict setValue:self.valid forKey:@"valid"];
-    [tempoDict setValue:self.plan_run_uuid forKey:@"plan_run_uuid"];
+    [tempoDict setValue:self.planRunUuid forKey:@"planRunUuid"];
     [tempoDict setValue:self.sequence forKey:@"sequence"];
-    [tempoDict setValue:self.speed_list forKey:@"speed_list"];
+    [tempoDict setValue:self.speedList forKey:@"speedList"];
     return tempoDict;
 }
 

@@ -34,7 +34,7 @@
 @dynamic scores;
 @dynamic sequence;
 @dynamic subMissionList;
-@dynamic plan_id;
+@dynamic planId;
 
 
 //array list for place package, challenge, submission
@@ -89,7 +89,34 @@
     self.missionPackageId = [RORDBCommon getNumberFromId:[dict valueForKey:@"missionPackageId"]];
     self.sequence = [RORDBCommon getNumberFromId:[dict valueForKey:@"sequence"]];
     self.lastUpdateTime = [RORDBCommon getDateFromId:[dict valueForKey:@"lastUpdateTime"]];
-    self.plan_id = [RORDBCommon getNumberFromId:[dict valueForKey:@"plan_id"]];
+    self.planId = [RORDBCommon getNumberFromId:[dict valueForKey:@"planId"]];
+}
+
+-(NSMutableDictionary *)transToDictionary{
+    NSMutableDictionary *tempoDict = [[NSMutableDictionary alloc] init];
+    [tempoDict setValue:self.missionId forKey:@"missionId"];
+    [tempoDict setValue:self.missionName forKey:@"missionName"];
+    [tempoDict setValue:self.missionFrom forKey:@"missionFrom"];
+    [tempoDict setValue:self.missionTypeId forKey:@"missionTypeId"];
+    [tempoDict setValue:self.missionContent forKey:@"missionContent"];
+    [tempoDict setValue:self.missionTo forKey:@"missionTo"];
+    [tempoDict setValue:self.scores forKey:@"scores"];
+    [tempoDict setValue:self.experience forKey:@"experience"];
+    [tempoDict setValue:self.missionFlag forKey:@"missionFlag"];
+    [tempoDict setValue:self.levelLimited forKey:@"levelLimited"];
+    [tempoDict setValue:self.missionTime forKey:@"missionTime"];
+    [tempoDict setValue:self.missionDistance forKey:@"missionDistance"];
+    [tempoDict setValue:self.cycleTime forKey:@"cycleTime"];
+    [tempoDict setValue:self.missionPlacePackageId forKey:@"missionPlacePackageId"];
+    [tempoDict setValue:self.missionSteps forKey:@"missionSteps"];
+    [tempoDict setValue:self.missionSpeed forKey:@"missionSpeed"];
+    [tempoDict setValue:self.challengeId forKey:@"challengeId"];
+    [tempoDict setValue:self.subMissionList forKey:@"subMissionList"];
+    [tempoDict setValue:self.missionPackageId forKey:@"missionPackageId"];
+    [tempoDict setValue:self.sequence forKey:@"sequence"];
+    [tempoDict setValue:self.lastUpdateTime forKey:@"lastUpdateTime"];
+    [tempoDict setValue:self.planId forKey:@"planId"];
+    return tempoDict;
 }
 
 @end
