@@ -21,6 +21,7 @@
 #import "Mission.h"
 #import "RORMissionServices.h"
 #import "RORConstant.h"
+#import "RORRunHistoryServices.h"
 
 @interface RORPlanService : NSObject
 
@@ -61,5 +62,9 @@
 +(Plan_Next_mission *)gotoNextMission:(NSString *) planRunuuid;
 
 +(BOOL)cancelCurrentPlan:(NSString *) planRunuuid;
+
++(Plan_Run_History *)fetchUserPlanHistoryDetails:(NSString *) planRunUuid;
+
++(NSMutableArray *)fetchUserPlanHistoryList:(NSNumber *) userId;
 
 @end

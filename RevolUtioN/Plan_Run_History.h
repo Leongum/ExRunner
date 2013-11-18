@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
+#import "User_Running_History.h"
 
 @interface Plan_Run_History : NSManagedObject
 
@@ -25,6 +25,8 @@
 @property (nonatomic, retain) NSNumber * totalMissions;
 @property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) NSNumber * operate;
+
+@property (nonatomic, retain) NSMutableArray * runHistoryList;
 
 +(Plan_Run_History *) intiUnassociateEntity;
 

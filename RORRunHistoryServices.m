@@ -283,4 +283,17 @@
     return YES;
 }
 
++(NSArray *)fetchRunHistoryByPlanRunUuid:(NSString *) planRunUuid{
+    NSString *table=@"User_Running_History";
+    NSString *query = @"planRunUuid = %@";
+    NSArray *params = [NSArray arrayWithObjects:planRunUuid, nil];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:NO];
+    NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
+    if (fetchObject == nil || [fetchObject count] == 0) {
+        return nil;
+    }
+    return fetchObject;
+}
+
 @end

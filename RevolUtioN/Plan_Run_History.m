@@ -25,6 +25,8 @@
 @dynamic userId;
 @dynamic operate;
 
+@synthesize runHistoryList;
+
 +(Plan_Run_History *) intiUnassociateEntity{
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Plan_Run_History" inManagedObjectContext:context];
@@ -39,6 +41,11 @@
     for (NSString *attr in [[entity attributesByName] allKeys]) {
         [unassociatedEntity setValue:[associatedEntity valueForKey:attr] forKey:attr];
     }
+    NSMutableArray *newHistoryList = [[NSMutableArray alloc] init];
+    for (User_Running_History *newHistory in associatedEntity.runHistoryList) {
+        [newHistoryList addObject:[User_Running_History removeAssociateForEntity:newHistory]];
+    }
+    unassociatedEntity.runHistoryList = newHistoryList;
     return unassociatedEntity;
 }
 

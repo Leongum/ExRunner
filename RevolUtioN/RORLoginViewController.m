@@ -11,6 +11,7 @@
 #import "RORShareService.h"
 #import "RORNetWorkUtils.h"
 #import <AGCommon/UIImage+Common.h>
+#import "RORPlanService.h"
 
 #define SEGMENT_FRAME CGRectMake(95, 370, 150, 30)
 @interface RORLoginViewController ()
@@ -128,7 +129,7 @@
         }
         [self startIndicator:self];
 
-        [RORRunHistoryServices syncRunningHistories];
+        [self syncDataAfterLogin];
         [self endIndicator:self];
     } else { //注册
         NSDictionary *regDict = [[NSDictionary alloc]initWithObjectsAndKeys:usernameTextField.text, @"userEmail",[RORUtils md5:passwordTextField.text], @"password", nicknameTextField.text, @"nickName", nil];
@@ -252,7 +253,7 @@
                                    BOOL islogin = [RORShareService loginFromSNS:userInfo withSNSType: type];
                                    [RORUserUtils userInfoUpdateHandler:userInfo withSNSType: type];
                                    if(islogin){
-                                       [RORRunHistoryServices syncRunningHistories];
+                                       [self syncDataAfterLogin];
                                        [self.navigationController popViewControllerAnimated:YES];
                                    }
                                    else{
@@ -266,5 +267,11 @@
                            }];
 }
 
+-(void)syncDataAfterLogin{
+    [RORRunHistoryServices syncRunningHistories];
+    [RORPlanService syncUserCollect:[RORUserUtils getUserId]];
+    [RORPlanService syncUserFollow:[RORUserUtils getUserId]];
+    [RORPlanService syncUserPlanHistory:[RORUserUtils getUserId]];
+}
 
 @end

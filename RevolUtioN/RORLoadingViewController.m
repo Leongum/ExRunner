@@ -13,6 +13,7 @@
 #import "RORSystemService.h"
 #import "RORNetWorkUtils.h"
 #import "MLNavigationController.h"
+#import "RORPlanService.h"
 
 @interface RORLoadingViewController ()
 
@@ -78,6 +79,9 @@
         //sync runningHistory
         //[RORRunHistoryServices syncRunningHistories];
         [RORRunHistoryServices uploadRunningHistories];
+        [RORPlanService upLoadUserCollect:userId];
+        [RORPlanService upLoadUserFollow:userId];
+        [RORPlanService upLoadUserPlanHistory:userId];
         //sync userInfo.
         [RORUserServices syncUserInfoById:userId];
     }

@@ -57,6 +57,7 @@
         return nil;
     }
     Plan *plan = (Plan *) [fetchObject objectAtIndex:0];
+    
     if(!needContext){
         plan = [Plan removeAssociateForEntity:plan];
     }
@@ -316,7 +317,28 @@
     return YES;
 }
 
-+(Plan_Run_History *)fetchUserPlanHistory:(NSString *) planRunUuid withContext:(BOOL) needContext{
++(NSMutableArray *)fetchUserPlanHistoryList:(NSNumber *) userId{
+    NSString *table=@"Plan_Run_History";
+    NSString *query = @"userId = %@";
+    NSArray *params = [NSArray arrayWithObjects:userId, nil];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"lastUpdateTime" ascending:NO];
+    NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
+    if (fetchObject == nil || [fetchObject count] == 0) {
+        return nil;
+    }
+    NSMutableArray *planHistories = [NSMutableArray arrayWithCapacity:10];
+    for(Plan_Run_History *planHistory in fetchObject){
+        [planHistories addObject:[Plan_Run_History removeAssociateForEntity:planHistory]];
+    }
+    return planHistories;
+}
+
++(Plan_Run_History *)fetchUserPlanHistoryDetails:(NSString *) planRunUuid{
+    return [self fetchUserPlanHistory:planRunUuid withHistoryDetail:YES withContext:NO];
+}
+
++(Plan_Run_History *)fetchUserPlanHistory:(NSString *) planRunUuid withHistoryDetail:(BOOL) needHistoryDetail withContext:(BOOL) needContext{
     NSString *table=@"Plan_Run_History";
     NSString *query = @"planRunUuid = %@";
     NSArray *params = [NSArray arrayWithObjects: planRunUuid, nil];
@@ -325,6 +347,9 @@
         return nil;
     }
     Plan_Run_History *userPlanHistory = (Plan_Run_History *) [fetchObject objectAtIndex:0];
+    if(needHistoryDetail){
+        userPlanHistory.runHistoryList = [[RORRunHistoryServices fetchRunHistoryByPlanRunUuid:userPlanHistory.planRunUuid] mutableCopy];
+    }
     if(!needContext){
         userPlanHistory = [Plan_Run_History removeAssociateForEntity:userPlanHistory];
     }
@@ -340,13 +365,41 @@
         NSArray *userPlanHistoryList = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
         for (NSDictionary *userPlanHistoryDict in userPlanHistoryList){
             NSString *planRunUuid = [userPlanHistoryDict valueForKey:@"planRunUuid"];
-            Plan_Run_History *userPlanHistoryEntity = [self fetchUserPlanHistory:planRunUuid withContext:YES];
+            Plan_Run_History *userPlanHistoryEntity = [self fetchUserPlanHistory:planRunUuid withHistoryDetail:NO withContext:YES];
             if(userPlanHistoryEntity != nil && userPlanHistoryEntity.operate != nil){
                 continue;
             }
             if(userPlanHistoryEntity == nil)
                 userPlanHistoryEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Plan_Run_History" inManagedObjectContext:context];
             [userPlanHistoryEntity initWithDictionary:userPlanHistoryDict];
+            if(userPlanHistoryEntity.historyStatus.integerValue == (int)HistoryStatusExecute){
+                Plan_Next_mission *planNextMission = [self fetchPlanNextMission];
+                if(planNextMission.planRunUuid != userPlanHistoryEntity.planRunUuid){
+                    planNextMission.planId = userPlanHistoryEntity.planId;
+                    planNextMission.planRunUuid = userPlanHistoryEntity.planRunUuid;
+                    planNextMission.nextMissionId = userPlanHistoryEntity.nextMissionId;
+                    NSDate *startTime = [NSDate date];
+                    NSDate *endTime = [NSDate date];
+                    Plan *plan = [self fetchPlan:userPlanHistoryEntity.planId withMissions:YES withContext:NO];
+                    if(plan.planType.integerValue == PlanTypeEasy){
+                        int timeScape = 0;
+                        if(plan.durationType.integerValue == DurationTypeDay){
+                            timeScape = plan.duration.integerValue/plan.cycleTime.integerValue * 86400;
+                        }else if(plan.durationType.integerValue == DurationTypeWeek){
+                            timeScape = (plan.duration.integerValue * 7)/plan.cycleTime.integerValue *86400;
+                        }
+                        endTime = [startTime dateByAddingTimeInterval:timeScape];
+                    }else{
+                        for(Mission *mission in plan.missionList){
+                            if(mission.missionId.integerValue == userPlanHistoryEntity.nextMissionId.integerValue){
+                                endTime = [startTime dateByAddingTimeInterval:mission.cycleTime.integerValue * 86400];
+                            }
+                        }
+                    }
+                    planNextMission.startTime = startTime;
+                    planNextMission.endTime = endTime;
+                }
+            }
         }
         [RORContextUtils saveContext];
         [RORUserUtils saveLastUpdateTime:@"UserPlanHistoryUpdateTime"];
@@ -408,7 +461,7 @@
         planNextMission.planInfo = [self fetchPlan:planNextMission.planId withMissions:YES withContext:YES];
     }
     if(planNextMission.planRunUuid != nil){
-        planNextMission.history = [self fetchUserPlanHistory:planNextMission.planRunUuid withContext:YES];
+        planNextMission.history = [self fetchUserPlanHistory:planNextMission.planRunUuid withHistoryDetail:NO withContext:YES];
     }
     [Plan_Next_mission removeAssociateForEntity:planNextMission];
 
@@ -473,7 +526,7 @@
 }
 
 +(Plan_Next_mission *)gotoNextMission:(NSString *) planRunuuid{
-    Plan_Run_History *planHistory = [self fetchUserPlanHistory:planRunuuid withContext:YES];
+    Plan_Run_History *planHistory = [self fetchUserPlanHistory:planRunuuid withHistoryDetail:NO withContext:YES];
     if(planHistory != nil){
         Plan_Next_mission *planNextMission = [self fetchPlanNextMission];
         if(planHistory.remainingMissions.integerValue == 1){
@@ -525,7 +578,7 @@
 }
 
 +(BOOL)cancelCurrentPlan:(NSString *) planRunuuid{
-    Plan_Run_History *planHistory = [self fetchUserPlanHistory:planRunuuid withContext:YES];
+    Plan_Run_History *planHistory = [self fetchUserPlanHistory:planRunuuid withHistoryDetail:NO withContext:YES];
     if(planHistory != nil){
         Plan_Next_mission *planNextMission = [self fetchPlanNextMission];
         planHistory.endTime = [NSDate date];
