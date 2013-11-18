@@ -17,6 +17,10 @@
 @dynamic endTime;
 @dynamic planRunUuid;
 
+@synthesize planInfo;
+@synthesize nextMission;
+@synthesize history;
+
 +(Plan_Next_mission *) intiUnassociateEntity{
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Plan_Next_mission" inManagedObjectContext:context];
@@ -31,6 +35,9 @@
     for (NSString *attr in [[entity attributesByName] allKeys]) {
         [unassociatedEntity setValue:[associatedEntity valueForKey:attr] forKey:attr];
     }
+    unassociatedEntity.planInfo = [Plan removeAssociateForEntity:associatedEntity.planInfo];
+    unassociatedEntity.nextMission = [Mission removeAssociateForEntity:associatedEntity.nextMission];
+    unassociatedEntity.history = [Plan_Run_History removeAssociateForEntity:associatedEntity.history];
     return unassociatedEntity;
 }
 

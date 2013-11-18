@@ -19,23 +19,38 @@
 //#define SERVICE_HOST @"http://www.cyberace.cc/service/api"
 
 #define CURRENT_VERSION_MAIN 1
-#define CURRENT_VERSION_SUB 1
+#define CURRENT_VERSION_SUB 2
 
-#define LOGIN_URL [SERVICE_HOST stringByAppendingString:@"/account/%@/%@"] 
+#define LOGIN_URL [SERVICE_HOST stringByAppendingString:@"/account/%@/%@"]
 #define REGISTER_URL [SERVICE_HOST stringByAppendingString:@"/account"]
-#define USER_ADDITIONAL_UPDATE [SERVICE_HOST stringByAppendingString:@"/account/additional/%@"] 
+#define USER_ADDITIONAL_UPDATE [SERVICE_HOST stringByAppendingString:@"/account/additional/%@"]
 #define USER_INFO [SERVICE_HOST stringByAppendingString:@"/account/%@?checkUuid=true"]
 #define POST_RUNNING_HISTORY_URL [SERVICE_HOST stringByAppendingString:@"/running/history/%@"]
 #define RUNNING_HISTORY_URL [SERVICE_HOST stringByAppendingString:@"/running/history/%@?lastUpdateTime=%@"]
 #define POST_USER_RUNNING_URL [SERVICE_HOST stringByAppendingString:@"/running/ongoing/%@"]
 #define USER_RUNNING_URL [SERVICE_HOST stringByAppendingString:@"/running/ongoing/%@?lastUpdateTime=%@"]
-#define FRIEND_URL [SERVICE_HOST stringByAppendingString:@"/account/friends/%@?lastUpdateTime=%@"] 
-#define MISSION_URL [SERVICE_HOST stringByAppendingString:@"/missions/mission?lastUpdateTime=%@"] 
+#define FRIEND_URL [SERVICE_HOST stringByAppendingString:@"/account/friends/%@?lastUpdateTime=%@"]
+#define MISSION_URL [SERVICE_HOST stringByAppendingString:@"/missions/mission?lastUpdateTime=%@"]
 #define VERSION_URL [SERVICE_HOST stringByAppendingString:@"/system/version/%@"]
 #define SYSTEM_MESSAGE_URL [SERVICE_HOST stringByAppendingString:@"/system/message/%@"]
 #define FEEDBACK_URL [SERVICE_HOST stringByAppendingString:@"/system/feedback"]
 #define DOWNLOADED_URL [SERVICE_HOST stringByAppendingString:@"/system/download"]
-#define PM25_URL [SERVICE_HOST stringByAppendingString:@"/weather/pm25?cityName=%@&provinceName=%@"] 
+#define PM25_URL [SERVICE_HOST stringByAppendingString:@"/weather/pm25?cityName=%@&provinceName=%@"]
+
+//define version 1.2 plan new api
+#define USER_FOLLOWERS_DETAIL_URL [SERVICE_HOST stringByAppendingString:@"/account/follower/%@?pageNo=%@"]
+#define PLAN_INFO_URL [SERVICE_HOST stringByAppendingString:@"/plans/plan/%@?lastUpdateTime=%@"]
+#define HOT_PLAN_URL [SERVICE_HOST stringByAppendingString:@"/plans/list?pageNo=%@"]
+#define POST_PLAN_URL [SERVICE_HOST stringByAppendingString:@"/plans/plan/post/%@"]
+#define USER_LAST_UPDATE_PLAN_URL [SERVICE_HOST stringByAppendingString:@"/plans/history/lastupdate/%@"]
+#define USER_COLLECT_PLAN_URL [SERVICE_HOST stringByAppendingString:@"/plans/collect/%@?lastUpdateTime=%@"]
+#define PUT_USER_COLLECT_PLAN_URL [SERVICE_HOST stringByAppendingString:@"/plans/collect/put/%@"]
+#define USER_PLAN_HISTORY_URL [SERVICE_HOST stringByAppendingString:@"/plans/history/%@?lastUpdateTime=%@"]
+#define PUT_USER_PLAN_HISTORY_URL [SERVICE_HOST stringByAppendingString:@"/plans/history/put/%@"]
+#define PLAN_HISTORY_BY_PLANID_URL [SERVICE_HOST stringByAppendingString:@"/plans/history/running/plan/%@?pageNo=%@"]
+#define PLAN_HISTORY_BY_USERID_URL [SERVICE_HOST stringByAppendingString:@"/plans/history/running/user/%@?pageNo=%@"]
+#define USER_FOLLOWER_LIST_URL [SERVICE_HOST stringByAppendingString:@"/plans/follow/%@?lastUpdateTime=%@"]
+#define PUT_USER_FOLLOWER_LIST_URL [SERVICE_HOST stringByAppendingString:@"/plans/follow/put/%@"]
 
 #define WEATHER_URL @"http://www.weather.com.cn/data/sk/%@.html"
 
@@ -56,14 +71,24 @@
 
 #endif
 
-typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3, NormalRun = 4} MissionTypeEnum;
+typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3, NormalRun = 4, SimpleTask = 5, ComplexTask = 6} MissionTypeEnum;
 typedef enum {GRADE_S = 0, GRADE_A = 1, GRADE_B = 2, GRADE_C = 3, GRADE_D = 4, GRADE_E = 5, GRADE_F = 6} MissionGradeEnum;
+typedef enum {PlanTypeEasy = 0, PlanTypeComplex = 1} PlanTypeEnum;
+typedef enum {SharedPlanSystem = 0, SharedPlanShared = 1} SharedPlanEnum;
+typedef enum {DurationTypeWeek = 0, DurationTypeDay = 1} DurationTypeEnum;
+typedef enum {PlanStatusEnabled = 0, PlanStatusDisabled = 1} PlanStatusEnum;
+typedef enum {CollectStatusCollected = 0, CollectStatusNotCollected = 1} CollectStatusEnum;
+typedef enum {HistoryStatusExecute = 0, HistoryStatusFinished = 1, HistoryStatusCancled = 2} HistoryStatusEnum;
+typedef enum {FollowStatusFollowed = 0, FollowStatusNotFollowed = 1} FollowStatusEnum;
+typedef enum {OperateUpdate = 0, OperateInsert = 1, OperateDelete = 2} OperateEnum;
+typedef enum {PlanFlagNew = 0, PlanFlagHot = 1, PlanFlagRecommend = 2} PlanFlagEnun;
+
 typedef struct {
     int mainVersion;
     int subVersion;
 } Version;
 
-NSString *const MissionTypeEnum_toString[5];
+NSString *const MissionTypeEnum_toString[7];
 NSString *const MissionGradeEnum_toString[7];
 NSString *const MissionGradeCongratsImageEnum_toString[7];
 NSString *const MissionGradeImageEnum_toString[7];

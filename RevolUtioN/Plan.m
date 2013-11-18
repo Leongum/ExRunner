@@ -28,7 +28,7 @@
 @dynamic sharedPlan;
 @dynamic totalMissions;
 
-@synthesize missions;
+@synthesize missionList;
 
 +(Plan *) intiUnassociateEntity{
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
@@ -45,10 +45,10 @@
         [unassociatedEntity setValue:[associatedEntity valueForKey:attr] forKey:attr];
     }
     NSMutableArray *newMissionList = [[NSMutableArray alloc] init];
-    for (Mission *newMission in associatedEntity.missions) {
+    for (Mission *newMission in associatedEntity.missionList) {
         [newMissionList addObject:[Mission removeAssociateForEntity:newMission]];
     }
-    unassociatedEntity.missions = [newMissionList copy];
+    unassociatedEntity.missionList = [newMissionList copy];
     return unassociatedEntity;
 }
 
@@ -86,7 +86,7 @@
     [tempoDict setValue:self.sharedPlan forKey:@"sharedPlan"];
     [tempoDict setValue:self.totalMissions forKey:@"totalMissions"];
     NSMutableArray *newMissionList = [[NSMutableArray alloc] init];
-    for (Mission *newMission in self.missions) {
+    for (Mission *newMission in self.missionList) {
         [newMissionList addObject:newMission.transToDictionary];
     }
     [tempoDict setValue:newMissionList forKey:@"missions"];

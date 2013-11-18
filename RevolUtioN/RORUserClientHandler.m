@@ -39,4 +39,10 @@
     return httpResponse;
 }
 
++(RORHttpResponse *)getFollowerDetails:(NSNumber *) userId withPageNo:(NSNumber *) pageNo{
+    NSString *url = [NSString stringWithFormat:USER_FOLLOWERS_DETAIL_URL ,userId, pageNo];
+    RORHttpResponse *httpResponse = [RORHttpClientHandler getRequest:url];
+    return httpResponse;
+}
+
 @end

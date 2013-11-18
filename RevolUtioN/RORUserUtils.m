@@ -25,6 +25,11 @@ static NSDate *systemTime = nil;
     return userId;
 }
 
++ (NSString *)getUserName{
+    NSMutableDictionary *userDict = [self getUserInfoPList];
+    return [userDict valueForKey:@"nickName"];
+}
+
 + (NSNumber *)getDownLoaded{
     NSMutableDictionary *userDict = [self getUserInfoPList];
     return [userDict valueForKey:@"downLoaded"];

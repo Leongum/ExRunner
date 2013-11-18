@@ -14,6 +14,7 @@
 #import "RORContextUtils.h"
 #import "RORHttpResponse.h"
 #import "RORUserClientHandler.h"
+#import "Plan_User_Follow.h"
 
 @interface RORUserServices : NSObject
 
@@ -32,5 +33,9 @@
 +(void)clearUserData;
 
 +(User_Base *)updateUserInfo:(NSDictionary *)updateDic;
+
++(BOOL)syncFollowersDetails:(NSNumber *) userId withPageNo:(NSNumber *) pageNo;
+
++(NSMutableArray *)fetchFollowersDetails:(NSNumber *) userId withPageNo:(NSNumber *) pageNo;
 
 @end

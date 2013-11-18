@@ -157,7 +157,31 @@
             [missionDetails addObject: detailMission];
         }
     }
-    return [(NSArray*)missionDetails mutableCopy];;
+    return [(NSArray*)missionDetails mutableCopy];
+}
+
++(NSMutableArray *)fetchMissionListByPlanId:(NSNumber *) planId withContext:(BOOL) needContext{
+    NSString *table=@"Mission";
+    NSString *query = @"planId = %@";
+    NSArray *params = [NSArray arrayWithObjects:planId, nil];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:YES];
+    NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
+    if (fetchObject == nil || [fetchObject count] == 0) {
+        return nil;
+    }
+    NSMutableArray *missionDetails = [NSMutableArray arrayWithCapacity:10];
+    for (Mission *mission in fetchObject) {
+        Mission *detailMission = [self fetchMissionDetails:mission];
+        if(!needContext){
+            [missionDetails addObject:[Mission removeAssociateForEntity:detailMission]];
+        }
+        else
+        {
+            [missionDetails addObject: detailMission];
+        }
+    }
+    return missionDetails;
 }
 
 +(void) deletePlacePackage:(NSNumber *) placePackageId{

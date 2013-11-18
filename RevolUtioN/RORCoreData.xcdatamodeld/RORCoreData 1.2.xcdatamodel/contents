@@ -95,6 +95,7 @@
         <attribute name="historyStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="lastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="nextMissionId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="operate" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="planId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="planRunUuid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rate" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -253,6 +254,7 @@
         <element name="Place_Package" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Plan" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Plan_Collect" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Plan_Next_mission" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Plan_Run_History" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Plan_User_Follow" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Products" positionX="0" positionY="0" width="0" height="0"/>
@@ -265,6 +267,5 @@
         <element name="User_Running" positionX="0" positionY="0" width="0" height="0"/>
         <element name="User_Running_History" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Version_Control" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Plan_Next_mission" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

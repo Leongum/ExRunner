@@ -19,6 +19,10 @@
 
 +(Mission *)fetchMission:(NSNumber *) missionId;
 
++(Mission *)fetchMission:(NSNumber *) missionId withContext:(BOOL) needContext;
+
++(NSMutableArray *)fetchMissionListByPlanId:(NSNumber *) planId withContext:(BOOL) needContext;
+
 +(NSArray *)fetchMissionList:(MissionTypeEnum *) missionType;
 
 + (BOOL)syncMissions;

@@ -76,7 +76,7 @@
     NSNumber *userId = [RORUserUtils getUserId];
     if([userId intValue] > 0){
         //sync runningHistory
-        [RORRunHistoryServices syncRunningHistories];
+        //[RORRunHistoryServices syncRunningHistories];
         [RORRunHistoryServices uploadRunningHistories];
         //sync userInfo.
         [RORUserServices syncUserInfoById:userId];

@@ -24,4 +24,6 @@
 
 +(RORHttpResponse *)updateUserBaseInfo:(NSNumber *)userId withUserInfo:(NSDictionary *) userInfo;
 
++(RORHttpResponse *)getFollowerDetails:(NSNumber *) userId withPageNo:(NSNumber *) pageNo;
+
 @end

@@ -65,6 +65,8 @@
 		0F5624351834AA6F006581E0 /* Plan_Collect.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5624341834AA6F006581E0 /* Plan_Collect.m */; };
 		0F5624381834AA6F006581E0 /* Plan_User_Follow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5624371834AA6F006581E0 /* Plan_User_Follow.m */; };
 		0F56243E1834F9D4006581E0 /* Plan_Next_mission.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F56243D1834F9D4006581E0 /* Plan_Next_mission.m */; };
+		0F5624411835C1C3006581E0 /* RORPlanService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5624401835C1C3006581E0 /* RORPlanService.m */; };
+		0F5624441835CD94006581E0 /* RORPlanClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5624431835CD94006581E0 /* RORPlanClientHandler.m */; };
 		0F59A16B17BC700A000DEFEF /* RORShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F59A16A17BC700A000DEFEF /* RORShareService.m */; };
 		0F59A17217BCA4BD000DEFEF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BB0B071769A2E70009A847 /* SystemConfiguration.framework */; };
 		0F7F398E1792DF1000B1C720 /* RORUserServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7F398D1792DF1000B1C720 /* RORUserServices.m */; };
@@ -421,6 +423,10 @@
 		0F5624371834AA6F006581E0 /* Plan_User_Follow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan_User_Follow.m; sourceTree = "<group>"; };
 		0F56243C1834F9D4006581E0 /* Plan_Next_mission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan_Next_mission.h; sourceTree = "<group>"; };
 		0F56243D1834F9D4006581E0 /* Plan_Next_mission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan_Next_mission.m; sourceTree = "<group>"; };
+		0F56243F1835C1C3006581E0 /* RORPlanService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORPlanService.h; sourceTree = "<group>"; };
+		0F5624401835C1C3006581E0 /* RORPlanService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORPlanService.m; sourceTree = "<group>"; };
+		0F5624421835CD94006581E0 /* RORPlanClientHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORPlanClientHandler.h; sourceTree = "<group>"; };
+		0F5624431835CD94006581E0 /* RORPlanClientHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORPlanClientHandler.m; sourceTree = "<group>"; };
 		0F59A16917BC700A000DEFEF /* RORShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORShareService.h; sourceTree = "<group>"; };
 		0F59A16A17BC700A000DEFEF /* RORShareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORShareService.m; sourceTree = "<group>"; };
 		0F7F398C1792DF1000B1C720 /* RORUserServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORUserServices.h; sourceTree = "<group>"; };
@@ -948,6 +954,8 @@
 				0F274A6A17B6058B00F0E927 /* RORSystemService.m */,
 				0F59A16917BC700A000DEFEF /* RORShareService.h */,
 				0F59A16A17BC700A000DEFEF /* RORShareService.m */,
+				0F56243F1835C1C3006581E0 /* RORPlanService.h */,
+				0F5624401835C1C3006581E0 /* RORPlanService.m */,
 			);
 			name = RORServices;
 			path = ..;
@@ -1010,6 +1018,8 @@
 				0F0D589717B23F490046515C /* RORThirdPartyClientHandler.m */,
 				0F274A7317B6061F00F0E927 /* RORSystemClientHandler.h */,
 				0F274A7417B6061F00F0E927 /* RORSystemClientHandler.m */,
+				0F5624421835CD94006581E0 /* RORPlanClientHandler.h */,
+				0F5624431835CD94006581E0 /* RORPlanClientHandler.m */,
 			);
 			name = HttpClient;
 			sourceTree = "<group>";
@@ -2021,6 +2031,7 @@
 				0F535D7117CF90470032F58D /* RORNetWorkUtils.m in Sources */,
 				30FECBBB17D83AE5002C3C90 /* RORNotificationView.m in Sources */,
 				30989CCE17F80FB000CA9F83 /* RORAboutViewController.m in Sources */,
+				0F5624441835CD94006581E0 /* RORPlanClientHandler.m in Sources */,
 				30621D2117DF00220063A007 /* RORPageViewController.m in Sources */,
 				30621D2717E00ED90063A007 /* RORRunningBaseViewController.m in Sources */,
 				30B3906618322B4C005CE74D /* MLNavigationController.m in Sources */,
@@ -2028,6 +2039,7 @@
 				30621D3317E09F880063A007 /* RORChanllengeRunViewController.m in Sources */,
 				30621D4817E45EB70063A007 /* RORPlaySound.m in Sources */,
 				0F07AC0D17E44D280009C8A8 /* System_Message.m in Sources */,
+				0F5624411835C1C3006581E0 /* RORPlanService.m in Sources */,
 				0F07AC3517E957070009C8A8 /* RORCheckBox.m in Sources */,
 				307C860217E6F445007C1DE5 /* RORSegmentControl.m in Sources */,
 				307C860517E6F469007C1DE5 /* RORSegmentButton.m in Sources */,
@@ -2209,7 +2221,7 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RevolUtioN/RevolUtioN-Prefix.pch";
+				GCC_PREFIX_HEADER = "RevolUtioN/Cyberace-Prefix.pch";
 				INFOPLIST_FILE = "RevolUtioNTests/CyberaceTests-Info.plist";
 				PRODUCT_NAME = CyberaceTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -2226,7 +2238,7 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RevolUtioN/RevolUtioN-Prefix.pch";
+				GCC_PREFIX_HEADER = "RevolUtioN/Cyberace-Prefix.pch";
 				INFOPLIST_FILE = "RevolUtioNTests/CyberaceTests-Info.plist";
 				PRODUCT_NAME = CyberaceTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";

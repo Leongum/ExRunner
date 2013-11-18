@@ -41,7 +41,7 @@
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
-
+    
     if (!needContext) {
         return[User_Attributes removeAssociateForEntity:(User_Attributes *) [fetchObject objectAtIndex:0]];
     }
@@ -110,7 +110,7 @@
     [settingDict setValue:user.attributes.height forKey:@"height"];
     [RORUserUtils writeToUserSettingsPList:settingDict];
 }
-    
+
 +(User_Base *)syncUserFromResponse:(RORHttpResponse *)httpResponse{
     NSError *error;
     User_Base *user = nil;
@@ -130,7 +130,7 @@
         if(userAttr == nil)
             userAttr = [NSEntityDescription insertNewObjectForEntityForName:@"User_Attributes" inManagedObjectContext:[RORContextUtils getShareContext]];
         [userAttr initWithDictionary:userInfoDic];
-
+        
         [RORContextUtils saveContext];
         user.attributes = userAttr;
         [self saveUserInfoToList:user];
@@ -176,6 +176,53 @@
 +(void)clearUserData{
     NSArray *tables = [NSArray arrayWithObjects:@"User",@"User_Attributes",@"Friend",@"User_Last_Location",@"User_Running_History",@"User_Running", nil];
     [RORContextUtils clearTableData:tables];
+}
+
++(BOOL)syncFollowersDetails:(NSNumber *) userId withPageNo:(NSNumber *) pageNo{
+    if(userId.integerValue > 0){
+        NSError *error = nil;
+        NSManagedObjectContext *context = [RORContextUtils getShareContext];
+        RORHttpResponse *httpResponse =[RORUserClientHandler getFollowerDetails:userId withPageNo:pageNo];
+        if ([httpResponse responseStatus] == 200){
+            NSArray *userList = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
+            for (NSDictionary *userDict in userList){
+                NSNumber *userIdNum = [userDict valueForKey:@"userId"];
+                User_Base *userEntity = [self fetchUserById:userIdNum withContext:YES];
+                User_Attributes *userAttributesEntity = [self fetchUserAttrsByUserId:userIdNum withContext:YES];
+                if(userEntity == nil)
+                    userEntity = [NSEntityDescription insertNewObjectForEntityForName:@"User_Base" inManagedObjectContext:context];
+                if(userAttributesEntity == nil)
+                    userAttributesEntity = [NSEntityDescription insertNewObjectForEntityForName:@"User_Attributes" inManagedObjectContext:context];
+                [userEntity initWithDictionary:userDict];
+                [userAttributesEntity initWithDictionary:userDict];
+            }
+            
+            [RORContextUtils saveContext];
+            return YES;
+        } else {
+            NSLog(@"sync with host error: can't get user's friends list. Status Code: %d", [httpResponse responseStatus]);
+        }
+    }
+    return NO;
+}
+
++(NSMutableArray *)fetchFollowersDetails:(NSNumber *) userId withPageNo:(NSNumber *) pageNo{
+    NSString *table=@"Plan_User_Follow";
+    NSString *query = @"userId = %@ and status = 0";
+    NSArray *params = [NSArray arrayWithObjects:userId, nil];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"addTime" ascending:NO];
+    NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams withLimit:10];
+    if (fetchObject == nil || [fetchObject count] == 0) {
+        return nil;
+    }
+    NSMutableArray *followerDetails = [NSMutableArray arrayWithCapacity:10];
+    for (Plan_User_Follow *userFollower in fetchObject) {
+        NSNumber *followUserId =  userFollower.followerUserId;
+        User_Base *userfollow = [self fetchUser:followUserId];
+        [followerDetails addObject: userfollow];
+    }
+    return followerDetails;
 }
 
 @end

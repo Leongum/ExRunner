@@ -28,7 +28,7 @@
 @property (nonatomic, retain) NSNumber * sharedPlan;
 @property (nonatomic, retain) NSNumber * totalMissions;
 
-@property (nonatomic, retain) NSMutableArray * missions;
+@property (nonatomic, retain) NSMutableArray * missionList;
 
 +(Plan *) intiUnassociateEntity;
 

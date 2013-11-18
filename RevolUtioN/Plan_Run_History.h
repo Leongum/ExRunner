@@ -24,6 +24,7 @@
 @property (nonatomic, retain) NSDate * startTime;
 @property (nonatomic, retain) NSNumber * totalMissions;
 @property (nonatomic, retain) NSNumber * userId;
+@property (nonatomic, retain) NSNumber * operate;
 
 +(Plan_Run_History *) intiUnassociateEntity;
 

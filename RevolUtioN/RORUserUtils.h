@@ -13,6 +13,8 @@
 
 + (NSNumber *)getUserId;
 
++ (NSString *)getUserName;
+
 + (NSString *)getUserUuid;
 
 + (void)logout;

@@ -23,6 +23,7 @@
 @dynamic startTime;
 @dynamic totalMissions;
 @dynamic userId;
+@dynamic operate;
 
 +(Plan_Run_History *) intiUnassociateEntity{
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
@@ -69,6 +70,7 @@
     [tempoDict setValue:self.startTime forKey:@"startTime"];
     [tempoDict setValue:self.totalMissions forKey:@"totalMissions"];
     [tempoDict setValue:self.userId forKey:@"userId"];
+    [tempoDict setValue:self.operate forKey:@"operate"];
     return tempoDict;
 }
 
