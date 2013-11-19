@@ -48,6 +48,10 @@
     return plan;
 }
 
++(Plan *)fetchPlan:(NSNumber *) planId{
+    return [self fetchPlan:planId withMissions:YES withContext:NO];
+}
+
 +(Plan *)fetchPlan:(NSNumber *) planId withMissions:(BOOL) needMissionDetail withContext:(BOOL) needContext{
     NSString *table=@"Plan";
     NSString *query = @"planId = %@";
@@ -67,7 +71,7 @@
     return plan;
 }
 
-+(BOOL)createSelfPlan:(Plan *) plan{
++(Plan *)createSelfPlan:(Plan *) plan{
     if([RORUserUtils getUserId].integerValue >0){
         plan.planShareUser = [RORUserUtils getUserId];
         plan.planShareUserName = [RORUserUtils getUserName];
@@ -114,12 +118,12 @@
             
             //update user collect
             [self upLoadUserCollect:[RORUserUtils getUserId]];
-            return YES;
+            return plan;
         } else {
             NSLog(@"sync with host error. Status Code: %d", [httpResponse responseStatus]);
         }
     }
-    return NO;
+    return nil;
 }
 
 +(void)updatePlanCollect:(Plan_Collect *) planCollect {
