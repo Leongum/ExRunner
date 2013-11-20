@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) NSNumber * updated;
 
-+(Plan_Collect *) intiUnassociateEntity;
++(Plan_Collect *) initUnassociateEntity;
 
 +(Plan_Collect *) removeAssociateForEntity:(Plan_Collect *)associatedEntity;
 

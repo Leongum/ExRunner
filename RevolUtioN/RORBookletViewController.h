@@ -6,12 +6,13 @@
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
-#import "RORViewController.h"
+#import "RORTrainingViewController.h"
 #import "RORSearchTrainingViewController.h"
 
-@interface RORBookletViewController : RORViewController{
+@interface RORBookletViewController : RORTrainingViewController{
     RORSearchTrainingViewController *searchViewController;
     BOOL isEditing;
+    NSArray *contentList;
 }
 
 @property (strong, nonatomic) UIView *searchTrainingView;

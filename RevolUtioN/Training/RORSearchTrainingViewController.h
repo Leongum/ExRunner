@@ -6,10 +6,19 @@
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
-#import "RORViewController.h"
+#import "RORTrainingViewController.h"
 
-@interface RORSearchTrainingViewController : RORViewController{
+#define CELLTAG_TITLE 100
+#define CELLTAG_TIMES 101
+
+@interface RORSearchTrainingViewController : RORTrainingViewController{
     double searchViewTop;
+    BOOL expanded;
+    BOOL isTableEmpty;
+    NSInteger currentPages;
+    NSMutableArray *contentList;
+    BOOL noMoreData;
 }
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

@@ -1001,7 +1001,7 @@
         <!--Navigation Controller-->
         <scene sceneID="FmZ-we-Evh">
             <objects>
-                <navigationController storyboardIdentifier="RORNavigationController" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="VcK-Gx-lSI" customClass="MLNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RORNavigationController" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="VcK-Gx-lSI" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="h5I-Tk-K4A">

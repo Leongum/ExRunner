@@ -17,7 +17,7 @@
 @dynamic userId;
 @dynamic updated;
 
-+(Plan_Collect *) intiUnassociateEntity{
++(Plan_Collect *) initUnassociateEntity{
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Plan_Collect" inManagedObjectContext:context];
     Plan_Collect *unassociatedEntity = [[Plan_Collect alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];

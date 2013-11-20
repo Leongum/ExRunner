@@ -45,6 +45,8 @@
     
     [self.view bringSubviewToFront:self.backButton];
     [self.view bringSubviewToFront:self.editButton];
+    
+    contentList = [RORPlanService fetchPlanCollect:[RORUserUtils getUserId]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,7 +71,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 3;
+    return contentList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

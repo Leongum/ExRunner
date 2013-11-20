@@ -27,6 +27,23 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    bookletButtonFrame = self.bookletButton.frame;
+    traineeButtonFrame = self.TraineeButton.frame;
+    [self initLayout];
+}
+
+-(void)initLayout{
+    if ([RORPlanService fetchUserRunningPlanHistory]){
+        self.currentPlanView.alpha = 1;
+        
+        self.bookletButton.frame = bookletButtonFrame;
+        self.TraineeButton.frame = traineeButtonFrame;
+    } else {
+        self.currentPlanView.alpha = 0;
+        
+        self.bookletButton.frame = self.currentPlanView.frame;
+        self.TraineeButton.frame = CGRectMake(self.currentPlanView.frame.origin.x, self.TraineeButton.frame.origin.y, self.currentPlanView.frame.size.width, self.TraineeButton.frame.size.height);
+    }
 }
 
 - (void)didReceiveMemoryWarning

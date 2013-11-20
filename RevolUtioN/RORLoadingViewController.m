@@ -103,10 +103,12 @@
 -(void)viewDidAppear:(BOOL)animated{
 //    [self performSegueWithIdentifier:@"loadingfinished" sender:self];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
-    MLNavigationController *navigationController =  [storyboard instantiateViewControllerWithIdentifier:@"RORNavigationController"];
+    UINavigationController *navigationController =  [storyboard instantiateViewControllerWithIdentifier:@"RORNavigationController"];
+//    MLNavigationController *navigationController =  [storyboard instantiateViewControllerWithIdentifier:@"RORNavigationController"];
     
 //    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]];
-    sleep(3);
+    
+//    sleep(3);
     
     [self presentViewController:navigationController animated:NO completion:NULL];
 

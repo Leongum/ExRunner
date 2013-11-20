@@ -13,6 +13,7 @@
 @end
 
 @implementation RORAdvancedViewController
+@synthesize plan;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +28,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.titleLabel.text = plan.planName;
+    contentList = plan.missionList;
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,20 +45,27 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 2;
+    return contentList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
     
-    if (indexPath.row == 0){
-        static NSString *CellIdentifier = @"sample1Cell";
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    } else {
-        static NSString *CellIdentifier = @"sample2Cell";
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    }
+    Mission *thisMission = [contentList objectAtIndex:indexPath.row];
+    
+    static NSString *CellIdentifier = @"planDetailCell";
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UILabel *sequenceLabel = (UILabel *)[cell viewWithTag:100];
+    UILabel *dateCommentLabel = (UILabel *)[cell viewWithTag:101];
+    UILabel *dateLabel = (UILabel *)[cell viewWithTag:102];
+    UILabel *durationLabel = (UILabel *)[cell viewWithTag:103];
+    UILabel *distanceLabel = (UILabel *)[cell viewWithTag:104];
+    
+    sequenceLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    dateCommentLabel.text = indexPath.row==0?@"训练开始后":@"上一次完成后";
+    durationLabel.text = [RORUtils transSecondToStandardFormat:thisMission.missionTime.integerValue];
+    distanceLabel.text = [RORUtils outputDistance:thisMission.missionDistance.doubleValue];
     
     return cell;
 }

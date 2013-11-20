@@ -1,19 +1,18 @@
 //
-//  RORSimpleTrainingViewController.m
+//  RORTrainingViewController.m
 //  Cyberace
 //
-//  Created by Bjorn on 13-11-7.
+//  Created by Bjorn on 13-11-19.
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
-#import "RORSimpleTrainingViewController.h"
+#import "RORTrainingViewController.h"
 
-@interface RORSimpleTrainingViewController ()
+@interface RORTrainingViewController ()
 
 @end
 
-@implementation RORSimpleTrainingViewController
-@synthesize plan;
+@implementation RORTrainingViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,9 +27,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    self.titleLabel.text = plan.planName;
-    [self.collectButton addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning

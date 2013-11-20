@@ -6,8 +6,15 @@
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
-#import "RORViewController.h"
+#import "RORTrainingViewController.h"
 
-@interface RORTrainingMainViewController : RORViewController
+@interface RORTrainingMainViewController : RORTrainingViewController{
+    CGRect bookletButtonFrame;
+    CGRect traineeButtonFrame;
+}
 
+@property (strong, nonatomic) IBOutlet UIView *currentPlanView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIButton *bookletButton;
+@property (strong, nonatomic) IBOutlet UIButton *TraineeButton;
 @end

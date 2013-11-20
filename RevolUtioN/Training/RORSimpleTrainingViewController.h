@@ -6,8 +6,12 @@
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
-#import "RORViewController.h"
+#import "RORTrainingDetailViewController.h"
 
-@interface RORSimpleTrainingViewController : RORViewController
+@interface RORSimpleTrainingViewController : RORTrainingDetailViewController
 
+
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIButton *collectButton;
+@property (strong, nonatomic) IBOutlet UIButton *operateButton;
 @end
