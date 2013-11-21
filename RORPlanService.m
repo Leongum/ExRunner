@@ -468,7 +468,7 @@
         planNextMission.planInfo = [self fetchPlan:planNextMission.planId withMissions:YES withContext:YES];
     }
     if(planNextMission.planRunUuid != nil){
-        planNextMission.history = [self fetchUserPlanHistory:planNextMission.planRunUuid withHistoryDetail:NO withContext:YES];
+        planNextMission.history = [self fetchUserPlanHistory:planNextMission.planRunUuid withHistoryDetail:YES withContext:YES];
     }
     [Plan_Next_mission removeAssociateForEntity:planNextMission];
 
