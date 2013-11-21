@@ -66,15 +66,15 @@
 
 -(NSMutableDictionary *)transToDictionary{
     NSMutableDictionary *tempoDict = [[NSMutableDictionary alloc] init];
-    [tempoDict setValue:self.endTime forKey:@"endTime"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.endTime] forKey:@"endTime"];
     [tempoDict setValue:self.historyStatus forKey:@"historyStatus"];
-    [tempoDict setValue:self.lastUpdateTime forKey:@"lastUpdateTime"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.lastUpdateTime] forKey:@"lastUpdateTime"];
     [tempoDict setValue:self.nextMissionId forKey:@"nextMissionId"];
     [tempoDict setValue:self.planRunUuid forKey:@"planRunUuid"];
     [tempoDict setValue:self.rate forKey:@"rate"];
     [tempoDict setValue:self.rateComment forKey:@"rateComment"];
     [tempoDict setValue:self.remainingMissions forKey:@"remainingMissions"];
-    [tempoDict setValue:self.startTime forKey:@"startTime"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.startTime] forKey:@"startTime"];
     [tempoDict setValue:self.totalMissions forKey:@"totalMissions"];
     [tempoDict setValue:self.userId forKey:@"userId"];
     [tempoDict setValue:self.operate forKey:@"operate"];

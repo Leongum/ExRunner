@@ -44,7 +44,7 @@
 
 -(NSMutableDictionary *)transToDictionary{
     NSMutableDictionary *tempoDict = [[NSMutableDictionary alloc] init];
-    [tempoDict setValue:self.addTime forKey:@"addTime"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.addTime] forKey:@"addTime"];
     [tempoDict setValue:self.followerUserId forKey:@"followerUserId"];
     [tempoDict setValue:self.status forKey:@"status"];
     [tempoDict setValue:self.userId forKey:@"userId"];

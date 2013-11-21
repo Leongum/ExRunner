@@ -114,7 +114,7 @@
     [tempoDict setValue:self.subMissionList forKey:@"subMissionList"];
     [tempoDict setValue:self.missionPackageId forKey:@"missionPackageId"];
     [tempoDict setValue:self.sequence forKey:@"sequence"];
-    [tempoDict setValue:self.lastUpdateTime forKey:@"lastUpdateTime"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.lastUpdateTime] forKey:@"lastUpdateTime"];
     [tempoDict setValue:self.planId forKey:@"planId"];
     return tempoDict;
 }

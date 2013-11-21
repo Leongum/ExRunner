@@ -75,7 +75,7 @@
     [tempoDict setValue:self.duration forKey:@"duration"];
     [tempoDict setValue:self.durationLast forKey:@"durationLast"];
     [tempoDict setValue:self.durationType forKey:@"durationType"];
-    [tempoDict setValue:self.lastUpdateTime forKey:@"lastUpdateTime"];
+    [tempoDict setValue:[RORDBCommon getStringFromId:self.lastUpdateTime] forKey:@"lastUpdateTime"];
     [tempoDict setValue:self.missionIds forKey:@"missionIds"];
     [tempoDict setValue:self.planId forKey:@"planId"];
     [tempoDict setValue:self.planName forKey:@"planName"];
