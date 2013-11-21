@@ -11,6 +11,8 @@
 @interface RORTrainingMainViewController : RORTrainingViewController{
     CGRect bookletButtonFrame;
     CGRect traineeButtonFrame;
+    NSArray *contentList;
+    Plan_Next_mission *planNext;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *currentPlanView;

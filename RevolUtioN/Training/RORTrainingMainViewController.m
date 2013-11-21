@@ -33,11 +33,17 @@
 }
 
 -(void)initLayout{
-    if ([RORPlanService fetchUserRunningPlanHistory]){
+    planNext = [RORPlanService fetchUserRunningPlanHistory];
+    
+    if (planNext){
         self.currentPlanView.alpha = 1;
         
         self.bookletButton.frame = bookletButtonFrame;
         self.TraineeButton.frame = traineeButtonFrame;
+        
+        Plan *thisPlan = [RORPlanService fetchPlan:planNext.planId];
+        contentList = thisPlan.missionList;
+        
     } else {
         self.currentPlanView.alpha = 0;
         
@@ -57,12 +63,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 3;
+    return contentList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
+    
+    Mission *thisMission = [contentList objectAtIndex:indexPath.row];
+//    if (thisMission.missionId){
     
     if (indexPath.row == 0){
         static NSString *CellIdentifier = @"doneCell";

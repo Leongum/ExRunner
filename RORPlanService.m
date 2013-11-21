@@ -385,6 +385,9 @@
                     NSDate *startTime = [NSDate date];
                     NSDate *endTime = [NSDate date];
                     Plan *plan = [self fetchPlan:userPlanHistoryEntity.planId withMissions:YES withContext:NO];
+                    if(plan== nil || plan.planId == nil){
+                        plan = [self syncPlan:userPlanHistoryEntity.planId];
+                    }
                     if(plan.planType.integerValue == PlanTypeEasy){
                         int timeScape = 0;
                         if(plan.durationType.integerValue == DurationTypeDay){
