@@ -39,7 +39,7 @@
     self.followerUserId = [RORDBCommon getNumberFromId:[dict valueForKey:@"followerUserId"]];
     self.status = [RORDBCommon getNumberFromId:[dict valueForKey:@"status"]];
     self.userId = [RORDBCommon getNumberFromId:[dict valueForKey:@"userId"]];
-    self.updated = [RORDBCommon getNumberFromId:[dict valueForKey:@"updated"]];
+    self.updated = nil;
 }
 
 -(NSMutableDictionary *)transToDictionary{

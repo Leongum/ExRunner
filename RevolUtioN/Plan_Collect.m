@@ -39,7 +39,7 @@
     self.collectTime = [RORDBCommon getDateFromId:[dict valueForKey:@"collectTime"]];
     self.planId = [RORDBCommon getNumberFromId:[dict valueForKey:@"planId"]];
     self.userId = [RORDBCommon getNumberFromId:[dict valueForKey:@"userId"]];
-    self.updated = [RORDBCommon getNumberFromId:[dict valueForKey:@"updated"]];
+    self.updated = nil;
 }
 
 -(NSMutableDictionary *)transToDictionary{

@@ -28,7 +28,11 @@
 }
 
 +(RORHttpResponse *)getUserInfoById:(NSNumber *) userId{
-    NSString *url = [NSString stringWithFormat:USER_INFO ,userId];
+    NSString *checkUuid = @"true";
+    if(userId.integerValue != [RORUserUtils getUserId].integerValue){
+        checkUuid = @"false";
+    }
+    NSString *url = [NSString stringWithFormat:USER_INFO ,userId, checkUuid];
     RORHttpResponse *httpResponse = [RORHttpClientHandler getRequest:url];
     return httpResponse;
 }
