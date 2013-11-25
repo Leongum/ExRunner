@@ -351,9 +351,12 @@
     [self prepareForQuit];
     [self saveRunInfo];
     [self endIndicator:self];
-    [self performSegueWithIdentifier:@"NormalRunResultSegue" sender:self];
-    
+    [self performSegue];
 //    [self endIndicator:self];
+}
+
+-(void)performSegue{
+    [self performSegueWithIdentifier:@"NormalRunResultSegue" sender:self];
 }
 
 -(void)prepareForQuit{
@@ -374,7 +377,26 @@
 }
 
 - (void)saveRunInfo{
-    User_Running_History *runHistory = [User_Running_History intiUnassociateEntity];
+    [self creatRunningHistory];
+    [RORRunHistoryServices saveRunInfoToDB:runHistory];
+    if([RORUserUtils getUserId].integerValue > 0){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            BOOL updated = [RORRunHistoryServices uploadRunningHistories];
+            [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(updated){
+                    [self sendSuccess:SYNC_DATA_SUCCESS];
+                }
+                else{
+                    [self sendAlart:SYNC_DATA_FAIL];
+                }
+            });
+        });
+    }
+}
+
+-(void)creatRunningHistory{
+    runHistory = [User_Running_History intiUnassociateEntity];
     runHistory.distance = [NSNumber numberWithDouble:distance];
     runHistory.duration = [NSNumber numberWithDouble:duration];
     runHistory.avgSpeed = [NSNumber numberWithDouble:(double)(distance/duration*3.6)];
@@ -403,21 +425,6 @@
     
     NSLog(@"%@", runHistory);
     record = runHistory;
-    [RORRunHistoryServices saveRunInfoToDB:runHistory];
-    if([RORUserUtils getUserId].integerValue > 0){
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            BOOL updated = [RORRunHistoryServices uploadRunningHistories];
-            [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if(updated){
-                    [self sendSuccess:SYNC_DATA_SUCCESS];
-                }
-                else{
-                    [self sendAlart:SYNC_DATA_FAIL];
-                }
-            });
-        });
-    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

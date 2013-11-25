@@ -10,19 +10,14 @@
 #import "RORRunHistoryServices.h"
 
 @interface RORCongratsCoverView : UIControl{
-    NSInteger grade;
-    UIImageView *bgView;
     UILabel *titleLabel;
-    UIImageView *levelBgImageView;
-    UIImageView *levelImageView;
-    UILabel *levelLabel;
-    UILabel *extraAwardLabel;
-    UILabel *awardTitleLabel;
+UIImageView *bgView;
+    
+UILabel *extraAwardLabel;
+UILabel *awardTitleLabel;
 }
 
-@property (nonatomic) User_Running_History *bestRecord;
 
-- (id)initWithFrame:(CGRect)frame andLevel:(User_Running_History*)record;
 -(IBAction)show:(id)sender;
 -(IBAction)hide:(id)sender;
 @end

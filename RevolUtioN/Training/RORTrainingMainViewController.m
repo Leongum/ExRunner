@@ -61,6 +61,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)startAction:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
+    UIViewController *viewController =  [storyboard instantiateViewControllerWithIdentifier:@"TrainingRunViewController"];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    UIViewController *destination = segue.destinationViewController;
+    if ([destination respondsToSelector:@selector(setDelegate:)]){
+        [destination setValue:self forKey:@"delegate"];
+    }
+    if ([destination respondsToSelector:@selector(setPlanNext:)]){
+        [destination setValue:planNext forKey:@"planNext"];
+    }
+    if ([destination respondsToSelector:@selector(setThisMission:)]){
+        [destination setValue:planNext.nextMission forKey:@"thisMission"];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

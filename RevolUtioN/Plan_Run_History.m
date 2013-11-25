@@ -62,6 +62,7 @@
     self.startTime = [RORDBCommon getDateFromId:[dict valueForKey:@"startTime"]];
     self.totalMissions = [RORDBCommon getNumberFromId:[dict valueForKey:@"totalMissions"]];
     self.userId = [RORDBCommon getNumberFromId:[dict valueForKey:@"userId"]];
+    
 }
 
 -(NSMutableDictionary *)transToDictionary{

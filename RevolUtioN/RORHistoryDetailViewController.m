@@ -62,14 +62,23 @@
         scoreLabel.text = [NSString stringWithFormat:@"%@", MissionGradeEnum_toString[record.missionGrade.integerValue]];
         self.levelTitleLabel.text = @"级别";
     }
-    else{
+    else {
         scoreLabel.text = [NSString stringWithFormat:@"%d", record.experience.integerValue];
         self.levelTitleLabel.text = @"得分";
     }
-
+    
+    if (record.missionTypeId.integerValue == SimpleTask || record.missionTypeId.integerValue==ComplexTask){
+        
+    }
+    
     if (record.valid.integerValue<0) {
-        scoreLabel.text = @"NOT A RUNNING";
         scoreLabel.textColor = [UIColor redColor];
+        if (record.valid.integerValue==-1)
+            scoreLabel.text = @"NOT A RUNNING";
+
+        if (record.valid.integerValue == -2)
+            scoreLabel.text = @"BAD NETWORK";
+
     }
     
     NSDateFormatter *formattter = [[NSDateFormatter alloc] init];
@@ -113,11 +122,14 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 //    User_Running_History *best = [RORRunHistoryServices fetchBestRunHistoryByMissionId:record.missionId withUserId:[RORUserUtils getUserId]];
-    if (record.missionTypeId.integerValue == Challenge && record.valid.integerValue>0 && [delegate isKindOfClass:[RORRunningBaseViewController class]])
+    if (record.missionTypeId.integerValue == Challenge && [delegate isKindOfClass:[RORRunningBaseViewController class]])
     {
-        RORCongratsCoverView *congratsCoverView = [[RORCongratsCoverView alloc]initWithFrame:self.coverView.frame andLevel:record];
+        RORChallengeCongratsCoverView *congratsCoverView = [[RORChallengeCongratsCoverView alloc]initWithFrame:self.coverView.frame andLevel:record];
         [self.view addSubview:congratsCoverView];
         [congratsCoverView show:self];
+    }
+    if ((record.missionTypeId.integerValue == ComplexTask || record.missionTypeId.integerValue == ComplexTask) && record.valid.integerValue>0 && [delegate isKindOfClass:[RORRunningBaseViewController class]]){
+        
     }
 }
 

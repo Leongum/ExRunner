@@ -13,5 +13,11 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *collectButton;
+
+@property (strong, nonatomic) IBOutlet UILabel *cycleTimeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *totalTimesLabel;
+@property (strong, nonatomic) IBOutlet UILabel *timeLimitLabel;
+@property (strong, nonatomic) IBOutlet UILabel *distanceLimitLabel;
+
 @property (strong, nonatomic) IBOutlet UIButton *operateButton;
 @end
