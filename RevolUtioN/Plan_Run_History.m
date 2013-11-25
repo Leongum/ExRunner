@@ -62,6 +62,7 @@
     self.startTime = [RORDBCommon getDateFromId:[dict valueForKey:@"startTime"]];
     self.totalMissions = [RORDBCommon getNumberFromId:[dict valueForKey:@"totalMissions"]];
     self.userId = [RORDBCommon getNumberFromId:[dict valueForKey:@"userId"]];
+    self.operate = nil;
 }
 
 -(NSMutableDictionary *)transToDictionary{
@@ -71,6 +72,7 @@
     [tempoDict setValue:[RORDBCommon getStringFromId:self.lastUpdateTime] forKey:@"lastUpdateTime"];
     [tempoDict setValue:self.nextMissionId forKey:@"nextMissionId"];
     [tempoDict setValue:self.planRunUuid forKey:@"planRunUuid"];
+    [tempoDict setValue:self.planId forKey:@"planId"];
     [tempoDict setValue:self.rate forKey:@"rate"];
     [tempoDict setValue:self.rateComment forKey:@"rateComment"];
     [tempoDict setValue:self.remainingMissions forKey:@"remainingMissions"];
