@@ -25,12 +25,6 @@
 
 #define PLAN_PAGE_SIZE 10
 
-#define PLAN_TYPE_ADVANCED 1
-#define PLAN_TYPE_SIMPLE 0
-
-#define PLAN_COLLECT_STATUS_COLLECTED 0
-#define PLAN_COLLECT_STATUS_DELETED 1
-
 @interface RORPlanService : NSObject
 
 //根据planId问服务器同步最新的plan，存储到本地。并返回这个plan的详细信息

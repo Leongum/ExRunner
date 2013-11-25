@@ -40,7 +40,7 @@
     Plan_Collect *planCollect = [Plan_Collect initUnassociateEntity];
     planCollect.planId = plan.planId;
     planCollect.userId = [RORUserUtils getUserId];
-    planCollect.collectStatus = PLAN_COLLECT_STATUS_COLLECTED;
+    planCollect.collectStatus = CollectStatusCollected;
     
     [RORPlanService updatePlanCollect:planCollect];
 }

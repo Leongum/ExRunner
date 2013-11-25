@@ -113,14 +113,14 @@
     NSNumber *planType = thisPlan.planType;
     
 
-    if (planType.integerValue == PLAN_TYPE_SIMPLE){
+    if (planType.integerValue == PlanTypeEasy){
         static NSString *CellIdentifier = @"simpleTrainingCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         UILabel *timesLabel = (UILabel *)[cell viewWithTag:CELLTAG_TIMES];
 
         timesLabel.text = [NSString stringWithFormat:@"%@次/%@天",thisPlan.totalMissions, thisPlan.durationLast];
         
-    } else if (planType.integerValue == PLAN_TYPE_ADVANCED){
+    } else if (planType.integerValue == PlanTypeComplex){
         static NSString *CellIdentifier = @"advTrainingCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 //        for (NSNumber *missionID in thisPlan.missionList){
