@@ -34,6 +34,8 @@
 @property (nonatomic, retain) NSNumber * sequence;
 @property (nonatomic, retain) NSString * subMissionList;
 @property (nonatomic, retain) NSNumber *planId;
+@property (nonatomic, retain) NSNumber *suggestionMaxSpeed;
+@property (nonatomic, retain) NSNumber *suggestionMinSpeed;
 
 //array list for place package, challenge, submission
 @property (nonatomic, retain) NSArray * missionPlacePackageList;

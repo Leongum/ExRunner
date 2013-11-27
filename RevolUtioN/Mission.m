@@ -35,6 +35,8 @@
 @dynamic sequence;
 @dynamic subMissionList;
 @dynamic planId;
+@dynamic suggestionMaxSpeed;
+@dynamic suggestionMinSpeed;
 
 
 //array list for place package, challenge, submission
@@ -90,6 +92,8 @@
     self.sequence = [RORDBCommon getNumberFromId:[dict valueForKey:@"sequence"]];
     self.lastUpdateTime = [RORDBCommon getDateFromId:[dict valueForKey:@"lastUpdateTime"]];
     self.planId = [RORDBCommon getNumberFromId:[dict valueForKey:@"planId"]];
+    self.suggestionMaxSpeed = [RORDBCommon getNumberFromId:[dict valueForKey:@"suggestionMaxSpeed"]];
+    self.suggestionMinSpeed = [RORDBCommon getNumberFromId:[dict valueForKey:@"suggestionMinSpeed"]];
 }
 
 -(NSMutableDictionary *)transToDictionary{
@@ -116,6 +120,8 @@
     [tempoDict setValue:self.sequence forKey:@"sequence"];
     [tempoDict setValue:[RORDBCommon getStringFromId:self.lastUpdateTime] forKey:@"lastUpdateTime"];
     [tempoDict setValue:self.planId forKey:@"planId"];
+    [tempoDict setValue:self.suggestionMaxSpeed forKey:@"suggestionMaxSpeed"];
+    [tempoDict setValue:self.suggestionMinSpeed forKey:@"suggestionMinSpeed"];
     return tempoDict;
 }
 
