@@ -76,12 +76,16 @@
 
 +(User_Base *)registerUser:(NSDictionary *)registerDic{
     RORHttpResponse *httpResponse = [RORUserClientHandler createUserInfoByUserDic:registerDic];
-    return [self syncUserFromResponse:httpResponse];
+    User_Base *userBase = [self syncUserFromResponse:httpResponse];
+    [self saveUserInfoToList:userBase];
+    return userBase;
 }
 
 +(User_Base *)updateUserInfo:(NSDictionary *)updateDic{
     RORHttpResponse *httpResponse = [RORUserClientHandler updateUserBaseInfo:[RORUserUtils getUserId] withUserInfo:updateDic];
-    return [self syncUserFromResponse:httpResponse];
+    User_Base *userBase = [self syncUserFromResponse:httpResponse];
+    [self saveUserInfoToList:userBase];
+    return userBase;
 }
 
 +(User_Base *)syncUserInfoById:(NSNumber *)userId{
@@ -93,7 +97,9 @@
 +(User_Base *)syncUserInfoByLogin:(NSString *)userName withUserPasswordL:(NSString *) password{
     if(userName == nil || password == nil) return nil;
     RORHttpResponse *httpResponse = [RORUserClientHandler getUserInfoByUserNameAndPassword:userName withPassword:password];
-    return [self syncUserFromResponse:httpResponse];
+    User_Base *userBase = [self syncUserFromResponse:httpResponse];
+    [self saveUserInfoToList:userBase];
+    return userBase;
 }
 
 
@@ -133,9 +139,6 @@
         
         [RORContextUtils saveContext];
         user.attributes = userAttr;
-        if(userId.integerValue == [RORUserUtils getUserId].integerValue){
-            [self saveUserInfoToList:user];
-        }
     }
     else if([httpResponse responseStatus] == 406 && [[httpResponse errorMessage] isEqualToString:@"LOGIN_CHECK_FAIL"]){
         [RORUserUtils logout];
