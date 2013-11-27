@@ -133,7 +133,9 @@
         
         [RORContextUtils saveContext];
         user.attributes = userAttr;
-        [self saveUserInfoToList:user];
+        if(userId.integerValue == [RORUserUtils getUserId].integerValue){
+            [self saveUserInfoToList:user];
+        }
     }
     else if([httpResponse responseStatus] == 406 && [[httpResponse errorMessage] isEqualToString:@"LOGIN_CHECK_FAIL"]){
         [RORUserUtils logout];
