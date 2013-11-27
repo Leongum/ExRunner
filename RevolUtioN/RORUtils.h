@@ -12,6 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "RORConstant.h"
 #import "RORMessages.h"
+#import "RORDBCommon.h"
 
 #define SuppressPerformSelectorLeakWarning(Stuff) \
 do { \
@@ -50,5 +51,9 @@ _Pragma("clang diagnostic pop") \
 +(double)randomBetween:(NSInteger)x1 and:(NSInteger)x2;
 
 + (int)convertToInt:(NSString*)strtemp;
+
++(NSString *)addEggache:(NSNumber *)userID;
+
++(NSNumber *)removeEggache:(NSString *)userID;
 
 @end

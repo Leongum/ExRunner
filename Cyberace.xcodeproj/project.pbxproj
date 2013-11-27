@@ -321,6 +321,7 @@
 		30FFFE56183FD728001EA4F1 /* RORTrainingRunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FFFE55183FD728001EA4F1 /* RORTrainingRunViewController.m */; };
 		30FFFE5918433412001EA4F1 /* RORChallengeCongratsCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FFFE5818433412001EA4F1 /* RORChallengeCongratsCoverView.m */; };
 		30FFFE5C18434823001EA4F1 /* RORTrainingCongratsCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FFFE5B18434823001EA4F1 /* RORTrainingCongratsCoverView.m */; };
+		30FFFE5F1845A213001EA4F1 /* RORFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FFFE5E1845A213001EA4F1 /* RORFriendsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -778,6 +779,8 @@
 		30FFFE5818433412001EA4F1 /* RORChallengeCongratsCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORChallengeCongratsCoverView.m; path = ReusableControl/RORChallengeCongratsCoverView.m; sourceTree = "<group>"; };
 		30FFFE5A18434823001EA4F1 /* RORTrainingCongratsCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingCongratsCoverView.h; path = ReusableControl/RORTrainingCongratsCoverView.h; sourceTree = "<group>"; };
 		30FFFE5B18434823001EA4F1 /* RORTrainingCongratsCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingCongratsCoverView.m; path = ReusableControl/RORTrainingCongratsCoverView.m; sourceTree = "<group>"; };
+		30FFFE5D1845A213001EA4F1 /* RORFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORFriendsViewController.h; path = Friends/RORFriendsViewController.h; sourceTree = "<group>"; };
+		30FFFE5E1845A213001EA4F1 /* RORFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORFriendsViewController.m; path = Friends/RORFriendsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1597,6 +1600,8 @@
 				30BDBE65182A3603001829D5 /* FriendsStoryboard.storyboard */,
 				30BDBE67182A3BA4001829D5 /* RORFriendsMainViewController.h */,
 				30BDBE68182A3BA4001829D5 /* RORFriendsMainViewController.m */,
+				30FFFE5D1845A213001EA4F1 /* RORFriendsViewController.h */,
+				30FFFE5E1845A213001EA4F1 /* RORFriendsViewController.m */,
 			);
 			name = Friends;
 			sourceTree = "<group>";
@@ -2063,6 +2068,7 @@
 				30989CCE17F80FB000CA9F83 /* RORAboutViewController.m in Sources */,
 				0F5624441835CD94006581E0 /* RORPlanClientHandler.m in Sources */,
 				30621D2117DF00220063A007 /* RORPageViewController.m in Sources */,
+				30FFFE5F1845A213001EA4F1 /* RORFriendsViewController.m in Sources */,
 				30621D2717E00ED90063A007 /* RORRunningBaseViewController.m in Sources */,
 				30B3906618322B4C005CE74D /* MLNavigationController.m in Sources */,
 				0F07ABF617E0391B0009C8A8 /* RORMessages.m in Sources */,

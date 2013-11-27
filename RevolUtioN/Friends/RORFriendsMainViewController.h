@@ -6,11 +6,18 @@
 //  Copyright (c) 2013年 Beyond. All rights reserved.
 //
 
-#import "RORViewController.h"
+#import "RORFriendsViewController.h"
 
-@interface RORFriendsMainViewController : RORViewController{
+@interface RORFriendsMainViewController : RORFriendsViewController{
     double searchViewTop;
+    User_Base *userInfo;
+    NSMutableArray *contentList;
 }
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIButton *addButton;
 @property (strong, nonatomic) IBOutlet UIView *searchFriendView;
+@property (strong, nonatomic) IBOutlet UITextField *searchTextField;
+@property (strong, nonatomic) IBOutlet UILabel *searchResultUserNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *searchResultUserLvLabel;
 @end

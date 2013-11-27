@@ -321,7 +321,7 @@
 }
 
 -(IBAction)userInfoViewClick:(id)sender{
-    [self sendNotification:@"请等到下个版本再点我"];
+    [self sendNotification:[RORUtils addEggache:[RORUserUtils getUserId]]];
 }
 
 - (IBAction)normalRunAction:(id)sender {

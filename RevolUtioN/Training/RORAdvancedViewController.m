@@ -32,6 +32,11 @@
     self.titleLabel.text = self.plan.planName;
     contentList = self.plan.missionList;
     
+    if (planNext)
+        self.operateButton.enabled = 0;
+    else
+        self.operateButton.enabled = 1;
+    
     [self.collectButton addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -61,7 +66,7 @@
     UILabel *sequenceLabel = (UILabel *)[cell viewWithTag:100];
     UILabel *dateCommentLabel = (UILabel *)[cell viewWithTag:101];
     UILabel *dateLabel = (UILabel *)[cell viewWithTag:102];
-    UILabel *durationLabel = (UILabel *)[cell viewWithTag:103];
+    UILabel *durationLabel = (UILabel *)[cell viewWithTag:105];
     UILabel *distanceLabel = (UILabel *)[cell viewWithTag:104];
     
     sequenceLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];

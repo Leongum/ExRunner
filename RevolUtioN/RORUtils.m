@@ -331,5 +331,13 @@
     return (strlength+1)/2;
 }
 
++(NSString *)addEggache:(NSNumber *)userID{
+    return [NSString stringWithFormat:@"%d", userID.integerValue+543200];
+}
+
++(NSNumber *)removeEggache:(NSString *)userID{
+    [RORDBCommon getNumberFromId:userID];
+    return [NSNumber numberWithInt:userID.integerValue-543200];
+}
 
 @end

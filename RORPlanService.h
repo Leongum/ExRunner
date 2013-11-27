@@ -22,6 +22,7 @@
 #import "RORMissionServices.h"
 #import "RORConstant.h"
 #import "RORRunHistoryServices.h"
+#import "RORDBCommon.h"
 
 #define PLAN_PAGE_SIZE 10
 

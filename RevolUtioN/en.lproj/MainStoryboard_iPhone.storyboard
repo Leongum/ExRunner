@@ -844,7 +844,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="NzP-Gj-0h9">
-                                <rect key="frame" x="38" y="91.000002965781832" width="244" height="337"/>
+                                <rect key="frame" x="38" y="91" width="244" height="337"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1172,7 +1172,7 @@
         <!--History Detail View Controller - 历史-->
         <scene sceneID="HwL-4f-epX">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="59h-pf-nvn" customClass="RORHistoryDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="historyDetailViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="59h-pf-nvn" customClass="RORHistoryDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UEd-dq-ADL">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2278,8 +2278,6 @@
         <!--Training Run View Controller - 跑步-->
         <scene sceneID="6Io-RS-irS">
             <objects>
-                <swipeGestureRecognizer delaysTouchesEnded="NO" direction="right" id="PgD-Cs-935"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H9T-WM-R9Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="TrainingRunViewController" modalTransitionStyle="flipHorizontal" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fxc-dT-cJC" customClass="RORTrainingRunViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QvP-Ku-1cO">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -2337,7 +2335,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="-5" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="开始" backgroundImage="D6615568-CB5E-48F2-97A4-C5F47F448A00">
+                                <state key="normal" title="开始" backgroundImage="6BB9B7F4-BCA9-4037-B38C-F257FE0DF6D5">
                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -2354,7 +2352,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="-5" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="完成" backgroundImage="8B79BA6E-5045-434A-9164-74AD79270696">
+                                <state key="normal" title="完成" backgroundImage="409F6ABC-497F-4771-BC6A-C3A6E2F8C310">
                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -2440,12 +2438,14 @@
                         <segue destination="59h-pf-nvn" kind="push" identifier="TrainingRunResultSeague" id="r26-ue-wHI"/>
                     </connections>
                 </viewController>
+                <swipeGestureRecognizer delaysTouchesEnded="NO" direction="right" id="PgD-Cs-935"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H9T-WM-R9Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3615" y="-649"/>
         </scene>
     </scenes>
     <resources>
-        <image name="8B79BA6E-5045-434A-9164-74AD79270696" width="110" height="44">
+        <image name="409F6ABC-497F-4771-BC6A-C3A6E2F8C310" width="110" height="44">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -2818,7 +2818,7 @@ ALMAtgC4ALoAvAC+AMMA2gDcAN5U8FT1VQBVCVUcVSBVM1U+VUdVTFVUVVdVXFVrVW9VdlV+VYtVkFWS
 VZRVmVWhVaRVqVWxVbRVxlXJVc4AAAAAAAACAQAAAAAAAABCAAAAAAAAAAAAAAAAAABV0A
 </mutableData>
         </image>
-        <image name="D6615568-CB5E-48F2-97A4-C5F47F448A00" width="110" height="44">
+        <image name="6BB9B7F4-BCA9-4037-B38C-F257FE0DF6D5" width="110" height="44">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

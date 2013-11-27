@@ -9,8 +9,10 @@
 #import "RORCongratsCoverView.h"
 
 @interface RORTrainingCongratsCoverView : RORCongratsCoverView{
+    NSInteger grade;
+    UIImageView *levelBgImageView;
+    UIImageView *levelImageView;
     UILabel *levelLabel;
-
 }
 
 @property (nonatomic) User_Running_History *bestRecord;

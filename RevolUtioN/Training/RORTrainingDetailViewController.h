@@ -9,6 +9,7 @@
 #import "RORTrainingViewController.h"
 
 @interface RORTrainingDetailViewController : RORTrainingViewController{
+    Plan_Next_mission *planNext;
 
 }
 
@@ -16,4 +17,5 @@
 
 -(IBAction)collectAction:(id)sender;
 -(IBAction)operateAction:(id)sender;
+-(BOOL)isCollectAvailable;
 @end

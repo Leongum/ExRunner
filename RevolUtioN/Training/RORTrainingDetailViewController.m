@@ -28,6 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    planNext = [RORPlanService fetchUserRunningPlanHistory];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +47,17 @@
     [RORPlanService updatePlanCollect:planCollect];
 }
 
+-(BOOL)isCollectAvailable{
+    NSArray *collectList = [RORPlanService fetchPlanCollect:[RORUserUtils getUserId]];
+    for (Plan *itPlan in collectList)
+        if (itPlan.planId.integerValue == plan.planId.integerValue)
+            return NO;
+    
+    return YES;
+}
+
 -(IBAction)operateAction:(id)sender{
     
+    [RORPlanService startNewPlan:plan.planId];
 }
 @end

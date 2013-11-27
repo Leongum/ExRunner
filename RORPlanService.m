@@ -499,7 +499,7 @@
         planRunHistory.historyStatus = [NSNumber numberWithInt:(int)HistoryStatusExecute];
         planRunHistory.planRunUuid = [RORUtils uuidString];
         NSArray *missionsArray = [plan.missionIds componentsSeparatedByString:@","];
-        NSNumber *nextMissionId = (NSNumber *)[missionsArray objectAtIndex:0];
+        NSNumber *nextMissionId = [RORDBCommon getNumberFromId:[missionsArray objectAtIndex:0]];
         planRunHistory.remainingMissions = plan.totalMissions;
         planRunHistory.totalMissions = plan.totalMissions;
         planRunHistory.nextMissionId = nextMissionId;

@@ -43,10 +43,12 @@
         
         Plan *thisPlan = planNext.planInfo;
         contentList = thisPlan.missionList;
-        historyList = planNext.history.runHistoryList;
+        historyList = [RORPlanService fetchUserPlanHistoryDetails:planNext.planRunUuid].runHistoryList;
         
         self.TrainingNameLabel.text = thisPlan.planName;
-        self.process.text = [NSString stringWithFormat:@"%d/%d", planNext.nextMission.sequence.integerValue-1, thisPlan.totalMissions.integerValue];
+        int totalMissions = thisPlan.totalMissions.integerValue;
+        int remainingMissions = planNext.history.remainingMissions.integerValue;
+        self.process.text = [NSString stringWithFormat:@"%d/%d", totalMissions-remainingMissions, totalMissions];
     } else {
         self.currentPlanView.alpha = 0;
         
@@ -80,6 +82,23 @@
         [destination setValue:planNext.nextMission forKey:@"thisMission"];
     }
 }
+
+- (IBAction)cancelCurrentTraining:(id)sender {
+    
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"放弃训练" message:@"确定放弃执行当前训练计划吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        return;
+    }else if(buttonIndex == 1){
+        [RORPlanService cancelCurrentPlan:planNext.planRunUuid];
+        [self initLayout];
+    }
+}
+
 
 #pragma mark - Table view data source
 
@@ -119,8 +138,12 @@
     UILabel *requireTimeLabel = (UILabel *)[cell viewWithTag:103];
     UILabel *requireDistanceLabel = (UILabel *)[cell viewWithTag:104];
     
-    Mission *thisMission = [contentList objectAtIndex:indexPath.row];
-    
+    Mission *thisMission;
+    if (planNext.planInfo.planType.integerValue == ComplexTask)
+        thisMission = [contentList objectAtIndex:indexPath.row];
+    else
+        thisMission = [contentList objectAtIndex:0];
+        
     sequenceLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
     requireTimeLabel.text = [RORUtils transSecondToStandardFormat:thisMission.missionTime.doubleValue];
     requireDistanceLabel.text = [RORUtils outputDistance:thisMission.missionDistance.doubleValue];
@@ -128,6 +151,16 @@
     return cell;
 }
 
-- (IBAction)cancelCurrentTraining:(id)sender {
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row<historyList.count){
+        User_Running_History *h = [historyList objectAtIndex:indexPath.row];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
+        UIViewController *viewController =  [storyboard instantiateViewControllerWithIdentifier:@"historyDetailViewController"];
+        [viewController setValue:h forKey:@"record"];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+    return;
 }
+
+
 @end
