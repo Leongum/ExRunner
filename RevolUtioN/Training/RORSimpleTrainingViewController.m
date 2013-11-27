@@ -13,7 +13,6 @@
 @end
 
 @implementation RORSimpleTrainingViewController
-@synthesize plan;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,8 +28,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.titleLabel.text = plan.planName;
+    self.titleLabel.text = self.plan.planName;
     [self.collectButton addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.totalTimesLabel.text = [NSString stringWithFormat:@"总次数：%d", self.plan.totalMissions.integerValue];
+    
 }
 
 - (void)didReceiveMemoryWarning

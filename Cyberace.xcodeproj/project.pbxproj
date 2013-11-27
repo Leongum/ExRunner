@@ -318,6 +318,9 @@
 		30FECBE417DD96B1002C3C90 /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBE217DD96B1002C3C90 /* hand.png */; };
 		30FECBE517DD96B1002C3C90 /* hand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBE317DD96B1002C3C90 /* hand@2x.png */; };
 		30FFFE53183CA87B001EA4F1 /* RORTrainingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FFFE52183CA87B001EA4F1 /* RORTrainingDetailViewController.m */; };
+		30FFFE56183FD728001EA4F1 /* RORTrainingRunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FFFE55183FD728001EA4F1 /* RORTrainingRunViewController.m */; };
+		30FFFE5918433412001EA4F1 /* RORChallengeCongratsCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FFFE5818433412001EA4F1 /* RORChallengeCongratsCoverView.m */; };
+		30FFFE5C18434823001EA4F1 /* RORTrainingCongratsCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FFFE5B18434823001EA4F1 /* RORTrainingCongratsCoverView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -769,6 +772,12 @@
 		30FECBE317DD96B1002C3C90 /* hand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hand@2x.png"; path = "bg/hand@2x.png"; sourceTree = "<group>"; };
 		30FFFE51183CA87B001EA4F1 /* RORTrainingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingDetailViewController.h; path = Training/RORTrainingDetailViewController.h; sourceTree = "<group>"; };
 		30FFFE52183CA87B001EA4F1 /* RORTrainingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingDetailViewController.m; path = Training/RORTrainingDetailViewController.m; sourceTree = "<group>"; };
+		30FFFE54183FD728001EA4F1 /* RORTrainingRunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingRunViewController.h; path = RunningPages/RORTrainingRunViewController.h; sourceTree = "<group>"; };
+		30FFFE55183FD728001EA4F1 /* RORTrainingRunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingRunViewController.m; path = RunningPages/RORTrainingRunViewController.m; sourceTree = "<group>"; };
+		30FFFE5718433412001EA4F1 /* RORChallengeCongratsCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORChallengeCongratsCoverView.h; path = ReusableControl/RORChallengeCongratsCoverView.h; sourceTree = "<group>"; };
+		30FFFE5818433412001EA4F1 /* RORChallengeCongratsCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORChallengeCongratsCoverView.m; path = ReusableControl/RORChallengeCongratsCoverView.m; sourceTree = "<group>"; };
+		30FFFE5A18434823001EA4F1 /* RORTrainingCongratsCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingCongratsCoverView.h; path = ReusableControl/RORTrainingCongratsCoverView.h; sourceTree = "<group>"; };
+		30FFFE5B18434823001EA4F1 /* RORTrainingCongratsCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingCongratsCoverView.m; path = ReusableControl/RORTrainingCongratsCoverView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1056,6 +1065,8 @@
 				30C58AC217C4840F0065FC90 /* RORChallengeViewController.m */,
 				30621D3117E09F880063A007 /* RORChanllengeRunViewController.h */,
 				30621D3217E09F880063A007 /* RORChanllengeRunViewController.m */,
+				30FFFE54183FD728001EA4F1 /* RORTrainingRunViewController.h */,
+				30FFFE55183FD728001EA4F1 /* RORTrainingRunViewController.m */,
 			);
 			name = RORRunningPage;
 			sourceTree = "<group>";
@@ -1562,6 +1573,10 @@
 		30BB0AFA1761C5AF0009A847 /* RORHistoryPage */ = {
 			isa = PBXGroup;
 			children = (
+				30FFFE5A18434823001EA4F1 /* RORTrainingCongratsCoverView.h */,
+				30FFFE5B18434823001EA4F1 /* RORTrainingCongratsCoverView.m */,
+				30FFFE5718433412001EA4F1 /* RORChallengeCongratsCoverView.h */,
+				30FFFE5818433412001EA4F1 /* RORChallengeCongratsCoverView.m */,
 				30D95E6A17C35EB70056E7C0 /* RORStatisticsViewController.h */,
 				30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */,
 				30D95E6C17C35EB70056E7C0 /* RORHistoryPageViewController.h */,
@@ -1943,6 +1958,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				302FD0111727D870004DA005 /* main.m in Sources */,
+				30FFFE5C18434823001EA4F1 /* RORTrainingCongratsCoverView.m in Sources */,
 				302FD0151727D870004DA005 /* RORAppDelegate.m in Sources */,
 				302FD0241727D870004DA005 /* RORFirstViewController.m in Sources */,
 				30151A7D174488EB009BCADB /* RORRunningViewController.m in Sources */,
@@ -1978,6 +1994,7 @@
 				0F87D884179D72F8007E0412 /* RORRunHistoryClientHandler.m in Sources */,
 				0F0D589217B0E4680046515C /* RORLoadingViewController.m in Sources */,
 				30692D56181132B300DA01EC /* RORInstructionPageViewController.m in Sources */,
+				30FFFE56183FD728001EA4F1 /* RORTrainingRunViewController.m in Sources */,
 				0F0D589817B23F490046515C /* RORThirdPartyClientHandler.m in Sources */,
 				0F0D589B17B249230046515C /* RORThirdPartyService.m in Sources */,
 				0F274A6B17B6058C00F0E927 /* RORSystemService.m in Sources */,
@@ -2011,6 +2028,7 @@
 				30692D47180E70B400DA01EC /* RORFiveCounterView.m in Sources */,
 				30A6D9AA17C6821500D1116E /* FTAnimation+UIView.m in Sources */,
 				30A6D9AB17C6821500D1116E /* FTAnimationManager.m in Sources */,
+				30FFFE5918433412001EA4F1 /* RORChallengeCongratsCoverView.m in Sources */,
 				30A6D9AC17C6821500D1116E /* FTUtils+NSObject.m in Sources */,
 				0F56242F1834AA6E006581E0 /* Plan.m in Sources */,
 				30A6D9AD17C6821500D1116E /* FTUtils+UIGestureRecognizer.m in Sources */,

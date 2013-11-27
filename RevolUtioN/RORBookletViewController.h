@@ -13,10 +13,13 @@
     RORSearchTrainingViewController *searchViewController;
     BOOL isEditing;
     NSArray *contentList;
+    UIStoryboard *storyboard;
 }
 
 @property (strong, nonatomic) UIView *searchTrainingView;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
+@property (strong, nonatomic) Plan_Next_mission *planNext;
+@property (strong, nonatomic) NSArray *historyList;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end

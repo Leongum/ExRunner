@@ -136,7 +136,7 @@
     planCollectEntity.collectTime = [RORUserUtils getSystemTime];
     planCollectEntity.updated = [NSNumber numberWithInt:1];
     planCollectEntity.collectStatus = planCollect.collectStatus;
-    
+    NSLog(@"%@", planCollectEntity);
     [RORContextUtils saveContext];
     if([RORUserUtils getUserId].integerValue > 0){
         [self upLoadUserCollect:[RORUserUtils getUserId]];
@@ -384,6 +384,7 @@
                     planNextMission.nextMissionId = userPlanHistoryEntity.nextMissionId;
                     NSDate *startTime = [NSDate date];
                     NSDate *endTime = [NSDate date];
+                    NSLog(@"%@", userPlanHistoryEntity);
                     Plan *plan = [self fetchPlan:userPlanHistoryEntity.planId withMissions:YES withContext:NO];
                     if(plan== nil || plan.planId == nil){
                         plan = [self syncPlan:userPlanHistoryEntity.planId];

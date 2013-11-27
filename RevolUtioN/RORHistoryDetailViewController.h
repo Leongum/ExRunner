@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "RORRunHistoryServices.h"
 #import "RORViewController.h"
-#import "RORCongratsCoverView.h"
+#import "RORChallengeCongratsCoverView.h"
 #import "RORStartAnnotation.h"
 #import "ROREndAnnotation.h"
 

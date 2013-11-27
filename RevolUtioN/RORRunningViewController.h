@@ -19,6 +19,7 @@
 
 @interface RORRunningViewController : RORRunningBaseViewController<MKMapViewDelegate> {
     BOOL MKwasFound;
+    User_Running_History *runHistory;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
@@ -55,6 +56,7 @@
 - (IBAction)btnCoverInside:(id)sender;
 - (IBAction)btnSaveRun:(id)sender;
 - (IBAction)btnDeleteRunHistory:(id)sender;
-
+- (void)saveRunInfo;
+-(void)creatRunningHistory;
 
 @end

@@ -63,9 +63,12 @@
 #define DEFAULT_SPEEDTYPE 0
 #define DEFAULT_ANIMATION [NSNumber numberWithBool:YES]
 
-#define CHN_PRINT_FONT @"FZKaTong-M19S"
-#define CHN_WRITTEN_FONT @"FZKaTong-M19S"
-#define ENG_WRITTEN_FONT @"ComicSansMS"
+//#define CHN_PRINT_FONT @"FZKaTong-M19S"
+//#define CHN_WRITTEN_FONT @"FZKaTong-M19S"
+//#define ENG_WRITTEN_FONT @"ComicSansMS"
+#define CHN_PRINT_FONT @""
+#define CHN_WRITTEN_FONT @""
+#define ENG_WRITTEN_FONT @""
 #define ENG_PRINT_FONT @"Electronic Highway Sign"
 #define ENG_GAME_FONT @"EnterSansmanBoldItalic"
 

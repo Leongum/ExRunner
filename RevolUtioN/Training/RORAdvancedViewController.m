@@ -13,7 +13,7 @@
 @end
 
 @implementation RORAdvancedViewController
-@synthesize plan;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,8 +29,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.titleLabel.text = plan.planName;
-    contentList = plan.missionList;
+    self.titleLabel.text = self.plan.planName;
+    contentList = self.plan.missionList;
+    
+    [self.collectButton addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,7 +68,7 @@
     dateCommentLabel.text = indexPath.row==0?@"训练开始后":@"上一次完成后";
     durationLabel.text = [RORUtils transSecondToStandardFormat:thisMission.missionTime.integerValue];
     distanceLabel.text = [RORUtils outputDistance:thisMission.missionDistance.doubleValue];
-    
+    dateLabel.text = [NSString stringWithFormat:@"%d天内完成", thisMission.cycleTime.integerValue];
     return cell;
 }
 @end
