@@ -299,9 +299,13 @@
 */
 - (void)popOut:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 /**
-custom animation elastic 
+custom animation elastic. First scale smaller.
  */
 -(void)elastic:(NSTimeInterval)duration delegate:(id)delegate;
+/**
+ custom animation pop. First scale larger.
+ */
+-(void)pop:(NSTimeInterval)duration delegate:(id)delegate;
 
 /**
  The view will fade in and shrink from double its size down to its regular size. This makes

@@ -12,6 +12,9 @@
     double searchViewTop;
     User_Base *userInfo;
     NSMutableArray *contentList;
+    NSArray *latestPage;
+    int pageCount;
+    BOOL noMoreData;
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

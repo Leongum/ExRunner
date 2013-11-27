@@ -214,11 +214,11 @@
     NSArray *params = [NSArray arrayWithObjects:userId, nil];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"addTime" ascending:NO];
     NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
-    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams withLimit:10];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams withLimit:FRIENDS_PAGE_SIZE];
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
     }
-    NSMutableArray *followerDetails = [NSMutableArray arrayWithCapacity:10];
+    NSMutableArray *followerDetails = [NSMutableArray arrayWithCapacity:FRIENDS_PAGE_SIZE];
     for (Plan_User_Follow *userFollower in fetchObject) {
         NSNumber *followUserId =  userFollower.followerUserId;
         User_Base *userfollow = [self fetchUser:followUserId];
