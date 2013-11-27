@@ -249,6 +249,10 @@
     }
 }
 
++(Plan_User_Follow *)fetchUserFollow:(NSNumber *) userId withFollowerId:(NSNumber *) followerId{
+    return [self fetchUserFollow:userId withFollowerId:followerId withContext:NO];
+}
+
 +(Plan_User_Follow *)fetchUserFollow:(NSNumber *) userId withFollowerId:(NSNumber *) followerId withContext:(BOOL) needContext{
     NSString *table=@"Plan_User_Follow";
     NSString *query = @"userId = %@ and followerUserId = %@";

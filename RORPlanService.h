@@ -61,6 +61,9 @@
 //上传本地新增的收藏plan数据，仅在手动同步和loading页面需要调用。（新增，更新已调用过）
 +(BOOL)upLoadUserCollect:(NSNumber *) userId;
 
+//获取好友关系数据。
++(Plan_User_Follow *)fetchUserFollow:(NSNumber *) userId withFollowerId:(NSNumber *) followerId;
+
 //新建，更新用户关注列表
 +(void)updateUserFollow:(Plan_User_Follow *) userFollow;
 
