@@ -157,6 +157,8 @@ static NSDate *systemTime = nil;
     [logoutDict setValue:[self getLastUpdateTime:@"SystemMessageUpdateTime"] forKey:@"SystemMessageUpdateTime"];
     [logoutDict writeToFile:path atomically:YES];
     userId = [NSNumber numberWithInteger:-1];
+    NSArray *tables = [NSArray arrayWithObjects:@"User",@"User_Attributes",@"Friend",@"User_Last_Location",@"User_Running_History",@"User_Running",@"Plan_Next_Mission",@"Plan_Run_history",@"Plan_Collect",@"Plan_User_follow", nil];
+    [RORContextUtils clearTableData:tables];
 }
 
 + (void)saveLastUpdateTime: (NSString *) key{
