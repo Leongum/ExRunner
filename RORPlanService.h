@@ -24,7 +24,6 @@
 #import "RORRunHistoryServices.h"
 #import "RORDBCommon.h"
 
-#define PLAN_PAGE_SIZE 10
 
 @interface RORPlanService : NSObject
 

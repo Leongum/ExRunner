@@ -175,6 +175,10 @@
     CAAnimation *anim = [[FTAnimationManager sharedManager] elasticAnimationFor:self duration:duration delegate:delegate];
     [self.layer addAnimation:anim forKey:kFTAnimationPopIn];
 }
+-(void)pop:(NSTimeInterval)duration delegate:(id)delegate{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] popAnimationFor:self duration:duration delegate:delegate startSelector:nil stopSelector:nil];
+    [self.layer addAnimation:anim forKey:kFTAnimationPopIn];
+}
 
 - (void)popOut:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
   CAAnimation *anim = [[FTAnimationManager sharedManager] popOutAnimationFor:self duration:duration delegate:delegate 

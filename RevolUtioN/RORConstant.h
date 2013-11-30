@@ -72,6 +72,9 @@
 #define ENG_PRINT_FONT @"Electronic Highway Sign"
 #define ENG_GAME_FONT @"EnterSansmanBoldItalic"
 
+#define PLAN_PAGE_SIZE 10
+#define FRIENDS_PAGE_SIZE 10
+
 #endif
 
 typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3, NormalRun = 4, SimpleTask = 5, ComplexTask = 6} MissionTypeEnum;

@@ -99,8 +99,8 @@
     
     [self.tableView expand:duration delegate:self startSelector:@selector(showTableView) stopSelector:nil];
 
-    if (tableCount>0)
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:tableCount inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+//    if (tableCount>0)
+//        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:tableCount inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
     
     [self.tableView reloadData];
 }
@@ -156,7 +156,7 @@
     UITableViewCell *cell;
     
     //获取更多按钮
-    if (indexPath.row == 0){
+    if (indexPath.row == tableCount+1){
         static NSString *CellIdentifier = @"refreshCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         UIButton *refreshButton = (UIButton *)[cell viewWithTag:200];

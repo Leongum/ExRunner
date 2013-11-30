@@ -672,6 +672,24 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
     return group;
 }
 
+- (CAAnimation *)popAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate
+                     startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
+    CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    scale.duration = duration;
+    scale.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.f],
+                    [NSNumber numberWithFloat:1.1f],
+                    [NSNumber numberWithFloat:.95f],
+                    [NSNumber numberWithFloat:1.025f],
+                    [NSNumber numberWithFloat:1.f],
+                    nil];
+    
+    CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObjects:scale, nil] withView:view duration:duration
+                                             delegate:delegate startSelector:startSelector stopSelector:stopSelector
+                                                 name:kFTAnimationPopIn type:kFTAnimationTypeIn];
+    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    return group;
+}
+
 #pragma mark -
 #pragma mark Animation Delegate Methods
 

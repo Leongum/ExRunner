@@ -71,21 +71,28 @@
 
 -(void)prepareControlsForAnimation{
     hasAnimated = NO;
-    //    self.chactorView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
-    //    self.chactorView.frame = CHARACTOR_FRAME_NORMAL;
-    self.chactorView.alpha = 0;
-    self.charactorWindView.alpha = 0;
-//    self.weatherInfoButtonView.frame = WEATHER_BUTTON_INITIAL_FRAME;
-//    self.userInfoView.frame = LOGIN_BUTTON_INITIAL_FRAME;
-    self.weatherInfoButtonView.alpha = 0;
-    self.userInfoView.alpha = 0;
     
-    self.runButton.alpha = 0;
-    self.challenge.alpha = 0;
-    self.historyButton.alpha = 0;
-    self.settingButton.alpha = 0;
-    self.mallButton.alpha = 0;
-    self.friendsButton.alpha = 0;
+//    self.chactorView.alpha = 0;
+//    self.charactorWindView.alpha = 0;
+//    self.weatherInfoButtonView.alpha = 0;
+//    self.userInfoView.alpha = 0;
+//    self.runButton.alpha = 0;
+//    self.challenge.alpha = 0;
+//    self.historyButton.alpha = 0;
+//    self.settingButton.alpha = 0;
+//    self.mallButton.alpha = 0;
+//    self.friendsButton.alpha = 0;
+    
+    self.chactorView.alpha = 1;
+    self.charactorWindView.alpha = 1;
+    self.weatherInfoButtonView.alpha = 1;
+    self.userInfoView.alpha = 1;
+    self.runButton.alpha = 1;
+    self.challenge.alpha = 1;
+    self.historyButton.alpha = 1;
+    self.settingButton.alpha = 1;
+    self.mallButton.alpha = 1;
+    self.friendsButton.alpha = 1;
 }
 
 - (void)initLocationServcie{
@@ -163,7 +170,8 @@
     [self initPageData];
     if (!hasAnimated){
         hasAnimated = YES;
-        [self charactorAnimation];
+//        [self charactorAnimation];
+        
 //        [self controlsInAction];
     }
     //    [Animations zoomIn:self.chactorView andAnimationDuration:2 andWait:YES];
