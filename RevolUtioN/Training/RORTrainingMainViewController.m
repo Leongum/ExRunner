@@ -29,6 +29,9 @@
 	// Do any additional setup after loading the view.
     bookletButtonFrame = self.bookletButton.frame;
     traineeButtonFrame = self.TraineeButton.frame;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     [self initLayout];
 }
 
@@ -54,6 +57,19 @@
         
         self.bookletButton.frame = self.currentPlanView.frame;
         self.TraineeButton.frame = CGRectMake(self.currentPlanView.frame.origin.x, self.TraineeButton.frame.origin.y, self.currentPlanView.frame.size.width, self.TraineeButton.frame.size.height);
+    }
+    [self initTraineeButton];
+}
+
+-(void)initTraineeButton{
+    NSDictionary *dict = [RORUserUtils getUserInfoPList];
+    NSNumber *fixonUserId = [RORDBCommon getNumberFromId:[dict objectForKey:@"TrainingFixonUserId"]];
+    if (fixonUserId && fixonUserId.integerValue>0) {
+        Plan_Run_History *fixonPlanRunHistory = [RORPlanService getUserLastUpdatePlan:fixonUserId];
+        [self.TraineeButton setTitle:[NSString stringWithFormat:@"%@  %d/%d", fixonPlanRunHistory.nickName, fixonPlanRunHistory.totalMissions.integerValue - fixonPlanRunHistory.remainingMissions.integerValue,
+                                      fixonPlanRunHistory.totalMissions.integerValue] forState:UIControlStateNormal];
+    } else {
+        [self.TraineeButton setTitle:@"好榜样" forState:UIControlStateNormal];
     }
 }
 

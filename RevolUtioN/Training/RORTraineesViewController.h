@@ -22,15 +22,26 @@
     
     NSMutableArray *friendList;
     NSMutableArray *traineeList;
+    NSMutableArray *contentList;
+    
     int friendPageCount, traineePageCount;
     int tableCount;
+    
+    UIImageView *popUpView;
+    UITableViewCell *popUpCellView;
+    CGPoint popUpFrom;
+    
+    Plan_Run_History *fixonPlanRunHistory;
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *partnerView;
 @property (strong, nonatomic) IBOutlet UIButton *showFriendsButton;
 @property (strong, nonatomic) IBOutlet UIButton *showTraineesButton;
+@property (strong, nonatomic) IBOutlet UIView *coverView;
+@property (strong, nonatomic) IBOutlet UIView *friendBoard;
+
 @property (strong, nonatomic) Plan_Next_mission *planNext;
 
-@property (strong, nonatomic) IBOutlet UIView *friendBoard;
+
 @end

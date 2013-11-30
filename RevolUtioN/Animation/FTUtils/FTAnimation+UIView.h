@@ -307,6 +307,10 @@ custom animation elastic. First scale smaller.
  */
 -(void)pop:(NSTimeInterval)duration delegate:(id)delegate;
 
+- (void)popUp:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint;
+
+- (void)popDown:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint;
+- (void)popDown:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 /**
  The view will fade in and shrink from double its size down to its regular size. This makes
  it appear as though the view is falling onto the screen from the user's vantage point.
