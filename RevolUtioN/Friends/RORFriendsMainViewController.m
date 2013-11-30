@@ -76,7 +76,7 @@
 - (IBAction)addAction:(id)sender {
     Plan_User_Follow *userFollow = [Plan_User_Follow intiUnassociateEntity];
     userFollow.userId = [RORUserUtils getUserId];
-    userFollow.followerUserId = userInfo.userId;
+    userFollow.followUserId = userInfo.userId;
     userFollow.status = [NSNumber numberWithInt:FollowStatusFollowed];
     [RORPlanService updateUserFollow:userFollow];
 }

@@ -223,7 +223,7 @@
     }
     NSMutableArray *followerDetails = [NSMutableArray arrayWithCapacity:10];
     for (Plan_User_Follow *userFollower in fetchObject) {
-        NSNumber *followUserId =  userFollower.followerUserId;
+        NSNumber *followUserId =  userFollower.followUserId;
         User_Base *userfollow = [self fetchUser:followUserId];
         [followerDetails addObject: userfollow];
     }

@@ -234,18 +234,18 @@
 
 +(void)updateUserFollow:(Plan_User_Follow *) userFollow {
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
-    Plan_User_Follow *userFollowEntity = [self fetchUserFollow:userFollow.userId withFollowerId:userFollow.followerUserId withContext:YES];
+    Plan_User_Follow *userFollowEntity = [self fetchUserFollow:userFollow.userId withFollowerId:userFollow.followUserId withContext:YES];
     if(userFollowEntity == nil)
         userFollowEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Plan_User_Follow" inManagedObjectContext:context];
     userFollowEntity.userId = userFollow.userId;
-    userFollowEntity.followerUserId = userFollow.followerUserId;
+    userFollowEntity.followUserId = userFollow.followUserId;
     userFollowEntity.addTime = [RORUserUtils getSystemTime];
     userFollowEntity.updated = [NSNumber numberWithInt:1];
     userFollowEntity.status = userFollow.status;
     
     [RORContextUtils saveContext];
     if([RORUserUtils getUserId].integerValue > 0){
-        [self upLoadUserCollect:[RORUserUtils getUserId]];
+        [self upLoadUserFollow:[RORUserUtils getUserId]];
     }
 }
 

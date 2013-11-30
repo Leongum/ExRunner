@@ -13,7 +13,7 @@
 @interface Plan_User_Follow : NSManagedObject
 
 @property (nonatomic, retain) NSDate * addTime;
-@property (nonatomic, retain) NSNumber * followerUserId;
+@property (nonatomic, retain) NSNumber * followUserId;
 @property (nonatomic, retain) NSNumber * status;
 @property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) NSNumber * updated;

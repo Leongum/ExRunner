@@ -12,7 +12,7 @@
 @implementation Plan_User_Follow
 
 @dynamic addTime;
-@dynamic followerUserId;
+@dynamic followUserId;
 @dynamic status;
 @dynamic userId;
 @dynamic updated;
@@ -36,7 +36,7 @@
 
 -(void)initWithDictionary:(NSDictionary *)dict{
     self.addTime = [RORDBCommon getDateFromId:[dict valueForKey:@"addTime"]];
-    self.followerUserId = [RORDBCommon getNumberFromId:[dict valueForKey:@"followerUserId"]];
+    self.followUserId = [RORDBCommon getNumberFromId:[dict valueForKey:@"followUserId"]];
     self.status = [RORDBCommon getNumberFromId:[dict valueForKey:@"status"]];
     self.userId = [RORDBCommon getNumberFromId:[dict valueForKey:@"userId"]];
     self.updated = nil;
@@ -45,7 +45,7 @@
 -(NSMutableDictionary *)transToDictionary{
     NSMutableDictionary *tempoDict = [[NSMutableDictionary alloc] init];
     [tempoDict setValue:[RORDBCommon getStringFromId:self.addTime] forKey:@"addTime"];
-    [tempoDict setValue:self.followerUserId forKey:@"followerUserId"];
+    [tempoDict setValue:self.followUserId forKey:@"followUserId"];
     [tempoDict setValue:self.status forKey:@"status"];
     [tempoDict setValue:self.userId forKey:@"userId"];
     return tempoDict;
