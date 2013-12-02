@@ -7,10 +7,15 @@
 //
 
 #import "RORUserUtils.h"
+#import "RORMissionServices.h"
+#import "RORPlanService.h"
+#import "RORUserServices.h"
 
 static NSNumber *userId = nil;
 
 static NSDate *systemTime = nil;
+
+static NSDate *syncTime;
 
 @implementation RORUserUtils
 
@@ -168,6 +173,20 @@ static NSDate *systemTime = nil;
     [self writeToUserInfoPList:userDict];
 }
 
++(NSString *)getCurrentTime{
+    NSDateFormatter *formate = [[NSDateFormatter alloc] init];
+    [formate setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *formatDateString = [formate stringFromDate:[NSDate date]];
+    return formatDateString;
+}
+
++ (void)saveLastUpdateTimeUseLocalTime: (NSString *) key{
+    NSMutableDictionary *userDict = [self getUserInfoPList];
+    NSString *systemTime = [self getCurrentTime];
+    [userDict setValue:systemTime forKey:key];
+    [self writeToUserInfoPList:userDict];
+}
+
 + (NSString *)getLastUpdateTime: (NSString *) key{
     NSMutableDictionary *userDict = [self getUserInfoPList];
     NSString *lastUpdateTime = (NSString *)[userDict objectForKey:key];
@@ -246,6 +265,37 @@ static NSDate *systemTime = nil;
         return [NSString stringWithFormat:@"%d\'%d\" /km", minutes, seconds];
     } else {
         return [NSString stringWithFormat:@"%.1f km/h", kmperhour];
+    }
+}
+
++(void)syncSystemData{
+    //sync version
+    Version_Control *version = [RORSystemService syncVersion:@"ios"];
+    if(version != nil){
+        NSString *missionLastUpdateTime = [RORUserUtils getLastUpdateTime:@"MissionUpdateTime"];
+        NSString *messageLastUpdateTime = [RORUserUtils getLastUpdateTime:@"SystemMessageUpdateTime"];
+        NSTimeInterval messageScape = [version.messageLastUpdateTime timeIntervalSinceDate:[RORUtils getDateFromString:messageLastUpdateTime]];
+        NSTimeInterval missionScape = [version.missionLastUpdateTime timeIntervalSinceDate:[RORUtils getDateFromString:missionLastUpdateTime]];
+        if(messageScape > 0){
+            //sync message
+            [RORSystemService syncSystemMessage];
+        }
+        if(missionScape > 0)
+        {
+            //sync missions
+            [RORMissionServices syncMissions];
+        }
+        [self saveLastUpdateTimeUseLocalTime:@"lastSyncSystemDataTime"];
+    }
+    NSNumber *userId = [RORUserUtils getUserId];
+    if([userId intValue] > 0){
+        //sync runningHistory
+        [RORRunHistoryServices uploadRunningHistories];
+        [RORPlanService upLoadUserCollect:userId];
+        [RORPlanService upLoadUserFollow:userId];
+        [RORPlanService upLoadUserPlanHistory:userId];
+        //sync userInfo.
+        [RORUserServices syncUserInfoById:userId];
     }
 }
 

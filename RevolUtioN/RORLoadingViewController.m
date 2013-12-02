@@ -51,7 +51,6 @@
             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"新版本" message:[NSString stringWithFormat:@"发现Cyberace的最新版本%d.%d（当前版本%d.%d），现在就去app store更新？",version.version.integerValue, version.subVersion.integerValue, CURRENT_VERSION_MAIN, CURRENT_VERSION_SUB] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"前往", nil];
             [alertView show];
         }
-        
         if([RORUserUtils getDownLoaded].doubleValue == 0){
             NSDictionary *downLoadDict = [[NSDictionary alloc]initWithObjectsAndKeys:@"ios", @"platform",[NSString stringWithFormat:@"%@.%@", version.version,version.subVersion], @"version", nil];
             BOOL success = [RORSystemService submitDownloaded:downLoadDict];
@@ -59,32 +58,8 @@
                 [RORUserUtils doneDowned];
             }
         }
-        NSString *missionLastUpdateTime = [RORUserUtils getLastUpdateTime:@"MissionUpdateTime"];
-        NSString *messageLastUpdateTime = [RORUserUtils getLastUpdateTime:@"SystemMessageUpdateTime"];
-        NSTimeInterval messageScape = [version.messageLastUpdateTime timeIntervalSinceDate:[RORUtils getDateFromString:messageLastUpdateTime]];
-        NSTimeInterval missionScape = [version.missionLastUpdateTime timeIntervalSinceDate:[RORUtils getDateFromString:missionLastUpdateTime]];
-        if(messageScape > 0){
-            //sync message
-            [RORSystemService syncSystemMessage];
-        }
-        if(missionScape > 0)
-        {
-            //sync missions
-            [RORMissionServices syncMissions];
-        }
     }
-    //sync user
-    NSNumber *userId = [RORUserUtils getUserId];
-    if([userId intValue] > 0){
-        //sync runningHistory
-        //[RORRunHistoryServices syncRunningHistories];
-        [RORRunHistoryServices uploadRunningHistories];
-        [RORPlanService upLoadUserCollect:userId];
-        [RORPlanService upLoadUserFollow:userId];
-        [RORPlanService upLoadUserPlanHistory:userId];
-        //sync userInfo.
-        [RORUserServices syncUserInfoById:userId];
-    }
+    [RORUserUtils syncSystemData];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

@@ -48,7 +48,12 @@
     
     [self.userInfoView addTarget:self action:@selector(userInfoViewClick:) forControlEvents:UIControlEventTouchUpInside];
     
-//    [RORUtils listFontFamilies];
+    //sync system data
+    NSDate * lastupdateTime = [RORUtils getDateFromString:[RORUserUtils getLastUpdateTime:@"lastSyncSystemDataTime"]];
+    if([[NSDate date] timeIntervalSinceDate:lastupdateTime] >= 86400){
+        [RORUserUtils syncSystemData];
+    }
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

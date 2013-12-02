@@ -49,4 +49,6 @@
 
 +(void)saveStatisticsDefaultPage:(NSInteger)page;
 
++(void)syncSystemData;
+
 @end

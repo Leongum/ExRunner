@@ -268,10 +268,28 @@
 }
 
 -(void)syncDataAfterLogin{
-    [RORRunHistoryServices syncRunningHistories];
-    [RORPlanService syncUserCollect:[RORUserUtils getUserId]];
-    [RORPlanService syncUserFollow:[RORUserUtils getUserId]];
-    [RORPlanService syncUserPlanHistory:[RORUserUtils getUserId]];
+    [self startIndicator:self];
+    BOOL history = [RORRunHistoryServices syncRunningHistories:[RORUserUtils getUserId]];
+    if(!history){
+        history = [RORRunHistoryServices syncRunningHistories:[RORUserUtils getUserId]];
+    }
+    BOOL collect = [RORPlanService syncUserCollect:[RORUserUtils getUserId]];
+    if(!collect){
+        collect = [RORPlanService syncUserCollect:[RORUserUtils getUserId]];
+    }
+    BOOL follow = [RORPlanService syncUserFollow:[RORUserUtils getUserId]];
+    if(!follow){
+        follow = [RORPlanService syncUserFollow:[RORUserUtils getUserId]];
+    }
+    BOOL plan = [RORPlanService syncUserPlanHistory:[RORUserUtils getUserId]];
+    if(!plan){
+        plan = [RORPlanService syncUserPlanHistory:[RORUserUtils getUserId]];
+    }
+    [self endIndicator:self];
+    if(!history || !collect || !follow || !plan){
+        [self sendAlart:@"个人信息加载失败"];
+        [RORUserUtils logout];
+    }
 }
 
 @end
