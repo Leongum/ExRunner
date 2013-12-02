@@ -74,6 +74,12 @@
                        [NSNumber numberWithInteger:ShareTypeRenren],
                        @"type",
                        nil],
+                      [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"QQ",
+                       @"title",
+                       [NSNumber numberWithInteger:ShareTypeQQSpace],
+                       @"type",
+                       nil],
                       nil];
     [self initDataFromPlist];
     
@@ -204,6 +210,9 @@
                 break;
             case 2:
                 img = [UIImage imageNamed:@"renren.png"];
+                break;
+            case 3:
+                img = [UIImage imageNamed:@"QQ.png"];
                 break;
             default:
                 break;

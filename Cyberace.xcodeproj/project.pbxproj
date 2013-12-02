@@ -85,6 +85,7 @@
 		0F87D881179D72C7007E0412 /* RORRunHistoryServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F87D880179D72C7007E0412 /* RORRunHistoryServices.m */; };
 		0F87D884179D72F8007E0412 /* RORRunHistoryClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F87D883179D72F8007E0412 /* RORRunHistoryClientHandler.m */; };
 		0F972BD2179255F300A27EF2 /* RORHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F972BD1179255F300A27EF2 /* RORHttpResponse.m */; };
+		0FDA5D53184C745C00450E6B /* QQ@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FDA5D52184C745C00450E6B /* QQ@2x.png */; };
 		300149901750F444005DAF1D /* RORMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3001498F1750F444005DAF1D /* RORMoreViewController.m */; };
 		301250F0177B21A60082A09A /* RORAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 301250EF177B21A60082A09A /* RORAccountViewController.m */; };
 		30151A7D174488EB009BCADB /* RORRunningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30151A7C174488EB009BCADB /* RORRunningViewController.m */; };
@@ -464,6 +465,7 @@
 		0F87D883179D72F8007E0412 /* RORRunHistoryClientHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORRunHistoryClientHandler.m; sourceTree = "<group>"; };
 		0F972BD0179255F300A27EF2 /* RORHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHttpResponse.h; sourceTree = "<group>"; };
 		0F972BD1179255F300A27EF2 /* RORHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORHttpResponse.m; sourceTree = "<group>"; };
+		0FDA5D52184C745C00450E6B /* QQ@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QQ@2x.png"; sourceTree = "<group>"; };
 		3001498E1750F444005DAF1D /* RORMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMoreViewController.h; sourceTree = "<group>"; };
 		3001498F1750F444005DAF1D /* RORMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMoreViewController.m; sourceTree = "<group>"; };
 		301250EE177B21A60082A09A /* RORAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORAccountViewController.h; sourceTree = "<group>"; };
@@ -1460,6 +1462,7 @@
 		30804E8B17F56D6E00F1A353 /* SNS */ = {
 			isa = PBXGroup;
 			children = (
+				0FDA5D52184C745C00450E6B /* QQ@2x.png */,
 				30989CD917F8FF4E00CA9F83 /* QQ.png */,
 				30804E8C17F56D6E00F1A353 /* QQ_friend.png */,
 				30804E8D17F56D6E00F1A353 /* QQ_friend@2x.png */,
@@ -1896,6 +1899,7 @@
 				307C862117E97A90007C1DE5 /* redbutton_bg.png in Resources */,
 				303707941805074900FE0238 /* stamp_b.png in Resources */,
 				303707951805074900FE0238 /* stamp_c.png in Resources */,
+				0FDA5D53184C745C00450E6B /* QQ@2x.png in Resources */,
 				30692D6C181183E600DA01EC /* pageController_bg@2x.png in Resources */,
 				307C862217E97A90007C1DE5 /* redbutton_bg@2x.png in Resources */,
 				30989CDA17F8FF4E00CA9F83 /* QQ.png in Resources */,
@@ -2252,6 +2256,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RevolUtioN.app/RevolUtioN";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -2269,6 +2274,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RevolUtioN.app/RevolUtioN";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
