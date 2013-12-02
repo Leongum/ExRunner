@@ -16,6 +16,7 @@
     UIStoryboard *storyboard;
 }
 
+@property (strong, nonatomic) UIViewController *delegate;
 @property (strong, nonatomic) UIView *searchTrainingView;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) Plan_Next_mission *planNext;

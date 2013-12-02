@@ -175,8 +175,25 @@
     CAAnimation *anim = [[FTAnimationManager sharedManager] elasticAnimationFor:self duration:duration delegate:delegate];
     [self.layer addAnimation:anim forKey:kFTAnimationPopIn];
 }
+
 -(void)pop:(NSTimeInterval)duration delegate:(id)delegate{
     CAAnimation *anim = [[FTAnimationManager sharedManager] popAnimationFor:self duration:duration delegate:delegate startSelector:nil stopSelector:nil];
+    [self.layer addAnimation:anim forKey:kFTAnimationPopIn];
+}
+
+- (void)popUp:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] popUpAnimationFor:self duration:duration delegate:delegate targetPoint:(CGPoint)targetPoint
+                                                                startSelector:nil stopSelector:nil];
+    [self.layer addAnimation:anim forKey:kFTAnimationPopIn];
+   
+}
+
+- (void)popDown:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint{
+    [self popDown:duration delegate:delegate targetPoint:targetPoint startSelector:nil stopSelector:nil];
+}
+- (void)popDown:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] popDownAnimationFor:self duration:duration delegate:delegate targetPoint:targetPoint
+                                                                  startSelector:startSelector stopSelector:stopSelector];
     [self.layer addAnimation:anim forKey:kFTAnimationPopIn];
 }
 
@@ -189,6 +206,8 @@
 - (void)popOut:(NSTimeInterval)duration delegate:(id)delegate {
   [self popOut:duration delegate:delegate startSelector:nil stopSelector:nil];
 }
+
+
 
 #pragma mark - Expand and Fold
 

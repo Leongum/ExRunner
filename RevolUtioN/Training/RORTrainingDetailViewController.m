@@ -7,6 +7,7 @@
 //
 
 #import "RORTrainingDetailViewController.h"
+#import "RORTrainingMainViewController.h"
 
 @interface RORTrainingDetailViewController ()
 
@@ -14,6 +15,7 @@
 
 @implementation RORTrainingDetailViewController
 @synthesize plan;
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,5 +61,13 @@
 -(IBAction)operateAction:(id)sender{
     
     [RORPlanService startNewPlan:plan.planId];
+    
+    UIViewController *viewController = delegate;
+    
+    while (![viewController isKindOfClass:[RORTrainingMainViewController class]]) {
+        viewController = (UIViewController *)[viewController valueForKey:@"delegate"];
+    }
+    
+    [self.navigationController popToViewController:viewController animated:YES];
 }
 @end

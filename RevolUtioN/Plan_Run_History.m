@@ -25,6 +25,9 @@
 @dynamic userId;
 @dynamic operate;
 
+@synthesize nickName;
+@synthesize planName;
+
 @synthesize runHistoryList;
 
 +(Plan_Run_History *) intiUnassociateEntity{
@@ -55,6 +58,7 @@
     self.lastUpdateTime = [RORDBCommon getDateFromId:[dict valueForKey:@"lastUpdateTime"]];
     self.nextMissionId = [RORDBCommon getNumberFromId:[dict valueForKey:@"nextMissionId"]];
     self.planId = [RORDBCommon getNumberFromId:[dict valueForKey:@"planId"]];
+    self.planName = [RORDBCommon getStringFromId:[dict valueForKey:@"planName"]];
     self.planRunUuid = [RORDBCommon getStringFromId:[dict valueForKey:@"planRunUuid"]];
     self.rate = [RORDBCommon getNumberFromId:[dict valueForKey:@"rate"]];
     self.rateComment = [RORDBCommon getStringFromId:[dict valueForKey:@"rateComment"]];
@@ -62,6 +66,7 @@
     self.startTime = [RORDBCommon getDateFromId:[dict valueForKey:@"startTime"]];
     self.totalMissions = [RORDBCommon getNumberFromId:[dict valueForKey:@"totalMissions"]];
     self.userId = [RORDBCommon getNumberFromId:[dict valueForKey:@"userId"]];
+    self.nickName = [RORDBCommon getStringFromId:[dict valueForKey:@"nickName"]];
     self.operate = nil;
 }
 

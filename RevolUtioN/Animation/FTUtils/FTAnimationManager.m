@@ -535,6 +535,58 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
                               name:kFTAnimationPopIn type:kFTAnimationTypeIn];
 }
 
+- (CAAnimation *)popUpAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint
+                     startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
+    CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    scale.duration = duration;
+    scale.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1/1.1],
+                    [NSNumber numberWithFloat:1.f],
+                    nil];
+    
+    CABasicAnimation *moveTo = [CABasicAnimation animationWithKeyPath:@"position"];
+    moveTo.duration = duration;
+    moveTo.toValue = [NSValue valueWithCGPoint:targetPoint];
+    moveTo.fromValue = [NSValue valueWithCGPoint:view.center];
+    
+    view.center = targetPoint;
+    
+    CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObjects:scale, moveTo, nil] withView:view duration:duration
+                                             delegate:delegate startSelector:startSelector stopSelector:stopSelector
+                                                 name:kFTAnimationPopIn type:kFTAnimationTypeIn];
+    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    return group;
+}
+
+- (CAAnimation *)popDownAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint
+                     startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
+    CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    scale.duration = duration;
+    scale.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.f],
+                    [NSNumber numberWithFloat:1/1.1],
+                    nil];
+    
+    CABasicAnimation *moveTo = [CABasicAnimation animationWithKeyPath:@"position"];
+    moveTo.duration = duration;
+    moveTo.toValue = [NSValue valueWithCGPoint:targetPoint];
+    moveTo.fromValue = [NSValue valueWithCGPoint:view.center];
+    
+    CABasicAnimation *fadeOut = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    fadeOut.duration = duration;
+    fadeOut.fromValue = [NSNumber numberWithFloat:1.f];
+    fadeOut.toValue = [NSNumber numberWithFloat:0.f];
+    fadeOut.fillMode = kCAFillModeBoth;
+    
+    view.alpha = 0;
+    
+    view.center = targetPoint;
+    
+    CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObjects:scale, moveTo, fadeOut, nil] withView:view duration:duration
+                                             delegate:delegate startSelector:startSelector stopSelector:stopSelector
+                                                 name:kFTAnimationPopIn type:kFTAnimationTypeIn];
+    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    return group;
+}
+
 #pragma mark -
 #pragma mark Fall In and Fly Out Builders
 

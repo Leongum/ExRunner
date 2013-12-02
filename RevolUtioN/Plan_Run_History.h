@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSDate * lastUpdateTime;
 @property (nonatomic, retain) NSNumber * nextMissionId;
 @property (nonatomic, retain) NSNumber * planId;
+@property (nonatomic, retain) NSString * planName;
 @property (nonatomic, retain) NSString * planRunUuid;
 @property (nonatomic, retain) NSNumber * rate;
 @property (nonatomic, retain) NSString * rateComment;
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) NSDate * startTime;
 @property (nonatomic, retain) NSNumber * totalMissions;
 @property (nonatomic, retain) NSNumber * userId;
+@property (nonatomic, retain) NSString * nickName;
 @property (nonatomic, retain) NSNumber * operate;
 
 @property (nonatomic, retain) NSMutableArray * runHistoryList;

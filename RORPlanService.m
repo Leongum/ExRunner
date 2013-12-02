@@ -627,7 +627,7 @@
     if ([httpResponse responseStatus] == 200){
         NSArray *planList = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
         for (NSDictionary *planDict in planList){
-            Plan *plan = [Plan intiUnassociateEntity];
+            Plan_Run_History *plan = [Plan_Run_History intiUnassociateEntity];
             [plan initWithDictionary:planDict];
             [plans addObject:plan];
         }
@@ -644,7 +644,7 @@
     if ([httpResponse responseStatus] == 200){
         NSArray *planList = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
         for (NSDictionary *planDict in planList){
-            Plan *plan = [Plan intiUnassociateEntity];
+            Plan_Run_History *plan = [Plan_Run_History intiUnassociateEntity];
             [plan initWithDictionary:planDict];
             [plans addObject:plan];
         }

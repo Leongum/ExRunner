@@ -17,6 +17,7 @@
 
 @implementation RORBookletViewController
 @synthesize planNext, historyList;
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +39,7 @@
     frame.origin.x = 0;
     frame.origin.y = 55-frame.size.height;
     searchViewController.view.frame = frame;
+    searchViewController.delegate = self;
     
     [self addChildViewController:searchViewController];
     [self.view addSubview:searchViewController.view];

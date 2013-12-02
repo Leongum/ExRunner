@@ -20,5 +20,6 @@
     BOOL noMoreData;
 }
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIViewController *delegate;
 
 @end

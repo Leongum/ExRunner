@@ -34,8 +34,10 @@
     
     if (planNext)
         self.operateButton.enabled = 0;
-    else
+    else{
         self.operateButton.enabled = 1;
+        [self.operateButton addTarget:self action:@selector(operateAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
     
     [self.collectButton addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
 }
