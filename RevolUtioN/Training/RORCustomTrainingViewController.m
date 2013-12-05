@@ -78,4 +78,25 @@
     currentView = newView;
 }
 
+- (IBAction)submitAction:(id)sender {
+    Plan *newPlan;
+    if (currentView == simpleView){
+        newPlan = [simpleViewController createNewSimplePlan];
+    }
+    else if (currentView == advView){
+        newPlan = [advViewController createNewAdvancedPlan];
+        NSLog(@"new created plan:======\n%@", newPlan);
+    }
+    
+    if (!newPlan)
+        return;
+    
+    newPlan = [RORPlanService createSelfPlan:newPlan];
+    NSLog(@"after syncronized new created plan:======\n%@", newPlan);
+    if (newPlan){
+        [self sendSuccess:@"创建成功！\n已添加至[我的收藏]"];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 @end

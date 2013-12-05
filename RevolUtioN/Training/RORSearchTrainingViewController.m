@@ -34,6 +34,11 @@
     isTableEmpty = YES;
     currentPages = 0;
     noMoreData = NO;
+    searching = 0;
+    collectList = [RORPlanService fetchPlanCollect:[RORUserUtils getUserId]];
+    planNext = [RORPlanService fetchUserRunningPlanHistory];
+
+    
     contentList = [[NSMutableArray alloc]init];
     [self loadTableViewData:currentPages++];
 }
@@ -88,12 +93,66 @@
     }
 }
 
+- (IBAction)prepare4SearchAction:(id)sender {
+//    [self.searchTextField popUp:0.5 delegate:self targetPoint:self.searchTextField.center];
+    [Animations frameAndShadow:self.searchTextField];
+}
+
+- (IBAction)doSearchAction:(id)sender {
+//    [self.searchTextField popDown:0.5 delegate:self targetPoint:self.searchTextField.center];
+    [Animations removeFrameAndShadow:self.searchTextField];
+    
+    UITextField *textField = (UITextField *)sender;
+    NSNumber *planId =[RORDBCommon getNumberFromId:textField.text];
+    if (!planId){
+        textField.text = @"";
+        if (searching)
+            contentList = backupContentList;
+        searching = NO;
+        [self.tableView reloadData];
+    } else {
+        Plan *resultPlan = [RORPlanService fetchPlan:planId];
+        if (!resultPlan){
+            [self sendAlart:@"没找到这个训练！"];
+            if (searching)
+                contentList = backupContentList;
+            searching = NO;
+            [self.tableView reloadData];
+            return;
+        }
+        if (!searching)
+            backupContentList = contentList;
+        contentList = [NSMutableArray arrayWithObjects:resultPlan, nil];
+        searching = YES;
+        [self.tableView reloadData];
+    }
+}
+
+-(BOOL)isCollectAvailable:(Plan *)plan{
+    for (Plan *itPlan in collectList)
+        if (itPlan.planId.integerValue == plan.planId.integerValue)
+            return NO;
+    return YES;
+}
+
+-(void)operateAction:(Plan *)plan{
+    
+    [RORPlanService startNewPlan:plan.planId];
+    
+}
+
+-(void)collectAction:(Plan *)plan{
+    [RORPlanService collectPlan:plan];
+}
+
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    if (searching)
+        return contentList.count;
     return contentList.count +1;
 }
 
@@ -109,7 +168,6 @@
         return cell;
     }
     
-    
     Plan *thisPlan = [contentList objectAtIndex:indexPath.row];
     NSNumber *planType = thisPlan.planType;
     
@@ -120,6 +178,7 @@
         UILabel *timesLabel = (UILabel *)[cell viewWithTag:CELLTAG_TIMES];
 
         timesLabel.text = [NSString stringWithFormat:@"%@次/%@天",thisPlan.totalMissions, thisPlan.durationLast];
+        
         
     } else if (planType.integerValue == PlanTypeComplex){
         static NSString *CellIdentifier = @"advTrainingCell";
@@ -133,6 +192,14 @@
     }
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:CELLTAG_TITLE];
     titleLabel.text = thisPlan.planName;
+    UIView *note = (UIView *)[cell viewWithTag:102];
+    BOOL showNote = [self isCollectAvailable:thisPlan];
+    note.alpha = showNote;
+
+//    if (showNote)
+//        note.alpha = 1;
+//    else
+//        note.alpha = 0;
 
     
     return cell;
@@ -150,4 +217,37 @@
     return 50;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (planNext) {
+        if (indexPath.row >= contentList.count)
+            return NO;
+        else {
+            UIView *note = [cell viewWithTag:102];
+            return (int)note.alpha;
+        }
+    }
+    return YES;
+}
+
+//更改删除按钮
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (planNext)
+        return @"收藏";
+    return @"执行";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Plan *plan = [contentList objectAtIndex:indexPath.row];
+
+    if (planNext){
+        [self collectAction:plan];
+        [self.tableView reloadData];
+    } else {
+        [self operateAction:plan];
+        [self.tableView reloadData];
+    }
+}
 @end

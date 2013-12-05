@@ -125,4 +125,11 @@
     return tempoDict;
 }
 
++(Mission *) intiUnassociateEntity{
+    NSManagedObjectContext *context = [RORContextUtils getShareContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Mission" inManagedObjectContext:context];
+    Mission *unassociatedEntity = [[Mission alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    return unassociatedEntity;
+}
+
 @end

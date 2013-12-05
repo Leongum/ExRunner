@@ -104,9 +104,10 @@
                                         <rect key="frame" x="20" y="66" width="240" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="search"/>
                                         <connections>
                                             <action selector="doSearchAction:" destination="dAC-yB-dRr" eventType="editingDidEndOnExit" id="rnp-RO-PTO"/>
+                                            <action selector="editingDidBegin:" destination="dAC-yB-dRr" eventType="editingDidBegin" id="r8g-nX-Wfo"/>
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" id="CI4-Be-6QT">

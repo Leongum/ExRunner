@@ -40,13 +40,7 @@
 }
 
 -(IBAction)collectAction:(id)sender{
-    Plan_Collect *planCollect = [Plan_Collect initUnassociateEntity];
-    NSLog(@"正在执行收藏========\n%@", plan);
-    planCollect.planId = plan.planId;
-    planCollect.userId = [RORUserUtils getUserId];
-    planCollect.collectStatus = [NSNumber numberWithInt:CollectStatusCollected];
-    
-    [RORPlanService updatePlanCollect:planCollect];
+    [RORPlanService collectPlan:plan];
 }
 
 -(BOOL)isCollectAvailable{

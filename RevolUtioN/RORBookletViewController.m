@@ -49,9 +49,14 @@
     [self.view bringSubviewToFront:self.backButton];
     [self.view bringSubviewToFront:self.editButton];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     NSNumber *userId = [RORUserUtils getUserId];
+    
     contentList = [RORPlanService fetchPlanCollect:userId];
     historyList = [RORPlanService fetchUserPlanHistoryList:userId];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,20 +65,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)editButtonAction:(id)sender {
-    if (isEditing){
-        isEditing = NO;
-        [self.editButton setTitle:@"编辑" forState:UIControlStateNormal];
-    } else {
-        isEditing = YES;
-        [self.editButton setTitle:@"完成" forState:UIControlStateNormal];
-    }
-    [self.tableView reloadData];
-}
-
 -(BOOL) checkIfDone:(NSNumber *)planId{
     for (Plan_Run_History *history in historyList){
-        if (history.planId == planId)
+        if (history.planId == planId && history.historyStatus.integerValue == HistoryStatusFinished)
             return YES;
     }
     return NO;
@@ -107,6 +101,7 @@
     UITableViewCell *cell;
     
     Plan *thisPlan = [contentList objectAtIndex:indexPath.row];
+    
     int status = 0;
     if (thisPlan.planId.integerValue == planNext.planId.integerValue){
         static NSString *CellIdentifier = @"doingCell";
@@ -158,7 +153,31 @@
     if ([viewController respondsToSelector:@selector(setPlan:)]){
         [viewController setValue:thisPlan forKey:@"plan"];
     }
+    if ([viewController respondsToSelector:@selector(setDelegate:)]){
+        [viewController setValue:self forKey:@"delegate"];
+    }
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+//更改删除按钮
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Plan *thisPlan = [contentList objectAtIndex:indexPath.row];
+    NSNumber *userId = [RORUserUtils getUserId];
+    Plan_Collect *planCollect = [RORPlanService fetchPlanCollect:userId withPlanId:thisPlan.planId withContext:YES];
+    planCollect.collectStatus = [NSNumber numberWithInt:CollectStatusNotCollected];
+    [RORPlanService updatePlanCollect:planCollect];
+    
+    [contentList removeObject:thisPlan];
+    [tableView reloadData];
+}
 @end

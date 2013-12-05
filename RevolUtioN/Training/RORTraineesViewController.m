@@ -49,7 +49,15 @@
     traineeBtnPathLength = self.tableView.frame.size.height;
     
     friendList = [RORPlanService getTopUsingByUserId:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:0]];
+    for (Plan_Run_History *thisPlanRun in friendList){
+//        if (thisPlanRun.userId.integerValue == [RORUserUtils getUserId].integerValue)
+//            [friendList removeObject:thisPlanRun];
+    }
     traineeList = [RORPlanService getTopUsingByPlanId:planNext.planId withPageNo:[NSNumber numberWithInt:0]];
+    for (Plan_Run_History *thisPlanRun in traineeList){
+//        if (thisPlanRun.userId.integerValue == [RORUserUtils getUserId].integerValue)
+//            [traineeList removeObject:thisPlanRun];
+    }
     friendPageCount = 1;
     traineePageCount = 1;
     
@@ -92,8 +100,11 @@
 //    self.tableView.frame.size.height/2 + self.showTraineesButton.frame.size.height/2 + 
     UIButton *btn = (UIButton *)sender;
 
-    self.tableView.alpha = 0;
     if (btn == self.showFriendsButton){
+        if (showWhich == SHOWWHICH_FRIENDS)
+            return;
+        self.tableView.alpha = 0;
+
         showWhich = SHOWWHICH_FRIENDS;
         
         if (self.showTraineesButton.center.y == traineeBtnInitY){
@@ -105,6 +116,10 @@
         contentList = friendList;
         tableCount = friendList.count;
     } else{
+        if (showWhich == SHOWWHICH_TRAINEES)
+            return;
+        self.tableView.alpha = 0;
+
         showWhich = SHOWWHICH_TRAINEES;
 
         if (!(self.showTraineesButton.center.y == traineeBtnInitY)){
@@ -214,24 +229,31 @@
     switch (showWhich) {
         case SHOWWHICH_FRIENDS:
         {
-            int count = friendList.count;
-            
-            [friendList addObjectsFromArray:[RORPlanService getTopUsingByUserId:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:friendPageCount++]]];
-            
-            if (count==friendList.count){
-                friendPageCount = -1;
+            NSMutableArray *newArray = [RORPlanService getTopUsingByUserId:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:friendPageCount++]];
+            if (newArray.count==0){
+                traineePageCount = -1;
             }
+            for (Plan_Run_History *thisPlanRun in newArray){
+                if (thisPlanRun.userId.integerValue == [RORUserUtils getUserId].integerValue)
+                    [newArray removeObject:thisPlanRun];
+            }
+
+            [friendList addObjectsFromArray: newArray];
             break;
         }
         case SHOWWHICH_TRAINEES:
         {
-            int count = traineeList.count;
-            
-            [traineeList addObjectsFromArray:[RORPlanService getTopUsingByPlanId:planNext.planId withPageNo:[NSNumber numberWithInt:traineePageCount++]]];
-            
-            if (count==traineeList.count){
+            NSMutableArray *newArray = [RORPlanService getTopUsingByPlanId:planNext.planId withPageNo:[NSNumber numberWithInt:traineePageCount++]];
+            if (newArray.count==0){
                 traineePageCount = -1;
             }
+            for (Plan_Run_History *thisPlanRun in newArray){
+                if (thisPlanRun.userId.integerValue == [RORUserUtils getUserId].integerValue)
+                    [newArray removeObject:thisPlanRun];
+            }
+            
+            [traineeList addObjectsFromArray:newArray];
+            
             break;
         }
         default:

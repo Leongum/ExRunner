@@ -33,6 +33,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self initLayout];
+    [self.tableView reloadData];
 }
 
 -(void)initLayout{
@@ -66,10 +67,10 @@
     NSNumber *fixonUserId = [RORDBCommon getNumberFromId:[dict objectForKey:@"TrainingFixonUserId"]];
     if (fixonUserId && fixonUserId.integerValue>0) {
         Plan_Run_History *fixonPlanRunHistory = [RORPlanService getUserLastUpdatePlan:fixonUserId];
-        [self.TraineeButton setTitle:[NSString stringWithFormat:@"%@  %d/%d", fixonPlanRunHistory.nickName, fixonPlanRunHistory.totalMissions.integerValue - fixonPlanRunHistory.remainingMissions.integerValue,
+        [self.TraineeButton setTitle:[NSString stringWithFormat:@"%@ - %@ - %d/%d", fixonPlanRunHistory.nickName,  fixonPlanRunHistory.planName, fixonPlanRunHistory.totalMissions.integerValue - fixonPlanRunHistory.remainingMissions.integerValue,
                                       fixonPlanRunHistory.totalMissions.integerValue] forState:UIControlStateNormal];
     } else {
-        [self.TraineeButton setTitle:@"好榜样" forState:UIControlStateNormal];
+        [self.TraineeButton setTitle:@"找个好榜样" forState:UIControlStateNormal];
     }
 }
 
@@ -115,6 +116,30 @@
     }
 }
 
+- (IBAction)gotoDetailPageAction:(id)sender {
+    UIViewController *viewController;
+    Plan *thisPlan = planNext.planInfo;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainingStoryboard" bundle:[NSBundle mainBundle]];
+    switch (thisPlan.planType.integerValue) {
+        case PlanTypeEasy:{
+            viewController =  [storyboard instantiateViewControllerWithIdentifier:@"SimpleTrainingViewController"];
+            break;
+        }
+        case PlanTypeComplex:{
+            viewController =  [storyboard instantiateViewControllerWithIdentifier:@"AdvancedTrainingViewController"];
+            break;
+        }
+        default:
+            break;
+    }
+    if ([viewController respondsToSelector:@selector(setPlan:)]){
+        [viewController setValue:thisPlan forKey:@"plan"];
+    }
+    if ([viewController respondsToSelector:@selector(setDelegate:)]){
+        [viewController setValue:self forKey:@"delegate"];
+    }
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 #pragma mark - Table view data source
 
@@ -149,20 +174,28 @@
     } else {
         static NSString *CellIdentifier = @"todoCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        UILabel *sequenceLabel = (UILabel *)[cell viewWithTag:100];
+        sequenceLabel.text = [NSString stringWithFormat:@"%d", indexPath.row+1];
+        
+        return cell;
     }
     UILabel *sequenceLabel = (UILabel *)[cell viewWithTag:100];
     UILabel *requireTimeLabel = (UILabel *)[cell viewWithTag:103];
-    UILabel *requireDistanceLabel = (UILabel *)[cell viewWithTag:104];
     
     Mission *thisMission;
     if (planNext.planInfo.planType.integerValue == ComplexTask)
         thisMission = [contentList objectAtIndex:indexPath.row];
     else
         thisMission = [contentList objectAtIndex:0];
-        
-    sequenceLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
-    requireTimeLabel.text = [RORUtils transSecondToStandardFormat:thisMission.missionTime.doubleValue];
-    requireDistanceLabel.text = [RORUtils outputDistance:thisMission.missionDistance.doubleValue];
+    
+    sequenceLabel.text = [NSString stringWithFormat:@"%d", indexPath.row+1];
+    if (thisMission.missionDistance.doubleValue < 1){
+        requireTimeLabel.text = [NSString stringWithFormat:@"计时跑：%@",[RORUtils transSecondToStandardFormat:thisMission.missionTime.doubleValue]];
+    } else {
+        requireTimeLabel.text = [NSString stringWithFormat:@"定距跑：%gkm",thisMission.missionDistance.doubleValue/1000];
+    }
+    
+//    requireDistanceLabel.text = [RORUtils outputDistance:thisMission.missionDistance.doubleValue];
 
     return cell;
 }

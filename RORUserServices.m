@@ -225,7 +225,8 @@
     for (Plan_User_Follow *userFollower in fetchObject) {
         NSNumber *followUserId =  userFollower.followUserId;
         User_Base *userfollow = [self fetchUser:followUserId];
-        [followerDetails addObject: userfollow];
+        if (userfollow)
+            [followerDetails addObject: userfollow];
     }
     return followerDetails;
 }

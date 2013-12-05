@@ -176,9 +176,22 @@
 //Shadow is all Over with a white frame
 {
     CALayer *layer = view.layer;
-    [layer setBorderColor: [[UIColor whiteColor] CGColor]]; //Frame Color
-    [layer setBorderWidth:5.0f]; //Frame Border
+//    [layer setBorderColor: [[UIColor whiteColor] CGColor]]; //Frame Color
+//    [layer setBorderWidth:5.0f]; //Frame Border
     [layer setShadowColor: [[UIColor blackColor] CGColor]]; //Shadow Color
+    [layer setShadowOpacity:0.80f];
+    [layer setShadowOffset: CGSizeMake(1, 3)];
+    [layer setShadowRadius:5.0];
+    [view setClipsToBounds:NO];
+}
+
++ (void) removeFrameAndShadow: (UIView *) view
+//Shadow is all Over with a white frame
+{
+    CALayer *layer = view.layer;
+//    [layer setBorderColor: [[UIColor whiteColor] CGColor]]; //Frame Color
+//    [layer setBorderWidth:5.0f]; //Frame Border
+    [layer setShadowColor: [[UIColor clearColor] CGColor]]; //Shadow Color
     [layer setShadowOpacity:0.80f];
     [layer setShadowOffset: CGSizeMake(1, 3)];
     [layer setShadowRadius:5.0];

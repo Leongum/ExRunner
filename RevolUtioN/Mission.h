@@ -48,4 +48,5 @@
 
 -(NSMutableDictionary *)transToDictionary;
 
++(Mission *) intiUnassociateEntity;
 @end

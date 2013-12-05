@@ -21,7 +21,7 @@
 @property (nonatomic, retain) NSString * planDescription;
 @property (nonatomic, retain) NSNumber * planId;
 @property (nonatomic, retain) NSString * planName;
-@property (nonatomic, retain) NSNumber * planShareUser;
+@property (nonatomic, retain) NSNumber * planShareUserId;
 @property (nonatomic, retain) NSString * planShareUserName;
 @property (nonatomic, retain) NSNumber * planStatus;
 @property (nonatomic, retain) NSNumber * planType;

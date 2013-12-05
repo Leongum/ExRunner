@@ -7,6 +7,7 @@
 //
 
 #import "RORTrainingViewController.h"
+#import "RORTrainingMainViewController.h"
 
 #define CELLTAG_TITLE 100
 #define CELLTAG_TIMES 101
@@ -18,8 +19,15 @@
     NSInteger currentPages;
     NSMutableArray *contentList;
     BOOL noMoreData;
+    NSMutableArray *backupContentList;
+    BOOL searching;
+    
+    NSArray *collectList;
+    Plan_Next_mission *planNext;
+    
 }
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIViewController *delegate;
+@property (strong, nonatomic) IBOutlet UITextField *searchTextField;
 
 @end

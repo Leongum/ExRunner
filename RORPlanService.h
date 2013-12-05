@@ -97,4 +97,8 @@
 //根据userId获取用户的历史计划执行情况，仅支持登录用户获取自己的数据
 +(NSMutableArray *)fetchUserPlanHistoryList:(NSNumber *) userId;
 
+//收藏plan
++(void)collectPlan:(Plan *)plan;
+
++(Plan_Collect *)fetchPlanCollect:(NSNumber *) userId withPlanId:(NSNumber *) planId withContext:(BOOL) needContext;
 @end

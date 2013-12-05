@@ -11,7 +11,7 @@
 @implementation RORPlanService
 
 +(Plan *)syncPlan:(NSNumber *) planId{
-    Plan *plan = [self fetchPlan:planId withMissions:NO withContext:YES];
+    Plan *plan = [self fetchPlan:planId withMissions:YES withContext:YES];
     NSString *lastUpdateTime = @"2000-01-01 00:00:00";
     if(plan != nil && plan.lastUpdateTime != nil){
         lastUpdateTime = [RORUtils getStringFromDate:plan.lastUpdateTime];
@@ -49,7 +49,10 @@
 }
 
 +(Plan *)fetchPlan:(NSNumber *) planId{
-    return [self fetchPlan:planId withMissions:YES withContext:NO];
+    Plan *plan = [self fetchPlan:planId withMissions:YES withContext:NO];
+    if (!plan)
+        plan = [self syncPlan:planId];
+    return plan;
 }
 
 +(Plan *)fetchPlan:(NSNumber *) planId withMissions:(BOOL) needMissionDetail withContext:(BOOL) needContext{
@@ -57,10 +60,11 @@
     NSString *query = @"planId = %@";
     NSArray *params = [NSArray arrayWithObjects:planId, nil];
     NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    Plan *plan;
     if (fetchObject == nil || [fetchObject count] == 0) {
         return nil;
-    }
-    Plan *plan = (Plan *) [fetchObject objectAtIndex:0];
+    } else
+        plan = (Plan *) [fetchObject objectAtIndex:0];
     
     if(!needContext){
         plan = [Plan removeAssociateForEntity:plan];
@@ -73,14 +77,15 @@
 
 +(Plan *)createSelfPlan:(Plan *) plan{
     if([RORUserUtils getUserId].integerValue >0){
-        plan.planShareUser = [RORUserUtils getUserId];
+        plan.planShareUserId = [RORUserUtils getUserId];
         plan.planShareUserName = [RORUserUtils getUserName];
         plan.planStatus = [NSNumber numberWithInt:(int)PlanStatusEnabled];
         plan.sharedPlan = [NSNumber numberWithInt:(int)SharedPlanShared];
         if(plan.planType.integerValue == (int)PlanTypeComplex){
             plan.totalMissions = [NSNumber numberWithInt:[plan.missionList count]];
         }else if(plan.planType.integerValue == (int)PlanTypeEasy){
-            plan.totalMissions = [NSNumber numberWithInt:(plan.durationLast.integerValue/plan.duration.integerValue) * plan.cycleTime.integerValue];
+            plan.durationLast = [NSNumber numberWithInt:plan.totalMissions.integerValue * plan.duration.integerValue];
+//            plan.totalMissions = [NSNumber numberWithInt:(plan.durationLast.integerValue/plan.duration.integerValue) * plan.cycleTime.integerValue];
         }
         
         NSMutableDictionary  *plandic = [plan transToDictionary];
@@ -89,6 +94,10 @@
         RORHttpResponse *httpResponse =[RORPlanClientHandler createSelfPlan:[RORUserUtils getUserId] withPlan:plandic];
         if ([httpResponse responseStatus] == 200){
             NSDictionary *planDic = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
+            
+            if (planDic == nil || planDic == NULL || planDic.count ==0){
+                return nil;
+            }
             
             NSArray *missionsDicList = [planDic valueForKey:@"missions"];
             plan = [NSEntityDescription insertNewObjectForEntityForName:@"Plan" inManagedObjectContext:context];
@@ -143,6 +152,16 @@
     }
 }
 
++(void)collectPlan:(Plan *)plan{
+    Plan_Collect *planCollect = [Plan_Collect initUnassociateEntity];
+    NSLog(@"正在执行收藏========\n%@", plan);
+    planCollect.planId = plan.planId;
+    planCollect.userId = [RORUserUtils getUserId];
+    planCollect.collectStatus = [NSNumber numberWithInt:CollectStatusCollected];
+    
+    [RORPlanService updatePlanCollect:planCollect];
+}
+
 +(Plan_Collect *)fetchPlanCollect:(NSNumber *) userId withPlanId:(NSNumber *) planId withContext:(BOOL) needContext{
     NSString *table=@"Plan_Collect";
     NSString *query = @"userId = %@ and planId = %@";
@@ -192,7 +211,8 @@
     }
     NSMutableArray *planLists = [NSMutableArray arrayWithCapacity:10];
     for (Plan_Collect *planCollect in fetchObject) {
-        Plan *plan = [self fetchPlan:planCollect.planId withMissions:NO withContext:NO];
+        Plan *plan = [self fetchPlan:planCollect.planId];
+//        [self fetchPlan:planCollect.planId withMissions:NO withContext:NO];
         [planLists addObject:plan];
     }
     return planLists;
@@ -255,7 +275,7 @@
 
 +(Plan_User_Follow *)fetchUserFollow:(NSNumber *) userId withFollowerId:(NSNumber *) followerId withContext:(BOOL) needContext{
     NSString *table=@"Plan_User_Follow";
-    NSString *query = @"userId = %@ and followerUserId = %@";
+    NSString *query = @"userId = %@ and followUserId = %@";
     NSArray *params = [NSArray arrayWithObjects: userId, followerId, nil];
     NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
     if (fetchObject == nil || [fetchObject count] == 0) {
@@ -277,7 +297,7 @@
         NSArray *userFollowList = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
         for (NSDictionary *userFollowDict in userFollowList){
             NSNumber *userIdNum = [userFollowDict valueForKey:@"userId"];
-            NSNumber *followUserIdNum = [userFollowDict valueForKey:@"followerUserId"];
+            NSNumber *followUserIdNum = [userFollowDict valueForKey:@"followUserId"];
             Plan_User_Follow *userFollowEntity = [self fetchUserFollow:userIdNum withFollowerId:followUserIdNum withContext:YES];
             if(userFollowEntity == nil)
                 userFollowEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Plan_User_Follow" inManagedObjectContext:context];
@@ -389,7 +409,7 @@
                     NSDate *startTime = [NSDate date];
                     NSDate *endTime = [NSDate date];
                     NSLog(@"%@", userPlanHistoryEntity);
-                    Plan *plan = [self fetchPlan:userPlanHistoryEntity.planId withMissions:YES withContext:NO];
+                    Plan *plan = [self fetchPlan:userPlanHistoryEntity.planId];
                     if(plan== nil || plan.planId == nil){
                         plan = [self syncPlan:userPlanHistoryEntity.planId];
                     }
@@ -470,7 +490,7 @@
         planNextMission.nextMission = [RORMissionServices fetchMission: planNextMission.nextMissionId withContext:YES];
     }
     if(planNextMission.planId != nil){
-        planNextMission.planInfo = [self fetchPlan:planNextMission.planId withMissions:YES withContext:YES];
+        planNextMission.planInfo = [self fetchPlan:planNextMission.planId];
     }
     if(planNextMission.planRunUuid != nil){
         planNextMission.history = [self fetchUserPlanHistory:planNextMission.planRunUuid withHistoryDetail:YES withContext:YES];
@@ -491,7 +511,7 @@
 }
 
 +(Plan_Next_mission *)startNewPlan:(NSNumber *) planId{
-    Plan *plan = [self fetchPlan:planId withMissions:YES withContext:NO];
+    Plan *plan = [self fetchPlan:planId];
     if(plan != nil && plan.planId != nil){
         NSManagedObjectContext *context = [RORContextUtils getShareContext];
         Plan_Run_History *planRunHistory = [NSEntityDescription insertNewObjectForEntityForName:@"Plan_Run_History" inManagedObjectContext:context];
@@ -553,7 +573,7 @@
         else{
             planHistory.remainingMissions = [NSNumber numberWithInt:(planHistory.remainingMissions.integerValue - 1)];
             planHistory.lastUpdateTime = [RORUserUtils getSystemTime];
-            Plan *plan = [self fetchPlan:planHistory.planId withMissions:YES withContext:NO];
+            Plan *plan = [self fetchPlan:planHistory.planId];
             NSArray *missionsArray = [plan.missionIds componentsSeparatedByString:@","];
             NSNumber *nextMissionId = planHistory.nextMissionId;
             NSDate *startTime = [NSDate date];

@@ -249,4 +249,8 @@ static NSDate *systemTime = nil;
     }
 }
 
++(NSNumber *)timePerKM2kmPerHour:(double)seconds{
+    return [NSNumber numberWithDouble:3600/seconds];
+}
+
 @end

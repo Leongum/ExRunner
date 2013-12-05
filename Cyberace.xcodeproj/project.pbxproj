@@ -289,6 +289,7 @@
 		30DBB72517EFE04400552391 /* share_pop_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DBB72217EFE04400552391 /* share_pop_bg.png */; };
 		30DFE7DF17C6748F00678780 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DFE7DD17C6748F00678780 /* submit.png */; };
 		30DFE7E017C6748F00678780 /* submit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DFE7DE17C6748F00678780 /* submit@2x.png */; };
+		30E6D0FD184F0AD200C93338 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 30E6D0FC184F0AD200C93338 /* lock.png */; };
 		30F44B501778267200876915 /* RORDBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F44B4F1778267200876915 /* RORDBCommon.m */; };
 		30F4547017BCB519006CB66C /* INConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546217BCB519006CB66C /* INConstant.m */; };
 		30F4547117BCB519006CB66C /* INDeviceStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4546417BCB519006CB66C /* INDeviceStatus.m */; };
@@ -300,6 +301,7 @@
 		30F4548317BD10C5006CB66C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F4548217BD10C5006CB66C /* CoreMotion.framework */; };
 		30F4549317C1296C006CB66C /* Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4549217C1296C006CB66C /* Animations.m */; };
 		30F8BEBF17C4A72700DB137D /* RORBottomPopSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F8BEBE17C4A72700DB137D /* RORBottomPopSubview.m */; };
+		30FA65B0184DA8CE00E62816 /* RORTrainingPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FA65AF184DA8CE00E62816 /* RORTrainingPickerView.m */; };
 		30FC2903175EC34200DEC042 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FC2902175EC34200DEC042 /* MapKit.framework */; };
 		30FC2906175EF6F300DEC042 /* RORMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FC2905175EF6F300DEC042 /* RORMapViewController.m */; };
 		30FC2909175F1F5800DEC042 /* RORMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FC2908175F1F5800DEC042 /* RORMapAnnotation.m */; };
@@ -729,6 +731,7 @@
 		30DBB72217EFE04400552391 /* share_pop_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share_pop_bg.png; path = bg/share_pop_bg.png; sourceTree = "<group>"; };
 		30DFE7DD17C6748F00678780 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
 		30DFE7DE17C6748F00678780 /* submit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submit@2x.png"; sourceTree = "<group>"; };
+		30E6D0FC184F0AD200C93338 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		30F44B4E1778267200876915 /* RORDBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORDBCommon.h; sourceTree = "<group>"; };
 		30F44B4F1778267200876915 /* RORDBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORDBCommon.m; sourceTree = "<group>"; };
 		30F4546117BCB519006CB66C /* INConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INConstant.h; sourceTree = "<group>"; };
@@ -750,6 +753,8 @@
 		30F4549217C1296C006CB66C /* Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animations.m; sourceTree = "<group>"; };
 		30F8BEBD17C4A72700DB137D /* RORBottomPopSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORBottomPopSubview.h; sourceTree = "<group>"; };
 		30F8BEBE17C4A72700DB137D /* RORBottomPopSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORBottomPopSubview.m; sourceTree = "<group>"; };
+		30FA65AE184DA8CE00E62816 /* RORTrainingPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingPickerView.h; path = Training/RORTrainingPickerView.h; sourceTree = "<group>"; };
+		30FA65AF184DA8CE00E62816 /* RORTrainingPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingPickerView.m; path = Training/RORTrainingPickerView.m; sourceTree = "<group>"; };
 		30FC2902175EC34200DEC042 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		30FC2904175EF6F300DEC042 /* RORMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMapViewController.h; sourceTree = "<group>"; };
 		30FC2905175EF6F300DEC042 /* RORMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMapViewController.m; sourceTree = "<group>"; };
@@ -1301,6 +1306,8 @@
 				30B39068183B30C6005CE74D /* RORTrainingViewController.m */,
 				30FFFE51183CA87B001EA4F1 /* RORTrainingDetailViewController.h */,
 				30FFFE52183CA87B001EA4F1 /* RORTrainingDetailViewController.m */,
+				30FA65AE184DA8CE00E62816 /* RORTrainingPickerView.h */,
+				30FA65AF184DA8CE00E62816 /* RORTrainingPickerView.m */,
 			);
 			name = Training;
 			sourceTree = "<group>";
@@ -1655,6 +1662,7 @@
 		30FC291A17607F6D00DEC042 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				30E6D0FC184F0AD200C93338 /* lock.png */,
 				30692D5E18117D7200DA01EC /* count */,
 				30692D3D180D800200DA01EC /* logo.png */,
 				30692D3E180D800200DA01EC /* logo@2x.png */,
@@ -1926,6 +1934,7 @@
 				303707A11805132300FE0238 /* end_annotation.png in Resources */,
 				0F53B4AE17F3481D006DB4C4 /* RennSDK.bundle in Resources */,
 				30989CC817F7356300CA9F83 /* running_end_bg.png in Resources */,
+				30E6D0FD184F0AD200C93338 /* lock.png in Resources */,
 				0F53B4B217F3481D006DB4C4 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				0F53B4BA17F3481D006DB4C4 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				0F53B4BC17F3481D006DB4C4 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
@@ -2068,6 +2077,7 @@
 				30989CCE17F80FB000CA9F83 /* RORAboutViewController.m in Sources */,
 				0F5624441835CD94006581E0 /* RORPlanClientHandler.m in Sources */,
 				30621D2117DF00220063A007 /* RORPageViewController.m in Sources */,
+				30FA65B0184DA8CE00E62816 /* RORTrainingPickerView.m in Sources */,
 				30FFFE5F1845A213001EA4F1 /* RORFriendsViewController.m in Sources */,
 				30621D2717E00ED90063A007 /* RORRunningBaseViewController.m in Sources */,
 				30B3906618322B4C005CE74D /* MLNavigationController.m in Sources */,

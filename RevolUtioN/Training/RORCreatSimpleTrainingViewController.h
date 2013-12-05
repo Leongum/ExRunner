@@ -7,7 +7,28 @@
 //
 
 #import "RORViewController.h"
+#import "RORPlanService.h"
+#import "RORTrainingPickerView.h"
 
-@interface RORCreatSimpleTrainingViewController : RORViewController
+@interface RORCreatSimpleTrainingViewController : RORViewController<PickerCoverViewDelegate>{
+    id responderTextField;
+    double distance, highSpeed, lowSpeed;
+    int total, frequency, duration, trainingType;
+    UIPickerView *picker;
+}
 
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+//@property (strong, nonatomic) IBOutlet UIButton *distanceTextField;
+@property (strong, nonatomic) IBOutlet UIButton *totalTextField;
+@property (strong, nonatomic) IBOutlet UIButton *frequencyTextField;
+@property (strong, nonatomic) IBOutlet UIButton *durationTextField;
+@property (strong, nonatomic) IBOutlet UITextField *titleTextField;
+@property (strong, nonatomic) IBOutlet UIButton *highSpeedField;
+@property (strong, nonatomic) IBOutlet UIButton *lowSpeedField;
+
+@property (strong, nonatomic) IBOutlet RORTrainingPickerView *coverView;
+
+@property (strong, nonatomic) IBOutlet UISegmentedControl *trainingTypeSegment;
+
+-(Plan *)createNewSimplePlan;
 @end

@@ -21,7 +21,7 @@
 @dynamic planDescription;
 @dynamic planId;
 @dynamic planName;
-@dynamic planShareUser;
+@dynamic planShareUserId;
 @dynamic planShareUserName;
 @dynamic planStatus;
 @dynamic planType;
@@ -61,7 +61,7 @@
     self.missionIds = [RORDBCommon getStringFromId:[dict valueForKey:@"missionIds"]];
     self.planId = [RORDBCommon getNumberFromId:[dict valueForKey:@"planId"]];
     self.planName = [RORDBCommon getStringFromId:[dict valueForKey:@"planName"]];
-    self.planShareUser = [RORDBCommon getNumberFromId:[dict valueForKey:@"planShareUser"]];
+    self.planShareUserId = [RORDBCommon getNumberFromId:[dict valueForKey:@"planShareUserId"]];
     self.planShareUserName = [RORDBCommon getStringFromId:[dict valueForKey:@"planShareUserName"]];
     self.planStatus = [RORDBCommon getNumberFromId:[dict valueForKey:@"planStatus"]];
     self.planType = [RORDBCommon getNumberFromId:[dict valueForKey:@"planType"]];
@@ -79,7 +79,7 @@
     [tempoDict setValue:self.missionIds forKey:@"missionIds"];
     [tempoDict setValue:self.planId forKey:@"planId"];
     [tempoDict setValue:self.planName forKey:@"planName"];
-    [tempoDict setValue:self.planShareUser forKey:@"planShareUser"];
+    [tempoDict setValue:self.planShareUserId forKey:@"planShareUserId"];
     [tempoDict setValue:self.planShareUserName forKey:@"planShareUserName"];
     [tempoDict setValue:self.planStatus forKey:@"planStatus"];
     [tempoDict setValue:self.planType forKey:@"planType"];

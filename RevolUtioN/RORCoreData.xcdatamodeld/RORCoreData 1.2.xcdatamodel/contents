@@ -1,241 +1,241 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Communication" representedClassName="Communication" syncable="YES">
-        <attribute name="communicationId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="communicationId" optional="YES" attributeType="Integer 64" syncable="YES"/>
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fromUserId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="fromUserId" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="toUserId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="toUserId" optional="YES" attributeType="Integer 32" syncable="YES"/>
     </entity>
     <entity name="Friend" representedClassName="Friend" syncable="YES">
         <attribute name="addTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="friendId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="friendStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="friendId" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="friendStatus" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="userId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 32" syncable="YES"/>
     </entity>
     <entity name="Mission" representedClassName="Mission" syncable="YES">
-        <attribute name="challengeId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="cycleTime" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="experience" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="challengeId" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="cycleTime" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="experience" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="lastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="levelLimited" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="levelLimited" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="missionContent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="missionDistance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="missionFlag" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="missionFlag" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="missionFrom" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="missionId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="missionId" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="missionName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="missionPackageId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="missionPlacePackageId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="missionSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="missionSteps" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="missionTime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="missionPackageId" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="missionPlacePackageId" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="missionSpeed" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="missionSteps" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="missionTime" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="missionTo" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="missionTypeId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="planId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="scores" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="missionTypeId" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="planId" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="scores" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="sequence" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="subMissionList" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="suggestionMaxSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="suggestionMinSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="suggestionMaxSpeed" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="suggestionMinSpeed" optional="YES" attributeType="Double" syncable="YES"/>
     </entity>
     <entity name="Mission_Challenge" representedClassName="Mission_Challenge" syncable="YES">
-        <attribute name="challengeId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="challengeId" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="grade" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rule" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sequence" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="time" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Integer 32" syncable="YES"/>
     </entity>
     <entity name="Mission_Type" representedClassName="Mission_Type" syncable="YES">
         <attribute name="missionName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="missionTypeId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="missionTypeId" optional="YES" attributeType="Integer 16" syncable="YES"/>
     </entity>
     <entity name="Place_Package" representedClassName="Place_Package" syncable="YES">
-        <attribute name="packageId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="packageId" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="placeDesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="placeName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="placePoint" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sequence" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="sequence" optional="YES" attributeType="Integer 32" syncable="YES"/>
     </entity>
     <entity name="Plan" representedClassName="Plan" syncable="YES">
-        <attribute name="cycleTime" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="durationLast" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="durationType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="cycleTime" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="durationLast" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="durationType" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="lastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="missionIds" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="planDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="planId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="planId" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="planName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="planShareUser" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="planShareUserId" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="planShareUserName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="planStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="planType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="sharedPlan" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="totalMissions" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="planStatus" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="planType" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="sharedPlan" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="totalMissions" optional="YES" attributeType="Integer 16" syncable="YES"/>
     </entity>
     <entity name="Plan_Collect" representedClassName="Plan_Collect" syncable="YES">
-        <attribute name="collectStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="collectStatus" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="collectTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="planId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="updated" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="userId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="planId" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="updated" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 16" syncable="YES"/>
     </entity>
     <entity name="Plan_Next_mission" representedClassName="Plan_Next_mission" syncable="YES">
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="nextMissionId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="planId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="nextMissionId" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="planId" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="planRunUuid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <entity name="Plan_Run_History" representedClassName="Plan_Run_History" syncable="YES">
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="historyStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="historyStatus" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="lastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="nextMissionId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="operate" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="planId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="nextMissionId" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="operate" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="planId" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="planRunUuid" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="rate" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rate" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rateComment" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="remainingMissions" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="remainingMissions" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="totalMissions" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="userId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="totalMissions" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 16" syncable="YES"/>
     </entity>
     <entity name="Plan_User_Follow" representedClassName="Plan_User_Follow" syncable="YES">
         <attribute name="addTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="followUserId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="updated" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="userId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="followUserId" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="updated" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 16" syncable="YES"/>
     </entity>
     <entity name="Products" representedClassName="Products" syncable="YES">
-        <attribute name="baseAcc" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
-        <attribute name="crit" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="baseAcc" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="crit" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="discount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="discount" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="endurance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="endurance" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="inertiaAcc" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="levelLimit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="luck" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="money" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="inertiaAcc" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="levelLimit" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="luck" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="money" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="productDesc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="productId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="productId" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="rapidly" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="scores" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="spirit" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="rapidly" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="scores" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="spirit" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="triggerType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="triggerType" optional="YES" attributeType="Integer 32" syncable="YES"/>
     </entity>
     <entity name="Running_Invite" representedClassName="Running_Invite" syncable="YES">
-        <attribute name="friendUserId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="friendUserId" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="inviteContent" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="inviteId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="inviteStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="inviteId" optional="YES" attributeType="Integer 64" syncable="YES"/>
+        <attribute name="inviteStatus" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="inviteTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="inviteTitle" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="inviteType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="inviteUserId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="missionId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="missionType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="inviteType" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="inviteUserId" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="missionId" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="missionType" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="runningTime" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <entity name="System_Message" representedClassName="System_Message" syncable="YES">
         <attribute name="lastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="messageId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="messageId" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="rule" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="User_Attributes" representedClassName="User_Attributes" syncable="YES">
-        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="avgSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="baseAcc" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="crit" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="endurance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="experience" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="height" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="inertiaAcc" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="level" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="luck" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="maxPower" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="rapidly" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="recoverSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="remainingPower" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="scores" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="spendCarlorie" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="spirit" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="totalDistance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="totalRunTimes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="userId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="age" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="avgSpeed" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="baseAcc" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="crit" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="endurance" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="experience" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="inertiaAcc" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="luck" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="maxPower" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="rapidly" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="recoverSpeed" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="remainingPower" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="scores" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="spendCarlorie" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="spirit" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="totalDistance" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="totalRunTimes" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Double" syncable="YES"/>
     </entity>
     <entity name="User_Base" representedClassName="User_Base" syncable="YES">
         <attribute name="nickName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userEmail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="User_Last_Location" representedClassName="User_Last_Location" syncable="YES">
         <attribute name="lastActiveTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastLocationContent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastLocationPoint" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 32" syncable="YES"/>
     </entity>
     <entity name="User_Products_History" representedClassName="User_Products_History" syncable="YES">
         <attribute name="buyTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="money" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="productsId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="scores" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="userId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="money" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="productsId" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="scores" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 32" syncable="YES"/>
     </entity>
     <entity name="User_Running" representedClassName="User_Running" syncable="YES">
         <attribute name="commitTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="missionId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="missionStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="missionTypeId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="missionId" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="missionStatus" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="missionTypeId" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="runUuid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="userId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 32" syncable="YES"/>
     </entity>
     <entity name="User_Running_History" representedClassName="User_Running_History" syncable="YES">
-        <attribute name="avgSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="avgSpeed" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="commitTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="experience" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="extraExperience" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="grade" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="experience" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="extraExperience" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="grade" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="missionDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="missionEndTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="missionGrade" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="missionId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="missionGrade" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="missionId" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="missionRoute" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="missionStartTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="missionTypeId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="missionTypeId" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="offerUsers" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="planRunUuid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="runUuid" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="scores" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="scores" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="sequence" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="speedList" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="spendCarlorie" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="steps" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="spendCarlorie" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="steps" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="valid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="valid" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="waveForm" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Version_Control" representedClassName="Version_Control" syncable="YES">
@@ -243,9 +243,9 @@
         <attribute name="messageLastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="missionLastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="platform" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="subVersion" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="subVersion" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="systemTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="version" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="Integer 32" syncable="YES"/>
     </entity>
     <elements>
         <element name="Communication" positionX="0" positionY="0" width="0" height="0"/>

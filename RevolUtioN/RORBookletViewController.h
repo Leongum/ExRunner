@@ -12,7 +12,7 @@
 @interface RORBookletViewController : RORTrainingViewController{
     RORSearchTrainingViewController *searchViewController;
     BOOL isEditing;
-    NSArray *contentList;
+    NSMutableArray *contentList;
     UIStoryboard *storyboard;
 }
 

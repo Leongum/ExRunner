@@ -37,6 +37,8 @@
 
 + (NSString *)formatedSpeed:(double)metersPerSec;
 
++(NSNumber *)timePerKM2kmPerHour:(double)seconds;
+
 + (NSNumber *)getDownLoaded;
 
 +(void)doneDowned;
@@ -48,5 +50,6 @@
 +(NSNumber*)getStatisticsDefaultPage;
 
 +(void)saveStatisticsDefaultPage:(NSInteger)page;
+
 
 @end

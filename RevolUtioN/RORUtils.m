@@ -34,6 +34,8 @@
 }
 
 + (NSString *)transSecondToStandardFormat:(double) seconds {
+    if (seconds <0)
+        return @" -";
     NSInteger min=0, hour=0;
     min = seconds / 60;
     NSInteger intSeconds = (NSInteger)seconds % 60;
@@ -262,6 +264,8 @@
 }
 
 +(NSString*)outputDistance:(double)distance{
+    if (distance<0)
+        return @" -";
     if (distance<1000){
         return [NSString stringWithFormat:@"%.0f m", round(distance)];
     }

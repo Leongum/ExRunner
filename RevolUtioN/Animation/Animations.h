@@ -29,6 +29,8 @@
 + (void) rotate: (UIView *)view andAnimationDuration: (float) duration andWait:(BOOL) wait andAngle:(int) angle;
 
 + (void) frameAndShadow: (UIView *) view;
++ (void) removeFrameAndShadow: (UIView *) view;
+
 + (void) shadowOnView: (UIView *) view andShadowType: (NSString *) shadowType;
 
 + (void) background: (UIView *) view andImageFileName: (NSString *) filename;

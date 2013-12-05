@@ -30,7 +30,19 @@
 	// Do any additional setup after loading the view.
     
     self.titleLabel.text = self.plan.planName;
+    self.planIdLabel.text = [NSString stringWithFormat:@"训练编号：%@",self.plan.planId];
+
     contentList = self.plan.missionList;
+    
+    if ([self isCollectAvailable]){
+        self.collectButton.enabled = 1;
+        [self.collectButton setTitle:@"收藏" forState:UIControlStateNormal];
+        [self.collectButton addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else{
+        [self.collectButton setTitle:@"已收藏" forState:UIControlStateNormal];
+        self.collectButton.enabled = 0;
+    }
     
     if (planNext)
         self.operateButton.enabled = 0;
@@ -38,6 +50,7 @@
         self.operateButton.enabled = 1;
         [self.operateButton addTarget:self action:@selector(operateAction:) forControlEvents:UIControlEventTouchUpInside];
     }
+    
     
     [self.collectButton addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -67,15 +80,22 @@
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     UILabel *sequenceLabel = (UILabel *)[cell viewWithTag:100];
     UILabel *dateCommentLabel = (UILabel *)[cell viewWithTag:101];
-    UILabel *dateLabel = (UILabel *)[cell viewWithTag:102];
-    UILabel *durationLabel = (UILabel *)[cell viewWithTag:105];
-    UILabel *distanceLabel = (UILabel *)[cell viewWithTag:104];
+    UILabel *trainingContentLabel = (UILabel *)[cell viewWithTag:102];
+    UILabel *speedLabel = (UILabel*)[cell viewWithTag:103];
     
-    sequenceLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
-    dateCommentLabel.text = indexPath.row==0?@"训练开始后":@"上一次完成后";
-    durationLabel.text = [RORUtils transSecondToStandardFormat:thisMission.missionTime.integerValue];
-    distanceLabel.text = [RORUtils outputDistance:thisMission.missionDistance.doubleValue];
-    dateLabel.text = [NSString stringWithFormat:@"%d天内完成", thisMission.cycleTime.integerValue];
+    sequenceLabel.text = [NSString stringWithFormat:@"%d", indexPath.row+1];
+    if (indexPath.row ==0){
+        dateCommentLabel.text = [NSString stringWithFormat:@"接受训练后的%d天内完成",thisMission.cycleTime.integerValue];
+    } else {
+        dateCommentLabel.text = [NSString stringWithFormat:@"上次训练完成后的%d天内完成", thisMission.cycleTime.integerValue];
+    }
+    if (thisMission.missionDistance.doubleValue>=0) {
+        trainingContentLabel.text = [NSString stringWithFormat:@"定距跑：%@",[RORUtils outputDistance:thisMission.missionDistance.doubleValue]];
+    } else {
+        trainingContentLabel.text = [NSString stringWithFormat:@"计时跑：%@",  [RORUtils transSecondToStandardFormat:thisMission.missionTime.doubleValue]];
+    }
+    speedLabel.text = [NSString stringWithFormat:@"配速：%@ ~ %@", [RORUserUtils formatedSpeed:thisMission.suggestionMaxSpeed.doubleValue], [RORUserUtils formatedSpeed:thisMission.suggestionMinSpeed.doubleValue]];
+    
     return cell;
 }
 @end

@@ -14,7 +14,7 @@
 }
 
 @property (strong, nonatomic) Plan *plan;
-@property (strong, nonatomic) UIViewController *delegate;
+@property (strong, nonatomic) id delegate;
 
 -(IBAction)collectAction:(id)sender;
 -(IBAction)operateAction:(id)sender;

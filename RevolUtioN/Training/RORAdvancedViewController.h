@@ -17,4 +17,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIButton *collectButton;
 @property (strong, nonatomic) IBOutlet UIButton *operateButton;
+@property (strong, nonatomic) IBOutlet UILabel *planIdLabel;
+
 @end

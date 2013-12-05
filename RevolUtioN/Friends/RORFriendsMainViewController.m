@@ -30,7 +30,8 @@
 	// Do any additional setup after loading the view.
     noMoreData = NO;
     pageCount = 0;
-    contentList = [RORUserServices fetchFollowersDetails:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:pageCount]];
+    [RORUserServices syncFollowersDetails:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:pageCount]];
+    contentList = [RORUserServices fetchFollowersDetails:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:pageCount++]];
     latestPage = contentList;
     self.addButton.enabled = 0;
 }
@@ -41,6 +42,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self initSearchField];
+}
+
+- (IBAction)editingDidBegin:(id)sender {
+    [Animations frameAndShadow:self.searchTextField];
+    self.searchTextField.text = @"";
+}
+
+-(void)initSearchField{
+    self.searchTextField.text = @"";
+    self.searchResultUserNameLabel.text = @"";
+    self.searchResultUserLvLabel.text = @"";
+    self.addButton.alpha = 0;
+}
+
 - (IBAction)expandAction:(id)sender {
     CGRect f = self.searchFriendView.frame;
     
@@ -48,6 +65,9 @@
         searchViewTop = f.origin.y;
         [self.searchFriendView moveUp:0.5 length:-searchViewTop delegate:self];
         self.searchFriendView.frame = CGRectMake(f.origin.x, 0, f.size.width, f.size.height);
+        [self initSearchField];
+        [self.searchTextField becomeFirstResponder];
+
     } else {
         [self.searchFriendView moveUp:0.5 length:searchViewTop delegate:self];
         self.searchFriendView.frame = CGRectMake(f.origin.x, searchViewTop, f.size.width, f.size.height);
@@ -56,6 +76,7 @@
 
 - (IBAction)hideKeyboard:(id)sender {
     [self.searchTextField resignFirstResponder];
+    [Animations removeFrameAndShadow:self.searchTextField];
 }
 
 - (IBAction)doSearchAction:(id)sender {
@@ -67,6 +88,7 @@
         [self sendAlart:@"无此用户"];
     }
     [self.searchTextField resignFirstResponder];
+    [Animations removeFrameAndShadow:self.searchTextField];
 }
 
 -(void)refreshAddButton{
@@ -82,6 +104,7 @@
     }
     
     [self.addButton setTitle:@"添加" forState:UIControlStateNormal];
+    self.addButton.alpha = 1;
     self.addButton.enabled = 1;
 }
 
@@ -102,9 +125,10 @@
 }
 
 -(void)reloadTableView{
-    [contentList removeObjectsInArray:latestPage];
-    latestPage = [RORUserServices fetchFollowersDetails:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:pageCount]];
-    [contentList addObjectsFromArray:latestPage];
+    [contentList removeAllObjects];
+    for (int i=0; i<pageCount; i++){
+         [contentList addObjectsFromArray:[RORUserServices fetchFollowersDetails:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:pageCount]]];
+    }
     [self.tableView reloadData];
 }
 
@@ -147,7 +171,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == contentList.count){
-        [self loadTableViewData:++pageCount];
+        [self loadTableViewData:pageCount++];
     }
 }
 
@@ -169,7 +193,14 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    User_Base *user = [contentList objectAtIndex:indexPath.row];
+    Plan_User_Follow *userFollow = [RORPlanService fetchUserFollow:[RORUserUtils getUserId] withFollowerId:user.userId];
+    userFollow.userId = [RORUserUtils getUserId];
+    userFollow.followUserId = user.userId;
+    userFollow.status = [NSNumber numberWithInt:FollowStatusNotFollowed];
+    [RORPlanService updateUserFollow:userFollow];
+    [self.tableView pop:0.5 delegate:self];
+    [self reloadTableView];
 }
 
 @end
