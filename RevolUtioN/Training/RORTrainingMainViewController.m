@@ -83,6 +83,14 @@
 - (IBAction)startAction:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
     UIViewController *viewController =  [storyboard instantiateViewControllerWithIdentifier:@"TrainingRunViewController"];
+    
+    if ([viewController respondsToSelector:@selector(setPlanNext:)]){
+        [viewController setValue:planNext forKey:@"planNext"];
+    }
+    if ([viewController respondsToSelector:@selector(setThisMission:)]){
+        [viewController setValue:planNext.nextMission forKey:@"thisMission"];
+    }
+    
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

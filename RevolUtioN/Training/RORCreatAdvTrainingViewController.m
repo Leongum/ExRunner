@@ -56,21 +56,52 @@
 
 -(void)initData{
     distance = 3;
-    lowSpeed = 300;
-    highSpeed = 540;
+    lowSpeed = 540;
+    highSpeed = 300;
     frequency = 3;
-    duration = 0;
-    durationType = 0;
+    duration = 1800;
+    trainingType = 0;
 }
 
 -(void)initControls{
-    [durationLabel setTitle:[NSString stringWithFormat:@"定距：%@", [NSNumber numberWithDouble:distance]] forState:UIControlStateNormal];
+    if (trainingType == 0)
+        [durationLabel setTitle:[NSString stringWithFormat:@"定距：%@km", [NSNumber numberWithDouble:distance]] forState:UIControlStateNormal];
+    else
+        [durationLabel setTitle:[NSString stringWithFormat:@"计时：%@",[RORUtils transSecondToStandardFormat:duration]] forState:UIControlStateNormal];
     [frequencyLabel setTitle:[NSString stringWithFormat:@"周期：%d天", frequency] forState:UIControlStateNormal] ;
     [self.lowSpeedLabel setTitle:[NSString stringWithFormat:@"低速：%@",[RORUtils transSecondToStandardFormat:lowSpeed]] forState:UIControlStateNormal];
     [self.highSpeedLabel setTitle:[NSString stringWithFormat:@"高速：%@",[RORUtils transSecondToStandardFormat:highSpeed]] forState:UIControlStateNormal];
-    [trainingTypeSegment setSelectedSegmentIndex:durationType];
+    [trainingTypeSegment setSelectedSegmentIndex:trainingType];
 }
 
+-(void)scrollToCurrentValue{
+    if (responderTextField == durationLabel){
+        if (trainingTypeSegment.selectedSegmentIndex == 0){
+            [picker selectRow:(int)distance inComponent:0 animated:YES];
+            if (distance-(int)distance < 0.01)
+                [picker selectRow:0 inComponent:1 animated:YES];
+            else if (distance - (int)distance <0.4)
+                [picker selectRow:2 inComponent:1 animated:YES];
+            else
+                [picker selectRow:1 inComponent:1 animated:YES];
+        }
+        else {
+            [picker selectRow:(int)duration/3600 inComponent:0 animated:YES];
+            [picker selectRow:((int)duration%3600)/60 inComponent:1 animated:YES];
+        }
+    }
+    if (responderTextField == frequencyLabel){
+        [picker selectRow:frequency-1 inComponent:0 animated:YES];
+    }
+    if (responderTextField == lowSpeedLabel){
+        [picker selectRow:(int)lowSpeed/60 -2 inComponent:0 animated:YES];
+        [picker selectRow:(int)lowSpeed%60 inComponent:1 animated:YES];
+    }
+    if (responderTextField == highSpeedLabel){
+        [picker selectRow:(int)highSpeed/60 -2 inComponent:0 animated:YES];
+        [picker selectRow:(int)highSpeed%60 inComponent:1 animated:YES];
+    }
+}
 
 -(IBAction)initPicker:(id)sender{
     responderTextField = sender;
@@ -92,6 +123,7 @@
     }
     
     [picker reloadAllComponents];
+    [self scrollToCurrentValue];
 }
 
 - (IBAction)hideCover:(id)sender {
@@ -164,11 +196,8 @@
 }
 
 - (IBAction)trainingTypeChangedAction:(id)sender {
-    if (trainingTypeSegment.selectedSegmentIndex == 0){
-        [durationLabel setTitle:[NSString stringWithFormat:@"定距：%@",[RORUtils transSecondToStandardFormat:distance]] forState:UIControlStateNormal];
-    } else {
-        [durationLabel setTitle:[NSString stringWithFormat:@"计时：%@",[RORUtils transSecondToStandardFormat:duration]] forState:UIControlStateNormal];
-    }
+    trainingType = self.trainingTypeSegment.selectedSegmentIndex;
+    [self initControls];
 }
 
 -(BOOL) checkInput{

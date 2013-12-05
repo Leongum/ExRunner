@@ -2294,6 +2294,13 @@
                                     <outlet property="delegate" destination="fxc-dT-cJC" id="h12-Hl-dTH"/>
                                 </connections>
                             </mapView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cGe-FR-TS9">
+                                <rect key="frame" x="83" y="20" width="154" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="running_bg.png" id="0Au-pW-Ygz">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2335,7 +2342,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="-5" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="开始" backgroundImage="8EB8D339-5AC4-42A9-AA40-8E720668CB07">
+                                <state key="normal" title="开始" backgroundImage="DEBD3A59-FBB8-4A38-9961-32B1868A2554">
                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -2352,7 +2359,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="-5" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="完成" backgroundImage="2D2D6BC9-5A00-4AB8-86ED-818D64BC4627">
+                                <state key="normal" title="完成" backgroundImage="4CBD487D-E138-49DC-82B1-C69E8589F12F">
                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -2435,6 +2442,7 @@
                         <outlet property="speedLabel" destination="hJG-Tf-0Kj" id="Lhe-Ee-S8H"/>
                         <outlet property="startButton" destination="3ZA-0f-64N" id="cwE-am-dDb"/>
                         <outlet property="timeLabel" destination="QLO-gj-LtQ" id="LBv-18-wIu"/>
+                        <outlet property="titleLabel" destination="cGe-FR-TS9" id="HC3-8e-sKe"/>
                         <segue destination="59h-pf-nvn" kind="push" identifier="TrainingRunResultSeague" id="r26-ue-wHI"/>
                     </connections>
                 </viewController>
@@ -2445,7 +2453,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2D2D6BC9-5A00-4AB8-86ED-818D64BC4627" width="110" height="44">
+        <image name="4CBD487D-E138-49DC-82B1-C69E8589F12F" width="110" height="44">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -2818,7 +2826,7 @@ ALMAtgC4ALoAvAC+AMMA2gDcAN5U8FT1VQBVCVUcVSBVM1U+VUdVTFVUVVdVXFVrVW9VdlV+VYtVkFWS
 VZRVmVWhVaRVqVWxVbRVxlXJVc4AAAAAAAACAQAAAAAAAABCAAAAAAAAAAAAAAAAAABV0A
 </mutableData>
         </image>
-        <image name="8EB8D339-5AC4-42A9-AA40-8E720668CB07" width="110" height="44">
+        <image name="DEBD3A59-FBB8-4A38-9961-32B1868A2554" width="110" height="44">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

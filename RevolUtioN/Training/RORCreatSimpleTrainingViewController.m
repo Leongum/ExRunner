@@ -107,9 +107,6 @@
 }
 
 -(void)scrollToCurrentValue{
-    if (responderTextField == totalTextField){
-        [picker selectRow:total-1 inComponent:0 animated:YES];
-    }
     if (responderTextField == durationTextField){
         if (trainingTypeSegment.selectedSegmentIndex == 0){
             [picker selectRow:(int)distance inComponent:0 animated:YES];

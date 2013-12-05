@@ -83,6 +83,7 @@ typedef enum {PlanTypeEasy = 0, PlanTypeComplex = 1} PlanTypeEnum;
 typedef enum {SharedPlanSystem = 0, SharedPlanShared = 1} SharedPlanEnum;
 typedef enum {DurationTypeWeek = 0, DurationTypeDay = 1} DurationTypeEnum;
 typedef enum {PlanStatusEnabled = 0, PlanStatusDisabled = 1} PlanStatusEnum;
+typedef enum {TrainingContentTypeDistance = 0, TrainingContentTypeDuration = 1} TrainingContentTypeEnum;
 typedef enum {CollectStatusCollected = 0, CollectStatusNotCollected = 1} CollectStatusEnum;
 typedef enum {HistoryStatusExecute = 0, HistoryStatusFinished = 1, HistoryStatusCancled = 2} HistoryStatusEnum;
 typedef enum {FollowStatusFollowed = 0, FollowStatusNotFollowed = 1} FollowStatusEnum;

@@ -7,16 +7,17 @@
 //
 
 #import "RORCongratsCoverView.h"
+#import "RORChallengeCongratsCoverView.h"
 
-@interface RORTrainingCongratsCoverView : RORCongratsCoverView{
-    NSInteger grade;
-    UIImageView *levelBgImageView;
-    UIImageView *levelImageView;
-    UILabel *levelLabel;
+@interface RORTrainingCongratsCoverView : RORChallengeCongratsCoverView{
+//    NSInteger grade;
+//    UIImageView *levelBgImageView;
+//    UIImageView *levelImageView;
+//    UILabel *levelLabel;
 }
 
-@property (nonatomic) User_Running_History *bestRecord;
+//@property (nonatomic) User_Running_History *bestRecord;
 
-- (id)initWithFrame:(CGRect)frame andLevel:(User_Running_History*)record;
+//- (id)initWithFrame:(CGRect)frame andLevel:(User_Running_History*)record;
 
 @end

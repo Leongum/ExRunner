@@ -13,6 +13,7 @@
 @end
 
 @implementation RORTrainingRunViewController
+@synthesize thisMission;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +29,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     planNext = [RORPlanService fetchUserRunningPlanHistory];
+    
+    if (thisMission.missionDistance.integerValue>0){
+        self.titleLabel.text = [NSString stringWithFormat:@"定距跑：%gkm", thisMission.missionDistance.doubleValue/1000];
+        trainingType = TrainingContentTypeDistance;
+    } else {
+        self.titleLabel.text = [NSString stringWithFormat:@"计时跑：%@", [RORUtils transSecondToStandardFormat:thisMission.missionTime.doubleValue]];
+        trainingType = TrainingContentTypeDuration;
+    }
+    finishSound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"running_end1.mp3"];
+    last10Min = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"last_kilo.mp3"];
+    
+    finished = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,6 +74,7 @@
 -(void)creatRunningHistory{
     [super creatRunningHistory];
     planRunningHistory = [Plan_Run_History intiUnassociateEntity];
+    runHistory.missionTypeId = thisMission.missionTypeId;
     runHistory.grade = [self calculateTrainingGrade];
     if (runHistory.grade.integerValue!= GRADE_F){
         [RORPlanService gotoNextMission:planNext.planRunUuid];
@@ -84,5 +98,42 @@
     }
     
     return [NSNumber numberWithInt:GRADE_F];
+}
+
+-(void)timerSecondDot{
+    [super timerSecondDot];
+    if (trainingType == TrainingContentTypeDistance){
+        double mDistance = thisMission.missionDistance.doubleValue;
+        double leftDistance = mDistance-distance;
+
+        if (leftDistance < 1000 && !lastKiloPlayed){
+            lastKiloPlayed = YES;
+            [lastKilo play];
+        }
+        if (leftDistance < 100 && !lastHundredPlayed){
+            lastHundredPlayed = YES;
+            [lastHundred play];
+        }
+
+        self.distanceLabel.text = [RORUtils outputDistance:distance];
+        self.speedLabel.text = [RORUserUtils formatedSpeed:currentSpeed*3.6];
+        
+        if (leftDistance<=0 && !finished){
+            [finishSound play];
+            finished = YES;
+        }
+    } else {
+        double mDuration = thisMission.missionTime.doubleValue;
+        double leftDuration = mDuration-duration;
+        
+        if (leftDuration < 600 && !last10MinPlayed){
+            last10MinPlayed = YES;
+            [last10Min play];
+        }
+        if (leftDuration<=0 && !finished){
+            [finishSound play];
+            finished = YES;
+        }
+    }
 }
 @end

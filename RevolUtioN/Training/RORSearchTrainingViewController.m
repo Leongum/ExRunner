@@ -100,7 +100,7 @@
 
 - (IBAction)doSearchAction:(id)sender {
 //    [self.searchTextField popDown:0.5 delegate:self targetPoint:self.searchTextField.center];
-    [Animations removeFrameAndShadow:self.searchTextField];
+    [self hideKeyboard:sender];
     
     UITextField *textField = (UITextField *)sender;
     NSNumber *planId =[RORDBCommon getNumberFromId:textField.text];
@@ -126,6 +126,11 @@
         searching = YES;
         [self.tableView reloadData];
     }
+}
+
+- (IBAction)hideKeyboard:(id)sender {
+    [self.searchTextField resignFirstResponder];
+    [Animations removeFrameAndShadow:self.searchTextField];
 }
 
 -(BOOL)isCollectAvailable:(Plan *)plan{

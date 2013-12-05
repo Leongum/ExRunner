@@ -48,8 +48,10 @@
     RORPlaySound *sound;
     RORPlaySound *lastHundred;
     RORPlaySound *lastKilo;
+    RORPlaySound *last10Min;
     BOOL lastHundredPlayed;
     BOOL lastKiloPlayed;
+    BOOL last10MinPlayed;
     
     CLLocation *formerCenterMapLocation;
     
@@ -83,6 +85,7 @@
 - (void)startDeviceMotion;
 -(NSNumber *)isValidRun:(NSInteger)steps;
 -(void)timerDotCommon;
+-(void)timerSecondDot;
 -(void)pushAvgSpeedPerKM;
 
 //reset route points after pause

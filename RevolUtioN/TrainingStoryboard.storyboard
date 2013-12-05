@@ -595,7 +595,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="YQa-IM-gxJ" userLabel="searchTrainingView">
+                            <view contentMode="scaleToFill" id="YQa-IM-gxJ" userLabel="searchTrainingView" customClass="UIControl">
                                 <rect key="frame" x="20" y="0.0" width="280" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -758,6 +758,9 @@
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="hideKeyboard:" destination="IK4-DB-JAV" eventType="touchUpInside" id="Sd6-9q-dEZ"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="b2k-vk-4P5">
                                 <rect key="frame" x="133" y="405" width="55" height="56"/>
@@ -1139,7 +1142,7 @@
                                         </state>
                                     </button>
                                     <view contentMode="scaleToFill" id="oZX-Tf-adr">
-                                        <rect key="frame" x="0.0" y="204" width="280" height="159"/>
+                                        <rect key="frame" x="0.0" y="204" width="280" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RIA-xd-cBW">
@@ -1152,7 +1155,7 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PYU-gz-8Be">
-                                                <rect key="frame" x="20" y="65" width="110" height="31"/>
+                                                <rect key="frame" x="20" y="66" width="110" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1161,7 +1164,7 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Kc-iC-xJh">
-                                                <rect key="frame" x="150" y="109" width="110" height="31"/>
+                                                <rect key="frame" x="150" y="110" width="110" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1170,7 +1173,7 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MZD-Li-17Z">
-                                                <rect key="frame" x="20" y="109" width="110" height="31"/>
+                                                <rect key="frame" x="20" y="110" width="110" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1179,7 +1182,7 @@
                                                 </state>
                                             </button>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="aFa-ah-QFN">
-                                                <rect key="frame" x="151" y="58" width="110" height="44"/>
+                                                <rect key="frame" x="151" y="59" width="110" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <segments>
                                                     <segment title="定距"/>
@@ -1346,7 +1349,7 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" id="vcZ-nY-lXJ">
-                                        <rect key="frame" x="0.0" y="204" width="280" height="159"/>
+                                        <rect key="frame" x="0.0" y="204" width="280" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HAj-Le-o9H">
@@ -1369,7 +1372,7 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nUd-qH-WaF">
-                                                <rect key="frame" x="20" y="65" width="110" height="31"/>
+                                                <rect key="frame" x="20" y="66" width="110" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1378,7 +1381,7 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vuJ-Lp-M9a">
-                                                <rect key="frame" x="150" y="109" width="110" height="31"/>
+                                                <rect key="frame" x="150" y="110" width="110" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1387,7 +1390,7 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RAn-x2-HkN">
-                                                <rect key="frame" x="20" y="109" width="110" height="31"/>
+                                                <rect key="frame" x="20" y="110" width="110" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1396,7 +1399,7 @@
                                                 </state>
                                             </button>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="bDM-Zv-T8e">
-                                                <rect key="frame" x="150" y="58" width="110" height="44"/>
+                                                <rect key="frame" x="150" y="59" width="110" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <segments>
                                                     <segment title="定距"/>

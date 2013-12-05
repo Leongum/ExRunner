@@ -12,6 +12,7 @@
 #import "RORRunHistoryServices.h"
 #import "RORViewController.h"
 #import "RORChallengeCongratsCoverView.h"
+#import "RORTrainingCongratsCoverView.h"
 #import "RORStartAnnotation.h"
 #import "ROREndAnnotation.h"
 

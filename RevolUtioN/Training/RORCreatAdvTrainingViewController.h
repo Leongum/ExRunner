@@ -16,6 +16,7 @@
     double distance, lowSpeed, highSpeed;
     int frequency, duration, durationType;
     UIPickerView *picker;
+    int trainingType;
     
     NSMutableArray *contentList;
 }

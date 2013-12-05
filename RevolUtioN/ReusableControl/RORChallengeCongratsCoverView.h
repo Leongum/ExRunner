@@ -18,5 +18,6 @@
 @property (nonatomic) User_Running_History *bestRecord;
 
 - (id)initWithFrame:(CGRect)frame andLevel:(User_Running_History*)record;
+-(void)fillContent;
 
 @end

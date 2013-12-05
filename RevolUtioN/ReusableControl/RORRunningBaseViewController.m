@@ -96,6 +96,10 @@
     timeOfLatest1KM +=TIMER_INTERVAL;
 }
 
+-(void)timerSecondDot{
+    
+}
+
 -(void)pushAvgSpeedPerKM{
     if (((int)distance/1000) > avgSpeedPerKMList.count){
         [avgSpeedPerKMList addObject:[NSNumber numberWithDouble:3600/timeOfLatest1KM]];
