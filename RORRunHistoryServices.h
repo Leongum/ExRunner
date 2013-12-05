@@ -25,7 +25,7 @@
 
 + (BOOL)uploadRunningHistories;
 
-+ (BOOL)syncRunningHistories;
++ (BOOL)syncRunningHistories:(NSNumber *)userId;
 
 + (BOOL)syncUserRunning;
 

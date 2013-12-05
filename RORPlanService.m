@@ -86,8 +86,12 @@
         }else if(plan.planType.integerValue == (int)PlanTypeEasy){
             plan.durationLast = [NSNumber numberWithInt:plan.totalMissions.integerValue * plan.duration.integerValue];
 //            plan.totalMissions = [NSNumber numberWithInt:(plan.durationLast.integerValue/plan.duration.integerValue) * plan.cycleTime.integerValue];
+//            if(plan.durationType.integerValue == DurationTypeDay){
+//                plan.totalMissions = [NSNumber numberWithInt:(plan.durationLast.integerValue/plan.duration.integerValue) * plan.cycleTime.integerValue];
+//            }else if(plan.durationType.integerValue == DurationTypeWeek){
+//                plan.totalMissions = [NSNumber numberWithInt:(plan.durationLast.integerValue/(plan.duration.integerValue*7)) * plan.cycleTime.integerValue];
+//            }
         }
-        
         NSMutableDictionary  *plandic = [plan transToDictionary];
         NSError *error = nil;
         NSManagedObjectContext *context = [RORContextUtils getShareContext];

@@ -32,7 +32,7 @@
 
 - (IBAction)syncAction:(id)sender {
     //sync runningHistory
-    BOOL synced = [RORRunHistoryServices syncRunningHistories];
+    BOOL synced = [RORRunHistoryServices syncRunningHistories:[RORUserUtils getUserId]];
     BOOL updated = [RORRunHistoryServices uploadRunningHistories];
     [RORUserServices syncUserInfoById:[RORUserUtils getUserId]];
     if(synced && updated){

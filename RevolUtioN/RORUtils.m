@@ -61,13 +61,6 @@
     return path;
 }
 
-+(NSString *)getCurrentTime{
-    NSDateFormatter *formate = [[NSDateFormatter alloc] init];
-    [formate setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString *formatDateString = [formate stringFromDate:[NSDate date]];
-    return formatDateString;
-}
-
 +(NSDate *)getDateFromString:(NSString *) date{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];

@@ -190,10 +190,9 @@
     return YES;
 }
 
-+ (BOOL)syncRunningHistories{
++ (BOOL)syncRunningHistories:(NSNumber *)userId{
     if(![RORNetWorkUtils getDoUploadable])return NO;
     NSError *error = nil;
-    NSNumber *userId = [RORUserUtils getUserId];
     NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"RunningHistoryUpdateTime"];
     
     RORHttpResponse *httpResponse =[RORRunHistoryClientHandler getRunHistories:userId withLastUpdateTime:lastUpdateTime];
@@ -209,11 +208,11 @@
         }
         [RORContextUtils saveContext];
         [RORUserUtils saveLastUpdateTime:@"RunningHistoryUpdateTime"];
+            return YES;
     } else {
-        NSLog(@"sync with host error: can't get mission list. Status Code: %d", [httpResponse responseStatus]);
-        return NO;
+        NSLog(@"sync with host error: can't get mission list. Status Code: %d", [httpResponse responseStatus]);  
     }
-    return YES;
+    return NO;
 }
 
 + (BOOL) saveRunInfoToDB:(User_Running_History *)runningHistory{
