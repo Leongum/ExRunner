@@ -14,7 +14,7 @@
 @end
 
 @implementation RORTrainingDetailViewController
-@synthesize plan;
+@synthesize plan, planNext;
 @synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,6 +41,17 @@
 
 -(IBAction)collectAction:(id)sender{
     [RORPlanService collectPlan:plan];
+    UIButton *btn = (UIButton *)sender;
+    btn.enabled = NO;
+    [self refreshCollectButton:btn];
+}
+
+-(void)refreshCollectButton:(UIButton *)btn{
+    if (btn.enabled){
+        [btn setTitle:@"收藏" forState:UIControlStateNormal];
+    } else {
+        [btn setTitle:@"已收藏" forState:UIControlStateNormal];
+    }
 }
 
 -(BOOL)isCollectAvailable{
@@ -54,7 +65,11 @@
 
 -(IBAction)operateAction:(id)sender{
     
-    [RORPlanService startNewPlan:plan.planId];
+    planNext = [RORPlanService startNewPlan:plan.planId];   
+
+    //这里没为planNext判空，不知道会不会有问题
+    
+//    [RORPlanService refreshTrainingNotification:planNext];
     
     UIViewController *viewController = delegate;
     

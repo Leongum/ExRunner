@@ -55,8 +55,8 @@
     }
     traineeList = [RORPlanService getTopUsingByPlanId:planNext.planId withPageNo:[NSNumber numberWithInt:0]];
     for (Plan_Run_History *thisPlanRun in traineeList){
-//        if (thisPlanRun.userId.integerValue == [RORUserUtils getUserId].integerValue)
-//            [traineeList removeObject:thisPlanRun];
+        if (thisPlanRun.userId.integerValue == [RORUserUtils getUserId].integerValue)
+            [traineeList removeObject:thisPlanRun];
     }
     friendPageCount = 1;
     traineePageCount = 1;

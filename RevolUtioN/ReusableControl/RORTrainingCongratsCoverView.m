@@ -34,9 +34,17 @@
 -(void)fillContent{
     [super fillContent];
     if (bestRecord.missionGrade.integerValue!=GRADE_F){
-        titleLabel.text = @"训练完成！";
+        titleLabel.text = @"本次训练完成！";
     } else {
         titleLabel.text = @"完成度不够，下次加油";
+    }
+    Plan_Next_mission *planNext = [RORPlanService fetchUserRunningPlanHistory];
+    if (planNext){
+        awardTitleLabel.text = [NSString stringWithFormat:@"下次训练请在%d天内完成",planNext.nextMission.cycleTime.integerValue];
+        extraAwardLabel.text = @"";
+    } else {
+        extraAwardLabel.text = @"快去专项竞速试试效果吧";
+        awardTitleLabel.text = @"训练已全部完成";
     }
 }
 

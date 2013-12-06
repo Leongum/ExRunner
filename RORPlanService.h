@@ -101,4 +101,9 @@
 +(void)collectPlan:(Plan *)plan;
 
 +(Plan_Collect *)fetchPlanCollect:(NSNumber *) userId withPlanId:(NSNumber *) planId withContext:(BOOL) needContext;
+
++(void)refreshTrainingNotification:(Plan_Next_mission*)planNext;
+
++(int)getCycleTimeofPlanNext:(Plan_Next_mission*)planNext;
+
 @end

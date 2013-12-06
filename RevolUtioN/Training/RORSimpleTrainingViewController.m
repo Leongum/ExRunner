@@ -32,16 +32,18 @@
     
     //两个按钮是否可用
     if ([self isCollectAvailable]){
-        self.collectButton.enabled = 1;
+        self.collectButton.enabled = YES;
+        [self refreshCollectButton:self.collectButton];
         [self.collectButton addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
     }
-    else
-        self.collectButton.enabled = 0;
-    
-    if (planNext)
-        self.operateButton.enabled = 0;
     else {
-        self.operateButton.enabled = 1;
+        self.collectButton.enabled = NO;
+        [self refreshCollectButton:self.collectButton];
+    }
+    if (self.planNext)
+        self.operateButton.enabled = NO;
+    else {
+        self.operateButton.enabled = YES;
         [self.operateButton addTarget:self action:@selector(operateAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     

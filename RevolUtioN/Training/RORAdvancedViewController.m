@@ -35,19 +35,19 @@
     contentList = self.plan.missionList;
     
     if ([self isCollectAvailable]){
-        self.collectButton.enabled = 1;
-        [self.collectButton setTitle:@"收藏" forState:UIControlStateNormal];
+        self.collectButton.enabled = YES;
+        [self refreshCollectButton:self.collectButton];
         [self.collectButton addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     else{
-        [self.collectButton setTitle:@"已收藏" forState:UIControlStateNormal];
-        self.collectButton.enabled = 0;
+        self.collectButton.enabled = NO;
+        [self refreshCollectButton:self.collectButton];
     }
     
-    if (planNext)
-        self.operateButton.enabled = 0;
+    if (self.planNext)
+        self.operateButton.enabled = NO;
     else{
-        self.operateButton.enabled = 1;
+        self.operateButton.enabled = YES;
         [self.operateButton addTarget:self action:@selector(operateAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     

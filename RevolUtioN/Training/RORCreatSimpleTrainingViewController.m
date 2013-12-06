@@ -182,6 +182,7 @@
     mission.suggestionMaxSpeed = [RORUserUtils timePerKM2kmPerHour:highSpeed];
     mission.lastUpdateTime = newPlan.lastUpdateTime;
     mission.sequence = [NSNumber numberWithInt:0];
+    mission.cycleTime = newPlan.duration;
     
     newPlan.missionList = [[NSMutableArray alloc]initWithObjects:mission, nil];
     

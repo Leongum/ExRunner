@@ -153,6 +153,9 @@
     if ([viewController respondsToSelector:@selector(setPlan:)]){
         [viewController setValue:thisPlan forKey:@"plan"];
     }
+    if ([viewController respondsToSelector:@selector(setPlanNext:)]){
+        [viewController setValue:planNext forKey:@"planNext"];
+    }
     if ([viewController respondsToSelector:@selector(setDelegate:)]){
         [viewController setValue:self forKey:@"delegate"];
     }

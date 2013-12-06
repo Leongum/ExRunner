@@ -128,7 +128,7 @@
         [self.view addSubview:congratsCoverView];
         [congratsCoverView show:self];
     }
-    if ((record.missionTypeId.integerValue == SimpleTask || record.missionTypeId.integerValue == ComplexTask) && record.valid.integerValue>0 && [delegate isKindOfClass:[RORRunningBaseViewController class]]){
+    if ((record.missionTypeId.integerValue == SimpleTask || record.missionTypeId.integerValue == ComplexTask) &&  [delegate isKindOfClass:[RORRunningBaseViewController class]]){
         RORTrainingCongratsCoverView *congratsCoverView = [[RORTrainingCongratsCoverView alloc]initWithFrame:self.coverView.frame andLevel:record];
         [self.view addSubview:congratsCoverView];
         [congratsCoverView show:self];

@@ -178,7 +178,8 @@
 
         //提示此次训练还剩几天，后面考虑用一个CustomView实现
         UILabel *leftDays = (UILabel *)[cell viewWithTag:105];
-        leftDays.text = [NSString stringWithFormat:@"%.0f", [planNext.endTime timeIntervalSinceNow]/3600/24];
+        
+        leftDays.text = [NSString stringWithFormat:@"%.0f", [RORPlanService getCycleTimeofPlanNext:planNext]-[planNext.startTime timeIntervalSinceNow]/3600/24];
     } else {
         static NSString *CellIdentifier = @"todoCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

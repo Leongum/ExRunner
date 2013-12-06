@@ -511,7 +511,8 @@
         NSManagedObjectContext *context = [RORContextUtils getShareContext];
         return [NSEntityDescription insertNewObjectForEntityForName:@"Plan_Next_mission" inManagedObjectContext:context];;
     }
-    return [fetchObject objectAtIndex:0];
+    Plan_Next_mission *planNext = (Plan_Next_mission *)[fetchObject objectAtIndex:0];
+    return planNext;
 }
 
 +(Plan_Next_mission *)startNewPlan:(NSNumber *) planId{
@@ -531,6 +532,7 @@
         planRunHistory.startTime = [NSDate date];
         planRunHistory.userId = [RORUserUtils getUserId];
         planRunHistory.operate = [NSNumber numberWithInt:(int)OperateInsert];
+        
         Plan_Next_mission *planNextMission = [self fetchPlanNextMission];
         planNextMission.planId = planId;
         planNextMission.nextMissionId = nextMissionId;
@@ -556,7 +558,10 @@
         planNextMission.planRunUuid = planRunHistory.planRunUuid;
         [RORContextUtils saveContext];
         [self upLoadUserPlanHistory:[RORUserUtils getUserId]];
-        return [self fetchUserRunningPlanHistory];
+        Plan_Next_mission *returnPlanNext = [self fetchUserRunningPlanHistory];
+        //刷新本地提醒
+        [self refreshTrainingNotification:returnPlanNext];
+        return returnPlanNext;
     }
     return nil;
 }
@@ -608,7 +613,11 @@
         }
         [RORContextUtils saveContext];
         [self upLoadUserPlanHistory:[RORUserUtils getUserId]];
-        return [self fetchUserRunningPlanHistory];
+        Plan_Next_mission *returnPlanNext = [self fetchUserRunningPlanHistory];
+        //刷新本地提醒
+        [self refreshTrainingNotification:returnPlanNext];
+
+        return returnPlanNext;
     }
     return nil;
 }
@@ -625,6 +634,10 @@
         planNextMission.nextMissionId = nil;
         [RORContextUtils saveContext];
         [self upLoadUserPlanHistory:[RORUserUtils getUserId]];
+        
+        //停止本地提醒
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        
         return YES;
     }
     return NO;
@@ -693,5 +706,29 @@
         NSLog(@"sync with host error. Status Code: %d", [httpResponse responseStatus]);
     }
     return plans;
+}
+
++(void)refreshTrainingNotification:(Plan_Next_mission*)planNext{
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    if (planNext) {
+        UILocalNotification *notification = [[UILocalNotification alloc]init];
+        NSDate *now = [NSDate date];
+        notification.timeZone = [NSTimeZone defaultTimeZone];
+        int cycleTime = [self getCycleTimeofPlanNext:planNext];
+        for (int i=1; i<cycleTime; i++){
+            notification.fireDate = [now dateByAddingTimeInterval:i*3600*24];
+            notification.applicationIconBadgeNumber = cycleTime-i;
+            [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        }
+        notification.fireDate = [now dateByAddingTimeInterval:cycleTime*3600*24];
+        notification.applicationIconBadgeNumber = 999;
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    }
+}
+
++(int)getCycleTimeofPlanNext:(Plan_Next_mission*)planNext{
+    if (planNext.planInfo.planType.integerValue == PlanTypeEasy)
+        return planNext.planInfo.cycleTime.integerValue;
+    return planNext.nextMission.cycleTime.integerValue;
 }
 @end
