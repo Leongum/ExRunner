@@ -104,12 +104,14 @@
     return speedListString;
 }
 
-+ (NSArray *)getSpeedListFromString:(NSString *)speedListString{
++ (NSMutableArray *)getSpeedListFromString:(NSString *)speedListString{
     NSMutableArray *speedList = [[NSMutableArray alloc]init];
     NSArray *speedStrList = [speedListString componentsSeparatedByString:@","];
     for (int i=0; i<speedStrList.count; i++){
         NSString *thisString = (NSString *)[speedStrList objectAtIndex:i];
-        [speedList addObject:[self getNumberFromId:thisString]];
+        NSNumber *thisNumber = [self getNumberFromId:thisString];
+        if (thisNumber)
+            [speedList addObject:thisNumber];
     }
     return speedList;
 }

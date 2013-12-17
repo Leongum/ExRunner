@@ -68,6 +68,8 @@
 																				duration:duration delegate:delegate 
 																		   startSelector:startSelector stopSelector:stopSelector];
 	[self.layer addAnimation:slideOutAnim forKey:kFTAnimationSlideOut];
+    
+//    [self fadeOut:duration/2 delegate:self];
 }
 
 
@@ -230,6 +232,12 @@
     CAAnimation *anim = [[FTAnimationManager sharedManager] foldAnimationFor:self duration:duration delegate:delegate startSelector:startSelector stopSelector:stopSelector];
     [self.layer addAnimation:anim forKey:kFTAnimationFold];
 }
+
+-(void)contractLeft:(NSTimeInterval)duration percentage:(double)percent delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] contractLeftAnimationFor:self duration:duration percentage:percent delegate:delegate startSelector:startSelector stopSelector:stopSelector];
+    [self.layer addAnimation:anim forKey:kFTAnimationFold];
+}
+
 #pragma mark - Fall In and Fly Out
 
 - (void)fallIn:(NSTimeInterval)duration delegate:(id)delegate {
@@ -277,7 +285,7 @@
 }
 
 -(void)moveRight:(NSTimeInterval)duration length:(double)l delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector{
-    CAAnimation *anim = [[FTAnimationManager sharedManager] moveUpFor:self duration:duration length:l delegate:delegate startSelector:startSelector stopSelector:stopSelector];
+    CAAnimation *anim = [[FTAnimationManager sharedManager] moveRightFor:self duration:duration length:l delegate:delegate startSelector:startSelector stopSelector:stopSelector];
     [self.layer addAnimation:anim forKey:kFTAnimationMoveUp];
 }
 

@@ -7,9 +7,10 @@
 //
 
 #import "RORTrainingViewController.h"
+#import "RORPlanCommentView.h"
 
 @interface RORTrainingDetailViewController : RORTrainingViewController{
-
+    RORPlanCommentView *tipPadView;
 }
 
 @property (strong, nonatomic) Plan *plan;

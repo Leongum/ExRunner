@@ -382,7 +382,8 @@ static inline CGPoint FTAnimationOffscreenCenterPoint(CGRect viewFrame, CGPoint 
  */
 - (CAAnimation *)expandAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector ;
 - (CAAnimation *)foldAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector ;
-
+- (CAAnimation *)contractLeftAnimationFor:(UIView *)view duration:(NSTimeInterval)duration percentage:(double)percent delegate:(id)delegate
+                            startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 
 - (CAAnimation *)upfloatAnimationFor:(UIView *)view rate:(double)rate duration:(NSTimeInterval)duration delegate:(id)delegate
                      startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;

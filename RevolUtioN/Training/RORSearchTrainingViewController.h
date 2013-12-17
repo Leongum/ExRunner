@@ -14,7 +14,6 @@
 
 @interface RORSearchTrainingViewController : RORTrainingViewController{
     double searchViewTop;
-    BOOL expanded;
     BOOL isTableEmpty;
     NSInteger currentPages;
     NSMutableArray *contentList;
@@ -27,7 +26,12 @@
     
 }
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) UIViewController *delegate;
+@property (strong, nonatomic) id delegate;
 @property (strong, nonatomic) IBOutlet UITextField *searchTextField;
+@property (strong, nonatomic) IBOutlet UIImageView *searchTextFieldBg;
+@property (strong, nonatomic) IBOutlet UIButton *expandButton;
+@property (nonatomic) BOOL expanded;
+
+- (IBAction)expandAction:(id)sender;
 
 @end

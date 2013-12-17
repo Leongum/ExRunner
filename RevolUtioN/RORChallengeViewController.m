@@ -53,8 +53,8 @@
     //    levelTable.backgroundColor=[UIColor whiteColor];//[UIColor colorWithRed:231/255 green:8/255 blue:53/255 alpha:1];
     [self.coverView addSubview:levelTable];
     
-    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.coverView andSubViews:YES];
-    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:levelTable andSubViews:YES];
+//    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.coverView andSubViews:YES];
+//    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:levelTable andSubViews:YES];
 }
 
 -(void)initUIControlsAppearance{

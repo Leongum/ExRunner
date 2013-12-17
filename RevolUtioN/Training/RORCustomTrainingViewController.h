@@ -19,5 +19,6 @@
 }
 
 @property (strong, nonatomic) IBOutlet UIView *frameView;
+@property (strong, nonatomic) IBOutlet UIButton *switchButton;
 
 @end

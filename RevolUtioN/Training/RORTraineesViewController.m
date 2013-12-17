@@ -37,16 +37,18 @@
 	// Do any additional setup after loading the view.
     [Animations frameAndShadow:self.partnerView];
     
-    tableViewHeight = 4 * 44;
+    tableViewHeight = 155;
     
-    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, tableViewHeight);
+    self.tableViewContainerView.frame = CGRectMake(self.tableViewContainerView.frame.origin.x, self.tableViewContainerView.frame.origin.y, self.tableViewContainerView.frame.size.width, tableViewHeight);
 
-    self.tableView.alpha = 0;
-    traineeBtnInitY = self.showTraineesButton.center.y;
-    tableViewInitY = self.tableView.center.y;
+    self.tableViewContainerView.alpha = 0;
     
-    tableViewPathLength = traineeBtnInitY - self.showFriendsButton.center.y;
-    traineeBtnPathLength = self.tableView.frame.size.height;
+    traineeBtnInitY = self.showTraineesButton.center.y;
+    tableViewInitY = self.tableViewContainerView.center.y;
+    
+    tableViewPathLength = self.showTraineesButton.frame.origin.y + self.showTraineesButton.frame.size.height - self.showFriendsButton.frame.origin.y - self.showFriendsButton.frame.size.height;
+    
+    traineeBtnPathLength = self.tableViewContainerView.frame.origin.y+self.tableViewContainerView.frame.size.height - tableViewPathLength - self.showFriendsButton.frame.origin.y - self.showFriendsButton.frame.size.height - 2;
     
     friendList = [RORPlanService getTopUsingByUserId:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:0]];
     for (Plan_Run_History *thisPlanRun in friendList){
@@ -54,10 +56,13 @@
 //            [friendList removeObject:thisPlanRun];
     }
     traineeList = [RORPlanService getTopUsingByPlanId:planNext.planId withPageNo:[NSNumber numberWithInt:0]];
+    Plan_Run_History *toDelete;
     for (Plan_Run_History *thisPlanRun in traineeList){
         if (thisPlanRun.userId.integerValue == [RORUserUtils getUserId].integerValue)
-            [traineeList removeObject:thisPlanRun];
+            toDelete = thisPlanRun;
     }
+    [traineeList removeObject:toDelete];
+    
     friendPageCount = 1;
     traineePageCount = 1;
     
@@ -77,8 +82,10 @@
         self.partnerView.alpha = 1;
         fixonPlanRunHistory = [RORPlanService getUserLastUpdatePlan:fixonUserId];
         [self fillCellView:self.partnerView withPlanRunHistory:fixonPlanRunHistory];
+        self.removeFixonButton.alpha = 1;
     } else {
         self.partnerView.alpha = 0;
+        self.removeFixonButton.alpha = 0;
     }
 }
 
@@ -103,37 +110,37 @@
     if (btn == self.showFriendsButton){
         if (showWhich == SHOWWHICH_FRIENDS)
             return;
-        self.tableView.alpha = 0;
-
+        self.tableViewContainerView.alpha = 0;
+        
         showWhich = SHOWWHICH_FRIENDS;
         
         if (self.showTraineesButton.center.y == traineeBtnInitY){
             [Animations moveDown:self.showTraineesButton andAnimationDuration:duration/2 andWait:NO andLength:traineeBtnPathLength];
         }
-        if (self.tableView.center.y==tableViewInitY){
-            [Animations moveUp:self.tableView andAnimationDuration:0 andWait:NO andLength:tableViewPathLength];
+        if (self.tableViewContainerView.center.y==tableViewInitY){
+            [Animations moveUp:self.tableViewContainerView andAnimationDuration:0 andWait:NO andLength:tableViewPathLength];
         }
         contentList = friendList;
         tableCount = friendList.count;
     } else{
         if (showWhich == SHOWWHICH_TRAINEES)
             return;
-        self.tableView.alpha = 0;
-
+        self.tableViewContainerView.alpha = 0;
+        
         showWhich = SHOWWHICH_TRAINEES;
 
         if (!(self.showTraineesButton.center.y == traineeBtnInitY)){
-            [Animations moveUp:self.showTraineesButton andAnimationDuration:duration andWait:YES andLength:traineeBtnPathLength];
+            [Animations moveUp:self.showTraineesButton andAnimationDuration:0 andWait:YES andLength:traineeBtnPathLength];
         }
-        if (!(self.tableView.center.y==tableViewInitY)){
-            [Animations moveDown:self.tableView andAnimationDuration:0 andWait:NO andLength:tableViewPathLength];
+        if (!(self.tableViewContainerView.center.y==tableViewInitY)){
+            [Animations moveDown:self.tableViewContainerView andAnimationDuration:0 andWait:NO andLength:tableViewPathLength];
         }
         contentList = traineeList;
         tableCount = traineeList.count;
         NSLog(@"=================\n%@", traineeList);
     }
     
-    [self.tableView expand:duration delegate:self startSelector:@selector(showTableView) stopSelector:nil];
+    [self.tableViewContainerView expand:duration delegate:self startSelector:@selector(showTableView) stopSelector:nil];
 
 //    if (tableCount>0)
 //        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:tableCount inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
@@ -158,6 +165,7 @@
     self.partnerView.alpha = 1;
     [self.partnerView fadeIn:ANIMATION_DURATION_POPUP delegate:self];
     [self fillCellView:self.partnerView withPlanRunHistory:fixonPlanRunHistory];
+    self.removeFixonButton.alpha = 1;
 }
 
 -(void)fillCellView:(UIView *)view withPlanRunHistory:(Plan_Run_History*)thisPlanRun{
@@ -193,7 +201,7 @@
     popUpView.frame = [self.tableView convertRect:popUpCellView.frame toView:self.view];
     popUpFrom = popUpView.center;
 //    popUpView.frame = CGRectMake(0, 0, popUpView.frame.size.width*1.1, popUpView.frame.size.height*1.1);
-    popUpView.frame = CGRectMake(0, 0, self.partnerView.frame.size.width*1.1, self.partnerView.frame.size.height);
+    popUpView.frame = CGRectMake(0, 0, self.partnerView.frame.size.width*1.05, self.partnerView.frame.size.height*1.1);
 
     popUpView.center = popUpFrom;
     [self.view addSubview:popUpView];
@@ -218,11 +226,11 @@
 }
 
 -(void)showTableView{
-    self.tableView.alpha = 1;
+    self.tableViewContainerView.alpha = 1;
 }
 
 -(void)hideTableView{
-    self.tableView.alpha = 0;
+    self.tableViewContainerView.alpha = 0;
 }
 
 -(IBAction)refreshTableAction:(id)sender{
@@ -231,7 +239,7 @@
         {
             NSMutableArray *newArray = [RORPlanService getTopUsingByUserId:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:friendPageCount++]];
             if (newArray.count==0){
-                traineePageCount = -1;
+                friendPageCount = -1;
             }
             for (Plan_Run_History *thisPlanRun in newArray){
                 if (thisPlanRun.userId.integerValue == [RORUserUtils getUserId].integerValue)
@@ -268,6 +276,8 @@
     NSDictionary *saveDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:-1], @"TrainingFixonUserId", nil];
     [RORUserUtils writeToUserInfoPList:saveDict];
     [self.partnerView flyOut:0.618 delegate:self];
+    
+    self.removeFixonButton.alpha = 0;
 }
 
 

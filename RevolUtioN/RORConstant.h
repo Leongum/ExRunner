@@ -69,12 +69,14 @@
 #define CHN_PRINT_FONT @""
 #define CHN_WRITTEN_FONT @""
 #define ENG_WRITTEN_FONT @""
-#define ENG_PRINT_FONT @"Electronic Highway Sign"
+//#define ENG_PRINT_FONT @"Electronic Highway Sign"
+#define ENG_PRINT_FONT @""
 #define ENG_GAME_FONT @"EnterSansmanBoldItalic"
 
 #define PLAN_PAGE_SIZE 10
 #define FRIENDS_PAGE_SIZE 10
 
+#define COLOR_MOSS [UIColor colorWithRed:0 green:128.f/255.f blue:64.f/255.f alpha:1]
 #endif
 
 typedef enum {Challenge = 0, Recommand = 1, Cycle = 2, SubCycle = 3, NormalRun = 4, SimpleTask = 5, ComplexTask = 6} MissionTypeEnum;

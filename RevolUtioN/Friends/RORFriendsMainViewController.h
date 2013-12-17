@@ -22,5 +22,6 @@
 @property (strong, nonatomic) IBOutlet UIView *searchFriendView;
 @property (strong, nonatomic) IBOutlet UITextField *searchTextField;
 @property (strong, nonatomic) IBOutlet UILabel *searchResultUserNameLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *tableViewContainer;
 @property (strong, nonatomic) IBOutlet UILabel *searchResultUserLvLabel;
 @end

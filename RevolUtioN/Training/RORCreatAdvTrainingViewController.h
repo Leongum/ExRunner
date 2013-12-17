@@ -32,6 +32,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *lowSpeedLabel;
 @property (strong, nonatomic) IBOutlet UIButton *highSpeedLabel;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *trainingTypeSegment;
+@property (strong, nonatomic) IBOutlet UIImageView *trainingTypeSegmentBg;
 
 @property (strong, nonatomic) IBOutlet UIButton *add2ListButton;
 

@@ -334,7 +334,7 @@
 }
 
 -(IBAction)userInfoViewClick:(id)sender{
-    [self sendNotification:[RORUtils addEggache:[RORUserUtils getUserId]]];
+    [self sendNotification:[NSString stringWithFormat:@"用户编号\n%@",[RORUtils addEggache:[RORUserUtils getUserId]]]];
 }
 
 - (IBAction)normalRunAction:(id)sender {
@@ -347,7 +347,7 @@
     [self sendNotification:@"【装备商城】\n\n正在哼哧哼哧开发中"];
 }
 - (IBAction)friendsUnderDeveloping:(id)sender {
-    [self sendNotification:@"【我的跑友】\n\n正在窟嚓窟嚓开发中"];
+//    [self sendNotification:@"【我的跑友】\n\n正在窟嚓窟嚓开发中"];
 }
 
 - (IBAction)trainingAction:(id)sender {

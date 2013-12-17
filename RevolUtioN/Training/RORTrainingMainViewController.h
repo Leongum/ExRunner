@@ -14,6 +14,8 @@
     NSArray *contentList;
     Plan_Next_mission *planNext;
     NSArray *historyList;
+    
+    NSIndexPath *todoCellIndex;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *currentPlanView;
@@ -23,4 +25,9 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *TrainingNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *process;
+@property (strong, nonatomic) IBOutlet UILabel *trainingIdLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *trainingMainBg;
+
+@property (strong, nonatomic) IBOutlet UIButton *giveUpButton;
+
 @end

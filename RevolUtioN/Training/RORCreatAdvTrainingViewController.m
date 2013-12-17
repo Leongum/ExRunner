@@ -197,6 +197,11 @@
 
 - (IBAction)trainingTypeChangedAction:(id)sender {
     trainingType = self.trainingTypeSegment.selectedSegmentIndex;
+    if (trainingType == 0){
+        [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg.png"]];
+    } else {
+        [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg1.png"]];
+    }
     [self initControls];
 }
 
@@ -335,11 +340,11 @@
     UILabel *speedLabel = (UILabel*)[cell viewWithTag:103];
     
     sequenceLabel.text = [NSString stringWithFormat:@"%d", indexPath.row+1];
-    if (indexPath.row ==0){
-        dateCommentLabel.text = [NSString stringWithFormat:@"接受训练后的%d天内完成",thisMission.cycleTime.integerValue];
-    } else {
-        dateCommentLabel.text = [NSString stringWithFormat:@"上次训练完成后的%d天内完成", thisMission.cycleTime.integerValue];
-    }
+//    if (indexPath.row ==0){
+        dateCommentLabel.text = [NSString stringWithFormat:@"%d",thisMission.cycleTime.integerValue];
+//    } else {
+//        dateCommentLabel.text = [NSString stringWithFormat:@"上次训练完成后的%d天内完成", thisMission.cycleTime.integerValue];
+//    }
     if (thisMission.missionDistance.doubleValue>=0) {
         trainingContentLabel.text = [NSString stringWithFormat:@"定距跑：%@",[RORUtils outputDistance:thisMission.missionDistance.doubleValue]];
     } else {

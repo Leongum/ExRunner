@@ -8,13 +8,14 @@
 
 #import "RORSearchTrainingViewController.h"
 #import "FTAnimation.h"
+#import "RORBookletViewController.h"
 
 @interface RORSearchTrainingViewController ()
 
 @end
 
 @implementation RORSearchTrainingViewController
-@synthesize delegate;
+@synthesize delegate, expanded;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,12 +36,21 @@
     currentPages = 0;
     noMoreData = NO;
     searching = 0;
-    collectList = [RORPlanService fetchPlanCollect:[RORUserUtils getUserId]];
     planNext = [RORPlanService fetchUserRunningPlanHistory];
-
+    [Animations roundedCorners:self.tableView];
     
     contentList = [[NSMutableArray alloc]init];
     [self loadTableViewData:currentPages++];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    collectList = [RORPlanService fetchPlanCollect:[RORUserUtils getUserId]];
+    [self.tableView reloadData];
+}
+
+-(void)reloadTableViewAction{
+    collectList = [RORPlanService fetchPlanCollect:[RORUserUtils getUserId]];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,10 +67,13 @@
         searchViewTop = f.origin.y;
         [self.view moveUp:0.5 length:-searchViewTop delegate:self];
         self.view.frame = CGRectMake(f.origin.x, 0, f.size.width, f.size.height);
+        [self.expandButton setTitle:@"收起" forState:UIControlStateNormal];
+        [self reloadTableViewAction];
     } else {
         expanded = NO;
         [self.view moveUp:0.5 length:searchViewTop delegate:self];
         self.view.frame = CGRectMake(f.origin.x, searchViewTop, f.size.width, f.size.height);
+        [self.expandButton setTitle:@"添加" forState:UIControlStateNormal];
     }
 }
 
@@ -95,7 +108,7 @@
 
 - (IBAction)prepare4SearchAction:(id)sender {
 //    [self.searchTextField popUp:0.5 delegate:self targetPoint:self.searchTextField.center];
-    [Animations frameAndShadow:self.searchTextField];
+    [Animations frameAndShadow:self.searchTextFieldBg];
 }
 
 - (IBAction)doSearchAction:(id)sender {
@@ -130,7 +143,7 @@
 
 - (IBAction)hideKeyboard:(id)sender {
     [self.searchTextField resignFirstResponder];
-    [Animations removeFrameAndShadow:self.searchTextField];
+    [Animations removeFrameAndShadow:self.searchTextFieldBg];
 }
 
 -(BOOL)isCollectAvailable:(Plan *)plan{
@@ -141,13 +154,21 @@
 }
 
 -(void)operateAction:(Plan *)plan{
-    
-    [RORPlanService startNewPlan:plan.planId];
-    
+    if ([RORUserUtils getUserId].integerValue>0)
+        [RORPlanService startNewPlan:plan.planId];
+    else
+        [self sendAlart:@"请先登录"];
 }
 
 -(void)collectAction:(Plan *)plan{
-    [RORPlanService collectPlan:plan];
+    if ([RORUserUtils getUserId].integerValue>0){
+        [RORPlanService collectPlan:plan];
+        if ([delegate respondsToSelector:@selector(reloadTableViewAction:)]){
+            [delegate reloadTableViewAction:self];
+        }
+        [self.tableView reloadData];
+    } else
+        [self sendAlart:@"请先登录"];
 }
 
 
@@ -180,27 +201,24 @@
     if (planType.integerValue == PlanTypeEasy){
         static NSString *CellIdentifier = @"simpleTrainingCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        UILabel *timesLabel = (UILabel *)[cell viewWithTag:CELLTAG_TIMES];
-
-        timesLabel.text = [NSString stringWithFormat:@"%@次/%@天",thisPlan.totalMissions, thisPlan.durationLast];
-        
-        
     } else if (planType.integerValue == PlanTypeComplex){
         static NSString *CellIdentifier = @"advTrainingCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//        for (NSNumber *missionID in thisPlan.missionList){
-//            Plan *detailPlan = [RORPlanService fetchPlan:missionID];
-//        }
-        UILabel *timesLabel = (UILabel *)[cell viewWithTag:CELLTAG_TIMES];
-        timesLabel.text = [NSString stringWithFormat:@"%@次",thisPlan.totalMissions];
-
     }
+    UILabel *timesLabel = (UILabel *)[cell viewWithTag:CELLTAG_TIMES];
+    timesLabel.text = [NSString stringWithFormat:@"共%@次训练",thisPlan.totalMissions];
+    
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:CELLTAG_TITLE];
     titleLabel.text = thisPlan.planName;
     UIView *note = (UIView *)[cell viewWithTag:102];
     BOOL showNote = [self isCollectAvailable:thisPlan];
     note.alpha = showNote;
-
+    
+    UIImageView *certified = (UIImageView *)[cell viewWithTag:105];
+    certified.alpha = thisPlan.sharedPlan.integerValue == SharedPlanSystem;
+    UILabel *planIdLabel = (UILabel *)[cell viewWithTag:101];
+    planIdLabel.text = [NSString stringWithFormat:@"编号：%@", thisPlan.planId];
+    
 //    if (showNote)
 //        note.alpha = 1;
 //    else
@@ -249,10 +267,12 @@
 
     if (planNext){
         [self collectAction:plan];
-        [self.tableView reloadData];
+        [self reloadTableViewAction];
+//        [self.tableView reloadData];
     } else {
         [self operateAction:plan];
-        [self.tableView reloadData];
+        [self reloadTableViewAction];
+//        [self.tableView reloadData];
     }
 }
 @end

@@ -208,7 +208,7 @@
 }
 
 + (void) roundedCorners: (UIView *) view{
-    view.layer.cornerRadius = 5;
+    view.layer.cornerRadius = 10;
     view.layer.masksToBounds = YES;
 }
 

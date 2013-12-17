@@ -38,13 +38,13 @@
 #define STATISTICS_SPEED_MESSAGE(region) [RORSystemService getSystemMessage:[NSNumber numberWithDouble:23] withRegion:(region)]
 #define STATISTICS_CALORIE_MESSAGE(region) [RORSystemService getSystemMessage:[NSNumber numberWithDouble:24] withRegion:(region)]
 
-#define CANCEL_BUTTON @"知道呢！"
+#define CANCEL_BUTTON @"知道啦！"
 #define SEARCHING_LOCATION @"定位中..."
-#define START_RUNNING_BUTTON @"走你"
+#define START_RUNNING_BUTTON @"开始"
 #define CANCEL_RUNNING_BUTTON @"取消"
 #define FINISH_RUNNING_BUTTON @"完成"
 #define PAUSSE_RUNNING_BUTTON @"歇会儿"
-#define CONTINUE_RUNNING_BUTTON @"再走你"
+#define CONTINUE_RUNNING_BUTTON @"继续"
 #define ALERT_VIEW_TITEL @"提示"
 #define LOGOUT_ALERT_TITLE @"注销"
 #define LOGOUT_ALERT_CONTENT @"确定要注销吗？"

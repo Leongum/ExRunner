@@ -37,6 +37,7 @@
         self.titleLabel.text = [NSString stringWithFormat:@"计时跑：%@", [RORUtils transSecondToStandardFormat:thisMission.missionTime.doubleValue]];
         trainingType = TrainingContentTypeDuration;
     }
+    self.suggestedSpeed.text = [NSString stringWithFormat:@"配速：%@ ~ %@", [RORUserUtils formatedSpeed:thisMission.suggestionMaxSpeed.doubleValue], [RORUserUtils formatedSpeed:thisMission.suggestionMinSpeed.doubleValue]];
     finishSound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"running_end1.mp3"];
     last10Min = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"last_kilo.mp3"];
     
@@ -76,7 +77,7 @@
     planRunningHistory = [Plan_Run_History intiUnassociateEntity];
     runHistory.missionTypeId = thisMission.missionTypeId;
     runHistory.grade = [self calculateTrainingGrade];
-    if (runHistory.grade.integerValue!= GRADE_F && runHistory.valid.integerValue>0){
+    if (runHistory.grade.integerValue!= GRADE_F){// && runHistory.valid.integerValue>0){
         [RORPlanService gotoNextMission:planNext.planRunUuid];
     }
     

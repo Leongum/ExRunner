@@ -31,17 +31,34 @@
     
     self.titleLabel.text = self.plan.planName;
     self.planIdLabel.text = [NSString stringWithFormat:@"训练编号：%@",self.plan.planId];
-
+    
+    if (self.plan.sharedPlan.integerValue == SharedPlanSystem){
+        self.certifiedIcon.alpha = 1;
+//        self.composerLabel.alpha = 0;
+        self.descriptionLabel.text = @"";//以后填
+    } else {
+        self.certifiedIcon.alpha = 0;
+//        self.composerLabel.alpha = 1;
+//        self.composerLabel.text = [NSString stringWithFormat:@"创建者：%@", self.plan.planShareUserName];
+        self.descriptionLabel.text = [NSString stringWithFormat:@"创建者：%@(%@)", self.plan.planShareUserName, [RORUtils addEggache:self.plan.planShareUserId]];
+    }
+    
     contentList = self.plan.missionList;
     
+    [self.collectButton setTitle:@"收藏" forState:UIControlStateNormal];
+    [self.collectButton setTitle:@"已收藏" forState:UIControlStateDisabled];
+
+    [self.collectButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.collectButton setTitleColor:COLOR_MOSS forState:UIControlStateDisabled];
+    [self.operateButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.operateButton setTitleColor:COLOR_MOSS forState:UIControlStateDisabled];
+
     if ([self isCollectAvailable]){
         self.collectButton.enabled = YES;
-        [self refreshCollectButton:self.collectButton];
         [self.collectButton addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     else{
         self.collectButton.enabled = NO;
-        [self refreshCollectButton:self.collectButton];
     }
     
     if (self.planNext)
@@ -53,6 +70,14 @@
     
     
     [self.collectButton addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    if (self.plan.planDescription)
+        self.infoButton.alpha = 1;
+    else
+        self.infoButton.alpha = 0;
+    
+    tipPadView = [[RORPlanCommentView alloc]initWithFrame:self.view.frame andY:self.infoButton.frame.origin.y+self.infoButton.frame.size.height];
+    [self.view addSubview:tipPadView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,6 +86,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)showInfoAction:(id)sender {
+    [tipPadView showComment:self.plan.planDescription];
+}
 
 #pragma mark - Table view data source
 
@@ -84,11 +112,7 @@
     UILabel *speedLabel = (UILabel*)[cell viewWithTag:103];
     
     sequenceLabel.text = [NSString stringWithFormat:@"%d", indexPath.row+1];
-    if (indexPath.row ==0){
-        dateCommentLabel.text = [NSString stringWithFormat:@"接受训练后的%d天内完成",thisMission.cycleTime.integerValue];
-    } else {
-        dateCommentLabel.text = [NSString stringWithFormat:@"上次训练完成后的%d天内完成", thisMission.cycleTime.integerValue];
-    }
+    dateCommentLabel.text = [NSString stringWithFormat:@"%d",thisMission.cycleTime.integerValue];
     if (thisMission.missionDistance.doubleValue>=0) {
         trainingContentLabel.text = [NSString stringWithFormat:@"定距跑：%@",[RORUtils outputDistance:thisMission.missionDistance.doubleValue]];
     } else {

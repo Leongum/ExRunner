@@ -22,5 +22,6 @@
 
 @property (strong, nonatomic)     Mission *thisMission;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *suggestedSpeed;
 
 @end

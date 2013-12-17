@@ -10,6 +10,7 @@
 #import "RORRunHistoryServices.h"
 #import "RORPageViewController.h"
 #import "RORFiveCounterView.h"
+#import "RORPlanService.h"
 
 @interface RORStatisticsViewController : RORPageViewController{
     double totalDistance, avgSpeed, totalCalorie, totalChallengeNum;
@@ -22,12 +23,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *totalSpeedLabel;
 @property (strong, nonatomic) IBOutlet UILabel *totalCalorieLabel;
 @property (strong, nonatomic) IBOutlet UIScrollView *containerView;
-@property (strong, nonatomic) IBOutlet UILabel *distanceCommentLabel;
-@property (strong, nonatomic) IBOutlet UILabel *speedCommentLabel;
-@property (strong, nonatomic) IBOutlet UILabel *calorieCommentLabel;
 @property (strong, nonatomic) IBOutlet UILabel *totalChallenge;
 @property (strong, nonatomic) IBOutlet UIView *challengeStatisView;
+@property (strong, nonatomic) IBOutlet UILabel *totalTraining;
 
-@property (strong, nonatomic) IBOutlet RORFiveCounterView *counter_S;
 
 @end

@@ -15,10 +15,7 @@
 #import "RORPlaySound.h"
 #import "SVProgressHUD.h"
 
-//#define BACKBUTTON_FRAME_NORMAL CGRectMake(25, 375, 44, 44)
-//#define BACKBUTTON_FRAME_RETINA CGRectMake(25, 460, 44, 44)
-//#define BACKBUTTON_FRAME_TOP CGRectMake(0, 15, 55, 55)
-#define BACKBUTTON_FRAME_TOP CGRectMake(10, 10, 55, 55)
+#define BACKBUTTON_FRAME_TOP CGRectMake(0, 0, 70, 70)
 
 @interface RORViewController : UIViewController{
     RORNotificationView *notificationView;

@@ -287,6 +287,28 @@
     }
 }
 
++(void)setSystemFontSize:(double)fontSize forView:(UIView*)view andSubViews:(BOOL)isSubViews
+{
+    if ([view isKindOfClass:[UILabel class]])
+    {
+        UILabel *lbl = (UILabel *)view;
+        [lbl setFont:[UIFont systemFontOfSize:fontSize]];
+    }
+    
+    if ([view isKindOfClass:[UIButton class]]) {
+        UIButton *btn = (UIButton *)view;
+        [btn.titleLabel setFont:[UIFont systemFontOfSize:fontSize]];
+    }
+    
+    if (isSubViews)
+    {
+        for (UIView *sview in view.subviews)
+        {
+            [self setSystemFontSize:fontSize forView:sview andSubViews:YES];
+        }
+    }
+}
+
 +(void)listFontFamilies
 {
     NSArray* familys = [UIFont familyNames];

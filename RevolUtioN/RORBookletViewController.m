@@ -37,9 +37,11 @@
     searchViewController =  [storyboard instantiateViewControllerWithIdentifier:@"searchViewController"];
     CGRect frame = self.view.frame;
     frame.origin.x = 0;
-    frame.origin.y = 55-frame.size.height;
+    frame.origin.y = frame.size.height*3/23 -frame.size.height;
+
     searchViewController.view.frame = frame;
     searchViewController.delegate = self;
+    [Animations frameAndShadow:searchViewController.view];
     
     [self addChildViewController:searchViewController];
     [self.view addSubview:searchViewController.view];
@@ -57,6 +59,17 @@
     contentList = [RORPlanService fetchPlanCollect:userId];
     historyList = [RORPlanService fetchUserPlanHistoryList:userId];
     [self.tableView reloadData];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    if (contentList.count==0 && !searchViewController.expanded){
+        [searchViewController expandAction:self];
+    }
+}
+
+-(IBAction)reloadTableViewAction:(id)sender{
+    [self viewWillAppear:YES];
+    [self.tableViewBg pop:0.5 delegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,19 +131,23 @@
     }
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:100];
     titleLabel.text = thisPlan.planName;
-    UILabel *statusLabel = (UILabel *)[cell viewWithTag:103];
-    switch (status) {
-        case 0:
-            statusLabel.text = @"已完成";
-            break;
-        case 1:
-            statusLabel.text = @"执行中";
-            break;
-        case 2:
-            statusLabel.text = @"关注中";
-        default:
-            break;
-    }
+//    UILabel *statusLabel = (UILabel *)[cell viewWithTag:103];
+//    switch (status) {
+//        case 0:
+//            statusLabel.text = @"已完成";
+//            break;
+//        case 1:
+//            statusLabel.text = @"执行中";
+//            break;
+//        case 2:
+//            statusLabel.text = @"关注中";
+//        default:
+//            break;
+//    }
+    UIImageView *certified = (UIImageView *)[cell viewWithTag:102];
+    certified.alpha = thisPlan.sharedPlan.integerValue == SharedPlanSystem;
+    UILabel *planIdLabel = (UILabel *)[cell viewWithTag:101];
+    planIdLabel.text = [NSString stringWithFormat:@"编号：%@", thisPlan.planId];
     
     return cell;
 }

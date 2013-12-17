@@ -223,7 +223,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
 	animation.toValue = [NSValue valueWithCGPoint:FTAnimationOutOfViewCenterPoint(view.superview.bounds, view.frame, view.center, direction)];
 	return [self animationGroupFor:[NSArray arrayWithObject:animation] withView:view duration:duration 
 						  delegate:delegate startSelector:startSelector stopSelector:stopSelector 
-							  name:kFTAnimationSlideOut type:kFTAnimationTypeOut];
+							  name:kFTAnimationSlideOut type:kFTAnimationTypeIn];
 }
 
 
@@ -682,30 +682,56 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
     CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale.y"];
     scale.duration = duration;
     scale.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0f],
-                    [NSNumber numberWithFloat:1.02f],
+//                    [NSNumber numberWithFloat:1.02f],
                     [NSNumber numberWithFloat:.0f],
                     nil];
     
-    CGPoint path[3] = {
+    CGPoint path[2] = {
         CGPointMake(view.center.x, view.center.y),
-        CGPointMake(view.center.x, view.center.y + view.frame.size.height*0.02/2),
+//        CGPointMake(view.center.x, view.center.y + view.frame.size.height*0.02/2),
         CGPointMake(view.center.x, view.center.y - view.frame.size.height/2)
     };
     
     CAKeyframeAnimation *pos = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef thePath = CGPathCreateMutable();
-    CGPathAddLines(thePath, NULL, path, 3);
+    CGPathAddLines(thePath, NULL, path, 2);
 	pos.path = thePath;
 	CGPathRelease(thePath);
     
     CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObjects:scale, pos, nil] withView:view duration:duration
                                              delegate:delegate startSelector:startSelector stopSelector:stopSelector
-                                                 name:kFTAnimationFold type:kFTAnimationTypeOut];
+                                                 name:kFTAnimationFold type:kFTAnimationType];
     group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     return group;
 }
 
-
+- (CAAnimation *)contractLeftAnimationFor:(UIView *)view duration:(NSTimeInterval)duration percentage:(double)percent delegate:(id)delegate
+                    startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
+    CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale.x"];
+    scale.duration = duration;
+    scale.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0f],
+                    //                    [NSNumber numberWithFloat:1.02f],
+                    [NSNumber numberWithFloat:percent],
+                    nil];
+    
+    CGPoint path[2] = {
+        CGPointMake(view.center.x, view.center.y),
+        //        CGPointMake(view.center.x, view.center.y + view.frame.size.height*0.02/2),
+        CGPointMake(view.center.x - (view.frame.size.width/2 - view.frame.size.width*percent/2), view.center.y)
+    };
+    
+    CAKeyframeAnimation *pos = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    CGMutablePathRef thePath = CGPathCreateMutable();
+    CGPathAddLines(thePath, NULL, path, 2);
+	pos.path = thePath;
+	CGPathRelease(thePath);
+    
+    CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObjects:scale, pos, nil] withView:view duration:duration
+                                             delegate:delegate startSelector:startSelector stopSelector:stopSelector
+                                                 name:kFTAnimationFold type:kFTAnimationType];
+    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    return group;
+}
 
 - (CAAnimation *)upfloatAnimationFor:(UIView *)view rate:(double)rate duration:(NSTimeInterval)duration delegate:(id)delegate
                     startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {

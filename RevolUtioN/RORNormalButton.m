@@ -31,8 +31,8 @@
     [self addTarget:self action:@selector(pressOn:) forControlEvents:UIControlEventTouchDown];
     [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpInside];
     [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpOutside];
-    self.adjustsImageWhenDisabled = NO;
-    self.adjustsImageWhenHighlighted = NO;
+//    self.adjustsImageWhenDisabled = NO;
+    self.adjustsImageWhenHighlighted = YES;
     sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"bo.wav"];
 }
 
@@ -46,12 +46,12 @@
 */
 
 -(IBAction)pressOn:(id)sender{
-    self.transform = CGAffineTransformMakeScale(0.9, 0.85);
+    self.transform = CGAffineTransformMakeScale(1, 0.85);
 }
 
 -(IBAction)touchUp:(id)sender{
     self.transform = CGAffineTransformMakeScale(1, 1);
-    [sound play];
+//    [sound play];
 }
 
 -(IBAction)touchDrag:(id)sender{

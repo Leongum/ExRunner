@@ -31,9 +31,13 @@
     noMoreData = NO;
     pageCount = 0;
     [RORUserServices syncFollowersDetails:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:pageCount]];
-    contentList = [RORUserServices fetchFollowersDetails:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:pageCount++]];
+    contentList = [[NSMutableArray alloc]init];
+    [contentList addObjectsFromArray:[RORUserServices fetchFollowersDetails:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:pageCount++]]];
     latestPage = contentList;
     self.addButton.enabled = 0;
+    
+    [Animations frameAndShadow:self.searchFriendView];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,8 +51,13 @@
 }
 
 - (IBAction)editingDidBegin:(id)sender {
-    [Animations frameAndShadow:self.searchTextField];
+//    [Animations frameAndShadow:self.searchTextField];
     self.searchTextField.text = @"";
+}
+
+-(void)viewWillDisAppear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.tableView setEditing:NO];
 }
 
 -(void)initSearchField{
@@ -71,6 +80,7 @@
     } else {
         [self.searchFriendView moveUp:0.5 length:searchViewTop delegate:self];
         self.searchFriendView.frame = CGRectMake(f.origin.x, searchViewTop, f.size.width, f.size.height);
+        [self.searchTextField resignFirstResponder];
     }
 }
 
@@ -92,19 +102,20 @@
 }
 
 -(void)refreshAddButton{
+    self.addButton.alpha = 1;
     if (userInfo.userId.integerValue == [RORUserUtils getUserId].integerValue ){
         [self.addButton setTitle:@"添加" forState:UIControlStateNormal];
         self.addButton.enabled = 0;
         return;
     }
-    if ([RORPlanService fetchUserFollow:[RORUserUtils getUserId] withFollowerId:userInfo.userId]){
+    Plan_User_Follow *userFollow = [RORPlanService fetchUserFollow:[RORUserUtils getUserId] withFollowerId:userInfo.userId];
+    if (userFollow && userFollow.status.integerValue == FollowStatusFollowed){
         [self.addButton setTitle:@"已添加" forState:UIControlStateNormal];
         self.addButton.enabled = 0;
         return;
     }
     
     [self.addButton setTitle:@"添加" forState:UIControlStateNormal];
-    self.addButton.alpha = 1;
     self.addButton.enabled = 1;
 }
 
@@ -120,12 +131,12 @@
     userFollow.status = [NSNumber numberWithInt:FollowStatusFollowed];
     [RORPlanService updateUserFollow:userFollow];
     self.addButton.enabled = 0;
-    [self.tableView pop:0.5 delegate:self];
+    [self.tableViewContainer pop:0.5 delegate:self];
     [self reloadTableView];
 }
 
 -(void)reloadTableView{
-    [contentList removeAllObjects];
+    contentList = [[NSMutableArray alloc]init];
     for (int i=0; i<pageCount; i++){
          [contentList addObjectsFromArray:[RORUserServices fetchFollowersDetails:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:pageCount]]];
     }
@@ -177,7 +188,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row<contentList.count)
-        return 55;
+        return 77;
     return 50;
 }
 

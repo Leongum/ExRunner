@@ -96,9 +96,16 @@
         self.totalSpeedLabel.text = NO_HISTORY;
     }
     
-    self.distanceCommentLabel.text = STATISTICS_DISTANCE_MESSAGE([NSNumber numberWithDouble:totalDistance/1000]);
-    self.speedCommentLabel.text = STATISTICS_SPEED_MESSAGE([NSNumber numberWithDouble:avgSpeed]);
-    self.calorieCommentLabel.text = STATISTICS_CALORIE_MESSAGE([NSNumber numberWithDouble:totalCalorie]);
+//    self.distanceCommentLabel.text = STATISTICS_DISTANCE_MESSAGE([NSNumber numberWithDouble:totalDistance/1000]);
+//    self.speedCommentLabel.text = STATISTICS_SPEED_MESSAGE([NSNumber numberWithDouble:avgSpeed]);
+//    self.calorieCommentLabel.text = STATISTICS_CALORIE_MESSAGE([NSNumber numberWithDouble:totalCalorie]);
+    NSArray *historyList = [RORPlanService fetchUserPlanHistoryList:[RORUserUtils getUserId]];
+    int sum = 0;
+    for (Plan_Run_History *history in historyList){
+        sum += history.totalMissions.integerValue - history.remainingMissions.integerValue;
+    }
+    self.totalTraining.text = [NSString stringWithFormat:@"%d", sum];
+
 }
 
 -(void)initChallengeTable{
@@ -120,7 +127,7 @@
     self.totalDistanceLabel.alpha =1;
     self.totalCalorieLabel.alpha = 1;
     self.challengeStatisView.alpha = 1;
-    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.totalSpeedLabel andSubViews:NO];
+//    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.totalSpeedLabel andSubViews:NO];
 }
 
 -(void)hideContents{
@@ -131,7 +138,7 @@
     self.totalDistanceLabel.alpha =0;
     self.totalCalorieLabel.alpha = 0;
     self.challengeStatisView.alpha = 0;
-    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.totalSpeedLabel andSubViews:NO];
+//    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.totalSpeedLabel andSubViews:NO];
 }
 
 - (void)viewDidUnload {

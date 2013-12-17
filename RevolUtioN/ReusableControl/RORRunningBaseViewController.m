@@ -102,7 +102,7 @@
 
 -(void)pushAvgSpeedPerKM{
     if (((int)distance/1000) > avgSpeedPerKMList.count){
-        [avgSpeedPerKMList addObject:[NSNumber numberWithDouble:3600/timeOfLatest1KM]];
+        [avgSpeedPerKMList addObject:[NSNumber numberWithDouble:timeOfLatest1KM]];
 //        //debug
 //        NSLog(@"第%d km用时:%.2f,平均速度为:%@", avgSpeedPerKMList.count, timeOfLatest1KM, [avgSpeedPerKMList objectAtIndex:avgSpeedPerKMList.count-1]);
         

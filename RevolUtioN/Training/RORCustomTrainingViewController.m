@@ -60,43 +60,63 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)switchTrainingType:(id)sender {
-    [self.frameView upfloat:1 rate:1.1f delegate:self];
+    UIView *newView;
     
-    UIView *newView = (currentView == simpleView?advView:simpleView);
+    if (currentView == simpleView){
+        [self.switchButton setBackgroundImage:[UIImage imageNamed:@"creatTrainingSwitchButton1_bg.png"] forState:UIControlStateNormal];
+        newView = advView;
+    } else {
+        [self.switchButton setBackgroundImage:[UIImage imageNamed:@"creatTrainingSwitchButton_bg.png"] forState:UIControlStateNormal];
+        newView = simpleView;
+    }
     
-    [UIView beginAnimations:@"animation" context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//    [self.frameView upfloat:1 rate:1.1f delegate:self];
     
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.frameView cache:YES];
+//    [UIView beginAnimations:@"animation" context:nil];
+//    [UIView setAnimationDuration:0.5];
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//    
+//    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.frameView cache:YES];
 
+//    currentView.alpha = 0;
+//    [self.frameView fold:0.3 delegate:self startSelector:nil stopSelector:@selector(expandView:)];
+    [self.frameView expand:0.6 delegate:self];
+//    [self.frameView slideInFrom:kFTAnimationTop duration:0.5 delegate:self];
     [currentView removeFromSuperview];
     [self.frameView addSubview:newView];
     
-    [UIView commitAnimations];
+    
+//    [UIView commitAnimations];
 
     currentView = newView;
 }
 
+-(IBAction)expandView:(id)sender{
+    currentView.alpha = 1;
+}
+
 - (IBAction)submitAction:(id)sender {
-    Plan *newPlan;
-    if (currentView == simpleView){
-        newPlan = [simpleViewController createNewSimplePlan];
-    }
-    else if (currentView == advView){
-        newPlan = [advViewController createNewAdvancedPlan];
-        NSLog(@"new created plan:======\n%@", newPlan);
-    }
-    
-    if (!newPlan)
-        return;
-    
-    newPlan = [RORPlanService createSelfPlan:newPlan];
-    NSLog(@"after syncronized new created plan:======\n%@", newPlan);
-    if (newPlan){
-        [self sendSuccess:@"创建成功！\n已添加至[我的收藏]"];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+    if ([RORUserUtils getUserId].integerValue>0){
+        Plan *newPlan;
+        if (currentView == simpleView){
+            newPlan = [simpleViewController createNewSimplePlan];
+        }
+        else if (currentView == advView){
+            newPlan = [advViewController createNewAdvancedPlan];
+            NSLog(@"new created plan:======\n%@", newPlan);
+        }
+        
+        if (!newPlan)
+            return;
+        
+        newPlan = [RORPlanService createSelfPlan:newPlan];
+        NSLog(@"after syncronized new created plan:======\n%@", newPlan);
+        if (newPlan){
+            [self sendSuccess:@"创建成功！\n已添加至[我的收藏]"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } else
+        [self sendAlart:@"请先登录"];
 }
 
 @end

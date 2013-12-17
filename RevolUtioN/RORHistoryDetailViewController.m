@@ -11,6 +11,7 @@
 #import "RORDBCommon.h"
 #import "RORUtils.h"
 #import "RORShareService.h"
+#import "FTAnimation.h"
 
 #define ROUTE_NORMAL 0
 #define ROUTE_SHADOW 1
@@ -24,7 +25,7 @@
 }
 
 @synthesize mapView, routeLine, routeLineView;
-@synthesize distanceLabel, speedLabel, durationLabel, energyLabel, weatherLabel, scoreLabel, experienceLabel, bonusLabel;
+@synthesize distanceLabel, speedButton, durationLabel, energyLabel, weatherLabel, scoreLabel, experienceLabel, bonusLabel;
 @synthesize record;
 @synthesize coverView;
 @synthesize delegate;
@@ -44,6 +45,8 @@
 //===============================================
 - (void)viewDidLoad
 {
+    self.iconContainerView.alpha = 0;
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 //    NSLog(@"%@", record);
@@ -55,7 +58,10 @@
     }
 
     distanceLabel.text = [RORUtils outputDistance:record.distance.doubleValue];
-    speedLabel.text = [RORUserUtils formatedSpeed:record.avgSpeed.doubleValue];
+    //init speed button;
+    [speedButton setTitle:[RORUserUtils formatedSpeed:record.avgSpeed.doubleValue] forState:UIControlStateNormal];
+    [speedButton addTarget:self action:@selector(showKMSpeed:) forControlEvents:UIControlEventTouchUpInside];
+    
     durationLabel.text = [RORUtils transSecondToStandardFormat:record.duration.integerValue];
     energyLabel.text = [NSString stringWithFormat:@"%.1f kca", record.spendCarlorie.doubleValue];
     if (record.missionTypeId.integerValue == Challenge){
@@ -80,6 +86,9 @@
             scoreLabel.text = @"BAD NETWORK";
 
     }
+    
+    speedList = [RORDBCommon getSpeedListFromString:record.speedList];
+    self.tableContrainerView.alpha = 0;
     
     NSDateFormatter *formattter = [[NSDateFormatter alloc] init];
     [formattter setDateFormat:@"yyyy-MM-dd"];
@@ -110,11 +119,13 @@
     
     [self center_map];
     
-    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.labelContainerView andSubViews:YES];
-    [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainerView andSubViews:YES];
-    [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dateLabel andSubViews:YES];
+//    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.labelContainerView andSubViews:YES];
+//    [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainerView withSize:15 andSubViews:YES];
+    [RORUtils setSystemFontSize:15 forView:self.dataContainerView andSubViews:YES];
+
+//    [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dateLabel andSubViews:YES];
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.coverView andSubViews:YES];
-    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.dragLabel andSubViews:NO];
+//    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.dragLabel andSubViews:NO];
     
     [self addGestures];
 }
@@ -137,7 +148,7 @@
 
 - (void)viewDidUnload {
     [self setDistanceLabel:nil];
-    [self setSpeedLabel:nil];
+//    [self setSpeedLabel:nil];
     [self setDurationLabel:nil];
     [self setEnergyLabel:nil];
     [self setWeatherLabel:nil];
@@ -169,6 +180,15 @@
     
     if ([destination respondsToSelector:@selector(setRecord:)]){
         [destination setValue:record forKey:@"record"];
+    }
+}
+
+
+- (IBAction)switchSpeedDisplayAction:(id)sender {
+    if (self.tableView.alpha == 0){
+        self.tableView.alpha = 1;
+    } else {
+        self.tableView.alpha = 0;
     }
 }
 
@@ -379,8 +399,35 @@
     self.shareButton.alpha = 0;
     img = [self captureScreen];
     self.coverView.alpha = 1;
-//    [Animations fadeIn:coverView andAnimationDuration:0.3 toAlpha:1 andWait:NO];
-//    [Animations fadeOut:self.backButton andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
+
+}
+
+-(IBAction)showKMSpeed:(id)sender{
+    if (self.tableContrainerView.alpha == 0){
+        [UIView beginAnimations:@"animation" context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        
+        [self.labelContainerView slideOutTo:kFTAnimationLeft inView:self.testContainer duration:0.5 delegate:self startSelector:nil stopSelector:nil];
+        self.labelContainerView.alpha = 0;
+        self.iconContainerView.alpha = 1;
+        [Animations moveLeft:self.dataContainerView andAnimationDuration:0.5 andWait:NO andLength:77];
+        [self.tableContrainerView slideInFrom:kFTAnimationRight inView:self.testContainer duration:0.5 delegate:self startSelector:nil stopSelector:nil];
+        self.tableContrainerView.alpha = 1;
+        [UIView commitAnimations];
+    } else {
+        [UIView beginAnimations:@"animation" context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [self.labelContainerView slideInFrom:kFTAnimationLeft inView:self.testContainer duration:0.5 delegate:self startSelector:nil stopSelector:nil];
+        self.labelContainerView.alpha = 1;
+        self.iconContainerView.alpha = 0;
+        [Animations moveRight:self.dataContainerView andAnimationDuration:0.5 andWait:NO andLength:77];
+        [self.tableContrainerView slideOutTo:kFTAnimationRight inView:self.testContainer duration:0.5 delegate:self startSelector:nil stopSelector:nil];
+        self.tableContrainerView.alpha = 0;
+
+        [UIView commitAnimations];
+    }
 }
 
 - (IBAction)hideCover:(id)sender {
@@ -543,6 +590,31 @@
     return nil;
 }
 
+
+
+#pragma mark TableView Delegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return speedList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+    
+    NSNumber *thisSpeed = [speedList objectAtIndex:indexPath.row];
+    
+    static NSString *CellIdentifier = @"speedCell";
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UILabel *sequenceLabel = (UILabel *)[cell viewWithTag:100];
+    UILabel *avgSpeedLabel = (UILabel *)[cell viewWithTag:101];
+    sequenceLabel.text = [NSString stringWithFormat:@"%dkm", indexPath.row +1];
+    avgSpeedLabel.text = [RORUtils transSecondToStandardFormat:thisSpeed.doubleValue];
+    
+    return cell;
+}
 
 
 @end

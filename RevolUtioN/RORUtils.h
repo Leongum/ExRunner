@@ -45,6 +45,9 @@ _Pragma("clang diagnostic pop") \
 + (NSString*)outputDistance:(double)distance;
 
 +(void)setFontFamily:(NSString*)fontFamily forView:(UIView*)view andSubViews:(BOOL)isSubViews;
+
++(void)setSystemFontSize:(double)fontSize forView:(UIView*)view andSubViews:(BOOL)isSubViews;
+
 //help finding out new added fonts
 +(void)listFontFamilies;
 

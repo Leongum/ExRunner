@@ -93,7 +93,7 @@
                 label.text = @"未登录";
             else
                 label.text =  userInfo.nickName;
-            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
+//            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
             break;
         }
         case 1:
@@ -102,7 +102,7 @@
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             UILabel *label = (UILabel*)[cell viewWithTag:1];
             label.text = @"身体参数";
-            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
+//            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
             break;
         }
         case 2:
@@ -123,7 +123,7 @@
                 [switchCtrl setIsChecked:YES];
                 //label.text = SYNC_MODE_WIFI;
             }
-            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
+//            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
             break;
         }
         case 3:
@@ -148,17 +148,18 @@
                 [seg selectSegmentAtIndex:st];
             }
             
-            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
-            [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:seg andSubViews:YES];
+//            [RORUtils setFontFamily:CHN_PRINT_FONT forView:cell andSubViews:YES];
+//            [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:seg andSubViews:YES];
+            [RORUtils setSystemFontSize:14 forView:seg andSubViews:YES];
             break;
         }
         case 4:
         {
             identifier = @"aboutCell";
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-            [RORUtils setFontFamily:CHN_PRINT_FONT forView:[cell viewWithTag:1] andSubViews:NO];
-            [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:[cell viewWithTag:2] andSubViews:NO];
-            [RORUtils setFontFamily:CHN_PRINT_FONT forView:[cell viewWithTag:3] andSubViews:NO];
+//            [RORUtils setFontFamily:CHN_PRINT_FONT forView:[cell viewWithTag:1] andSubViews:NO];
+//            [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:[cell viewWithTag:2] andSubViews:NO];
+//            [RORUtils setFontFamily:CHN_PRINT_FONT forView:[cell viewWithTag:3] andSubViews:NO];
 
             Version_Control *version = [RORSystemService syncVersion:@"ios"];
             if (version.version.integerValue != CURRENT_VERSION_MAIN ||

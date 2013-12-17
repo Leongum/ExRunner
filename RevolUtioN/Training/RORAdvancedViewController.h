@@ -18,5 +18,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *collectButton;
 @property (strong, nonatomic) IBOutlet UIButton *operateButton;
 @property (strong, nonatomic) IBOutlet UILabel *planIdLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *certifiedIcon;
+@property (strong, nonatomic) IBOutlet UILabel *composerLabel;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (strong, nonatomic) IBOutlet UIButton *infoButton;
 
 @end

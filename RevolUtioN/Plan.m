@@ -67,6 +67,7 @@
     self.planType = [RORDBCommon getNumberFromId:[dict valueForKey:@"planType"]];
     self.sharedPlan = [RORDBCommon getNumberFromId:[dict valueForKey:@"sharedPlan"]];
     self.totalMissions = [RORDBCommon getNumberFromId:[dict valueForKey:@"totalMissions"]];
+    self.planDescription = [RORDBCommon getStringFromId:[dict valueForKey:@"planDescription"]];
 }
 
 -(NSMutableDictionary *)transToDictionary{
@@ -85,6 +86,7 @@
     [tempoDict setValue:self.planType forKey:@"planType"];
     [tempoDict setValue:self.sharedPlan forKey:@"sharedPlan"];
     [tempoDict setValue:self.totalMissions forKey:@"totalMissions"];
+    [tempoDict setValue:self.planDescription forKey:@"planDescription"];
     NSMutableArray *newMissionList = [[NSMutableArray alloc] init];
     for (Mission *newMission in self.missionList) {
         [newMissionList addObject:newMission.transToDictionary];

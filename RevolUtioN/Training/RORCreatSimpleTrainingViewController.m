@@ -122,6 +122,9 @@
             [picker selectRow:((int)duration%3600)/60 inComponent:1 animated:YES];
         }
     }
+    if (responderTextField == totalTextField){
+        [picker selectRow:total-1 inComponent:0 animated:YES];
+    }
     if (responderTextField == frequencyTextField){
         [picker selectRow:frequency-1 inComponent:0 animated:YES];
     }
@@ -239,6 +242,11 @@
 
 - (IBAction)trainingTypeChangedAction:(id)sender {
     trainingType = self.trainingTypeSegment.selectedSegmentIndex;
+    if (trainingType == 0){
+        [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg.png"]];
+    } else {
+        [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg1.png"]];
+    }
     [self initControls];
 }
 

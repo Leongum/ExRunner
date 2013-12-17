@@ -33,6 +33,8 @@
     
     Plan_Run_History *fixonPlanRunHistory;
 }
+@property (strong, nonatomic) IBOutlet UIView *tableViewContainerView;
+@property (strong, nonatomic) IBOutlet UIImageView *tableViewBg;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *partnerView;
@@ -40,6 +42,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *showTraineesButton;
 @property (strong, nonatomic) IBOutlet UIView *coverView;
 @property (strong, nonatomic) IBOutlet UIView *friendBoard;
+@property (strong, nonatomic) IBOutlet UIButton *removeFixonButton;
 
 @property (strong, nonatomic) Plan_Next_mission *planNext;
 

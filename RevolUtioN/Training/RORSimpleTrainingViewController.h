@@ -20,6 +20,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *trainingContentLabel;
 @property (strong, nonatomic) IBOutlet UILabel *speedLabel;
 @property (strong, nonatomic) IBOutlet UILabel *planIdLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *certifiedIcon;
+@property (strong, nonatomic) IBOutlet UILabel *composerLabel;
 
 @property (strong, nonatomic) IBOutlet UIButton *operateButton;
+@property (strong, nonatomic) IBOutlet UIButton *infoButton;
 @end

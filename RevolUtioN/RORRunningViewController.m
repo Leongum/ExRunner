@@ -38,8 +38,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
-    [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainer andSubViews:YES];
+//    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
+//    [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainer andSubViews:YES];
 }
 
 //initial all when view appears

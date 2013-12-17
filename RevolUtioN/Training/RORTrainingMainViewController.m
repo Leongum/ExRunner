@@ -34,6 +34,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self initLayout];
     [self.tableView reloadData];
+    [self.tableView scrollToRowAtIndexPath:todoCellIndex atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 -(void)initLayout{
@@ -41,6 +42,8 @@
     
     if (planNext){
         self.currentPlanView.alpha = 1;
+        self.trainingMainBg.alpha = 1;
+        self.giveUpButton.alpha = 1;
         
         self.bookletButton.frame = bookletButtonFrame;
         self.TraineeButton.frame = traineeButtonFrame;
@@ -53,8 +56,11 @@
         int totalMissions = thisPlan.totalMissions.integerValue;
         int remainingMissions = planNext.history.remainingMissions.integerValue;
         self.process.text = [NSString stringWithFormat:@"%d/%d", totalMissions-remainingMissions, totalMissions];
+        self.trainingIdLabel.text = [NSString stringWithFormat:@"训练编号：%@",planNext.planId];
     } else {
         self.currentPlanView.alpha = 0;
+        self.trainingMainBg.alpha = 0;
+        self.giveUpButton.alpha = 0;
         
         self.bookletButton.frame = self.currentPlanView.frame;
         self.TraineeButton.frame = CGRectMake(self.currentPlanView.frame.origin.x, self.TraineeButton.frame.origin.y, self.currentPlanView.frame.size.width, self.TraineeButton.frame.size.height);
@@ -67,7 +73,7 @@
     NSNumber *fixonUserId = [RORDBCommon getNumberFromId:[dict objectForKey:@"TrainingFixonUserId"]];
     if (fixonUserId && fixonUserId.integerValue>0) {
         Plan_Run_History *fixonPlanRunHistory = [RORPlanService getUserLastUpdatePlan:fixonUserId];
-        [self.TraineeButton setTitle:[NSString stringWithFormat:@"%@ - %@ - %d/%d", fixonPlanRunHistory.nickName,  fixonPlanRunHistory.planName, fixonPlanRunHistory.totalMissions.integerValue - fixonPlanRunHistory.remainingMissions.integerValue,
+        [self.TraineeButton setTitle:[NSString stringWithFormat:@"%@    %d/%d", fixonPlanRunHistory.nickName/*,  fixonPlanRunHistory.planName*/, fixonPlanRunHistory.totalMissions.integerValue - fixonPlanRunHistory.remainingMissions.integerValue,
                                       fixonPlanRunHistory.totalMissions.integerValue] forState:UIControlStateNormal];
     } else {
         [self.TraineeButton setTitle:@"找个好榜样" forState:UIControlStateNormal];
@@ -149,6 +155,13 @@
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
+- (IBAction)traineeButtonAction:(id)sender {
+    if ([RORUserUtils getUserId].integerValue>0)
+        [self performSegueWithIdentifier:@"pushToTraineePage" sender:self];
+    else
+        [self sendAlart:@"请先登录"];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -178,8 +191,10 @@
 
         //提示此次训练还剩几天，后面考虑用一个CustomView实现
         UILabel *leftDays = (UILabel *)[cell viewWithTag:105];
+        NSLog(@"left days:%.0f", [planNext.startTime timeIntervalSinceNow]);
+        leftDays.text = [NSString stringWithFormat:@"%.0f", [RORPlanService getCycleTimeofPlanNext:planNext]+[planNext.startTime timeIntervalSinceNow]/3600/24];
         
-        leftDays.text = [NSString stringWithFormat:@"%.0f", [RORPlanService getCycleTimeofPlanNext:planNext]-[planNext.startTime timeIntervalSinceNow]/3600/24];
+        todoCellIndex = indexPath;
     } else {
         static NSString *CellIdentifier = @"todoCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

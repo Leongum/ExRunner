@@ -354,7 +354,7 @@ custom animation elastic. First scale smaller.
 -(void)fold:(NSTimeInterval)duration delegate:(id)delegate;
 -(void)expand:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 -(void)fold:(NSTimeInterval)duration delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
-
+-(void)contractLeft:(NSTimeInterval)duration percentage:(double)percent delegate:(id)delegate startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 /**
  upfloat
  */

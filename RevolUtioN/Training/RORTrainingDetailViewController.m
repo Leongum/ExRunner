@@ -31,6 +31,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     planNext = [RORPlanService fetchUserRunningPlanHistory];
+//    plan = planNext.planInfo;
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,10 +41,13 @@
 }
 
 -(IBAction)collectAction:(id)sender{
-    [RORPlanService collectPlan:plan];
-    UIButton *btn = (UIButton *)sender;
-    btn.enabled = NO;
-    [self refreshCollectButton:btn];
+    if ([RORUserUtils getUserId].integerValue>0){
+        [RORPlanService collectPlan:plan];
+        UIButton *btn = (UIButton *)sender;
+        btn.enabled = NO;
+        [self refreshCollectButton:btn];
+    } else
+        [self sendAlart:@"请先登录"];
 }
 
 -(void)refreshCollectButton:(UIButton *)btn{
@@ -64,19 +68,21 @@
 }
 
 -(IBAction)operateAction:(id)sender{
-    
-    planNext = [RORPlanService startNewPlan:plan.planId];   
-
-    //这里没为planNext判空，不知道会不会有问题
-    
-//    [RORPlanService refreshTrainingNotification:planNext];
-    
-    UIViewController *viewController = delegate;
-    
-    while (![viewController isKindOfClass:[RORTrainingMainViewController class]]) {
-        viewController = (UIViewController *)[viewController valueForKey:@"delegate"];
-    }
-    
-    [self.navigationController popToViewController:viewController animated:YES];
+    if ([RORUserUtils getUserId].integerValue>0){
+        planNext = [RORPlanService startNewPlan:plan.planId];
+        
+        //这里没为planNext判空，不知道会不会有问题
+        
+        //    [RORPlanService refreshTrainingNotification:planNext];
+        
+        UIViewController *viewController = delegate;
+        
+        while (![viewController isKindOfClass:[RORTrainingMainViewController class]]) {
+            viewController = (UIViewController *)[viewController valueForKey:@"delegate"];
+        }
+        
+        [self.navigationController popToViewController:viewController animated:YES];
+    } else
+        [self sendAlart:@"请先登录"];
 }
 @end

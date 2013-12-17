@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet RORTrainingPickerView *coverView;
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *trainingTypeSegment;
+@property (strong, nonatomic) IBOutlet UIImageView *trainingTypeSegmentBg;
 
 -(Plan *)createNewSimplePlan;
 @end

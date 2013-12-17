@@ -23,6 +23,9 @@
     UIImage *annotationImage;
     BOOL expanded;
     double centerLoc;
+    
+    NSMutableArray *speedList;
+    
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) MKPolyline *routeLine;
@@ -31,11 +34,14 @@
 @property (retain, nonatomic) MKPolylineView *routeLineShadowView;
 @property (strong, nonatomic) IBOutlet UIView *labelContainerView;
 @property (strong, nonatomic) IBOutlet UIView *dataContainerView;
+@property (strong, nonatomic) IBOutlet UIView *testContainer;
+@property (strong, nonatomic) IBOutlet UIView *iconContainerView;
 
 @property (weak, nonatomic) RORViewController *delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *speedLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *speedLabel;
+@property (strong, nonatomic) IBOutlet UIButton *speedButton;
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *energyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weatherLabel;
@@ -51,6 +57,9 @@
 
 @property (strong, nonatomic) IBOutlet UIView *mapCoverView;
 @property (strong, nonatomic) IBOutlet UILabel *dragLabel;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+//@property (strong, nonatomic) IBOutlet UIButton *switchSpeedButton;
+@property (strong, nonatomic) IBOutlet UIView *tableContrainerView;
 
 - (IBAction)shareToWeixin:(id)sender;
 

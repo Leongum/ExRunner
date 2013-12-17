@@ -215,7 +215,7 @@
 {
     static NSString *CellIdentifier = @"plainCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:cell andSubViews:YES];
+//    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:cell andSubViews:YES];
     
     NSString *date_str = [sortedDateList objectAtIndex:indexPath.section];
     NSArray *records4DateList = [runHistoryList objectForKey:date_str];
@@ -240,16 +240,6 @@
         isValidImage.center = CGPointMake(record4Date.duration .integerValue%30+155, ((int)(record4Date.avgSpeed.doubleValue*1024))%20+30);
         [Animations rotate:isValidImage andAnimationDuration:0 andWait:NO andAngle:record4Date.duration.integerValue%10-5];
 
-//        if (!((NSNumber*)[hasRotated objectForKey:indexPath]).boolValue){
-////            if (![stampList containsObject:cell]){
-////                [stampList addObject:cell];
-////                isValidImage.alpha = 0;
-////                NSLog(@"(%d,%d)", indexPath.section, indexPath.row);
-////            }
-//            [hasRotated setObject:[NSNumber numberWithBool:YES] forKey:indexPath];
-//            [stampList addObject:indexPath];
-//            isValidImage.alpha = 0;
-//        } else
             isValidImage.alpha = 1;
         [cell setHighlighted:YES];
     } else
@@ -257,19 +247,6 @@
     bottomIndexPath = indexPath;
     return cell;
 }
-
-//-(void)tableView:(UITableView*)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
-////    if (!scrolled){
-//        NSString *date_str = [sortedDateList objectAtIndex:indexPath.section];
-//        NSArray *records4DateList = [runHistoryList objectForKey:date_str];
-//        User_Running_History *record4Date = [records4DateList objectAtIndex:indexPath.row];
-//    
-//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//        RORImageView *isValidImage = (RORImageView *)[cell viewWithTag:VALID];
-//
-//        [Animations rotate:isValidImage andAnimationDuration:0 andWait:NO andAngle:record4Date.duration.integerValue%60-30];
-////    }
-//}
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *result = nil;
@@ -279,7 +256,7 @@
     label.textAlignment = NSTextAlignmentRight;
     label.textColor = [UIColor darkGrayColor];
     label.backgroundColor = [UIColor clearColor];
-    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:label andSubViews:YES];
+//    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:label andSubViews:YES];
 //    //将UILabel向右移动10个点，沿y轴向下移动5个点
 //    label.frame = CGRectMake(label.frame.origin.x + 10.0f,5.0f,label.frame.size.width, label.frame.size.height);
     //container的宽度比UILabel多出是个像素这些像素用于缩进

@@ -47,12 +47,12 @@
     
     CGPoint translation = [recognizer translationInView:self];
     
-    UIImage *scared = [UIImage imageNamed:@"btn_scared.png"];
-    if (fabs(translation.x) >75 || fabs(translation.y) > 150){
-        [self setBackgroundImage:scared forState:UIControlStateNormal];
-    } else {
-        [self setBackgroundImage:normal_bg forState:UIControlStateNormal];
-    }
+//    UIImage *scared = [UIImage imageNamed:@"btn_scared.png"];
+//    if (fabs(translation.x) >75 || fabs(translation.y) > 150){
+//        [self setBackgroundImage:scared forState:UIControlStateNormal];
+//    } else {
+//        [self setBackgroundImage:normal_bg forState:UIControlStateNormal];
+//    }
     double deltaX = 0, deltaY = 0;
     if (translation.x < 0)
         deltaX = translation.x/2;

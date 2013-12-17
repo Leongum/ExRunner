@@ -432,8 +432,12 @@
                             }
                         }
                     }
+                    planNextMission.planInfo = plan;
                     planNextMission.startTime = startTime;
                     planNextMission.endTime = endTime;
+                    planNextMission.nextMission = [RORMissionServices fetchMission:planNextMission.nextMissionId];
+                    //刷新本地提醒
+                    [self refreshTrainingNotification:planNextMission];
                 }
             }
         }
@@ -561,6 +565,7 @@
         Plan_Next_mission *returnPlanNext = [self fetchUserRunningPlanHistory];
         //刷新本地提醒
         [self refreshTrainingNotification:returnPlanNext];
+        [self collectPlan:returnPlanNext.planInfo];
         return returnPlanNext;
     }
     return nil;
@@ -597,7 +602,7 @@
                 }
                 endTime = [startTime dateByAddingTimeInterval:timeScape];
             }else{
-                nextMissionId = (NSNumber *)[missionsArray objectAtIndex:(planHistory.totalMissions.integerValue - planHistory.remainingMissions.integerValue)];
+                nextMissionId = [RORDBCommon getNumberFromId:[missionsArray objectAtIndex:(planHistory.totalMissions.integerValue - planHistory.remainingMissions.integerValue)]];
                 for(Mission *mission in plan.missionList){
                     if(mission.missionId.integerValue == nextMissionId.integerValue){
                         endTime = [startTime dateByAddingTimeInterval:mission.cycleTime.integerValue * 86400];
@@ -636,8 +641,10 @@
         [self upLoadUserPlanHistory:[RORUserUtils getUserId]];
         
         //停止本地提醒
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
         
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+
         return YES;
     }
     return NO;
@@ -710,12 +717,14 @@
 
 +(void)refreshTrainingNotification:(Plan_Next_mission*)planNext{
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
     if (planNext) {
         UILocalNotification *notification = [[UILocalNotification alloc]init];
         NSDate *now = [NSDate date];
         notification.timeZone = [NSTimeZone defaultTimeZone];
         int cycleTime = [self getCycleTimeofPlanNext:planNext];
-        for (int i=1; i<cycleTime; i++){
+        for (int i=0; i<cycleTime; i++){
             notification.fireDate = [now dateByAddingTimeInterval:i*3600*24];
             notification.applicationIconBadgeNumber = cycleTime-i;
             [[UIApplication sharedApplication] scheduleLocalNotification:notification];
@@ -728,7 +737,7 @@
 
 +(int)getCycleTimeofPlanNext:(Plan_Next_mission*)planNext{
     if (planNext.planInfo.planType.integerValue == PlanTypeEasy)
-        return planNext.planInfo.cycleTime.integerValue;
+        return planNext.planInfo.duration.integerValue;
     return planNext.nextMission.cycleTime.integerValue;
 }
 @end
