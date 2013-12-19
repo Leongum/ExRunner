@@ -126,6 +126,7 @@
     self.coverView.alpha = 0;
     isChecked[0] = YES;
     isChecked[1] = YES;
+    isChecked[2] = YES;
     [self updateFilter];
 
 }
@@ -235,8 +236,13 @@
     filter = [[NSMutableArray alloc]init];
     if (isChecked[0])
         [filter addObject:[NSNumber numberWithInteger:NormalRun]];
-    if (isChecked[1])
+    if (isChecked[2])
         [filter addObject:[NSNumber numberWithInteger:Challenge]];
+    if (isChecked[1]){
+        [filter addObject:[NSNumber numberWithInteger:SimpleTask]];
+        [filter addObject:[NSNumber numberWithInteger:ComplexTask]];
+    }
+        
 }
 
 - (IBAction)showFilter:(id)sender {
@@ -259,7 +265,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return sizeof(isChecked);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -278,8 +284,10 @@
             title.text = @"随便跑跑";
             break;
         case 1:
-            title.text = @"专项挑战";
+            title.text = @"训练";
             break;
+        case 2:
+            title.text = @"比赛";
         default:
             break;
     }

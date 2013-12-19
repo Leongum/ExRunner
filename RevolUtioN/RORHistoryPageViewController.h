@@ -13,7 +13,7 @@
 #import "RORBreathingControl.h"
 
 @interface RORHistoryPageViewController : RORViewController<UIScrollViewDelegate>{
-    BOOL isChecked[2];
+    BOOL isChecked[3];
 }
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;

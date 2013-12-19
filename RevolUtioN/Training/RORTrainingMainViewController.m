@@ -34,7 +34,11 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self initLayout];
     [self.tableView reloadData];
-    [self.tableView scrollToRowAtIndexPath:todoCellIndex atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    if (todoCellIndex)
+        [self.tableView scrollToRowAtIndexPath:todoCellIndex atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 -(void)initLayout{
@@ -47,12 +51,14 @@
         
         self.bookletButton.frame = bookletButtonFrame;
         [self.bookletButton setBackgroundImage:[UIImage imageNamed:@"bookletButton_bg.png"] forState:UIControlStateNormal];
+        [self.bookletButton setTitle:@"训练册" forState:UIControlStateNormal];
         self.TraineeButton.frame = traineeButtonFrame;
         
         Plan *thisPlan = planNext.planInfo;
         contentList = thisPlan.missionList;
         historyList = [RORPlanService fetchUserPlanHistoryDetails:planNext.planRunUuid].runHistoryList;
-        
+        todoCellIndex = [NSIndexPath indexPathForRow:historyList.count inSection:0];
+
         self.TrainingNameLabel.text = thisPlan.planName;
         int totalMissions = thisPlan.totalMissions.integerValue;
         int remainingMissions = planNext.history.remainingMissions.integerValue;
@@ -69,6 +75,7 @@
         [self.bookletButton setTitle:@"" forState:UIControlStateNormal];
         
         self.TraineeButton.frame = CGRectMake(self.currentPlanView.frame.origin.x, self.TraineeButton.frame.origin.y, self.currentPlanView.frame.size.width, self.TraineeButton.frame.size.height);
+        todoCellIndex = nil;
     }
     [self initTraineeButton];
 }
@@ -199,7 +206,7 @@
         NSLog(@"left days:%.0f", [planNext.startTime timeIntervalSinceNow]);
         leftDays.text = [NSString stringWithFormat:@"%.0f", [RORPlanService getCycleTimeofPlanNext:planNext]+[planNext.startTime timeIntervalSinceNow]/3600/24];
         
-        todoCellIndex = indexPath;
+//        todoCellIndex = indexPath;
     } else {
         static NSString *CellIdentifier = @"todoCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

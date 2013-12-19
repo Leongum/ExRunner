@@ -129,6 +129,11 @@
         userLocation = newLocation;
         if (!wasFound){
             wasFound = YES;
+            
+            NSString *userAddressString = [NSString stringWithFormat:@"%f,%f",newLocation.coordinate.latitude, newLocation.coordinate.longitude];
+            NSDictionary *saveDict = [NSDictionary dictionaryWithObjectsAndKeys:userAddressString, @"UserLocationCoordinate", nil];
+            [RORUserUtils writeToUserInfoPList:saveDict];
+            
             [self getCitynameByLocation];
             [locationManager stopUpdatingLocation];
         }
@@ -192,7 +197,8 @@
     CLGeocoder *geocoder = [[CLGeocoder alloc]init];
     [geocoder reverseGeocodeLocation:userLocation completionHandler:^(NSArray *placemarks, NSError *error){
         CLPlacemark *placemark = (CLPlacemark *)[placemarks objectAtIndex:0];
-        NSLog(@"%@, %@, %@, %@, %@, %@", placemark.country, placemark.administrativeArea, placemark.subLocality, placemark.thoroughfare, placemark.subThoroughfare, placemark.name);
+        NSString *userAddressString = [NSString stringWithFormat:@"%@, %@, %@, %@, %@, %@", placemark.country, placemark.administrativeArea, placemark.subLocality, placemark.thoroughfare, placemark.subThoroughfare, placemark.name];
+        NSLog(@"%@", userAddressString);
         cityName = placemark.subLocality;
         NSString * provinceName = placemark.administrativeArea;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

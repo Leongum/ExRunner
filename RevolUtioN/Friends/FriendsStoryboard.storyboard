@@ -33,7 +33,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collect_bg.png" id="9ja-f6-Eny">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendMain_bg.png" id="9ja-f6-Eny">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -187,8 +187,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="collect_bg.png" width="640" height="1136"/>
         <image name="expandButton_bg.png" width="248" height="160"/>
+        <image name="friendMain_bg.png" width="640" height="1136"/>
         <image name="friendSearch_bg.png" width="640" height="700"/>
         <image name="main_bg.jpg" width="320" height="568"/>
         <image name="searchTextField_bg.png" width="513" height="84"/>

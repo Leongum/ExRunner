@@ -57,7 +57,11 @@
 
 -(void)viewWillDisAppear:(BOOL)animated{
     [super viewWillDisappear:animated];
+}
+
+-(void)backAction:(id)sender{
     [self.tableView setEditing:NO];
+    [super backAction:sender];
 }
 
 -(void)initSearchField{

@@ -723,7 +723,7 @@
         NSDate *now = [NSDate date];
         notification.timeZone = [NSTimeZone defaultTimeZone];
         int cycleTime = [self getCycleTimeofPlanNext:planNext];
-        for (int i=0; i<cycleTime; i++){
+        for (int i=1; i<cycleTime; i++){
             notification.fireDate = [now dateByAddingTimeInterval:i*3600*24];
             notification.applicationIconBadgeNumber = cycleTime-i;
             [[UIApplication sharedApplication] scheduleLocalNotification:notification];
