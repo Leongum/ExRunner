@@ -24,6 +24,7 @@
 #define LOGIN_URL [SERVICE_HOST stringByAppendingString:@"/account/%@/%@"]
 #define REGISTER_URL [SERVICE_HOST stringByAppendingString:@"/account"]
 #define USER_ADDITIONAL_UPDATE [SERVICE_HOST stringByAppendingString:@"/account/additional/%@"]
+#define USER_LOCATION [SERVICE_HOST stringByAppendingString:@"/account/location/%@"]
 #define USER_INFO [SERVICE_HOST stringByAppendingString:@"/account/%@?checkUuid=%@"]
 #define POST_RUNNING_HISTORY_URL [SERVICE_HOST stringByAppendingString:@"/running/history/%@"]
 #define RUNNING_HISTORY_URL [SERVICE_HOST stringByAppendingString:@"/running/history/%@?lastUpdateTime=%@"]

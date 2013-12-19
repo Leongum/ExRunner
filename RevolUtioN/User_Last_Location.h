@@ -16,4 +16,8 @@
 @property (nonatomic, retain) NSString * lastLocationPoint;
 @property (nonatomic, retain) NSNumber * userId;
 
++(User_Last_Location *) initUnassociateEntity;
+
+-(NSMutableDictionary *)transToDictionary;
+
 @end

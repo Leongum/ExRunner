@@ -15,6 +15,7 @@
 #import "RORHttpResponse.h"
 #import "RORUserClientHandler.h"
 #import "Plan_User_Follow.h"
+#import "User_Last_Location.h"
 
 @interface RORUserServices : NSObject
 
@@ -37,5 +38,7 @@
 +(BOOL)syncFollowersDetails:(NSNumber *) userId withPageNo:(NSNumber *) pageNo;
 
 +(NSMutableArray *)fetchFollowersDetails:(NSNumber *) userId withPageNo:(NSNumber *) pageNo;
+
++(BOOL)uploaduserLocation:(User_Last_Location *) userLastLocation;
 
 @end

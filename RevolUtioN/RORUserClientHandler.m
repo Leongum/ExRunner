@@ -49,4 +49,10 @@
     return httpResponse;
 }
 
++(RORHttpResponse *)updateUserLocation:(NSNumber *)userId withUserLocation:(NSDictionary *) userLocation{
+    NSString *url = [NSString stringWithFormat:USER_LOCATION ,userId];
+    RORHttpResponse *httpResponse = [RORHttpClientHandler putRequest:url withRequstBody:[RORUtils toJsonFormObject:userLocation]];
+    return httpResponse;
+}
+
 @end

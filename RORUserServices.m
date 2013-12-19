@@ -231,4 +231,13 @@
     return followerDetails;
 }
 
++ (BOOL)uploaduserLocation:(User_Last_Location *) userLastLocation{    
+    RORHttpResponse *httpResponse =[RORUserClientHandler updateUserLocation:userLastLocation.userId withUserLocation:userLastLocation.transToDictionary];    if ([httpResponse responseStatus]  == 200){
+        return  YES;
+    } else {
+        NSLog(@"sync with host error: can't get sync message list. Status Code: %d", [httpResponse responseStatus]);
+        return NO;
+    }
+}
+
 @end
