@@ -23,7 +23,7 @@
 
 - (id)initWithFrame:(CGRect)frame andLevel:(User_Running_History*)record
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:frame andLevel:record];
     if (self) {
         bestRecord = record;
         [self fillContent];
@@ -33,17 +33,18 @@
 
 -(void)fillContent{
     [super fillContent];
-    if (bestRecord.missionGrade.integerValue!=GRADE_F){
-        titleLabel.text = @"本次训练完成！";
-    } else {
-        titleLabel.text = @"完成度不够，下次加油";
-    }
+    titleLabel.text = @"这次训练你得了";
     Plan_Next_mission *planNext = [RORPlanService fetchUserRunningPlanHistory];
     if (planNext){
-        awardTitleLabel.text = [NSString stringWithFormat:@"下次训练请在%d天内完成",planNext.nextMission.cycleTime.integerValue];
+        if (bestRecord.missionGrade.integerValue!=GRADE_F){
+            awardTitleLabel.text = [NSString stringWithFormat:@"干得漂亮！下次训练请在%d天内完成",planNext.nextMission.cycleTime.integerValue];
+        } else {
+            awardTitleLabel.text = @"完成度不够，下次加油";
+        }
+        
         extraAwardLabel.text = @"";
     } else {
-        extraAwardLabel.text = @"快去专项竞速试试效果吧";
+        extraAwardLabel.text = @"快去“比赛”试试效果吧";
         awardTitleLabel.text = @"训练已全部完成";
     }
 }

@@ -265,7 +265,7 @@
             } else{
                 [segment selectSegmentAtIndex:1];
             }
-            
+
             break;
         }
         default:

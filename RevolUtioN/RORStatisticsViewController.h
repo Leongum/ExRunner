@@ -18,6 +18,8 @@
     RORFiveCounterView *counterView[6];
 }
 
+@property (strong, nonatomic) IBOutlet UILabel *noHistoryMsgLabel;
+
 @property (strong, nonatomic) NSMutableArray *filter;
 @property (strong, nonatomic) IBOutlet UILabel *totalDistanceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *totalSpeedLabel;

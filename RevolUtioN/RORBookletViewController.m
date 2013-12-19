@@ -63,7 +63,9 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     if (contentList.count==0 && !searchViewController.expanded){
-        [searchViewController expandAction:self];
+//        [searchViewController expandAction:self];
+        RORIntroCoverView *introCoverView = [[RORIntroCoverView alloc]initWithFrame:self.view.frame andImage:[UIImage imageNamed:@"introBookletPage.png"]];
+        [self.view addSubview:introCoverView];
     }
 }
 

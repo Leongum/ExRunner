@@ -14,6 +14,7 @@
 #import "RORNotificationView.h"
 #import "RORPlaySound.h"
 #import "SVProgressHUD.h"
+#import "RORIntroCoverView.h"
 
 #define BACKBUTTON_FRAME_TOP CGRectMake(0, 0, 70, 70)
 

@@ -27,14 +27,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
+//    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
     
-    [self.totalDistanceLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
-    [self.totalSpeedLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
-    [self.totalCalorieLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
-    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.totalChallenge andSubViews:NO];
+//    [self.totalDistanceLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
+//    [self.totalSpeedLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
+//    [self.totalCalorieLabel setFont:[UIFont fontWithName:ENG_WRITTEN_FONT size:28]];
+//    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.totalChallenge andSubViews:NO];
     
-    [self initChallengeTable];
+//    [self initChallengeTable];
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,7 +80,7 @@
     
     if ([filter containsObject:[NSNumber numberWithInteger:Challenge]]) {
         self.challengeStatisView.alpha = 1;
-        [self fillChallengeTable];
+//        [self fillChallengeTable];
     } else
         self.challengeStatisView.alpha = 0;
     
@@ -93,7 +93,7 @@
         
     } else {
         [self hideContents];
-        self.totalSpeedLabel.text = NO_HISTORY;
+        self.noHistoryMsgLabel.text = NO_HISTORY;
     }
     
 //    self.distanceCommentLabel.text = STATISTICS_DISTANCE_MESSAGE([NSNumber numberWithDouble:totalDistance/1000]);
@@ -108,37 +108,30 @@
 
 }
 
--(void)initChallengeTable{
-    for (int i=0; i<6; i++){
-        counterView[i] = (RORFiveCounterView *)[self.challengeStatisView viewWithTag:100+i];
-    }
-}
+//-(void)initChallengeTable{
+//    for (int i=0; i<6; i++){
+//        counterView[i] = (RORFiveCounterView *)[self.challengeStatisView viewWithTag:100+i];
+//    }
+//}
 
--(void)fillChallengeTable{
-    for (int i=0; i<6; i++)
-        [counterView[i] setNewNumber:challengeCounter[i]];
-}
+//-(void)fillChallengeTable{
+//    for (int i=0; i<6; i++)
+//        [counterView[i] setNewNumber:challengeCounter[i]];
+//}
 
 -(void)showContents{
-    for (int i=1; i<7; i++){
-        UIView *view = [self.containerView viewWithTag:i];
-        view.alpha = 1;
-    }
-    self.totalDistanceLabel.alpha =1;
-    self.totalCalorieLabel.alpha = 1;
-    self.challengeStatisView.alpha = 1;
+    self.containerView.alpha = 1;
+    
+    self.noHistoryMsgLabel.alpha = 0;
 //    [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.totalSpeedLabel andSubViews:NO];
 }
 
 -(void)hideContents{
-    for (int i=1; i<7; i++){
-        UIView *view = [self.containerView viewWithTag:i];
-        view.alpha = 0;
-    }
-    self.totalDistanceLabel.alpha =0;
-    self.totalCalorieLabel.alpha = 0;
-    self.challengeStatisView.alpha = 0;
+    self.containerView.alpha = 0;
+    
 //    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.totalSpeedLabel andSubViews:NO];
+    
+    self.noHistoryMsgLabel.alpha = 1;
 }
 
 - (void)viewDidUnload {

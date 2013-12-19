@@ -164,6 +164,8 @@ static NSDate *syncTime;
     userId = [NSNumber numberWithInteger:-1];
     NSArray *tables = [NSArray arrayWithObjects:@"User_Base",@"User_Attributes",@"Friend",@"User_Last_Location",@"User_Running_History",@"User_Running",@"Plan_Next_mission",@"Plan_Run_History",@"Plan_Collect",@"Plan_User_Follow", nil];
     [RORContextUtils clearTableData:tables];
+    
+    [RORPlanService refreshTrainingNotification:nil];
 }
 
 + (void)saveLastUpdateTime: (NSString *) key{

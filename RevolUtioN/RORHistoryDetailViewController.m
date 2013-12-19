@@ -51,11 +51,11 @@
 	// Do any additional setup after loading the view.
 //    NSLog(@"%@", record);
     
-    CGRect rx = [ UIScreen mainScreen ].applicationFrame;
-    if (rx.size.height < 500){
-        [Animations moveUp:self.backButton andAnimationDuration:0 andWait:NO andLength:8];
-        [Animations moveUp:self.shareButton andAnimationDuration:0 andWait:NO andLength:8];
-    }
+//    CGRect rx = [ UIScreen mainScreen ].applicationFrame;
+//    if (rx.size.height < 500){
+//        [Animations moveUp:self.backButton andAnimationDuration:0 andWait:NO andLength:8];
+//        [Animations moveUp:self.shareButton andAnimationDuration:0 andWait:NO andLength:8];
+//    }
 
     distanceLabel.text = [RORUtils outputDistance:record.distance.doubleValue];
     //init speed button;

@@ -1077,7 +1077,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="254" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="currentTrainingCell_bg.png" id="slv-Iy-3dI">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="advTrainingCell.png" id="slv-Iy-3dI">
                                                     <rect key="frame" x="0.0" y="1" width="254" height="59"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1388,7 +1388,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="235" height="57"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="currentTrainingCell_bg.png" id="ddg-kj-NAd">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="advTrainingCell.png" id="ddg-kj-NAd">
                                                             <rect key="frame" x="0.0" y="0.0" width="235" height="57"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                         </imageView>
@@ -1673,6 +1673,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="advTrainingCell.png" width="520" height="120"/>
         <image name="bookletButton_bg.png" width="132" height="116"/>
         <image name="certified.png" width="110" height="110"/>
         <image name="collect_bg.png" width="640" height="1136"/>

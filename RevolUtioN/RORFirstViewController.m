@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
+//    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
     
     [self prepareControlsForAnimation];
     
@@ -208,15 +208,15 @@
                                           ];
                 }
                 if(pm25info != nil){
-                    pm25 = [[pm25info objectForKey:@"pm2_5"] integerValue];
-                    weatherInformation = [NSString stringWithFormat:@"%@  PM2.5: %d%@  ", weatherInformation,  pm25,[pm25info objectForKey:@"quality"]];
+                    pm25 = [[pm25info objectForKey:@"aqi"] integerValue];
+                    weatherInformation = [NSString stringWithFormat:@"%@\n AQI: %d%@  ", weatherInformation,  pm25,[pm25info objectForKey:@"quality"]];
                 }
                 int index = -1;
                 if(temp < 38 && pm25 < 300){
                     index = (100-pm25/3)*0.6 +(100-fabs(temp - 22)*5)*0.4;
                 }
                 if (index>=0) {
-                    weatherInformation = [NSString stringWithFormat:@"%@总: %d", weatherInformation, index];
+                    weatherInformation = [NSString stringWithFormat:@"%@总分: %d", weatherInformation, index];
                 }
                 if (index <0) {
                     UIImage *image = [UIImage imageNamed:@"main_trafficlight_none.png"];

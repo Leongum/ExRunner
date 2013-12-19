@@ -210,7 +210,7 @@
     userFollow.followUserId = user.userId;
     userFollow.status = [NSNumber numberWithInt:FollowStatusNotFollowed];
     [RORPlanService updateUserFollow:userFollow];
-    [self.tableView pop:0.5 delegate:self];
+    [self.tableViewContainer pop:0.5 delegate:self];
     [self reloadTableView];
 }
 

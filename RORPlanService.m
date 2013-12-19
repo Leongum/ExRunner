@@ -642,8 +642,7 @@
         
         //停止本地提醒
         
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+        [self refreshTrainingNotification:nil];
 
         return YES;
     }

@@ -76,8 +76,8 @@
     [super creatRunningHistory];
     planRunningHistory = [Plan_Run_History intiUnassociateEntity];
     runHistory.missionTypeId = thisMission.missionTypeId;
-    runHistory.grade = [self calculateTrainingGrade];
-    if (runHistory.grade.integerValue!= GRADE_F){// && runHistory.valid.integerValue>0){
+    runHistory.missionGrade = [self calculateTrainingGrade];
+    if (runHistory.missionGrade.integerValue!= GRADE_F && runHistory.valid.integerValue>0){
         [RORPlanService gotoNextMission:planNext.planRunUuid];
     }
     
@@ -91,14 +91,27 @@
 -(NSNumber *)calculateTrainingGrade{
     double reqDuration = planNext.nextMission.missionTime.doubleValue;
     double reqDistance = planNext.nextMission.missionDistance.doubleValue;
-    if (reqDuration>0 && duration > reqDuration*0.8){
-        return [NSNumber numberWithInt:GRADE_S];
-    }
-    if (reqDistance>0 && distance > reqDistance*0.8){
-        return [NSNumber numberWithInt:GRADE_S];
+    double score;
+    if (reqDistance>0){
+        score = 200*distance/reqDistance-100;
+    } else {
+        score = 200*duration/reqDuration-100;
     }
     
-    return [NSNumber numberWithInt:GRADE_F];
+    if (score<60)
+        return [NSNumber numberWithInt:GRADE_F];
+    if (score<65)
+        return [NSNumber numberWithInt:GRADE_E];
+    if (score<70)
+        return [NSNumber numberWithInt:GRADE_D];
+    if (score<75)
+        return [NSNumber numberWithInt:GRADE_C];
+    if (score<90)
+        return [NSNumber numberWithInt:GRADE_B];
+    if (score<100)
+        return [NSNumber numberWithInt:GRADE_A];
+    
+    return [NSNumber numberWithInt:GRADE_S];
 }
 
 -(void)timerSecondDot{

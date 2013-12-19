@@ -46,6 +46,7 @@
         self.giveUpButton.alpha = 1;
         
         self.bookletButton.frame = bookletButtonFrame;
+        [self.bookletButton setBackgroundImage:[UIImage imageNamed:@"bookletButton_bg.png"] forState:UIControlStateNormal];
         self.TraineeButton.frame = traineeButtonFrame;
         
         Plan *thisPlan = planNext.planInfo;
@@ -62,7 +63,11 @@
         self.trainingMainBg.alpha = 0;
         self.giveUpButton.alpha = 0;
         
-        self.bookletButton.frame = self.currentPlanView.frame;
+        self.bookletButton.frame = CGRectMake(0, 0, 320, 310);
+        [self.bookletButton setBackgroundImage:[UIImage imageNamed:@"bookletButtonBig_bg.png"] forState:UIControlStateNormal];
+        self.bookletButton.center = self.view.center;
+        [self.bookletButton setTitle:@"" forState:UIControlStateNormal];
+        
         self.TraineeButton.frame = CGRectMake(self.currentPlanView.frame.origin.x, self.TraineeButton.frame.origin.y, self.currentPlanView.frame.size.width, self.TraineeButton.frame.size.height);
     }
     [self initTraineeButton];
