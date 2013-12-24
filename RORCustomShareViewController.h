@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblContentCount;
 @property (weak, nonatomic) IBOutlet RORCustomShareViewToolbar *shareBar;
 @property (retain, nonatomic) UIImage *shareImage;
-@property (strong, nonatomic) User_Running_History *record;
+@property (strong, nonatomic) NSString *shareMessage;
 
 
 - (IBAction)shareContentAction:(id)sender;

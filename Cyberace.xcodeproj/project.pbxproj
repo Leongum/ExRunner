@@ -85,6 +85,8 @@
 		0F87D881179D72C7007E0412 /* RORRunHistoryServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F87D880179D72C7007E0412 /* RORRunHistoryServices.m */; };
 		0F87D884179D72F8007E0412 /* RORRunHistoryClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F87D883179D72F8007E0412 /* RORRunHistoryClientHandler.m */; };
 		0F972BD2179255F300A27EF2 /* RORHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F972BD1179255F300A27EF2 /* RORHttpResponse.m */; };
+		0FD9FE3E1863F75500978596 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9FE3B1863F75500978596 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0FD9FE3F1863F75500978596 /* libVTime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD9FE3C1863F75500978596 /* libVTime.a */; };
 		0FDA5D53184C745C00450E6B /* QQ@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FDA5D52184C745C00450E6B /* QQ@2x.png */; };
 		300149901750F444005DAF1D /* RORMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3001498F1750F444005DAF1D /* RORMoreViewController.m */; };
 		3005CFE8185391F900D83648 /* searchTextField_fg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3005CFE6185391F900D83648 /* searchTextField_fg.png */; };
@@ -491,6 +493,10 @@
 		0F87D883179D72F8007E0412 /* RORRunHistoryClientHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORRunHistoryClientHandler.m; sourceTree = "<group>"; };
 		0F972BD0179255F300A27EF2 /* RORHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHttpResponse.h; sourceTree = "<group>"; };
 		0F972BD1179255F300A27EF2 /* RORHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORHttpResponse.m; sourceTree = "<group>"; };
+		0FD9FE3A1863F75500978596 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		0FD9FE3B1863F75500978596 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		0FD9FE3C1863F75500978596 /* libVTime.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVTime.a; sourceTree = "<group>"; };
+		0FD9FE3D1863F75500978596 /* VTimeSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VTimeSDK.h; sourceTree = "<group>"; };
 		0FDA5D52184C745C00450E6B /* QQ@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QQ@2x.png"; sourceTree = "<group>"; };
 		3001498E1750F444005DAF1D /* RORMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMoreViewController.h; sourceTree = "<group>"; };
 		3001498F1750F444005DAF1D /* RORMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMoreViewController.m; sourceTree = "<group>"; };
@@ -863,6 +869,7 @@
 				302FD04E172903D7004DA005 /* CoreLocation.framework in Frameworks */,
 				302FD0051727D870004DA005 /* UIKit.framework in Frameworks */,
 				302FD0071727D870004DA005 /* Foundation.framework in Frameworks */,
+				0FD9FE3F1863F75500978596 /* libVTime.a in Frameworks */,
 				302FD0091727D870004DA005 /* CoreGraphics.framework in Frameworks */,
 				0F53B49617F3481D006DB4C4 /* QQConnection.framework in Frameworks */,
 				0F53B49717F3481D006DB4C4 /* QZoneConnection.framework in Frameworks */,
@@ -1100,6 +1107,25 @@
 			name = HttpClient;
 			sourceTree = "<group>";
 		};
+		0FD9FE381863F75500978596 /* VTime */ = {
+			isa = PBXGroup;
+			children = (
+				0FD9FE391863F75500978596 /* JSONKit */,
+				0FD9FE3C1863F75500978596 /* libVTime.a */,
+				0FD9FE3D1863F75500978596 /* VTimeSDK.h */,
+			);
+			path = VTime;
+			sourceTree = "<group>";
+		};
+		0FD9FE391863F75500978596 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				0FD9FE3A1863F75500978596 /* JSONKit.h */,
+				0FD9FE3B1863F75500978596 /* JSONKit.m */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
 		3001498D1750F428005DAF1D /* RORMorePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1214,6 +1240,7 @@
 		302FCFF81727D870004DA005 = {
 			isa = PBXGroup;
 			children = (
+				0FD9FE381863F75500978596 /* VTime */,
 				30692D5718117C2500DA01EC /* SVProgressHUD */,
 				0F8501DF17C1C68E0005993E /* libsqlite3.dylib */,
 				0F8501DD17C1C63E0005993E /* libstdc++.dylib */,
@@ -2124,6 +2151,7 @@
 				30692D5D18117C2500DA01EC /* SVProgressHUD.m in Sources */,
 				30FC2906175EF6F300DEC042 /* RORMapViewController.m in Sources */,
 				3053E40D1828994100F671F7 /* RORBookletViewController.m in Sources */,
+				0FD9FE3E1863F75500978596 /* JSONKit.m in Sources */,
 				30FC2909175F1F5800DEC042 /* RORMapAnnotation.m in Sources */,
 				30BB0AFD1761C5C50009A847 /* RORHistoryViewController.m in Sources */,
 				30BB0B001761C5DB0009A847 /* RORHistoryDetailViewController.m in Sources */,
@@ -2360,6 +2388,7 @@
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/libWeiboSDK\"",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/SDKExport\"",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/TencentWeiboSSO\"",
+					"\"$(SRCROOT)/VTime\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
@@ -2395,6 +2424,7 @@
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/libWeiboSDK\"",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/SDKExport\"",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/TencentWeiboSSO\"",
+					"\"$(SRCROOT)/VTime\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";

@@ -19,7 +19,7 @@
 @implementation RORCustomShareViewController
 
 @synthesize shareImage;
-@synthesize record;
+@synthesize shareMessage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,8 +49,6 @@
                                                object:nil];
     _txtShareContent.layer.borderWidth=1.0;
     _txtShareContent.layer.borderColor=[[UIColor grayColor] CGColor];
-//    self.backButton.frame = BACKBUTTON_FRAME_TOP;
-//    deltaY =0;
 }
 
 - (void)keyboardWillShow:(NSNotification *)sender {
@@ -112,7 +110,9 @@
         return;
     }
     
-    NSString *shareContent = [NSString stringWithFormat:SHARE_DEFAULT_CONTENT,[RORUtils outputDistance:record.distance.doubleValue],[RORUtils transSecondToStandardFormat:record.duration.doubleValue],[NSString stringWithFormat:@"%.1f kca", record.spendCarlorie.doubleValue]];
+    NSString *shareContent = shareMessage;
+    
+    //NSString *shareContent = [NSString stringWithFormat:SHARE_DEFAULT_CONTENT,[RORUtils outputDistance:record.distance.doubleValue],[RORUtils transSecondToStandardFormat:record.duration.doubleValue],[NSString stringWithFormat:@"%.1f kca", record.spendCarlorie.doubleValue]];
     
     if([_txtShareContent.text length]>0){
         shareContent = [[NSString stringWithFormat:@"『%@』",_txtShareContent.text] stringByAppendingString:shareContent];
