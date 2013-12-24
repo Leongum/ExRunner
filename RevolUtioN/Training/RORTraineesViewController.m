@@ -33,6 +33,8 @@
 
 - (void)viewDidLoad
 {
+    [self startIndicator:self];
+
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [Animations frameAndShadow:self.partnerView];
@@ -50,10 +52,16 @@
     
     traineeBtnPathLength = self.tableViewContainerView.frame.origin.y+self.tableViewContainerView.frame.size.height - tableViewPathLength - self.showFriendsButton.frame.origin.y - self.showFriendsButton.frame.size.height - 2;
     
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    //****************
+    
     friendList = [RORPlanService getTopUsingByUserId:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:0]];
     for (Plan_Run_History *thisPlanRun in friendList){
-//        if (thisPlanRun.userId.integerValue == [RORUserUtils getUserId].integerValue)
-//            [friendList removeObject:thisPlanRun];
+        //        if (thisPlanRun.userId.integerValue == [RORUserUtils getUserId].integerValue)
+        //            [friendList removeObject:thisPlanRun];
     }
     traineeList = [RORPlanService getTopUsingByPlanId:planNext.planId withPageNo:[NSNumber numberWithInt:0]];
     Plan_Run_History *toDelete;
@@ -73,6 +81,11 @@
     self.coverView.alpha = 0;
     
     [self initFixonView];
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self endIndicator:self];
 }
 
 -(void)initFixonView{
@@ -83,16 +96,13 @@
         fixonPlanRunHistory = [RORPlanService getUserLastUpdatePlan:fixonUserId];
         [self fillCellView:self.partnerView withPlanRunHistory:fixonPlanRunHistory];
         self.removeFixonButton.alpha = 1;
+        self.fixonUserIdLabel.alpha =1;
+        self.fixonUserIdLabel.text = [NSString stringWithFormat:@"%@号选手",[RORUtils addEggache:fixonPlanRunHistory.userId]];
     } else {
         self.partnerView.alpha = 0;
         self.removeFixonButton.alpha = 0;
+        self.fixonUserIdLabel.alpha =0;
     }
-}
-
--(void)viewDidAppear:(BOOL)animated{
-//    self.tableView.contentSize = CGSizeMake(0, tableViewHeight);
-    
-//    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:ROWS inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -166,6 +176,8 @@
     [self.partnerView fadeIn:ANIMATION_DURATION_POPUP delegate:self];
     [self fillCellView:self.partnerView withPlanRunHistory:fixonPlanRunHistory];
     self.removeFixonButton.alpha = 1;
+    self.fixonUserIdLabel.alpha =1;
+    self.fixonUserIdLabel.text = [NSString stringWithFormat:@"%@号选手",[RORUtils addEggache:fixonPlanRunHistory.userId]];
 }
 
 -(void)fillCellView:(UIView *)view withPlanRunHistory:(Plan_Run_History*)thisPlanRun{
@@ -177,10 +189,15 @@
     
     UILabel *userNameLabel = (UILabel *)[view viewWithTag:100];
     UILabel *planNameLabel = (UILabel *)[view viewWithTag:102];
+    UILabel *userIdLabel = (UILabel *)[view viewWithTag:105];
     UILabel *processLabel = (UILabel *)[view viewWithTag:101];
+    UIImageView *userSexImage = (UIImageView *)[view viewWithTag:104];
+    
     userNameLabel.text = username;
     planNameLabel.text = planName;
     processLabel.text = process;
+    userIdLabel.text = [NSString stringWithFormat:@"%d号选手", [RORUtils addEggache:thisPlanRun.userId].intValue];
+    userSexImage.image = [RORUserUtils getImageForUserSex:thisPlanRun.userSex];
 }
 
 -(IBAction)cellSelectAction:(id)sender{
@@ -278,6 +295,7 @@
     [self.partnerView flyOut:0.618 delegate:self];
     
     self.removeFixonButton.alpha = 0;
+    self.fixonUserIdLabel.alpha = 0;
 }
 
 
@@ -328,6 +346,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     [self cellSelectAction:[tableView cellForRowAtIndexPath:indexPath]];
 }
 

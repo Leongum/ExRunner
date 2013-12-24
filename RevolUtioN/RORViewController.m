@@ -119,40 +119,7 @@ activity indicator
 
 - (IBAction)startIndicator:(id)sender
 {
-//    //初始化指示器
-//    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height/2-50, 100, 100)];
-//    
-//    /*
-//     指定指示器的类型
-//     一共有三种类型：
-//     UIActivityIndicatorViewStyleWhiteLarge   //大型白色指示器
-//     UIActivityIndicatorViewStyleWhite      //标准尺寸白色指示器
-//     UIActivityIndicatorViewStyleGray    //灰色指示器，用于白色背景
-//     */
-//    self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-//    
-//    //停止后是否隐藏(默认为YES)
-//    self.activityIndicator.hidesWhenStopped = YES;
-//    
-//    //将Indicator添加到视图中
-//    [self.view addSubview:self.activityIndicator];
-//    
-//    //开始转动
-//    [self.activityIndicator startAnimating];
-//    
-//    //操作队列
-//    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
-//    
-//    //设置最大的操作数
-//    [operationQueue setMaxConcurrentOperationCount:1];
-//    
-//    //构建一个操作对象，selector指定的方法是在另外一个线程中运行的
-//    NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
-//                                                                            selector:@selector(runIndicator) object:nil];
-//    //将操作加入队列，此时后台线程开始执行
-//    [operationQueue addOperation:operation];
-//
-    [SVProgressHUD showWithStatus:nil maskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD showWithStatus:nil maskType:SVProgressHUDMaskTypeClear];
 }
 
 - (IBAction)endIndicator:(id)sender{

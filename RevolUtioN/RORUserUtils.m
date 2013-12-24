@@ -305,4 +305,14 @@ static NSDate *syncTime;
     }
 }
 
++(UIImage *)getImageForUserSex:(NSString *)sexString{
+    if ([sexString isEqualToString:@"男"]){
+        return [UIImage imageNamed:@"male.png"];
+    } else if ([sexString isEqualToString:@"女"]){
+        return [UIImage imageNamed:@"female.png"];
+    } else {
+        return [UIImage imageNamed:@"notSure.png"];
+    }
+}
+
 @end

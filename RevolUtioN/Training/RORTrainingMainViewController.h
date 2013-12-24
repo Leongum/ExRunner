@@ -7,6 +7,7 @@
 //
 
 #import "RORTrainingViewController.h"
+#import "RORTrainingHistoryShareView.h"
 
 @interface RORTrainingMainViewController : RORTrainingViewController{
     CGRect bookletButtonFrame;
@@ -29,5 +30,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *trainingMainBg;
 
 @property (strong, nonatomic) IBOutlet UIButton *giveUpButton;
+@property (strong, nonatomic) IBOutlet UIImageView *bgImage;
 
 @end

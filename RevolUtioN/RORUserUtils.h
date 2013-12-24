@@ -53,5 +53,5 @@
 
 +(void)syncSystemData;
 
-
++(UIImage *)getImageForUserSex:(NSString *)sexString;
 @end

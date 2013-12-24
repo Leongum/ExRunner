@@ -77,17 +77,20 @@
     }
 }
 
--(void)loadTableViewData:(NSInteger)page{
+-(BOOL)loadTableViewData:(NSInteger)page{
     if (noMoreData)
-        return;
+        return NO;
     
     int count = contentList.count;
+    [self startIndicator:self];
     NSArray *array = [RORPlanService getTopPlansList:[NSNumber numberWithInteger:page]];
     [contentList addObjectsFromArray:array];
+    [self endIndicator:self];
     if (contentList.count-count<PLAN_PAGE_SIZE){
         noMoreData = YES;
     }
     [self.tableView reloadData];
+    return !noMoreData;
 }
 
 
@@ -190,7 +193,7 @@
         static NSString *CellIdentifier = @"moreCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         UILabel *titleLabel = (UILabel *)[cell viewWithTag:100];
-        titleLabel.text = @"目前只有这么多";
+        titleLabel.text = @"更多...";
         return cell;
     }
     
@@ -230,7 +233,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == contentList.count){
-        [self loadTableViewData:currentPages++];
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        UILabel *titleLabel = (UILabel *)[cell viewWithTag:100];
+        if (![self loadTableViewData:currentPages++]){
+            titleLabel.text = @"目前只有这么多";
+        } else {
+            titleLabel.text = @"更多...";
+        }
     }
 }
 

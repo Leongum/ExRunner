@@ -26,6 +26,7 @@
 
 @property(retain,nonatomic) UIActivityIndicatorView *activityIndicator;
 @property(retain,nonatomic) UIProgressView *progressView;
+@property (nonatomic) BOOL needRefresh;
 
 - (IBAction)backAction:(id)sender;
 

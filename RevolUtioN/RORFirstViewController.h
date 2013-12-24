@@ -16,6 +16,7 @@
 #import "RORNormalButton.h"
 #import <MapKit/MapKit.h>
 #import "RORViewController.h"
+#import "RORPlanService.h"
 
 @interface RORFirstViewController : RORViewController<CLLocationManagerDelegate>{
     BOOL wasFound;
@@ -23,8 +24,11 @@
     NSString *cityName;
     NSString *weatherInformation;
     BOOL hasAnimated;
+    User_Base *userInfo;
     
     CLLocationManager *locationManager;
+    
+    Plan_Next_mission *planNext;
 }
 
 //@property (strong,nonatomic)NSManagedObjectContext *context;
@@ -37,6 +41,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *levelLabel;
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) IBOutlet UIControl *userInfoView;
+@property (strong, nonatomic) IBOutlet UILabel *userIdLabel;
 
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) IBOutlet UIButton *weatherInfoButtonView;
@@ -46,6 +51,8 @@
 @property (strong, nonatomic) IBOutlet RORNormalButton *settingButton;
 @property (strong, nonatomic) IBOutlet RORNormalButton *mallButton;
 @property (strong, nonatomic) IBOutlet RORNormalButton *friendsButton;
+
+@property (strong, nonatomic) IBOutlet UIView *trainingCountDownView;
 
 - (IBAction)normalRunAction:(id)sender;
 - (IBAction)challengeRunAction:(id)sender;

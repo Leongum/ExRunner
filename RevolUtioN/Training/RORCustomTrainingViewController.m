@@ -28,8 +28,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    [self startIndicator:self];
     [self loadViewControllers];
+    [self endIndicator:self];
 }
 
 -(void)loadViewControllers{
@@ -80,12 +81,15 @@
 
 //    currentView.alpha = 0;
 //    [self.frameView fold:0.3 delegate:self startSelector:nil stopSelector:@selector(expandView:)];
-    [self.frameView expand:0.6 delegate:self];
+    
+//    [self.frameView expand:0.6 delegate:self];
+    
 //    [self.frameView slideInFrom:kFTAnimationTop duration:0.5 delegate:self];
     [currentView removeFromSuperview];
     [self.frameView addSubview:newView];
     
-    
+//    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.6]];
+
 //    [UIView commitAnimations];
 
     currentView = newView;

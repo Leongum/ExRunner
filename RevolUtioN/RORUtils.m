@@ -351,12 +351,26 @@
 }
 
 +(NSString *)addEggache:(NSNumber *)userID{
-    return [NSString stringWithFormat:@"%d", userID.integerValue+543200];
+    return [NSString stringWithFormat:@"%d", userID.integerValue+5432];
 }
 
 +(NSNumber *)removeEggache:(NSString *)userID{
     [RORDBCommon getNumberFromId:userID];
-    return [NSNumber numberWithInt:userID.integerValue-543200];
+    return [NSNumber numberWithInt:userID.integerValue-5432];
+}
+
++(UIImage *)getImageFromView:(UIView *)thisView{
+    if(UIGraphicsBeginImageContextWithOptions != NULL)
+    {
+        UIGraphicsBeginImageContextWithOptions(thisView.frame.size, NO, 0.0);
+    } else {
+        UIGraphicsBeginImageContext(thisView.frame.size);
+    }
+    //获取图像
+    [thisView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 @end

@@ -43,6 +43,7 @@
 @property (strong, nonatomic) IBOutlet UIView *coverView;
 @property (strong, nonatomic) IBOutlet UIView *friendBoard;
 @property (strong, nonatomic) IBOutlet UIButton *removeFixonButton;
+@property (strong, nonatomic) IBOutlet UILabel *fixonUserIdLabel;
 
 @property (strong, nonatomic) Plan_Next_mission *planNext;
 

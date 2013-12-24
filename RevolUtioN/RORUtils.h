@@ -59,4 +59,5 @@ _Pragma("clang diagnostic pop") \
 
 +(NSNumber *)removeEggache:(NSString *)userID;
 
++(UIImage *)getImageFromView:(UIView *)thisView;
 @end

@@ -381,6 +381,8 @@
     Plan_Run_History *userPlanHistory = (Plan_Run_History *) [fetchObject objectAtIndex:0];
     if(needHistoryDetail){
         userPlanHistory.runHistoryList = [[RORRunHistoryServices fetchRunHistoryByPlanRunUuid:userPlanHistory.planRunUuid] mutableCopy];
+        Plan *thisPlan = [RORPlanService fetchPlan:userPlanHistory.planId];
+        userPlanHistory.planName = thisPlan.planName;
     }
     if(!needContext){
         userPlanHistory = [Plan_Run_History removeAssociateForEntity:userPlanHistory];
@@ -536,6 +538,7 @@
         planRunHistory.startTime = [NSDate date];
         planRunHistory.userId = [RORUserUtils getUserId];
         planRunHistory.operate = [NSNumber numberWithInt:(int)OperateInsert];
+        planRunHistory.planName = plan.planName;
         
         Plan_Next_mission *planNextMission = [self fetchPlanNextMission];
         planNextMission.planId = planId;
@@ -739,4 +742,13 @@
         return planNext.planInfo.duration.integerValue;
     return planNext.nextMission.cycleTime.integerValue;
 }
+
++(void)fillCountDownIconForView:(UIView *)view withPlanNext:(Plan_Next_mission *)planNext{
+    UILabel *leftDays = (UILabel *)[view viewWithTag:254];
+    NSLog(@"left days:%.0f", [planNext.startTime timeIntervalSinceNow]);
+    NSInteger ld = [self getCycleTimeofPlanNext:planNext]+[planNext.startTime timeIntervalSinceNow]/3600/24;
+    leftDays.text = [NSString stringWithFormat:@"%d", ld];
+    view.alpha = (ld>=0);
+}
+
 @end

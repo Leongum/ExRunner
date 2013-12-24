@@ -27,6 +27,7 @@
 
 @synthesize nickName;
 @synthesize planName;
+@synthesize userSex;
 
 @synthesize runHistoryList;
 
@@ -67,6 +68,7 @@
     self.totalMissions = [RORDBCommon getNumberFromId:[dict valueForKey:@"totalMissions"]];
     self.userId = [RORDBCommon getNumberFromId:[dict valueForKey:@"userId"]];
     self.nickName = [RORDBCommon getStringFromId:[dict valueForKey:@"nickName"]];
+    self.userSex = [RORDBCommon getStringFromId:[dict valueForKey:@"sex"]];
     self.operate = nil;
 }
 
@@ -85,6 +87,7 @@
     [tempoDict setValue:self.totalMissions forKey:@"totalMissions"];
     [tempoDict setValue:self.userId forKey:@"userId"];
     [tempoDict setValue:self.operate forKey:@"operate"];
+    [tempoDict setValue:self.userSex forKey:@"sex"];
     return tempoDict;
 }
 

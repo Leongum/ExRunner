@@ -335,7 +335,7 @@
     static NSString *CellIdentifier = @"planDetailCell";
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     UILabel *sequenceLabel = (UILabel *)[cell viewWithTag:100];
-    UILabel *dateCommentLabel = (UILabel *)[cell viewWithTag:101];
+    UILabel *dateCommentLabel = (UILabel *)[cell viewWithTag:254];
     UILabel *trainingContentLabel = (UILabel *)[cell viewWithTag:102];
     UILabel *speedLabel = (UILabel*)[cell viewWithTag:103];
     

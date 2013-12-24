@@ -46,6 +46,7 @@
         UIButton *btn = (UIButton *)sender;
         btn.enabled = NO;
         [self refreshCollectButton:btn];
+        [self sendNotification:@"收藏成功！"];
     } else
         [self sendAlart:@"请先登录"];
 }

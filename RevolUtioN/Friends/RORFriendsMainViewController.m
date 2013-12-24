@@ -68,6 +68,8 @@
     self.searchTextField.text = @"";
     self.searchResultUserNameLabel.text = @"";
     self.searchResultUserLvLabel.text = @"";
+    self.searchResultUserIdLabel.text = @"";
+    self.searchResultUserSex.image = nil;
     self.addButton.alpha = 0;
 }
 
@@ -80,11 +82,12 @@
         self.searchFriendView.frame = CGRectMake(f.origin.x, 0, f.size.width, f.size.height);
         [self initSearchField];
         [self.searchTextField becomeFirstResponder];
-
+        [self.expandButton setTitle:@"收起" forState:UIControlStateNormal];
     } else {
         [self.searchFriendView moveUp:0.5 length:searchViewTop delegate:self];
         self.searchFriendView.frame = CGRectMake(f.origin.x, searchViewTop, f.size.width, f.size.height);
         [self.searchTextField resignFirstResponder];
+        [self.expandButton setTitle:@"添加" forState:UIControlStateNormal];
     }
 }
 
@@ -126,9 +129,12 @@
 -(void)showUserInfo{
     self.searchResultUserNameLabel.text = userInfo.nickName;
     self.searchResultUserLvLabel.text = [NSString stringWithFormat:@"Lv.%d", userInfo.attributes.level.integerValue];
+    self.searchResultUserIdLabel.text = [NSString stringWithFormat:@"%@号选手", [RORUtils addEggache:userInfo.userId]];
+    self.searchResultUserSex.image = [RORUserUtils getImageForUserSex:userInfo.sex];
 }
 
 - (IBAction)addAction:(id)sender {
+    [self startIndicator:self];
     Plan_User_Follow *userFollow = [Plan_User_Follow intiUnassociateEntity];
     userFollow.userId = [RORUserUtils getUserId];
     userFollow.followUserId = userInfo.userId;
@@ -137,6 +143,9 @@
     self.addButton.enabled = 0;
     [self.tableViewContainer pop:0.5 delegate:self];
     [self reloadTableView];
+    [self endIndicator:self];
+    [self expandAction:self];
+    [self sendNotification:@"添加成功！"];
 }
 
 -(void)reloadTableView{
@@ -178,9 +187,13 @@
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     UILabel *userNameLabel = (UILabel *)[cell viewWithTag:100];
     UILabel *userLevelLabel = (UILabel *)[cell viewWithTag:101];
+    UILabel *userIdLabel = (UILabel *)[cell viewWithTag:102];
+    UIImageView *userSexImage = (UIImageView *)[cell viewWithTag:103];
+    
     userNameLabel.text = user.nickName;
     userLevelLabel.text = [NSString stringWithFormat:@"Lv.%d", user.attributes.level.integerValue];
-    
+    userIdLabel.text = [NSString stringWithFormat:@"%@号选手", [RORUtils addEggache:user.userId]];
+    userSexImage.image = [RORUserUtils getImageForUserSex:user.sex];
     return cell;
 }
 

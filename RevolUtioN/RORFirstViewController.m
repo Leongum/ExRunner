@@ -64,8 +64,8 @@
 -(void)checkLevelUp{
     NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
     NSNumber *userLevel = [settinglist valueForKey:@"userLevel"];
-    User_Attributes *userInfo = [RORUserServices fetchUserAttrsByUserId:[RORUserUtils getUserId]];
-    if (userLevel.integerValue<userInfo.level.integerValue){
+    User_Attributes *userAttr = [RORUserServices fetchUserAttrsByUserId:[RORUserUtils getUserId]];
+    if (userLevel.integerValue<userAttr.level.integerValue){
         [self performLevelUp];
     }
 }
@@ -160,19 +160,27 @@
     //    [self.usernameLabel setFont:[UIFont fontWithName:@"FZKaTong-M19S" size:20]];
     
     //初始化用户名
-    if ([RORUserUtils getUserId].integerValue>=0){
+    NSNumber *thisUserId = [RORUserUtils getUserId];
+    if (thisUserId.integerValue>=0){
         self.loginButton.alpha = 0;
         
-        User_Base *userInfo = [RORUserServices fetchUser:[RORUserUtils getUserId]];
+        userInfo = [RORUserServices fetchUser:[RORUserUtils getUserId]];
         self.usernameLabel.text = userInfo.nickName;
-//        [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.usernameLabel andSubViews:NO];
-        self.levelLabel.text = [NSString stringWithFormat:@"%d", userInfo.attributes.level.integerValue];
-        [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.levelLabel andSubViews:NO];
-        self.scoreLabel.text = [NSString stringWithFormat:@"%d", userInfo.attributes.scores.integerValue];
-        [RORUtils setFontFamily:ENG_WRITTEN_FONT forView:self.scoreLabel andSubViews:NO];
+        int l = [RORUtils convertToInt:self.usernameLabel.text];
+        if (l<=3)
+            [self.usernameLabel setFont:[UIFont boldSystemFontOfSize:22]];
+        if (l>=8)
+            [self.usernameLabel setFont:[UIFont boldSystemFontOfSize:16]];
+        self.levelLabel.text = [NSString stringWithFormat:@"Lv. %d", userInfo.attributes.level.integerValue];
+//        self.scoreLabel.text = [NSString stringWithFormat:@"%d", userInfo.attributes.scores.integerValue];
+        self.userIdLabel.text = [NSString stringWithFormat:@"%@号选手",[RORUtils addEggache:thisUserId]];
     } else {
         self.loginButton.alpha = 1;
     }
+    
+    planNext = [RORPlanService fetchUserRunningPlanHistory];
+
+    [RORPlanService fillCountDownIconForView:self.trainingCountDownView withPlanNext:planNext];
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -340,7 +348,7 @@
 }
 
 -(IBAction)userInfoViewClick:(id)sender{
-    [self sendNotification:[NSString stringWithFormat:@"用户编号\n%@",[RORUtils addEggache:[RORUserUtils getUserId]]]];
+    [self sendNotification:[NSString stringWithFormat:@"\n选手编号: %@\n\n金币: %d\n",[RORUtils addEggache:[RORUserUtils getUserId]], userInfo.attributes.scores.intValue]];
 }
 
 - (IBAction)normalRunAction:(id)sender {
@@ -359,7 +367,7 @@
 - (IBAction)trainingAction:(id)sender {
     UIStoryboard *secondStoryboard = [UIStoryboard storyboardWithName:@"TrainingStoryboard" bundle:nil];
     UIViewController *trainingViewController = [secondStoryboard instantiateViewControllerWithIdentifier:@"TrainingMainViewController"];
-    
+
     [self.navigationController pushViewController:trainingViewController animated:YES];
 }
 

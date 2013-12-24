@@ -19,7 +19,7 @@
 @end
 
 @implementation RORHistoryPageViewController
-@synthesize contentViews, statisticsViewController, listViewController, filter;
+@synthesize contentViews, statisticsViewController, listViewController, filter, trainingViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,19 +54,21 @@
     
 	// Do any additional setup after loading the view.
     NSMutableArray *controllers = [[NSMutableArray alloc] init];
-    for (NSUInteger i = 0; i <2; i++)
+    for (NSUInteger i = 0; i <3; i++)
 		[controllers addObject:[NSNull null]];
 
     self.contentViews = controllers;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
     listViewController =  [storyboard instantiateViewControllerWithIdentifier:@"historyListViewController"];
     statisticsViewController = [storyboard instantiateViewControllerWithIdentifier:@"historyStatisticsViewController"];
+    trainingViewController = [storyboard instantiateViewControllerWithIdentifier:@"historyTrainingViewController"];
     
     [contentViews replaceObjectAtIndex:1 withObject:statisticsViewController];
     //    userInfoRunHistoryView = [[RORUserRunHistoryViewController alloc]initWithPageNumber:1];
     //    [contentViews replaceObjectAtIndex:1 withObject:userInfoRunHistoryView];
     //    self.historyInStoryboard = [[RORUserRunHistoryViewController alloc]initWithPageNumber:1];
     [contentViews replaceObjectAtIndex:0 withObject:listViewController];
+    [contentViews replaceObjectAtIndex:2 withObject:trainingViewController];
     
     NSInteger numberPages = contentViews.count;
     // a page is the width of the scroll view
@@ -86,6 +88,7 @@
     
     [self loadPage:0];
     [self loadPage:1];
+    [self loadPage:2];
 }
 
 -(void)viewDidAppear:(BOOL)animated{

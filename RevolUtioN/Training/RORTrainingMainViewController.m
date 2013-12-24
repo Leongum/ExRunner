@@ -25,6 +25,8 @@
 
 - (void)viewDidLoad
 {
+    [self startIndicator:self];
+
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     bookletButtonFrame = self.bookletButton.frame;
@@ -32,13 +34,17 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
     [self initLayout];
     [self.tableView reloadData];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    if (todoCellIndex)
-        [self.tableView scrollToRowAtIndexPath:todoCellIndex atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [self endIndicator:self];
+
+//    if (todoCellIndex)
+//        [self.tableView scrollToRowAtIndexPath:todoCellIndex atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 -(void)initLayout{
@@ -202,9 +208,10 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
         //提示此次训练还剩几天，后面考虑用一个CustomView实现
-        UILabel *leftDays = (UILabel *)[cell viewWithTag:105];
-        NSLog(@"left days:%.0f", [planNext.startTime timeIntervalSinceNow]);
-        leftDays.text = [NSString stringWithFormat:@"%.0f", [RORPlanService getCycleTimeofPlanNext:planNext]+[planNext.startTime timeIntervalSinceNow]/3600/24];
+//        UILabel *leftDays = (UILabel *)[cell viewWithTag:105];
+//        NSLog(@"left days:%.0f", [planNext.startTime timeIntervalSinceNow]);
+//        leftDays.text = [NSString stringWithFormat:@"%.0f", [RORPlanService getCycleTimeofPlanNext:planNext]+[planNext.startTime timeIntervalSinceNow]/3600/24];
+        [RORPlanService fillCountDownIconForView:cell withPlanNext:planNext];
         
 //        todoCellIndex = indexPath;
     } else {
@@ -247,5 +254,19 @@
     return;
 }
 
+- (IBAction)testAction:(id)sender {
+    RORTrainingHistoryShareView *testView = [[RORTrainingHistoryShareView alloc]initWithFrame:self.view.frame];
+    for (int i=0; i<20; i++){
+        UIImageView *iv = [[UIImageView alloc]initWithImage: [UIImage imageNamed:@"advTrainingCell.png"]];
+        iv.frame = CGRectMake(0, 0, 320, 60);
+        [testView add:iv];
+    }
+    [self.view addSubview:testView];
+    [testView removeFromSuperview];
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:[testView getImage]];
+    imageView.frame = CGRectMake(0, 0, 320,100);
+    imageView.center = self.view.center;
+    [self.view addSubview:imageView];
+}
 
 @end

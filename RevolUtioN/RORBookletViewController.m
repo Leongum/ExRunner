@@ -18,6 +18,7 @@
 @implementation RORBookletViewController
 @synthesize planNext, historyList;
 @synthesize delegate;
+@synthesize needRefresh;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,8 +31,12 @@
 
 - (void)viewDidLoad
 {
+    //****************
+    [self startIndicator:self];
+
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self startIndicator:self];
     
     storyboard = [UIStoryboard storyboardWithName:@"TrainingStoryboard" bundle:[NSBundle mainBundle]];
     searchViewController =  [storyboard instantiateViewControllerWithIdentifier:@"searchViewController"];
@@ -49,8 +54,7 @@
     self.searchTrainingView = searchViewController.view;
     
     [self.view bringSubviewToFront:self.backButton];
-    [self.view bringSubviewToFront:self.editButton];
-    
+    [self.view bringSubviewToFront:self.editButton];    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -59,9 +63,16 @@
     contentList = [RORPlanService fetchPlanCollect:userId];
     historyList = [RORPlanService fetchUserPlanHistoryList:userId];
     [self.tableView reloadData];
+    
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [self endIndicator:self];
+    //****************
+    
     if (contentList.count==0 && !searchViewController.expanded){
 //        [searchViewController expandAction:self];
         RORIntroCoverView *introCoverView = [[RORIntroCoverView alloc]initWithFrame:self.view.frame andImage:[UIImage imageNamed:@"introBookletPage.png"]];

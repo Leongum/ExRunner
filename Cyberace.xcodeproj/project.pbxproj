@@ -152,9 +152,7 @@
 		303707A11805132300FE0238 /* end_annotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 3037079F1805132300FE0238 /* end_annotation.png */; };
 		303707A21805132300FE0238 /* start_annotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707A01805132300FE0238 /* start_annotation.png */; };
 		303707A71805523900FE0238 /* friends.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707A31805523900FE0238 /* friends.png */; };
-		303707A81805523900FE0238 /* friends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707A41805523900FE0238 /* friends@2x.png */; };
 		303707A91805523900FE0238 /* mall.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707A51805523900FE0238 /* mall.png */; };
-		303707AA1805523900FE0238 /* mall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707A61805523900FE0238 /* mall@2x.png */; };
 		303707AC1806590B00FE0238 /* stamp_f.png in Resources */ = {isa = PBXBuildFile; fileRef = 303707AB1806590B00FE0238 /* stamp_f.png */; };
 		303B87E91852DE0900FD44AC /* creatCustomButton_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 303B87E51852DE0900FD44AC /* creatCustomButton_bg.png */; };
 		303B87EA1852DE0900FD44AC /* expandButton_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 303B87E61852DE0900FD44AC /* expandButton_bg.png */; };
@@ -288,7 +286,6 @@
 		30B3906618322B4C005CE74D /* MLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B3906518322B4C005CE74D /* MLNavigationController.m */; };
 		30B39069183B30C6005CE74D /* RORTrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B39068183B30C6005CE74D /* RORTrainingViewController.m */; };
 		30BB0AF81761BEA10009A847 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = 30BB0AF61761BEA10009A847 /* history.png */; };
-		30BB0AF91761BEA10009A847 /* history@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30BB0AF71761BEA10009A847 /* history@2x.png */; };
 		30BB0AFD1761C5C50009A847 /* RORHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0AFC1761C5C50009A847 /* RORHistoryViewController.m */; };
 		30BB0B001761C5DB0009A847 /* RORHistoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0AFF1761C5DB0009A847 /* RORHistoryDetailViewController.m */; };
 		30BB0B041769A2300009A847 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BB0B031769A2300009A847 /* CFNetwork.framework */; };
@@ -335,11 +332,17 @@
 		30F4549317C1296C006CB66C /* Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4549217C1296C006CB66C /* Animations.m */; };
 		30F8BEBF17C4A72700DB137D /* RORBottomPopSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F8BEBE17C4A72700DB137D /* RORBottomPopSubview.m */; };
 		30FA65B0184DA8CE00E62816 /* RORTrainingPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FA65AF184DA8CE00E62816 /* RORTrainingPickerView.m */; };
+		30FAA212186415E100E72650 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FAA210186415E100E72650 /* male.png */; };
+		30FAA213186415E100E72650 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FAA211186415E100E72650 /* female.png */; };
+		30FAA215186417DF00E72650 /* notSure.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FAA214186417DF00E72650 /* notSure.png */; };
+		30FAA23E18658E9600E72650 /* RORTrainingHistoryShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FAA23D18658E9600E72650 /* RORTrainingHistoryShareView.m */; };
+		30FAA2441865E22800E72650 /* RORTrainingHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FAA2431865E22800E72650 /* RORTrainingHistoryViewController.m */; };
+		30FAA2471865E26400E72650 /* RORTrainingHistoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FAA2461865E26400E72650 /* RORTrainingHistoryDetailViewController.m */; };
+		30FAA24918688A4000E72650 /* countDown_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FAA24818688A4000E72650 /* countDown_bg.png */; };
 		30FC2903175EC34200DEC042 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FC2902175EC34200DEC042 /* MapKit.framework */; };
 		30FC2906175EF6F300DEC042 /* RORMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FC2905175EF6F300DEC042 /* RORMapViewController.m */; };
 		30FC2909175F1F5800DEC042 /* RORMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FC2908175F1F5800DEC042 /* RORMapAnnotation.m */; };
 		30FC292917607F6D00DEC042 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC292117607F6D00DEC042 /* settings.png */; };
-		30FC292A17607F6D00DEC042 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC292217607F6D00DEC042 /* settings@2x.png */; };
 		30FC29411760861C00DEC042 /* expand.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC293F1760861C00DEC042 /* expand.png */; };
 		30FECBBB17D83AE5002C3C90 /* RORNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FECBBA17D83AE5002C3C90 /* RORNotificationView.m */; };
 		30FECBC117D86C29002C3C90 /* charactor.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBC017D86C29002C3C90 /* charactor.png */; };
@@ -574,9 +577,7 @@
 		3037079F1805132300FE0238 /* end_annotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end_annotation.png; sourceTree = "<group>"; };
 		303707A01805132300FE0238 /* start_annotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_annotation.png; sourceTree = "<group>"; };
 		303707A31805523900FE0238 /* friends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friends.png; sourceTree = "<group>"; };
-		303707A41805523900FE0238 /* friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friends@2x.png"; sourceTree = "<group>"; };
 		303707A51805523900FE0238 /* mall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mall.png; sourceTree = "<group>"; };
-		303707A61805523900FE0238 /* mall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mall@2x.png"; sourceTree = "<group>"; };
 		303707AB1806590B00FE0238 /* stamp_f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stamp_f.png; sourceTree = "<group>"; };
 		303B87E51852DE0900FD44AC /* creatCustomButton_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creatCustomButton_bg.png; sourceTree = "<group>"; };
 		303B87E61852DE0900FD44AC /* expandButton_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expandButton_bg.png; sourceTree = "<group>"; };
@@ -747,7 +748,6 @@
 		30B39067183B30C6005CE74D /* RORTrainingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingViewController.h; path = Training/RORTrainingViewController.h; sourceTree = "<group>"; };
 		30B39068183B30C6005CE74D /* RORTrainingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingViewController.m; path = Training/RORTrainingViewController.m; sourceTree = "<group>"; };
 		30BB0AF61761BEA10009A847 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
-		30BB0AF71761BEA10009A847 /* history@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history@2x.png"; sourceTree = "<group>"; };
 		30BB0AFB1761C5C50009A847 /* RORHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHistoryViewController.h; sourceTree = "<group>"; };
 		30BB0AFC1761C5C50009A847 /* RORHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORHistoryViewController.m; sourceTree = "<group>"; };
 		30BB0AFE1761C5DB0009A847 /* RORHistoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHistoryDetailViewController.h; sourceTree = "<group>"; };
@@ -821,13 +821,22 @@
 		30F8BEBE17C4A72700DB137D /* RORBottomPopSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORBottomPopSubview.m; sourceTree = "<group>"; };
 		30FA65AE184DA8CE00E62816 /* RORTrainingPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingPickerView.h; path = Training/RORTrainingPickerView.h; sourceTree = "<group>"; };
 		30FA65AF184DA8CE00E62816 /* RORTrainingPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingPickerView.m; path = Training/RORTrainingPickerView.m; sourceTree = "<group>"; };
+		30FAA210186415E100E72650 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
+		30FAA211186415E100E72650 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
+		30FAA214186417DF00E72650 /* notSure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notSure.png; sourceTree = "<group>"; };
+		30FAA23C18658E9600E72650 /* RORTrainingHistoryShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingHistoryShareView.h; path = Training/RORTrainingHistoryShareView.h; sourceTree = "<group>"; };
+		30FAA23D18658E9600E72650 /* RORTrainingHistoryShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingHistoryShareView.m; path = Training/RORTrainingHistoryShareView.m; sourceTree = "<group>"; };
+		30FAA2421865E22800E72650 /* RORTrainingHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingHistoryViewController.h; path = Training/RORTrainingHistoryViewController.h; sourceTree = "<group>"; };
+		30FAA2431865E22800E72650 /* RORTrainingHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingHistoryViewController.m; path = Training/RORTrainingHistoryViewController.m; sourceTree = "<group>"; };
+		30FAA2451865E26400E72650 /* RORTrainingHistoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingHistoryDetailViewController.h; path = History/RORTrainingHistoryDetailViewController.h; sourceTree = "<group>"; };
+		30FAA2461865E26400E72650 /* RORTrainingHistoryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingHistoryDetailViewController.m; path = History/RORTrainingHistoryDetailViewController.m; sourceTree = "<group>"; };
+		30FAA24818688A4000E72650 /* countDown_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = countDown_bg.png; sourceTree = "<group>"; };
 		30FC2902175EC34200DEC042 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		30FC2904175EF6F300DEC042 /* RORMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMapViewController.h; sourceTree = "<group>"; };
 		30FC2905175EF6F300DEC042 /* RORMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMapViewController.m; sourceTree = "<group>"; };
 		30FC2907175F1F5800DEC042 /* RORMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMapAnnotation.h; sourceTree = "<group>"; };
 		30FC2908175F1F5800DEC042 /* RORMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMapAnnotation.m; sourceTree = "<group>"; };
 		30FC292117607F6D00DEC042 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		30FC292217607F6D00DEC042 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		30FC293F1760861C00DEC042 /* expand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expand.png; sourceTree = "<group>"; };
 		30FECBB917D83AE5002C3C90 /* RORNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORNotificationView.h; path = ReusableControl/RORNotificationView.h; sourceTree = "<group>"; };
 		30FECBBA17D83AE5002C3C90 /* RORNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORNotificationView.m; path = ReusableControl/RORNotificationView.m; sourceTree = "<group>"; };
@@ -1360,6 +1369,7 @@
 		303B87E41852DE0900FD44AC /* Training */ = {
 			isa = PBXGroup;
 			children = (
+				30FAA24818688A4000E72650 /* countDown_bg.png */,
 				309849301861F2120079E236 /* bookletButtonBig_bg.png */,
 				3098492B1860E12C0079E236 /* advTrainingCell.png */,
 				30984924186085A90079E236 /* tipsPad_bg.png */,
@@ -1432,6 +1442,8 @@
 				30FA65AF184DA8CE00E62816 /* RORTrainingPickerView.m */,
 				309849261860918D0079E236 /* RORPlanCommentView.h */,
 				309849271860918D0079E236 /* RORPlanCommentView.m */,
+				30FAA23C18658E9600E72650 /* RORTrainingHistoryShareView.h */,
+				30FAA23D18658E9600E72650 /* RORTrainingHistoryShareView.m */,
 			);
 			name = Training;
 			sourceTree = "<group>";
@@ -1741,6 +1753,10 @@
 				30BB0AFF1761C5DB0009A847 /* RORHistoryDetailViewController.m */,
 				30FC2904175EF6F300DEC042 /* RORMapViewController.h */,
 				30FC2905175EF6F300DEC042 /* RORMapViewController.m */,
+				30FAA2421865E22800E72650 /* RORTrainingHistoryViewController.h */,
+				30FAA2431865E22800E72650 /* RORTrainingHistoryViewController.m */,
+				30FAA2451865E26400E72650 /* RORTrainingHistoryDetailViewController.h */,
+				30FAA2461865E26400E72650 /* RORTrainingHistoryDetailViewController.m */,
 			);
 			name = RORHistoryPage;
 			sourceTree = "<group>";
@@ -1806,15 +1822,16 @@
 		30FC291A17607F6D00DEC042 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				30FAA214186417DF00E72650 /* notSure.png */,
+				30FAA210186415E100E72650 /* male.png */,
+				30FAA211186415E100E72650 /* female.png */,
 				3005D014185855D600D83648 /* training */,
 				30E6D0FC184F0AD200C93338 /* lock.png */,
 				30692D5E18117D7200DA01EC /* count */,
 				30692D3D180D800200DA01EC /* logo.png */,
 				30692D3E180D800200DA01EC /* logo@2x.png */,
 				303707A31805523900FE0238 /* friends.png */,
-				303707A41805523900FE0238 /* friends@2x.png */,
 				303707A51805523900FE0238 /* mall.png */,
-				303707A61805523900FE0238 /* mall@2x.png */,
 				3037079F1805132300FE0238 /* end_annotation.png */,
 				303707A01805132300FE0238 /* start_annotation.png */,
 				3037078C1805074900FE0238 /* levels */,
@@ -1835,10 +1852,8 @@
 				30A6D9CF17CA65F100D1116E /* check.png */,
 				30DFE7DD17C6748F00678780 /* submit.png */,
 				30BB0AF61761BEA10009A847 /* history.png */,
-				30BB0AF71761BEA10009A847 /* history@2x.png */,
 				30FC293F1760861C00DEC042 /* expand.png */,
 				30FC292117607F6D00DEC042 /* settings.png */,
-				30FC292217607F6D00DEC042 /* settings@2x.png */,
 			);
 			name = icons;
 			path = Resources/icons;
@@ -1936,7 +1951,6 @@
 				3005D00518561A6900D83648 /* creatSimple_bg.png in Resources */,
 				3005D00D1856B4EC00D83648 /* trainingTypeSeg_bg1.png in Resources */,
 				30984920186041990079E236 /* eyeClosed.png in Resources */,
-				30FC292A17607F6D00DEC042 /* settings@2x.png in Resources */,
 				3005CFF118545D0E00D83648 /* traineeButton_bg.png in Resources */,
 				303707981805074900FE0238 /* stamp_s.png in Resources */,
 				3005D00918561BC000D83648 /* creatAdvAddButton.png in Resources */,
@@ -1951,7 +1965,6 @@
 				30692D3F180D800200DA01EC /* logo.png in Resources */,
 				30BB0AF81761BEA10009A847 /* history.png in Resources */,
 				30692D5C18117C2500DA01EC /* SVProgressHUD.bundle in Resources */,
-				30BB0AF91761BEA10009A847 /* history@2x.png in Resources */,
 				30804E9917F56D6E00F1A353 /* tencent_weibo@2x.png in Resources */,
 				30804E9417F56D6E00F1A353 /* QQ_friend.png in Resources */,
 				3005D00618561A6900D83648 /* creatTrainingSwitchButton_bg.png in Resources */,
@@ -1969,6 +1982,7 @@
 				30984921186041990079E236 /* eyeOpen.png in Resources */,
 				3005CFF318545D0E00D83648 /* trainingMainGoButton_bg.png in Resources */,
 				3005CFFA1854B1C000D83648 /* trainee_bg.png in Resources */,
+				30FAA212186415E100E72650 /* male.png in Resources */,
 				30594BD017F0851500E6A19B /* all_set.mp3 in Resources */,
 				30804E9717F56D6E00F1A353 /* renren@2x.png in Resources */,
 				30166A9817C3B84C0035C722 /* main_run_btn_bg.png in Resources */,
@@ -1982,6 +1996,7 @@
 				30989CB317F5F7C800CA9F83 /* A.png in Resources */,
 				30DFE7DF17C6748F00678780 /* submit.png in Resources */,
 				30D008D317F53FBB004E6747 /* challenge_S.m4a in Resources */,
+				30FAA24918688A4000E72650 /* countDown_bg.png in Resources */,
 				30594BD417F16E0700E6A19B /* running_countdown_3.png in Resources */,
 				30C832AE1859CCD100EEE2F9 /* trainingDetailAdv_bg.png in Resources */,
 				30692D6618117D7300DA01EC /* 3.png in Resources */,
@@ -1993,7 +2008,6 @@
 				3098492A1860C1F70079E236 /* main_training_btn_bg.png in Resources */,
 				3098B4FF1809DCE400029164 /* running_end2.mp3 in Resources */,
 				30A6D9EF17CDD58700D1116E /* main_trafficlight_green.png in Resources */,
-				303707AA1805523900FE0238 /* mall@2x.png in Resources */,
 				30A6D9F117CDD58700D1116E /* main_trafficlight_red.png in Resources */,
 				30594BCE17F0851500E6A19B /* last_hundred.mp3 in Resources */,
 				30594BD617F16E0700E6A19B /* running_countdown_1.png in Resources */,
@@ -2017,6 +2031,7 @@
 				30989CA217F5D86700CA9F83 /* icon.png in Resources */,
 				30804E9A17F56D6E00F1A353 /* weibo.png in Resources */,
 				30984923186071150079E236 /* infoButton.png in Resources */,
+				30FAA213186415E100E72650 /* female.png in Resources */,
 				303707971805074900FE0238 /* stamp_e.png in Resources */,
 				30804E9617F56D6E00F1A353 /* renren.png in Resources */,
 				3005D01A185855F400D83648 /* infoCalorieIcon.png in Resources */,
@@ -2057,7 +2072,6 @@
 				3098492C1860E12C0079E236 /* advTrainingCell.png in Resources */,
 				3083DC7517F5248F009A50F6 /* entsani.ttf in Resources */,
 				30989CB917F6877800CA9F83 /* oneButtonShare_bg@2x.png in Resources */,
-				303707A81805523900FE0238 /* friends@2x.png in Resources */,
 				30989CAB17F5D87800CA9F83 /* Default-568h@2x.png in Resources */,
 				303B87EA1852DE0900FD44AC /* expandButton_bg.png in Resources */,
 				3005CFEB1854518D00D83648 /* collect_bg.png in Resources */,
@@ -2079,6 +2093,7 @@
 				307C862F17E9A78B007C1DE5 /* details@2x.png in Resources */,
 				30594BC417F06B4F00E6A19B /* seg_selected_bg.png in Resources */,
 				0F07AC4217E98FA00009C8A8 /* switch_off.png in Resources */,
+				30FAA215186417DF00E72650 /* notSure.png in Resources */,
 				0F07AC4317E98FA00009C8A8 /* switch_on.png in Resources */,
 				30978DA317EDA57E00CA58B9 /* history_detail_bg.png in Resources */,
 				3005D01D185855F400D83648 /* infoSpeedIcon.png in Resources */,
@@ -2204,8 +2219,10 @@
 				30D95E6E17C35EB70056E7C0 /* RORStatisticsViewController.m in Sources */,
 				30D95E6F17C35EB70056E7C0 /* RORHistoryPageViewController.m in Sources */,
 				30166AA617C3C6730035C722 /* RORViewController.m in Sources */,
+				30FAA2471865E26400E72650 /* RORTrainingHistoryDetailViewController.m in Sources */,
 				30C58AC317C4840F0065FC90 /* RORChallengeViewController.m in Sources */,
 				30F8BEBF17C4A72700DB137D /* RORBottomPopSubview.m in Sources */,
+				30FAA23E18658E9600E72650 /* RORTrainingHistoryShareView.m in Sources */,
 				308FAC6B17C65B060025B807 /* Reachability.m in Sources */,
 				30692D47180E70B400DA01EC /* RORFiveCounterView.m in Sources */,
 				30A6D9AA17C6821500D1116E /* FTAnimation+UIView.m in Sources */,
@@ -2245,6 +2262,7 @@
 				30FECBBB17D83AE5002C3C90 /* RORNotificationView.m in Sources */,
 				30989CCE17F80FB000CA9F83 /* RORAboutViewController.m in Sources */,
 				0F5624441835CD94006581E0 /* RORPlanClientHandler.m in Sources */,
+				30FAA2441865E22800E72650 /* RORTrainingHistoryViewController.m in Sources */,
 				30621D2117DF00220063A007 /* RORPageViewController.m in Sources */,
 				30FA65B0184DA8CE00E62816 /* RORTrainingPickerView.m in Sources */,
 				30FFFE5F1845A213001EA4F1 /* RORFriendsViewController.m in Sources */,

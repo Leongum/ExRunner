@@ -27,6 +27,7 @@
 @property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) NSString * nickName;
 @property (nonatomic, retain) NSNumber * operate;
+@property (nonatomic, retain) NSString * userSex;
 
 @property (nonatomic, retain) NSMutableArray * runHistoryList;
 
