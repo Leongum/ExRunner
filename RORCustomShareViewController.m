@@ -51,6 +51,10 @@
     _txtShareContent.layer.borderColor=[[UIColor grayColor] CGColor];
 }
 
+-(IBAction)backAction:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
 - (void)keyboardWillShow:(NSNotification *)sender {
     if (!isTyping){
        [Animations moveUp:self.view andAnimationDuration:0.3 andWait:NO andLength:150];
@@ -150,7 +154,7 @@
     
     }
     [self sendSuccess:SHARE_SUBMITTED];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 -(void)sendRenRenShare:(NSString *) shareContent{

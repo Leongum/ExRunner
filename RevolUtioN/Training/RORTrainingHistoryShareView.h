@@ -10,7 +10,7 @@
 #import "RORUtils.h"
 
 @interface RORTrainingHistoryShareView : UIView{
-    NSMutableArray *contentViewList;
+//    NSMutableArray *contentViewList;
 }
 -(void)add:(UIView *)view2add;
 -(UIImage *)getImage;

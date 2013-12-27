@@ -13,6 +13,7 @@
 #import "RORConstant.h"
 #import "RORMessages.h"
 #import "RORDBCommon.h"
+#import "RORShareCoverViewController.h"
 
 #define SuppressPerformSelectorLeakWarning(Stuff) \
 do { \
@@ -60,4 +61,8 @@ _Pragma("clang diagnostic pop") \
 +(NSNumber *)removeEggache:(NSString *)userID;
 
 +(UIImage *)getImageFromView:(UIView *)thisView;
++(UIImage *) captureScreen;
+
++(UIViewController *)popShareCoverViewFor:(UIViewController *)delegate withImage:(UIImage *)image title:(NSString *)title andMessage:(NSString *)msg animated:(BOOL)animated;
+
 @end

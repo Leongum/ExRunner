@@ -51,7 +51,7 @@
 @property (strong, nonatomic) User_Running_History *record;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 
-@property (strong, nonatomic) IBOutlet UIControl *coverView;
+//@property (strong, nonatomic) IBOutlet UIControl *coverView;
 @property (strong, nonatomic) IBOutlet UILabel *levelTitleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 
@@ -61,7 +61,7 @@
 //@property (strong, nonatomic) IBOutlet UIButton *switchSpeedButton;
 @property (strong, nonatomic) IBOutlet UIView *tableContrainerView;
 
-- (IBAction)shareToWeixin:(id)sender;
+//- (IBAction)shareToWeixin:(id)sender;
 
 //@property (strong, nonatomic) NSNumber *distance;
 //@property (strong, nonatomic) NSNumber *speed;

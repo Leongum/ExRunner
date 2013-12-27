@@ -579,7 +579,7 @@
     if(planHistory != nil){
         Plan_Next_mission *planNextMission = [self fetchPlanNextMission];
         if(planHistory.remainingMissions.integerValue == 1){
-            planHistory.remainingMissions = 0;
+            planHistory.remainingMissions = [NSNumber numberWithInt:0];
             planHistory.endTime = [NSDate date];
             planHistory.historyStatus =[NSNumber numberWithInt:(int)HistoryStatusFinished];
             planHistory.lastUpdateTime = [RORUserUtils getSystemTime];
@@ -746,7 +746,7 @@
 +(void)fillCountDownIconForView:(UIView *)view withPlanNext:(Plan_Next_mission *)planNext{
     UILabel *leftDays = (UILabel *)[view viewWithTag:254];
     NSLog(@"left days:%.0f", [planNext.startTime timeIntervalSinceNow]);
-    NSInteger ld = [self getCycleTimeofPlanNext:planNext]+[planNext.startTime timeIntervalSinceNow]/3600/24;
+    NSInteger ld = [self getCycleTimeofPlanNext:planNext]+(int)([planNext.startTime timeIntervalSinceNow]/3600/24);
     leftDays.text = [NSString stringWithFormat:@"%d", ld];
     view.alpha = (ld>=0);
 }

@@ -190,11 +190,11 @@
    
 }
 
-- (void)popDown:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint{
-    [self popDown:duration delegate:delegate targetPoint:targetPoint startSelector:nil stopSelector:nil];
+- (void)popDown:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint targetScale:(double)targetScale {
+    [self popDown:duration delegate:delegate targetPoint:targetPoint targetScale:(double)targetScale startSelector:nil stopSelector:nil];
 }
-- (void)popDown:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector{
-    CAAnimation *anim = [[FTAnimationManager sharedManager] popDownAnimationFor:self duration:duration delegate:delegate targetPoint:targetPoint
+- (void)popDown:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint targetScale:(double)targetScale startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector{
+    CAAnimation *anim = [[FTAnimationManager sharedManager] popDownAnimationFor:self duration:duration delegate:delegate targetPoint:targetPoint targetScale:(double)targetScale
                                                                   startSelector:startSelector stopSelector:stopSelector];
     [self.layer addAnimation:anim forKey:kFTAnimationPopIn];
 }

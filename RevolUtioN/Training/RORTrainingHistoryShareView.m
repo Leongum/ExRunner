@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        contentViewList = [[NSMutableArray alloc]init];
+//        contentViewList = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -30,15 +30,15 @@
 */
 
 -(void)add:(UIView *)view2add{
-    view2add.center = CGPointMake(view2add.frame.size.width/2, view2add.frame.size.height * contentViewList.count + view2add.frame.size.height/2);
+    view2add.center = CGPointMake(view2add.frame.size.width/2, self.frame.size.height + view2add.frame.size.height/2);
     [self addSubview:view2add];
-    [contentViewList addObject:view2add];
+//    [contentViewList addObject:view2add];
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y
-                            , self.frame.size.width, view2add.frame.size.height*contentViewList.count);
+                            , view2add.frame.size.width, self.frame.size.height+view2add.frame.size.height);
+    
 }
 
 -(UIImage *)getImage{
-    
     return [RORUtils getImageFromView:self];;
 }
 

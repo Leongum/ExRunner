@@ -43,7 +43,6 @@
     frame.origin.y = 0;
     advViewController.view.frame = frame;
     simpleViewController.view.frame = frame;
-    
     [self addChildViewController:simpleViewController];
     [self.frameView addSubview:simpleViewController.view];
     [simpleViewController didMoveToParentViewController:self];

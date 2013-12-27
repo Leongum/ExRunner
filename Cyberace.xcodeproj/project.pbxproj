@@ -227,6 +227,8 @@
 		30804E9A17F56D6E00F1A353 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = 30804E9217F56D6E00F1A353 /* weibo.png */; };
 		30804E9B17F56D6E00F1A353 /* weibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30804E9317F56D6E00F1A353 /* weibo@2x.png */; };
 		3083DC7517F5248F009A50F6 /* entsani.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3083DC7417F5248F009A50F6 /* entsani.ttf */; };
+		308C165E186982F4005B0198 /* RORShareCoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 308C165D186982F4005B0198 /* RORShareCoverViewController.m */; };
+		308C166118698D99005B0198 /* RORShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 308C166018698D99005B0198 /* RORShareViewController.m */; };
 		308FAC6B17C65B060025B807 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 308FAC6A17C65B060025B807 /* Reachability.m */; };
 		30978DA317EDA57E00CA58B9 /* history_detail_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30978DA117EDA57E00CA58B9 /* history_detail_bg.png */; };
 		30978DA717EDAFEA00CA58B9 /* share_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 30978DA517EDAFEA00CA58B9 /* share_btn.png */; };
@@ -347,7 +349,6 @@
 		30FECBBB17D83AE5002C3C90 /* RORNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FECBBA17D83AE5002C3C90 /* RORNotificationView.m */; };
 		30FECBC117D86C29002C3C90 /* charactor.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBC017D86C29002C3C90 /* charactor.png */; };
 		30FECBC317D97B77002C3C90 /* running_wind.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBC217D97B77002C3C90 /* running_wind.png */; };
-		30FECBCB17D98453002C3C90 /* main_bg@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBCA17D98453002C3C90 /* main_bg@2x.jpg */; };
 		30FECBDA17DD94A6002C3C90 /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FECBD617DD94A6002C3C90 /* paper.png */; };
 		30FFFE53183CA87B001EA4F1 /* RORTrainingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FFFE52183CA87B001EA4F1 /* RORTrainingDetailViewController.m */; };
 		30FFFE56183FD728001EA4F1 /* RORTrainingRunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FFFE55183FD728001EA4F1 /* RORTrainingRunViewController.m */; };
@@ -668,6 +669,10 @@
 		30804E9217F56D6E00F1A353 /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo.png; sourceTree = "<group>"; };
 		30804E9317F56D6E00F1A353 /* weibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weibo@2x.png"; sourceTree = "<group>"; };
 		3083DC7417F5248F009A50F6 /* entsani.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = entsani.ttf; path = Resources/entsani.ttf; sourceTree = "<group>"; };
+		308C165C186982F4005B0198 /* RORShareCoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORShareCoverViewController.h; path = ReusableControl/RORShareCoverViewController.h; sourceTree = "<group>"; };
+		308C165D186982F4005B0198 /* RORShareCoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORShareCoverViewController.m; path = ReusableControl/RORShareCoverViewController.m; sourceTree = "<group>"; };
+		308C165F18698D99005B0198 /* RORShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORShareViewController.h; path = ReusableControl/RORShareViewController.h; sourceTree = "<group>"; };
+		308C166018698D99005B0198 /* RORShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORShareViewController.m; path = ReusableControl/RORShareViewController.m; sourceTree = "<group>"; };
 		308FAC6917C65B060025B807 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		308FAC6A17C65B060025B807 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		30978DA117EDA57E00CA58B9 /* history_detail_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history_detail_bg.png; sourceTree = "<group>"; };
@@ -842,7 +847,6 @@
 		30FECBBA17D83AE5002C3C90 /* RORNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORNotificationView.m; path = ReusableControl/RORNotificationView.m; sourceTree = "<group>"; };
 		30FECBC017D86C29002C3C90 /* charactor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = charactor.png; sourceTree = "<group>"; };
 		30FECBC217D97B77002C3C90 /* running_wind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = running_wind.png; sourceTree = "<group>"; };
-		30FECBCA17D98453002C3C90 /* main_bg@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "main_bg@2x.jpg"; sourceTree = "<group>"; };
 		30FECBD617DD94A6002C3C90 /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper.png; path = bg/paper.png; sourceTree = "<group>"; };
 		30FFFE51183CA87B001EA4F1 /* RORTrainingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingDetailViewController.h; path = Training/RORTrainingDetailViewController.h; sourceTree = "<group>"; };
 		30FFFE52183CA87B001EA4F1 /* RORTrainingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingDetailViewController.m; path = Training/RORTrainingDetailViewController.m; sourceTree = "<group>"; };
@@ -1184,7 +1188,6 @@
 			children = (
 				309849291860C1F70079E236 /* main_training_btn_bg.png */,
 				30989CE117F91C6F00CA9F83 /* main_trafficlight_none.png */,
-				30FECBCA17D98453002C3C90 /* main_bg@2x.jpg */,
 				30FECBC217D97B77002C3C90 /* running_wind.png */,
 				30FECBC017D86C29002C3C90 /* charactor.png */,
 				30A6D9F917CE2BF800D1116E /* main_login_bg.png */,
@@ -1732,6 +1735,10 @@
 				30692D46180E70B400DA01EC /* RORFiveCounterView.m */,
 				30984935186207780079E236 /* RORIntroCoverView.h */,
 				30984936186207780079E236 /* RORIntroCoverView.m */,
+				308C165C186982F4005B0198 /* RORShareCoverViewController.h */,
+				308C165D186982F4005B0198 /* RORShareCoverViewController.m */,
+				308C165F18698D99005B0198 /* RORShareViewController.h */,
+				308C166018698D99005B0198 /* RORShareViewController.m */,
 			);
 			name = ReusableControl;
 			sourceTree = "<group>";
@@ -1905,7 +1912,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = ROR;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Beyond;
 				TargetAttributes = {
 					302FD0001727D870004DA005 = {
@@ -2024,7 +2031,6 @@
 				3005CFE9185391F900D83648 /* searchTextField_bg.png in Resources */,
 				3005D01B185855F400D83648 /* infoDistanceIcon.png in Resources */,
 				30FECBC317D97B77002C3C90 /* running_wind.png in Resources */,
-				30FECBCB17D98453002C3C90 /* main_bg@2x.jpg in Resources */,
 				30804E9817F56D6E00F1A353 /* tencent_weibo.png in Resources */,
 				30FECBDA17DD94A6002C3C90 /* paper.png in Resources */,
 				3005D0111856ECC000D83648 /* creatTrainingSwitchButton1_bg.png in Resources */,
@@ -2162,6 +2168,7 @@
 				305A1878174F1EFB003A8CD7 /* RORLoginViewController.m in Sources */,
 				0F5624351834AA6F006581E0 /* Plan_Collect.m in Sources */,
 				30FFFE53183CA87B001EA4F1 /* RORTrainingDetailViewController.m in Sources */,
+				308C165E186982F4005B0198 /* RORShareCoverViewController.m in Sources */,
 				300149901750F444005DAF1D /* RORMoreViewController.m in Sources */,
 				30692D5D18117C2500DA01EC /* SVProgressHUD.m in Sources */,
 				30FC2906175EF6F300DEC042 /* RORMapViewController.m in Sources */,
@@ -2239,6 +2246,7 @@
 				0F16EF6A17CD9F220055DEE6 /* Running_Invite.m in Sources */,
 				0F16EF6D17CD9F260055DEE6 /* User_Last_Location.m in Sources */,
 				0F16EF7017CD9F2A0055DEE6 /* Mission.m in Sources */,
+				308C166118698D99005B0198 /* RORShareViewController.m in Sources */,
 				0F16EF7317CD9F2C0055DEE6 /* Mission_Challenge.m in Sources */,
 				0F16EF7617CD9F340055DEE6 /* User_Running_History.m in Sources */,
 				0F16EF7917CD9F350055DEE6 /* Mission_Type.m in Sources */,
@@ -2331,8 +2339,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2347,7 +2355,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "2F120D6D-1C80-464B-86FD-E32C7E4F531F";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2365,16 +2373,17 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "2F120D6D-1C80-464B-86FD-E32C7E4F531F";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

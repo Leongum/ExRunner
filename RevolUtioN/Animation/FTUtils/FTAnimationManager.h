@@ -350,7 +350,7 @@ static inline CGPoint FTAnimationOffscreenCenterPoint(CGRect viewFrame, CGPoint 
 - (CAAnimation *)popUpAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint
                      startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 
-- (CAAnimation *)popDownAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint
+- (CAAnimation *)popDownAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint targetScale:(double)targetScale
                        startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector;
 /**
  Shrinks and fades out view.

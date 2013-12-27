@@ -179,8 +179,11 @@
     }
     
     planNext = [RORPlanService fetchUserRunningPlanHistory];
-
-    [RORPlanService fillCountDownIconForView:self.trainingCountDownView withPlanNext:planNext];
+    if (planNext){
+        [RORPlanService fillCountDownIconForView:self.trainingCountDownView withPlanNext:planNext];
+        self.trainingCountDownView.alpha = 1;
+    } else
+        self.trainingCountDownView.alpha = 0;
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -227,7 +230,7 @@
                 }
                 int index = -1;
                 if(temp < 38 && pm25 < 300){
-                    index = (100-pm25/3)*0.6 +(100-fabs(temp - 22)*5)*0.4;
+                    index = (100-pm25/3)*0.75 +(100-fabs(temp - 22)*5)*0.25;
                 }
                 if (index>=0) {
                     weatherInformation = [NSString stringWithFormat:@"%@总分: %d", weatherInformation, index];
@@ -348,7 +351,7 @@
 }
 
 -(IBAction)userInfoViewClick:(id)sender{
-    [self sendNotification:[NSString stringWithFormat:@"\n选手编号: %@\n\n金币: %d\n",[RORUtils addEggache:[RORUserUtils getUserId]], userInfo.attributes.scores.intValue]];
+    [self sendNotification:[NSString stringWithFormat:@"选手编号: %@\n金币: %d\n",[RORUtils addEggache:[RORUserUtils getUserId]], userInfo.attributes.scores.intValue]];
 }
 
 - (IBAction)normalRunAction:(id)sender {

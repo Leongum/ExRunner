@@ -18,8 +18,11 @@
 
 #define BACKBUTTON_FRAME_TOP CGRectMake(0, 0, 70, 70)
 
-@interface RORViewController : UIViewController{
+@interface RORViewController : UIViewController <UIGestureRecognizerDelegate> {
     RORNotificationView *notificationView;
+    UIPinchGestureRecognizer *pinchGesture;
+    UIView *piece;
+    UIViewController *captureBgView;
 }
 //-(void)addBackButton;
 @property (strong, nonatomic) RORNormalButton *backButton;

@@ -50,6 +50,9 @@
         [newHistoryList addObject:[User_Running_History removeAssociateForEntity:newHistory]];
     }
     unassociatedEntity.runHistoryList = newHistoryList;
+    unassociatedEntity.nickName = associatedEntity.nickName;
+    unassociatedEntity.planName = associatedEntity.planName;
+    unassociatedEntity.userSex = associatedEntity.userSex;
     return unassociatedEntity;
 }
 

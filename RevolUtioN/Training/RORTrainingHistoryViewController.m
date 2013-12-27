@@ -31,7 +31,7 @@
     NSArray *trainingAll = [RORPlanService fetchUserPlanHistoryList:[RORUserUtils getUserId]];
 
     for (Plan_Run_History *history in trainingAll){
-        if (history.historyStatus.integerValue == HistoryStatusFinished)
+        if (history.historyStatus.integerValue == HistoryStatusFinished || history.historyStatus.integerValue == HistoryStatusExecute)
             [contentList addObject:[RORPlanService fetchUserPlanHistoryDetails:history.planRunUuid]];
     }
 }

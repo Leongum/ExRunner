@@ -27,7 +27,6 @@
 @synthesize mapView, routeLine, routeLineView;
 @synthesize distanceLabel, speedButton, durationLabel, energyLabel, weatherLabel, scoreLabel, experienceLabel, bonusLabel;
 @synthesize record;
-@synthesize coverView;
 @synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -119,13 +118,7 @@
     
     [self center_map];
     
-//    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.labelContainerView andSubViews:YES];
-//    [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainerView withSize:15 andSubViews:YES];
     [RORUtils setSystemFontSize:15 forView:self.dataContainerView andSubViews:YES];
-
-//    [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dateLabel andSubViews:YES];
-    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.coverView andSubViews:YES];
-//    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.dragLabel andSubViews:NO];
     
     [self addGestures];
 }
@@ -135,12 +128,12 @@
 //    User_Running_History *best = [RORRunHistoryServices fetchBestRunHistoryByMissionId:record.missionId withUserId:[RORUserUtils getUserId]];
     if (record.missionTypeId.integerValue == Challenge && [delegate isKindOfClass:[RORRunningBaseViewController class]] && record.valid.integerValue>0)
     {
-        RORChallengeCongratsCoverView *congratsCoverView = [[RORChallengeCongratsCoverView alloc]initWithFrame:self.coverView.frame andLevel:record];
+        RORChallengeCongratsCoverView *congratsCoverView = [[RORChallengeCongratsCoverView alloc]initWithFrame:self.view.frame andLevel:record];
         [self.view addSubview:congratsCoverView];
         [congratsCoverView show:self];
     }
-    if ((record.missionTypeId.integerValue == SimpleTask || record.missionTypeId.integerValue == ComplexTask) &&  [delegate isKindOfClass:[RORRunningBaseViewController class]]){
-        RORTrainingCongratsCoverView *congratsCoverView = [[RORTrainingCongratsCoverView alloc]initWithFrame:self.coverView.frame andLevel:record];
+    if ((record.missionTypeId.integerValue == SimpleTask || record.missionTypeId.integerValue == ComplexTask) &&  [delegate isKindOfClass:[RORRunningBaseViewController class]] && record.valid.integerValue >0){
+        RORTrainingCongratsCoverView *congratsCoverView = [[RORTrainingCongratsCoverView alloc]initWithFrame:self.view.frame andLevel:record];
         [self.view addSubview:congratsCoverView];
         [congratsCoverView show:self];
     }
@@ -157,7 +150,6 @@
     [self setBonusLabel:nil];
     [self setRecord:nil];
     [self setDelegate:nil];
-    [self setCoverView:nil];
     [self setLabelContainerView:nil];
     [self setDataContainerView:nil];
     [self setDateLabel:nil];
@@ -340,67 +332,11 @@
 
 #pragma - Share Actions
 
-- (UIImage *) captureScreen {
-    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-    CGRect rect = [keyWindow bounds];
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [keyWindow.layer renderInContext:context];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    CGRect contentRectToCrop = CGRectMake(0, 0, image.size.width, image.size.height);
-    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], contentRectToCrop);
-    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-    CGImageRelease(imageRef);
-    return croppedImage;
-}
-
-- (IBAction)shareToWeixin:(id)sender {
-    [self hideCover:self];
-    
-    //发送内容给微信
-    id<ISSContent> content = [ShareSDK content:nil
-                                defaultContent:nil
-                                         image:[ShareSDK jpegImageWithImage:img quality:1]
-                                         title:nil
-                                           url:nil
-                                   description:nil
-                                     mediaType:SSPublishContentMediaTypeImage];
-    
-    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
-                                                         allowCallback:YES
-                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
-                                                          viewDelegate:nil
-                                               authManagerViewDelegate:nil];
-    
-    
-    [ShareSDK shareContent:content
-                      type:ShareTypeWeixiTimeline
-               authOptions:authOptions
-             statusBarTips:YES
-                    result:^(ShareType type, SSPublishContentState state, id<ISSStatusInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                        if (state == SSPublishContentStateSuccess)
-                        {
-                            NSLog(@"success");
-                        }
-                        else if (state == SSPublishContentStateFail)
-                        {
-                            if ([error errorCode] == -22003)
-                            {
-                                [self sendAlart:[error errorDescription]];
-                            }
-                        }
-                    }];
-
-}
 
 - (IBAction)shareAction:(id)sender {
-    self.backButton.alpha = 0;
-    self.shareButton.alpha = 0;
-    img = [self captureScreen];
-    self.coverView.alpha = 1;
 
+    img = [RORUtils captureScreen];
+    [RORUtils popShareCoverViewFor:self withImage:img title:@"分享这个页面" andMessage:@"history detail page" animated:YES];
 }
 
 -(IBAction)showKMSpeed:(id)sender{
@@ -430,15 +366,6 @@
         [UIView commitAnimations];
     }
 }
-
-- (IBAction)hideCover:(id)sender {
-    self.backButton.alpha = 1;
-    self.shareButton.alpha = 1;
-    self.coverView.alpha = 0;
-//    [Animations fadeOut:coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
-//    [Animations fadeIn:self.backButton andAnimationDuration:0.3 toAlpha:1 andWait:NO];
-}
-
 
 
 #pragma - map operation

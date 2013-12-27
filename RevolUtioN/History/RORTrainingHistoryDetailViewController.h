@@ -13,6 +13,11 @@
 @interface RORTrainingHistoryDetailViewController : RORTrainingViewController{
     NSMutableArray *contentList;
     Plan *thisPlan;
+    
+    double totleDistance;
+    double totleDuration;
+    double avgSpeed;
+    
 }
 
 @property (strong, nonatomic) Plan_Run_History* thisHistory;
@@ -20,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *trainingNameLabel;
 @property (strong, nonatomic) IBOutlet UIView *view2Fill;
+@property (strong, nonatomic) IBOutlet UIView *totle2Fill;
 
 
 @end

@@ -373,4 +373,49 @@
     return image;
 }
 
++ (UIImage *) captureScreen {
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    CGRect rect = [keyWindow bounds];
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [keyWindow.layer renderInContext:context];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    CGRect contentRectToCrop = CGRectMake(0, 0, image.size.width, image.size.height);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], contentRectToCrop);
+    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    return croppedImage;
+}
+
++(UIViewController *)popShareCoverViewFor:(UIViewController *)delegate withImage:(UIImage *)image title:(NSString *)title andMessage:(NSString *)msg animated:(BOOL)animated{
+    UIViewController *viewController = nil;
+    
+    for (UIViewController *vc in [delegate childViewControllers]){
+        if ([vc isKindOfClass:[RORShareCoverViewController class]]) {
+            viewController = vc;
+            break;
+        }
+    }
+    if (!viewController){
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
+        viewController =  [storyboard instantiateViewControllerWithIdentifier:@"shareCoverViewController"];
+        
+        CGRect frame = delegate.view.frame;
+        frame.origin.x = 0;
+        frame.origin.y = 0;
+        viewController.view.frame = frame;
+        [viewController setValue:image forKey:@"shareImage"];
+        [viewController setValue:msg forKey:@"shareMessage"];
+        [viewController setValue:title forKey:@"shareTitle"];
+        
+        [delegate addChildViewController:viewController];
+        [delegate.view addSubview:viewController.view];
+        [viewController didMoveToParentViewController:delegate];
+    }
+    viewController.view.alpha = 1;
+    return viewController;
+}
+
 @end

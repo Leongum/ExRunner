@@ -165,7 +165,7 @@
     NSDictionary *saveDict = [NSDictionary dictionaryWithObjectsAndKeys:fixonPlanRunHistory.userId, @"TrainingFixonUserId", nil];
     [RORUserUtils writeToUserInfoPList:saveDict];
     
-    [popUpView popDown:ANIMATION_DURATION_POPUP delegate:self targetPoint:self.partnerView.center startSelector:nil stopSelector:@selector(afterFixonAction:)];
+    [popUpView popDown:ANIMATION_DURATION_POPUP delegate:self targetPoint:self.partnerView.center targetScale:1/1.1 startSelector:nil stopSelector:@selector(afterFixonAction:)];
     [self.coverView fadeOut:ANIMATION_DURATION_POPUP delegate:self];
     self.coverView.alpha = 0;
 }
@@ -232,7 +232,7 @@
 }
 
 -(IBAction)hideCoverView:(id)sender{
-    [popUpView popDown:ANIMATION_DURATION_POPUP delegate:self targetPoint:popUpFrom startSelector:nil stopSelector:@selector(hidePopUpView:)];
+    [popUpView popDown:ANIMATION_DURATION_POPUP delegate:self targetPoint:popUpFrom targetScale:1/1.1 startSelector:nil stopSelector:@selector(hidePopUpView:)];
     [self.coverView fadeOut:ANIMATION_DURATION_POPUP delegate:self];
     self.coverView.alpha = 0;
 }

@@ -40,6 +40,10 @@
                                              selector:@selector(didAppearNotification:)
                                                  name:SVProgressHUDDidAppearNotification
                                                object:nil];
+    
+    //add pinch gesture
+    pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scalePiece:)];
+    [self.view addGestureRecognizer:pinchGesture];
 }
 
 -(void)viewDidUnload{
@@ -72,6 +76,60 @@
     [backButton setBackgroundImage:image forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
+}
+
+//gesture methods
+//- (void)adjustAnchorPointForGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+//{
+//    
+//}
+
+- (IBAction)scalePiece:(UIPinchGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        UIImage *image = [RORUtils captureScreen];
+        UIImageView *imageView = [[UIImageView alloc]initWithImage:image];
+        imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+        piece = imageView;
+        captureBgView = [RORUtils popShareCoverViewFor:self withImage:nil title:@"继续“捏”分享这个页面" andMessage:@"global share" animated:YES];
+//        [gestureRecognizer.view addSubview:captureBgView];
+        [gestureRecognizer.view addSubview:piece];
+        
+        CGPoint locationInView = [gestureRecognizer locationInView:piece];
+        CGPoint locationInSuperview = [gestureRecognizer locationInView:piece.superview];
+        piece.layer.anchorPoint = CGPointMake(locationInView.x / piece.bounds.size.width, locationInView.y / piece.bounds.size.height);
+        piece.center = locationInSuperview;
+    }
+    if ([gestureRecognizer state] == UIGestureRecognizerStateChanged) {
+        if (piece.frame.size.width < gestureRecognizer.view.frame.size.width*0.8){
+            [captureBgView setValue:@"松开分享这个页面" forKey:@"shareTitle"];
+        } else {
+            [captureBgView setValue:@"继续“捏”分享这个页面" forKey:@"shareTitle"];
+        }
+    }
+    if ([gestureRecognizer state] == UIGestureRecognizerStateEnded) {
+        if (piece.frame.size.width < gestureRecognizer.view.frame.size.width*0.8){
+            UIImageView *imageView = (UIImageView *)piece;
+            [captureBgView setValue:imageView.image forKey:@"shareImage"];
+            [captureBgView setValue:@"分享这个页面" forKey:@"shareTitle"];
+            [piece fadeOut:0.3 delegate:self startSelector:nil stopSelector:@selector(pieceFadeOutStop:)];
+        } else {
+            captureBgView.view.alpha = 0;
+            [piece removeFromSuperview];
+        }
+    }
+    
+//    [self adjustAnchorPointForGestureRecognizer:gestureRecognizer];
+    
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan || [gestureRecognizer state] == UIGestureRecognizerStateChanged) {
+        piece.transform = CGAffineTransformScale([piece transform], [gestureRecognizer scale], [gestureRecognizer scale]);
+        [gestureRecognizer setScale:1];
+    }
+    
+}
+
+-(IBAction)pieceFadeOutStop:(id)sender{
+    [piece removeFromSuperview];
 }
 
 - (IBAction)backAction:(id)sender {

@@ -557,12 +557,12 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
     return group;
 }
 
-- (CAAnimation *)popDownAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint
+- (CAAnimation *)popDownAnimationFor:(UIView *)view duration:(NSTimeInterval)duration delegate:(id)delegate targetPoint:(CGPoint)targetPoint targetScale:(double)targetScale
                      startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
     CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
     scale.duration = duration;
     scale.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.f],
-                    [NSNumber numberWithFloat:1/1.1],
+                    [NSNumber numberWithFloat:targetScale],
                     nil];
     
     CABasicAnimation *moveTo = [CABasicAnimation animationWithKeyPath:@"position"];
