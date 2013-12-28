@@ -79,17 +79,17 @@
         thisMission = [thisPlan.missionList objectAtIndex:0];
     
     UILabel *didTimeLabel = (UILabel *)[thisView viewWithTag:101];
-    didTimeLabel.text = [NSString stringWithFormat:@"用时: %@",[RORUtils transSecondToStandardFormat:h.duration.doubleValue]];
+    didTimeLabel.text = [NSString stringWithFormat:@"%@",[RORUtils transSecondToStandardFormat:h.duration.doubleValue]];
     UILabel *didDistanceLabel = (UILabel *)[thisView viewWithTag:102];
-    didDistanceLabel.text = [NSString stringWithFormat:@"里程: %@", [RORUtils outputDistance:h.distance.doubleValue]];
+    didDistanceLabel.text = [NSString stringWithFormat:@"%@", [RORUtils outputDistance:h.distance.doubleValue]];
     
     UILabel *sequenceLabel = (UILabel *)[thisView viewWithTag:100];
     UILabel *requireTimeLabel = (UILabel *)[thisView viewWithTag:103];
     sequenceLabel.text = [NSString stringWithFormat:@"第%d天", (int)([h.missionDate timeIntervalSinceDate:thisHistory.startTime]/3600/24)];
     if (thisMission.missionDistance.doubleValue < 1){
-        requireTimeLabel.text = [NSString stringWithFormat:@"计时跑：%@",[RORUtils transSecondToStandardFormat:thisMission.missionTime.doubleValue]];
+        requireTimeLabel.text = [NSString stringWithFormat:@"计时跑: %@",[RORUtils transSecondToStandardFormat:thisMission.missionTime.doubleValue]];
     } else {
-        requireTimeLabel.text = [NSString stringWithFormat:@"定距跑：%gkm",thisMission.missionDistance.doubleValue/1000];
+        requireTimeLabel.text = [NSString stringWithFormat:@"定距跑: %gkm",thisMission.missionDistance.doubleValue/1000];
     }
 
     UILabel *reqSpeedLabel = (UILabel *)[thisView viewWithTag:104];

@@ -77,7 +77,7 @@
     }
     
     if (record.valid.integerValue<0) {
-        scoreLabel.textColor = [UIColor redColor];
+        scoreLabel.textColor = [UIColor colorWithRed:0.75 green:0 blue:0 alpha:1];
         if (record.valid.integerValue==-1)
             scoreLabel.text = @"NOT A RUNNING";
 
@@ -351,6 +351,17 @@
         [Animations moveLeft:self.dataContainerView andAnimationDuration:0.5 andWait:NO andLength:77];
         [self.tableContrainerView slideInFrom:kFTAnimationRight inView:self.testContainer duration:0.5 delegate:self startSelector:nil stopSelector:nil];
         self.tableContrainerView.alpha = 1;
+        
+        if (record.valid.integerValue<0) {
+            scoreLabel.textColor = [UIColor redColor];
+            if (record.valid.integerValue==-1)
+                scoreLabel.text = @"NR";
+            
+            if (record.valid.integerValue == -2)
+                scoreLabel.text = @"BN";
+            
+        }
+        
         [UIView commitAnimations];
     } else {
         [UIView beginAnimations:@"animation" context:nil];
@@ -363,6 +374,16 @@
         [self.tableContrainerView slideOutTo:kFTAnimationRight inView:self.testContainer duration:0.5 delegate:self startSelector:nil stopSelector:nil];
         self.tableContrainerView.alpha = 0;
 
+        if (record.valid.integerValue<0) {
+            scoreLabel.textColor = [UIColor redColor];
+            if (record.valid.integerValue==-1)
+                scoreLabel.text = @"NOT A RUNNING";
+            
+            if (record.valid.integerValue == -2)
+                scoreLabel.text = @"BAD NETWORK";
+            
+        }
+        
         [UIView commitAnimations];
     }
 }

@@ -1728,7 +1728,7 @@
         <image name="trainingDetailSimple_bg.png" width="640" height="1136"/>
         <image name="trainingMainGoButton_bg.png" width="600" height="152"/>
         <image name="trainingMain_bg.png" width="640" height="1136"/>
-        <image name="trainingTypeSeg_bg.png" width="240" height="86"/>
+        <image name="trainingTypeSeg_bg.png" width="244" height="86"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
