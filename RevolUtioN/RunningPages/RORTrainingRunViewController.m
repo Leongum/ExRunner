@@ -38,9 +38,8 @@
         trainingType = TrainingContentTypeDuration;
     }
     self.suggestedSpeed.text = [NSString stringWithFormat:@"配速：%@ ~ %@", [RORUserUtils formatedSpeed:thisMission.suggestionMaxSpeed.doubleValue], [RORUserUtils formatedSpeed:thisMission.suggestionMinSpeed.doubleValue]];
-    finishSound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"running_end1.mp3"];
-    last10Min = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"last_kilo.mp3"];
-    
+    allInOneSound = [[RORMultiPlaySound alloc] init];
+    totalKM = 0;
     finished = NO;
 }
 
@@ -116,38 +115,51 @@
 
 -(void)timerSecondDot{
     [super timerSecondDot];
+    if(totalKM < avgSpeedPerKMList.count){
+        double maxSpeed = thisMission.suggestionMaxSpeed.doubleValue;
+        double minSpeed = thisMission.suggestionMinSpeed.doubleValue;
+        double lastKMSpeed = ((NSNumber*)[avgSpeedPerKMList objectAtIndex:(avgSpeedPerKMList.count -1)]).doubleValue;
+        lastKMSpeed = 3600/lastKMSpeed;
+        [allInOneSound addFileNametoQueue:@"kilo_tip.mp3"];
+        if(maxSpeed< lastKMSpeed){
+            [allInOneSound addFileNametoQueue:@"run_slower.mp3"];
+        }else if(minSpeed >lastKMSpeed){
+            [allInOneSound addFileNametoQueue:@"run_faster.mp3"];
+        }
+        else{
+            [allInOneSound addFileNametoQueue:@"run_at_speed.mp3"];
+        }
+        totalKM++;
+    }
     if (trainingType == TrainingContentTypeDistance){
         double mDistance = thisMission.missionDistance.doubleValue;
         double leftDistance = mDistance-distance;
 
         if (leftDistance < 1000 && !lastKiloPlayed){
             lastKiloPlayed = YES;
-            [lastKilo play];
-        }
-        if (leftDistance < 100 && !lastHundredPlayed){
-            lastHundredPlayed = YES;
-            [lastHundred play];
+            [allInOneSound addFileNametoQueue:@"last_kilo.mp3"];
         }
 
         self.distanceLabel.text = [RORUtils outputDistance:distance];
         self.speedLabel.text = [RORUserUtils formatedSpeed:currentSpeed*3.6];
         
         if (leftDistance<=0 && !finished){
-            [finishSound play];
+            [allInOneSound addFileNametoQueue:@"running_end1.mp3"];
             finished = YES;
         }
     } else {
         double mDuration = thisMission.missionTime.doubleValue;
         double leftDuration = mDuration-duration;
         
-        if (leftDuration < 600 && !last10MinPlayed){
-            last10MinPlayed = YES;
-            [last10Min play];
+        if (leftDuration < 300 && !last5MinPlayed){
+            last5MinPlayed = YES;
+            [allInOneSound addFileNametoQueue:@"last_5_min.mp3"];
         }
         if (leftDuration<=0 && !finished){
-            [finishSound play];
+            [allInOneSound addFileNametoQueue:@"running_end1.mp3"];
             finished = YES;
         }
     }
+    [allInOneSound play];
 }
 @end

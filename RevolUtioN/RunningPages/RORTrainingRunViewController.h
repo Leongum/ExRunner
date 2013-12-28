@@ -8,6 +8,7 @@
 
 #import "RORRunningViewController.h"
 #import "RORPlanService.h"
+#import "RORMultiPlaySound.h"
 
 @interface RORTrainingRunViewController : RORRunningViewController{
     NSTimer *pauseLimitedTimer;
@@ -15,7 +16,9 @@
     Plan_Run_History *planRunningHistory;
     Plan_Next_mission *planNext;
     RORPlaySound *finishSound;
+    RORMultiPlaySound *allInOneSound;
     
+    double totalKM;
     int trainingType;
     BOOL finished;
 }

@@ -69,6 +69,12 @@
 		0F5624441835CD94006581E0 /* RORPlanClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5624431835CD94006581E0 /* RORPlanClientHandler.m */; };
 		0F59A16B17BC700A000DEFEF /* RORShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F59A16A17BC700A000DEFEF /* RORShareService.m */; };
 		0F59A17217BCA4BD000DEFEF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BB0B071769A2E70009A847 /* SystemConfiguration.framework */; };
+		0F793930186EB1EA0090F9DC /* kilo_tip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F79392B186EB1EA0090F9DC /* kilo_tip.mp3 */; };
+		0F793931186EB1EA0090F9DC /* last_5_min.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F79392C186EB1EA0090F9DC /* last_5_min.mp3 */; };
+		0F793932186EB1EA0090F9DC /* run_at_speed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F79392D186EB1EA0090F9DC /* run_at_speed.mp3 */; };
+		0F793933186EB1EA0090F9DC /* run_faster.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F79392E186EB1EA0090F9DC /* run_faster.mp3 */; };
+		0F793934186EB1EA0090F9DC /* run_slower.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F79392F186EB1EA0090F9DC /* run_slower.mp3 */; };
+		0F793937186EC0AE0090F9DC /* RORMultiPlaySound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F793936186EC0AE0090F9DC /* RORMultiPlaySound.m */; };
 		0F7F398E1792DF1000B1C720 /* RORUserServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7F398D1792DF1000B1C720 /* RORUserServices.m */; };
 		0F7F39911794360800B1C720 /* RORUserClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7F39901794360800B1C720 /* RORUserClientHandler.m */; };
 		0F7F3994179BD08000B1C720 /* RORMissionServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7F3993179BD08000B1C720 /* RORMissionServices.m */; };
@@ -468,6 +474,13 @@
 		0F5624431835CD94006581E0 /* RORPlanClientHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORPlanClientHandler.m; sourceTree = "<group>"; };
 		0F59A16917BC700A000DEFEF /* RORShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORShareService.h; sourceTree = "<group>"; };
 		0F59A16A17BC700A000DEFEF /* RORShareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORShareService.m; sourceTree = "<group>"; };
+		0F79392B186EB1EA0090F9DC /* kilo_tip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = kilo_tip.mp3; sourceTree = "<group>"; };
+		0F79392C186EB1EA0090F9DC /* last_5_min.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = last_5_min.mp3; sourceTree = "<group>"; };
+		0F79392D186EB1EA0090F9DC /* run_at_speed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = run_at_speed.mp3; sourceTree = "<group>"; };
+		0F79392E186EB1EA0090F9DC /* run_faster.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = run_faster.mp3; sourceTree = "<group>"; };
+		0F79392F186EB1EA0090F9DC /* run_slower.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = run_slower.mp3; sourceTree = "<group>"; };
+		0F793935186EC0AE0090F9DC /* RORMultiPlaySound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORMultiPlaySound.h; sourceTree = "<group>"; };
+		0F793936186EC0AE0090F9DC /* RORMultiPlaySound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORMultiPlaySound.m; sourceTree = "<group>"; };
 		0F7F398C1792DF1000B1C720 /* RORUserServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORUserServices.h; sourceTree = "<group>"; };
 		0F7F398D1792DF1000B1C720 /* RORUserServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORUserServices.m; sourceTree = "<group>"; };
 		0F7F398F1794360700B1C720 /* RORUserClientHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORUserClientHandler.h; sourceTree = "<group>"; };
@@ -1097,6 +1110,8 @@
 				0F07ABF517E0391B0009C8A8 /* RORMessages.m */,
 				30621D4617E45EB70063A007 /* RORPlaySound.h */,
 				30621D4717E45EB70063A007 /* RORPlaySound.m */,
+				0F793935186EC0AE0090F9DC /* RORMultiPlaySound.h */,
+				0F793936186EC0AE0090F9DC /* RORMultiPlaySound.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1506,6 +1521,11 @@
 		30621D4F17E4602B0063A007 /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				0F79392B186EB1EA0090F9DC /* kilo_tip.mp3 */,
+				0F79392C186EB1EA0090F9DC /* last_5_min.mp3 */,
+				0F79392D186EB1EA0090F9DC /* run_at_speed.mp3 */,
+				0F79392E186EB1EA0090F9DC /* run_faster.mp3 */,
+				0F79392F186EB1EA0090F9DC /* run_slower.mp3 */,
 				30692D31180C40ED00DA01EC /* bo.wav */,
 				30692D2D180C35FF00DA01EC /* segment.mp3 */,
 				3098B4FD1809DCE400029164 /* running_end2.mp3 */,
@@ -1948,12 +1968,14 @@
 				30989CC417F7245E00CA9F83 /* contactUs_icon.png in Resources */,
 				30989CE617F9324B00CA9F83 /* write_us.png in Resources */,
 				30594BCF17F0851500E6A19B /* all_set_gun.mp3 in Resources */,
+				0F793932186EB1EA0090F9DC /* run_at_speed.mp3 in Resources */,
 				303707A21805132300FE0238 /* start_annotation.png in Resources */,
 				3061F3A5174C70F0006093FC /* userInfo.plist in Resources */,
 				3098B5001809DCE400029164 /* running_end1.mp3 in Resources */,
 				30C658941755F78C0076AFA3 /* CityCode.geojson in Resources */,
 				30C832AD1859CCD100EEE2F9 /* trainingButton_bg.png in Resources */,
 				30594BD517F16E0700E6A19B /* running_countdown_2.png in Resources */,
+				0F793934186EB1EA0090F9DC /* run_slower.mp3 in Resources */,
 				30FC292917607F6D00DEC042 /* settings.png in Resources */,
 				3005D00518561A6900D83648 /* creatSimple_bg.png in Resources */,
 				3005D00D1856B4EC00D83648 /* trainingTypeSeg_bg1.png in Resources */,
@@ -2013,6 +2035,7 @@
 				30A6D9D017CA65F100D1116E /* check.png in Resources */,
 				30692D6418117D7300DA01EC /* 1.png in Resources */,
 				3098492A1860C1F70079E236 /* main_training_btn_bg.png in Resources */,
+				0F793933186EB1EA0090F9DC /* run_faster.mp3 in Resources */,
 				3098B4FF1809DCE400029164 /* running_end2.mp3 in Resources */,
 				30A6D9EF17CDD58700D1116E /* main_trafficlight_green.png in Resources */,
 				30A6D9F117CDD58700D1116E /* main_trafficlight_red.png in Resources */,
@@ -2040,6 +2063,7 @@
 				30FAA213186415E100E72650 /* female.png in Resources */,
 				303707971805074900FE0238 /* stamp_e.png in Resources */,
 				30804E9617F56D6E00F1A353 /* renren.png in Resources */,
+				0F793931186EB1EA0090F9DC /* last_5_min.mp3 in Resources */,
 				3005D01A185855F400D83648 /* infoCalorieIcon.png in Resources */,
 				30692D40180D800200DA01EC /* logo@2x.png in Resources */,
 				3005D00C1856B4EC00D83648 /* trainingTypeSeg_bg.png in Resources */,
@@ -2120,6 +2144,7 @@
 				0F53B4AE17F3481D006DB4C4 /* RennSDK.bundle in Resources */,
 				30989CC817F7356300CA9F83 /* running_end_bg.png in Resources */,
 				30E6D0FD184F0AD200C93338 /* lock.png in Resources */,
+				0F793930186EB1EA0090F9DC /* kilo_tip.mp3 in Resources */,
 				0F53B4B217F3481D006DB4C4 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				0F53B4BA17F3481D006DB4C4 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				3005CFFB1854B1C000D83648 /* traineeExpandTable_bg.png in Resources */,
@@ -2203,6 +2228,7 @@
 				0F0D589B17B249230046515C /* RORThirdPartyService.m in Sources */,
 				0F274A6B17B6058C00F0E927 /* RORSystemService.m in Sources */,
 				0F274A7517B6061F00F0E927 /* RORSystemClientHandler.m in Sources */,
+				0F793937186EC0AE0090F9DC /* RORMultiPlaySound.m in Sources */,
 				30BDBE69182A3BA4001829D5 /* RORFriendsMainViewController.m in Sources */,
 				30F4547017BCB519006CB66C /* INConstant.m in Sources */,
 				30F4547117BCB519006CB66C /* INDeviceStatus.m in Sources */,

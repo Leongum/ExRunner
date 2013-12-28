@@ -48,10 +48,10 @@
     RORPlaySound *sound;
     RORPlaySound *lastHundred;
     RORPlaySound *lastKilo;
-    RORPlaySound *last10Min;
+    
     BOOL lastHundredPlayed;
     BOOL lastKiloPlayed;
-    BOOL last10MinPlayed;
+    BOOL last5MinPlayed;
     
     CLLocation *formerCenterMapLocation;
     
