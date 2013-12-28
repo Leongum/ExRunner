@@ -9,6 +9,7 @@
 #import "RORViewController.h"
 #import "RORTrainingPickerView.h"
 #import "RORPlanService.h"
+#import "RORSegmentControl.h"
 
 @interface RORCreatAdvTrainingViewController : RORViewController<PickerCoverViewDelegate>{
     id responderTextField;
@@ -31,7 +32,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *durationLabel;
 @property (strong, nonatomic) IBOutlet UIButton *lowSpeedLabel;
 @property (strong, nonatomic) IBOutlet UIButton *highSpeedLabel;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *trainingTypeSegment;
+@property (strong, nonatomic) IBOutlet RORSegmentControl *trainingTypeSegment;
 @property (strong, nonatomic) IBOutlet UIImageView *trainingTypeSegmentBg;
 
 @property (strong, nonatomic) IBOutlet UIButton *add2ListButton;

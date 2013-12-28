@@ -9,6 +9,7 @@
 #import "RORViewController.h"
 #import "RORPlanService.h"
 #import "RORTrainingPickerView.h"
+#import "RORSegmentControl.h"
 
 @interface RORCreatSimpleTrainingViewController : RORViewController<PickerCoverViewDelegate>{
     id responderTextField;
@@ -28,7 +29,7 @@
 
 @property (strong, nonatomic) IBOutlet RORTrainingPickerView *coverView;
 
-@property (strong, nonatomic) IBOutlet UISegmentedControl *trainingTypeSegment;
+@property (strong, nonatomic) IBOutlet RORSegmentControl *trainingTypeSegment;
 @property (strong, nonatomic) IBOutlet UIImageView *trainingTypeSegmentBg;
 
 -(Plan *)createNewSimplePlan;

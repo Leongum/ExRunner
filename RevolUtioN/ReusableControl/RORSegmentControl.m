@@ -44,7 +44,7 @@
         else if (i == num-1)
             style = SEGMENT_STYLE_RIGHT;
         
-        RORSegmentButton *btn = [[RORSegmentButton alloc]initWithFrame:CGRectMake(i*frame.size.width/count, 0, frame.size.width/count, frame.size.height) Style:style andIndex:i];
+        RORSegmentButton *btn = [[RORSegmentButton alloc]initWithFrame:CGRectMake(i*frame.size.width/count, 0, frame.size.width/count, frame.size.height) Style:style image:nil selectionColor:[UIColor whiteColor] andIndex:i];
         btn.selected = (i == selectionIndex);
         [btn refreshAppearence:btn];
         [btn addTarget:self action:@selector(touchInside:) forControlEvents:UIControlEventTouchUpInside];

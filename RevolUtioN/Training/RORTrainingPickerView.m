@@ -60,6 +60,11 @@
     picker = [[UIPickerView alloc]init];
     picker.frame = CGRectMake(0, 0, self.frame.size.width, self.picker.frame.size.height);
     picker.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    CALayer *pickerLayer = picker.layer;
+//    [pickerLayer setBounds:CGRectMake(0.0, 0.0, 125.0, 132.0)];
+    [pickerLayer setBackgroundColor:[UIColor clearColor].CGColor];
+    [pickerLayer setBorderWidth:0];
+    [pickerLayer setBorderColor:[UIColor clearColor].CGColor];
     
     [self addSubview:picker];
     

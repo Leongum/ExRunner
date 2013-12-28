@@ -40,6 +40,7 @@
     [self.highSpeedField addTarget:self action:@selector(showPicker:) forControlEvents:UIControlEventTouchUpInside];
     
     picker = self.coverView.picker;
+    picker.backgroundColor = [UIColor clearColor];
 }
 
 -(void)initData{
@@ -63,7 +64,12 @@
     [lowSpeedField setTitle:[NSString stringWithFormat:@"低速：%@",[RORUtils transSecondToStandardFormat:lowSpeed]] forState:UIControlStateNormal];
     [highSpeedField setTitle:[NSString stringWithFormat:@"高速：%@",[RORUtils transSecondToStandardFormat:highSpeed]] forState:UIControlStateNormal];
     [totalTextField setTitle:[NSString stringWithFormat:@"共%d次", total] forState:UIControlStateNormal];
-    [self.trainingTypeSegment setSelectedSegmentIndex:trainingType];
+    
+    trainingTypeSegment = [trainingTypeSegment initWithFrame:trainingTypeSegment.frame andSegmentNumber:2];
+    trainingTypeSegment.delegate = self;
+    [trainingTypeSegment setSegmentTitle:@"定距" withIndex:0];
+    [trainingTypeSegment setSegmentTitle:@"计时" withIndex:1];
+    [trainingTypeSegment selectSegmentAtIndex:trainingType];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -87,7 +93,7 @@
         [self.coverView showMiddleTitle:@"一共几次"];
     }
     if (responderTextField == durationTextField){
-        if (trainingTypeSegment.selectedSegmentIndex == 0)
+        if (trainingTypeSegment.selectionIndex == 0)
             [self.coverView showMiddleTitle:@"km"];
         else
             [self.coverView showBothSideTitle:@"小时" t2:@"分钟"];
@@ -108,7 +114,7 @@
 
 -(void)scrollToCurrentValue{
     if (responderTextField == durationTextField){
-        if (trainingTypeSegment.selectedSegmentIndex == 0){
+        if (trainingTypeSegment.selectionIndex == 0){
             [picker selectRow:(int)distance inComponent:0 animated:YES];
             if (distance-(int)distance < 0.01)
                 [picker selectRow:0 inComponent:1 animated:YES];
@@ -194,7 +200,7 @@
 
 - (IBAction)hideCover:(id)sender {
     if (responderTextField == durationTextField){
-        if ( trainingTypeSegment.selectedSegmentIndex == 0){
+        if ( trainingTypeSegment.selectionIndex == 0){
             distance = [picker selectedRowInComponent:0];
             switch ([picker selectedRowInComponent:1]) {
                 case 0:
@@ -240,15 +246,37 @@
     [self.titleTextField resignFirstResponder];
 }
 
-- (IBAction)trainingTypeChangedAction:(id)sender {
-    trainingType = self.trainingTypeSegment.selectedSegmentIndex;
-    if (trainingType == 0){
-        [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg.png"]];
-    } else {
-        [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg1.png"]];
-    }
-    [self initControls];
+//- (IBAction)trainingTypeChangedAction:(id)sender {
+//    trainingType = self.trainingTypeSegment.selectedSegmentIndex;
+//    if (trainingType == 0){
+//        [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg.png"]];
+//    } else {
+//        [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg1.png"]];
+//    }
+//    [self initControls];
+//}
+
+#pragma mark - RORSegmentContorl delegate
+
+-(void)SegmentValueChanged:(NSInteger)segmentIndex{
+    //    UISegmentedControl *seg = (UISegmentedControl *)sender;
+    trainingType = segmentIndex;
+    switch (trainingType) {
+        case 0:
+            [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg.png"]];
+            break;
+        case 1:
+            [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg1.png"]];
+            break;
+        default:
+            break;
+    };
+    if (trainingType == 0)
+        [durationTextField setTitle:[NSString stringWithFormat:@"定距：%@km", [NSNumber numberWithDouble:distance]] forState:UIControlStateNormal];
+    else
+        [durationTextField setTitle:[NSString stringWithFormat:@"计时：%@",[RORUtils transSecondToStandardFormat:duration]] forState:UIControlStateNormal];
 }
+
 
 #pragma mark -
 #pragma mark Picker Data Source Methods
@@ -260,7 +288,7 @@
 
 - (NSInteger)pickerView:(UIPickerView*)pickerView numberOfRowsInComponent:(NSInteger)component{
     if (responderTextField == durationTextField){
-        if ( trainingTypeSegment.selectedSegmentIndex == 0){
+        if ( trainingTypeSegment.selectionIndex == 0){
             switch (component) {
                 case 0:
                     return 43;
@@ -303,7 +331,7 @@
     if (responderTextField == frequencyTextField || responderTextField == totalTextField)
         return [NSString stringWithFormat:@"%d", row+1];
     if (responderTextField == durationTextField){
-        if ( trainingTypeSegment.selectedSegmentIndex == 0){
+        if ( trainingTypeSegment.selectionIndex == 0){
             if (component == 1){
                 switch (row) {
                     case 0:

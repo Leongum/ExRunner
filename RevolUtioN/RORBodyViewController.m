@@ -249,7 +249,7 @@
 //            UISegmentedControl *seg = (UISegmentedControl *)[cell viewWithTag:1];
             RORSegmentControl *segment = (RORSegmentControl *)[cell viewWithTag:2];
             if (!segment){
-                segment = [[RORSegmentControl alloc]initWithFrame:CGRectMake(33, 20, 204, 29) andSegmentNumber:3];
+                segment = [[RORPaperSegmentControl alloc]initWithFrame:CGRectMake(33, 20, 204, 29) andSegmentNumber:3];
                 segment.delegate = self;
                 [segment setSegmentTitle:@"男" withIndex:0];
                 [segment setSegmentTitle:@"很矛盾" withIndex:1];

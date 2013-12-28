@@ -20,7 +20,7 @@
 @end
 
 @implementation RORTraineesViewController
-@synthesize planNext;
+@synthesize planNext, delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -86,6 +86,13 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [self endIndicator:self];
+}
+
+-(IBAction)backAction:(id)sender{
+    if ([delegate respondsToSelector:@selector(setFixonPlanRunHistory:)]){
+        [delegate setValue:fixonPlanRunHistory forKey:@"fixonPlanRunHistory"];
+    }
+    [super backAction:sender];
 }
 
 -(void)initFixonView{
@@ -296,6 +303,7 @@
     
     self.removeFixonButton.alpha = 0;
     self.fixonUserIdLabel.alpha = 0;
+    fixonPlanRunHistory = nil;
 }
 
 

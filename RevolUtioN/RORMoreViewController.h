@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RORViewController.h"
-
+#import "RORPaperSegmentControl.h"
 
 @interface RORMoreViewController : RORViewController
 

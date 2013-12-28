@@ -23,8 +23,10 @@
 
 @property (nonatomic) NSInteger seg_index;
 @property (nonatomic)    BOOL selected;
+@property (strong, nonatomic) UIImage *selectedImage;
+@property (strong, nonatomic) UIColor *selectedColor;
 
 -(IBAction)refreshAppearence:(id)sender;
-- (id)initWithFrame:(CGRect)frame Style:(NSInteger)style andIndex:(NSInteger)index;
+- (id)initWithFrame:(CGRect)frame Style:(NSInteger)style image:(UIImage*)image selectionColor:(UIColor *)color andIndex:(NSInteger)index;
 
 @end

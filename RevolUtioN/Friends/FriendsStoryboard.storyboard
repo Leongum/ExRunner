@@ -216,7 +216,7 @@
         <image name="female.png" width="50" height="50"/>
         <image name="friendMain_bg.png" width="640" height="1136"/>
         <image name="friendSearch_bg.png" width="640" height="700"/>
-        <image name="main_bg.jpg" width="320" height="568"/>
+        <image name="main_bg.jpg" width="640" height="1136"/>
         <image name="searchTextField_bg.png" width="513" height="84"/>
         <image name="searchViewCell_bg.png" width="541" height="162"/>
         <image name="trainingButton_bg.png" width="260" height="100"/>

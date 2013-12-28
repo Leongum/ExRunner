@@ -36,8 +36,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
-    [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainer andSubViews:YES];
+//    [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
+//    [RORUtils setFontFamily:ENG_PRINT_FONT forView:self.dataContainer andSubViews:YES];
     
     srand(time(NULL));
     int randomValue = rand();
@@ -97,6 +97,8 @@
         lastKilo = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"last_kilo.mp3"];
     if (runMission.missionDistance.integerValue >= 100)
         lastHundred = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"last_hundred.mp3"];
+    
+    self.titleLabel.text = runMission.missionName;
 }
 
 -(void)navigationInit{

@@ -33,6 +33,8 @@
     
     Plan_Run_History *fixonPlanRunHistory;
 }
+
+@property (strong, nonatomic) id delegate;
 @property (strong, nonatomic) IBOutlet UIView *tableViewContainerView;
 @property (strong, nonatomic) IBOutlet UIImageView *tableViewBg;
 

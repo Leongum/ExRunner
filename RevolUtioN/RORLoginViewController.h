@@ -13,7 +13,7 @@
 #import "RORHttpResponse.h"
 #import "RORUserServices.h"
 #import "RORViewController.h"
-#import "RORSegmentControl.h"
+#import "RORPaperSegmentControl.h"
 #import "RORCheckBox.h"
 
 @interface RORLoginViewController : RORViewController

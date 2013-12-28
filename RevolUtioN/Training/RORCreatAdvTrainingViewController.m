@@ -71,12 +71,17 @@
     [frequencyLabel setTitle:[NSString stringWithFormat:@"周期：%d天", frequency] forState:UIControlStateNormal] ;
     [self.lowSpeedLabel setTitle:[NSString stringWithFormat:@"低速：%@",[RORUtils transSecondToStandardFormat:lowSpeed]] forState:UIControlStateNormal];
     [self.highSpeedLabel setTitle:[NSString stringWithFormat:@"高速：%@",[RORUtils transSecondToStandardFormat:highSpeed]] forState:UIControlStateNormal];
-    [trainingTypeSegment setSelectedSegmentIndex:trainingType];
+    
+    trainingTypeSegment = [trainingTypeSegment initWithFrame:trainingTypeSegment.frame andSegmentNumber:2];
+    trainingTypeSegment.delegate = self;
+    [trainingTypeSegment setSegmentTitle:@"定距" withIndex:0];
+    [trainingTypeSegment setSegmentTitle:@"计时" withIndex:1];
+    [trainingTypeSegment selectSegmentAtIndex:trainingType];
 }
 
 -(void)scrollToCurrentValue{
     if (responderTextField == durationLabel){
-        if (trainingTypeSegment.selectedSegmentIndex == 0){
+        if (trainingTypeSegment.selectionIndex == 0){
             [picker selectRow:(int)distance inComponent:0 animated:YES];
             if (distance-(int)distance < 0.01)
                 [picker selectRow:0 inComponent:1 animated:YES];
@@ -107,7 +112,7 @@
     responderTextField = sender;
     
     if (responderTextField == durationLabel){
-        if (trainingTypeSegment.selectedSegmentIndex == 0)
+        if (trainingTypeSegment.selectionIndex == 0)
             [self.coverView showMiddleTitle:@"km"];
         else
             [self.coverView showBothSideTitle:@"小时" t2:@"分钟"];
@@ -128,7 +133,7 @@
 
 - (IBAction)hideCover:(id)sender {
     if (responderTextField == durationLabel){
-        if ( trainingTypeSegment.selectedSegmentIndex == 0){
+        if ( trainingTypeSegment.selectionIndex == 0){
             distance = [picker selectedRowInComponent:0];
             switch ([picker selectedRowInComponent:1]) {
                 case 0:
@@ -170,7 +175,7 @@
 
 - (IBAction)add2ListAction:(id)sender {
     Mission *mission = [Mission intiUnassociateEntity];
-    if (trainingTypeSegment.selectedSegmentIndex == 0){
+    if (trainingTypeSegment.selectionIndex == 0){
         mission.missionDistance = [NSNumber numberWithInt:distance*1000];
         mission.missionTime = [NSNumber numberWithInt:-1];
     } else {
@@ -195,15 +200,37 @@
     self.coverView.alpha = 1;
 }
 
-- (IBAction)trainingTypeChangedAction:(id)sender {
-    trainingType = self.trainingTypeSegment.selectedSegmentIndex;
-    if (trainingType == 0){
-        [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg.png"]];
-    } else {
-        [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg1.png"]];
-    }
-    [self initControls];
+//- (IBAction)trainingTypeChangedAction:(id)sender {
+//    trainingType = self.trainingTypeSegment.selectedSegmentIndex;
+//    if (trainingType == 0){
+//        [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg.png"]];
+//    } else {
+//        [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg1.png"]];
+//    }
+//    [self initControls];
+//}
+
+#pragma mark - RORSegmentContorl delegate
+
+-(void)SegmentValueChanged:(NSInteger)segmentIndex{
+    //    UISegmentedControl *seg = (UISegmentedControl *)sender;
+    trainingType = segmentIndex;
+    switch (trainingType) {
+        case 0:
+            [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg.png"]];
+            break;
+        case 1:
+            [self.trainingTypeSegmentBg setImage:[UIImage imageNamed:@"trainingTypeSeg_bg1.png"]];
+            break;
+        default:
+            break;
+    };
+    if (trainingType == 0)
+        [durationLabel setTitle:[NSString stringWithFormat:@"定距：%@km", [NSNumber numberWithDouble:distance]] forState:UIControlStateNormal];
+    else
+        [durationLabel setTitle:[NSString stringWithFormat:@"计时：%@",[RORUtils transSecondToStandardFormat:duration]] forState:UIControlStateNormal];
 }
+
 
 -(BOOL) checkInput{
     if (self.titleTextField.text.length<=0){
@@ -243,7 +270,7 @@
 
 - (NSInteger)pickerView:(UIPickerView*)pickerView numberOfRowsInComponent:(NSInteger)component{
     if (responderTextField == durationLabel){
-        if ( trainingTypeSegment.selectedSegmentIndex == 0){
+        if ( trainingTypeSegment.selectionIndex == 0){
         switch (component) {
             case 0:
                 return 43;
@@ -284,7 +311,7 @@
     if (responderTextField == frequencyLabel)
         return [NSString stringWithFormat:@"%d", row+1];
     if (responderTextField == durationLabel){
-        if ( trainingTypeSegment.selectedSegmentIndex == 0){
+        if ( trainingTypeSegment.selectionIndex == 0){
             if (component == 1){
                 switch (row) {
                     case 0:

@@ -7,7 +7,7 @@
 //
 
 #import "RORNormalButton.h"
-
+#import "Animations.h"
 
 @implementation RORNormalButton
 
@@ -33,7 +33,7 @@
     [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpOutside];
 //    self.adjustsImageWhenDisabled = NO;
     self.adjustsImageWhenHighlighted = YES;
-    sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"bo.wav"];
+//    sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"bo.wav"];
 }
 
 /*
@@ -47,11 +47,13 @@
 
 -(IBAction)pressOn:(id)sender{
     self.transform = CGAffineTransformMakeScale(1, 0.85);
+//    [Animations moveDown:self andAnimationDuration:0 andWait:NO andLength:3];
 }
 
 -(IBAction)touchUp:(id)sender{
     self.transform = CGAffineTransformMakeScale(1, 1);
 //    [sound play];
+//    [Animations moveUp:self andAnimationDuration:0 andWait:NO andLength:3];
 }
 
 -(IBAction)touchDrag:(id)sender{

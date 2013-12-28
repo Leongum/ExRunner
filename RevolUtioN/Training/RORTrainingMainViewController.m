@@ -13,6 +13,7 @@
 @end
 
 @implementation RORTrainingMainViewController
+@synthesize fixonPlanRunHistory;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +32,8 @@
 	// Do any additional setup after loading the view.
     bookletButtonFrame = self.bookletButton.frame;
     traineeButtonFrame = self.TraineeButton.frame;
+    
+    [self initTraineeButton];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -83,16 +86,23 @@
         self.TraineeButton.frame = CGRectMake(self.currentPlanView.frame.origin.x, self.TraineeButton.frame.origin.y, self.currentPlanView.frame.size.width, self.TraineeButton.frame.size.height);
         todoCellIndex = nil;
     }
-    [self initTraineeButton];
+    [self refreshTraineeButton];
 }
 
 -(void)initTraineeButton{
     NSDictionary *dict = [RORUserUtils getUserInfoPList];
-    NSNumber *fixonUserId = [RORDBCommon getNumberFromId:[dict objectForKey:@"TrainingFixonUserId"]];
+    fixonUserId = [RORDBCommon getNumberFromId:[dict objectForKey:@"TrainingFixonUserId"]];
     if (fixonUserId && fixonUserId.integerValue>0) {
-        Plan_Run_History *fixonPlanRunHistory = [RORPlanService getUserLastUpdatePlan:fixonUserId];
-        [self.TraineeButton setTitle:[NSString stringWithFormat:@"%@    %d/%d", fixonPlanRunHistory.nickName/*,  fixonPlanRunHistory.planName*/, fixonPlanRunHistory.totalMissions.integerValue - fixonPlanRunHistory.remainingMissions.integerValue,
+        fixonPlanRunHistory = [RORPlanService getUserLastUpdatePlan:fixonUserId];
+    }
+}
+
+-(void)refreshTraineeButton{
+    if (fixonPlanRunHistory){
+//        if (fixonPlanRunHistory.userId.integerValue != fixonUserId.integerValue){
+            [self.TraineeButton setTitle:[NSString stringWithFormat:@"%@    %d/%d", fixonPlanRunHistory.nickName/*,  fixonPlanRunHistory.planName*/, fixonPlanRunHistory.totalMissions.integerValue - fixonPlanRunHistory.remainingMissions.integerValue,
                                       fixonPlanRunHistory.totalMissions.integerValue] forState:UIControlStateNormal];
+//        }
     } else {
         [self.TraineeButton setTitle:@"找个好榜样" forState:UIControlStateNormal];
     }
@@ -237,7 +247,8 @@
     } else {
         requireTimeLabel.text = [NSString stringWithFormat:@"定距跑：%gkm",thisMission.missionDistance.doubleValue/1000];
     }
-    
+    UILabel *speedLabel = (UILabel *)[cell viewWithTag:105];
+    speedLabel.text = [NSString stringWithFormat:@"配速：%@ ~ %@", [RORUserUtils formatedSpeed:thisMission.suggestionMaxSpeed.doubleValue], [RORUserUtils formatedSpeed:thisMission.suggestionMinSpeed.doubleValue]];
 //    requireDistanceLabel.text = [RORUtils outputDistance:thisMission.missionDistance.doubleValue];
 
     return cell;
@@ -245,11 +256,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row<historyList.count){
-        User_Running_History *h = [historyList objectAtIndex:indexPath.row];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]];
+        User_Running_History *h = [historyList objectAtIndex:indexPath.row];
         UIViewController *viewController =  [storyboard instantiateViewControllerWithIdentifier:@"historyDetailViewController"];
         [viewController setValue:h forKey:@"record"];
         [self.navigationController pushViewController:viewController animated:YES];
+    } else if (indexPath.row==historyList.count){
+        [self startAction:self];
     }
     return;
 }

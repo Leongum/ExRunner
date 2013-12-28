@@ -17,7 +17,9 @@
     NSArray *historyList;
     
     NSIndexPath *todoCellIndex;
+    NSNumber *fixonUserId;
 }
+@property (strong, nonatomic) Plan_Run_History *fixonPlanRunHistory;
 
 @property (strong, nonatomic) IBOutlet UIView *currentPlanView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

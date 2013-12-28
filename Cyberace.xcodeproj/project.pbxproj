@@ -219,7 +219,6 @@
 		307C862117E97A90007C1DE5 /* redbutton_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C861917E97A90007C1DE5 /* redbutton_bg.png */; };
 		307C862317E97A90007C1DE5 /* running_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C861B17E97A90007C1DE5 /* running_bg.png */; };
 		307C862517E97A90007C1DE5 /* spring_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C861D17E97A90007C1DE5 /* spring_bg.png */; };
-		307C862617E97A90007C1DE5 /* spring_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C861E17E97A90007C1DE5 /* spring_bg@2x.png */; };
 		307C862E17E9A78B007C1DE5 /* details.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C862C17E9A78B007C1DE5 /* details.png */; };
 		307C862F17E9A78B007C1DE5 /* details@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C862D17E9A78B007C1DE5 /* details@2x.png */; };
 		30804E8817F566DD00F1A353 /* loading_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 30804E8717F566DD00F1A353 /* loading_bg.jpg */; };
@@ -235,6 +234,8 @@
 		3083DC7517F5248F009A50F6 /* entsani.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3083DC7417F5248F009A50F6 /* entsani.ttf */; };
 		308C165E186982F4005B0198 /* RORShareCoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 308C165D186982F4005B0198 /* RORShareCoverViewController.m */; };
 		308C166118698D99005B0198 /* RORShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 308C166018698D99005B0198 /* RORShareViewController.m */; };
+		308C1663186EA507005B0198 /* icon@2x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 308C1662186EA507005B0198 /* icon@2x120.png */; };
+		308C1666186EF1FB005B0198 /* RORPaperSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 308C1665186EF1FB005B0198 /* RORPaperSegmentControl.m */; };
 		308FAC6B17C65B060025B807 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 308FAC6A17C65B060025B807 /* Reachability.m */; };
 		30978DA317EDA57E00CA58B9 /* history_detail_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30978DA117EDA57E00CA58B9 /* history_detail_bg.png */; };
 		30978DA717EDAFEA00CA58B9 /* share_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 30978DA517EDAFEA00CA58B9 /* share_btn.png */; };
@@ -668,7 +669,6 @@
 		307C861917E97A90007C1DE5 /* redbutton_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redbutton_bg.png; sourceTree = "<group>"; };
 		307C861B17E97A90007C1DE5 /* running_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = running_bg.png; sourceTree = "<group>"; };
 		307C861D17E97A90007C1DE5 /* spring_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring_bg.png; sourceTree = "<group>"; };
-		307C861E17E97A90007C1DE5 /* spring_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spring_bg@2x.png"; sourceTree = "<group>"; };
 		307C862C17E9A78B007C1DE5 /* details.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = details.png; sourceTree = "<group>"; };
 		307C862D17E9A78B007C1DE5 /* details@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "details@2x.png"; sourceTree = "<group>"; };
 		30804E8717F566DD00F1A353 /* loading_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = loading_bg.jpg; path = bg/loading_bg.jpg; sourceTree = "<group>"; };
@@ -686,6 +686,9 @@
 		308C165D186982F4005B0198 /* RORShareCoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORShareCoverViewController.m; path = ReusableControl/RORShareCoverViewController.m; sourceTree = "<group>"; };
 		308C165F18698D99005B0198 /* RORShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORShareViewController.h; path = ReusableControl/RORShareViewController.h; sourceTree = "<group>"; };
 		308C166018698D99005B0198 /* RORShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORShareViewController.m; path = ReusableControl/RORShareViewController.m; sourceTree = "<group>"; };
+		308C1662186EA507005B0198 /* icon@2x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x120.png"; sourceTree = "<group>"; };
+		308C1664186EF1FB005B0198 /* RORPaperSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORPaperSegmentControl.h; path = ReusableControl/RORPaperSegmentControl.h; sourceTree = "<group>"; };
+		308C1665186EF1FB005B0198 /* RORPaperSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORPaperSegmentControl.m; path = ReusableControl/RORPaperSegmentControl.m; sourceTree = "<group>"; };
 		308FAC6917C65B060025B807 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		308FAC6A17C65B060025B807 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		30978DA117EDA57E00CA58B9 /* history_detail_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history_detail_bg.png; sourceTree = "<group>"; };
@@ -1604,7 +1607,6 @@
 				307C861917E97A90007C1DE5 /* redbutton_bg.png */,
 				307C861B17E97A90007C1DE5 /* running_bg.png */,
 				307C861D17E97A90007C1DE5 /* spring_bg.png */,
-				307C861E17E97A90007C1DE5 /* spring_bg@2x.png */,
 			);
 			name = running;
 			path = bg/running;
@@ -1735,6 +1737,8 @@
 				30621D2617E00ED90063A007 /* RORRunningBaseViewController.m */,
 				307C860017E6F445007C1DE5 /* RORSegmentControl.h */,
 				307C860117E6F445007C1DE5 /* RORSegmentControl.m */,
+				308C1664186EF1FB005B0198 /* RORPaperSegmentControl.h */,
+				308C1665186EF1FB005B0198 /* RORPaperSegmentControl.m */,
 				307C860317E6F469007C1DE5 /* RORSegmentButton.h */,
 				307C860417E6F469007C1DE5 /* RORSegmentButton.m */,
 				30C1218617EA963B0077CBD3 /* RORCountDownCoverView.h */,
@@ -1849,6 +1853,7 @@
 		30FC291A17607F6D00DEC042 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				308C1662186EA507005B0198 /* icon@2x120.png */,
 				30FAA214186417DF00E72650 /* notSure.png */,
 				30FAA210186415E100E72650 /* male.png */,
 				30FAA211186415E100E72650 /* female.png */,
@@ -2103,6 +2108,7 @@
 				3083DC7517F5248F009A50F6 /* entsani.ttf in Resources */,
 				30989CB917F6877800CA9F83 /* oneButtonShare_bg@2x.png in Resources */,
 				30989CAB17F5D87800CA9F83 /* Default-568h@2x.png in Resources */,
+				308C1663186EA507005B0198 /* icon@2x120.png in Resources */,
 				303B87EA1852DE0900FD44AC /* expandButton_bg.png in Resources */,
 				3005CFEB1854518D00D83648 /* collect_bg.png in Resources */,
 				307C861F17E97A90007C1DE5 /* green_btn_bg.png in Resources */,
@@ -2118,7 +2124,6 @@
 				307C862517E97A90007C1DE5 /* spring_bg.png in Resources */,
 				30804E9B17F56D6E00F1A353 /* weibo@2x.png in Resources */,
 				303707AC1806590B00FE0238 /* stamp_f.png in Resources */,
-				307C862617E97A90007C1DE5 /* spring_bg@2x.png in Resources */,
 				307C862E17E9A78B007C1DE5 /* details.png in Resources */,
 				307C862F17E9A78B007C1DE5 /* details@2x.png in Resources */,
 				30594BC417F06B4F00E6A19B /* seg_selected_bg.png in Resources */,
@@ -2305,6 +2310,7 @@
 				0F07ABF617E0391B0009C8A8 /* RORMessages.m in Sources */,
 				30621D3317E09F880063A007 /* RORChanllengeRunViewController.m in Sources */,
 				30621D4817E45EB70063A007 /* RORPlaySound.m in Sources */,
+				308C1666186EF1FB005B0198 /* RORPaperSegmentControl.m in Sources */,
 				0F07AC0D17E44D280009C8A8 /* System_Message.m in Sources */,
 				0F5624411835C1C3006581E0 /* RORPlanService.m in Sources */,
 				0F07AC3517E957070009C8A8 /* RORCheckBox.m in Sources */,

@@ -40,7 +40,7 @@
     [super viewDidLoad];
 //    [self endIndicator:self];
     
-    switchButton = [[RORSegmentControl alloc]initWithFrame:SEGMENT_FRAME andSegmentNumber:2];
+    switchButton = [[RORPaperSegmentControl alloc]initWithFrame:SEGMENT_FRAME andSegmentNumber:2];
     switchButton.delegate = self;
     [switchButton setSegmentTitle:@"登录" withIndex:0];
     [switchButton setSegmentTitle:@"注册" withIndex:1];
