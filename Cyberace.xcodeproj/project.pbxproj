@@ -323,6 +323,7 @@
 		30D9207A186F0F3000C0528F /* trainingHistoryPageCell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D92079186F0F3000C0528F /* trainingHistoryPageCell_bg.png */; };
 		30D9207D186F195400C0528F /* trainingHistorySeparator_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D9207B186F195400C0528F /* trainingHistorySeparator_bg.png */; };
 		30D9207E186F195400C0528F /* trainingHistoryTotal_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D9207C186F195400C0528F /* trainingHistoryTotal_bg.png */; };
+		30D92080186F36F600C0528F /* scrollPicker_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D9207F186F36F600C0528F /* scrollPicker_bg.png */; };
 		30D95E6E17C35EB70056E7C0 /* RORStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */; };
 		30D95E6F17C35EB70056E7C0 /* RORHistoryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D95E6D17C35EB70056E7C0 /* RORHistoryPageViewController.m */; };
 		30DBB71F17EF300E00552391 /* textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DBB71E17EF300E00552391 /* textfield.png */; };
@@ -813,6 +814,7 @@
 		30D92079186F0F3000C0528F /* trainingHistoryPageCell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainingHistoryPageCell_bg.png; sourceTree = "<group>"; };
 		30D9207B186F195400C0528F /* trainingHistorySeparator_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainingHistorySeparator_bg.png; sourceTree = "<group>"; };
 		30D9207C186F195400C0528F /* trainingHistoryTotal_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainingHistoryTotal_bg.png; sourceTree = "<group>"; };
+		30D9207F186F36F600C0528F /* scrollPicker_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollPicker_bg.png; sourceTree = "<group>"; };
 		30D95E6A17C35EB70056E7C0 /* RORStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORStatisticsViewController.h; sourceTree = "<group>"; };
 		30D95E6B17C35EB70056E7C0 /* RORStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORStatisticsViewController.m; sourceTree = "<group>"; };
 		30D95E6C17C35EB70056E7C0 /* RORHistoryPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORHistoryPageViewController.h; sourceTree = "<group>"; };
@@ -1394,6 +1396,7 @@
 		303B87E41852DE0900FD44AC /* Training */ = {
 			isa = PBXGroup;
 			children = (
+				30D9207F186F36F600C0528F /* scrollPicker_bg.png */,
 				30D9207B186F195400C0528F /* trainingHistorySeparator_bg.png */,
 				30D9207C186F195400C0528F /* trainingHistoryTotal_bg.png */,
 				30D92079186F0F3000C0528F /* trainingHistoryPageCell_bg.png */,
@@ -2055,6 +2058,7 @@
 				30594BD617F16E0700E6A19B /* running_countdown_1.png in Resources */,
 				3005D00118556C4200D83648 /* todoTrainingCell_bg.png in Resources */,
 				30DBB71F17EF300E00552391 /* textfield.png in Resources */,
+				30D92080186F36F600C0528F /* scrollPicker_bg.png in Resources */,
 				30989CB817F6877800CA9F83 /* oneButtonShare_bg.png in Resources */,
 				303B87EC1852DE0900FD44AC /* searchViewCell_bg.png in Resources */,
 				30A6D9F317CDD58700D1116E /* main_trafficlight_yellow.png in Resources */,

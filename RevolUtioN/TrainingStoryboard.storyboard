@@ -1058,7 +1058,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5P2-y1-6z4">
-                                <rect key="frame" x="268" y="187" width="28" height="28"/>
+                                <rect key="frame" x="264" y="187" width="28" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="infoButton.png">
@@ -1290,7 +1290,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="DHc-E8-Jem" customClass="RORTrainingPickerView">
-                                        <rect key="frame" x="0.0" y="71" width="280" height="361"/>
+                                        <rect key="frame" x="0.0" y="71" width="280" height="270"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -1658,7 +1658,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zcy-aO-pLM">
-                                <rect key="frame" x="268" y="187" width="28" height="28"/>
+                                <rect key="frame" x="264" y="187" width="28" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="infoButton.png">
@@ -1709,7 +1709,7 @@
         <image name="eyeClosed.png" width="128" height="128"/>
         <image name="female.png" width="50" height="50"/>
         <image name="giveUpButton.png" width="139" height="139"/>
-        <image name="infoButton.png" width="512" height="512"/>
+        <image name="infoButton.png" width="56" height="56"/>
         <image name="main_bg.jpg" width="640" height="1136"/>
         <image name="redbutton_bg.png" width="221" height="96"/>
         <image name="searchTableView_bg.png" width="640" height="1136"/>

@@ -45,6 +45,10 @@
 }
 
 - (void)initLayout{
+    UIImageView *bgImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"scrollPicker_bg.png"]];
+    bgImageView.frame = self.frame;
+    bgImageView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    [self addSubview:bgImageView];
     
     self.pickerLabelLeft = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 21)];
     self.pickerLabelLeft.textAlignment = NSTextAlignmentCenter;
@@ -52,32 +56,45 @@
     self.pickerLabelMid.textAlignment = NSTextAlignmentCenter;
     self.pickerLabelRight = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 21)];
     self.pickerLabelRight.textAlignment = NSTextAlignmentCenter;
-
+    [self.pickerLabelLeft setFont:[UIFont boldSystemFontOfSize:15]];
+    [self.pickerLabelMid setFont:[UIFont boldSystemFontOfSize:15]];
+    [self.pickerLabelRight setFont:[UIFont boldSystemFontOfSize:15]];
+    [self.pickerLabelLeft setTextColor:[UIColor whiteColor]];
+    [self.pickerLabelMid setTextColor:[UIColor whiteColor]];
+    [self.pickerLabelRight setTextColor:[UIColor whiteColor]];
+    
+    pickerLabelLeft.backgroundColor = [UIColor clearColor];
+    pickerLabelMid.backgroundColor = [UIColor clearColor];
+    pickerLabelRight.backgroundColor = [UIColor clearColor];
+    
     [self addSubview:self.pickerLabelLeft];
     [self addSubview:self.pickerLabelMid];
     [self addSubview:self.pickerLabelRight];
     
     picker = [[UIPickerView alloc]init];
-    picker.frame = CGRectMake(0, 0, self.frame.size.width, self.picker.frame.size.height);
+    picker.frame = CGRectMake(0, 0, 235, 183);
     picker.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-    CALayer *pickerLayer = picker.layer;
-//    [pickerLayer setBounds:CGRectMake(0.0, 0.0, 125.0, 132.0)];
-    [pickerLayer setBackgroundColor:[UIColor clearColor].CGColor];
-    [pickerLayer setBorderWidth:0];
-    [pickerLayer setBorderColor:[UIColor clearColor].CGColor];
+    
+    picker.showsSelectionIndicator = YES;
+    picker.backgroundColor = [UIColor clearColor];
+    CALayer* mask = [[CALayer alloc] init];
+    [mask setBackgroundColor: [UIColor blackColor].CGColor];
+    [mask setFrame:  CGRectMake(10, 10, 215, 163)];
+    [mask setCornerRadius: 5.0f];
+    [picker.layer setMask: mask];
     
     [self addSubview:picker];
     
-    double labelY = picker.center.y - picker.frame.size.height/2 -5 - pickerLabelLeft.frame.size.height/2;
+    double labelY = pickerLabelLeft.frame.size.height/2+8;
     self.pickerLabelLeft.center = CGPointMake(self.frame.size.width/4, labelY);
     self.pickerLabelRight.center = CGPointMake(self.frame.size.width/4*3, labelY);
     self.pickerLabelMid.center = CGPointMake(picker.center.x, labelY);
     
     okButton = [[UIButton alloc]init];
-    okButton.frame = CGRectMake(0, 0, 240, 40);
-    okButton.center = CGPointMake(picker.center.x, picker.center.y + picker.frame.size.height/2 + okButton.frame.size.height/2);
-    [okButton setBackgroundColor:[UIColor darkGrayColor]];
-    [okButton setTitle:@"OK" forState:UIControlStateNormal];
+    okButton.frame = CGRectMake(0, 0, 215, 38);
+    okButton.center = CGPointMake(picker.center.x-3, self.frame.size.height-19);
+    [okButton setBackgroundColor:[UIColor clearColor]];
+    [okButton setTitle:@"确定" forState:UIControlStateNormal];
     [okButton addTarget:self action:@selector(okButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:okButton];
     

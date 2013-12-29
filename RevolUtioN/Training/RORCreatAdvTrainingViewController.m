@@ -307,7 +307,7 @@
 }
 
 #pragma mark Picker Delegate Methods
-- (NSString *)pickerView:(UIPickerView*)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (NSString *)titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     if (responderTextField == frequencyLabel)
         return [NSString stringWithFormat:@"%d", row+1];
     if (responderTextField == durationLabel){
@@ -344,6 +344,14 @@
 //    return 40;
 //}
 
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12.0f, 0.0f, [pickerView rowSizeForComponent:component].width-12, [pickerView rowSizeForComponent:component].height)];
+    
+    [label setText:[self titleForRow:row forComponent:component]];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    return label;
+}
 
 #pragma mark - Table view data source
 
