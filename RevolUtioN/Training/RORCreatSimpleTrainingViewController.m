@@ -7,6 +7,7 @@
 //
 
 #import "RORCreatSimpleTrainingViewController.h"
+#import "RORCustomTrainingViewController.h"
 
 @interface RORCreatSimpleTrainingViewController ()
 
@@ -31,6 +32,7 @@
     
     self.backButton.alpha = 0;
     self.coverView.delegate = self;
+    [Animations frameAndShadow:self.coverView];
     self.coverView.alpha = 0;
     
     [self.totalTextField addTarget:self action:@selector(showPicker:) forControlEvents:UIControlEventTouchUpInside];
@@ -73,7 +75,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    self.contentView.frame = self.view.frame;
+//    self.contentView.frame = self.view.frame;
     [self initData];
     [self initControls];
 }
@@ -94,7 +96,7 @@
     }
     if (responderTextField == durationTextField){
         if (trainingTypeSegment.selectionIndex == 0)
-            [self.coverView showMiddleTitle:@"km"];
+            [self.coverView showMiddleTitle:@"定距跑(km)"];
         else
             [self.coverView showBothSideTitle:@"小时" t2:@"分钟"];
     }
@@ -102,10 +104,10 @@
         [self.coverView showMiddleTitle:@"几天内完成"];
     }
     if (responderTextField == lowSpeedField){
-        [self.coverView showMiddleTitle:@"最低配速"];
+        [self.coverView showMiddleTitle:@"最低配速(X\'X\"/km)"];
     }
     if (responderTextField == highSpeedField){
-        [self.coverView showMiddleTitle:@"最高配速"];
+        [self.coverView showMiddleTitle:@"最高配速(X\'X\"/km)"];
     }
     
     [picker reloadAllComponents];

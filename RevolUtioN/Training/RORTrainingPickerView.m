@@ -46,8 +46,7 @@
 
 - (void)initLayout{
     UIImageView *bgImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"scrollPicker_bg.png"]];
-    bgImageView.frame = self.frame;
-    bgImageView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    bgImageView.frame = CGRectMake(0, 0, self.frame.size.width, 270);
     [self addSubview:bgImageView];
     
     self.pickerLabelLeft = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 21)];
@@ -73,7 +72,7 @@
     
     picker = [[UIPickerView alloc]init];
     picker.frame = CGRectMake(0, 0, 235, 183);
-    picker.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    picker.center = CGPointMake(self.frame.size.width/2, 135);
     
     picker.showsSelectionIndicator = YES;
     picker.backgroundColor = [UIColor clearColor];
@@ -86,13 +85,13 @@
     [self addSubview:picker];
     
     double labelY = pickerLabelLeft.frame.size.height/2+8;
-    self.pickerLabelLeft.center = CGPointMake(self.frame.size.width/4, labelY);
-    self.pickerLabelRight.center = CGPointMake(self.frame.size.width/4*3, labelY);
+    self.pickerLabelLeft.center = CGPointMake(self.frame.size.width/3, labelY);
+    self.pickerLabelRight.center = CGPointMake(self.frame.size.width/3*2, labelY);
     self.pickerLabelMid.center = CGPointMake(picker.center.x, labelY);
     
     okButton = [[UIButton alloc]init];
     okButton.frame = CGRectMake(0, 0, 215, 38);
-    okButton.center = CGPointMake(picker.center.x-3, self.frame.size.height-19);
+    okButton.center = CGPointMake(picker.center.x-3, 251);
     [okButton setBackgroundColor:[UIColor clearColor]];
     [okButton setTitle:@"确定" forState:UIControlStateNormal];
     [okButton addTarget:self action:@selector(okButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -100,6 +99,11 @@
     
     self.alpha = 0;
     
+    [self addTarget:self action:@selector(hidePickerAction:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(IBAction)hidePickerAction:(id)sender{
+    self.alpha = 0;
 }
 
 -(IBAction)okButtonAction:(id)sender{

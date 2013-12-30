@@ -75,6 +75,15 @@ static NSDate *syncTime;
     return uuid;
 }
 
++(NSNumber *)getUserWeight{
+    NSMutableDictionary *settinglist = [RORUserUtils getUserSettingsPList];
+    id weight = [settinglist valueForKey:@"weight"];
+    if (weight)
+        return [RORDBCommon getNumberFromId:weight];
+    else
+        return [NSNumber numberWithInteger:60];
+}
+
 +(NSDate *)getSystemTime{
     if (systemTime == nil){
         [RORSystemService syncVersion:@"ios"];

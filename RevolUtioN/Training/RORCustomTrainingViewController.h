@@ -20,5 +20,9 @@
 
 @property (strong, nonatomic) IBOutlet UIView *frameView;
 @property (strong, nonatomic) IBOutlet UIButton *switchButton;
+@property (strong, nonatomic) IBOutlet UIImageView *coverView;
+
+-(IBAction)showCoverView:(id)sender;
+-(IBAction)hideCoverView:(id)sender;
 
 @end

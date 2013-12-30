@@ -15,6 +15,8 @@
 
 + (NSString *)getUserName;
 
++ (NSNumber *)getUserWeight;
+
 + (NSString *)getUserUuid;
 
 + (void)logout;

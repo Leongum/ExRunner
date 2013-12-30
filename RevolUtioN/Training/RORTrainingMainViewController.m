@@ -226,8 +226,11 @@
 //        UILabel *leftDays = (UILabel *)[cell viewWithTag:105];
 //        NSLog(@"left days:%.0f", [planNext.startTime timeIntervalSinceNow]);
 //        leftDays.text = [NSString stringWithFormat:@"%.0f", [RORPlanService getCycleTimeofPlanNext:planNext]+[planNext.startTime timeIntervalSinceNow]/3600/24];
-        [RORPlanService fillCountDownIconForView:cell withPlanNext:planNext];
-        
+        NSInteger ld = [RORPlanService fillCountDownIconForView:cell withPlanNext:planNext];
+        if (ld<0){
+            UIImageView *imageView = (UIImageView *)[cell viewWithTag:38];
+            imageView.image = [UIImage imageNamed:@"currentTrainingCellOver_bg.png"];
+        }
 //        todoCellIndex = indexPath;
     } else {
         static NSString *CellIdentifier = @"todoCell";

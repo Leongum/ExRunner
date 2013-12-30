@@ -29,6 +29,19 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self loadViewControllers];
+    self.coverView.alpha = 0;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    NSDictionary *dict = [RORUserUtils getUserSettingsPList];
+    [self endIndicator:self];
+    
+    NSNumber *didIntro = [RORDBCommon getNumberFromId:[dict objectForKey:@"HasShowCustomIntro"]];
+    if (!didIntro){
+        RORIntroCoverView *introCoverView = [[RORIntroCoverView alloc]initWithFrame:self.view.frame andImage:[UIImage imageNamed:@"introCustomPage.png"]];
+        [self.view addSubview:introCoverView];
+        [RORUserUtils writeToUserSettingsPList:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:1], @"HasShowCustomIntro", nil]];
+    }
 }
 
 -(void)loadViewControllers{
@@ -120,4 +133,11 @@
         [self sendAlart:@"请先登录"];
 }
 
+-(IBAction)showCoverView:(id)sender{
+    self.coverView.alpha = 1;
+}
+
+-(IBAction)hideCoverView:(id)sender{
+    self.coverView.alpha = 0;
+}
 @end

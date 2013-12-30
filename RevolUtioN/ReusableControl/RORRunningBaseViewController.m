@@ -173,9 +173,9 @@
 
 -(NSNumber *)calculateCalorie
 {
-    double weight = 60; //tempory value
-    double K = (9*distance)/(2*duration);
-    return [NSNumber numberWithDouble:(duration * weight * K / 3600)];
+    double weight = [RORUserUtils getUserWeight].doubleValue; //tempory value
+//    double K = (9*distance)/(2*duration);
+    return [NSNumber numberWithDouble:(distance * weight * 1.036)];
 }
 
 -(NSNumber *)calculateExperience:(User_Running_History *)runningHistory{

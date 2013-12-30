@@ -106,6 +106,6 @@
 
 +(int)getCycleTimeofPlanNext:(Plan_Next_mission*)planNext;
 
-+(void)fillCountDownIconForView:(UIView *)view withPlanNext:(Plan_Next_mission *)planNext;
++(NSInteger)fillCountDownIconForView:(UIView *)view withPlanNext:(Plan_Next_mission *)planNext;
 
 @end

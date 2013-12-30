@@ -743,12 +743,20 @@
     return planNext.nextMission.cycleTime.integerValue;
 }
 
-+(void)fillCountDownIconForView:(UIView *)view withPlanNext:(Plan_Next_mission *)planNext{
++(NSInteger)fillCountDownIconForView:(UIView *)view withPlanNext:(Plan_Next_mission *)planNext{
     UILabel *leftDays = (UILabel *)[view viewWithTag:254];
+    UIImageView *bg = (UIImageView *)[view viewWithTag:253];
     NSLog(@"left days:%.0f", [planNext.startTime timeIntervalSinceNow]);
     NSInteger ld = [self getCycleTimeofPlanNext:planNext]+(int)([planNext.startTime timeIntervalSinceNow]/3600/24);
-    leftDays.text = [NSString stringWithFormat:@"%d", ld];
-    view.alpha = (ld>=0);
+    if (ld>=0){
+        leftDays.text = [NSString stringWithFormat:@"%d", ld];
+        bg.image = [UIImage imageNamed:@"countDown_bg.png"];
+        bg.alpha = 1;
+    } else{
+        leftDays.text = @"";
+        bg.alpha = 0;
+    }
+    return ld;
 }
 
 @end

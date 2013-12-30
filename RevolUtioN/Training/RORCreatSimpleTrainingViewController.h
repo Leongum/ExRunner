@@ -32,5 +32,6 @@
 @property (strong, nonatomic) IBOutlet RORSegmentControl *trainingTypeSegment;
 @property (strong, nonatomic) IBOutlet UIImageView *trainingTypeSegmentBg;
 
+
 -(Plan *)createNewSimplePlan;
 @end

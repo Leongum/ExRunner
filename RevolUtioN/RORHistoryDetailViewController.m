@@ -63,14 +63,14 @@
     
     durationLabel.text = [RORUtils transSecondToStandardFormat:record.duration.integerValue];
     energyLabel.text = [NSString stringWithFormat:@"%.1f kca", record.spendCarlorie.doubleValue];
-    if (record.missionTypeId.integerValue == Challenge){
-        scoreLabel.text = [NSString stringWithFormat:@"%@", MissionGradeEnum_toString[record.missionGrade.integerValue]];
-        self.levelTitleLabel.text = @"级别";
-    }
-    else {
+    if (record.missionTypeId.integerValue == NormalRun) {
         scoreLabel.text = [NSString stringWithFormat:@"%d", record.experience.integerValue];
         self.levelTitleLabel.text = @"得分";
+    } else {
+        scoreLabel.text = [NSString stringWithFormat:@"%@", MissionGradeEnum_toString[record.missionGrade.integerValue]];
+        self.levelTitleLabel.text = @"评级";
     }
+    
     
     if (record.missionTypeId.integerValue == SimpleTask || record.missionTypeId.integerValue==ComplexTask){
         

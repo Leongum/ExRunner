@@ -67,13 +67,16 @@
     historyList = [RORPlanService fetchUserPlanHistoryList:userId];
     [self.tableView reloadData];
     
-    [self endIndicator:self];
     //****************
     
-    if (contentList.count==0 && !searchViewController.expanded){
-//        [searchViewController expandAction:self];
+    NSDictionary *dict = [RORUserUtils getUserSettingsPList];
+    [self endIndicator:self];
+
+    NSNumber *didIntro = [RORDBCommon getNumberFromId:[dict objectForKey:@"HasShowBookletIntro"]];
+    if (!didIntro){
         RORIntroCoverView *introCoverView = [[RORIntroCoverView alloc]initWithFrame:self.view.frame andImage:[UIImage imageNamed:@"introBookletPage.png"]];
         [self.view addSubview:introCoverView];
+        [RORUserUtils writeToUserSettingsPList:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:1], @"HasShowBookletIntro", nil]];
     }
 }
 

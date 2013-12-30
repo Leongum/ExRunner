@@ -50,6 +50,16 @@
     [self initSearchField];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    NSDictionary *dict = [RORUserUtils getUserSettingsPList];
+    NSNumber *didIntro = [RORDBCommon getNumberFromId:[dict objectForKey:@"HasShowFriendsIntro"]];
+    if (!didIntro){
+        RORIntroCoverView *introCoverView = [[RORIntroCoverView alloc]initWithFrame:self.view.frame andImage:[UIImage imageNamed:@"introFriendPage.png"]];
+        [self.view addSubview:introCoverView];
+        [RORUserUtils writeToUserSettingsPList:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:1], @"HasShowFriendsIntro", nil]];
+    }
+}
+
 - (IBAction)editingDidBegin:(id)sender {
 //    [Animations frameAndShadow:self.searchTextField];
     self.searchTextField.text = @"";
