@@ -30,7 +30,6 @@
 
 - (void)viewDidLoad
 {
-//    [self startIndicator:self];
     [self.view setAutoresizesSubviews:YES];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.

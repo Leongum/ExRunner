@@ -33,11 +33,8 @@
 
 - (void)viewDidLoad
 {
-    [self startIndicator:self];
-
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [Animations frameAndShadow:self.partnerView];
     
     tableViewHeight = 155;
     
@@ -52,11 +49,16 @@
     
     traineeBtnPathLength = self.tableViewContainerView.frame.origin.y+self.tableViewContainerView.frame.size.height - tableViewPathLength - self.showFriendsButton.frame.origin.y - self.showFriendsButton.frame.size.height - 2;
     
-    
+    self.partnerView.alpha = 0;
+    self.coverView.alpha = 0;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    //****************
+
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self startIndicator:self];
     
     friendList = [RORPlanService getTopUsingByUserId:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:0]];
     for (Plan_Run_History *thisPlanRun in friendList){
@@ -74,17 +76,13 @@
     friendPageCount = 1;
     traineePageCount = 1;
     
-    UIButton *fixonButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 55, 55)];
-    [fixonButton setTitle:@"锁定" forState:UIControlStateNormal];
-    [fixonButton addTarget:self action:@selector(fixonAction:) forControlEvents:UIControlEventTouchUpInside];
+    //    UIButton *fixonButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 55, 55)];
+    //    [fixonButton setTitle:@"锁定" forState:UIControlStateNormal];
+    //    [fixonButton addTarget:self action:@selector(fixonAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.coverView.alpha = 0;
     
     [self initFixonView];
     
-}
-
--(void)viewDidAppear:(BOOL)animated{
     [self endIndicator:self];
 }
 

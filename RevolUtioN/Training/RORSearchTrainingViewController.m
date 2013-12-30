@@ -31,6 +31,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.backButton.alpha = 0;
+    self.fuzzyCoverView.alpha = 0;
+    
     expanded = NO;
     isTableEmpty = YES;
     currentPages = 0;
@@ -66,11 +68,14 @@
         expanded = YES;
         searchViewTop = f.origin.y;
         [self.view moveUp:0.5 length:-searchViewTop delegate:self];
+        [self.fuzzyCoverView fadeIn:1 delegate:self];
+        self.fuzzyCoverView.alpha = 1;
         self.view.frame = CGRectMake(f.origin.x, 0, f.size.width, f.size.height);
         [self.expandButton setTitle:@"收起" forState:UIControlStateNormal];
         [self reloadTableViewAction];
     } else {
         expanded = NO;
+        self.fuzzyCoverView.alpha = 0;
         [self.view moveUp:0.5 length:searchViewTop delegate:self];
         self.view.frame = CGRectMake(f.origin.x, searchViewTop, f.size.width, f.size.height);
         [self.expandButton setTitle:@"添加" forState:UIControlStateNormal];
@@ -82,7 +87,7 @@
         return NO;
     
     int count = contentList.count;
-    [self startIndicator:self];
+//    [self startIndicator:self];
     NSArray *array = [RORPlanService getTopPlansList:[NSNumber numberWithInteger:page]];
     [contentList addObjectsFromArray:array];
     [self endIndicator:self];

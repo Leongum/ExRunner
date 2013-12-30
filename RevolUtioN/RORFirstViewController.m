@@ -53,7 +53,6 @@
     if([[NSDate date] timeIntervalSinceDate:lastupdateTime] >= 86400){
         [RORUserUtils syncSystemData];
     }
-    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

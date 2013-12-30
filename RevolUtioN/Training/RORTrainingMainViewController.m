@@ -26,14 +26,12 @@
 
 - (void)viewDidLoad
 {
-    [self startIndicator:self];
 
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     bookletButtonFrame = self.bookletButton.frame;
     traineeButtonFrame = self.TraineeButton.frame;
     
-    [self initTraineeButton];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -44,6 +42,14 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    
+    if (!didInitTraineeButton){
+        didInitTraineeButton = YES;
+        [self startIndicator:self];
+        [self initTraineeButton];
+    }
+
+    [self refreshTraineeButton];
     [self endIndicator:self];
 
 //    if (todoCellIndex)
@@ -86,7 +92,6 @@
         self.TraineeButton.frame = CGRectMake(self.currentPlanView.frame.origin.x, self.TraineeButton.frame.origin.y, self.currentPlanView.frame.size.width, self.TraineeButton.frame.size.height);
         todoCellIndex = nil;
     }
-    [self refreshTraineeButton];
 }
 
 -(void)initTraineeButton{
@@ -265,21 +270,6 @@
         [self startAction:self];
     }
     return;
-}
-
-- (IBAction)testAction:(id)sender {
-    RORTrainingHistoryShareView *testView = [[RORTrainingHistoryShareView alloc]initWithFrame:self.view.frame];
-    for (int i=0; i<20; i++){
-        UIImageView *iv = [[UIImageView alloc]initWithImage: [UIImage imageNamed:@"advTrainingCell.png"]];
-        iv.frame = CGRectMake(0, 0, 320, 60);
-        [testView add:iv];
-    }
-    [self.view addSubview:testView];
-    [testView removeFromSuperview];
-    UIImageView *imageView = [[UIImageView alloc]initWithImage:[testView getImage]];
-    imageView.frame = CGRectMake(0, 0, 320,100);
-    imageView.center = self.view.center;
-    [self.view addSubview:imageView];
 }
 
 @end

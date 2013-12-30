@@ -282,10 +282,10 @@
     return YES;
 }
 
-+(NSArray *)fetchRunHistoryByPlanRunUuid:(NSString *) planRunUuid{
++(NSArray *)fetchRunHistoryByPlanRunUuid:(NSString *) planRunUuid onlyValid:(NSNumber *)onlyValid{
     NSString *table=@"User_Running_History";
-    NSString *query = @"planRunUuid = %@";
-    NSArray *params = [NSArray arrayWithObjects:planRunUuid, nil];
+    NSString *query = @"planRunUuid = %@ and valid = %@";
+    NSArray *params = [NSArray arrayWithObjects:planRunUuid,onlyValid, nil];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:NO];
     NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
     NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];

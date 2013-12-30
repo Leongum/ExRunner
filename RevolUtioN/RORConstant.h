@@ -18,8 +18,8 @@
 //define prod service host
 //#define SERVICE_HOST @"http://www.cyberace.cc/service/api"
 
-#define CURRENT_VERSION_MAIN 1
-#define CURRENT_VERSION_SUB 2
+#define CURRENT_VERSION_MAIN 2
+#define CURRENT_VERSION_SUB 0
 
 #define LOGIN_URL [SERVICE_HOST stringByAppendingString:@"/account/%@/%@"]
 #define REGISTER_URL [SERVICE_HOST stringByAppendingString:@"/account"]

@@ -10,6 +10,7 @@
 #import "Animations.h"
 
 @implementation RORNormalButton
+@synthesize delegate;
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];

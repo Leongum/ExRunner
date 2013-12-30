@@ -380,7 +380,7 @@
     }
     Plan_Run_History *userPlanHistory = (Plan_Run_History *) [fetchObject objectAtIndex:0];
     if(needHistoryDetail){
-        userPlanHistory.runHistoryList = [[RORRunHistoryServices fetchRunHistoryByPlanRunUuid:userPlanHistory.planRunUuid] mutableCopy];
+        userPlanHistory.runHistoryList = [[RORRunHistoryServices fetchRunHistoryByPlanRunUuid:userPlanHistory.planRunUuid onlyValid:[NSNumber numberWithInteger:1]] mutableCopy];
         Plan *thisPlan = [RORPlanService fetchPlan:userPlanHistory.planId];
         userPlanHistory.planName = thisPlan.planName;
     }

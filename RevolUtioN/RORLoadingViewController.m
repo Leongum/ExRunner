@@ -38,7 +38,7 @@
     [RORUtils setFontFamily:CHN_PRINT_FONT forView:self.view andSubViews:YES];
     [RORUtils setFontFamily:ENG_GAME_FONT forView:self.loadingLabel andSubViews:NO];
     
-//    [self startIndicator:self];
+    [self startIndicator:self];
     [RORNetWorkUtils initCheckNetWork];
     NSLog(@"%hhd",[RORNetWorkUtils getIsConnetioned]);
 
@@ -60,6 +60,8 @@
         }
     }
     [RORUserUtils syncSystemData];
+    
+    [self endIndicator:self];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

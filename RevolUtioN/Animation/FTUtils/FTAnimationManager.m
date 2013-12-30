@@ -385,7 +385,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
     animations = [NSArray arrayWithObject:animation];
     
 	return [self animationGroupFor:animations withView:view duration:duration
-						  delegate:delegate startSelector:nil stopSelector:nil
+						  delegate:delegate startSelector:startSelector stopSelector:stopSelector
 							  name:kFTAnimationMoveUp type:kFTAnimationTypeIn];
 }
 

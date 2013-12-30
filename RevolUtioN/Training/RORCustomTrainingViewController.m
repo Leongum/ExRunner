@@ -28,9 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self startIndicator:self];
     [self loadViewControllers];
-    [self endIndicator:self];
 }
 
 -(void)loadViewControllers{

@@ -15,5 +15,7 @@
     RORPlaySound *sound;
 }
 
+@property (strong, nonatomic) id delegate;
+
 -(void)initButtonInteraction;
 @end

@@ -31,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *searchTextFieldBg;
 @property (strong, nonatomic) IBOutlet UIButton *expandButton;
 @property (nonatomic) BOOL expanded;
+@property (strong, nonatomic) IBOutlet UIImageView *fuzzyCoverView;
 
 - (IBAction)expandAction:(id)sender;
 

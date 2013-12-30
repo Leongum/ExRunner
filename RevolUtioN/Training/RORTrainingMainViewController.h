@@ -18,6 +18,8 @@
     
     NSIndexPath *todoCellIndex;
     NSNumber *fixonUserId;
+    
+    BOOL didInitTraineeButton;
 }
 @property (strong, nonatomic) Plan_Run_History *fixonPlanRunHistory;
 

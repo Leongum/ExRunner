@@ -35,6 +35,7 @@
 
 +(BOOL)saveRunInfoToDB:(User_Running_History*)runHistory;
 
-+(NSArray *)fetchRunHistoryByPlanRunUuid:(NSString *) planRunUuid;
++(NSArray *)fetchRunHistoryByPlanRunUuid:(NSString *) planRunUuid onlyValid:(NSNumber *)onlyValid;
+
 
 @end

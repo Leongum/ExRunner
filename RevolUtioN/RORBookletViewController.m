@@ -32,11 +32,8 @@
 - (void)viewDidLoad
 {
     //****************
-    [self startIndicator:self];
-
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self startIndicator:self];
     
     storyboard = [UIStoryboard storyboardWithName:@"TrainingStoryboard" bundle:[NSBundle mainBundle]];
     searchViewController =  [storyboard instantiateViewControllerWithIdentifier:@"searchViewController"];
@@ -46,7 +43,6 @@
 
     searchViewController.view.frame = frame;
     searchViewController.delegate = self;
-    [Animations frameAndShadow:searchViewController.view];
     
     [self addChildViewController:searchViewController];
     [self.view addSubview:searchViewController.view];
@@ -54,21 +50,22 @@
     self.searchTrainingView = searchViewController.view;
     
     [self.view bringSubviewToFront:self.backButton];
-    [self.view bringSubviewToFront:self.editButton];    
+    [self.view bringSubviewToFront:self.editButton];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    NSNumber *userId = [RORUserUtils getUserId];
-    
-    contentList = [RORPlanService fetchPlanCollect:userId];
-    historyList = [RORPlanService fetchUserPlanHistoryList:userId];
-    [self.tableView reloadData];
-    
-    
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    //===============
+    [self startIndicator:self];
+    NSNumber *userId = [RORUserUtils getUserId];
+    contentList = [RORPlanService fetchPlanCollect:userId];
+    historyList = [RORPlanService fetchUserPlanHistoryList:userId];
+    [self.tableView reloadData];
     
     [self endIndicator:self];
     //****************
