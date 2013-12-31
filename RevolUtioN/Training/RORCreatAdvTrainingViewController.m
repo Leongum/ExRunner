@@ -194,6 +194,7 @@
     
     [contentList addObject:mission];
     [self.tableView reloadData];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:contentList.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 -(IBAction)showPicker:(id)sender{

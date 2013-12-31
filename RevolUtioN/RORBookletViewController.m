@@ -81,7 +81,7 @@
 }
 
 -(IBAction)reloadTableViewAction:(id)sender{
-    [self viewWillAppear:YES];
+    [self viewDidAppear:YES];
     [self.tableViewBg pop:0.5 delegate:self];
 }
 

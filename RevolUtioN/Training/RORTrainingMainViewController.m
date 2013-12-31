@@ -31,7 +31,7 @@
 	// Do any additional setup after loading the view.
     bookletButtonFrame = self.bookletButton.frame;
     traineeButtonFrame = self.TraineeButton.frame;
-    
+    todoCellIndex = nil;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -52,8 +52,8 @@
     [self refreshTraineeButton];
     [self endIndicator:self];
 
-//    if (todoCellIndex)
-//        [self.tableView scrollToRowAtIndexPath:todoCellIndex atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    if (todoCellIndex)
+        [self.tableView scrollToRowAtIndexPath:todoCellIndex atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 -(void)initLayout{

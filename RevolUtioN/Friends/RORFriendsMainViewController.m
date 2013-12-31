@@ -210,6 +210,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == contentList.count){
         [self loadTableViewData:pageCount++];
+    } else {
+        [self sendNotification:@"【好友信息】\n正在哼哧哼哧开发中！\n\n向左划划试试"];
     }
 }
 

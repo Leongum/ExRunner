@@ -175,7 +175,7 @@
 {
     double weight = [RORUserUtils getUserWeight].doubleValue; //tempory value
 //    double K = (9*distance)/(2*duration);
-    return [NSNumber numberWithDouble:(distance * weight * 1.036)];
+    return [NSNumber numberWithDouble:(distance * weight * 1.036 / 1000)];
 }
 
 -(NSNumber *)calculateExperience:(User_Running_History *)runningHistory{
