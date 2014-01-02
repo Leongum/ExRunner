@@ -51,7 +51,9 @@
     CGRect totleFrame = self.totle2Fill.frame;
     //add total
     self.totle2Fill.frame = CGRectMake(totleFrame.origin.x, totleFrame.origin.y, 266, totleFrame.size.height);
+    [self.totle2Fill viewWithTag:200].alpha = 0;
     [testView add:[[UIImageView alloc]initWithImage:[RORUtils getImageFromView:self.totle2Fill]]];
+    [self.totle2Fill viewWithTag:200].alpha = 1;
     self.totle2Fill.frame = totleFrame;
     //add details
     self.view2Fill.alpha = 1;
@@ -65,7 +67,10 @@
     self.view2Fill.alpha = 0;
 //    [self.view addSubview:testView];
 //    [testView removeFromSuperview];
-    [RORUtils popShareCoverViewFor:self withImage:[testView getImage] title:@"分享这个页面" andMessage:@"Training plan share" animated:YES];
+    
+    NSString *msg = [NSString stringWithFormat:@"我用 @Cyberace_赛跑乐 完成了训练【%@】，训练编号%@，历时%d天",thisPlan.planName, thisPlan.planId, spentDays];
+    
+    [RORUtils popShareCoverViewFor:self withImage:[testView getImage] title:@"分享这个页面" andMessage:msg animated:YES];
 }
 
 
@@ -131,11 +136,13 @@
     
     NSDateFormatter *formattter = [[NSDateFormatter alloc] init];
     [formattter setDateFormat:@"yyyy/MM/dd"];
-    if (thisHistory.historyStatus.integerValue == HistoryStatusFinished)
+    if (thisHistory.historyStatus.integerValue == HistoryStatusFinished){
         dateLabel.text = [NSString stringWithFormat:@"%@ - %@", [formattter stringFromDate:thisHistory.startTime], [formattter stringFromDate:thisHistory.endTime]];
-    else
+        spentDays = (int)([thisHistory.endTime timeIntervalSinceDate:thisHistory.startTime]/3600/24);
+    } else {
         dateLabel.text = [NSString stringWithFormat:@"%@ - 今天", [formattter stringFromDate:thisHistory.startTime]];
-    
+        spentDays = -(int)([thisHistory.startTime timeIntervalSinceNow]/3600/24);
+    }
 }
 
 #pragma mark - Table view data source

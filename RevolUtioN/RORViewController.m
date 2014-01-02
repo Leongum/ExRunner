@@ -90,7 +90,7 @@
         UIImageView *imageView = [[UIImageView alloc]initWithImage:image];
         imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
         piece = imageView;
-        captureBgView = [RORUtils popShareCoverViewFor:self withImage:nil title:@"继续“捏”分享这个页面" andMessage:@"global share" animated:YES];
+        captureBgView = [RORUtils popShareCoverViewFor:self withImage:nil title:@"继续“捏”分享这个页面" andMessage:@"我在用 @Cyberace_赛跑乐 " animated:YES];
 //        [gestureRecognizer.view addSubview:captureBgView];
         [gestureRecognizer.view addSubview:piece];
         

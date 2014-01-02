@@ -406,14 +406,14 @@
         frame.origin.x = 0;
         frame.origin.y = 0;
         viewController.view.frame = frame;
-        [viewController setValue:image forKey:@"shareImage"];
-        [viewController setValue:msg forKey:@"shareMessage"];
-        [viewController setValue:title forKey:@"shareTitle"];
-        
         [delegate addChildViewController:viewController];
         [delegate.view addSubview:viewController.view];
         [viewController didMoveToParentViewController:delegate];
     }
+    [viewController setValue:image forKey:@"shareImage"];
+    [viewController setValue:msg forKey:@"shareMessage"];
+    [viewController setValue:title forKey:@"shareTitle"];
+    
     viewController.view.alpha = 1;
     return viewController;
 }

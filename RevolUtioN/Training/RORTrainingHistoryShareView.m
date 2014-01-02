@@ -39,6 +39,7 @@
 }
 
 -(UIImage *)getImage{
+    self.backgroundColor = [UIColor whiteColor];
     return [RORUtils getImageFromView:self];;
 }
 

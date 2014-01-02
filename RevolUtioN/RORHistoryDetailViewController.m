@@ -336,7 +336,9 @@
 - (IBAction)shareAction:(id)sender {
 
     img = [RORUtils captureScreen];
-    [RORUtils popShareCoverViewFor:self withImage:img title:@"分享这个页面" andMessage:@"history detail page" animated:YES];
+    
+    NSString *msg = [NSString stringWithFormat:@"我用 @Cyberace_赛跑乐 完成了跑步%@，用时%@，消耗%d卡路里", [RORUtils outputDistance:record.distance.doubleValue],[RORUtils transSecondToStandardFormat:record.duration.doubleValue],record.spendCarlorie.integerValue];
+    [RORUtils popShareCoverViewFor:self withImage:img title:@"分享这个页面" andMessage:msg animated:YES];
 }
 
 -(IBAction)showKMSpeed:(id)sender{
