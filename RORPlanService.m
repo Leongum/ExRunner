@@ -243,7 +243,7 @@
         RORHttpResponse *httpResponse =[RORPlanClientHandler putUserCollects:userId withUserCollect:array];
         if ([httpResponse responseStatus] == 200){
             for (Plan_Collect *info in planUnSyncedCollect) {
-                info.updated = [NSNumber numberWithInt:1];
+                info.updated = [NSNumber numberWithInt:0];
             }
             [RORContextUtils saveContext];
             return YES;
@@ -337,7 +337,7 @@
         RORHttpResponse *httpResponse =[RORPlanClientHandler putUserFollows:userId withUserFollows:array];
         if ([httpResponse responseStatus] == 200){
             for (Plan_User_Follow *info in followUnSyncedCollect) {
-                info.updated = [NSNumber numberWithInt:1];
+                info.updated = [NSNumber numberWithInt:0];
             }
             [RORContextUtils saveContext];
             return YES;
