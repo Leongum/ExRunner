@@ -60,7 +60,7 @@
 }
 
 -(void)applicationDidBecomeActive:(UIApplication *)application{
-//    application.applicationIconBadgeNumber = 0;
+    application.applicationIconBadgeNumber = 0;
 
     [[self sharedLocationManager] setDesiredAccuracy:kCLLocationAccuracyBest];
     locationManager.distanceFilter = 1;

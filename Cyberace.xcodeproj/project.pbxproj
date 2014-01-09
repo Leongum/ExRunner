@@ -2373,8 +2373,8 @@
 		302FD0481727D870004DA005 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Connection\"",
@@ -2400,7 +2400,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Cyberace;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8D54B041-BCF0-401B-B7A8-FE453EB0AC99";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2409,8 +2409,8 @@
 		302FD0491727D870004DA005 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Connection\"",
@@ -2436,7 +2436,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Cyberace;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8D54B041-BCF0-401B-B7A8-FE453EB0AC99";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

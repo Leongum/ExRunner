@@ -17,7 +17,7 @@
     double totleDistance;
     double totleDuration;
     double avgSpeed;
-    
+    int spentDays;
 }
 
 @property (strong, nonatomic) Plan_Run_History* thisHistory;
