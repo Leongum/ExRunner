@@ -179,8 +179,8 @@
     
     planNext = [RORPlanService fetchUserRunningPlanHistory];
     if (planNext){
-        [RORPlanService fillCountDownIconForView:self.trainingCountDownView withPlanNext:planNext];
-        self.trainingCountDownView.alpha = 1;
+        NSInteger ld = [RORPlanService fillCountDownIconForView:self.trainingCountDownView withPlanNext:planNext];
+        self.trainingCountDownView.alpha = ld<0?0:1;
     } else
         self.trainingCountDownView.alpha = 0;
 }

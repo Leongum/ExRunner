@@ -107,8 +107,9 @@
 }
 
 - (IBAction)doSearchAction:(id)sender {
-    userInfo = [RORUserServices syncUserInfoById:[RORUtils removeEggache:self.searchTextField.text]];
-    if (userInfo){
+    User_Base *info = [RORUserServices syncUserInfoById:[RORUtils removeEggache:self.searchTextField.text]];
+    if (info){
+        userInfo = info;
         [self showUserInfo];
         [self refreshAddButton];
     } else {

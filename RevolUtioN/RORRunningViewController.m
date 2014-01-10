@@ -484,6 +484,7 @@
     if ([formerCenterMapLocation distanceFromLocation:[self getNewRealLocation]]>20){
         [self center_map:self];
         formerCenterMapLocation = [self getNewRealLocation];
+        //to-do
     }
 }
 
@@ -502,75 +503,10 @@
         //        }
         overlayView = self.routeLineView;
     }
-//    else if (overlay == self.routeLineShadow){
-//        self.routeLineShadowView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
-//        //        self.routeLineView.fillColor = [UIColor colorWithRed:223 green:8 blue:50 alpha:1];
-//        self.routeLineShadowView.strokeColor = [UIColor colorWithRed:107.0/255.0 green:96.0/255.0 blue:97.0/255.0 alpha:1];
-//        self.routeLineShadowView.lineWidth = 12;
-//        //        }
-//        
-//        overlayView = self.routeLineShadowView;
-//    }
-    
-    
+
     return overlayView;
     
 }
 
-//#pragma mark Map View Delegate Methods
-//- (MKAnnotationView *) mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>) annotation {
-//
-////    MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"PIN_ANNOTATION"];
-////    if(annotationView == nil) {
-////        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
-////                                                          reuseIdentifier:@"PIN_ANNOTATION"];
-////    }
-////    annotationView.canShowCallout = YES;
-////    annotationView.pinColor = MKPinAnnotationColorRed;
-////    annotationView.animatesDrop = YES;
-////    annotationView.highlighted = YES;
-////    annotationView.draggable = YES;
-////    return annotationView;
-//    if ([annotation isKindOfClass:[MKUserLocation class]])
-//        return nil;
-//    // 处理我们自定义的Annotation
-//    if ([annotation isKindOfClass:[RORMapAnnotation class]]) {
-//        RORMapAnnotation *travellerAnnotation = (RORMapAnnotation *)annotation;
-////        static NSString* travellerAnnotationIdentifier = @"TravellerAnnotationIdentifier";
-//        static NSString *identifier = @"currentLocation";
-////        SVPulsingAnnotationView *pulsingView = (SVPulsingAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-//
-//        MKPinAnnotationView* pulsingView = (MKPinAnnotationView *)
-//        [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-//        if (!pulsingView)
-//        {
-//            // if an existing pin view was not available, create one
-//            pulsingView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-////            MKAnnotationView* customPinView = [[MKAnnotationView alloc]
-////                                                initWithAnnotation:annotation reuseIdentifier:identifier];
-//            //加展开按钮
-////            UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-////            [rightButton addTarget:self
-////                            action:@selector(showDetails:)
-////                  forControlEvents:UIControlEventTouchUpInside];
-////            pulsingView.rightCalloutAccessoryView = rightButton;
-////
-//            UIImage *image = [UIImage imageNamed:@"smail_annotation.png"];
-//            pulsingView.image = image;  //将图钉变成笑脸。
-//            pulsingView.canShowCallout = YES;
-////
-////            UIImageView *headImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:travellerAnnotation.headImage]];
-////            pulsingView.leftCalloutAccessoryView = headImage; //设置最左边的头像
-//            
-//            return pulsingView;
-//        }
-//        else
-//        {
-//            pulsingView.annotation = annotation;
-//        }
-//        return pulsingView;
-//    }
-//    return nil;
-//}
 
 @end
