@@ -165,6 +165,8 @@
 		303B87EA1852DE0900FD44AC /* expandButton_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 303B87E61852DE0900FD44AC /* expandButton_bg.png */; };
 		303B87EB1852DE0900FD44AC /* searchTableView_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 303B87E71852DE0900FD44AC /* searchTableView_bg.png */; };
 		303B87EC1852DE0900FD44AC /* searchViewCell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 303B87E81852DE0900FD44AC /* searchViewCell_bg.png */; };
+		304EF30F18802B5400CB32B1 /* Recommend_App.m in Sources */ = {isa = PBXBuildFile; fileRef = 304EF30E18802B5400CB32B1 /* Recommend_App.m */; };
+		304EF3121880450700CB32B1 /* Recommend_App.m in Sources */ = {isa = PBXBuildFile; fileRef = 304EF3111880450700CB32B1 /* Recommend_App.m */; };
 		3053E4061827924400F671F7 /* RORTrainingMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3053E4051827924400F671F7 /* RORTrainingMainViewController.m */; };
 		3053E40A18279BD500F671F7 /* TrainingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3053E40918279BD500F671F7 /* TrainingStoryboard.storyboard */; };
 		3053E40D1828994100F671F7 /* RORBookletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3053E40C1828994100F671F7 /* RORBookletViewController.m */; };
@@ -307,6 +309,7 @@
 		30D008D317F53FBB004E6747 /* challenge_S.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 30D008D017F53FBB004E6747 /* challenge_S.m4a */; };
 		30D008D417F53FBB004E6747 /* challenge_normal.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 30D008D117F53FBB004E6747 /* challenge_normal.m4a */; };
 		30D008D517F53FBB004E6747 /* challenge_F.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 30D008D217F53FBB004E6747 /* challenge_F.m4a */; };
+		30D2DF0F188003D40093A426 /* RORRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D2DF0E188003D40093A426 /* RORRecommendViewController.m */; };
 		30D9207A186F0F3000C0528F /* trainingHistoryPageCell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D92079186F0F3000C0528F /* trainingHistoryPageCell_bg.png */; };
 		30D9207D186F195400C0528F /* trainingHistorySeparator_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D9207B186F195400C0528F /* trainingHistorySeparator_bg.png */; };
 		30D9207E186F195400C0528F /* trainingHistoryTotal_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D9207C186F195400C0528F /* trainingHistoryTotal_bg.png */; };
@@ -588,6 +591,10 @@
 		303B87E61852DE0900FD44AC /* expandButton_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expandButton_bg.png; sourceTree = "<group>"; };
 		303B87E71852DE0900FD44AC /* searchTableView_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchTableView_bg.png; sourceTree = "<group>"; };
 		303B87E81852DE0900FD44AC /* searchViewCell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchViewCell_bg.png; sourceTree = "<group>"; };
+		304EF30D18802B5400CB32B1 /* Recommend_App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recommend_App.h; sourceTree = "<group>"; };
+		304EF30E18802B5400CB32B1 /* Recommend_App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recommend_App.m; sourceTree = "<group>"; };
+		304EF3101880450700CB32B1 /* Recommend_App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recommend_App.h; sourceTree = "<group>"; };
+		304EF3111880450700CB32B1 /* Recommend_App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recommend_App.m; sourceTree = "<group>"; };
 		3053E4041827924400F671F7 /* RORTrainingMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingMainViewController.h; path = Training/RORTrainingMainViewController.h; sourceTree = "<group>"; };
 		3053E4051827924400F671F7 /* RORTrainingMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingMainViewController.m; path = Training/RORTrainingMainViewController.m; sourceTree = "<group>"; };
 		3053E40918279BD500F671F7 /* TrainingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainingStoryboard.storyboard; sourceTree = "<group>"; };
@@ -784,6 +791,9 @@
 		30D008D017F53FBB004E6747 /* challenge_S.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = challenge_S.m4a; path = Resources/sound/challenge_S.m4a; sourceTree = "<group>"; };
 		30D008D117F53FBB004E6747 /* challenge_normal.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = challenge_normal.m4a; path = Resources/sound/challenge_normal.m4a; sourceTree = "<group>"; };
 		30D008D217F53FBB004E6747 /* challenge_F.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = challenge_F.m4a; path = Resources/sound/challenge_F.m4a; sourceTree = "<group>"; };
+		30D2DF0D188003D40093A426 /* RORRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORRecommendViewController.h; path = MorePage/RORRecommendViewController.h; sourceTree = "<group>"; };
+		30D2DF0E188003D40093A426 /* RORRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORRecommendViewController.m; path = MorePage/RORRecommendViewController.m; sourceTree = "<group>"; };
+		30D2DF10188024D80093A426 /* RORCoreData 2.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RORCoreData 2.1.xcdatamodel"; sourceTree = "<group>"; };
 		30D92079186F0F3000C0528F /* trainingHistoryPageCell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainingHistoryPageCell_bg.png; sourceTree = "<group>"; };
 		30D9207B186F195400C0528F /* trainingHistorySeparator_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainingHistorySeparator_bg.png; sourceTree = "<group>"; };
 		30D9207C186F195400C0528F /* trainingHistoryTotal_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainingHistoryTotal_bg.png; sourceTree = "<group>"; };
@@ -1148,6 +1158,8 @@
 				30989CCD17F80FB000CA9F83 /* RORAboutViewController.m */,
 				30989CE717F936E300CA9F83 /* RORWriteUsViewController.h */,
 				30989CE817F936E300CA9F83 /* RORWriteUsViewController.m */,
+				30D2DF0D188003D40093A426 /* RORRecommendViewController.h */,
+				30D2DF0E188003D40093A426 /* RORRecommendViewController.m */,
 			);
 			name = RORMorePage;
 			sourceTree = "<group>";
@@ -1453,6 +1465,8 @@
 			isa = PBXGroup;
 			children = (
 				3061F3B7174CDBEB006093FC /* RORCoreData.xcdatamodeld */,
+				304EF3101880450700CB32B1 /* Recommend_App.h */,
+				304EF3111880450700CB32B1 /* Recommend_App.m */,
 				0F5624361834AA6F006581E0 /* Plan_User_Follow.h */,
 				0F5624371834AA6F006581E0 /* Plan_User_Follow.m */,
 				0F5624331834AA6E006581E0 /* Plan_Collect.h */,
@@ -1478,6 +1492,8 @@
 				0F16EF7D17CD9F360055DEE6 /* User_Products_History.h */,
 				0F16EF7E17CD9F360055DEE6 /* User_Products_History.m */,
 				0F16EF7A17CD9F350055DEE6 /* Place_Package.h */,
+				304EF30D18802B5400CB32B1 /* Recommend_App.h */,
+				304EF30E18802B5400CB32B1 /* Recommend_App.m */,
 				0F16EF7B17CD9F350055DEE6 /* Place_Package.m */,
 				0F16EF7717CD9F340055DEE6 /* Mission_Type.h */,
 				0F16EF7817CD9F340055DEE6 /* Mission_Type.m */,
@@ -2192,6 +2208,7 @@
 				30F4547617BCB519006CB66C /* INVector.m in Sources */,
 				0F5624381834AA6F006581E0 /* Plan_User_Follow.m in Sources */,
 				30BDBE6F182B8FB0001829D5 /* RORSimpleTrainingViewController.m in Sources */,
+				304EF30F18802B5400CB32B1 /* Recommend_App.m in Sources */,
 				30F4548117BCB564006CB66C /* INStepCounting.m in Sources */,
 				3037079E180511DC00FE0238 /* ROREndAnnotation.m in Sources */,
 				30F4549317C1296C006CB66C /* Animations.m in Sources */,
@@ -2226,6 +2243,7 @@
 				0F16EF6D17CD9F260055DEE6 /* User_Last_Location.m in Sources */,
 				0F16EF7017CD9F2A0055DEE6 /* Mission.m in Sources */,
 				308C166118698D99005B0198 /* RORShareViewController.m in Sources */,
+				304EF3121880450700CB32B1 /* Recommend_App.m in Sources */,
 				0F16EF7317CD9F2C0055DEE6 /* Mission_Challenge.m in Sources */,
 				0F16EF7617CD9F340055DEE6 /* User_Running_History.m in Sources */,
 				0F16EF7917CD9F350055DEE6 /* Mission_Type.m in Sources */,
@@ -2236,6 +2254,7 @@
 				309EE152182D06AC00B37587 /* RORCreatSimpleTrainingViewController.m in Sources */,
 				0F16EF8517CD9F370055DEE6 /* User_Attributes.m in Sources */,
 				0F16EF8817CD9F380055DEE6 /* User_Running.m in Sources */,
+				30D2DF0F188003D40093A426 /* RORRecommendViewController.m in Sources */,
 				0F16EF8B17CD9F380055DEE6 /* Version_Control.m in Sources */,
 				3053E4061827924400F671F7 /* RORTrainingMainViewController.m in Sources */,
 				0F16EF8E17CD9F390055DEE6 /* Products.m in Sources */,
@@ -2514,10 +2533,11 @@
 		3061F3B7174CDBEB006093FC /* RORCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				30D2DF10188024D80093A426 /* RORCoreData 2.1.xcdatamodel */,
 				30B390631831348D005CE74D /* RORCoreData 1.2.xcdatamodel */,
 				3061F3B8174CDBEB006093FC /* RORCoreData.xcdatamodel */,
 			);
-			currentVersion = 30B390631831348D005CE74D /* RORCoreData 1.2.xcdatamodel */;
+			currentVersion = 30D2DF10188024D80093A426 /* RORCoreData 2.1.xcdatamodel */;
 			path = RORCoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

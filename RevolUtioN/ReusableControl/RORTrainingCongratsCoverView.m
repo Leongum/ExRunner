@@ -41,8 +41,10 @@
         } else {
             awardTitleLabel.text = @"完成度不够，下次加油";
         }
-        
-        extraAwardLabel.text = @"";
+        if (bestRecord.avgSpeed.doubleValue>7)
+            extraAwardLabel.text = @"建议至少休息一天";
+        else
+            extraAwardLabel.text = @"";
     } else {
         extraAwardLabel.text = @"快去“比赛”试试效果吧";
         awardTitleLabel.text = @"训练已全部完成";

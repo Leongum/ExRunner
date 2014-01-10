@@ -136,8 +136,14 @@
         <attribute name="status" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="triggerType" optional="YES" attributeType="Integer 32" syncable="YES"/>
     </entity>
-    <entity name="Recommend_App" syncable="YES">
+    <entity name="Recommend_App" representedClassName="Recommend_App" syncable="YES">
+        <attribute name="appAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="appIcon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Running_Invite" representedClassName="Running_Invite" syncable="YES">
         <attribute name="friendUserId" optional="YES" attributeType="Integer 32" syncable="YES"/>
@@ -263,6 +269,7 @@
         <element name="Plan_Run_History" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Plan_User_Follow" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Products" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Recommend_App" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Running_Invite" positionX="0" positionY="0" width="0" height="0"/>
         <element name="System_Message" positionX="0" positionY="0" width="0" height="0"/>
         <element name="User_Attributes" positionX="0" positionY="0" width="0" height="0"/>
@@ -272,6 +279,5 @@
         <element name="User_Running" positionX="0" positionY="0" width="0" height="0"/>
         <element name="User_Running_History" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Version_Control" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Recommend_App" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
