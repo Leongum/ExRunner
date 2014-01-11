@@ -19,6 +19,7 @@
 @dynamic version;
 @dynamic missionLastUpdateTime;
 @dynamic messageLastUpdateTime;
+@dynamic recommendLastUpdateTime;
 
 +(Version_Control *) removeAssociateForEntity:(Version_Control *)associatedEntity{
     NSManagedObjectContext *context = [RORContextUtils getShareContext];
@@ -38,6 +39,7 @@
     self.systemTime = [RORDBCommon getDateFromId:[dict valueForKey:@"systemTime"]];
     self.missionLastUpdateTime = [RORDBCommon getDateFromId:[dict valueForKey:@"missionLastUpdateTime"]];
     self.messageLastUpdateTime = [RORDBCommon getDateFromId:[dict valueForKey:@"messageLastUpdateTime"]];
+    self.recommendLastUpdateTime = [RORDBCommon getDateFromId:[dict valueForKey:@"recommendLastUpdateTime"]];
 }
 
 @end

@@ -13,6 +13,7 @@
 #import "Version_Control.h"
 #import "System_Message.h"
 #import "RORContextUtils.h"
+#import "Recommend_App.h"
 
 @interface RORSystemService : NSObject
 
@@ -28,4 +29,7 @@
 
 +(BOOL)submitDownloaded:(NSDictionary *)downLoadDic;
 
++(BOOL)syncRecommendApp;
+
++(NSArray *)fetchAllRecommedInfo;
 @end

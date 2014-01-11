@@ -140,10 +140,11 @@
         <attribute name="appAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="appDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="appIcon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appId" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="appName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="recommendStatus" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="sequence" optional="YES" attributeType="Integer 16" syncable="YES"/>
     </entity>
     <entity name="Running_Invite" representedClassName="Running_Invite" syncable="YES">
         <attribute name="friendUserId" optional="YES" attributeType="Integer 32" syncable="YES"/>
@@ -252,6 +253,7 @@
         <attribute name="messageLastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="missionLastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="platform" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recommendLastUpdateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="subVersion" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="systemTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="Integer 32" syncable="YES"/>

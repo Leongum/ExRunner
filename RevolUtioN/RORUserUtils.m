@@ -289,8 +289,10 @@ static NSDate *syncTime;
     if(version != nil){
         NSString *missionLastUpdateTime = [RORUserUtils getLastUpdateTime:@"MissionUpdateTime"];
         NSString *messageLastUpdateTime = [RORUserUtils getLastUpdateTime:@"SystemMessageUpdateTime"];
+        NSString *recommendLastUpdateTime = [RORUserUtils getLastUpdateTime:@"RecommendLastUpdateTime"];
         NSTimeInterval messageScape = [version.messageLastUpdateTime timeIntervalSinceDate:[RORUtils getDateFromString:messageLastUpdateTime]];
         NSTimeInterval missionScape = [version.missionLastUpdateTime timeIntervalSinceDate:[RORUtils getDateFromString:missionLastUpdateTime]];
+        NSTimeInterval recommendScape = [version.recommendLastUpdateTime timeIntervalSinceDate:[RORUtils getDateFromString:recommendLastUpdateTime]];
         if(messageScape > 0){
             //sync message
             [RORSystemService syncSystemMessage];
@@ -299,6 +301,11 @@ static NSDate *syncTime;
         {
             //sync missions
             [RORMissionServices syncMissions];
+        }
+        if(recommendScape > 0)
+        {
+            //sync missions
+            [RORSystemService syncRecommendApp];
         }
         [self saveLastUpdateTimeUseLocalTime:@"lastSyncSystemDataTime"];
     }

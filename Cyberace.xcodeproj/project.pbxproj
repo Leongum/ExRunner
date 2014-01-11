@@ -166,7 +166,6 @@
 		303B87EB1852DE0900FD44AC /* searchTableView_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 303B87E71852DE0900FD44AC /* searchTableView_bg.png */; };
 		303B87EC1852DE0900FD44AC /* searchViewCell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 303B87E81852DE0900FD44AC /* searchViewCell_bg.png */; };
 		304EF30F18802B5400CB32B1 /* Recommend_App.m in Sources */ = {isa = PBXBuildFile; fileRef = 304EF30E18802B5400CB32B1 /* Recommend_App.m */; };
-		304EF3121880450700CB32B1 /* Recommend_App.m in Sources */ = {isa = PBXBuildFile; fileRef = 304EF3111880450700CB32B1 /* Recommend_App.m */; };
 		3053E4061827924400F671F7 /* RORTrainingMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3053E4051827924400F671F7 /* RORTrainingMainViewController.m */; };
 		3053E40A18279BD500F671F7 /* TrainingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3053E40918279BD500F671F7 /* TrainingStoryboard.storyboard */; };
 		3053E40D1828994100F671F7 /* RORBookletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3053E40C1828994100F671F7 /* RORBookletViewController.m */; };
@@ -593,8 +592,6 @@
 		303B87E81852DE0900FD44AC /* searchViewCell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchViewCell_bg.png; sourceTree = "<group>"; };
 		304EF30D18802B5400CB32B1 /* Recommend_App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recommend_App.h; sourceTree = "<group>"; };
 		304EF30E18802B5400CB32B1 /* Recommend_App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recommend_App.m; sourceTree = "<group>"; };
-		304EF3101880450700CB32B1 /* Recommend_App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recommend_App.h; sourceTree = "<group>"; };
-		304EF3111880450700CB32B1 /* Recommend_App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recommend_App.m; sourceTree = "<group>"; };
 		3053E4041827924400F671F7 /* RORTrainingMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORTrainingMainViewController.h; path = Training/RORTrainingMainViewController.h; sourceTree = "<group>"; };
 		3053E4051827924400F671F7 /* RORTrainingMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORTrainingMainViewController.m; path = Training/RORTrainingMainViewController.m; sourceTree = "<group>"; };
 		3053E40918279BD500F671F7 /* TrainingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainingStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1465,8 +1462,6 @@
 			isa = PBXGroup;
 			children = (
 				3061F3B7174CDBEB006093FC /* RORCoreData.xcdatamodeld */,
-				304EF3101880450700CB32B1 /* Recommend_App.h */,
-				304EF3111880450700CB32B1 /* Recommend_App.m */,
 				0F5624361834AA6F006581E0 /* Plan_User_Follow.h */,
 				0F5624371834AA6F006581E0 /* Plan_User_Follow.m */,
 				0F5624331834AA6E006581E0 /* Plan_Collect.h */,
@@ -2243,7 +2238,6 @@
 				0F16EF6D17CD9F260055DEE6 /* User_Last_Location.m in Sources */,
 				0F16EF7017CD9F2A0055DEE6 /* Mission.m in Sources */,
 				308C166118698D99005B0198 /* RORShareViewController.m in Sources */,
-				304EF3121880450700CB32B1 /* Recommend_App.m in Sources */,
 				0F16EF7317CD9F2C0055DEE6 /* Mission_Challenge.m in Sources */,
 				0F16EF7617CD9F340055DEE6 /* User_Running_History.m in Sources */,
 				0F16EF7917CD9F350055DEE6 /* Mission_Type.m in Sources */,
@@ -2392,8 +2386,8 @@
 		302FD0481727D870004DA005 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Connection\"",
@@ -2419,7 +2413,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Cyberace;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8D54B041-BCF0-401B-B7A8-FE453EB0AC99";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2428,8 +2422,8 @@
 		302FD0491727D870004DA005 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Connection\"",
@@ -2455,7 +2449,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Cyberace;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8D54B041-BCF0-401B-B7A8-FE453EB0AC99";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

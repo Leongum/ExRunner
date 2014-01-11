@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RORUserUtils.h"
+#import "RORViewController.h"
 
-@interface RORRecommendViewController : UIViewController
+@interface RORRecommendViewController : RORViewController{
+    NSArray *contentList;
+}
 
 @end

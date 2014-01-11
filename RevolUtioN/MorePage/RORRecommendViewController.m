@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    contentList = [RORSystemService fetchAllRecommedInfo];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,18 +40,30 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return contentList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plainCell"];
     
+    Recommend_App *app = [contentList objectAtIndex:indexPath.row];
+    
+    //to-do
     UIImageView *appIcon = (UIImageView *)[cell viewWithTag:100];
     UILabel *appNameLabel = (UILabel *)[cell viewWithTag:101];
     UILabel *appDescriptionLabel = (UILabel *)[cell viewWithTag:102];
     
+    NSURL *imageUrl = [NSURL URLWithString:app.appIcon];
+    UIImage *iconImage = [[UIImage alloc]initWithData:[NSData dataWithContentsOfURL:imageUrl]];
+    [Animations roundedCorners:appIcon];
+    appIcon.image = iconImage;
     
+    appNameLabel.text = app.appName;
+    
+    [appDescriptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    appDescriptionLabel.numberOfLines = 3;
+    appDescriptionLabel.text = app.appDescription;
     
     return cell;
 }

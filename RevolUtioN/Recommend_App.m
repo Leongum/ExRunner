@@ -10,39 +10,51 @@
 #import "RORDBCommon.h"
 
 @implementation Recommend_App
-
+@dynamic appId;
 @dynamic appIcon;
 @dynamic appName;
 @dynamic appDescription;
 @dynamic appAddress;
 @dynamic lastUpdateTime;
-@dynamic status;
+@dynamic recommendStatus;
 @dynamic sequence;
 
 
 -(void)initWithDictionary:(NSDictionary *)dict{
-    self.appIcon = [RORDBCommon getStringFromId:[dict valueForKey:@"app_id"]];
-    self.appName = [RORDBCommon getStringFromId:[dict valueForKey:@"app_name"]];
-    self.appDescription = [RORDBCommon getStringFromId:[dict valueForKey:@"app_description"]];
-    self.appAddress = [RORDBCommon getStringFromId:[dict valueForKey:@"app_pic_link"]];
-    self.lastUpdateTime = [RORDBCommon getDateFromId:[dict valueForKey:@"last_update_time"]];
-    self.status = [RORDBCommon getNumberFromId:[dict valueForKey:@"recommend_status"]];
+    self.appId = [RORDBCommon getNumberFromId:[dict valueForKey:@"appId"]];
+    self.appIcon = [RORDBCommon getStringFromId:[dict valueForKey:@"appPicLink"]];
+    self.appName = [RORDBCommon getStringFromId:[dict valueForKey:@"appName"]];
+    self.appDescription = [RORDBCommon getStringFromId:[dict valueForKey:@"appDescription"]];
+    self.appAddress = [RORDBCommon getStringFromId:[dict valueForKey:@"appAddress"]];
+    self.lastUpdateTime = [RORDBCommon getDateFromId:[dict valueForKey:@"lastUpdateTime"]];
+    self.recommendStatus = [RORDBCommon getNumberFromId:[dict valueForKey:@"recommendStatus"]];
     self.sequence = [RORDBCommon getNumberFromId:[dict valueForKey:@"sequence"]];
 
 }
 
 -(NSMutableDictionary *)transToDictionary{
     NSMutableDictionary *tempoDict = [[NSMutableDictionary alloc] init];
-    [tempoDict setValue:self.appIcon forKey:@"app_id"];
-    [tempoDict setValue:self.appName forKey:@"app_name"];
-    [tempoDict setValue:self.appDescription forKey:@"app_description"];
-    [tempoDict setValue:self.appAddress forKey:@"app_pic_link"];
-    [tempoDict setValue:self.lastUpdateTime forKey:@"last_update_time"];
-    [tempoDict setValue:self.status forKey:@"recommend_status"];
+    [tempoDict setValue:self.appId forKey:@"appId"];
+    [tempoDict setValue:self.appIcon forKey:@"appPicLink"];
+    [tempoDict setValue:self.appName forKey:@"appName"];
+    [tempoDict setValue:self.appDescription forKey:@"appDescription"];
+    [tempoDict setValue:self.appAddress forKey:@"appAddress"];
+    [tempoDict setValue:self.lastUpdateTime forKey:@"lastUpdateTime"];
+    [tempoDict setValue:self.recommendStatus forKey:@"recommendStatus"];
     [tempoDict setValue:self.sequence forKey:@"sequence"];
     
     return tempoDict;
 }
 
+
++(Recommend_App *) removeAssociateForEntity:(Recommend_App *)associatedEntity{
+    NSManagedObjectContext *context = [RORContextUtils getShareContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Recommend_App" inManagedObjectContext:context];
+    Recommend_App *unassociatedEntity = [[Recommend_App alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    for (NSString *attr in [[entity attributesByName] allKeys]) {
+        [unassociatedEntity setValue:[associatedEntity valueForKey:attr] forKey:attr];
+    }
+    return unassociatedEntity;
+}
 
 @end

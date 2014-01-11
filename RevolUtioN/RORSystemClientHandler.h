@@ -22,4 +22,5 @@
 
 +(RORHttpResponse *)submitDownLoaded:(NSDictionary *) downLoadDic;
 
++(RORHttpResponse *)getRecommendApp:(NSString *) lastUpdateTime;
 @end

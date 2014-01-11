@@ -75,7 +75,7 @@
 #pragma mark Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -167,6 +167,12 @@
                 [cell viewWithTag:3].alpha = 1;
             } else
                 [cell viewWithTag:3].alpha = 0;
+            break;
+        }
+        case 5:
+        {
+            identifier = @"recommendCell";
+            cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             break;
         }
     }

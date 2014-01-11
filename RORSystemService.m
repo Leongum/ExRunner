@@ -156,4 +156,62 @@
     }
 }
 
++ (Recommend_App *)fetchRecommedInfo:(NSNumber *) appId {
+    
+    NSString *table=@"Recommend_App";
+    NSString *query = @"appId = %@";
+    NSArray *params = [NSArray arrayWithObjects:appId, nil];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query];
+    if (fetchObject == nil || [fetchObject count] == 0) {
+        return nil;
+    }
+    return  (Recommend_App *) [fetchObject objectAtIndex:0];
+}
+
++ (NSArray *)fetchAllRecommedInfo{
+    
+    NSString *table=@"Recommend_App";
+    NSString *query = @"recommendStatus = %@";
+    NSArray *params = [NSArray arrayWithObjects:[NSNumber numberWithInt:1], nil];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:YES];
+    NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
+    NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
+    if (fetchObject == nil || [fetchObject count] == 0) {
+        return nil;
+    }
+    NSMutableArray *recommendList = [[NSMutableArray alloc] init];
+    for (Recommend_App *recommed in fetchObject) {
+        Recommend_App *newrecommed = [Recommend_App removeAssociateForEntity:recommed];
+        [recommendList addObject:newrecommed];
+    }
+    return [recommendList copy];
+}
+
+
++ (BOOL)syncRecommendApp{
+    NSError *error = nil;
+    NSManagedObjectContext *context = [RORContextUtils getShareContext];
+    NSString *lastUpdateTime = [RORUserUtils getLastUpdateTime:@"RecommendLastUpdateTime"];
+    
+    RORHttpResponse *httpResponse =[RORSystemClientHandler getRecommendApp:lastUpdateTime];
+    
+    if ([httpResponse responseStatus]  == 200){
+        NSArray *recommendList = [NSJSONSerialization JSONObjectWithData:[httpResponse responseData] options:NSJSONReadingMutableLeaves error:&error];
+        for (NSDictionary *recommendDict in recommendList){
+            NSNumber *appId = [recommendDict valueForKey:@"appId"];
+            Recommend_App *recommendEntity = [self fetchRecommedInfo:appId];
+            if(recommendEntity == nil)
+                recommendEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Recommend_App" inManagedObjectContext:context];
+            [recommendEntity initWithDictionary:recommendDict];
+        }
+        
+        [RORContextUtils saveContext];
+        [RORUserUtils saveLastUpdateTime:@"RecommendLastUpdateTime"];
+    } else {
+        NSLog(@"sync with host error: can't get sync message list. Status Code: %d", [httpResponse responseStatus]);
+        return NO;
+    }
+    return YES;
+}
+
 @end

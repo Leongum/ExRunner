@@ -32,4 +32,11 @@
     return httpResponse;
 }
 
++(RORHttpResponse *)getRecommendApp:(NSString *) lastUpdateTime{
+    NSString *url = [NSString stringWithFormat:RECOMMEND_APP_URL, lastUpdateTime];
+    RORHttpResponse *httpResponse = [RORHttpClientHandler getRequest:url];
+    return httpResponse;
+}
+
+
 @end
