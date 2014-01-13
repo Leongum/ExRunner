@@ -10,6 +10,19 @@
 
 @implementation RORMultiPlaySound
 
+-(id)init{
+    self = [super init];
+    if (self) {
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setActive:YES error:nil];
+        [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+        
+        [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    }
+    
+    return self;
+}
+
 - (void)addFileNametoQueue:(NSString*)fileName {
     if(fileNameQueue == nil){
         fileNameQueue = [[NSMutableArray alloc] init];
@@ -26,6 +39,7 @@
     }
 }
 - (void)play{
+    
     if (!player.playing){
         [self play:0];
     }
@@ -33,8 +47,10 @@
 
 - (void)play:(int)i {
     if(fileNameQueue != nil){
+        
         player = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:[fileNameQueue objectAtIndex:i] ofType:nil]] error:nil];
         player.delegate = self;
+        [player setVolume:1];
         [player prepareToPlay];
         [player play];
         index++;

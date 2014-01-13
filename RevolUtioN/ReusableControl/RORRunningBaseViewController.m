@@ -267,7 +267,7 @@
     double avgStepFrequency = steps * 60 / duration ;
 //    if (distance/duration < 2)
 //        return [NSNumber numberWithInteger:1];
-    if (avgStepFrequency < 40 || avgStepFrequency > 240 || avgStepDistance < 0.2 || avgStepDistance > 2.5)
+    if (avgStepFrequency < 40 || avgStepFrequency > 240 || avgStepDistance < 0.2 || avgStepDistance > 4)
         return [NSNumber numberWithInteger:-1];
     return [NSNumber numberWithInteger:1];
 }
