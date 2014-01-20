@@ -140,12 +140,13 @@
      此方法必须在启动时调用，否则会限制SDK的使用。
      **/
     [ShareSDK registerApp:@"738183f3e91"];
+    [LingQianSDK didFinishLaunchingWithAppID:@"824cf793a15d5a76b92ca74ae533529f" applicationSecret:@"84aedf8fda5ab5bc2ee8881f17758642"];
     
     [self initializePlat];
     
     // Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the
     // method "reachabilityChanged" will be called.
-    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: cyberaceReachabilityChangedNotification object: nil];
     
 	hostReach = [Reachability reachabilityWithHostName: @"www.baidu.com"];
 	[hostReach startNotifier];

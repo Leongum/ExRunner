@@ -18,6 +18,7 @@
 #import "Reachability.h"
 #import <CoreMotion/CoreMotion.h>
 #import <CoreLocation/CoreLocation.h>
+#import <LingQianSDK/LingQianSDK.h>
 
 @interface RORAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 {
