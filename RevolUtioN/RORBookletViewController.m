@@ -55,23 +55,12 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    //===============
-    [self startIndicator:self];
     NSNumber *userId = [RORUserUtils getUserId];
     contentList = [RORPlanService fetchPlanCollect:userId];
     historyList = [RORPlanService fetchUserPlanHistoryList:userId];
     [self.tableView reloadData];
-    
-    //****************
-    
     NSDictionary *dict = [RORUserUtils getUserSettingsPList];
-    [self endIndicator:self];
-
+    
     NSNumber *didIntro = [RORDBCommon getNumberFromId:[dict objectForKey:@"HasShowBookletIntro"]];
     if (!didIntro){
         RORIntroCoverView *introCoverView = [[RORIntroCoverView alloc]initWithFrame:self.view.frame andImage:[UIImage imageNamed:@"introBookletPage.png"]];

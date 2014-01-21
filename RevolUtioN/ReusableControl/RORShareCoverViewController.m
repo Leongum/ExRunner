@@ -34,8 +34,15 @@
 }
 
 -(void)setShareImage:(UIImage *)image{
+//    CGSize imageSize = image.size;
+//    imageSize = imageSize.height/shareImageView.frame.size.height
     shareImage = image;
     shareImageView.image = shareImage;
+//    if (shareImage.size.height<shareImageView.frame.size.height){
+//        shareImageView.frame = CGRectMake(shareImageView.frame.origin.x, shareImageView.frame.origin.y, shareImageView.frame.size.width, shareImage.size.height);
+//    } else {
+//        shareImageView.frame = CGRectMake(shareImageView.frame.origin.x, shareImageView.frame.origin.y, shareImage.size.width, shareImageView.frame.size.height);
+//    }
     [shareImageView fadeIn:0.3 delegate:self];
 }
 

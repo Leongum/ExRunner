@@ -34,8 +34,9 @@
 //@property (strong,nonatomic)NSManagedObjectContext *context;
 @property (copy, nonatomic) NSString *userName;
 @property (nonatomic) NSNumber *userId;
-@property (strong, nonatomic) IBOutlet UIButton *runButton;
-@property (strong, nonatomic) IBOutlet UIButton *challenge;
+@property (strong, nonatomic) IBOutlet RORNavigationButton *runButton;
+@property (strong, nonatomic) IBOutlet RORNavigationButton *trainingButton;
+@property (strong, nonatomic) IBOutlet RORNavigationButton *challenge;
 //@property (strong, nonatomic) IBOutlet UIImageView *testView;
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *levelLabel;
@@ -47,10 +48,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *weatherInfoButtonView;
 @property (strong, nonatomic) IBOutlet UIImageView *chactorView;
 @property (strong, nonatomic) IBOutlet UIImageView *charactorWindView;
-@property (strong, nonatomic) IBOutlet RORNormalButton *historyButton;
-@property (strong, nonatomic) IBOutlet RORNormalButton *settingButton;
-@property (strong, nonatomic) IBOutlet RORNormalButton *mallButton;
-@property (strong, nonatomic) IBOutlet RORNormalButton *friendsButton;
+@property (strong, nonatomic) IBOutlet RORNavigationButton *historyButton;
+@property (strong, nonatomic) IBOutlet RORNavigationButton *settingButton;
+@property (strong, nonatomic) IBOutlet RORNavigationButton *mallButton;
+@property (strong, nonatomic) IBOutlet RORNavigationButton *friendsButton;
 
 @property (strong, nonatomic) IBOutlet UIView *trainingCountDownView;
 

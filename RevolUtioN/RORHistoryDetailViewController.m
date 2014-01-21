@@ -73,7 +73,13 @@
     
     
     if (record.missionTypeId.integerValue == SimpleTask || record.missionTypeId.integerValue==ComplexTask){
-        
+        Mission *thisMission = [RORMissionServices fetchMission:record.missionId];
+        self.titleLabel.text = [RORPlanService getStringByTrainingType:thisMission];
+    } else if (record.missionTypeId.integerValue == Challenge){
+        Mission *thisMission = [RORMissionServices fetchMission:record.missionId];
+        self.titleLabel.text = [NSString stringWithFormat:@"比赛:%@",thisMission.missionName];
+    } else {
+        self.titleLabel.text = @"随便跑跑";
     }
     
     if (record.valid.integerValue<0) {

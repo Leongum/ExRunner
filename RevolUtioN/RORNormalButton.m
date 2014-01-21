@@ -31,7 +31,7 @@
 -(void)initButtonInteraction{
     [self addTarget:self action:@selector(pressOn:) forControlEvents:UIControlEventTouchDown];
     [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpInside];
-    [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpOutside];
+//    [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpOutside];
 //    self.adjustsImageWhenDisabled = NO;
     self.adjustsImageWhenHighlighted = YES;
 //    sound = [[RORPlaySound alloc]initForPlayingSoundEffectWith:@"bo.wav"];

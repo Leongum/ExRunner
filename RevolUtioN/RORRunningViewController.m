@@ -83,6 +83,8 @@
     doCollect = NO;
     
     routePoints = [[NSMutableArray alloc]init];
+    
+//    self.saveButton.delegate = self;
 }
 
 -(void)navigationInit{
@@ -340,8 +342,14 @@
     [Animations fadeOut:coverView andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
 }
 
-- (IBAction)btnSaveRun:(id)sender {
+- (IBAction)btnSaveRunTouched:(id)sender {
     [self startIndicator:self];
+}
+- (IBAction)btnSaveRunTouchCanceled:(id)sender {
+    [self endIndicator:self];
+}
+
+- (IBAction)btnSaveRun:(id)sender {
 
     [self stopUpdates];
     
@@ -353,9 +361,9 @@
     
     [self prepareForQuit];
     [self saveRunInfo];
-    [self endIndicator:self];
-    [self performSegue];
 //    [self endIndicator:self];
+    [self performSegue];
+    [self endIndicator:self];
 }
 
 -(void)performSegue{

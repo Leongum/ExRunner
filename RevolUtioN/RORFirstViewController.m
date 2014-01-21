@@ -53,6 +53,14 @@
     if([[NSDate date] timeIntervalSinceDate:lastupdateTime] >= 86400){
         [RORUserUtils syncSystemData];
     }
+    
+//    self.runButton.delegate = self;
+//    self.trainingButton.delegate = self;
+//    self.challenge.delegate = self;
+//    self.historyButton.delegate = self;
+//    self.settingButton.delegate = self;
+//    self.friendsButton.delegate = self;
+//    self.mallButton.delegate = self;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

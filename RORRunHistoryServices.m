@@ -286,7 +286,7 @@
     NSString *table=@"User_Running_History";
     NSString *query = @"planRunUuid = %@ and valid = %@ and missionGrade != %@";
     NSArray *params = [NSArray arrayWithObjects:planRunUuid,onlyValid, [NSNumber numberWithInt:GRADE_F], nil];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sequence" ascending:YES];
     NSArray *sortParams = [NSArray arrayWithObject:sortDescriptor];
     NSArray *fetchObject = [RORContextUtils fetchFromDelegate:table withParams:params withPredicate:query withOrderBy:sortParams];
     if (fetchObject == nil || [fetchObject count] == 0) {

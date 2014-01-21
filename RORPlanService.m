@@ -759,4 +759,20 @@
     return ld;
 }
 
++(NSString *)getStringByTrainingType:(Mission *)thisMission{
+    if (thisMission.missionDistance.integerValue>0){
+        return [NSString stringWithFormat:@"定距跑：%gkm", thisMission.missionDistance.doubleValue/1000];
+    } else {
+        return [NSString stringWithFormat:@"计时跑：%@", [RORUtils transSecondToStandardFormat:thisMission.missionTime.doubleValue]];
+    }
+}
+
++(NSInteger)getTrainingTypeFromMission:(Mission *)thisMission{
+    if (thisMission.missionDistance.integerValue>0){
+        return TrainingContentTypeDistance;
+    } else {
+        return TrainingContentTypeDuration;
+    }
+}
+
 @end

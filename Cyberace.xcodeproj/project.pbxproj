@@ -130,6 +130,7 @@
 		30166A9817C3B84C0035C722 /* main_run_btn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166A8D17C3B84C0035C722 /* main_run_btn_bg.png */; };
 		30166AA317C3C6260035C722 /* back_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30166AA117C3C6260035C722 /* back_bg.png */; };
 		30166AA617C3C6730035C722 /* RORViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30166AA517C3C6730035C722 /* RORViewController.m */; };
+		302399D81887A206007CF5A2 /* RORNavigationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 302399D71887A206007CF5A2 /* RORNavigationButton.m */; };
 		3029769517F9F854001470CB /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		302FD0051727D870004DA005 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302FD0041727D870004DA005 /* UIKit.framework */; };
 		302FD0071727D870004DA005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302FD0061727D870004DA005 /* Foundation.framework */; };
@@ -539,6 +540,8 @@
 		30166AA117C3C6260035C722 /* back_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_bg.png; path = bg/back_bg.png; sourceTree = "<group>"; };
 		30166AA417C3C6720035C722 /* RORViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORViewController.h; sourceTree = "<group>"; };
 		30166AA517C3C6730035C722 /* RORViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORViewController.m; sourceTree = "<group>"; };
+		302399D61887A206007CF5A2 /* RORNavigationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RORNavigationButton.h; path = ReusableControl/RORNavigationButton.h; sourceTree = "<group>"; };
+		302399D71887A206007CF5A2 /* RORNavigationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RORNavigationButton.m; path = ReusableControl/RORNavigationButton.m; sourceTree = "<group>"; };
 		302FD0011727D870004DA005 /* Cyberace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cyberace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		302FD0041727D870004DA005 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		302FD0061727D870004DA005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1693,6 +1696,8 @@
 				308C165D186982F4005B0198 /* RORShareCoverViewController.m */,
 				308C165F18698D99005B0198 /* RORShareViewController.h */,
 				308C166018698D99005B0198 /* RORShareViewController.m */,
+				302399D61887A206007CF5A2 /* RORNavigationButton.h */,
+				302399D71887A206007CF5A2 /* RORNavigationButton.m */,
 			);
 			name = ReusableControl;
 			sourceTree = "<group>";
@@ -2207,6 +2212,7 @@
 				30984937186207780079E236 /* RORIntroCoverView.m in Sources */,
 				30BDBE72182BC9EC001829D5 /* RORAdvancedViewController.m in Sources */,
 				0F16EF9417CDBA940055DEE6 /* RORUserUtils.m in Sources */,
+				302399D81887A206007CF5A2 /* RORNavigationButton.m in Sources */,
 				0F16EF9717CDBAC20055DEE6 /* RORContextUtils.m in Sources */,
 				305428CB17CF85DA00A9E6E9 /* RORChallengeLevelView.m in Sources */,
 				30B39069183B30C6005CE74D /* RORTrainingViewController.m in Sources */,
@@ -2338,8 +2344,8 @@
 		302FD0481727D870004DA005 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Connection\"",
@@ -2365,7 +2371,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Cyberace;
-				PROVISIONING_PROFILE = "8D54B041-BCF0-401B-B7A8-FE453EB0AC99";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2374,8 +2380,8 @@
 		302FD0491727D870004DA005 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bingyang Zhao (8RLLL2GT4J)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Connection\"",
@@ -2401,7 +2407,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Cyberace;
-				PROVISIONING_PROFILE = "8D54B041-BCF0-401B-B7A8-FE453EB0AC99";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

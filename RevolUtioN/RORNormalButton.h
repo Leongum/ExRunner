@@ -18,4 +18,6 @@
 @property (strong, nonatomic) id delegate;
 
 -(void)initButtonInteraction;
+-(IBAction)pressOn:(id)sender;
+
 @end

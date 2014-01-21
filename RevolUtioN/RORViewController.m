@@ -53,7 +53,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    [self endIndicator:self];
+    [self endIndicator:self];
 }
 
 -(BOOL)prefersStatusBarHidden{
@@ -61,7 +61,7 @@
 }
 
 -(void)addBackButton{
-    backButton = [[RORNormalButton alloc]initWithFrame:BACKBUTTON_FRAME_TOP ];//[RORNormalButton buttonWithType:UIButtonTypeRoundedRect];
+    backButton = [[RORNavigationButton alloc]initWithFrame:BACKBUTTON_FRAME_TOP ];//[RORNormalButton buttonWithType:UIButtonTypeRoundedRect];
 //    [backButton initButtonInteraction];
     backButton.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
     //CGRect rx = [ UIScreen mainScreen ].applicationFrame;

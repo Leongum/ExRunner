@@ -108,4 +108,8 @@
 
 +(NSInteger)fillCountDownIconForView:(UIView *)view withPlanNext:(Plan_Next_mission *)planNext;
 
+
++(NSString *)getStringByTrainingType:(Mission *)thisMission;
+
++(NSInteger)getTrainingTypeFromMission:(Mission *)thisMission;
 @end

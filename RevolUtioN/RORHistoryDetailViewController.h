@@ -15,6 +15,7 @@
 #import "RORTrainingCongratsCoverView.h"
 #import "RORStartAnnotation.h"
 #import "ROREndAnnotation.h"
+#import "RORPlanService.h"
 
 @interface RORHistoryDetailViewController : RORViewController <MKMapViewDelegate>{
     NSMutableArray *improvedRoute;
@@ -27,6 +28,8 @@
     NSMutableArray *speedList;
     
 }
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) MKPolyline *routeLine;
 @property (strong, nonatomic) MKPolyline *routeLineShadow;

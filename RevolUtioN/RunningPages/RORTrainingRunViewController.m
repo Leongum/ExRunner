@@ -30,13 +30,9 @@
 	// Do any additional setup after loading the view.
     planNext = [RORPlanService fetchUserRunningPlanHistory];
     
-    if (thisMission.missionDistance.integerValue>0){
-        self.titleLabel.text = [NSString stringWithFormat:@"定距跑：%gkm", thisMission.missionDistance.doubleValue/1000];
-        trainingType = TrainingContentTypeDistance;
-    } else {
-        self.titleLabel.text = [NSString stringWithFormat:@"计时跑：%@", [RORUtils transSecondToStandardFormat:thisMission.missionTime.doubleValue]];
-        trainingType = TrainingContentTypeDuration;
-    }
+    trainingType = [RORPlanService getTrainingTypeFromMission:thisMission];
+    self.titleLabel.text = [RORPlanService getStringByTrainingType:thisMission];
+    
     self.suggestedSpeed.text = [NSString stringWithFormat:@"配速：%@ ~ %@", [RORUserUtils formatedSpeed:thisMission.suggestionMaxSpeed.doubleValue], [RORUserUtils formatedSpeed:thisMission.suggestionMinSpeed.doubleValue]];
     allInOneSound = [[RORMultiPlaySound alloc] init];
     totalKM = 0;

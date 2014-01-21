@@ -54,12 +54,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [self startIndicator:self];
-    
     friendList = [RORPlanService getTopUsingByUserId:[RORUserUtils getUserId] withPageNo:[NSNumber numberWithInt:0]];
     for (Plan_Run_History *thisPlanRun in friendList){
         //        if (thisPlanRun.userId.integerValue == [RORUserUtils getUserId].integerValue)
@@ -82,9 +76,15 @@
     
     
     [self initFixonView];
-    
-    [self endIndicator:self];
 }
+
+//-(void)viewDidAppear:(BOOL)animated{
+//    [self startIndicator:self];
+//    
+//    
+//    
+//    [self endIndicator:self];
+//}
 
 -(IBAction)backAction:(id)sender{
     if ([delegate respondsToSelector:@selector(setFixonPlanRunHistory:)]){

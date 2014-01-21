@@ -90,7 +90,7 @@
     
     UILabel *sequenceLabel = (UILabel *)[thisView viewWithTag:100];
     UILabel *requireTimeLabel = (UILabel *)[thisView viewWithTag:103];
-    sequenceLabel.text = [NSString stringWithFormat:@"第%d天", (int)([h.missionDate timeIntervalSinceDate:thisHistory.startTime]/3600/24)];
+    sequenceLabel.text = [NSString stringWithFormat:@"第%d天", (int)([h.missionDate timeIntervalSinceDate:thisHistory.startTime]/3600/24+1)];
     if (thisMission.missionDistance.doubleValue < 1){
         requireTimeLabel.text = [NSString stringWithFormat:@"计时跑: %@",[RORUtils transSecondToStandardFormat:thisMission.missionTime.doubleValue]];
     } else {
