@@ -53,14 +53,8 @@
     if([[NSDate date] timeIntervalSinceDate:lastupdateTime] >= 86400){
         [RORUserUtils syncSystemData];
     }
-    
-//    self.runButton.delegate = self;
-//    self.trainingButton.delegate = self;
-//    self.challenge.delegate = self;
-//    self.historyButton.delegate = self;
-//    self.settingButton.delegate = self;
-//    self.friendsButton.delegate = self;
-//    self.mallButton.delegate = self;
+
+    [LingQianSDK trackActionWithName:@"visit"];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -368,7 +362,8 @@
 }
 
 - (IBAction)mallUnderDeveloping:(id)sender {
-    [self sendNotification:@"【装备商城】\n\n正在哼哧哼哧开发中"];
+    [LingQianSDK openRewardStore];
+    //[self sendNotification:@"【装备商城】\n\n正在哼哧哼哧开发中"];
 }
 - (IBAction)friendsUnderDeveloping:(id)sender {
 //    [self sendNotification:@"【我的跑友】\n\n正在窟嚓窟嚓开发中"];

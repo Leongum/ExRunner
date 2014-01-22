@@ -32,6 +32,14 @@
 		0F16EF8E17CD9F390055DEE6 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F16EF8D17CD9F380055DEE6 /* Products.m */; };
 		0F16EF9417CDBA940055DEE6 /* RORUserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F16EF9317CDBA930055DEE6 /* RORUserUtils.m */; };
 		0F16EF9717CDBAC20055DEE6 /* RORContextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F16EF9617CDBAC10055DEE6 /* RORContextUtils.m */; };
+		0F19301A1884DD8500E74BB1 /* LingQianSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1930191884DD8500E74BB1 /* LingQianSDK.framework */; };
+		0F19301C1884DEAE00E74BB1 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F19301B1884DEAE00E74BB1 /* ImageIO.framework */; };
+		0F19301E1884DED400E74BB1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F19301D1884DED400E74BB1 /* AdSupport.framework */; };
+		0F1930201884DEDF00E74BB1 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F19301F1884DEDF00E74BB1 /* CoreFoundation.framework */; };
+		0F1930221884DEF100E74BB1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1930211884DEF100E74BB1 /* MediaPlayer.framework */; };
+		0F1930241884DEF900E74BB1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1930231884DEF900E74BB1 /* StoreKit.framework */; };
+		0F1930261884DF0300E74BB1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1930251884DF0300E74BB1 /* Social.framework */; };
+		0F1930271884DFD900E74BB1 /* LingQianSDK.framework in Resources */ = {isa = PBXBuildFile; fileRef = 0F1930191884DD8500E74BB1 /* LingQianSDK.framework */; };
 		0F274A6B17B6058C00F0E927 /* RORSystemService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F274A6A17B6058B00F0E927 /* RORSystemService.m */; };
 		0F274A7517B6061F00F0E927 /* RORSystemClientHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F274A7417B6061F00F0E927 /* RORSystemClientHandler.m */; };
 		0F535D7117CF90470032F58D /* RORNetWorkUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F535D7017CF90460032F58D /* RORNetWorkUtils.m */; };
@@ -408,6 +416,13 @@
 		0F16EF9317CDBA930055DEE6 /* RORUserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORUserUtils.m; sourceTree = "<group>"; };
 		0F16EF9517CDBAC00055DEE6 /* RORContextUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORContextUtils.h; sourceTree = "<group>"; };
 		0F16EF9617CDBAC10055DEE6 /* RORContextUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORContextUtils.m; sourceTree = "<group>"; };
+		0F1930191884DD8500E74BB1 /* LingQianSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LingQianSDK.framework; sourceTree = "<group>"; };
+		0F19301B1884DEAE00E74BB1 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		0F19301D1884DED400E74BB1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		0F19301F1884DEDF00E74BB1 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		0F1930211884DEF100E74BB1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		0F1930231884DEF900E74BB1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0F1930251884DF0300E74BB1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0F274A6917B6058B00F0E927 /* RORSystemService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORSystemService.h; sourceTree = "<group>"; };
 		0F274A6A17B6058B00F0E927 /* RORSystemService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORSystemService.m; sourceTree = "<group>"; };
 		0F274A7317B6061F00F0E927 /* RORSystemClientHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORSystemClientHandler.h; sourceTree = "<group>"; };
@@ -853,24 +868,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3098B4FC1806972300029164 /* AVFoundation.framework in Frameworks */,
-				0F59A17217BCA4BD000DEFEF /* SystemConfiguration.framework in Frameworks */,
-				3029769517F9F854001470CB /* (null) in Frameworks */,
 				30621D4E17E45F490063A007 /* AudioToolbox.framework in Frameworks */,
+				302FD0091727D870004DA005 /* CoreGraphics.framework in Frameworks */,
+				302FD0071727D870004DA005 /* Foundation.framework in Frameworks */,
+				302FD0051727D870004DA005 /* UIKit.framework in Frameworks */,
+				0F1930261884DF0300E74BB1 /* Social.framework in Frameworks */,
+				0F1930241884DEF900E74BB1 /* StoreKit.framework in Frameworks */,
+				0F1930221884DEF100E74BB1 /* MediaPlayer.framework in Frameworks */,
+				30BB0BA8176A03AC0009A847 /* QuartzCore.framework in Frameworks */,
+				0F1930201884DEDF00E74BB1 /* CoreFoundation.framework in Frameworks */,
 				0F8501E317C1C9510005993E /* CoreTelephony.framework in Frameworks */,
+				0F59A17217BCA4BD000DEFEF /* SystemConfiguration.framework in Frameworks */,
+				302FD04E172903D7004DA005 /* CoreLocation.framework in Frameworks */,
+				0F19301C1884DEAE00E74BB1 /* ImageIO.framework in Frameworks */,
+				0F19301E1884DED400E74BB1 /* AdSupport.framework in Frameworks */,
+				3098B4FC1806972300029164 /* AVFoundation.framework in Frameworks */,
+				3029769517F9F854001470CB /* (null) in Frameworks */,
 				0F8501E017C1C68E0005993E /* libsqlite3.dylib in Frameworks */,
 				0F8501DE17C1C63E0005993E /* libstdc++.dylib in Frameworks */,
 				30F4548317BD10C5006CB66C /* CoreMotion.framework in Frameworks */,
 				30BB0BAC176A04A10009A847 /* libz.1.2.5.dylib in Frameworks */,
 				30BB0BAA176A04910009A847 /* libicucore.dylib in Frameworks */,
-				30BB0BA8176A03AC0009A847 /* QuartzCore.framework in Frameworks */,
 				30BB0B041769A2300009A847 /* CFNetwork.framework in Frameworks */,
 				30FC2903175EC34200DEC042 /* MapKit.framework in Frameworks */,
 				3061F3B6174CDB96006093FC /* CoreData.framework in Frameworks */,
-				302FD04E172903D7004DA005 /* CoreLocation.framework in Frameworks */,
-				302FD0051727D870004DA005 /* UIKit.framework in Frameworks */,
-				302FD0071727D870004DA005 /* Foundation.framework in Frameworks */,
-				302FD0091727D870004DA005 /* CoreGraphics.framework in Frameworks */,
+				0F19301A1884DD8500E74BB1 /* LingQianSDK.framework in Frameworks */,
 				0F53B49617F3481D006DB4C4 /* QQConnection.framework in Frameworks */,
 				0F53B49717F3481D006DB4C4 /* QZoneConnection.framework in Frameworks */,
 				0F53B49817F3481D006DB4C4 /* RenRenConnection.framework in Frameworks */,
@@ -920,6 +942,14 @@
 				0F07AC3417E957070009C8A8 /* RORCheckBox.m */,
 			);
 			name = CustomControl;
+			sourceTree = "<group>";
+		};
+		0F1930181884DD8500E74BB1 /* lingqian */ = {
+			isa = PBXGroup;
+			children = (
+				0F1930191884DD8500E74BB1 /* LingQianSDK.framework */,
+			);
+			path = lingqian;
 			sourceTree = "<group>";
 		};
 		0F53B43F17F3481D006DB4C4 /* ShareSDK_v2.5.0 */ = {
@@ -1218,6 +1248,7 @@
 		302FCFF81727D870004DA005 = {
 			isa = PBXGroup;
 			children = (
+				0F1930181884DD8500E74BB1 /* lingqian */,
 				30692D5718117C2500DA01EC /* SVProgressHUD */,
 				0F8501DF17C1C68E0005993E /* libsqlite3.dylib */,
 				0F8501DD17C1C63E0005993E /* libstdc++.dylib */,
@@ -1247,6 +1278,12 @@
 		302FD0031727D870004DA005 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F1930251884DF0300E74BB1 /* Social.framework */,
+				0F1930231884DEF900E74BB1 /* StoreKit.framework */,
+				0F1930211884DEF100E74BB1 /* MediaPlayer.framework */,
+				0F19301F1884DEDF00E74BB1 /* CoreFoundation.framework */,
+				0F19301D1884DED400E74BB1 /* AdSupport.framework */,
+				0F19301B1884DEAE00E74BB1 /* ImageIO.framework */,
 				3098B4FB1806972300029164 /* AVFoundation.framework */,
 				30621D4D17E45F480063A007 /* AudioToolbox.framework */,
 				0F8501D517C1C6160005993E /* CoreTelephony.framework */,
@@ -2072,6 +2109,7 @@
 				3005CFFB1854B1C000D83648 /* traineeExpandTable_bg.png in Resources */,
 				0F53B4BC17F3481D006DB4C4 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				30984925186085A90079E236 /* tipsPad_bg.png in Resources */,
+				0F1930271884DFD900E74BB1 /* LingQianSDK.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2356,6 +2394,7 @@
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend\"",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0\"",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/UI\"",
+					"\"$(SRCROOT)/lingqian\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RevolUtioN/Cyberace-Prefix.pch";
@@ -2366,7 +2405,6 @@
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/libWeiboSDK\"",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/SDKExport\"",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/TencentWeiboSSO\"",
-					"\"$(SRCROOT)/VTime\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
@@ -2392,6 +2430,7 @@
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend\"",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0\"",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/UI\"",
+					"\"$(SRCROOT)/lingqian\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RevolUtioN/Cyberace-Prefix.pch";
@@ -2402,7 +2441,6 @@
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/libWeiboSDK\"",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/SDKExport\"",
 					"\"$(SRCROOT)/ShareSDK_v2.5.0/Extend/TencentWeiboSSO\"",
-					"\"$(SRCROOT)/VTime\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
