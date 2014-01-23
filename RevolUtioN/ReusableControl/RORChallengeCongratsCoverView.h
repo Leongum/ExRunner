@@ -7,6 +7,7 @@
 //
 
 #import "RORCongratsCoverView.h"
+#import "RORShareService.h"
 
 @interface RORChallengeCongratsCoverView : RORCongratsCoverView{
     NSInteger grade;

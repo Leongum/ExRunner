@@ -77,6 +77,7 @@
 -(IBAction)hide:(id)sender{
     [Animations fadeOut:self andAnimationDuration:0.3 fromAlpha:1 andWait:NO];
     self.alpha = 0;
+    
 }
 
 /*

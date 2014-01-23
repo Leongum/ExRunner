@@ -51,6 +51,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     NSDictionary *dict = [RORUserUtils getUserSettingsPList];
     NSNumber *didIntro = [RORDBCommon getNumberFromId:[dict objectForKey:@"HasShowFriendsIntro"]];
     if (!didIntro){

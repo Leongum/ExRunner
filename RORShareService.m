@@ -37,4 +37,11 @@
     return YES;
 }
 
++(void)LQ_Runreward:(User_Running_History *)bestRecord{
+    if(bestRecord.valid.integerValue == 1 && (bestRecord.distance.doubleValue > 500 || bestRecord.duration.doubleValue > 300))
+    {
+        [LingQianSDK trackActionWithName:@"runreward"];
+    }
+}
+
 @end

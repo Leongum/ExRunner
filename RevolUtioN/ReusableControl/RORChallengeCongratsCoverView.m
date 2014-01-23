@@ -98,6 +98,13 @@
     [super show:sender];    
     [self doAnimation];
 }
+
+-(IBAction)hide:(id)sender{
+    [super hide:sender];
+    [RORShareService LQ_Runreward:bestRecord];
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
