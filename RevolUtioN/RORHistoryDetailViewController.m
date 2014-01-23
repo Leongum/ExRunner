@@ -131,18 +131,19 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if (record.missionTypeId.integerValue == Challenge && [delegate isKindOfClass:[RORRunningBaseViewController class]] && record.valid.integerValue>0)
-    {
-        RORChallengeCongratsCoverView *congratsCoverView = [[RORChallengeCongratsCoverView alloc]initWithFrame:self.view.frame andLevel:record];
-        [self.view addSubview:congratsCoverView];
-        [congratsCoverView show:self];
-    } else
-    if ((record.missionTypeId.integerValue == SimpleTask || record.missionTypeId.integerValue == ComplexTask) &&  [delegate isKindOfClass:[RORRunningBaseViewController class]] && record.valid.integerValue >0){
-        RORTrainingCongratsCoverView *congratsCoverView = [[RORTrainingCongratsCoverView alloc]initWithFrame:self.view.frame andLevel:record];
-        [self.view addSubview:congratsCoverView];
-        [congratsCoverView show:self];
-    } else if (record.missionTypeId.integerValue == NormalRun && [delegate isKindOfClass:[RORRunningBaseViewController class]]){
-        [RORShareService LQ_Runreward:record];
+    if ([delegate isKindOfClass:[RORRunningBaseViewController class]] && record.valid.integerValue>0){
+        if (record.missionTypeId.integerValue == Challenge)
+        {
+            RORChallengeCongratsCoverView *congratsCoverView = [[RORChallengeCongratsCoverView alloc]initWithFrame:self.view.frame andLevel:record];
+            [self.view addSubview:congratsCoverView];
+            [congratsCoverView show:self];
+        } else if ((record.missionTypeId.integerValue == SimpleTask || record.missionTypeId.integerValue == ComplexTask)){
+                RORTrainingCongratsCoverView *congratsCoverView = [[RORTrainingCongratsCoverView alloc]initWithFrame:self.view.frame andLevel:record];
+                [self.view addSubview:congratsCoverView];
+                [congratsCoverView show:self];
+        } else if (record.missionTypeId.integerValue == NormalRun){
+                [RORShareService LQ_Runreward:record];
+        }
     }
 }
 

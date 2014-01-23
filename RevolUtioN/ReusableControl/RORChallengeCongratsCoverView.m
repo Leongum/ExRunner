@@ -62,7 +62,7 @@
         [self addSubview:levelLabel];
     }
     
-    extraAwardLabel.text = [NSString stringWithFormat:@"exp: %d   gold: %d", bestRecord.experience.integerValue, bestRecord.scores.integerValue];
+    extraAwardLabel.text = [NSString stringWithFormat:@"exp: %d", bestRecord.experience.integerValue];
     
     [self addTarget:self action:@selector(hide:) forControlEvents:UIControlEventTouchUpInside];
 }

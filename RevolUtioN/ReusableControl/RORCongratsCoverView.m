@@ -51,7 +51,7 @@
     awardTitleLabel.backgroundColor = [UIColor darkGrayColor];
     awardTitleLabel.textColor = [UIColor whiteColor];
     awardTitleLabel.font = [UIFont fontWithName:CHN_PRINT_FONT size:18];
-    awardTitleLabel.text = @"获得额外的经验、金币奖励";
+    awardTitleLabel.text = @"获得额外的经验奖励";
     awardTitleLabel.textAlignment = NSTextAlignmentCenter;
     awardTitleLabel.alpha = 0;
     [self addSubview:awardTitleLabel];
