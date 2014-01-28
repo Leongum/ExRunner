@@ -192,13 +192,16 @@
     [self initPageData];
     if (!hasAnimated){
         hasAnimated = YES;
-//        [self charactorAnimation];
-        
-//        [self controlsInAction];
     }
-    //    [Animations zoomIn:self.chactorView andAnimationDuration:2 andWait:YES];
     [self initLocationServcie];
     
+    NSDictionary *dict = [RORUserUtils getUserSettingsPList];
+    NSNumber *didIntro = [RORDBCommon getNumberFromId:[dict objectForKey:@"HasShowMainIntro"]];
+    if (!didIntro){
+        RORIntroCoverView *introCoverView = [[RORIntroCoverView alloc]initWithFrame:self.view.frame andImage:[UIImage imageNamed:@"introMainPage.png"]];
+        [self.view addSubview:introCoverView];
+        [RORUserUtils writeToUserSettingsPList:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:1], @"HasShowMainIntro", nil]];
+    }
 }
 
 - (IBAction)segueToLogin:(id)sender{
@@ -352,7 +355,7 @@
 }
 
 -(IBAction)userInfoViewClick:(id)sender{
-    [self sendNotification:[NSString stringWithFormat:@"选手编号: %@\n金币: %d\n",[RORUtils addEggache:[RORUserUtils getUserId]], userInfo.attributes.scores.intValue]];
+    [self sendNotification:[NSString stringWithFormat:@"选手编号: %@",[RORUtils addEggache:[RORUserUtils getUserId]]]];
 }
 
 - (IBAction)normalRunAction:(id)sender {

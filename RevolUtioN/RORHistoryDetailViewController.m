@@ -139,10 +139,10 @@
             [congratsCoverView show:self];
         } else if ((record.missionTypeId.integerValue == SimpleTask || record.missionTypeId.integerValue == ComplexTask)){
                 RORTrainingCongratsCoverView *congratsCoverView = [[RORTrainingCongratsCoverView alloc]initWithFrame:self.view.frame andLevel:record];
-                [self.view addSubview:congratsCoverView];
-                [congratsCoverView show:self];
+            [self.view addSubview:congratsCoverView];
+            [congratsCoverView show:self];
         } else if (record.missionTypeId.integerValue == NormalRun){
-                [RORShareService LQ_Runreward:record];
+            [RORShareService LQ_Runreward:record];
         }
     }
 }

@@ -45,13 +45,22 @@
         if (fileURL != nil)
         {
             AVAudioSession *session = [AVAudioSession sharedInstance];
-            [session setActive:YES error:nil];
             [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+            OSStatus propertySetError = 0;
+            UInt32 allowMixing = true;
+            
+            propertySetError = AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryMixWithOthers,
+                                                sizeof (allowMixing),
+                                                &allowMixing);
+            [session setActive:YES error:nil];
             
             player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+            [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+
+//            [player setShouldGroupAccessibilityChildren:YES];
+
             [player prepareToPlay];
             [player setVolume:1];
-
         }
     }
     return self;

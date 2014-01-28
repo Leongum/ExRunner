@@ -14,8 +14,14 @@
     self = [super init];
     if (self) {
         AVAudioSession *session = [AVAudioSession sharedInstance];
-        [session setActive:YES error:nil];
         [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+        OSStatus propertySetError = 0;
+        UInt32 allowMixing = true;
+        
+        propertySetError = AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryMixWithOthers,
+                                                    sizeof (allowMixing),
+                                                    &allowMixing);
+        [session setActive:YES error:nil];
         
         [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     }
