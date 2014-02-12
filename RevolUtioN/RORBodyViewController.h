@@ -20,7 +20,7 @@
 #define WEIGHT_PICKER_MIN 30
 #define WEIGHT_PICKER_MAX 150
 
-@interface RORBodyViewController : RORViewController{
+@interface RORBodyViewController : RORViewController<CustomSegmentedControlDelegate>{
     double newHeight, newWeight;
     NSString *newSex;
     NSIndexPath *selection;
@@ -35,4 +35,5 @@
 //@property (strong, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) IBOutlet UITableView *table;
 
+-(void)SegmentValueChanged:(NSInteger)segmentIndex;
 @end

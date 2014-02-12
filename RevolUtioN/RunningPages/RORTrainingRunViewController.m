@@ -71,6 +71,7 @@
     [super creatRunningHistory];
     planRunningHistory = [Plan_Run_History intiUnassociateEntity];
     runHistory.missionTypeId = thisMission.missionTypeId;
+    runHistory.missionId = thisMission.missionId;
     runHistory.missionGrade = [self calculateTrainingGrade];
     if (runHistory.missionGrade.integerValue!= GRADE_F && runHistory.valid.integerValue>0){
         [RORPlanService gotoNextMission:planNext.planRunUuid];

@@ -12,7 +12,7 @@
 
 @protocol CustomSegmentedControlDelegate
 @optional
-- (void) SegmentValueChanged:(NSUInteger)segmentIndex;
+- (void) SegmentValueChanged:(NSInteger)segmentIndex;
 @end
 
 @interface RORSegmentControl : UIControl{

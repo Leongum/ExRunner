@@ -54,7 +54,7 @@
         [RORUserUtils syncSystemData];
     }
 
-    [LingQianSDK trackActionWithName:@"visit"];
+//    [LingQianSDK trackActionWithName:@"visit"];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

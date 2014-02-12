@@ -10,7 +10,7 @@
 
 @implementation RORPaperSegmentControl
 @synthesize segment, selectionIndex;
-@synthesize delegate;
+//@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {

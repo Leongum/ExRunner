@@ -247,7 +247,7 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"sexCell"];
             newSex = content.sex;
 //            UISegmentedControl *seg = (UISegmentedControl *)[cell viewWithTag:1];
-            RORSegmentControl *segment = (RORSegmentControl *)[cell viewWithTag:2];
+            RORPaperSegmentControl *segment = (RORPaperSegmentControl *)[cell viewWithTag:2];
             if (!segment){
                 segment = [[RORPaperSegmentControl alloc]initWithFrame:CGRectMake(33, 20, 204, 29) andSegmentNumber:3];
                 segment.delegate = self;
